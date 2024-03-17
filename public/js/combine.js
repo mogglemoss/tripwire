@@ -67609,43 +67609,43 @@ var appData = {
             "jump": 1000000000
         },
         "Q003": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Null-Sec",
             "mass": 3000000000,
             "jump": 5000000
         },
         "G008": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Class-6",
             "mass": 3000000000,
             "jump": 5000000
         },
         "C008": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Class-5",
             "mass": 3000000000,
             "jump": 5000000
         },
         "M001": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Class-4",
             "mass": 3000000000,
             "jump": 5000000
         },
         "Z006": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Class-3",
             "mass": 3000000000,
             "jump": 5000000
         },
         "L005": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Class-2",
             "mass": 3000000000,
             "jump": 5000000
         },
         "E004": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "leadsTo": "Class-1",
             "mass": 3000000000,
             "jump": 5000000
