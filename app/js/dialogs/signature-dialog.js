@@ -57,7 +57,6 @@ sigDialog.openSignatureDialog = function(e) {
 				}
 
 				$("#dialog-signature [name='signatureType'], #dialog-signature [name='signatureLife']").selectmenu({width: 100});
-				$("#dialog-signature [name='wormholeLife'], #dialog-signature [name='wormholeMass']").selectmenu({width: 80});
 				$("#dialog-signature [data-autocomplete='sigSystems']").inlinecomplete({source: tripwire.aSigSystems, renderer: 'system', select_item_mapper: system_select_item_mapper, maxSize: 10, delay: 0});
 				
 				function getTargetName() { return $("#dialog-signature .leadsTo:visible").val(); }
@@ -365,12 +364,12 @@ sigDialog.openSignatureDialog = function(e) {
 				$("#dialog-signature").data("signature2id", "");
 				$("#dialog-signature").data("wormholeid", "");
 
-				$("#dialog-signature input").val("");
+				$("#dialog-signature input [type!='radio']").val("");
 				$("#dialog-signature [name='signatureType']").val("unknown").selectmenu("refresh");
 
-				$("#dialog-signature [name='wormholeLife']").val("stable").selectmenu("refresh");
-				$("#dialog-signature [name='wormholeMass']").val("stable").selectmenu("refresh");
-
+				$("#dialog-signature [name='wormholeLife'][value='stable']").prop("checked", true);
+				$("#dialog-signature [name='wormholeMass'][value='stable']").prop("checked", true);
+				
 				$("#dialog-signature #site").show();
 				$("#dialog-signature #wormhole").hide();
 
@@ -410,9 +409,8 @@ sigDialog.openSignatureDialog = function(e) {
 						$("#dialog-signature input[name='signatureID2_Alpha']").val(otherSignature.signatureID ? otherSignature.signatureID.substr(0, 3) : "???");
 						$("#dialog-signature input[name='signatureID2_Numeric']").val(otherSignature.signatureID ? otherSignature.signatureID.substr(3, 5) : "");
 						$("#dialog-signature [name='wormholeName2']").val(otherSignature.name);
-						$("#dialog-signature [name='wormholeLife']").val(wormhole.life).selectmenu("refresh").trigger("selectmenuchange");
-						$("#dialog-signature [name='wormholeMass']").val(wormhole.mass).selectmenu("refresh").trigger("selectmenuchange");
-
+						$("#dialog-signature [name='wormholeLife'][value='"+wormhole.life+"']").prop("checked", true);
+						$("#dialog-signature [name='wormholeMass'][value='"+wormhole.mass+"']").prop("checked", true);
 						if (wormhole[wormhole.parent+"ID"] == signature.id) {
 							$("#dialog-signature input[name='wormholeType']").val(wormhole.type).change();
 						} else if (wormhole[wormhole.parent+"ID"] == otherSignature.id) {

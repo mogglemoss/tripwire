@@ -88,7 +88,7 @@ input[disabled], a[disabled] {
 	cursor: default;
 }
 
-input.selector {
+input.selector, input.mini-selector {
 	display: none;
 }
 
@@ -112,14 +112,10 @@ input.selector+label .selector_label {
     border-radius: 3px;
 }
 
-input.selector+label {
+input.selector+label, input.mini-selector+label {
 	display: inline-block;
 	position: relative;
-	vertical-align: top;
-	min-height: 64px;
-	min-width: 64px;
 	padding: 3px;
-	margin: 3px 3px;
 	border: 2px solid #888;
     border-radius: 5px;
 
@@ -128,12 +124,24 @@ input.selector+label {
 	transition: all 0.2s ease;
 }
 
-input.selector+label:hover {
+input.selector+label {
+	vertical-align: top;
+	min-height: 64px;
+	min-width: 64px;
+	margin: 3px 3px;
+}
+
+input.mini-selector+label {
+	margin: 3px 0;
+	top: -1px;
+}
+
+input.selector+label:hover, input.mini-selector+label:hover {
 	border-color: #555;
 	opacity: 1;
 }
 
-input.selector:checked+label {
+input.selector:checked+label, input.mini-selector:checked+label {
 	border-color: darkorange;
 	opacity: 1;
 }

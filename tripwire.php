@@ -430,22 +430,19 @@ $system = $_REQUEST['system'];
 					</div>
 					<div class="row">
 						<span class="label">Life:</span>
-						<span class="select">
-							<select name="wormholeLife">
-								<option value="stable">Stable</option>
-								<option value="critical">End of life</option>
-							</select>
-						</span>
-						<span id="wormholeMass">
-							<span class="label">Mass:</span>
-							<span class="select">
-								<select name="wormholeMass">
-									<option value="stable">Stable</option>
-									<option value="destab">Destab</option>
-									<option value="critical">Critical</option>
-								</select>
-							</span>
-						</span>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeStable"  value="stable"/>
+						<label for="wormholeLifeStable" class="stable">Stable</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeEOL"  value="critical"/>
+						<label for="wormholeLifeEOL" class="critical">EOL</label>
+					</div>
+					<div class="row">
+						<span class="label">Mass:</span>
+						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassStable"  value="stable"/>
+						<label for="wormholeMassStable" class="stable">Stable</label>
+						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassDestab" value="destab"/>
+						<label for="wormholeMassDestab" class="destab">Destab</label>
+						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassCritical" value="critical" />
+						<label for="wormholeMassCritical" class="critical">Critical</label>
 					</div>
 				</div>
 				<hr/>
