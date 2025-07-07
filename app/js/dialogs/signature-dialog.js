@@ -364,7 +364,7 @@ sigDialog.openSignatureDialog = function(e) {
 				$("#dialog-signature").data("signature2id", "");
 				$("#dialog-signature").data("wormholeid", "");
 
-				$("#dialog-signature input [type!='radio']").val("");
+				$("#dialog-signature input[type!='radio']").val("");
 				$("#dialog-signature [name='signatureType']").val("unknown").selectmenu("refresh");
 
 				$("#dialog-signature [name='wormholeLife'][value='stable']").prop("checked", true);
