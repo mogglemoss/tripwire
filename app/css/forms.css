@@ -89,7 +89,7 @@ input[disabled], a[disabled] {
 }
 
 input.selector, input.mini-selector {
-	display: none;
+	width: 0; opacity: 0;	/* Don't use display:none because it makes it not be keyboard accessible */
 }
 
 input.selector+label img {
@@ -132,7 +132,7 @@ input.selector+label {
 }
 
 input.mini-selector+label {
-	margin: 3px 0;
+	margin: 3px -3px;
 	top: -1px;
 }
 
@@ -144,6 +144,13 @@ input.selector+label:hover, input.mini-selector+label:hover {
 input.selector:checked+label, input.mini-selector:checked+label {
 	border-color: darkorange;
 	opacity: 1;
+}
+
+input.selector:focus-visible+label, input.mini-selector:focus-visible+label {
+	outline-style: inset;
+    outline-offset: 1px;
+    outline-color: #ff8c0080;
+    outline-width: 1px;
 }
 
 input.selector+label .info {
