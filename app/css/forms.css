@@ -112,7 +112,7 @@ input.selector+label .selector_label {
     border-radius: 3px;
 }
 
-input.selector+label, input.mini-selector+label {
+input.selector+label, input.mini-selector+label, .quick-select {
 	display: inline-block;
 	position: relative;
 	padding: 3px;
@@ -122,6 +122,11 @@ input.selector+label, input.mini-selector+label {
 	cursor: pointer;
 	opacity: .4;
 	transition: all 0.2s ease;
+}
+
+.quick-select {
+	color: #aaa;
+	background: none;
 }
 
 input.selector+label {
@@ -136,8 +141,8 @@ input.mini-selector+label {
 	top: -1px;
 }
 
-input.selector+label:hover, input.mini-selector+label:hover {
-	border-color: #555;
+input.selector+label:hover, input.mini-selector+label:hover, .quick-select:hover {
+	border-color: #960;
 	opacity: 1;
 }
 
@@ -146,7 +151,7 @@ input.selector:checked+label, input.mini-selector:checked+label {
 	opacity: 1;
 }
 
-input.selector:focus-visible+label, input.mini-selector:focus-visible+label {
+input.selector:focus-visible+label, input.mini-selector:focus-visible+label, .quick-select:focus-visible {
 	outline-style: inset;
     outline-offset: 1px;
     outline-color: #ff8c0080;

@@ -57,7 +57,7 @@ sigDialog.openSignatureDialog = function(e) {
 				}
 
 				$("#dialog-signature [name='signatureType'], #dialog-signature [name='signatureLife']").selectmenu({width: 100});
-				$("#dialog-signature [data-autocomplete='sigSystems']").inlinecomplete({source: tripwire.aSigSystems, renderer: 'system', select_item_mapper: system_select_item_mapper, maxSize: 10, delay: 0});
+				$("#dialog-signature [data-autocomplete='sigSystems']").inlinecomplete({source: tripwire.aSigSystems, renderer: 'system', select_item_mapper: system_select_item_mapper, extraMatch: (term, value) => term.toUpperCase() === value.systemTypeName, maxSize: 10, delay: 0});
 				
 				function getTargetName() { return $("#dialog-signature .leadsTo:visible").val(); }
 				function getTargetSystem() {
@@ -70,6 +70,8 @@ sigDialog.openSignatureDialog = function(e) {
 						return extractor(eligible);
 					}
 				}
+				const sigTypeFromFiller =  sigTypeDropdownFiller(function(x) { return x.from; });
+				const sigTypeToFiller =  sigTypeDropdownFiller(function(x) { return x.to; });
 				
 				function renderInbound(item) {	// Render with the type of the systems, if we know, so we don't get "from: [drifter wormholes]" if we know we're in a C2
 					return wormholeRendering.renderWormholeType(item, item.key, getTargetName(), sigDialogVM.viewingSystem.name);
@@ -78,8 +80,32 @@ sigDialog.openSignatureDialog = function(e) {
 					return wormholeRendering.renderWormholeType(item, item.key, sigDialogVM.viewingSystem.name, getTargetName());
 				}
 				
-				$("#dialog-signature [data-autocomplete='sigTypeFrom']").inlinecomplete({source: aSigWormholes, renderer: renderOutbound, maxSize: 10, delay: 0, customDropdown: sigTypeDropdownFiller(function(x) { return x.from; })});
-				$("#dialog-signature [data-autocomplete='sigTypeTo']").inlinecomplete({source: aSigWormholes, renderer: renderInbound, maxSize: 10, delay: 0, customDropdown: sigTypeDropdownFiller(function(x) { return x.to; })});
+				$("#dialog-signature [data-autocomplete='sigTypeFrom']").inlinecomplete({source: aSigWormholes, renderer: renderOutbound, maxSize: 10, delay: 0, customDropdown: sigTypeFromFiller});
+				$("#dialog-signature [data-autocomplete='sigTypeTo']").inlinecomplete({source: aSigWormholes, renderer: renderInbound, maxSize: 10, delay: 0, customDropdown:sigTypeToFiller});
+				
+				function updateQuickSelect(elem, filler) {
+					elem.innerHTML = '';
+					const values = filler();
+					if(values.length < 4) {
+						values.forEach(type => {
+							const button = document.createElement('button');
+							button.className = 'quick-select';
+							if(type.jump <= 5000000) { button.className += ' frig'; }
+							button.textContent = type.key;
+							button.value = type.key;
+							button.type = 'button'; // otherwise it is 'submit'
+							button.tabIndex = -1; // keyboard users will just want to type in the autocomplete field
+							elem.appendChild(button);
+						});
+					}
+				}
+				function updateQuickSelects() {
+					updateQuickSelect(document.getElementById('wormholeTypeQuickSelectFrom'), sigTypeFromFiller);
+					updateQuickSelect(document.getElementById('wormholeTypeQuickSelectTo'), sigTypeToFiller);
+				}
+				
+				$('#wormholeTypeQuickSelectFrom').on('click', e => $("#dialog-signature input[name='wormholeType']").val(e.target.value).change());
+				$('#wormholeTypeQuickSelectTo').on('click', e => $("#dialog-signature input[name='wormholeType2']").val(e.target.value).change());
 
 				$("#dialog-signature #durationPicker").durationPicker();
 				$("#dialog-signature #durationPicker").on("change", function() {
@@ -123,6 +149,16 @@ sigDialog.openSignatureDialog = function(e) {
 				// Select value on click
 				$("#dialog-signature .signatureID, #dialog-signature .wormholeType").on("click", function() {
 					$(this).select();
+				});
+				
+				// Update quick selectors when the leadsTo system changes
+				$("#dialog-signature [name='leadsTo']").on("change", updateQuickSelects);
+				
+				// Shortcut buttons to update leadsTo
+				$('#leadsToQuickBar').on('click', e => {
+					let target = e.target;
+					while(target.tagName !== 'BUTTON') { target = target.parentElement; }
+					$("#dialog-signature [name='leadsTo']").val(target.value).change();
 				});
 
 				// Auto fill opposite side wormhole w/ K162
@@ -421,6 +457,9 @@ sigDialog.openSignatureDialog = function(e) {
 						// Focus the sig ID, if it isn't set, otherwise the sig name
 						if(sigAlpha != '???') { $("#dialog-signature input[name='wormholeName']").select(); }
 						else { $("#dialog-signature input[name='signatureID_Alpha']").select(); }
+						
+						// Trigger the VM/display updates based on system
+						$("#dialog-signature [name='leadsTo']").change();
 					} else {
 						$("#dialog-signature input[name='signatureID_Alpha']").val(signature.signatureID ? signature.signatureID.substr(0, 3) : "???");
 						$("#dialog-signature input[name='signatureID_Numeric']").val(signature.signatureID ? signature.signatureID.substr(3, 5) : "");
