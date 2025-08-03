@@ -246,6 +246,7 @@ html .ui-selectmenu-menu ul {
 	position: absolute;
 	top: 0;
 	bottom: 0;
+	right: -20px;
 	margin-left: -1px;
 	padding: 0;
 }
