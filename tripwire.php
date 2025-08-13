@@ -426,7 +426,7 @@ $system = $_REQUEST['system'];
 						</span>
 						<!-- needs to not be whitespace between the buttons for alignment, even though it's ugly markup -->
 						<div id="leadsToQuickBar" class="quickSelectBar"><button type="button" class="quick-select" value="Class-1" tabindex="-1"><span class="class-1">C1<span></button><button type="button" class="quick-select" value="Class-2" tabindex="-1"><span class="class-2">C2<span></button><button type="button" class="quick-select" value="Class-3" tabindex="-1"><span class="class-3">C3<span></button><button type="button" class="quick-select" value="Class-4" tabindex="-1"><span class="class-4">C4<span></button><button type="button" class="quick-select" value="Class-5" tabindex="-1"><span class="class-5">C5<span></button><button type="button" class="quick-select" value="Class-6" tabindex="-1"><span class="class-6">C6<span></button> |
-						<button type="button" class="quick-select" value="High-Sec" tabindex="-1"><span class="highsec">HS<span></button><button type="button" class="quick-select" value="Low-Sec" tabindex="-1"><span class="lowsec">LS<span></button><button type="button" class="quick-select" value="Null-Sec" tabindex="-1"><span class="nullsec">NS<span></button>
+						<button type="button" class="quick-select" value="High-Sec" tabindex="-1"><span class="hisec">HS<span></button><button type="button" class="quick-select" value="Low-Sec" tabindex="-1"><span class="lowsec">LS<span></button><button type="button" class="quick-select" value="Null-Sec" tabindex="-1"><span class="nullsec">NS<span></button>
 						</div>
 					</div>
 					<div class="row">
