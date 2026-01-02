@@ -28,7 +28,7 @@ Object.find = function(obj, prop, val, cs) {
 	for (var key in obj) {
 		if (!cs && obj[key][prop] == val) {
 			return obj[key];
-		} else if (obj[key][prop] && obj[key][prop].toLowerCase() == val.toLowerCase()) {
+		} else if (obj[key][prop] && obj[key][prop].toLowerCase && obj[key][prop].toLowerCase() == val.toLowerCase()) {
 			return obj[key];
 		}
 	}
