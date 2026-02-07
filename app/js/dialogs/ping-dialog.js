@@ -1,5 +1,6 @@
 const sendPing = function(dialog, pingType) {
-					const _this = dialog;
+					const text = $('#ping-text').val();
+					if(text.trim() === '' && !confirm('You are sending a ping with no text. Are you sure you want to do that?\n\nIf not, press Cancel and enter some text and try again.')) { return; }					const _this = dialog;
 					var payload = {systemName: _this.systemName, systemText: _this.systemText, message: $('#ping-text').val(), pingType: pingType };
 					$.ajax({
 						url: "ping.php",
