@@ -63049,6 +63049,7 @@ var appData = {
             "regionID": 11000024,
             "class": 5,
             "statics": [
+                "Y790",
                 "U210"
             ]
         },
