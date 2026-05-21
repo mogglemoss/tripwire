@@ -1192,11 +1192,15 @@ $system = $_REQUEST['system'];
 	<?php
 		$analytics_file = dirname( __FILE__ ) . "/analytics.inc.php";
 		if ( file_exists( $analytics_file ) ) include_once( $analytics_file );
+		$init_fields = [
+			'characterID' => $_SESSION['characterID'],
+			'characterName' => $_SESSION['characterName'],
+			'options' => $_SESSION['options']
+		];
 	?>
 
 	<script type="text/javascript">
-
-		const init = <?= json_encode($_SESSION) ?>;
+		const init = <?= json_encode($init_fields) ?>;
 		init.masks = <?= json_encode(getMasks($_SESSION['characterID'], $_SESSION['corporationID'], $_SESSION['admin'], $_SESSION['mask'])) ?>;
 
 		var passiveHitTimer;
