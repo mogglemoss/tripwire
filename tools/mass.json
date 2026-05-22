@@ -335,6 +335,10 @@
         "typeName": "Metamorphosis",
         "mass": 1000000
     },
+    "89648": {
+        "typeName": "Venture Consortium Issue",
+        "mass": 1200000
+    },
     "620": {
         "typeName": "Osprey",
         "mass": 11100000
@@ -395,10 +399,6 @@
         "typeName": "Exequror",
         "mass": 11020000
     },
-    "635": {
-        "typeName": "Opux Luxury Yacht",
-        "mass": 13075000
-    },
     "1904": {
         "typeName": "Concord Police Cruiser",
         "mass": 12155000
@@ -446,10 +446,6 @@
     "17922": {
         "typeName": "Ashimmu",
         "mass": 11010000
-    },
-    "25560": {
-        "typeName": "Opux Dragoon Yacht",
-        "mass": 13075000
     },
     "29336": {
         "typeName": "Scythe Fleet Issue",
@@ -518,10 +514,6 @@
     "34475": {
         "typeName": "\u6bd2\u8725\u7ea7YC117\u5e74\u7279\u522b\u7248",
         "mass": 9600000
-    },
-    "34590": {
-        "typeName": "Victorieux Luxury Yacht",
-        "mass": 1000000
     },
     "47270": {
         "typeName": "Vedmak",
@@ -1421,7 +1413,7 @@
     },
     "42685": {
         "typeName": "Sunesis",
-        "mass": 1500000
+        "mass": 1550000
     },
     "49710": {
         "typeName": "Kikimora",
@@ -1454,6 +1446,18 @@
     "85087": {
         "typeName": "Tholos",
         "mass": 1700000
+    },
+    "89240": {
+        "typeName": "Pioneer",
+        "mass": 1600000
+    },
+    "89647": {
+        "typeName": "Pioneer Consortium Issue",
+        "mass": 1600000
+    },
+    "91174": {
+        "typeName": "Perseverance",
+        "mass": 1600000
     },
     "17476": {
         "typeName": "Covetor",
@@ -2067,6 +2071,10 @@
         "typeName": "Tornado",
         "mass": 15228000
     },
+    "89807": {
+        "typeName": "Anhinga",
+        "mass": 14760000
+    },
     "12729": {
         "typeName": "Crane",
         "mass": 11000000
@@ -2111,6 +2119,10 @@
         "typeName": "Hecate",
         "mass": 1050000
     },
+    "89808": {
+        "typeName": "Skua",
+        "mass": 1100000
+    },
     "37457": {
         "typeName": "Deacon",
         "mass": 1630000
@@ -2146,6 +2158,10 @@
     "52254": {
         "typeName": "Draugur",
         "mass": 1450000
+    },
+    "89649": {
+        "typeName": "Outrider",
+        "mass": 1300000
     },
     "37604": {
         "typeName": "Apostle",
@@ -2198,5 +2214,33 @@
     "77288": {
         "typeName": "Valravn",
         "mass": 1260000000
+    },
+    "89607": {
+        "typeName": "Odysseus",
+        "mass": 15000000
+    },
+    "635": {
+        "typeName": "Opux Luxury Yacht",
+        "mass": 13075000
+    },
+    "25560": {
+        "typeName": "Opux Dragoon Yacht",
+        "mass": 13075000
+    },
+    "34590": {
+        "typeName": "Victorieux Luxury Yacht",
+        "mass": 1000000
+    },
+    "92282": {
+        "typeName": "Tenzin YC128 Campaign Bus",
+        "mass": 1000000
+    },
+    "92283": {
+        "typeName": "Moreau YC128 Campaign Bus",
+        "mass": 1000000
+    },
+    "92284": {
+        "typeName": "Roden YC128 Campaign Bus",
+        "mass": 1000000
     }
 }
