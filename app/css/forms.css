@@ -88,8 +88,8 @@ input[disabled], a[disabled] {
 	cursor: default;
 }
 
-input.selector {
-	display: none;
+input.selector, input.mini-selector {
+	width: 0; opacity: 0;	/* Don't use display:none because it makes it not be keyboard accessible */
 }
 
 input.selector+label img {
@@ -112,14 +112,10 @@ input.selector+label .selector_label {
     border-radius: 3px;
 }
 
-input.selector+label {
+input.selector+label, input.mini-selector+label, .quick-select {
 	display: inline-block;
 	position: relative;
-	vertical-align: top;
-	min-height: 64px;
-	min-width: 64px;
 	padding: 3px;
-	margin: 3px 3px;
 	border: 2px solid #888;
     border-radius: 5px;
 
@@ -128,14 +124,38 @@ input.selector+label {
 	transition: all 0.2s ease;
 }
 
-input.selector+label:hover {
-	border-color: #555;
+.quick-select {
+	color: #aaa;
+	background: none;
+}
+
+input.selector+label {
+	vertical-align: top;
+	min-height: 64px;
+	min-width: 64px;
+	margin: 3px 3px;
+}
+
+input.mini-selector+label {
+	margin: 3px -3px;
+	top: -1px;
+}
+
+input.selector+label:hover, input.mini-selector+label:hover, .quick-select:hover {
+	border-color: #960;
 	opacity: 1;
 }
 
-input.selector:checked+label {
+input.selector:checked+label, input.mini-selector:checked+label {
 	border-color: darkorange;
 	opacity: 1;
+}
+
+input.selector:focus-visible+label, input.mini-selector:focus-visible+label, .quick-select:focus-visible {
+	outline-style: inset;
+    outline-offset: 1px;
+    outline-color: #ff8c0080;
+    outline-width: 1px;
 }
 
 input.selector+label .info {

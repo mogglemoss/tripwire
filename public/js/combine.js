@@ -2,7 +2,7 @@ var appData = {
     "systems": {
         "30000001": {
             "name": "Tanoo",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000001,
             "regionID": 10000001,
             "factionID": 500007
@@ -16,14 +16,14 @@ var appData = {
         },
         "30000003": {
             "name": "Akpivem",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000001,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000004": {
             "name": "Jark",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000001,
             "regionID": 10000001,
             "factionID": 500007
@@ -44,7 +44,7 @@ var appData = {
         },
         "30000007": {
             "name": "Yuzier",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000001,
             "regionID": 10000001,
             "factionID": 500007
@@ -58,21 +58,21 @@ var appData = {
         },
         "30000009": {
             "name": "Sooma",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000002,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000010": {
             "name": "Chidah",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000002,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000011": {
             "name": "Shenela",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000002,
             "regionID": 10000001,
             "factionID": 500007
@@ -93,7 +93,7 @@ var appData = {
         },
         "30000014": {
             "name": "Shamahi",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000002,
             "regionID": 10000001,
             "factionID": 500007
@@ -128,7 +128,7 @@ var appData = {
         },
         "30000019": {
             "name": "Podion",
-            "security": "0.10",
+            "security": "0.11",
             "constellationID": 20000003,
             "regionID": 10000001,
             "factionID": 500007
@@ -142,7 +142,7 @@ var appData = {
         },
         "30000021": {
             "name": "Kuharah",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
@@ -156,7 +156,7 @@ var appData = {
         },
         "30000023": {
             "name": "Fovihi",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000004,
             "regionID": 10000001,
             "factionID": 500007
@@ -177,21 +177,21 @@ var appData = {
         },
         "30000026": {
             "name": "Ordize",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000004,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000027": {
             "name": "Psasa",
-            "security": "0.74",
+            "security": "0.75",
             "constellationID": 20000004,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000028": {
             "name": "Eshtah",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000004,
             "regionID": 10000001,
             "factionID": 500007
@@ -219,7 +219,7 @@ var appData = {
         },
         "30000032": {
             "name": "Hasiari",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000005,
             "regionID": 10000001,
             "factionID": 500007
@@ -296,21 +296,21 @@ var appData = {
         },
         "30000043": {
             "name": "Sari",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000006,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000044": {
             "name": "Faspera",
-            "security": "0.12",
+            "security": "0.13",
             "constellationID": 20000007,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000045": {
             "name": "Jaymass",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000007,
             "regionID": 10000001,
             "factionID": 500007
@@ -324,7 +324,7 @@ var appData = {
         },
         "30000047": {
             "name": "Majamar",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000007,
             "regionID": 10000001,
             "factionID": 500007
@@ -345,21 +345,21 @@ var appData = {
         },
         "30000050": {
             "name": "Fera",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000007,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000051": {
             "name": "Juddi",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000008,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000052": {
             "name": "Maspah",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000008,
             "regionID": 10000001,
             "factionID": 500007
@@ -373,14 +373,14 @@ var appData = {
         },
         "30000054": {
             "name": "Shala",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000008,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000055": {
             "name": "Zemalu",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000008,
             "regionID": 10000001,
             "factionID": 500007
@@ -408,21 +408,21 @@ var appData = {
         },
         "30000059": {
             "name": "Salashayama",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000060": {
             "name": "Janus",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000061": {
             "name": "Agha",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
@@ -436,42 +436,42 @@ var appData = {
         },
         "30000063": {
             "name": "Orva",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000064": {
             "name": "Zet",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000065": {
             "name": "Akhrad",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000066": {
             "name": "Pirohdim",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000067": {
             "name": "Sharir",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000068": {
             "name": "Usroh",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000009,
             "regionID": 10000001,
             "factionID": 500007
@@ -485,14 +485,14 @@ var appData = {
         },
         "30000070": {
             "name": "Gomati",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000010,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000071": {
             "name": "Jangar",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000010,
             "regionID": 10000001,
             "factionID": 500007
@@ -506,21 +506,21 @@ var appData = {
         },
         "30000073": {
             "name": "Irshah",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000010,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000074": {
             "name": "Hasateem",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000010,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000075": {
             "name": "Assah",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000010,
             "regionID": 10000001,
             "factionID": 500007
@@ -541,14 +541,14 @@ var appData = {
         },
         "30000078": {
             "name": "Jofan",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000011,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000079": {
             "name": "Milu",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000011,
             "regionID": 10000001,
             "factionID": 500007
@@ -562,21 +562,21 @@ var appData = {
         },
         "30000081": {
             "name": "Buftiar",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000011,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000082": {
             "name": "Jarizza",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000012,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000083": {
             "name": "Ejahi",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000012,
             "regionID": 10000001,
             "factionID": 500007
@@ -590,14 +590,14 @@ var appData = {
         },
         "30000085": {
             "name": "Bar",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000012,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000086": {
             "name": "Sucha",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000012,
             "regionID": 10000001,
             "factionID": 500007
@@ -625,14 +625,14 @@ var appData = {
         },
         "30000090": {
             "name": "Ilahed",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000013,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000091": {
             "name": "Eshwil",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000013,
             "regionID": 10000001,
             "factionID": 500007
@@ -646,14 +646,14 @@ var appData = {
         },
         "30000093": {
             "name": "Ishkad",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000013,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000094": {
             "name": "Hahyil",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000013,
             "regionID": 10000001,
             "factionID": 500007
@@ -667,14 +667,14 @@ var appData = {
         },
         "30000096": {
             "name": "Mahnagh",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000014,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000097": {
             "name": "Shach",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000014,
             "regionID": 10000001,
             "factionID": 500007
@@ -702,28 +702,28 @@ var appData = {
         },
         "30000101": {
             "name": "Uhtafal",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000014,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000102": {
             "name": "Dysa",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000014,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000103": {
             "name": "Serad",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000014,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000104": {
             "name": "Mahti",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000014,
             "regionID": 10000001,
             "factionID": 500007
@@ -737,7 +737,7 @@ var appData = {
         },
         "30000106": {
             "name": "Shedoo",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000015,
             "regionID": 10000001,
             "factionID": 500007
@@ -758,14 +758,14 @@ var appData = {
         },
         "30000109": {
             "name": "Berta",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000015,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000110": {
             "name": "Bekirdod",
-            "security": "0.40",
+            "security": "0.41",
             "constellationID": 20000015,
             "regionID": 10000001,
             "factionID": 500007
@@ -786,14 +786,14 @@ var appData = {
         },
         "30000113": {
             "name": "Astabih",
-            "security": "0.40",
+            "security": "0.41",
             "constellationID": 20000016,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000114": {
             "name": "Ubtes",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000016,
             "regionID": 10000001,
             "factionID": 500007
@@ -807,14 +807,14 @@ var appData = {
         },
         "30000116": {
             "name": "Kenobanala",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000016,
             "regionID": 10000001,
             "factionID": 500007
         },
         "30000117": {
             "name": "Khabi",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000016,
             "regionID": 10000001,
             "factionID": 500007
@@ -842,21 +842,21 @@ var appData = {
         },
         "30000121": {
             "name": "Jatate",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000017,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000122": {
             "name": "Mahtista",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000017,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000123": {
             "name": "Vaankalen",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000017,
             "regionID": 10000002,
             "factionID": 500001
@@ -884,7 +884,7 @@ var appData = {
         },
         "30000127": {
             "name": "Sirseshin",
-            "security": "0.74",
+            "security": "0.75",
             "constellationID": 20000018,
             "regionID": 10000002,
             "factionID": 500001
@@ -898,7 +898,7 @@ var appData = {
         },
         "30000129": {
             "name": "Unpas",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000018,
             "regionID": 10000002,
             "factionID": 500001
@@ -912,7 +912,7 @@ var appData = {
         },
         "30000131": {
             "name": "Nomaa",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000018,
             "regionID": 10000002,
             "factionID": 500001
@@ -926,7 +926,7 @@ var appData = {
         },
         "30000133": {
             "name": "Hirtamon",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000019,
             "regionID": 10000002,
             "factionID": 500001
@@ -954,14 +954,14 @@ var appData = {
         },
         "30000137": {
             "name": "Eskunen",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000019,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000138": {
             "name": "Ikuchi",
-            "security": "0.98",
+            "security": "0.95",
             "constellationID": 20000019,
             "regionID": 10000002,
             "factionID": 500001
@@ -982,21 +982,21 @@ var appData = {
         },
         "30000141": {
             "name": "Kisogo",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000020,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000142": {
             "name": "Jita",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000020,
             "regionID": 10000002,
-            "factionID": 500001
+            "factionID": 500006
         },
         "30000143": {
             "name": "Niyabainen",
-            "security": "0.96",
+            "security": "0.95",
             "constellationID": 20000020,
             "regionID": 10000002,
             "factionID": 500001
@@ -1010,7 +1010,7 @@ var appData = {
         },
         "30000145": {
             "name": "New Caldari",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000020,
             "regionID": 10000002,
             "factionID": 500001
@@ -1024,7 +1024,7 @@ var appData = {
         },
         "30000147": {
             "name": "Abagawa",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000021,
             "regionID": 10000002,
             "factionID": 500001
@@ -1038,21 +1038,21 @@ var appData = {
         },
         "30000149": {
             "name": "Gekutami",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000021,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000150": {
             "name": "Hurtoken",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000021,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000151": {
             "name": "Uoyonen",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000021,
             "regionID": 10000002,
             "factionID": 500001
@@ -1066,7 +1066,7 @@ var appData = {
         },
         "30000153": {
             "name": "Poinen",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000022,
             "regionID": 10000002,
             "factionID": 500001
@@ -1087,21 +1087,21 @@ var appData = {
         },
         "30000156": {
             "name": "Josameto",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000022,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000157": {
             "name": "Otela",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30000158": {
             "name": "Olo",
-            "security": "0.67",
+            "security": "0.68",
             "constellationID": 20000022,
             "regionID": 10000002,
             "factionID": 500001
@@ -1115,7 +1115,7 @@ var appData = {
         },
         "30000160": {
             "name": "Reisen",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000023,
             "regionID": 10000002,
             "factionID": 500001
@@ -1143,7 +1143,7 @@ var appData = {
         },
         "30000164": {
             "name": "Messoya",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000023,
             "regionID": 10000002,
             "factionID": 500001
@@ -1171,7 +1171,7 @@ var appData = {
         },
         "30000168": {
             "name": "Friggi",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000024,
             "regionID": 10000002,
             "factionID": 500001
@@ -1199,14 +1199,14 @@ var appData = {
         },
         "30000172": {
             "name": "Otomainen",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000024,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000173": {
             "name": "Vattuolen",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000025,
             "regionID": 10000002,
             "factionID": 500001
@@ -1234,14 +1234,14 @@ var appData = {
         },
         "30000177": {
             "name": "Ukkalen",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000025,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000178": {
             "name": "Akkilen",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000025,
             "regionID": 10000002,
             "factionID": 500001
@@ -1311,14 +1311,14 @@ var appData = {
         },
         "30000188": {
             "name": "Hentogaira",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000027,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000189": {
             "name": "Kiainti",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000027,
             "regionID": 10000002,
             "factionID": 500001
@@ -1332,14 +1332,14 @@ var appData = {
         },
         "30000191": {
             "name": "Walvalin",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000027,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000192": {
             "name": "Otanuomi",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
@@ -1367,14 +1367,14 @@ var appData = {
         },
         "30000196": {
             "name": "Otosela",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000028,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000197": {
             "name": "Uemon",
-            "security": "0.19",
+            "security": "0.20",
             "constellationID": 20000028,
             "regionID": 10000002,
             "factionID": 500001
@@ -1409,14 +1409,14 @@ var appData = {
         },
         "30000202": {
             "name": "Mastakomon",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000029,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000203": {
             "name": "Eruka",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000029,
             "regionID": 10000002,
             "factionID": 500001
@@ -1430,21 +1430,21 @@ var appData = {
         },
         "30000205": {
             "name": "Obe",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000029,
             "regionID": 10000002,
             "factionID": 500001
         },
         "30000206": {
             "name": "Wirashoda",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30000207": {
             "name": "Osaa",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000029,
             "regionID": 10000002,
             "factionID": 500001
@@ -1463,7 +1463,7 @@ var appData = {
         },
         "30000210": {
             "name": "U54-1L",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000030,
             "regionID": 10000003
         },
@@ -1481,7 +1481,7 @@ var appData = {
         },
         "30000213": {
             "name": "G-LOIT",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000030,
             "regionID": 10000003
         },
@@ -1523,19 +1523,19 @@ var appData = {
         },
         "30000220": {
             "name": "Y0-BVN",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000031,
             "regionID": 10000003
         },
         "30000221": {
             "name": "X97D-W",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000031,
             "regionID": 10000003
         },
         "30000222": {
             "name": "0-R5TS",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000032,
             "regionID": 10000003
         },
@@ -1559,13 +1559,13 @@ var appData = {
         },
         "30000226": {
             "name": "FH-TTC",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000032,
             "regionID": 10000003
         },
         "30000227": {
             "name": "FMBR-8",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000032,
             "regionID": 10000003
         },
@@ -1583,37 +1583,37 @@ var appData = {
         },
         "30000230": {
             "name": "NFM-0V",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000033,
             "regionID": 10000003
         },
         "30000231": {
             "name": "YXIB-I",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000033,
             "regionID": 10000003
         },
         "30000232": {
             "name": "MY-T2P",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000033,
             "regionID": 10000003
         },
         "30000233": {
             "name": "FA-DMO",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000033,
             "regionID": 10000003
         },
         "30000234": {
             "name": "GEKJ-9",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000033,
             "regionID": 10000003
         },
         "30000235": {
             "name": "Q-R3GP",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000033,
             "regionID": 10000003
         },
@@ -1631,13 +1631,13 @@ var appData = {
         },
         "30000238": {
             "name": "WBR5-R",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000034,
             "regionID": 10000003
         },
         "30000239": {
             "name": "4GYV-Q",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000034,
             "regionID": 10000003
         },
@@ -1649,13 +1649,13 @@ var appData = {
         },
         "30000241": {
             "name": "YMJG-4",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000034,
             "regionID": 10000003
         },
         "30000242": {
             "name": "8TPX-N",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000034,
             "regionID": 10000003
         },
@@ -1679,25 +1679,25 @@ var appData = {
         },
         "30000246": {
             "name": "KRUN-N",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000035,
             "regionID": 10000003
         },
         "30000247": {
             "name": "9OO-LH",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000035,
             "regionID": 10000003
         },
         "30000248": {
             "name": "V-OJEN",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000035,
             "regionID": 10000003
         },
         "30000249": {
             "name": "EIDI-N",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000035,
             "regionID": 10000003
         },
@@ -1715,7 +1715,7 @@ var appData = {
         },
         "30000252": {
             "name": "IPAY-2",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000035,
             "regionID": 10000003
         },
@@ -1751,7 +1751,7 @@ var appData = {
         },
         "30000258": {
             "name": "6WW-28",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000036,
             "regionID": 10000003
         },
@@ -1781,7 +1781,7 @@ var appData = {
         },
         "30000263": {
             "name": "TVN-FM",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000037,
             "regionID": 10000003
         },
@@ -1793,7 +1793,7 @@ var appData = {
         },
         "30000265": {
             "name": "AZBR-2",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000037,
             "regionID": 10000003
         },
@@ -1817,7 +1817,7 @@ var appData = {
         },
         "30000269": {
             "name": "KX-2UI",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000038,
             "regionID": 10000003
         },
@@ -1829,19 +1829,19 @@ var appData = {
         },
         "30000271": {
             "name": "97-M96",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000038,
             "regionID": 10000003
         },
         "30000272": {
             "name": "MA-XAP",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000038,
             "regionID": 10000003
         },
         "30000273": {
             "name": "C-J7CR",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000038,
             "regionID": 10000003
         },
@@ -1853,7 +1853,7 @@ var appData = {
         },
         "30000275": {
             "name": "XSQ-TF",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000039,
             "regionID": 10000003
         },
@@ -1865,7 +1865,7 @@ var appData = {
         },
         "30000277": {
             "name": "IR-DYY",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000039,
             "regionID": 10000003
         },
@@ -1883,13 +1883,13 @@ var appData = {
         },
         "30000280": {
             "name": "MQ-O27",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000040,
             "regionID": 10000003
         },
         "30000281": {
             "name": "H-EY0P",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000040,
             "regionID": 10000003
         },
@@ -1901,31 +1901,31 @@ var appData = {
         },
         "30000283": {
             "name": "E-SCTX",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000040,
             "regionID": 10000003
         },
         "30000284": {
             "name": "S6QX-N",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000040,
             "regionID": 10000003
         },
         "30000285": {
             "name": "IT-YAU",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000040,
             "regionID": 10000003
         },
         "30000286": {
             "name": "1VK-6B",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000040,
             "regionID": 10000003
         },
         "30000287": {
             "name": "7-PO3P",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000040,
             "regionID": 10000003
         },
@@ -1985,7 +1985,7 @@ var appData = {
         },
         "30000297": {
             "name": "6Y-WRK",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000042,
             "regionID": 10000003
         },
@@ -1997,13 +1997,13 @@ var appData = {
         },
         "30000299": {
             "name": "5T-KM3",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000042,
             "regionID": 10000003
         },
         "30000300": {
             "name": "LS9B-9",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000042,
             "regionID": 10000003
         },
@@ -2015,7 +2015,7 @@ var appData = {
         },
         "30000302": {
             "name": "C-FP70",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000043,
             "regionID": 10000003
         },
@@ -2027,7 +2027,7 @@ var appData = {
         },
         "30000304": {
             "name": "ZA0L-U",
-            "security": "-0.80",
+            "security": "-0.81",
             "constellationID": 20000043,
             "regionID": 10000003
         },
@@ -2045,31 +2045,31 @@ var appData = {
         },
         "30000307": {
             "name": "B-E3KQ",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000044,
             "regionID": 10000003
         },
         "30000308": {
             "name": "Y5J-EU",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000044,
             "regionID": 10000003
         },
         "30000309": {
             "name": "O-LR1H",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000044,
             "regionID": 10000003
         },
         "30000310": {
             "name": "G5ED-Y",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000044,
             "regionID": 10000003
         },
         "30000311": {
             "name": "BR-6XP",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000044,
             "regionID": 10000003
         },
@@ -2081,19 +2081,19 @@ var appData = {
         },
         "30000313": {
             "name": "UL-4ZW",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000044,
             "regionID": 10000003
         },
         "30000314": {
             "name": "A-QRQT",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000045,
             "regionID": 10000003
         },
         "30000315": {
             "name": "WMBZ-U",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000045,
             "regionID": 10000003
         },
@@ -2105,13 +2105,13 @@ var appData = {
         },
         "30000317": {
             "name": "A3-RQ3",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000045,
             "regionID": 10000003
         },
         "30000318": {
             "name": "9-GBPD",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000045,
             "regionID": 10000003
         },
@@ -2123,31 +2123,31 @@ var appData = {
         },
         "30000320": {
             "name": "R-RSZZ",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000046,
             "regionID": 10000003
         },
         "30000321": {
             "name": "MGAM-4",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000046,
             "regionID": 10000003
         },
         "30000322": {
             "name": "VORM-W",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000046,
             "regionID": 10000003
         },
         "30000323": {
             "name": "7G-H7D",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000046,
             "regionID": 10000003
         },
         "30000324": {
             "name": "Q3-BAY",
-            "security": "-0.80",
+            "security": "-0.81",
             "constellationID": 20000046,
             "regionID": 10000003
         },
@@ -2465,7 +2465,7 @@ var appData = {
         },
         "30000377": {
             "name": "RU-97T",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000054,
             "regionID": 10000004
         },
@@ -2525,7 +2525,7 @@ var appData = {
         },
         "30000387": {
             "name": "Z-JBTR",
-            "security": "-9.02",
+            "security": "-0.00",
             "constellationID": 20000055,
             "regionID": 10000004
         },
@@ -2573,73 +2573,73 @@ var appData = {
         },
         "30000395": {
             "name": "1HH3-E",
-            "security": "-7.08",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000396": {
             "name": "DUIU-Q",
-            "security": "-4.96",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000397": {
             "name": "LQH0-H",
-            "security": "-3.08",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000398": {
             "name": "FRW3-2",
-            "security": "-3.73",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000399": {
             "name": "9MX-1C",
-            "security": "-4.24",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000400": {
             "name": "IED-4U",
-            "security": "-5.45",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000401": {
             "name": "N-9EOQ",
-            "security": "-3.13",
+            "security": "-0.00",
             "constellationID": 20000057,
             "regionID": 10000004
         },
         "30000402": {
             "name": "6F3-TK",
-            "security": "-9.37",
+            "security": "-0.00",
             "constellationID": 20000058,
             "regionID": 10000004
         },
         "30000403": {
             "name": "2E0P-2",
-            "security": "-5.31",
+            "security": "-0.00",
             "constellationID": 20000058,
             "regionID": 10000004
         },
         "30000404": {
             "name": "U-ITH5",
-            "security": "-4.55",
+            "security": "-0.00",
             "constellationID": 20000058,
             "regionID": 10000004
         },
         "30000405": {
             "name": "N-4G5L",
-            "security": "-7.74",
+            "security": "-0.00",
             "constellationID": 20000058,
             "regionID": 10000004
         },
         "30000406": {
             "name": "RB-2EA",
-            "security": "-4.24",
+            "security": "-0.00",
             "constellationID": 20000058,
             "regionID": 10000004
         },
@@ -2651,37 +2651,37 @@ var appData = {
         },
         "30000408": {
             "name": "YRZ-E4",
-            "security": "-1.27",
+            "security": "-0.00",
             "constellationID": 20000059,
             "regionID": 10000004
         },
         "30000409": {
             "name": "A3-PAT",
-            "security": "-1.51",
+            "security": "-0.00",
             "constellationID": 20000059,
             "regionID": 10000004
         },
         "30000410": {
             "name": "H55-2R",
-            "security": "-1.36",
+            "security": "-0.00",
             "constellationID": 20000059,
             "regionID": 10000004
         },
         "30000411": {
             "name": "P6-DBM",
-            "security": "-1.88",
+            "security": "-0.00",
             "constellationID": 20000059,
             "regionID": 10000004
         },
         "30000412": {
             "name": "9XI-0X",
-            "security": "-1.06",
+            "security": "-0.00",
             "constellationID": 20000059,
             "regionID": 10000004
         },
         "30000413": {
             "name": "Q8T-MC",
-            "security": "-7.73",
+            "security": "-0.00",
             "constellationID": 20000059,
             "regionID": 10000004
         },
@@ -2717,85 +2717,85 @@ var appData = {
         },
         "30000419": {
             "name": "UA7-U4",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000060,
             "regionID": 10000004
         },
         "30000420": {
             "name": "VM-QFU",
-            "security": "-4.64",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000421": {
             "name": "PU-1Z8",
-            "security": "-4.95",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000422": {
             "name": "IEZW-V",
-            "security": "-3.21",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000423": {
             "name": "B-DXO9",
-            "security": "-1.82",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000424": {
             "name": "1TS-WN",
-            "security": "-9.83",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000425": {
             "name": "16-31U",
-            "security": "-9.70",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000426": {
             "name": "H472-N",
-            "security": "-1.34",
+            "security": "-0.00",
             "constellationID": 20000061,
             "regionID": 10000004
         },
         "30000427": {
             "name": "U8MM-3",
-            "security": "-8.47",
+            "security": "-0.00",
             "constellationID": 20000062,
             "regionID": 10000004
         },
         "30000428": {
             "name": "3C-26I",
-            "security": "-8.51",
+            "security": "-0.00",
             "constellationID": 20000062,
             "regionID": 10000004
         },
         "30000429": {
             "name": "9K-VDI",
-            "security": "-5.34",
+            "security": "-0.00",
             "constellationID": 20000062,
             "regionID": 10000004
         },
         "30000430": {
             "name": "L-SDU7",
-            "security": "-1.65",
+            "security": "-0.00",
             "constellationID": 20000062,
             "regionID": 10000004
         },
         "30000431": {
             "name": "4-IPWK",
-            "security": "-8.58",
+            "security": "-0.00",
             "constellationID": 20000062,
             "regionID": 10000004
         },
         "30000432": {
             "name": "Q-KCK3",
-            "security": "-1.65",
+            "security": "-0.00",
             "constellationID": 20000062,
             "regionID": 10000004
         },
@@ -2819,7 +2819,7 @@ var appData = {
         },
         "30000436": {
             "name": "SK42-F",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000063,
             "regionID": 10000005
         },
@@ -2837,13 +2837,13 @@ var appData = {
         },
         "30000439": {
             "name": "OEG-K9",
-            "security": "-0.79",
+            "security": "-0.80",
             "constellationID": 20000063,
             "regionID": 10000005
         },
         "30000440": {
             "name": "0-W778",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000064,
             "regionID": 10000005
         },
@@ -2861,13 +2861,13 @@ var appData = {
         },
         "30000443": {
             "name": "MD-0AW",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000064,
             "regionID": 10000005
         },
         "30000444": {
             "name": "H-FGJO",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000064,
             "regionID": 10000005
         },
@@ -2879,25 +2879,25 @@ var appData = {
         },
         "30000446": {
             "name": "C5-SUU",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000065,
             "regionID": 10000005
         },
         "30000447": {
             "name": "XSUD-1",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000065,
             "regionID": 10000005
         },
         "30000448": {
             "name": "3-LJW3",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000065,
             "regionID": 10000005
         },
         "30000449": {
             "name": "ZLO3-V",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000065,
             "regionID": 10000005
         },
@@ -2909,19 +2909,19 @@ var appData = {
         },
         "30000451": {
             "name": "JFV-ID",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000065,
             "regionID": 10000005
         },
         "30000452": {
             "name": "3-3EZB",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000065,
             "regionID": 10000005
         },
         "30000453": {
             "name": "52CW-6",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000065,
             "regionID": 10000005
         },
@@ -2945,7 +2945,7 @@ var appData = {
         },
         "30000457": {
             "name": "6OU9-U",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000066,
             "regionID": 10000005
         },
@@ -2957,13 +2957,13 @@ var appData = {
         },
         "30000459": {
             "name": "U-OVFR",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000066,
             "regionID": 10000005
         },
         "30000460": {
             "name": "G3D-ZT",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000067,
             "regionID": 10000005
         },
@@ -2975,13 +2975,13 @@ var appData = {
         },
         "30000462": {
             "name": "L8-WNE",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000067,
             "regionID": 10000005
         },
         "30000463": {
             "name": "1-GBVE",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000067,
             "regionID": 10000005
         },
@@ -2993,7 +2993,7 @@ var appData = {
         },
         "30000465": {
             "name": "NB-ALM",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000067,
             "regionID": 10000005
         },
@@ -3011,7 +3011,7 @@ var appData = {
         },
         "30000468": {
             "name": "5OJ-G2",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000068,
             "regionID": 10000005
         },
@@ -3029,7 +3029,7 @@ var appData = {
         },
         "30000471": {
             "name": "M-XUZZ",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000068,
             "regionID": 10000005
         },
@@ -3041,19 +3041,19 @@ var appData = {
         },
         "30000473": {
             "name": "2-X0PF",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000069,
             "regionID": 10000005
         },
         "30000474": {
             "name": "1-PGSG",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000069,
             "regionID": 10000005
         },
         "30000475": {
             "name": "QLPX-J",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000069,
             "regionID": 10000005
         },
@@ -3071,7 +3071,7 @@ var appData = {
         },
         "30000478": {
             "name": "FR46-E",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000069,
             "regionID": 10000005
         },
@@ -3083,13 +3083,13 @@ var appData = {
         },
         "30000480": {
             "name": "0-G8NO",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000070,
             "regionID": 10000005
         },
         "30000481": {
             "name": "QRFJ-Q",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000070,
             "regionID": 10000005
         },
@@ -3101,7 +3101,7 @@ var appData = {
         },
         "30000483": {
             "name": "77S8-E",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000070,
             "regionID": 10000005
         },
@@ -3113,7 +3113,7 @@ var appData = {
         },
         "30000485": {
             "name": "TYB-69",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000071,
             "regionID": 10000005
         },
@@ -3125,25 +3125,25 @@ var appData = {
         },
         "30000487": {
             "name": "7-P1JO",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000071,
             "regionID": 10000005
         },
         "30000488": {
             "name": "T-0JWP",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000071,
             "regionID": 10000005
         },
         "30000489": {
             "name": "J-L9MA",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000071,
             "regionID": 10000005
         },
         "30000490": {
             "name": "DX-TAR",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000071,
             "regionID": 10000005
         },
@@ -3161,7 +3161,7 @@ var appData = {
         },
         "30000493": {
             "name": "U-MFTL",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000071,
             "regionID": 10000005
         },
@@ -3173,7 +3173,7 @@ var appData = {
         },
         "30000495": {
             "name": "FIDY-8",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000072,
             "regionID": 10000005
         },
@@ -3185,7 +3185,7 @@ var appData = {
         },
         "30000497": {
             "name": "F2W-C6",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000072,
             "regionID": 10000005
         },
@@ -3197,13 +3197,13 @@ var appData = {
         },
         "30000499": {
             "name": "XW2H-V",
-            "security": "-0.86",
+            "security": "-0.87",
             "constellationID": 20000072,
             "regionID": 10000005
         },
         "30000500": {
             "name": "F9O-U9",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000073,
             "regionID": 10000005
         },
@@ -3221,7 +3221,7 @@ var appData = {
         },
         "30000503": {
             "name": "E-ACV6",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000073,
             "regionID": 10000005
         },
@@ -3245,13 +3245,13 @@ var appData = {
         },
         "30000507": {
             "name": "Q0J-RH",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000073,
             "regionID": 10000005
         },
         "30000508": {
             "name": "SAI-T9",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000074,
             "regionID": 10000005
         },
@@ -3263,7 +3263,7 @@ var appData = {
         },
         "30000510": {
             "name": "K7S-FF",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000074,
             "regionID": 10000005
         },
@@ -3293,7 +3293,7 @@ var appData = {
         },
         "30000515": {
             "name": "SY-UWN",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000075,
             "regionID": 10000005
         },
@@ -3317,7 +3317,7 @@ var appData = {
         },
         "30000519": {
             "name": "KE-0FB",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000075,
             "regionID": 10000005
         },
@@ -3335,13 +3335,13 @@ var appData = {
         },
         "30000522": {
             "name": "0IF-26",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000076,
             "regionID": 10000005
         },
         "30000523": {
             "name": "H-93YV",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000076,
             "regionID": 10000005
         },
@@ -3359,19 +3359,19 @@ var appData = {
         },
         "30000526": {
             "name": "QXE-1N",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000076,
             "regionID": 10000005
         },
         "30000527": {
             "name": "U69-YC",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000076,
             "regionID": 10000005
         },
         "30000528": {
             "name": "L-L7PE",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000076,
             "regionID": 10000005
         },
@@ -3383,13 +3383,13 @@ var appData = {
         },
         "30000530": {
             "name": "YHEN-G",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000077,
             "regionID": 10000006
         },
         "30000531": {
             "name": "E-JCUS",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000077,
             "regionID": 10000006
         },
@@ -3407,7 +3407,7 @@ var appData = {
         },
         "30000534": {
             "name": "30-YOU",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000077,
             "regionID": 10000006
         },
@@ -3419,13 +3419,13 @@ var appData = {
         },
         "30000536": {
             "name": "4F89-U",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000077,
             "regionID": 10000006
         },
         "30000537": {
             "name": "G063-U",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000077,
             "regionID": 10000006
         },
@@ -3437,7 +3437,7 @@ var appData = {
         },
         "30000539": {
             "name": "MLQ-O9",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000078,
             "regionID": 10000006
         },
@@ -3449,7 +3449,7 @@ var appData = {
         },
         "30000541": {
             "name": "X-ARMF",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000078,
             "regionID": 10000006
         },
@@ -3461,25 +3461,25 @@ var appData = {
         },
         "30000543": {
             "name": "0TYR-T",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000078,
             "regionID": 10000006
         },
         "30000544": {
             "name": "GM-50Y",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000078,
             "regionID": 10000006
         },
         "30000545": {
             "name": "G9L-LP",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000078,
             "regionID": 10000006
         },
         "30000546": {
             "name": "MWA-5Q",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000079,
             "regionID": 10000006
         },
@@ -3491,7 +3491,7 @@ var appData = {
         },
         "30000548": {
             "name": "JQU-KY",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000079,
             "regionID": 10000006
         },
@@ -3503,13 +3503,13 @@ var appData = {
         },
         "30000550": {
             "name": "C-62I5",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000079,
             "regionID": 10000006
         },
         "30000551": {
             "name": "ZH-GKG",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000079,
             "regionID": 10000006
         },
@@ -3521,7 +3521,7 @@ var appData = {
         },
         "30000553": {
             "name": "GGE-5Q",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000080,
             "regionID": 10000006
         },
@@ -3533,13 +3533,13 @@ var appData = {
         },
         "30000555": {
             "name": "U104-3",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000080,
             "regionID": 10000006
         },
         "30000556": {
             "name": "M3-KAQ",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000080,
             "regionID": 10000006
         },
@@ -3551,7 +3551,7 @@ var appData = {
         },
         "30000558": {
             "name": "UM-SCG",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000081,
             "regionID": 10000006
         },
@@ -3563,7 +3563,7 @@ var appData = {
         },
         "30000560": {
             "name": "OAIG-0",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000081,
             "regionID": 10000006
         },
@@ -3581,7 +3581,7 @@ var appData = {
         },
         "30000563": {
             "name": "R0-DMM",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000081,
             "regionID": 10000006
         },
@@ -3593,7 +3593,7 @@ var appData = {
         },
         "30000565": {
             "name": "SR-4EK",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000082,
             "regionID": 10000006
         },
@@ -3605,13 +3605,13 @@ var appData = {
         },
         "30000567": {
             "name": "C-LTXS",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000082,
             "regionID": 10000006
         },
         "30000568": {
             "name": "C0O6-K",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000082,
             "regionID": 10000006
         },
@@ -3623,13 +3623,13 @@ var appData = {
         },
         "30000570": {
             "name": "G9NE-B",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000082,
             "regionID": 10000006
         },
         "30000571": {
             "name": "SJJ-4F",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000082,
             "regionID": 10000006
         },
@@ -3647,7 +3647,7 @@ var appData = {
         },
         "30000574": {
             "name": "H6-EYX",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000083,
             "regionID": 10000006
         },
@@ -3671,7 +3671,7 @@ var appData = {
         },
         "30000578": {
             "name": "F-EM4Q",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000084,
             "regionID": 10000006
         },
@@ -3695,7 +3695,7 @@ var appData = {
         },
         "30000582": {
             "name": "4-OS2A",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000084,
             "regionID": 10000006
         },
@@ -3719,19 +3719,19 @@ var appData = {
         },
         "30000586": {
             "name": "Q-GQHN",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000084,
             "regionID": 10000006
         },
         "30000587": {
             "name": "A-4JOO",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000085,
             "regionID": 10000006
         },
         "30000588": {
             "name": "TP7-KE",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000085,
             "regionID": 10000006
         },
@@ -3743,13 +3743,13 @@ var appData = {
         },
         "30000590": {
             "name": "3Q-VZA",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000085,
             "regionID": 10000006
         },
         "30000591": {
             "name": "M-MBRT",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000085,
             "regionID": 10000006
         },
@@ -3761,13 +3761,13 @@ var appData = {
         },
         "30000593": {
             "name": "GRHS-B",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000086,
             "regionID": 10000006
         },
         "30000594": {
             "name": "J-RXYN",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000086,
             "regionID": 10000006
         },
@@ -3779,7 +3779,7 @@ var appData = {
         },
         "30000596": {
             "name": "07-SLO",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000086,
             "regionID": 10000006
         },
@@ -3791,19 +3791,19 @@ var appData = {
         },
         "30000598": {
             "name": "GPD5-0",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000086,
             "regionID": 10000006
         },
         "30000599": {
             "name": "LKZ-CY",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000087,
             "regionID": 10000006
         },
         "30000600": {
             "name": "F5M-CC",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000087,
             "regionID": 10000006
         },
@@ -3815,7 +3815,7 @@ var appData = {
         },
         "30000602": {
             "name": "WRL4-2",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000087,
             "regionID": 10000006
         },
@@ -3827,37 +3827,37 @@ var appData = {
         },
         "30000604": {
             "name": "XEN7-0",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000087,
             "regionID": 10000006
         },
         "30000605": {
             "name": "L-Z9KJ",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000088,
             "regionID": 10000006
         },
         "30000606": {
             "name": "7K-NSE",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000088,
             "regionID": 10000006
         },
         "30000607": {
             "name": "OR-7N5",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000088,
             "regionID": 10000006
         },
         "30000608": {
             "name": "JEQG-7",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000088,
             "regionID": 10000006
         },
         "30000609": {
             "name": "5NQI-E",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000088,
             "regionID": 10000006
         },
@@ -3869,7 +3869,7 @@ var appData = {
         },
         "30000611": {
             "name": "2-2EWC",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000089,
             "regionID": 10000007
         },
@@ -3887,7 +3887,7 @@ var appData = {
         },
         "30000614": {
             "name": "8-BIE3",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000089,
             "regionID": 10000007
         },
@@ -3899,7 +3899,7 @@ var appData = {
         },
         "30000616": {
             "name": "995-3G",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000089,
             "regionID": 10000007
         },
@@ -3911,7 +3911,7 @@ var appData = {
         },
         "30000618": {
             "name": "Q-UEN6",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000090,
             "regionID": 10000007
         },
@@ -3941,7 +3941,7 @@ var appData = {
         },
         "30000623": {
             "name": "04EI-U",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000090,
             "regionID": 10000007
         },
@@ -3959,7 +3959,7 @@ var appData = {
         },
         "30000626": {
             "name": "I6-SYN",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000091,
             "regionID": 10000007
         },
@@ -3977,7 +3977,7 @@ var appData = {
         },
         "30000629": {
             "name": "U-QMOA",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000091,
             "regionID": 10000007
         },
@@ -3995,7 +3995,7 @@ var appData = {
         },
         "30000632": {
             "name": "C-6YHJ",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000092,
             "regionID": 10000007
         },
@@ -4007,7 +4007,7 @@ var appData = {
         },
         "30000634": {
             "name": "E5T-CS",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000092,
             "regionID": 10000007
         },
@@ -4031,19 +4031,19 @@ var appData = {
         },
         "30000638": {
             "name": "P7-45V",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000093,
             "regionID": 10000007
         },
         "30000639": {
             "name": "M-MCP8",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000093,
             "regionID": 10000007
         },
         "30000640": {
             "name": "JZ-B5Y",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000093,
             "regionID": 10000007
         },
@@ -4055,13 +4055,13 @@ var appData = {
         },
         "30000642": {
             "name": "NIF-JE",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000093,
             "regionID": 10000007
         },
         "30000643": {
             "name": "BTLH-I",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000094,
             "regionID": 10000007
         },
@@ -4079,7 +4079,7 @@ var appData = {
         },
         "30000646": {
             "name": "4YO-QK",
-            "security": "-0.90",
+            "security": "-0.91",
             "constellationID": 20000094,
             "regionID": 10000007
         },
@@ -4091,19 +4091,19 @@ var appData = {
         },
         "30000648": {
             "name": "8-VC6H",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000094,
             "regionID": 10000007
         },
         "30000649": {
             "name": "LQ-01M",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000095,
             "regionID": 10000007
         },
         "30000650": {
             "name": "NG-M8K",
-            "security": "-0.90",
+            "security": "-0.91",
             "constellationID": 20000095,
             "regionID": 10000007
         },
@@ -4121,7 +4121,7 @@ var appData = {
         },
         "30000653": {
             "name": "K85Y-6",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000095,
             "regionID": 10000007
         },
@@ -4133,7 +4133,7 @@ var appData = {
         },
         "30000655": {
             "name": "EIN-QG",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000096,
             "regionID": 10000008
         },
@@ -4151,7 +4151,7 @@ var appData = {
         },
         "30000658": {
             "name": "R-3FBU",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000096,
             "regionID": 10000008
         },
@@ -4163,7 +4163,7 @@ var appData = {
         },
         "30000660": {
             "name": "U-IVGH",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000096,
             "regionID": 10000008
         },
@@ -4175,7 +4175,7 @@ var appData = {
         },
         "30000662": {
             "name": "JMH-PT",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000096,
             "regionID": 10000008
         },
@@ -4187,7 +4187,7 @@ var appData = {
         },
         "30000664": {
             "name": "X9V-15",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000096,
             "regionID": 10000008
         },
@@ -4199,25 +4199,25 @@ var appData = {
         },
         "30000666": {
             "name": "F-5FDA",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000097,
             "regionID": 10000008
         },
         "30000667": {
             "name": "S1-XTL",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000097,
             "regionID": 10000008
         },
         "30000668": {
             "name": "9PX2-F",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000097,
             "regionID": 10000008
         },
         "30000669": {
             "name": "N3-JBX",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000097,
             "regionID": 10000008
         },
@@ -4235,7 +4235,7 @@ var appData = {
         },
         "30000672": {
             "name": "AZ3F-N",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000098,
             "regionID": 10000008
         },
@@ -4253,7 +4253,7 @@ var appData = {
         },
         "30000675": {
             "name": "FYD-TO",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000098,
             "regionID": 10000008
         },
@@ -4277,31 +4277,31 @@ var appData = {
         },
         "30000679": {
             "name": "OAQY-M",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000099,
             "regionID": 10000008
         },
         "30000680": {
             "name": "1V-LI2",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000099,
             "regionID": 10000008
         },
         "30000681": {
             "name": "M9-MLR",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000099,
             "regionID": 10000008
         },
         "30000682": {
             "name": "Q-K2T7",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000099,
             "regionID": 10000008
         },
         "30000683": {
             "name": "LBC-AW",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000099,
             "regionID": 10000008
         },
@@ -4337,13 +4337,13 @@ var appData = {
         },
         "30000689": {
             "name": "I-1B7X",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000100,
             "regionID": 10000008
         },
         "30000690": {
             "name": "G15Z-W",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000100,
             "regionID": 10000008
         },
@@ -4355,25 +4355,25 @@ var appData = {
         },
         "30000692": {
             "name": "SD4A-2",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000101,
             "regionID": 10000008
         },
         "30000693": {
             "name": "U6K-RG",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000101,
             "regionID": 10000008
         },
         "30000694": {
             "name": "V-S9YY",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000101,
             "regionID": 10000008
         },
         "30000695": {
             "name": "F2-NXA",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000101,
             "regionID": 10000008
         },
@@ -4415,7 +4415,7 @@ var appData = {
         },
         "30000702": {
             "name": "A-80UA",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000102,
             "regionID": 10000008
         },
@@ -4427,7 +4427,7 @@ var appData = {
         },
         "30000704": {
             "name": "LQ-OAI",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000103,
             "regionID": 10000008
         },
@@ -4445,7 +4445,7 @@ var appData = {
         },
         "30000707": {
             "name": "03-OR2",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000103,
             "regionID": 10000008
         },
@@ -4469,7 +4469,7 @@ var appData = {
         },
         "30000711": {
             "name": "WO-GC0",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000104,
             "regionID": 10000008
         },
@@ -4487,13 +4487,13 @@ var appData = {
         },
         "30000714": {
             "name": "28Y9-P",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000104,
             "regionID": 10000008
         },
         "30000715": {
             "name": "Q4C-S5",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000105,
             "regionID": 10000008
         },
@@ -4505,13 +4505,13 @@ var appData = {
         },
         "30000717": {
             "name": "Q-NA5H",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000105,
             "regionID": 10000008
         },
         "30000718": {
             "name": "4-CM8I",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000105,
             "regionID": 10000008
         },
@@ -4523,19 +4523,19 @@ var appData = {
         },
         "30000720": {
             "name": "1QZ-Y9",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000105,
             "regionID": 10000008
         },
         "30000721": {
             "name": "HJ-BCH",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000106,
             "regionID": 10000008
         },
         "30000722": {
             "name": "QPTT-F",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000106,
             "regionID": 10000008
         },
@@ -4559,7 +4559,7 @@ var appData = {
         },
         "30000726": {
             "name": "71-UTX",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000106,
             "regionID": 10000008
         },
@@ -4595,13 +4595,13 @@ var appData = {
         },
         "30000732": {
             "name": "V-F6DQ",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000107,
             "regionID": 10000008
         },
         "30000733": {
             "name": "3S-6VU",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000107,
             "regionID": 10000008
         },
@@ -4619,31 +4619,31 @@ var appData = {
         },
         "30000736": {
             "name": "KDG-TA",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000108,
             "regionID": 10000009
         },
         "30000737": {
             "name": "KD-KPR",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000108,
             "regionID": 10000009
         },
         "30000738": {
             "name": "PT-21C",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000108,
             "regionID": 10000009
         },
         "30000739": {
             "name": "Z182-R",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000108,
             "regionID": 10000009
         },
         "30000740": {
             "name": "EKPB-3",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000108,
             "regionID": 10000009
         },
@@ -4655,13 +4655,13 @@ var appData = {
         },
         "30000742": {
             "name": "TK-DLH",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000108,
             "regionID": 10000009
         },
         "30000743": {
             "name": "C8H5-X",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000109,
             "regionID": 10000009
         },
@@ -4673,7 +4673,7 @@ var appData = {
         },
         "30000745": {
             "name": "7L3-JS",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000109,
             "regionID": 10000009
         },
@@ -4691,7 +4691,7 @@ var appData = {
         },
         "30000748": {
             "name": "8EF-58",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000109,
             "regionID": 10000009
         },
@@ -4703,19 +4703,19 @@ var appData = {
         },
         "30000750": {
             "name": "XQP-9C",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000110,
             "regionID": 10000009
         },
         "30000751": {
             "name": "W-6GBI",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000110,
             "regionID": 10000009
         },
         "30000752": {
             "name": "XKH-6O",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000110,
             "regionID": 10000009
         },
@@ -4727,7 +4727,7 @@ var appData = {
         },
         "30000754": {
             "name": "F39H-1",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000110,
             "regionID": 10000009
         },
@@ -4751,13 +4751,13 @@ var appData = {
         },
         "30000758": {
             "name": "I3CR-F",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000111,
             "regionID": 10000009
         },
         "30000759": {
             "name": "7-JT09",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000111,
             "regionID": 10000009
         },
@@ -4769,7 +4769,7 @@ var appData = {
         },
         "30000761": {
             "name": "M4-GJ6",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000111,
             "regionID": 10000009
         },
@@ -4799,7 +4799,7 @@ var appData = {
         },
         "30000766": {
             "name": "1TG7-W",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000112,
             "regionID": 10000009
         },
@@ -4817,13 +4817,13 @@ var appData = {
         },
         "30000769": {
             "name": "A-TJ0G",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000112,
             "regionID": 10000009
         },
         "30000770": {
             "name": "88A-RA",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000113,
             "regionID": 10000009
         },
@@ -4835,19 +4835,19 @@ var appData = {
         },
         "30000772": {
             "name": "C-J6MT",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000113,
             "regionID": 10000009
         },
         "30000773": {
             "name": "78-0R6",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000113,
             "regionID": 10000009
         },
         "30000774": {
             "name": "MSG-BZ",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000113,
             "regionID": 10000009
         },
@@ -4859,7 +4859,7 @@ var appData = {
         },
         "30000776": {
             "name": "4M-QXK",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000113,
             "regionID": 10000009
         },
@@ -4871,7 +4871,7 @@ var appData = {
         },
         "30000778": {
             "name": "G-EURJ",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000114,
             "regionID": 10000009
         },
@@ -4913,7 +4913,7 @@ var appData = {
         },
         "30000785": {
             "name": "Q7-FZ8",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000115,
             "regionID": 10000009
         },
@@ -4931,13 +4931,13 @@ var appData = {
         },
         "30000788": {
             "name": "I-1QKL",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000115,
             "regionID": 10000009
         },
         "30000789": {
             "name": "GK5Z-T",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000116,
             "regionID": 10000009
         },
@@ -4949,13 +4949,13 @@ var appData = {
         },
         "30000791": {
             "name": "67Y-NR",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000116,
             "regionID": 10000009
         },
         "30000792": {
             "name": "GDHN-K",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000116,
             "regionID": 10000009
         },
@@ -4967,7 +4967,7 @@ var appData = {
         },
         "30000794": {
             "name": "A24L-V",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000116,
             "regionID": 10000009
         },
@@ -4985,7 +4985,7 @@ var appData = {
         },
         "30000797": {
             "name": "Q-3HS5",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000117,
             "regionID": 10000009
         },
@@ -5003,13 +5003,13 @@ var appData = {
         },
         "30000800": {
             "name": "9OLQ-6",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000117,
             "regionID": 10000009
         },
         "30000801": {
             "name": "MOCW-2",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000117,
             "regionID": 10000009
         },
@@ -5021,7 +5021,7 @@ var appData = {
         },
         "30000803": {
             "name": "MJ-LGH",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000118,
             "regionID": 10000009
         },
@@ -5039,13 +5039,13 @@ var appData = {
         },
         "30000806": {
             "name": "VBPT-T",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000118,
             "regionID": 10000009
         },
         "30000807": {
             "name": "KS-1TS",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000118,
             "regionID": 10000009
         },
@@ -5057,7 +5057,7 @@ var appData = {
         },
         "30000809": {
             "name": "FN0-QS",
-            "security": "-0.84",
+            "security": "-0.85",
             "constellationID": 20000119,
             "regionID": 10000009
         },
@@ -5069,7 +5069,7 @@ var appData = {
         },
         "30000811": {
             "name": "N7-BIY",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000119,
             "regionID": 10000009
         },
@@ -5081,7 +5081,7 @@ var appData = {
         },
         "30000813": {
             "name": "LVL-GZ",
-            "security": "-0.95",
+            "security": "-0.96",
             "constellationID": 20000119,
             "regionID": 10000009
         },
@@ -5105,13 +5105,13 @@ var appData = {
         },
         "30000817": {
             "name": "B-II34",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000120,
             "regionID": 10000009
         },
         "30000818": {
             "name": "4LB-EL",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000120,
             "regionID": 10000009
         },
@@ -5123,7 +5123,7 @@ var appData = {
         },
         "30000820": {
             "name": "5IH-GL",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000120,
             "regionID": 10000009
         },
@@ -5147,7 +5147,7 @@ var appData = {
         },
         "30000824": {
             "name": "N-O53U",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000121,
             "regionID": 10000009
         },
@@ -5159,25 +5159,25 @@ var appData = {
         },
         "30000826": {
             "name": "D-P1EH",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000121,
             "regionID": 10000009
         },
         "30000827": {
             "name": "74L2-U",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000121,
             "regionID": 10000009
         },
         "30000828": {
             "name": "HL-VZX",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000121,
             "regionID": 10000009
         },
         "30000829": {
             "name": "38NZ-1",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000121,
             "regionID": 10000009
         },
@@ -5207,13 +5207,13 @@ var appData = {
         },
         "30000834": {
             "name": "RZ-TI6",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000122,
             "regionID": 10000009
         },
         "30000835": {
             "name": "FX4L-2",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000122,
             "regionID": 10000009
         },
@@ -5225,13 +5225,13 @@ var appData = {
         },
         "30000837": {
             "name": "HFC-AQ",
-            "security": "-0.92",
+            "security": "-0.93",
             "constellationID": 20000122,
             "regionID": 10000009
         },
         "30000838": {
             "name": "0-6VZ5",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000123,
             "regionID": 10000009
         },
@@ -5243,7 +5243,7 @@ var appData = {
         },
         "30000840": {
             "name": "7EX-14",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000123,
             "regionID": 10000009
         },
@@ -5267,19 +5267,19 @@ var appData = {
         },
         "30000844": {
             "name": "5C-RPA",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000123,
             "regionID": 10000009
         },
         "30000845": {
             "name": "CR2-PQ",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000123,
             "regionID": 10000009
         },
         "30000846": {
             "name": "E-OGL4",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000124,
             "regionID": 10000010
         },
@@ -5291,13 +5291,13 @@ var appData = {
         },
         "30000848": {
             "name": "M-OEE8",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000124,
             "regionID": 10000010
         },
         "30000849": {
             "name": "V0DF-2",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000124,
             "regionID": 10000010
         },
@@ -5315,13 +5315,13 @@ var appData = {
         },
         "30000852": {
             "name": "A-DDGY",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000125,
             "regionID": 10000010
         },
         "30000853": {
             "name": "F-RT6Q",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000125,
             "regionID": 10000010
         },
@@ -5333,25 +5333,25 @@ var appData = {
         },
         "30000855": {
             "name": "NL6V-7",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000125,
             "regionID": 10000010
         },
         "30000856": {
             "name": "F-749O",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000125,
             "regionID": 10000010
         },
         "30000857": {
             "name": "0-YMBJ",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000125,
             "regionID": 10000010
         },
         "30000858": {
             "name": "UMI-KK",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000125,
             "regionID": 10000010
         },
@@ -5363,7 +5363,7 @@ var appData = {
         },
         "30000860": {
             "name": "AW1-2I",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000125,
             "regionID": 10000010
         },
@@ -5411,31 +5411,31 @@ var appData = {
         },
         "30000868": {
             "name": "SH1-6P",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000127,
             "regionID": 10000010
         },
         "30000869": {
             "name": "TRKN-L",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000127,
             "regionID": 10000010
         },
         "30000870": {
             "name": "O-0ERG",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000127,
             "regionID": 10000010
         },
         "30000871": {
             "name": "WH-JCA",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000127,
             "regionID": 10000010
         },
         "30000872": {
             "name": "Q-CAB2",
-            "security": "-0.77",
+            "security": "-0.78",
             "constellationID": 20000127,
             "regionID": 10000010
         },
@@ -5459,49 +5459,49 @@ var appData = {
         },
         "30000876": {
             "name": "3G-LHB",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000128,
             "regionID": 10000010
         },
         "30000877": {
             "name": "DBT-GB",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000128,
             "regionID": 10000010
         },
         "30000878": {
             "name": "U-W3WS",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000128,
             "regionID": 10000010
         },
         "30000879": {
             "name": "DL1C-E",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000129,
             "regionID": 10000010
         },
         "30000880": {
             "name": "YLS8-J",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000129,
             "regionID": 10000010
         },
         "30000881": {
             "name": "2ISU-Y",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000129,
             "regionID": 10000010
         },
         "30000882": {
             "name": "X-CFN6",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000129,
             "regionID": 10000010
         },
         "30000883": {
             "name": "9SL-K9",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000129,
             "regionID": 10000010
         },
@@ -5531,13 +5531,13 @@ var appData = {
         },
         "30000888": {
             "name": "V7-FB4",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000130,
             "regionID": 10000010
         },
         "30000889": {
             "name": "XD-TOV",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000130,
             "regionID": 10000010
         },
@@ -5549,7 +5549,7 @@ var appData = {
         },
         "30000891": {
             "name": "L-VXTK",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000130,
             "regionID": 10000010
         },
@@ -5567,13 +5567,13 @@ var appData = {
         },
         "30000894": {
             "name": "W6VP-Y",
-            "security": "-0.77",
+            "security": "-0.78",
             "constellationID": 20000131,
             "regionID": 10000010
         },
         "30000895": {
             "name": "IMK-K1",
-            "security": "-0.77",
+            "security": "-0.78",
             "constellationID": 20000131,
             "regionID": 10000010
         },
@@ -5597,7 +5597,7 @@ var appData = {
         },
         "30000899": {
             "name": "QFF-O6",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000131,
             "regionID": 10000010
         },
@@ -5610,14 +5610,14 @@ var appData = {
         },
         "30000901": {
             "name": "JPL-RA",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000132,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000902": {
             "name": "NK-7XO",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000132,
             "regionID": 10000011,
             "factionID": 500015
@@ -5631,14 +5631,14 @@ var appData = {
         },
         "30000904": {
             "name": "N-DQ0D",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000132,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000905": {
             "name": "M-MD3B",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000132,
             "regionID": 10000011,
             "factionID": 500015
@@ -5652,14 +5652,14 @@ var appData = {
         },
         "30000907": {
             "name": "6EG7-R",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000133,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000908": {
             "name": "56D-TC",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000133,
             "regionID": 10000011,
             "factionID": 500015
@@ -5673,7 +5673,7 @@ var appData = {
         },
         "30000910": {
             "name": "8DL-CP",
-            "security": "-0.83",
+            "security": "-0.84",
             "constellationID": 20000133,
             "regionID": 10000011,
             "factionID": 500015
@@ -5701,21 +5701,21 @@ var appData = {
         },
         "30000914": {
             "name": "AB-FZE",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000134,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000915": {
             "name": "N-6Z8B",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000134,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000916": {
             "name": "YUY-LM",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000134,
             "regionID": 10000011,
             "factionID": 500015
@@ -5736,21 +5736,21 @@ var appData = {
         },
         "30000919": {
             "name": "7-IDWY",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000135,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000920": {
             "name": "AZF-GH",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000135,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000921": {
             "name": "UT-UZB",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000135,
             "regionID": 10000011,
             "factionID": 500015
@@ -5764,7 +5764,7 @@ var appData = {
         },
         "30000923": {
             "name": "CRXA-Y",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000135,
             "regionID": 10000011,
             "factionID": 500015
@@ -5778,35 +5778,35 @@ var appData = {
         },
         "30000925": {
             "name": "BY5-V8",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000135,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000926": {
             "name": "TET3-B",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000135,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000927": {
             "name": "VKU-BG",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000928": {
             "name": "WPR-EI",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000929": {
             "name": "0NV-YU",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
@@ -5827,28 +5827,28 @@ var appData = {
         },
         "30000932": {
             "name": "W-RFUO",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000933": {
             "name": "AI-EVH",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000934": {
             "name": "F-MKH3",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000935": {
             "name": "ZM-DNR",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000136,
             "regionID": 10000011,
             "factionID": 500015
@@ -5862,7 +5862,7 @@ var appData = {
         },
         "30000937": {
             "name": "ZJ-GOU",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000137,
             "regionID": 10000011,
             "factionID": 500015
@@ -5876,7 +5876,7 @@ var appData = {
         },
         "30000939": {
             "name": "9-34L5",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000137,
             "regionID": 10000011,
             "factionID": 500015
@@ -5897,7 +5897,7 @@ var appData = {
         },
         "30000942": {
             "name": "8YC-AN",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000138,
             "regionID": 10000011,
             "factionID": 500015
@@ -5911,7 +5911,7 @@ var appData = {
         },
         "30000944": {
             "name": "SUR-F7",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000138,
             "regionID": 10000011,
             "factionID": 500015
@@ -5946,14 +5946,14 @@ var appData = {
         },
         "30000949": {
             "name": "P1T-LP",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000139,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000950": {
             "name": "R-ESG0",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000139,
             "regionID": 10000011,
             "factionID": 500015
@@ -5981,21 +5981,21 @@ var appData = {
         },
         "30000954": {
             "name": "DE71-9",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000139,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000955": {
             "name": "7JF-0Z",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000139,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000956": {
             "name": "IX8-JB",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000140,
             "regionID": 10000011,
             "factionID": 500015
@@ -6023,14 +6023,14 @@ var appData = {
         },
         "30000960": {
             "name": "H9S-WC",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000140,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000961": {
             "name": "B-ROFP",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000140,
             "regionID": 10000011,
             "factionID": 500015
@@ -6051,7 +6051,7 @@ var appData = {
         },
         "30000964": {
             "name": "SL-YBS",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000141,
             "regionID": 10000011,
             "factionID": 500015
@@ -6079,7 +6079,7 @@ var appData = {
         },
         "30000968": {
             "name": "L1S-G1",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000141,
             "regionID": 10000011,
             "factionID": 500015
@@ -6107,21 +6107,21 @@ var appData = {
         },
         "30000972": {
             "name": "WE3-BX",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000142,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000973": {
             "name": "H7O-JZ",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000142,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000974": {
             "name": "H-8F5Q",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000142,
             "regionID": 10000011,
             "factionID": 500015
@@ -6135,14 +6135,14 @@ var appData = {
         },
         "30000976": {
             "name": "4M-P1I",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000142,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000977": {
             "name": "P7UZ-T",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000143,
             "regionID": 10000011,
             "factionID": 500015
@@ -6198,14 +6198,14 @@ var appData = {
         },
         "30000985": {
             "name": "66U-1P",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000144,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000986": {
             "name": "BRT-OP",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000144,
             "regionID": 10000011,
             "factionID": 500015
@@ -6219,28 +6219,28 @@ var appData = {
         },
         "30000988": {
             "name": "V-IH6B",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000144,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000989": {
             "name": "52V6-B",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000145,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000990": {
             "name": "PUC-JZ",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000145,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000991": {
             "name": "SB-23C",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000145,
             "regionID": 10000011,
             "factionID": 500015
@@ -6254,7 +6254,7 @@ var appData = {
         },
         "30000993": {
             "name": "O-OVOQ",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000145,
             "regionID": 10000011,
             "factionID": 500015
@@ -6289,14 +6289,14 @@ var appData = {
         },
         "30000998": {
             "name": "M9U-75",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000146,
             "regionID": 10000011,
             "factionID": 500015
         },
         "30000999": {
             "name": "N-RAEL",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000146,
             "regionID": 10000011,
             "factionID": 500015
@@ -6331,21 +6331,21 @@ var appData = {
         },
         "30001004": {
             "name": "ZZ-ZWC",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000147,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001005": {
             "name": "OSY-UD",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000147,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001006": {
             "name": "K-MGJ7",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000147,
             "regionID": 10000012,
             "factionID": 500011
@@ -6366,14 +6366,14 @@ var appData = {
         },
         "30001009": {
             "name": "0SHT-A",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000148,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001010": {
             "name": "D87E-A",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000148,
             "regionID": 10000012,
             "factionID": 500011
@@ -6387,7 +6387,7 @@ var appData = {
         },
         "30001012": {
             "name": "PO4F-3",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000148,
             "regionID": 10000012,
             "factionID": 500011
@@ -6401,14 +6401,14 @@ var appData = {
         },
         "30001014": {
             "name": "5E-VR8",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000148,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001015": {
             "name": "V7D-JD",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000148,
             "regionID": 10000012,
             "factionID": 500011
@@ -6422,7 +6422,7 @@ var appData = {
         },
         "30001017": {
             "name": "8G-MQV",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000149,
             "regionID": 10000012,
             "factionID": 500011
@@ -6436,14 +6436,14 @@ var appData = {
         },
         "30001019": {
             "name": "VOL-MI",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000149,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001020": {
             "name": "KLMT-W",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000149,
             "regionID": 10000012,
             "factionID": 500011
@@ -6457,42 +6457,42 @@ var appData = {
         },
         "30001022": {
             "name": "AAM-1A",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000150,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001023": {
             "name": "EW-JR5",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000150,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001024": {
             "name": "YKE4-3",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000150,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001025": {
             "name": "CL-85V",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000150,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001026": {
             "name": "K-QWHE",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000150,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001027": {
             "name": "MDD-79",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000150,
             "regionID": 10000012,
             "factionID": 500011
@@ -6513,7 +6513,7 @@ var appData = {
         },
         "30001030": {
             "name": "S1DP-Y",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000151,
             "regionID": 10000012,
             "factionID": 500011
@@ -6527,7 +6527,7 @@ var appData = {
         },
         "30001032": {
             "name": "M-N7WD",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000151,
             "regionID": 10000012,
             "factionID": 500011
@@ -6548,21 +6548,21 @@ var appData = {
         },
         "30001035": {
             "name": "EQX-AE",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000151,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001036": {
             "name": "G-R4W1",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000152,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001037": {
             "name": "BPK-XK",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000152,
             "regionID": 10000012,
             "factionID": 500011
@@ -6583,14 +6583,14 @@ var appData = {
         },
         "30001040": {
             "name": "K88X-J",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000152,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001041": {
             "name": "G-0Q86",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000152,
             "regionID": 10000012,
             "factionID": 500011
@@ -6604,7 +6604,7 @@ var appData = {
         },
         "30001043": {
             "name": "J4UD-J",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000152,
             "regionID": 10000012,
             "factionID": 500011
@@ -6625,7 +6625,7 @@ var appData = {
         },
         "30001046": {
             "name": "Jorund",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000153,
             "regionID": 10000012,
             "factionID": 500011
@@ -6646,21 +6646,21 @@ var appData = {
         },
         "30001049": {
             "name": "Farit",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000153,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001050": {
             "name": "Jamunda",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000153,
             "regionID": 10000012,
             "factionID": 500011
         },
         "30001051": {
             "name": "TD-4XL",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000154,
             "regionID": 10000013
         },
@@ -6672,7 +6672,7 @@ var appData = {
         },
         "30001053": {
             "name": "8AB-Q4",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000154,
             "regionID": 10000013
         },
@@ -6684,7 +6684,7 @@ var appData = {
         },
         "30001055": {
             "name": "JA-G0T",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000154,
             "regionID": 10000013
         },
@@ -6720,13 +6720,13 @@ var appData = {
         },
         "30001061": {
             "name": "NSI-MW",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000155,
             "regionID": 10000013
         },
         "30001062": {
             "name": "N-YLOE",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000155,
             "regionID": 10000013
         },
@@ -6738,7 +6738,7 @@ var appData = {
         },
         "30001064": {
             "name": "F-TQWO",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000156,
             "regionID": 10000013
         },
@@ -6756,7 +6756,7 @@ var appData = {
         },
         "30001067": {
             "name": "6UT-1K",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000156,
             "regionID": 10000013
         },
@@ -6774,7 +6774,7 @@ var appData = {
         },
         "30001070": {
             "name": "AZA-QE",
-            "security": "-0.73",
+            "security": "-0.74",
             "constellationID": 20000157,
             "regionID": 10000013
         },
@@ -6792,13 +6792,13 @@ var appData = {
         },
         "30001073": {
             "name": "VVB-QH",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000157,
             "regionID": 10000013
         },
         "30001074": {
             "name": "Z-DDVJ",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000157,
             "regionID": 10000013
         },
@@ -6810,13 +6810,13 @@ var appData = {
         },
         "30001076": {
             "name": "B-VFDD",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000158,
             "regionID": 10000013
         },
         "30001077": {
             "name": "A0M-R8",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000158,
             "regionID": 10000013
         },
@@ -6834,13 +6834,13 @@ var appData = {
         },
         "30001080": {
             "name": "QCGG-Q",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000158,
             "regionID": 10000013
         },
         "30001081": {
             "name": "1NZV-7",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000158,
             "regionID": 10000013
         },
@@ -6852,19 +6852,19 @@ var appData = {
         },
         "30001083": {
             "name": "DAI-SH",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000159,
             "regionID": 10000013
         },
         "30001084": {
             "name": "V3P-AZ",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000159,
             "regionID": 10000013
         },
         "30001085": {
             "name": "C-KW6X",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000159,
             "regionID": 10000013
         },
@@ -6876,7 +6876,7 @@ var appData = {
         },
         "30001087": {
             "name": "F-WZYG",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000159,
             "regionID": 10000013
         },
@@ -6888,7 +6888,7 @@ var appData = {
         },
         "30001089": {
             "name": "XU-BF8",
-            "security": "-0.85",
+            "security": "-0.86",
             "constellationID": 20000159,
             "regionID": 10000013
         },
@@ -6900,7 +6900,7 @@ var appData = {
         },
         "30001091": {
             "name": "Z0H2-4",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000160,
             "regionID": 10000013
         },
@@ -6912,7 +6912,7 @@ var appData = {
         },
         "30001093": {
             "name": "XCZ5-Y",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000160,
             "regionID": 10000013
         },
@@ -6924,13 +6924,13 @@ var appData = {
         },
         "30001095": {
             "name": "W5-205",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000160,
             "regionID": 10000013
         },
         "30001096": {
             "name": "T-4H0B",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000160,
             "regionID": 10000013
         },
@@ -6942,7 +6942,7 @@ var appData = {
         },
         "30001098": {
             "name": "SH-YZY",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000161,
             "regionID": 10000013
         },
@@ -6954,7 +6954,7 @@ var appData = {
         },
         "30001100": {
             "name": "CLW-SI",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000161,
             "regionID": 10000013
         },
@@ -6966,19 +6966,19 @@ var appData = {
         },
         "30001102": {
             "name": "R-RMDH",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000161,
             "regionID": 10000013
         },
         "30001103": {
             "name": "2XI8-Y",
-            "security": "-0.86",
+            "security": "-0.87",
             "constellationID": 20000162,
             "regionID": 10000013
         },
         "30001104": {
             "name": "5B-YDD",
-            "security": "-0.91",
+            "security": "-0.92",
             "constellationID": 20000162,
             "regionID": 10000013
         },
@@ -7008,7 +7008,7 @@ var appData = {
         },
         "30001109": {
             "name": "1-EVAX",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000163,
             "regionID": 10000013
         },
@@ -7020,7 +7020,7 @@ var appData = {
         },
         "30001111": {
             "name": "6-WMKE",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000163,
             "regionID": 10000013
         },
@@ -7032,7 +7032,7 @@ var appData = {
         },
         "30001113": {
             "name": "XTVZ-E",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000163,
             "regionID": 10000013
         },
@@ -7062,7 +7062,7 @@ var appData = {
         },
         "30001118": {
             "name": "YM-SRU",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000164,
             "regionID": 10000013
         },
@@ -7092,19 +7092,19 @@ var appData = {
         },
         "30001123": {
             "name": "RUF3-O",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000164,
             "regionID": 10000013
         },
         "30001124": {
             "name": "C-NMG9",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000164,
             "regionID": 10000013
         },
         "30001125": {
             "name": "P3X-TN",
-            "security": "-0.85",
+            "security": "-0.86",
             "constellationID": 20000164,
             "regionID": 10000013
         },
@@ -7122,25 +7122,25 @@ var appData = {
         },
         "30001128": {
             "name": "9NI-FW",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000165,
             "regionID": 10000013
         },
         "30001129": {
             "name": "H-EBQG",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000165,
             "regionID": 10000013
         },
         "30001130": {
             "name": "DOA-YU",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000165,
             "regionID": 10000013
         },
         "30001131": {
             "name": "ZOPZ-6",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000165,
             "regionID": 10000013
         },
@@ -7194,25 +7194,25 @@ var appData = {
         },
         "30001140": {
             "name": "WVJU-4",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000167,
             "regionID": 10000013
         },
         "30001141": {
             "name": "7T-0QS",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000167,
             "regionID": 10000013
         },
         "30001142": {
             "name": "RWML-A",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000167,
             "regionID": 10000013
         },
         "30001143": {
             "name": "V-JCJS",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000167,
             "regionID": 10000013
         },
@@ -7230,7 +7230,7 @@ var appData = {
         },
         "30001146": {
             "name": "IL-OL1",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000167,
             "regionID": 10000013
         },
@@ -7278,7 +7278,7 @@ var appData = {
         },
         "30001154": {
             "name": "9KOE-A",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000169,
             "regionID": 10000014
         },
@@ -7290,7 +7290,7 @@ var appData = {
         },
         "30001156": {
             "name": "B-3QPD",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000169,
             "regionID": 10000014
         },
@@ -7302,25 +7302,25 @@ var appData = {
         },
         "30001158": {
             "name": "SV5-8N",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000169,
             "regionID": 10000014
         },
         "30001159": {
             "name": "HY-RWO",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000169,
             "regionID": 10000014
         },
         "30001160": {
             "name": "WD-VTV",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000169,
             "regionID": 10000014
         },
         "30001161": {
             "name": "HED-GP",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000169,
             "regionID": 10000014
         },
@@ -7332,25 +7332,25 @@ var appData = {
         },
         "30001163": {
             "name": "QSM-LM",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000170,
             "regionID": 10000014
         },
         "30001164": {
             "name": "KDF-GY",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000170,
             "regionID": 10000014
         },
         "30001165": {
             "name": "QBQ-RF",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000170,
             "regionID": 10000014
         },
         "30001166": {
             "name": "9-8GBA",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000170,
             "regionID": 10000014
         },
@@ -7362,7 +7362,7 @@ var appData = {
         },
         "30001168": {
             "name": "ZXIC-7",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000170,
             "regionID": 10000014
         },
@@ -7374,19 +7374,19 @@ var appData = {
         },
         "30001170": {
             "name": "1P-WGB",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000171,
             "regionID": 10000014
         },
         "30001171": {
             "name": "F4R2-Q",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000171,
             "regionID": 10000014
         },
         "30001172": {
             "name": "K0CN-3",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000171,
             "regionID": 10000014
         },
@@ -7410,7 +7410,7 @@ var appData = {
         },
         "30001176": {
             "name": "S-U2VD",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000172,
             "regionID": 10000014
         },
@@ -7434,7 +7434,7 @@ var appData = {
         },
         "30001180": {
             "name": "KW-I6T",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000172,
             "regionID": 10000014
         },
@@ -7464,13 +7464,13 @@ var appData = {
         },
         "30001185": {
             "name": "JBY6-F",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000173,
             "regionID": 10000014
         },
         "30001186": {
             "name": "FZ-6A5",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000173,
             "regionID": 10000014
         },
@@ -7500,13 +7500,13 @@ var appData = {
         },
         "30001191": {
             "name": "OGL8-Q",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000174,
             "regionID": 10000014
         },
         "30001192": {
             "name": "GJ0-OJ",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000174,
             "regionID": 10000014
         },
@@ -7524,7 +7524,7 @@ var appData = {
         },
         "30001195": {
             "name": "J-ODE7",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000174,
             "regionID": 10000014
         },
@@ -7536,43 +7536,43 @@ var appData = {
         },
         "30001197": {
             "name": "6X7-JO",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000174,
             "regionID": 10000014
         },
         "30001198": {
             "name": "GE-8JV",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000175,
             "regionID": 10000014
         },
         "30001199": {
             "name": "3-OKDA",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000175,
             "regionID": 10000014
         },
         "30001200": {
             "name": "3GD6-8",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000175,
             "regionID": 10000014
         },
         "30001201": {
             "name": "4M-HGL",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000175,
             "regionID": 10000014
         },
         "30001202": {
             "name": "MY-W1V",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000175,
             "regionID": 10000014
         },
         "30001203": {
             "name": "AX-DOT",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000175,
             "regionID": 10000014
         },
@@ -7584,7 +7584,7 @@ var appData = {
         },
         "30001205": {
             "name": "CB4-Q2",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000176,
             "regionID": 10000014
         },
@@ -7596,13 +7596,13 @@ var appData = {
         },
         "30001207": {
             "name": "WJ-9YO",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000176,
             "regionID": 10000014
         },
         "30001208": {
             "name": "UQ-PWD",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000176,
             "regionID": 10000014
         },
@@ -7626,7 +7626,7 @@ var appData = {
         },
         "30001212": {
             "name": "3-SFWG",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000176,
             "regionID": 10000014
         },
@@ -7638,13 +7638,13 @@ var appData = {
         },
         "30001214": {
             "name": "E1-4YH",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000177,
             "regionID": 10000014
         },
         "30001215": {
             "name": "B-XJX4",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000177,
             "regionID": 10000014
         },
@@ -7656,25 +7656,25 @@ var appData = {
         },
         "30001217": {
             "name": "E3-SDZ",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000177,
             "regionID": 10000014
         },
         "30001218": {
             "name": "7LHB-Z",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000177,
             "regionID": 10000014
         },
         "30001219": {
             "name": "8B-2YA",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000178,
             "regionID": 10000014
         },
         "30001220": {
             "name": "SNFV-I",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000178,
             "regionID": 10000014
         },
@@ -7692,13 +7692,13 @@ var appData = {
         },
         "30001223": {
             "name": "L-B55M",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000178,
             "regionID": 10000014
         },
         "30001224": {
             "name": "CX65-5",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000178,
             "regionID": 10000014
         },
@@ -7716,13 +7716,13 @@ var appData = {
         },
         "30001227": {
             "name": "G-AOTH",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000179,
             "regionID": 10000014
         },
         "30001228": {
             "name": "TA3T-3",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000179,
             "regionID": 10000014
         },
@@ -7734,7 +7734,7 @@ var appData = {
         },
         "30001230": {
             "name": "J6QB-P",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000179,
             "regionID": 10000014
         },
@@ -7746,7 +7746,7 @@ var appData = {
         },
         "30001232": {
             "name": "7MD-S1",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000180,
             "regionID": 10000014
         },
@@ -7776,13 +7776,13 @@ var appData = {
         },
         "30001237": {
             "name": "S25C-K",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000180,
             "regionID": 10000014
         },
         "30001238": {
             "name": "K717-8",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000181,
             "regionID": 10000014
         },
@@ -7806,7 +7806,7 @@ var appData = {
         },
         "30001242": {
             "name": "KB-U56",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000181,
             "regionID": 10000014
         },
@@ -7818,13 +7818,13 @@ var appData = {
         },
         "30001244": {
             "name": "UCG4-B",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000181,
             "regionID": 10000014
         },
         "30001245": {
             "name": "BUZ-DB",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000181,
             "regionID": 10000014
         },
@@ -7836,19 +7836,19 @@ var appData = {
         },
         "30001247": {
             "name": "WFC-MY",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000182,
             "regionID": 10000014
         },
         "30001248": {
             "name": "Q-U96U",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000182,
             "regionID": 10000014
         },
         "30001249": {
             "name": "X4-WL0",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000182,
             "regionID": 10000014
         },
@@ -7878,7 +7878,7 @@ var appData = {
         },
         "30001254": {
             "name": "CNC-4V",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000183,
             "regionID": 10000014
         },
@@ -7896,25 +7896,25 @@ var appData = {
         },
         "30001257": {
             "name": "6BPS-T",
-            "security": "-0.82",
+            "security": "-0.83",
             "constellationID": 20000183,
             "regionID": 10000014
         },
         "30001258": {
             "name": "25S-6P",
-            "security": "-0.94",
+            "security": "-0.95",
             "constellationID": 20000183,
             "regionID": 10000014
         },
         "30001259": {
             "name": "RR-D05",
-            "security": "-0.97",
+            "security": "-0.98",
             "constellationID": 20000183,
             "regionID": 10000014
         },
         "30001260": {
             "name": "4-07MU",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000183,
             "regionID": 10000014
         },
@@ -7941,35 +7941,35 @@ var appData = {
         },
         "30001264": {
             "name": "KK-L97",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000184,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001265": {
             "name": "R-KZK7",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000184,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001266": {
             "name": "9-R6GU",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000184,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001267": {
             "name": "N-Q5PW",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000184,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001268": {
             "name": "P-FSQE",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000185,
             "regionID": 10000015,
             "factionID": 500010
@@ -7990,14 +7990,14 @@ var appData = {
         },
         "30001271": {
             "name": "YP-J33",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000185,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001272": {
             "name": "D-8SI1",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000185,
             "regionID": 10000015,
             "factionID": 500010
@@ -8011,7 +8011,7 @@ var appData = {
         },
         "30001274": {
             "name": "K3JR-J",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000186,
             "regionID": 10000015,
             "factionID": 500010
@@ -8025,14 +8025,14 @@ var appData = {
         },
         "30001276": {
             "name": "6W-HRH",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000186,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001277": {
             "name": "N5Y-4N",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000186,
             "regionID": 10000015,
             "factionID": 500010
@@ -8046,7 +8046,7 @@ var appData = {
         },
         "30001279": {
             "name": "9-8BL8",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000186,
             "regionID": 10000015,
             "factionID": 500010
@@ -8060,21 +8060,21 @@ var appData = {
         },
         "30001281": {
             "name": "3A1P-N",
-            "security": "-0.87",
+            "security": "-0.88",
             "constellationID": 20000187,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001282": {
             "name": "OZ-VAE",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000187,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001283": {
             "name": "A-AFGR",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000187,
             "regionID": 10000015,
             "factionID": 500010
@@ -8123,7 +8123,7 @@ var appData = {
         },
         "30001290": {
             "name": "6NJ8-V",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000188,
             "regionID": 10000015,
             "factionID": 500010
@@ -8158,28 +8158,28 @@ var appData = {
         },
         "30001295": {
             "name": "0-XIDJ",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000189,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001296": {
             "name": "SBL5-R",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000189,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001297": {
             "name": "O-TVTD",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000189,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001298": {
             "name": "8CIX-S",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000189,
             "regionID": 10000015,
             "factionID": 500010
@@ -8214,14 +8214,14 @@ var appData = {
         },
         "30001303": {
             "name": "VG-6CH",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000190,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001304": {
             "name": "Z0-TJW",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000190,
             "regionID": 10000015,
             "factionID": 500010
@@ -8256,14 +8256,14 @@ var appData = {
         },
         "30001309": {
             "name": "N-5476",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000191,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001310": {
             "name": "PZOZ-K",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000191,
             "regionID": 10000015,
             "factionID": 500010
@@ -8305,7 +8305,7 @@ var appData = {
         },
         "30001316": {
             "name": "MC6-5J",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000192,
             "regionID": 10000015,
             "factionID": 500010
@@ -8333,14 +8333,14 @@ var appData = {
         },
         "30001320": {
             "name": "RQ9-OZ",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000192,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001321": {
             "name": "B-CZXG",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000192,
             "regionID": 10000015,
             "factionID": 500010
@@ -8354,7 +8354,7 @@ var appData = {
         },
         "30001323": {
             "name": "Q61Y-F",
-            "security": "-0.65",
+            "security": "-0.66",
             "constellationID": 20000192,
             "regionID": 10000015,
             "factionID": 500010
@@ -8375,7 +8375,7 @@ var appData = {
         },
         "30001326": {
             "name": "Q-7SUI",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000193,
             "regionID": 10000015,
             "factionID": 500010
@@ -8389,14 +8389,14 @@ var appData = {
         },
         "30001328": {
             "name": "6ZJ-SC",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000193,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001329": {
             "name": "P-VYVL",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000193,
             "regionID": 10000015,
             "factionID": 500010
@@ -8417,7 +8417,7 @@ var appData = {
         },
         "30001332": {
             "name": "M2-2V1",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000194,
             "regionID": 10000015,
             "factionID": 500010
@@ -8438,21 +8438,21 @@ var appData = {
         },
         "30001335": {
             "name": "4S-PVC",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000194,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001336": {
             "name": "WLF-D3",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000194,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001337": {
             "name": "LHJ-2G",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000195,
             "regionID": 10000015,
             "factionID": 500010
@@ -8473,35 +8473,35 @@ var appData = {
         },
         "30001340": {
             "name": "430-BE",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000195,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001341": {
             "name": "OJ-CT4",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000195,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001342": {
             "name": "AZ-UWB",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000195,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001343": {
             "name": "H-S5BM",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000195,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001344": {
             "name": "FHB-QA",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000196,
             "regionID": 10000015,
             "factionID": 500010
@@ -8529,7 +8529,7 @@ var appData = {
         },
         "30001348": {
             "name": "G9D-XW",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000196,
             "regionID": 10000015,
             "factionID": 500010
@@ -8557,14 +8557,14 @@ var appData = {
         },
         "30001352": {
             "name": "2IBE-N",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000197,
             "regionID": 10000015,
             "factionID": 500010
         },
         "30001353": {
             "name": "YJ3-UT",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000197,
             "regionID": 10000015,
             "factionID": 500010
@@ -8585,7 +8585,7 @@ var appData = {
         },
         "30001356": {
             "name": "Dantumi",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000198,
             "regionID": 10000016,
             "factionID": 500001
@@ -8613,14 +8613,14 @@ var appData = {
         },
         "30001360": {
             "name": "Kiskoken",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000198,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001361": {
             "name": "Aurohunen",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000198,
             "regionID": 10000016,
             "factionID": 500001
@@ -8641,7 +8641,7 @@ var appData = {
         },
         "30001364": {
             "name": "Funtanainen",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000199,
             "regionID": 10000016,
             "factionID": 500001
@@ -8669,7 +8669,7 @@ var appData = {
         },
         "30001368": {
             "name": "Uemisaisen",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000200,
             "regionID": 10000016,
             "factionID": 500001
@@ -8697,7 +8697,7 @@ var appData = {
         },
         "30001372": {
             "name": "Kino",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
@@ -8718,35 +8718,35 @@ var appData = {
         },
         "30001375": {
             "name": "Tsuguwa",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001376": {
             "name": "Nourvukaiken",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001377": {
             "name": "Sarekuwa",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001378": {
             "name": "Ekura",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001379": {
             "name": "Tunttaras",
-            "security": "0.88",
+            "security": "0.89",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
@@ -8760,7 +8760,7 @@ var appData = {
         },
         "30001381": {
             "name": "Arvasaras",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
@@ -8781,42 +8781,42 @@ var appData = {
         },
         "30001384": {
             "name": "Autaris",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000202,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001385": {
             "name": "Jan",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000202,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001386": {
             "name": "Saatuban",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000203,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001387": {
             "name": "Isikano",
-            "security": "0.67",
+            "security": "0.68",
             "constellationID": 20000203,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001388": {
             "name": "Mara",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000203,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001389": {
             "name": "Isanamo",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000203,
             "regionID": 10000016,
             "factionID": 500001
@@ -8830,21 +8830,21 @@ var appData = {
         },
         "30001391": {
             "name": "Piekura",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000203,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001392": {
             "name": "Amsen",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000204,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001393": {
             "name": "Malkalen",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000204,
             "regionID": 10000016,
             "factionID": 500001
@@ -8879,28 +8879,28 @@ var appData = {
         },
         "30001398": {
             "name": "Aunenen",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000205,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001399": {
             "name": "Elonaya",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000205,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001400": {
             "name": "Litiura",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000205,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001401": {
             "name": "Nonni",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000205,
             "regionID": 10000016,
             "factionID": 500001
@@ -8928,21 +8928,21 @@ var appData = {
         },
         "30001405": {
             "name": "Kakakela",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000206,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001406": {
             "name": "Kamokor",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000206,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001407": {
             "name": "Todaki",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000206,
             "regionID": 10000016,
             "factionID": 500001
@@ -8970,7 +8970,7 @@ var appData = {
         },
         "30001411": {
             "name": "Autama",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000207,
             "regionID": 10000016,
             "factionID": 500001
@@ -8984,7 +8984,7 @@ var appData = {
         },
         "30001413": {
             "name": "Nani",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
@@ -8998,7 +8998,7 @@ var appData = {
         },
         "30001415": {
             "name": "Kuoka",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000207,
             "regionID": 10000016,
             "factionID": 500001
@@ -9012,14 +9012,14 @@ var appData = {
         },
         "30001417": {
             "name": "Rauntaka",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000208,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001418": {
             "name": "Aikantoh",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000208,
             "regionID": 10000016,
             "factionID": 500001
@@ -9033,7 +9033,7 @@ var appData = {
         },
         "30001420": {
             "name": "Daras",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000208,
             "regionID": 10000016,
             "factionID": 500001
@@ -9047,7 +9047,7 @@ var appData = {
         },
         "30001422": {
             "name": "Iitanmadan",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000208,
             "regionID": 10000016,
             "factionID": 500001
@@ -9068,35 +9068,35 @@ var appData = {
         },
         "30001425": {
             "name": "Oipo",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000209,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001426": {
             "name": "Isinokka",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000209,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001427": {
             "name": "Yoma",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000209,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001428": {
             "name": "Ibura",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000209,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001429": {
             "name": "Torrinos",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000209,
             "regionID": 10000016,
             "factionID": 500001
@@ -9110,7 +9110,7 @@ var appData = {
         },
         "30001431": {
             "name": "Aivoli",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000210,
             "regionID": 10000016,
             "factionID": 500001
@@ -9145,28 +9145,28 @@ var appData = {
         },
         "30001436": {
             "name": "Isie",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000210,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001437": {
             "name": "Tamo",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000211,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001438": {
             "name": "Nannaras",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000211,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001439": {
             "name": "Anin",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000211,
             "regionID": 10000016,
             "factionID": 500001
@@ -9180,21 +9180,21 @@ var appData = {
         },
         "30001441": {
             "name": "Tartoken",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000211,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001442": {
             "name": "Saranen",
-            "security": "0.09",
+            "security": "0.10",
             "constellationID": 20000211,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001443": {
             "name": "Vuorrassi",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000212,
             "regionID": 10000016,
             "factionID": 500001
@@ -9208,35 +9208,35 @@ var appData = {
         },
         "30001445": {
             "name": "Nalvula",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30001446": {
             "name": "Otsasai",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000212,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001447": {
             "name": "Taisy",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000212,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001448": {
             "name": "Hakonen",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000212,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30001449": {
             "name": "PZP1-D",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000213,
             "regionID": 10000017,
             "factionID": 500005
@@ -9250,7 +9250,7 @@ var appData = {
         },
         "30001451": {
             "name": "JGDF-B",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000213,
             "regionID": 10000017,
             "factionID": 500005
@@ -9264,14 +9264,14 @@ var appData = {
         },
         "30001453": {
             "name": "SQ-2XA",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000213,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001454": {
             "name": "Z-FYJR",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000213,
             "regionID": 10000017,
             "factionID": 500005
@@ -9285,7 +9285,7 @@ var appData = {
         },
         "30001456": {
             "name": "J1-6CJ",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000214,
             "regionID": 10000017,
             "factionID": 500005
@@ -9299,7 +9299,7 @@ var appData = {
         },
         "30001458": {
             "name": "0RZ5-2",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000214,
             "regionID": 10000017,
             "factionID": 500005
@@ -9341,7 +9341,7 @@ var appData = {
         },
         "30001464": {
             "name": "THS-MN",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000215,
             "regionID": 10000017,
             "factionID": 500005
@@ -9362,7 +9362,7 @@ var appData = {
         },
         "30001467": {
             "name": "QIW-TQ",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000216,
             "regionID": 10000017,
             "factionID": 500005
@@ -9376,7 +9376,7 @@ var appData = {
         },
         "30001469": {
             "name": "BJC4-8",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000216,
             "regionID": 10000017,
             "factionID": 500005
@@ -9390,7 +9390,7 @@ var appData = {
         },
         "30001471": {
             "name": "S5-U0R",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000216,
             "regionID": 10000017,
             "factionID": 500005
@@ -9439,35 +9439,35 @@ var appData = {
         },
         "30001478": {
             "name": "5-P3CQ",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000217,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001479": {
             "name": "M-FDTD",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000218,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001480": {
             "name": "54-VNO",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000218,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001481": {
             "name": "IAMZ-5",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000218,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001482": {
             "name": "HD3-JK",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000218,
             "regionID": 10000017,
             "factionID": 500005
@@ -9495,14 +9495,14 @@ var appData = {
         },
         "30001486": {
             "name": "Z-D1DW",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000219,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001487": {
             "name": "FO-3PJ",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000219,
             "regionID": 10000017,
             "factionID": 500005
@@ -9516,7 +9516,7 @@ var appData = {
         },
         "30001489": {
             "name": "N-FKXV",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000219,
             "regionID": 10000017,
             "factionID": 500005
@@ -9530,7 +9530,7 @@ var appData = {
         },
         "30001491": {
             "name": "R-G1SF",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000219,
             "regionID": 10000017,
             "factionID": 500005
@@ -9551,7 +9551,7 @@ var appData = {
         },
         "30001494": {
             "name": "JS3-RS",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000220,
             "regionID": 10000017,
             "factionID": 500005
@@ -9572,14 +9572,14 @@ var appData = {
         },
         "30001497": {
             "name": "BKK4-H",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000220,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001498": {
             "name": "Y-4V7U",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000220,
             "regionID": 10000017,
             "factionID": 500005
@@ -9593,7 +9593,7 @@ var appData = {
         },
         "30001500": {
             "name": "3-XORH",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000221,
             "regionID": 10000017,
             "factionID": 500005
@@ -9607,14 +9607,14 @@ var appData = {
         },
         "30001502": {
             "name": "W6H6-K",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000221,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001503": {
             "name": "6-23NU",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000221,
             "regionID": 10000017,
             "factionID": 500005
@@ -9628,7 +9628,7 @@ var appData = {
         },
         "30001505": {
             "name": "J-JS0D",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000221,
             "regionID": 10000017,
             "factionID": 500005
@@ -9642,7 +9642,7 @@ var appData = {
         },
         "30001507": {
             "name": "LH-J8H",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000222,
             "regionID": 10000017,
             "factionID": 500005
@@ -9670,14 +9670,14 @@ var appData = {
         },
         "30001511": {
             "name": "RS08-B",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000222,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001512": {
             "name": "4U-14I",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000223,
             "regionID": 10000017,
             "factionID": 500005
@@ -9691,14 +9691,14 @@ var appData = {
         },
         "30001514": {
             "name": "8-ULAA",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000223,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001515": {
             "name": "KF1-DU",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000223,
             "regionID": 10000017,
             "factionID": 500005
@@ -9712,7 +9712,7 @@ var appData = {
         },
         "30001517": {
             "name": "G5J-LH",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000223,
             "regionID": 10000017,
             "factionID": 500005
@@ -9726,14 +9726,14 @@ var appData = {
         },
         "30001519": {
             "name": "TO21-U",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000224,
             "regionID": 10000017,
             "factionID": 500005
         },
         "30001520": {
             "name": "RN-5K9",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000224,
             "regionID": 10000017,
             "factionID": 500005
@@ -9747,7 +9747,7 @@ var appData = {
         },
         "30001522": {
             "name": "W5-SGC",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000224,
             "regionID": 10000017,
             "factionID": 500005
@@ -9761,7 +9761,7 @@ var appData = {
         },
         "30001524": {
             "name": "1C-TD6",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000224,
             "regionID": 10000017,
             "factionID": 500005
@@ -9799,19 +9799,19 @@ var appData = {
         },
         "30001530": {
             "name": "E-BFLT",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000225,
             "regionID": 10000018
         },
         "30001531": {
             "name": "GZM-KB",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000225,
             "regionID": 10000018
         },
         "30001532": {
             "name": "5LAJ-8",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000225,
             "regionID": 10000018
         },
@@ -9829,13 +9829,13 @@ var appData = {
         },
         "30001535": {
             "name": "ETO-OT",
-            "security": "-0.79",
+            "security": "-0.80",
             "constellationID": 20000226,
             "regionID": 10000018
         },
         "30001536": {
             "name": "KPI-OW",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000226,
             "regionID": 10000018
         },
@@ -9847,7 +9847,7 @@ var appData = {
         },
         "30001538": {
             "name": "OTJ-4W",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000226,
             "regionID": 10000018
         },
@@ -9883,19 +9883,19 @@ var appData = {
         },
         "30001544": {
             "name": "FO1U-K",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000227,
             "regionID": 10000018
         },
         "30001545": {
             "name": "6U-1RX",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000227,
             "regionID": 10000018
         },
         "30001546": {
             "name": "Y4OK-W",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000227,
             "regionID": 10000018
         },
@@ -9931,13 +9931,13 @@ var appData = {
         },
         "30001552": {
             "name": "XT-1E0",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000228,
             "regionID": 10000018
         },
         "30001553": {
             "name": "3ET-G8",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000228,
             "regionID": 10000018
         },
@@ -9961,19 +9961,19 @@ var appData = {
         },
         "30001557": {
             "name": "DFTK-D",
-            "security": "-0.86",
+            "security": "-0.87",
             "constellationID": 20000229,
             "regionID": 10000018
         },
         "30001558": {
             "name": "4HF-4R",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000229,
             "regionID": 10000018
         },
         "30001559": {
             "name": "Y8K-5B",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000229,
             "regionID": 10000018
         },
@@ -9985,37 +9985,37 @@ var appData = {
         },
         "30001561": {
             "name": "8P-LKL",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000230,
             "regionID": 10000018
         },
         "30001562": {
             "name": "Q-UVY6",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000230,
             "regionID": 10000018
         },
         "30001563": {
             "name": "RXA-W1",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000230,
             "regionID": 10000018
         },
         "30001564": {
             "name": "QFU-4S",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000230,
             "regionID": 10000018
         },
         "30001565": {
             "name": "QQGH-G",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000230,
             "regionID": 10000018
         },
         "30001566": {
             "name": "VK6-EZ",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000230,
             "regionID": 10000018
         },
@@ -10027,25 +10027,25 @@ var appData = {
         },
         "30001568": {
             "name": "P65-TA",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000231,
             "regionID": 10000018
         },
         "30001569": {
             "name": "G-VFVB",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000231,
             "regionID": 10000018
         },
         "30001570": {
             "name": "Y4B-BQ",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000231,
             "regionID": 10000018
         },
         "30001571": {
             "name": "EU-WFW",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000231,
             "regionID": 10000018
         },
@@ -10087,13 +10087,13 @@ var appData = {
         },
         "30001578": {
             "name": "4DH-ST",
-            "security": "-0.91",
+            "security": "-0.92",
             "constellationID": 20000232,
             "regionID": 10000018
         },
         "30001579": {
             "name": "OSW-0P",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000232,
             "regionID": 10000018
         },
@@ -10105,7 +10105,7 @@ var appData = {
         },
         "30001581": {
             "name": "DVN6-0",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000233,
             "regionID": 10000018
         },
@@ -10141,7 +10141,7 @@ var appData = {
         },
         "30001587": {
             "name": "LH-LY1",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000234,
             "regionID": 10000018
         },
@@ -10159,37 +10159,37 @@ var appData = {
         },
         "30001590": {
             "name": "ZWM-BB",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000234,
             "regionID": 10000018
         },
         "30001591": {
             "name": "S-CUEA",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000234,
             "regionID": 10000018
         },
         "30001592": {
             "name": "L-EUY2",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000235,
             "regionID": 10000018
         },
         "30001593": {
             "name": "JL-ZUQ",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000235,
             "regionID": 10000018
         },
         "30001594": {
             "name": "X-KHRZ",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000235,
             "regionID": 10000018
         },
         "30001595": {
             "name": "WIW-X8",
-            "security": "-0.95",
+            "security": "-0.96",
             "constellationID": 20000235,
             "regionID": 10000018
         },
@@ -10201,7 +10201,7 @@ var appData = {
         },
         "30001597": {
             "name": "M-NP5O",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000235,
             "regionID": 10000018
         },
@@ -10221,14 +10221,14 @@ var appData = {
         },
         "30001600": {
             "name": "9-BUSQ",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000236,
             "regionID": 10000019,
             "factionID": 500005
         },
         "30001601": {
             "name": "LQB-TC",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000236,
             "regionID": 10000019,
             "factionID": 500005
@@ -10249,7 +10249,7 @@ var appData = {
         },
         "30001604": {
             "name": "P3UD-M",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000237,
             "regionID": 10000019,
             "factionID": 500005
@@ -10298,14 +10298,14 @@ var appData = {
         },
         "30001611": {
             "name": "B-Y06L",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000238,
             "regionID": 10000019,
             "factionID": 500005
         },
         "30001612": {
             "name": "HHQ-8L",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000238,
             "regionID": 10000019,
             "factionID": 500005
@@ -10326,7 +10326,7 @@ var appData = {
         },
         "30001615": {
             "name": "2RV-06",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000238,
             "regionID": 10000019,
             "factionID": 500005
@@ -10340,7 +10340,7 @@ var appData = {
         },
         "30001617": {
             "name": "QU7-EE",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000238,
             "regionID": 10000019,
             "factionID": 500005
@@ -10354,7 +10354,7 @@ var appData = {
         },
         "30001619": {
             "name": "R79-I7",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000239,
             "regionID": 10000019,
             "factionID": 500005
@@ -10403,7 +10403,7 @@ var appData = {
         },
         "30001626": {
             "name": "5V-YL6",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000240,
             "regionID": 10000019,
             "factionID": 500005
@@ -10424,7 +10424,7 @@ var appData = {
         },
         "30001629": {
             "name": "BWO-UU",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000240,
             "regionID": 10000019,
             "factionID": 500005
@@ -10438,14 +10438,14 @@ var appData = {
         },
         "30001631": {
             "name": "T-YWDD",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000241,
             "regionID": 10000019,
             "factionID": 500005
         },
         "30001632": {
             "name": "DLY-RG",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000241,
             "regionID": 10000019,
             "factionID": 500005
@@ -10459,14 +10459,14 @@ var appData = {
         },
         "30001634": {
             "name": "UP-L3Y",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000241,
             "regionID": 10000019,
             "factionID": 500005
         },
         "30001635": {
             "name": "F-KBNV",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000241,
             "regionID": 10000019,
             "factionID": 500005
@@ -10480,7 +10480,7 @@ var appData = {
         },
         "30001637": {
             "name": "FR-RCH",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000242,
             "regionID": 10000019,
             "factionID": 500005
@@ -10501,14 +10501,14 @@ var appData = {
         },
         "30001640": {
             "name": "IAWJ-X",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000242,
             "regionID": 10000019,
             "factionID": 500005
         },
         "30001641": {
             "name": "50-TJY",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000242,
             "regionID": 10000019,
             "factionID": 500005
@@ -10522,7 +10522,7 @@ var appData = {
         },
         "30001643": {
             "name": "0IRK-R",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000242,
             "regionID": 10000019,
             "factionID": 500005
@@ -10536,56 +10536,56 @@ var appData = {
         },
         "30001645": {
             "name": "Tendhyes",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000243,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001646": {
             "name": "Goram",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000243,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001647": {
             "name": "Anjedin",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000243,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001648": {
             "name": "Adahum",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000243,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001649": {
             "name": "Ahrosseas",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000243,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001650": {
             "name": "Riramia",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000244,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001651": {
             "name": "Nafomeh",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000244,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001652": {
             "name": "Pimsu",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000244,
             "regionID": 10000020,
             "factionID": 500003
@@ -10613,14 +10613,14 @@ var appData = {
         },
         "30001656": {
             "name": "Ivih",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000245,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001657": {
             "name": "Seil",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000245,
             "regionID": 10000020,
             "factionID": 500003
@@ -10641,14 +10641,14 @@ var appData = {
         },
         "30001660": {
             "name": "Dabrid",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000245,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001661": {
             "name": "Gyerzen",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000245,
             "regionID": 10000020,
             "factionID": 500003
@@ -10662,7 +10662,7 @@ var appData = {
         },
         "30001663": {
             "name": "Gemodi",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000246,
             "regionID": 10000020,
             "factionID": 500003
@@ -10676,14 +10676,14 @@ var appData = {
         },
         "30001665": {
             "name": "Nuzair",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000246,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001666": {
             "name": "Pera",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000246,
             "regionID": 10000020,
             "factionID": 500003
@@ -10697,7 +10697,7 @@ var appData = {
         },
         "30001668": {
             "name": "Yong",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000246,
             "regionID": 10000020,
             "factionID": 500003
@@ -10725,14 +10725,14 @@ var appData = {
         },
         "30001672": {
             "name": "Emrayur",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000247,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001673": {
             "name": "Shesha",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000247,
             "regionID": 10000020,
             "factionID": 500003
@@ -10753,7 +10753,7 @@ var appData = {
         },
         "30001676": {
             "name": "Mimen",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000248,
             "regionID": 10000020,
             "factionID": 500003
@@ -10774,14 +10774,14 @@ var appData = {
         },
         "30001679": {
             "name": "Unkah",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000248,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001680": {
             "name": "Hoona",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000248,
             "regionID": 10000020,
             "factionID": 500003
@@ -10795,7 +10795,7 @@ var appData = {
         },
         "30001682": {
             "name": "Keshirou",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000249,
             "regionID": 10000020,
             "factionID": 500003
@@ -10809,14 +10809,14 @@ var appData = {
         },
         "30001684": {
             "name": "Tirbam",
-            "security": "0.15",
+            "security": "0.16",
             "constellationID": 20000249,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001685": {
             "name": "Ordat",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000249,
             "regionID": 10000020,
             "factionID": 500003
@@ -10830,21 +10830,21 @@ var appData = {
         },
         "30001687": {
             "name": "Lossa",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000250,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001688": {
             "name": "Onazel",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000250,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001689": {
             "name": "Asesamy",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000250,
             "regionID": 10000020,
             "factionID": 500003
@@ -10858,7 +10858,7 @@ var appData = {
         },
         "30001691": {
             "name": "Mimime",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000250,
             "regionID": 10000020,
             "factionID": 500003
@@ -10872,7 +10872,7 @@ var appData = {
         },
         "30001693": {
             "name": "Perdan",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000250,
             "regionID": 10000020,
             "factionID": 500003
@@ -10914,7 +10914,7 @@ var appData = {
         },
         "30001699": {
             "name": "Siyi",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000251,
             "regionID": 10000020,
             "factionID": 500003
@@ -10935,7 +10935,7 @@ var appData = {
         },
         "30001702": {
             "name": "Nafrivik",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000252,
             "regionID": 10000020,
             "factionID": 500003
@@ -10963,14 +10963,14 @@ var appData = {
         },
         "30001706": {
             "name": "Jinizu",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000252,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001707": {
             "name": "Phoren",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000252,
             "regionID": 10000020,
             "factionID": 500003
@@ -11012,7 +11012,7 @@ var appData = {
         },
         "30001713": {
             "name": "Yasud",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000253,
             "regionID": 10000020,
             "factionID": 500003
@@ -11026,21 +11026,21 @@ var appData = {
         },
         "30001715": {
             "name": "Moutid",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000253,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001716": {
             "name": "Goni",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000254,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001717": {
             "name": "Adar",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000254,
             "regionID": 10000020,
             "factionID": 500003
@@ -11075,14 +11075,14 @@ var appData = {
         },
         "30001722": {
             "name": "Marthia",
-            "security": "0.92",
+            "security": "0.93",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001723": {
             "name": "Assiad",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
@@ -11096,42 +11096,42 @@ var appData = {
         },
         "30001725": {
             "name": "Nosodnis",
-            "security": "0.92",
+            "security": "0.93",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001726": {
             "name": "Iswa",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001727": {
             "name": "Rand",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001728": {
             "name": "Sizamod",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001729": {
             "name": "Sinid",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000256,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001730": {
             "name": "Alra",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000256,
             "regionID": 10000020,
             "factionID": 500003
@@ -11145,14 +11145,14 @@ var appData = {
         },
         "30001732": {
             "name": "Zith",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000256,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001733": {
             "name": "Tew",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000256,
             "regionID": 10000020,
             "factionID": 500003
@@ -11173,14 +11173,14 @@ var appData = {
         },
         "30001736": {
             "name": "Esa",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000257,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001737": {
             "name": "Hath",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000257,
             "regionID": 10000020,
             "factionID": 500003
@@ -11208,27 +11208,27 @@ var appData = {
         },
         "30001741": {
             "name": "Ahteer",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000257,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001742": {
             "name": "Kari",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000257,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30001743": {
             "name": "JUE-DX",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000258,
             "regionID": 10000021
         },
         "30001744": {
             "name": "HLR-GL",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000258,
             "regionID": 10000021
         },
@@ -11252,7 +11252,7 @@ var appData = {
         },
         "30001748": {
             "name": "W9-TFD",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000258,
             "regionID": 10000021
         },
@@ -11264,13 +11264,13 @@ var appData = {
         },
         "30001750": {
             "name": "J4AQ-O",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000259,
             "regionID": 10000021
         },
         "30001751": {
             "name": "O-O2GN",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000259,
             "regionID": 10000021
         },
@@ -11282,19 +11282,19 @@ var appData = {
         },
         "30001753": {
             "name": "XUPK-Z",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000259,
             "regionID": 10000021
         },
         "30001754": {
             "name": "M4U-EH",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000259,
             "regionID": 10000021
         },
         "30001755": {
             "name": "WK2F-Y",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000260,
             "regionID": 10000021
         },
@@ -11306,7 +11306,7 @@ var appData = {
         },
         "30001757": {
             "name": "1-10QG",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000260,
             "regionID": 10000021
         },
@@ -11348,7 +11348,7 @@ var appData = {
         },
         "30001764": {
             "name": "9Z-XJN",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000261,
             "regionID": 10000021
         },
@@ -11366,13 +11366,13 @@ var appData = {
         },
         "30001767": {
             "name": "HZID-J",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000261,
             "regionID": 10000021
         },
         "30001768": {
             "name": "8-AA98",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000262,
             "regionID": 10000021
         },
@@ -11384,7 +11384,7 @@ var appData = {
         },
         "30001770": {
             "name": "2ULC-J",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000262,
             "regionID": 10000021
         },
@@ -11396,7 +11396,7 @@ var appData = {
         },
         "30001772": {
             "name": "QG3-Z0",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000262,
             "regionID": 10000021
         },
@@ -11408,7 +11408,7 @@ var appData = {
         },
         "30001774": {
             "name": "2ID-87",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000263,
             "regionID": 10000021
         },
@@ -11438,67 +11438,67 @@ var appData = {
         },
         "30001779": {
             "name": "0-4VQL",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000263,
             "regionID": 10000021
         },
         "30001780": {
             "name": "SN-DZ6",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000263,
             "regionID": 10000021
         },
         "30001781": {
             "name": "DJ-GBH",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000263,
             "regionID": 10000021
         },
         "30001782": {
             "name": "I0N-BM",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000263,
             "regionID": 10000021
         },
         "30001783": {
             "name": "QOK-SX",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000264,
             "regionID": 10000021
         },
         "30001784": {
             "name": "24I-FE",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000264,
             "regionID": 10000021
         },
         "30001785": {
             "name": "4H-YJZ",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000264,
             "regionID": 10000021
         },
         "30001786": {
             "name": "2-84WC",
-            "security": "-0.88",
+            "security": "-0.89",
             "constellationID": 20000264,
             "regionID": 10000021
         },
         "30001787": {
             "name": "V-SEE6",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000264,
             "regionID": 10000021
         },
         "30001788": {
             "name": "U-FQ21",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000264,
             "regionID": 10000021
         },
         "30001789": {
             "name": "NHKO-4",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000265,
             "regionID": 10000021
         },
@@ -11522,19 +11522,19 @@ var appData = {
         },
         "30001793": {
             "name": "JX-SOA",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000265,
             "regionID": 10000021
         },
         "30001794": {
             "name": "VH-9VO",
-            "security": "-0.97",
+            "security": "-0.98",
             "constellationID": 20000265,
             "regionID": 10000021
         },
         "30001795": {
             "name": "P-T9VC",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000265,
             "regionID": 10000021
         },
@@ -11546,7 +11546,7 @@ var appData = {
         },
         "30001797": {
             "name": "UAJ5-K",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000266,
             "regionID": 10000021
         },
@@ -11558,7 +11558,7 @@ var appData = {
         },
         "30001799": {
             "name": "2WU-XT",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000266,
             "regionID": 10000021
         },
@@ -11570,7 +11570,7 @@ var appData = {
         },
         "30001801": {
             "name": "F-WCLC",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000266,
             "regionID": 10000021
         },
@@ -11588,7 +11588,7 @@ var appData = {
         },
         "30001804": {
             "name": "LTT-AP",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000266,
             "regionID": 10000021
         },
@@ -11600,7 +11600,7 @@ var appData = {
         },
         "30001806": {
             "name": "R3P0-Z",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000267,
             "regionID": 10000021
         },
@@ -11618,7 +11618,7 @@ var appData = {
         },
         "30001809": {
             "name": "L1YK-V",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000267,
             "regionID": 10000021
         },
@@ -11630,7 +11630,7 @@ var appData = {
         },
         "30001811": {
             "name": "GA58-7",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000268,
             "regionID": 10000021
         },
@@ -11642,7 +11642,7 @@ var appData = {
         },
         "30001813": {
             "name": "UC-8XF",
-            "security": "-0.73",
+            "security": "-0.74",
             "constellationID": 20000268,
             "regionID": 10000021
         },
@@ -11654,37 +11654,37 @@ var appData = {
         },
         "30001815": {
             "name": "4AZV-W",
-            "security": "-0.84",
+            "security": "-0.85",
             "constellationID": 20000268,
             "regionID": 10000021
         },
         "30001816": {
             "name": "UNV-3J",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000268,
             "regionID": 10000021
         },
         "30001817": {
             "name": "7F-2FB",
-            "security": "-0.91",
+            "security": "-0.92",
             "constellationID": 20000268,
             "regionID": 10000021
         },
         "30001818": {
             "name": "MC4C-H",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000269,
             "regionID": 10000021
         },
         "30001819": {
             "name": "OW-QXW",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000269,
             "regionID": 10000021
         },
         "30001820": {
             "name": "3-QNM4",
-            "security": "-0.73",
+            "security": "-0.74",
             "constellationID": 20000269,
             "regionID": 10000021
         },
@@ -11714,19 +11714,19 @@ var appData = {
         },
         "30001825": {
             "name": "CNHV-M",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000270,
             "regionID": 10000021
         },
         "30001826": {
             "name": "NEU-UD",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000270,
             "regionID": 10000021
         },
         "30001827": {
             "name": "N-I024",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000270,
             "regionID": 10000021
         },
@@ -11738,13 +11738,13 @@ var appData = {
         },
         "30001829": {
             "name": "Y-7XVJ",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000270,
             "regionID": 10000021
         },
         "30001830": {
             "name": "RQNF-9",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000270,
             "regionID": 10000021
         },
@@ -11764,28 +11764,28 @@ var appData = {
         },
         "30001833": {
             "name": "LGK-VP",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000271,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001834": {
             "name": "E-C0SR",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000271,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001835": {
             "name": "X1E-OQ",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000271,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001836": {
             "name": "VTGN-U",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000271,
             "regionID": 10000022,
             "factionID": 500019
@@ -11799,7 +11799,7 @@ var appData = {
         },
         "30001838": {
             "name": "Q-Q2S6",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000272,
             "regionID": 10000022,
             "factionID": 500019
@@ -11813,14 +11813,14 @@ var appData = {
         },
         "30001840": {
             "name": "9RQ-L8",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000272,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001841": {
             "name": "32-GI9",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000272,
             "regionID": 10000022,
             "factionID": 500019
@@ -11862,7 +11862,7 @@ var appData = {
         },
         "30001847": {
             "name": "HM-UVD",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000273,
             "regionID": 10000022,
             "factionID": 500019
@@ -11876,7 +11876,7 @@ var appData = {
         },
         "30001849": {
             "name": "WNS-7J",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000273,
             "regionID": 10000022,
             "factionID": 500019
@@ -11890,14 +11890,14 @@ var appData = {
         },
         "30001851": {
             "name": "JS-E8E",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000274,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001852": {
             "name": "FV-SE8",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000274,
             "regionID": 10000022,
             "factionID": 500019
@@ -11932,35 +11932,35 @@ var appData = {
         },
         "30001857": {
             "name": "9U6-SV",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001858": {
             "name": "4GQ-XQ",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001859": {
             "name": "R8-5XF",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001860": {
             "name": "2IGP-1",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001861": {
             "name": "Z2-QQP",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
@@ -11988,14 +11988,14 @@ var appData = {
         },
         "30001865": {
             "name": "U-WLT9",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001866": {
             "name": "ZG8Q-N",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000275,
             "regionID": 10000022,
             "factionID": 500019
@@ -12009,14 +12009,14 @@ var appData = {
         },
         "30001868": {
             "name": "37S-KO",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000276,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001869": {
             "name": "4J9-DK",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000276,
             "regionID": 10000022,
             "factionID": 500019
@@ -12030,14 +12030,14 @@ var appData = {
         },
         "30001871": {
             "name": "HQ-TDJ",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000276,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001872": {
             "name": "WBLF-0",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000276,
             "regionID": 10000022,
             "factionID": 500019
@@ -12058,14 +12058,14 @@ var appData = {
         },
         "30001875": {
             "name": "UJM-RD",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000277,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001876": {
             "name": "L0AD-B",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000277,
             "regionID": 10000022,
             "factionID": 500019
@@ -12086,14 +12086,14 @@ var appData = {
         },
         "30001879": {
             "name": "8O-OSG",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000277,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001880": {
             "name": "1H-I12",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000278,
             "regionID": 10000022,
             "factionID": 500019
@@ -12107,14 +12107,14 @@ var appData = {
         },
         "30001882": {
             "name": "4A-XJ6",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000278,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001883": {
             "name": "GU-54G",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000278,
             "regionID": 10000022,
             "factionID": 500019
@@ -12135,14 +12135,14 @@ var appData = {
         },
         "30001886": {
             "name": "9O-ZTS",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000278,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001887": {
             "name": "8KQR-O",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000279,
             "regionID": 10000022,
             "factionID": 500019
@@ -12163,21 +12163,21 @@ var appData = {
         },
         "30001890": {
             "name": "WJO0-G",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000279,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001891": {
             "name": "S91-TI",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000279,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001892": {
             "name": "V1V-6F",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000279,
             "regionID": 10000022,
             "factionID": 500019
@@ -12198,7 +12198,7 @@ var appData = {
         },
         "30001895": {
             "name": "CBGG-0",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000280,
             "regionID": 10000022,
             "factionID": 500019
@@ -12212,35 +12212,35 @@ var appData = {
         },
         "30001897": {
             "name": "W-VXL9",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000280,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001898": {
             "name": "U2-BJ2",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000280,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001899": {
             "name": "UKYS-5",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000281,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001900": {
             "name": "RV5-DW",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000281,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001901": {
             "name": "KP-FQ1",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000281,
             "regionID": 10000022,
             "factionID": 500019
@@ -12254,56 +12254,56 @@ var appData = {
         },
         "30001903": {
             "name": "QM-O7J",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000281,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001904": {
             "name": "0-7XA8",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000281,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001905": {
             "name": "X5O1-L",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000282,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001906": {
             "name": "F-TVAP",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000282,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001907": {
             "name": "6Y-0TW",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000282,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001908": {
             "name": "TL-T9Z",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000282,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001909": {
             "name": "E7-WSY",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000282,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001910": {
             "name": "B-G1LG",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000282,
             "regionID": 10000022,
             "factionID": 500019
@@ -12317,7 +12317,7 @@ var appData = {
         },
         "30001912": {
             "name": "DP-2WP",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000283,
             "regionID": 10000022,
             "factionID": 500019
@@ -12331,21 +12331,21 @@ var appData = {
         },
         "30001914": {
             "name": "I-ME3L",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000283,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001915": {
             "name": "YE17-R",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000283,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001916": {
             "name": "T7-JNB",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000283,
             "regionID": 10000022,
             "factionID": 500019
@@ -12373,7 +12373,7 @@ var appData = {
         },
         "30001920": {
             "name": "J-AYLV",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000283,
             "regionID": 10000022,
             "factionID": 500019
@@ -12387,7 +12387,7 @@ var appData = {
         },
         "30001922": {
             "name": "ZH-KEV",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000283,
             "regionID": 10000022,
             "factionID": 500019
@@ -12401,14 +12401,14 @@ var appData = {
         },
         "30001924": {
             "name": "RPS-0K",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000284,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001925": {
             "name": "VNPF-7",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000284,
             "regionID": 10000022,
             "factionID": 500019
@@ -12443,21 +12443,21 @@ var appData = {
         },
         "30001930": {
             "name": "6QBH-S",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000284,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001931": {
             "name": "RRWI-5",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000285,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001932": {
             "name": "Y-4U62",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000285,
             "regionID": 10000022,
             "factionID": 500019
@@ -12478,7 +12478,7 @@ var appData = {
         },
         "30001935": {
             "name": "QCKK-T",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000285,
             "regionID": 10000022,
             "factionID": 500019
@@ -12492,7 +12492,7 @@ var appData = {
         },
         "30001937": {
             "name": "JU-UYK",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000286,
             "regionID": 10000022,
             "factionID": 500019
@@ -12506,21 +12506,21 @@ var appData = {
         },
         "30001939": {
             "name": "W-Q233",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000286,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001940": {
             "name": "4XW2-D",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000286,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001941": {
             "name": "J5NU-K",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000286,
             "regionID": 10000022,
             "factionID": 500019
@@ -12541,7 +12541,7 @@ var appData = {
         },
         "30001944": {
             "name": "B-2UL0",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000286,
             "regionID": 10000022,
             "factionID": 500019
@@ -12562,14 +12562,14 @@ var appData = {
         },
         "30001947": {
             "name": "373Z-7",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000286,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001948": {
             "name": "JVJ2-N",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000287,
             "regionID": 10000022,
             "factionID": 500019
@@ -12590,7 +12590,7 @@ var appData = {
         },
         "30001951": {
             "name": "5J-UEX",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000287,
             "regionID": 10000022,
             "factionID": 500019
@@ -12604,7 +12604,7 @@ var appData = {
         },
         "30001953": {
             "name": "LGL-SD",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000287,
             "regionID": 10000022,
             "factionID": 500019
@@ -12625,7 +12625,7 @@ var appData = {
         },
         "30001956": {
             "name": "Z-6YQC",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000288,
             "regionID": 10000022,
             "factionID": 500019
@@ -12639,7 +12639,7 @@ var appData = {
         },
         "30001958": {
             "name": "XFBE-T",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000288,
             "regionID": 10000022,
             "factionID": 500019
@@ -12653,21 +12653,21 @@ var appData = {
         },
         "30001960": {
             "name": "DK6W-I",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000288,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001961": {
             "name": "0T-LIB",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000288,
             "regionID": 10000022,
             "factionID": 500019
         },
         "30001962": {
             "name": "NRT4-U",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000288,
             "regionID": 10000022,
             "factionID": 500019
@@ -12680,7 +12680,7 @@ var appData = {
         },
         "30001964": {
             "name": "O-BY0Y",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000289,
             "regionID": 10000023
         },
@@ -12692,7 +12692,7 @@ var appData = {
         },
         "30001966": {
             "name": "UR-E6D",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000289,
             "regionID": 10000023
         },
@@ -12704,19 +12704,19 @@ var appData = {
         },
         "30001968": {
             "name": "D7T-C0",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000289,
             "regionID": 10000023
         },
         "30001969": {
             "name": "KI-TL0",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000290,
             "regionID": 10000023
         },
         "30001970": {
             "name": "EL8-4Q",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000290,
             "regionID": 10000023
         },
@@ -12728,31 +12728,31 @@ var appData = {
         },
         "30001972": {
             "name": "5-9WNU",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000290,
             "regionID": 10000023
         },
         "30001973": {
             "name": "XI-VUF",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000290,
             "regionID": 10000023
         },
         "30001974": {
             "name": "N-H32Y",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000290,
             "regionID": 10000023
         },
         "30001975": {
             "name": "12YA-2",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000290,
             "regionID": 10000023
         },
         "30001976": {
             "name": "BDV3-T",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000290,
             "regionID": 10000023
         },
@@ -12779,7 +12779,7 @@ var appData = {
         },
         "30001980": {
             "name": "KLY-C0",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000291,
             "regionID": 10000023,
             "factionID": 500016
@@ -12800,14 +12800,14 @@ var appData = {
         },
         "30001983": {
             "name": "ROIR-Y",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000291,
             "regionID": 10000023,
             "factionID": 500016
         },
         "30001984": {
             "name": "EC-P8R",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000292,
             "regionID": 10000023
         },
@@ -12819,13 +12819,13 @@ var appData = {
         },
         "30001986": {
             "name": "O-N8XZ",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000292,
             "regionID": 10000023
         },
         "30001987": {
             "name": "G-M4I8",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000292,
             "regionID": 10000023
         },
@@ -12837,7 +12837,7 @@ var appData = {
         },
         "30001989": {
             "name": "L-TS8S",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000292,
             "regionID": 10000023
         },
@@ -12861,25 +12861,25 @@ var appData = {
         },
         "30001993": {
             "name": "A8I-C5",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000293,
             "regionID": 10000023
         },
         "30001994": {
             "name": "DK-FXK",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000293,
             "regionID": 10000023
         },
         "30001995": {
             "name": "M-76XI",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000293,
             "regionID": 10000023
         },
         "30001996": {
             "name": "ZJET-E",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000293,
             "regionID": 10000023
         },
@@ -12891,13 +12891,13 @@ var appData = {
         },
         "30001998": {
             "name": "WW-KGD",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000294,
             "regionID": 10000023
         },
         "30001999": {
             "name": "XQ-PXU",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000294,
             "regionID": 10000023
         },
@@ -12921,27 +12921,27 @@ var appData = {
         },
         "30002003": {
             "name": "CR-AQH",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000294,
             "regionID": 10000023
         },
         "30002004": {
             "name": "8S-0E1",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000295,
             "regionID": 10000023,
             "factionID": 500018
         },
         "30002005": {
             "name": "5ZXX-K",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000295,
             "regionID": 10000023,
             "factionID": 500018
         },
         "30002006": {
             "name": "JE-D5U",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000295,
             "regionID": 10000023,
             "factionID": 500018
@@ -12955,14 +12955,14 @@ var appData = {
         },
         "30002008": {
             "name": "OE-9UF",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000295,
             "regionID": 10000023,
             "factionID": 500018
         },
         "30002009": {
             "name": "PFU-LH",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000295,
             "regionID": 10000023,
             "factionID": 500018
@@ -13017,13 +13017,13 @@ var appData = {
         },
         "30002018": {
             "name": "ZKYV-W",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000297,
             "regionID": 10000023
         },
         "30002019": {
             "name": "F-NMX6",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000297,
             "regionID": 10000023
         },
@@ -13053,61 +13053,61 @@ var appData = {
         },
         "30002024": {
             "name": "UC3H-Y",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000298,
             "regionID": 10000023
         },
         "30002025": {
             "name": "6GWE-A",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000298,
             "regionID": 10000023
         },
         "30002026": {
             "name": "J-OK0C",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000298,
             "regionID": 10000023
         },
         "30002027": {
             "name": "KDV-DE",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000298,
             "regionID": 10000023
         },
         "30002028": {
             "name": "MT9Q-S",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000298,
             "regionID": 10000023
         },
         "30002029": {
             "name": "B-9C24",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000299,
             "regionID": 10000023
         },
         "30002030": {
             "name": "P-2TTL",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000299,
             "regionID": 10000023
         },
         "30002031": {
             "name": "7X-VKB",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000299,
             "regionID": 10000023
         },
         "30002032": {
             "name": "E-Z2ZX",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000299,
             "regionID": 10000023
         },
         "30002033": {
             "name": "RORZ-H",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000299,
             "regionID": 10000023
         },
@@ -13119,37 +13119,37 @@ var appData = {
         },
         "30002035": {
             "name": "MQ-NPY",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000300,
             "regionID": 10000023
         },
         "30002036": {
             "name": "D2-HOS",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000300,
             "regionID": 10000023
         },
         "30002037": {
             "name": "Y2-6EA",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000300,
             "regionID": 10000023
         },
         "30002038": {
             "name": "TFA0-U",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000300,
             "regionID": 10000023
         },
         "30002039": {
             "name": "RQH-MY",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000300,
             "regionID": 10000023
         },
         "30002040": {
             "name": "HPS5-C",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000300,
             "regionID": 10000023
         },
@@ -13191,7 +13191,7 @@ var appData = {
         },
         "30002047": {
             "name": "UI-8ZE",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000301,
             "regionID": 10000023
         },
@@ -13225,14 +13225,14 @@ var appData = {
         },
         "30002052": {
             "name": "Ragnarg",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000302,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002053": {
             "name": "Hek",
-            "security": "0.8",
+            "security": "0.80",
             "constellationID": 20000302,
             "regionID": 10000042,
             "factionID": 500002
@@ -13253,35 +13253,35 @@ var appData = {
         },
         "30002056": {
             "name": "Resbroko",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000303,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002057": {
             "name": "Hadozeko",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000303,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002058": {
             "name": "Ardar",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000303,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002059": {
             "name": "Auner",
-            "security": "0.40",
+            "security": "0.41",
             "constellationID": 20000303,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002060": {
             "name": "Evati",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000304,
             "regionID": 10000042,
             "factionID": 500002
@@ -13295,7 +13295,7 @@ var appData = {
         },
         "30002062": {
             "name": "Todifrauan",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000304,
             "regionID": 10000042,
             "factionID": 500002
@@ -13309,14 +13309,14 @@ var appData = {
         },
         "30002064": {
             "name": "Arnstur",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000304,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002065": {
             "name": "Lasleinur",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000304,
             "regionID": 10000042,
             "factionID": 500002
@@ -13344,7 +13344,7 @@ var appData = {
         },
         "30002069": {
             "name": "Traun",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000305,
             "regionID": 10000042,
             "factionID": 500002
@@ -13372,7 +13372,7 @@ var appData = {
         },
         "30002073": {
             "name": "Tvink",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000305,
             "regionID": 10000042,
             "factionID": 500002
@@ -13386,7 +13386,7 @@ var appData = {
         },
         "30002075": {
             "name": "Hjoramold",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000305,
             "regionID": 10000042,
             "factionID": 500002
@@ -13407,14 +13407,14 @@ var appData = {
         },
         "30002078": {
             "name": "Arwa",
-            "security": "0.12",
+            "security": "0.13",
             "constellationID": 20000306,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002079": {
             "name": "Krirald",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
@@ -13428,7 +13428,7 @@ var appData = {
         },
         "30002081": {
             "name": "Ansen",
-            "security": "0.13",
+            "security": "0.14",
             "constellationID": 20000306,
             "regionID": 10000042,
             "factionID": 500002
@@ -13449,7 +13449,7 @@ var appData = {
         },
         "30002084": {
             "name": "Aset",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000307,
             "regionID": 10000042,
             "factionID": 500002
@@ -13463,14 +13463,14 @@ var appData = {
         },
         "30002086": {
             "name": "Turnur",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000307,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002087": {
             "name": "Isbrabata",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000307,
             "regionID": 10000042,
             "factionID": 500002
@@ -13484,14 +13484,14 @@ var appData = {
         },
         "30002089": {
             "name": "Avenod",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000307,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002090": {
             "name": "Frerstorn",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000308,
             "regionID": 10000042,
             "factionID": 500002
@@ -13533,21 +13533,21 @@ var appData = {
         },
         "30002096": {
             "name": "Hofjaldgund",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000308,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002097": {
             "name": "Klogori",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000309,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30002098": {
             "name": "Orfrold",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000309,
             "regionID": 10000042,
             "factionID": 500002
@@ -13582,7 +13582,7 @@ var appData = {
         },
         "30002103": {
             "name": "NS2L-4",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000310,
             "regionID": 10000025
         },
@@ -13606,7 +13606,7 @@ var appData = {
         },
         "30002107": {
             "name": "AF0-V5",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000310,
             "regionID": 10000025
         },
@@ -13624,7 +13624,7 @@ var appData = {
         },
         "30002110": {
             "name": "B9E-H6",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000311,
             "regionID": 10000025
         },
@@ -13648,37 +13648,37 @@ var appData = {
         },
         "30002114": {
             "name": "LN-56V",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000311,
             "regionID": 10000025
         },
         "30002115": {
             "name": "Y2-QUV",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000311,
             "regionID": 10000025
         },
         "30002116": {
             "name": "O7-7UX",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000311,
             "regionID": 10000025
         },
         "30002117": {
             "name": "Z8-81T",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000312,
             "regionID": 10000025
         },
         "30002118": {
             "name": "XD-JW7",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000312,
             "regionID": 10000025
         },
         "30002119": {
             "name": "DY-P7Q",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000312,
             "regionID": 10000025
         },
@@ -13690,7 +13690,7 @@ var appData = {
         },
         "30002121": {
             "name": "ZBP-TP",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000312,
             "regionID": 10000025
         },
@@ -13702,13 +13702,13 @@ var appData = {
         },
         "30002123": {
             "name": "GXK-7F",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000313,
             "regionID": 10000025
         },
         "30002124": {
             "name": "EA-HSA",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000313,
             "regionID": 10000025
         },
@@ -13726,13 +13726,13 @@ var appData = {
         },
         "30002127": {
             "name": "CJNF-J",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000313,
             "regionID": 10000025
         },
         "30002128": {
             "name": "FYI-49",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000313,
             "regionID": 10000025
         },
@@ -13750,31 +13750,31 @@ var appData = {
         },
         "30002131": {
             "name": "94FR-S",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000314,
             "regionID": 10000025
         },
         "30002132": {
             "name": "Q-HJ97",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000314,
             "regionID": 10000025
         },
         "30002133": {
             "name": "GM-0K7",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000314,
             "regionID": 10000025
         },
         "30002134": {
             "name": "I-NGI8",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000314,
             "regionID": 10000025
         },
         "30002135": {
             "name": "R-ZUOL",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000314,
             "regionID": 10000025
         },
@@ -13798,7 +13798,7 @@ var appData = {
         },
         "30002139": {
             "name": "LK1K-5",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000315,
             "regionID": 10000025
         },
@@ -13816,7 +13816,7 @@ var appData = {
         },
         "30002142": {
             "name": "L-5JCJ",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000315,
             "regionID": 10000025
         },
@@ -13846,7 +13846,7 @@ var appData = {
         },
         "30002147": {
             "name": "W-FHWJ",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000316,
             "regionID": 10000025
         },
@@ -13864,7 +13864,7 @@ var appData = {
         },
         "30002150": {
             "name": "JKWP-U",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000316,
             "regionID": 10000025
         },
@@ -13882,13 +13882,13 @@ var appData = {
         },
         "30002153": {
             "name": "O3Z5-G",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000317,
             "regionID": 10000025
         },
         "30002154": {
             "name": "4DV-1T",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000317,
             "regionID": 10000025
         },
@@ -13900,13 +13900,13 @@ var appData = {
         },
         "30002156": {
             "name": "FN-DSR",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000317,
             "regionID": 10000025
         },
         "30002157": {
             "name": "B-R5RB",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000317,
             "regionID": 10000025
         },
@@ -13918,7 +13918,7 @@ var appData = {
         },
         "30002159": {
             "name": "9-XN3F",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000318,
             "regionID": 10000025
         },
@@ -13948,7 +13948,7 @@ var appData = {
         },
         "30002164": {
             "name": "U79-JF",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000318,
             "regionID": 10000025
         },
@@ -13960,31 +13960,31 @@ var appData = {
         },
         "30002166": {
             "name": "U9U-TQ",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000319,
             "regionID": 10000025
         },
         "30002167": {
             "name": "6-I162",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000319,
             "regionID": 10000025
         },
         "30002168": {
             "name": "08-N7Q",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000319,
             "regionID": 10000025
         },
         "30002169": {
             "name": "Y-C4AL",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000319,
             "regionID": 10000025
         },
         "30002170": {
             "name": "CKX-RW",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000319,
             "regionID": 10000025
         },
@@ -13996,7 +13996,7 @@ var appData = {
         },
         "30002172": {
             "name": "W4E-IT",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000320,
             "regionID": 10000025
         },
@@ -14020,25 +14020,25 @@ var appData = {
         },
         "30002176": {
             "name": "Y-N4EF",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000320,
             "regionID": 10000025
         },
         "30002177": {
             "name": "7YSF-E",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000320,
             "regionID": 10000025
         },
         "30002178": {
             "name": "KCDX-7",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000321,
             "regionID": 10000025
         },
         "30002179": {
             "name": "O7-VJ5",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000321,
             "regionID": 10000025
         },
@@ -14056,19 +14056,19 @@ var appData = {
         },
         "30002182": {
             "name": "R-ORB7",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000321,
             "regionID": 10000025
         },
         "30002183": {
             "name": "RU-PT9",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000321,
             "regionID": 10000025
         },
         "30002184": {
             "name": "DR-427",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000321,
             "regionID": 10000025
         },
@@ -14086,7 +14086,7 @@ var appData = {
         },
         "30002187": {
             "name": "Amarr",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000322,
             "regionID": 10000043,
             "factionID": 500003
@@ -14100,7 +14100,7 @@ var appData = {
         },
         "30002189": {
             "name": "Hedion",
-            "security": "0.96",
+            "security": "0.95",
             "constellationID": 20000322,
             "regionID": 10000043,
             "factionID": 500003
@@ -14128,7 +14128,7 @@ var appData = {
         },
         "30002193": {
             "name": "Kehour",
-            "security": "0.91",
+            "security": "0.92",
             "constellationID": 20000322,
             "regionID": 10000043,
             "factionID": 500003
@@ -14142,28 +14142,28 @@ var appData = {
         },
         "30002195": {
             "name": "Simbeloud",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000322,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002196": {
             "name": "Ebidan",
-            "security": "0.89",
+            "security": "0.90",
             "constellationID": 20000322,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002197": {
             "name": "Akhragan",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000323,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002198": {
             "name": "Mikhir",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000323,
             "regionID": 10000043,
             "factionID": 500003
@@ -14184,28 +14184,28 @@ var appData = {
         },
         "30002201": {
             "name": "Shuria",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000323,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002202": {
             "name": "Narai",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000323,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002203": {
             "name": "Ziona",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000323,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002204": {
             "name": "Gaha",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000324,
             "regionID": 10000043,
             "factionID": 500003
@@ -14240,7 +14240,7 @@ var appData = {
         },
         "30002209": {
             "name": "Uchat",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000324,
             "regionID": 10000043,
             "factionID": 500003
@@ -14254,14 +14254,14 @@ var appData = {
         },
         "30002211": {
             "name": "Pelkia",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000325,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002212": {
             "name": "Raren",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000325,
             "regionID": 10000043,
             "factionID": 500003
@@ -14289,7 +14289,7 @@ var appData = {
         },
         "30002216": {
             "name": "Aldali",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000325,
             "regionID": 10000043,
             "factionID": 500003
@@ -14310,7 +14310,7 @@ var appData = {
         },
         "30002219": {
             "name": "Nomash",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000325,
             "regionID": 10000043,
             "factionID": 500003
@@ -14331,14 +14331,14 @@ var appData = {
         },
         "30002222": {
             "name": "Airshaz",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000326,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002223": {
             "name": "Patzcha",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000326,
             "regionID": 10000043,
             "factionID": 500003
@@ -14352,7 +14352,7 @@ var appData = {
         },
         "30002225": {
             "name": "Harva",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
@@ -14366,7 +14366,7 @@ var appData = {
         },
         "30002227": {
             "name": "Rasile",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000327,
             "regionID": 10000043,
             "factionID": 500003
@@ -14401,7 +14401,7 @@ var appData = {
         },
         "30002232": {
             "name": "Gid",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000327,
             "regionID": 10000043,
             "factionID": 500003
@@ -14422,21 +14422,21 @@ var appData = {
         },
         "30002235": {
             "name": "Shumam",
-            "security": "0.67",
+            "security": "0.68",
             "constellationID": 20000327,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002236": {
             "name": "Milal",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000328,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002237": {
             "name": "Sobenah",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000328,
             "regionID": 10000043,
             "factionID": 500003
@@ -14450,7 +14450,7 @@ var appData = {
         },
         "30002239": {
             "name": "Rammi",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000328,
             "regionID": 10000043,
             "factionID": 500003
@@ -14478,14 +14478,14 @@ var appData = {
         },
         "30002243": {
             "name": "Seiradih",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000329,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002244": {
             "name": "Arera",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000329,
             "regionID": 10000043,
             "factionID": 500003
@@ -14499,7 +14499,7 @@ var appData = {
         },
         "30002246": {
             "name": "Neziel",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000329,
             "regionID": 10000043,
             "factionID": 500003
@@ -14527,7 +14527,7 @@ var appData = {
         },
         "30002250": {
             "name": "Hai",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000329,
             "regionID": 10000043,
             "factionID": 500003
@@ -14541,7 +14541,7 @@ var appData = {
         },
         "30002252": {
             "name": "Bika",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000330,
             "regionID": 10000043,
             "factionID": 500003
@@ -14562,14 +14562,14 @@ var appData = {
         },
         "30002255": {
             "name": "Miyeli",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000330,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002256": {
             "name": "Reyi",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000330,
             "regionID": 10000043,
             "factionID": 500003
@@ -14583,14 +14583,14 @@ var appData = {
         },
         "30002258": {
             "name": "Nadohman",
-            "security": "0.74",
+            "security": "0.75",
             "constellationID": 20000331,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002259": {
             "name": "Sahdil",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000331,
             "regionID": 10000043,
             "factionID": 500003
@@ -14604,7 +14604,7 @@ var appData = {
         },
         "30002261": {
             "name": "Luromooh",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000331,
             "regionID": 10000043,
             "factionID": 500003
@@ -14653,7 +14653,7 @@ var appData = {
         },
         "30002268": {
             "name": "Adia",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000332,
             "regionID": 10000043,
             "factionID": 500003
@@ -14674,7 +14674,7 @@ var appData = {
         },
         "30002271": {
             "name": "Rayl",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000333,
             "regionID": 10000043,
             "factionID": 500003
@@ -14688,7 +14688,7 @@ var appData = {
         },
         "30002273": {
             "name": "Porsharrah",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000333,
             "regionID": 10000043,
             "factionID": 500003
@@ -14702,7 +14702,7 @@ var appData = {
         },
         "30002275": {
             "name": "Clarelam",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000333,
             "regionID": 10000043,
             "factionID": 500003
@@ -14716,7 +14716,7 @@ var appData = {
         },
         "30002277": {
             "name": "Ebtesham",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000334,
             "regionID": 10000043,
             "factionID": 500003
@@ -14730,7 +14730,7 @@ var appData = {
         },
         "30002279": {
             "name": "Safizon",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000334,
             "regionID": 10000043,
             "factionID": 500003
@@ -14751,20 +14751,20 @@ var appData = {
         },
         "30002282": {
             "name": "Bhizheba",
-            "security": "0.96",
+            "security": "0.95",
             "constellationID": 20000334,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30002283": {
             "name": "2G-VDP",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000335,
             "regionID": 10000027
         },
         "30002284": {
             "name": "9F-3CR",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000335,
             "regionID": 10000027
         },
@@ -14788,25 +14788,25 @@ var appData = {
         },
         "30002288": {
             "name": "QNXJ-M",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000335,
             "regionID": 10000027
         },
         "30002289": {
             "name": "AID-9T",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000336,
             "regionID": 10000027
         },
         "30002290": {
             "name": "PXE-RG",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000336,
             "regionID": 10000027
         },
         "30002291": {
             "name": "5J-62N",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000336,
             "regionID": 10000027
         },
@@ -14830,7 +14830,7 @@ var appData = {
         },
         "30002295": {
             "name": "D3S-EA",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000336,
             "regionID": 10000027
         },
@@ -14842,73 +14842,73 @@ var appData = {
         },
         "30002297": {
             "name": "4LJ6-Q",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000337,
             "regionID": 10000027
         },
         "30002298": {
             "name": "SAH-AD",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000337,
             "regionID": 10000027
         },
         "30002299": {
             "name": "MF-PGF",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000337,
             "regionID": 10000027
         },
         "30002300": {
             "name": "L-ZJLN",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000337,
             "regionID": 10000027
         },
         "30002301": {
             "name": "G-QTSD",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000337,
             "regionID": 10000027
         },
         "30002302": {
             "name": "3G-LFX",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000338,
             "regionID": 10000027
         },
         "30002303": {
             "name": "NK-VTL",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000338,
             "regionID": 10000027
         },
         "30002304": {
             "name": "D-CR6W",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000338,
             "regionID": 10000027
         },
         "30002305": {
             "name": "BY-7PY",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000338,
             "regionID": 10000027
         },
         "30002306": {
             "name": "GN-TNT",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000338,
             "regionID": 10000027
         },
         "30002307": {
             "name": "QKCU-4",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000338,
             "regionID": 10000027
         },
         "30002308": {
             "name": "0M-24X",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000338,
             "regionID": 10000027
         },
@@ -14938,7 +14938,7 @@ var appData = {
         },
         "30002313": {
             "name": "5U-3PW",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000339,
             "regionID": 10000027
         },
@@ -14962,7 +14962,7 @@ var appData = {
         },
         "30002317": {
             "name": "1ACJ-6",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000340,
             "regionID": 10000027
         },
@@ -14980,31 +14980,31 @@ var appData = {
         },
         "30002320": {
             "name": "F9-FUV",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000340,
             "regionID": 10000027
         },
         "30002321": {
             "name": "FB-MPY",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000340,
             "regionID": 10000027
         },
         "30002322": {
             "name": "RO-0PZ",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000340,
             "regionID": 10000027
         },
         "30002323": {
             "name": "JTA2-2",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000341,
             "regionID": 10000027
         },
         "30002324": {
             "name": "R-6KYM",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000341,
             "regionID": 10000027
         },
@@ -15016,7 +15016,7 @@ var appData = {
         },
         "30002326": {
             "name": "RV-GA8",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000341,
             "regionID": 10000027
         },
@@ -15028,25 +15028,25 @@ var appData = {
         },
         "30002328": {
             "name": "GTY-FW",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000341,
             "regionID": 10000027
         },
         "30002329": {
             "name": "1H5-3W",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000341,
             "regionID": 10000027
         },
         "30002330": {
             "name": "QZV-X3",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000341,
             "regionID": 10000027
         },
         "30002331": {
             "name": "IS-OBW",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000342,
             "regionID": 10000027
         },
@@ -15064,13 +15064,13 @@ var appData = {
         },
         "30002334": {
             "name": "B-2VXB",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000342,
             "regionID": 10000027
         },
         "30002335": {
             "name": "FIZU-X",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000342,
             "regionID": 10000027
         },
@@ -15082,7 +15082,7 @@ var appData = {
         },
         "30002337": {
             "name": "Z0G-XG",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000343,
             "regionID": 10000027
         },
@@ -15136,7 +15136,7 @@ var appData = {
         },
         "30002346": {
             "name": "89-JPE",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000344,
             "regionID": 10000027
         },
@@ -15160,13 +15160,13 @@ var appData = {
         },
         "30002350": {
             "name": "43-1TL",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000345,
             "regionID": 10000027
         },
         "30002351": {
             "name": "O-LJOO",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000345,
             "regionID": 10000027
         },
@@ -15190,13 +15190,13 @@ var appData = {
         },
         "30002355": {
             "name": "LXQ2-T",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000345,
             "regionID": 10000027
         },
         "30002356": {
             "name": "HV-EAP",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000346,
             "regionID": 10000027
         },
@@ -15208,13 +15208,13 @@ var appData = {
         },
         "30002358": {
             "name": "O-EUHA",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000346,
             "regionID": 10000027
         },
         "30002359": {
             "name": "MO-I1W",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000346,
             "regionID": 10000027
         },
@@ -15232,13 +15232,13 @@ var appData = {
         },
         "30002362": {
             "name": "CL-IRS",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000346,
             "regionID": 10000027
         },
         "30002363": {
             "name": "QBZO-R",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000346,
             "regionID": 10000027
         },
@@ -15268,19 +15268,19 @@ var appData = {
         },
         "30002368": {
             "name": "Z-FET0",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000347,
             "regionID": 10000027
         },
         "30002369": {
             "name": "EX-GBT",
-            "security": "-0.90",
+            "security": "-0.91",
             "constellationID": 20000347,
             "regionID": 10000027
         },
         "30002370": {
             "name": "PX-IHN",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000348,
             "regionID": 10000027
         },
@@ -15298,19 +15298,19 @@ var appData = {
         },
         "30002373": {
             "name": "CT8K-0",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000348,
             "regionID": 10000027
         },
         "30002374": {
             "name": "M9-LAN",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000348,
             "regionID": 10000027
         },
         "30002375": {
             "name": "C-4D0W",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000348,
             "regionID": 10000027
         },
@@ -15322,7 +15322,7 @@ var appData = {
         },
         "30002377": {
             "name": "M-V0PQ",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000349,
             "regionID": 10000027
         },
@@ -15358,28 +15358,28 @@ var appData = {
         },
         "30002383": {
             "name": "Aeddin",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000350,
             "regionID": 10000028,
             "factionID": 500002
         },
         "30002384": {
             "name": "Gulfonodi",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000350,
             "regionID": 10000028,
             "factionID": 500002
         },
         "30002385": {
             "name": "Teonusude",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000350,
             "regionID": 10000028,
             "factionID": 500002
         },
         "30002386": {
             "name": "Gelfiven",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000350,
             "regionID": 10000028,
             "factionID": 500002
@@ -15414,14 +15414,14 @@ var appData = {
         },
         "30002391": {
             "name": "Hrokkur",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000351,
             "regionID": 10000028,
             "factionID": 500002
         },
         "30002392": {
             "name": "Hrober",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000351,
             "regionID": 10000028,
             "factionID": 500002
@@ -15435,7 +15435,7 @@ var appData = {
         },
         "30002394": {
             "name": "Muttokon",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000351,
             "regionID": 10000028,
             "factionID": 500002
@@ -15456,7 +15456,7 @@ var appData = {
         },
         "30002397": {
             "name": "Horaka",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000352,
             "regionID": 10000028,
             "factionID": 500002
@@ -15526,7 +15526,7 @@ var appData = {
         },
         "30002407": {
             "name": "Altbrard",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000353,
             "regionID": 10000028,
             "factionID": 500002
@@ -15540,7 +15540,7 @@ var appData = {
         },
         "30002409": {
             "name": "Osvetur",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000354,
             "regionID": 10000028,
             "factionID": 500002
@@ -15554,14 +15554,14 @@ var appData = {
         },
         "30002411": {
             "name": "Skarkon",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30002412": {
             "name": "Ennur",
-            "security": "0.05",
+            "security": "0.06",
             "constellationID": 20000354,
             "regionID": 10000028,
             "factionID": 500002
@@ -15589,14 +15589,14 @@ var appData = {
         },
         "30002416": {
             "name": "Kattegaud",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000355,
             "regionID": 10000028,
             "factionID": 500002
         },
         "30002417": {
             "name": "Kadlina",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000355,
             "regionID": 10000028,
             "factionID": 500002
@@ -15652,14 +15652,14 @@ var appData = {
         },
         "30002425": {
             "name": "O1-FTD",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000356,
             "regionID": 10000029,
             "factionID": 500017
         },
         "30002426": {
             "name": "Roua",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000356,
             "regionID": 10000029,
             "factionID": 500017
@@ -15673,25 +15673,25 @@ var appData = {
         },
         "30002428": {
             "name": "M-MD31",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002429": {
             "name": "WH-2EZ",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002430": {
             "name": "D0-F4W",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002431": {
             "name": "QKTR-L",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000357,
             "regionID": 10000029
         },
@@ -15703,31 +15703,31 @@ var appData = {
         },
         "30002433": {
             "name": "NBPH-N",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002434": {
             "name": "L-HV5C",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002435": {
             "name": "L4X-FH",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002436": {
             "name": "B6-52M",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000357,
             "regionID": 10000029
         },
         "30002437": {
             "name": "V-MZW0",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000357,
             "regionID": 10000029
         },
@@ -15745,7 +15745,7 @@ var appData = {
         },
         "30002440": {
             "name": "BWF-ZZ",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000358,
             "regionID": 10000029
         },
@@ -15769,7 +15769,7 @@ var appData = {
         },
         "30002444": {
             "name": "39-DGG",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000359,
             "regionID": 10000029
         },
@@ -15787,7 +15787,7 @@ var appData = {
         },
         "30002447": {
             "name": "K42-IE",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000359,
             "regionID": 10000029
         },
@@ -15799,19 +15799,19 @@ var appData = {
         },
         "30002449": {
             "name": "3USX-F",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000359,
             "regionID": 10000029
         },
         "30002450": {
             "name": "9-KWXC",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000359,
             "regionID": 10000029
         },
         "30002451": {
             "name": "NQ-9IH",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000360,
             "regionID": 10000029
         },
@@ -15835,19 +15835,19 @@ var appData = {
         },
         "30002455": {
             "name": "2H-TSE",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000360,
             "regionID": 10000029
         },
         "30002456": {
             "name": "4NGK-F",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000360,
             "regionID": 10000029
         },
         "30002457": {
             "name": "O-VWPB",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000361,
             "regionID": 10000029
         },
@@ -15859,7 +15859,7 @@ var appData = {
         },
         "30002459": {
             "name": "6L78-1",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000361,
             "regionID": 10000029
         },
@@ -15871,37 +15871,37 @@ var appData = {
         },
         "30002461": {
             "name": "4VY-Y1",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000361,
             "regionID": 10000029
         },
         "30002462": {
             "name": "LU-HQS",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000361,
             "regionID": 10000029
         },
         "30002463": {
             "name": "U-L4KS",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000361,
             "regionID": 10000029
         },
         "30002464": {
             "name": "K25-XD",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000361,
             "regionID": 10000029
         },
         "30002465": {
             "name": "6YC-TU",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000361,
             "regionID": 10000029
         },
         "30002466": {
             "name": "Y8R-XZ",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000361,
             "regionID": 10000029
         },
@@ -15925,7 +15925,7 @@ var appData = {
         },
         "30002470": {
             "name": "L-TOFR",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000362,
             "regionID": 10000029
         },
@@ -15937,7 +15937,7 @@ var appData = {
         },
         "30002472": {
             "name": "9P4O-F",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000362,
             "regionID": 10000029
         },
@@ -15949,7 +15949,7 @@ var appData = {
         },
         "30002474": {
             "name": "TJM-JJ",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000363,
             "regionID": 10000029
         },
@@ -15961,13 +15961,13 @@ var appData = {
         },
         "30002476": {
             "name": "G-73MR",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000363,
             "regionID": 10000029
         },
         "30002477": {
             "name": "E-91FV",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000363,
             "regionID": 10000029
         },
@@ -15985,19 +15985,19 @@ var appData = {
         },
         "30002480": {
             "name": "54-MF6",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000363,
             "regionID": 10000029
         },
         "30002481": {
             "name": "D-I9HJ",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000364,
             "regionID": 10000029
         },
         "30002482": {
             "name": "P-6I0B",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000364,
             "regionID": 10000029
         },
@@ -16015,13 +16015,13 @@ var appData = {
         },
         "30002485": {
             "name": "HKYW-T",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000364,
             "regionID": 10000029
         },
         "30002486": {
             "name": "3SFU-S",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000364,
             "regionID": 10000029
         },
@@ -16033,13 +16033,13 @@ var appData = {
         },
         "30002488": {
             "name": "U6D-9A",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000364,
             "regionID": 10000029
         },
         "30002489": {
             "name": "Atioth",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000364,
             "regionID": 10000029
         },
@@ -16057,13 +16057,13 @@ var appData = {
         },
         "30002492": {
             "name": "N-HK93",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000364,
             "regionID": 10000029
         },
         "30002493": {
             "name": "LR-2XT",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000365,
             "regionID": 10000029
         },
@@ -16075,7 +16075,7 @@ var appData = {
         },
         "30002495": {
             "name": "4K0N-J",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000365,
             "regionID": 10000029
         },
@@ -16129,13 +16129,13 @@ var appData = {
         },
         "30002504": {
             "name": "UG-UWZ",
-            "security": "-0.95",
+            "security": "-0.96",
             "constellationID": 20000366,
             "regionID": 10000029
         },
         "30002505": {
             "name": "Hulm",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000367,
             "regionID": 10000030,
             "factionID": 500002
@@ -16156,14 +16156,14 @@ var appData = {
         },
         "30002508": {
             "name": "Trytedald",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000367,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002509": {
             "name": "Odatrik",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000367,
             "regionID": 10000030,
             "factionID": 500002
@@ -16177,21 +16177,21 @@ var appData = {
         },
         "30002511": {
             "name": "Ameinaka",
-            "security": "0.98",
+            "security": "0.95",
             "constellationID": 20000367,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002512": {
             "name": "Alakgur",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000368,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002513": {
             "name": "Dammalin",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000368,
             "regionID": 10000030,
             "factionID": 500002
@@ -16205,7 +16205,7 @@ var appData = {
         },
         "30002515": {
             "name": "Olfeim",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000368,
             "regionID": 10000030,
             "factionID": 500002
@@ -16219,14 +16219,14 @@ var appData = {
         },
         "30002517": {
             "name": "Gulmorogod",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000368,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002518": {
             "name": "Edmalbrurdus",
-            "security": "0.98",
+            "security": "0.95",
             "constellationID": 20000369,
             "regionID": 10000030,
             "factionID": 500002
@@ -16240,28 +16240,28 @@ var appData = {
         },
         "30002520": {
             "name": "Dumkirinur",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000369,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002521": {
             "name": "Sist",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000369,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002522": {
             "name": "Obrolber",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000369,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002523": {
             "name": "Austraka",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000369,
             "regionID": 10000030,
             "factionID": 500002
@@ -16282,28 +16282,28 @@ var appData = {
         },
         "30002526": {
             "name": "Frarn",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000370,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002527": {
             "name": "Illinfrik",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000370,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002528": {
             "name": "Balginia",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000370,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002529": {
             "name": "Gyng",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000370,
             "regionID": 10000030,
             "factionID": 500002
@@ -16338,7 +16338,7 @@ var appData = {
         },
         "30002534": {
             "name": "Rokofur",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000371,
             "regionID": 10000030,
             "factionID": 500002
@@ -16359,28 +16359,28 @@ var appData = {
         },
         "30002537": {
             "name": "Amamake",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000372,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002538": {
             "name": "Vard",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000372,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002539": {
             "name": "Siseide",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000372,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002540": {
             "name": "Lantorn",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000372,
             "regionID": 10000030,
             "factionID": 500002
@@ -16394,42 +16394,42 @@ var appData = {
         },
         "30002542": {
             "name": "Auga",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000372,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002543": {
             "name": "Eystur",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000373,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002544": {
             "name": "Pator",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000373,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002545": {
             "name": "Lustrevik",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000373,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002546": {
             "name": "Isendeldik",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000373,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002547": {
             "name": "Ammold",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000373,
             "regionID": 10000030,
             "factionID": 500002
@@ -16443,7 +16443,7 @@ var appData = {
         },
         "30002549": {
             "name": "Offugen",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000374,
             "regionID": 10000030,
             "factionID": 500002
@@ -16464,14 +16464,14 @@ var appData = {
         },
         "30002552": {
             "name": "Eddar",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000374,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002553": {
             "name": "Bogelek",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000374,
             "regionID": 10000030,
             "factionID": 500002
@@ -16492,7 +16492,7 @@ var appData = {
         },
         "30002556": {
             "name": "Gusandall",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000375,
             "regionID": 10000030,
             "factionID": 500002
@@ -16513,21 +16513,21 @@ var appData = {
         },
         "30002559": {
             "name": "Ingunn",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000375,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002560": {
             "name": "Gultratren",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000375,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002561": {
             "name": "Auren",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000375,
             "regionID": 10000030,
             "factionID": 500002
@@ -16541,14 +16541,14 @@ var appData = {
         },
         "30002563": {
             "name": "Egmur",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000376,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002564": {
             "name": "Javrendei",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000376,
             "regionID": 10000030,
             "factionID": 500002
@@ -16562,14 +16562,14 @@ var appData = {
         },
         "30002566": {
             "name": "Klir",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000376,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002567": {
             "name": "Jorus",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000376,
             "regionID": 10000030,
             "factionID": 500002
@@ -16590,70 +16590,70 @@ var appData = {
         },
         "30002570": {
             "name": "Magiko",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000377,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002571": {
             "name": "Oremmulf",
-            "security": "0.89",
+            "security": "0.90",
             "constellationID": 20000377,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002572": {
             "name": "Hurjafren",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000377,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002573": {
             "name": "Vullat",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000377,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002574": {
             "name": "Hrondedir",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000378,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002575": {
             "name": "Sotrenzur",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000378,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002576": {
             "name": "Hrondmund",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000378,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002577": {
             "name": "Bundindus",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000378,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002578": {
             "name": "Otraren",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000378,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30002579": {
             "name": "Hedgiviter",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000378,
             "regionID": 10000030,
             "factionID": 500002
@@ -16679,19 +16679,19 @@ var appData = {
         },
         "30002583": {
             "name": "N-CREL",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000379,
             "regionID": 10000031
         },
         "30002584": {
             "name": "TM-0P2",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000379,
             "regionID": 10000031
         },
         "30002585": {
             "name": "4OIV-X",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000379,
             "regionID": 10000031
         },
@@ -16703,7 +16703,7 @@ var appData = {
         },
         "30002587": {
             "name": "AFJ-NB",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000379,
             "regionID": 10000031
         },
@@ -16715,13 +16715,13 @@ var appData = {
         },
         "30002589": {
             "name": "9I-SRF",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000380,
             "regionID": 10000031
         },
         "30002590": {
             "name": "9-IIBL",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000380,
             "regionID": 10000031
         },
@@ -16751,25 +16751,25 @@ var appData = {
         },
         "30002595": {
             "name": "IRE-98",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000380,
             "regionID": 10000031
         },
         "30002596": {
             "name": "HOHF-B",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000380,
             "regionID": 10000031
         },
         "30002597": {
             "name": "Y-6B0E",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000380,
             "regionID": 10000031
         },
         "30002598": {
             "name": "F-3H2P",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000380,
             "regionID": 10000031
         },
@@ -16781,7 +16781,7 @@ var appData = {
         },
         "30002600": {
             "name": "XWY-YM",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000381,
             "regionID": 10000031
         },
@@ -16799,13 +16799,13 @@ var appData = {
         },
         "30002603": {
             "name": "M-VEJZ",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000381,
             "regionID": 10000031
         },
         "30002604": {
             "name": "LJK-T0",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000381,
             "regionID": 10000031
         },
@@ -16817,13 +16817,13 @@ var appData = {
         },
         "30002606": {
             "name": "NUG-OF",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000382,
             "regionID": 10000031
         },
         "30002607": {
             "name": "L6BY-P",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000382,
             "regionID": 10000031
         },
@@ -16847,31 +16847,31 @@ var appData = {
         },
         "30002611": {
             "name": "A1BK-A",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000382,
             "regionID": 10000031
         },
         "30002612": {
             "name": "N-7ECY",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000383,
             "regionID": 10000031
         },
         "30002613": {
             "name": "4-MPSJ",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000383,
             "regionID": 10000031
         },
         "30002614": {
             "name": "TWJ-AW",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000383,
             "regionID": 10000031
         },
         "30002615": {
             "name": "PZMA-E",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000383,
             "regionID": 10000031
         },
@@ -16937,19 +16937,19 @@ var appData = {
         },
         "30002626": {
             "name": "D-L4H0",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000385,
             "regionID": 10000031
         },
         "30002627": {
             "name": "GU-9F4",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000385,
             "regionID": 10000031
         },
         "30002628": {
             "name": "FG-1GH",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000385,
             "regionID": 10000031
         },
@@ -16961,7 +16961,7 @@ var appData = {
         },
         "30002630": {
             "name": "FR-B1H",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000385,
             "regionID": 10000031
         },
@@ -16973,14 +16973,14 @@ var appData = {
         },
         "30002632": {
             "name": "Pettinck",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000386,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002633": {
             "name": "Du Annes",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000386,
             "regionID": 10000032,
             "factionID": 500004
@@ -17001,21 +17001,21 @@ var appData = {
         },
         "30002636": {
             "name": "Grinacanne",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000386,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002637": {
             "name": "Metserel",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000386,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002638": {
             "name": "Sharuveil",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000386,
             "regionID": 10000032,
             "factionID": 500004
@@ -17029,7 +17029,7 @@ var appData = {
         },
         "30002640": {
             "name": "Erme",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000386,
             "regionID": 10000032,
             "factionID": 500004
@@ -17043,14 +17043,14 @@ var appData = {
         },
         "30002642": {
             "name": "Iyen-Oursta",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000387,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002643": {
             "name": "Faurent",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000387,
             "regionID": 10000032,
             "factionID": 500004
@@ -17078,7 +17078,7 @@ var appData = {
         },
         "30002647": {
             "name": "Ignoitton",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000387,
             "regionID": 10000032,
             "factionID": 500004
@@ -17099,42 +17099,42 @@ var appData = {
         },
         "30002650": {
             "name": "Ney",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000388,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002651": {
             "name": "Fasse",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000388,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002652": {
             "name": "Ala",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30002653": {
             "name": "Gratesier",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000388,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002654": {
             "name": "Schoorasana",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000388,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002655": {
             "name": "Vylade",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000389,
             "regionID": 10000032,
             "factionID": 500004
@@ -17162,7 +17162,7 @@ var appData = {
         },
         "30002659": {
             "name": "Dodixie",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000389,
             "regionID": 10000032,
             "factionID": 500004
@@ -17176,7 +17176,7 @@ var appData = {
         },
         "30002661": {
             "name": "Botane",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000389,
             "regionID": 10000032,
             "factionID": 500004
@@ -17197,21 +17197,21 @@ var appData = {
         },
         "30002664": {
             "name": "Alles",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000390,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002665": {
             "name": "Misneden",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000390,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002666": {
             "name": "Basgerin",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000390,
             "regionID": 10000032,
             "factionID": 500004
@@ -17246,21 +17246,21 @@ var appData = {
         },
         "30002671": {
             "name": "Nausschie",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000391,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002672": {
             "name": "Inghenges",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000391,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002673": {
             "name": "Estene",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000391,
             "regionID": 10000032,
             "factionID": 500004
@@ -17281,7 +17281,7 @@ var appData = {
         },
         "30002676": {
             "name": "Parchanier",
-            "security": "0.9",
+            "security": "0.90",
             "constellationID": 20000392,
             "regionID": 10000032,
             "factionID": 500004
@@ -17295,21 +17295,21 @@ var appData = {
         },
         "30002678": {
             "name": "Alsottobier",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000392,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002679": {
             "name": "Jolia",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000392,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002680": {
             "name": "Augnais",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000392,
             "regionID": 10000032,
             "factionID": 500004
@@ -17330,21 +17330,21 @@ var appData = {
         },
         "30002683": {
             "name": "Barmalie",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000392,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002684": {
             "name": "Audaerne",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000392,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002685": {
             "name": "Dodenvale",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000393,
             "regionID": 10000032,
             "factionID": 500004
@@ -17358,7 +17358,7 @@ var appData = {
         },
         "30002687": {
             "name": "Artisine",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000393,
             "regionID": 10000032,
             "factionID": 500004
@@ -17372,35 +17372,35 @@ var appData = {
         },
         "30002689": {
             "name": "Sileperer",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000393,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002690": {
             "name": "Bamiette",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000393,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002691": {
             "name": "Crielere",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000393,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002692": {
             "name": "Jel",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000394,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002693": {
             "name": "Egghelende",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000394,
             "regionID": 10000032,
             "factionID": 500004
@@ -17449,21 +17449,21 @@ var appData = {
         },
         "30002700": {
             "name": "Bawilan",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000395,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002701": {
             "name": "Atier",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000395,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002702": {
             "name": "Archee",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
@@ -17477,7 +17477,7 @@ var appData = {
         },
         "30002704": {
             "name": "Adrallezoen",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000395,
             "regionID": 10000032,
             "factionID": 500004
@@ -17505,7 +17505,7 @@ var appData = {
         },
         "30002708": {
             "name": "Claysson",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000396,
             "regionID": 10000032,
             "factionID": 500004
@@ -17526,21 +17526,21 @@ var appData = {
         },
         "30002711": {
             "name": "Stetille",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000396,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002712": {
             "name": "Alillere",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000397,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002713": {
             "name": "Abenync",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000397,
             "regionID": 10000032,
             "factionID": 500004
@@ -17554,14 +17554,14 @@ var appData = {
         },
         "30002715": {
             "name": "Bourynes",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000397,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002716": {
             "name": "Aurcel",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000397,
             "regionID": 10000032,
             "factionID": 500004
@@ -17582,21 +17582,21 @@ var appData = {
         },
         "30002719": {
             "name": "Miroitem",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000398,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002720": {
             "name": "Thelan",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000398,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002721": {
             "name": "Rorsins",
-            "security": "0.12",
+            "security": "0.13",
             "constellationID": 20000398,
             "regionID": 10000032,
             "factionID": 500004
@@ -17631,7 +17631,7 @@ var appData = {
         },
         "30002726": {
             "name": "Raeghoscon",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000399,
             "regionID": 10000032,
             "factionID": 500004
@@ -17652,14 +17652,14 @@ var appData = {
         },
         "30002729": {
             "name": "Aetree",
-            "security": "0.17",
+            "security": "0.18",
             "constellationID": 20000399,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002730": {
             "name": "Esmes",
-            "security": "0.10",
+            "security": "0.11",
             "constellationID": 20000399,
             "regionID": 10000032,
             "factionID": 500004
@@ -17673,21 +17673,21 @@ var appData = {
         },
         "30002732": {
             "name": "Mirilene",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000400,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002733": {
             "name": "Pucherie",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000400,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002734": {
             "name": "Fricoure",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000400,
             "regionID": 10000032,
             "factionID": 500004
@@ -17701,14 +17701,14 @@ var appData = {
         },
         "30002736": {
             "name": "Ainaille",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000400,
             "regionID": 10000032,
             "factionID": 500004
         },
         "30002737": {
             "name": "Konola",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
@@ -17729,21 +17729,21 @@ var appData = {
         },
         "30002740": {
             "name": "Eitu",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000401,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002741": {
             "name": "Horkkisen",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000401,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002742": {
             "name": "Erila",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000401,
             "regionID": 10000033,
             "factionID": 500001
@@ -17757,7 +17757,7 @@ var appData = {
         },
         "30002744": {
             "name": "Auviken",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000402,
             "regionID": 10000033,
             "factionID": 500001
@@ -17771,14 +17771,14 @@ var appData = {
         },
         "30002746": {
             "name": "Oijamon",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000402,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002747": {
             "name": "Kakki",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000402,
             "regionID": 10000033,
             "factionID": 500001
@@ -17799,14 +17799,14 @@ var appData = {
         },
         "30002750": {
             "name": "Oiniken",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000403,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002751": {
             "name": "Kaimon",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000403,
             "regionID": 10000033,
             "factionID": 500001
@@ -17876,7 +17876,7 @@ var appData = {
         },
         "30002761": {
             "name": "Kassigainen",
-            "security": "0.91",
+            "security": "0.92",
             "constellationID": 20000405,
             "regionID": 10000033,
             "factionID": 500001
@@ -17890,7 +17890,7 @@ var appData = {
         },
         "30002763": {
             "name": "Tennen",
-            "security": "0.91",
+            "security": "0.92",
             "constellationID": 20000405,
             "regionID": 10000033,
             "factionID": 500001
@@ -17911,56 +17911,56 @@ var appData = {
         },
         "30002766": {
             "name": "Iivinen",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000405,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002767": {
             "name": "Kubinen",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000406,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002768": {
             "name": "Uedama",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000406,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002769": {
             "name": "Enderailen",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000406,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002770": {
             "name": "Tunudan",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30002771": {
             "name": "Kulelen",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000406,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002772": {
             "name": "Rairomon",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000406,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002773": {
             "name": "Hogimo",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000406,
             "regionID": 10000033,
             "factionID": 500001
@@ -17974,14 +17974,14 @@ var appData = {
         },
         "30002775": {
             "name": "Paara",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000407,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002776": {
             "name": "Annaro",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000407,
             "regionID": 10000033,
             "factionID": 500001
@@ -18009,14 +18009,14 @@ var appData = {
         },
         "30002780": {
             "name": "Muvolailen",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000407,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002781": {
             "name": "Halaima",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000408,
             "regionID": 10000033,
             "factionID": 500001
@@ -18030,7 +18030,7 @@ var appData = {
         },
         "30002783": {
             "name": "Sankkasen",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000408,
             "regionID": 10000033,
             "factionID": 500001
@@ -18044,7 +18044,7 @@ var appData = {
         },
         "30002785": {
             "name": "Santola",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000408,
             "regionID": 10000033,
             "factionID": 500001
@@ -18065,21 +18065,21 @@ var appData = {
         },
         "30002788": {
             "name": "Inaro",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000409,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002789": {
             "name": "Kaaputenen",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000409,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002790": {
             "name": "Waskisen",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000409,
             "regionID": 10000033,
             "factionID": 500001
@@ -18121,14 +18121,14 @@ var appData = {
         },
         "30002796": {
             "name": "Hysera",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000410,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002797": {
             "name": "Kaunokka",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
@@ -18149,21 +18149,21 @@ var appData = {
         },
         "30002800": {
             "name": "Haatomo",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000411,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002801": {
             "name": "Suroken",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000411,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002802": {
             "name": "Kusomonmon",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000411,
             "regionID": 10000033,
             "factionID": 500001
@@ -18191,7 +18191,7 @@ var appData = {
         },
         "30002806": {
             "name": "Hasmijaala",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000412,
             "regionID": 10000033,
             "factionID": 500001
@@ -18205,7 +18205,7 @@ var appData = {
         },
         "30002808": {
             "name": "Oto",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000412,
             "regionID": 10000033,
             "factionID": 500001
@@ -18226,7 +18226,7 @@ var appData = {
         },
         "30002811": {
             "name": "Onatoh",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000412,
             "regionID": 10000033,
             "factionID": 500001
@@ -18268,14 +18268,14 @@ var appData = {
         },
         "30002817": {
             "name": "Aramachi",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000413,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30002818": {
             "name": "Oichiya",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000413,
             "regionID": 10000033,
             "factionID": 500001
@@ -18289,19 +18289,19 @@ var appData = {
         },
         "30002820": {
             "name": "N-JK02",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000414,
             "regionID": 10000034
         },
         "30002821": {
             "name": "JT2I-7",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000414,
             "regionID": 10000034
         },
         "30002822": {
             "name": "XTJ-5Q",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000414,
             "regionID": 10000034
         },
@@ -18319,13 +18319,13 @@ var appData = {
         },
         "30002825": {
             "name": "UDVW-O",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000414,
             "regionID": 10000034
         },
         "30002826": {
             "name": "F48K-D",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000414,
             "regionID": 10000034
         },
@@ -18349,7 +18349,7 @@ var appData = {
         },
         "30002830": {
             "name": "LS3-HP",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000415,
             "regionID": 10000034
         },
@@ -18373,13 +18373,13 @@ var appData = {
         },
         "30002834": {
             "name": "AU2V-J",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000416,
             "regionID": 10000034
         },
         "30002835": {
             "name": "SY-0AM",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000416,
             "regionID": 10000034
         },
@@ -18397,13 +18397,13 @@ var appData = {
         },
         "30002838": {
             "name": "D-6PKO",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000416,
             "regionID": 10000034
         },
         "30002839": {
             "name": "RAI-0E",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000417,
             "regionID": 10000034
         },
@@ -18415,13 +18415,13 @@ var appData = {
         },
         "30002841": {
             "name": "TA9T-P",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000417,
             "regionID": 10000034
         },
         "30002842": {
             "name": "L-TLFU",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000417,
             "regionID": 10000034
         },
@@ -18433,7 +18433,7 @@ var appData = {
         },
         "30002844": {
             "name": "Q-GICU",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000417,
             "regionID": 10000034
         },
@@ -18451,25 +18451,25 @@ var appData = {
         },
         "30002847": {
             "name": "L-GY1B",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000418,
             "regionID": 10000034
         },
         "30002848": {
             "name": "74-DRC",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000418,
             "regionID": 10000034
         },
         "30002849": {
             "name": "LE-67X",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000418,
             "regionID": 10000034
         },
         "30002850": {
             "name": "B1UE-J",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000418,
             "regionID": 10000034
         },
@@ -18481,13 +18481,13 @@ var appData = {
         },
         "30002852": {
             "name": "M3-H2Y",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000418,
             "regionID": 10000034
         },
         "30002853": {
             "name": "G-KCFT",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000419,
             "regionID": 10000034
         },
@@ -18505,25 +18505,25 @@ var appData = {
         },
         "30002856": {
             "name": "HPV-RJ",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000419,
             "regionID": 10000034
         },
         "30002857": {
             "name": "H7S-5I",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000419,
             "regionID": 10000034
         },
         "30002858": {
             "name": "C3J0-O",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000419,
             "regionID": 10000034
         },
         "30002859": {
             "name": "GSO-SR",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000419,
             "regionID": 10000034
         },
@@ -18535,61 +18535,61 @@ var appData = {
         },
         "30002861": {
             "name": "G4-QU6",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002862": {
             "name": "V2-GZS",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002863": {
             "name": "HD-HOZ",
-            "security": "-0.84",
+            "security": "-0.85",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002864": {
             "name": "42G-OB",
-            "security": "-0.85",
+            "security": "-0.86",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002865": {
             "name": "LEM-I1",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002866": {
             "name": "1S-SU1",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002867": {
             "name": "ND-GL4",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000420,
             "regionID": 10000034
         },
         "30002868": {
             "name": "9-0QB7",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000421,
             "regionID": 10000034
         },
         "30002869": {
             "name": "M-75WN",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000421,
             "regionID": 10000034
         },
         "30002870": {
             "name": "PNFW-O",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000421,
             "regionID": 10000034
         },
@@ -18607,13 +18607,13 @@ var appData = {
         },
         "30002873": {
             "name": "K95-9I",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000421,
             "regionID": 10000034
         },
         "30002874": {
             "name": "R1O-GN",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000422,
             "regionID": 10000034
         },
@@ -18625,13 +18625,13 @@ var appData = {
         },
         "30002876": {
             "name": "BGMZ-0",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000422,
             "regionID": 10000034
         },
         "30002877": {
             "name": "I2D3-5",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000422,
             "regionID": 10000034
         },
@@ -18643,19 +18643,19 @@ var appData = {
         },
         "30002879": {
             "name": "O9K-FT",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000422,
             "regionID": 10000034
         },
         "30002880": {
             "name": "RQOO-U",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000422,
             "regionID": 10000034
         },
         "30002881": {
             "name": "FB5U-I",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000423,
             "regionID": 10000034
         },
@@ -18673,19 +18673,19 @@ var appData = {
         },
         "30002884": {
             "name": "O5-YNW",
-            "security": "-0.94",
+            "security": "-0.95",
             "constellationID": 20000423,
             "regionID": 10000034
         },
         "30002885": {
             "name": "86L-9F",
-            "security": "-0.95",
+            "security": "-0.96",
             "constellationID": 20000423,
             "regionID": 10000034
         },
         "30002886": {
             "name": "IUU3-L",
-            "security": "-0.98",
+            "security": "-0.99",
             "constellationID": 20000423,
             "regionID": 10000034
         },
@@ -18697,7 +18697,7 @@ var appData = {
         },
         "30002888": {
             "name": "S-LHPJ",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000423,
             "regionID": 10000034
         },
@@ -18709,7 +18709,7 @@ var appData = {
         },
         "30002890": {
             "name": "T-945F",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000424,
             "regionID": 10000035
         },
@@ -18721,19 +18721,19 @@ var appData = {
         },
         "30002892": {
             "name": "AD-CBT",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000424,
             "regionID": 10000035
         },
         "30002893": {
             "name": "QPO-WI",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000424,
             "regionID": 10000035
         },
         "30002894": {
             "name": "R8S-1K",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000424,
             "regionID": 10000035
         },
@@ -18745,13 +18745,13 @@ var appData = {
         },
         "30002896": {
             "name": "CU9-T0",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000425,
             "regionID": 10000035
         },
         "30002897": {
             "name": "XCF-8N",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000425,
             "regionID": 10000035
         },
@@ -18763,19 +18763,19 @@ var appData = {
         },
         "30002899": {
             "name": "0P-F3K",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000425,
             "regionID": 10000035
         },
         "30002900": {
             "name": "K5F-Z2",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000425,
             "regionID": 10000035
         },
         "30002901": {
             "name": "TXME-A",
-            "security": "-0.80",
+            "security": "-0.81",
             "constellationID": 20000425,
             "regionID": 10000035
         },
@@ -18787,25 +18787,25 @@ var appData = {
         },
         "30002903": {
             "name": "2-KF56",
-            "security": "-0.82",
+            "security": "-0.83",
             "constellationID": 20000426,
             "regionID": 10000035
         },
         "30002904": {
             "name": "VFK-IV",
-            "security": "-0.84",
+            "security": "-0.85",
             "constellationID": 20000426,
             "regionID": 10000035
         },
         "30002905": {
             "name": "2R-CRW",
-            "security": "-0.87",
+            "security": "-0.88",
             "constellationID": 20000426,
             "regionID": 10000035
         },
         "30002906": {
             "name": "CCP-US",
-            "security": "-0.93",
+            "security": "-0.94",
             "constellationID": 20000426,
             "regionID": 10000035
         },
@@ -18817,7 +18817,7 @@ var appData = {
         },
         "30002908": {
             "name": "I30-3A",
-            "security": "-0.84",
+            "security": "-0.85",
             "constellationID": 20000427,
             "regionID": 10000035
         },
@@ -18829,13 +18829,13 @@ var appData = {
         },
         "30002910": {
             "name": "NC-N3F",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000427,
             "regionID": 10000035
         },
         "30002911": {
             "name": "JU-OWQ",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000427,
             "regionID": 10000035
         },
@@ -18847,7 +18847,7 @@ var appData = {
         },
         "30002913": {
             "name": "MXX5-9",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000427,
             "regionID": 10000035
         },
@@ -18859,7 +18859,7 @@ var appData = {
         },
         "30002915": {
             "name": "C7Y-7Z",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000428,
             "regionID": 10000035
         },
@@ -18877,13 +18877,13 @@ var appData = {
         },
         "30002918": {
             "name": "N-TFXK",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000428,
             "regionID": 10000035
         },
         "30002919": {
             "name": "33RB-O",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000428,
             "regionID": 10000035
         },
@@ -18907,13 +18907,13 @@ var appData = {
         },
         "30002923": {
             "name": "ZOYW-O",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000429,
             "regionID": 10000035
         },
         "30002924": {
             "name": "85-B52",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000429,
             "regionID": 10000035
         },
@@ -18925,19 +18925,19 @@ var appData = {
         },
         "30002926": {
             "name": "RO0-AF",
-            "security": "-0.83",
+            "security": "-0.84",
             "constellationID": 20000429,
             "regionID": 10000035
         },
         "30002927": {
             "name": "5W3-DG",
-            "security": "-0.77",
+            "security": "-0.78",
             "constellationID": 20000429,
             "regionID": 10000035
         },
         "30002928": {
             "name": "LT-DRO",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000429,
             "regionID": 10000035
         },
@@ -18949,7 +18949,7 @@ var appData = {
         },
         "30002930": {
             "name": "8S28-3",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000429,
             "regionID": 10000035
         },
@@ -18967,13 +18967,13 @@ var appData = {
         },
         "30002933": {
             "name": "AGG-NR",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000430,
             "regionID": 10000035
         },
         "30002934": {
             "name": "0V0R-R",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000430,
             "regionID": 10000035
         },
@@ -18991,25 +18991,25 @@ var appData = {
         },
         "30002937": {
             "name": "3JN9-Q",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000430,
             "regionID": 10000035
         },
         "30002938": {
             "name": "3T7-M8",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000431,
             "regionID": 10000035
         },
         "30002939": {
             "name": "WUZ-WM",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000431,
             "regionID": 10000035
         },
         "30002940": {
             "name": "MZ1E-P",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000431,
             "regionID": 10000035
         },
@@ -19033,13 +19033,13 @@ var appData = {
         },
         "30002944": {
             "name": "4N-BUI",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000431,
             "regionID": 10000035
         },
         "30002945": {
             "name": "N2IS-B",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000431,
             "regionID": 10000035
         },
@@ -19051,7 +19051,7 @@ var appData = {
         },
         "30002947": {
             "name": "GY5-26",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000431,
             "regionID": 10000035
         },
@@ -19063,69 +19063,69 @@ var appData = {
         },
         "30002949": {
             "name": "9CK-KZ",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000431,
             "regionID": 10000035
         },
         "30002950": {
             "name": "5S-KXA",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000431,
             "regionID": 10000035
         },
         "30002951": {
             "name": "U-TJ7Y",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000432,
             "regionID": 10000035
         },
         "30002952": {
             "name": "A4L-A2",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000432,
             "regionID": 10000035
         },
         "30002953": {
             "name": "CZDJ-1",
-            "security": "-0.94",
+            "security": "-0.95",
             "constellationID": 20000432,
             "regionID": 10000035
         },
         "30002954": {
             "name": "RG9-7U",
-            "security": "-0.97",
+            "security": "-0.98",
             "constellationID": 20000432,
             "regionID": 10000035
         },
         "30002955": {
             "name": "UJY-HE",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000432,
             "regionID": 10000035
         },
         "30002956": {
             "name": "UEJX-G",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000432,
             "regionID": 10000035
         },
         "30002957": {
             "name": "Tzvi",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000433,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002958": {
             "name": "Raa",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000433,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002959": {
             "name": "Sifilar",
-            "security": "0.25",
+            "security": "0.26",
             "constellationID": 20000433,
             "regionID": 10000036,
             "factionID": 500003
@@ -19153,7 +19153,7 @@ var appData = {
         },
         "30002963": {
             "name": "Odin",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000434,
             "regionID": 10000036,
             "factionID": 500003
@@ -19167,28 +19167,28 @@ var appData = {
         },
         "30002965": {
             "name": "Choonka",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000434,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002966": {
             "name": "Thasinaz",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000434,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002967": {
             "name": "Dihra",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000434,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002968": {
             "name": "Dital",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000434,
             "regionID": 10000036,
             "factionID": 500003
@@ -19216,28 +19216,28 @@ var appData = {
         },
         "30002972": {
             "name": "Gheth",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000435,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002973": {
             "name": "Lisudeh",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000435,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002974": {
             "name": "Mehatoor",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000435,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002975": {
             "name": "Roushzar",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000436,
             "regionID": 10000036,
             "factionID": 500003
@@ -19251,35 +19251,35 @@ var appData = {
         },
         "30002977": {
             "name": "Arayar",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000436,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002978": {
             "name": "Asghed",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000436,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002979": {
             "name": "Tararan",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000436,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002980": {
             "name": "Sosan",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000436,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002981": {
             "name": "Halmah",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000436,
             "regionID": 10000036,
             "factionID": 500003
@@ -19293,28 +19293,28 @@ var appData = {
         },
         "30002983": {
             "name": "Soosat",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000437,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002984": {
             "name": "Ibash",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000437,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002985": {
             "name": "Itsyamil",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000437,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002986": {
             "name": "Mendori",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000437,
             "regionID": 10000036,
             "factionID": 500003
@@ -19335,7 +19335,7 @@ var appData = {
         },
         "30002989": {
             "name": "Laddiaha",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000438,
             "regionID": 10000036,
             "factionID": 500003
@@ -19349,28 +19349,28 @@ var appData = {
         },
         "30002991": {
             "name": "Uadelah",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000438,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002992": {
             "name": "Akes",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000438,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002993": {
             "name": "Riavayed",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000438,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002994": {
             "name": "Hati",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000438,
             "regionID": 10000036,
             "factionID": 500003
@@ -19391,21 +19391,21 @@ var appData = {
         },
         "30002997": {
             "name": "Ehnoum",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000439,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002998": {
             "name": "Upper Debyl",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000439,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30002999": {
             "name": "Shastal",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000439,
             "regionID": 10000036,
             "factionID": 500003
@@ -19426,14 +19426,14 @@ var appData = {
         },
         "30003002": {
             "name": "Faktun",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000440,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30003003": {
             "name": "Halenan",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000440,
             "regionID": 10000036,
             "factionID": 500003
@@ -19447,7 +19447,7 @@ var appData = {
         },
         "30003005": {
             "name": "Uktiad",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000440,
             "regionID": 10000036,
             "factionID": 500003
@@ -19461,14 +19461,14 @@ var appData = {
         },
         "30003007": {
             "name": "Arveyil",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000440,
             "regionID": 10000036,
             "factionID": 500003
         },
         "30003008": {
             "name": "Palpis",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000440,
             "regionID": 10000036,
             "factionID": 500003
@@ -19482,14 +19482,14 @@ var appData = {
         },
         "30003010": {
             "name": "Halle",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000441,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003011": {
             "name": "Mormoen",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000441,
             "regionID": 10000037,
             "factionID": 500004
@@ -19503,14 +19503,14 @@ var appData = {
         },
         "30003013": {
             "name": "Jurlesel",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000441,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003014": {
             "name": "Bereye",
-            "security": "0.9",
+            "security": "0.90",
             "constellationID": 20000441,
             "regionID": 10000037,
             "factionID": 500004
@@ -19538,7 +19538,7 @@ var appData = {
         },
         "30003018": {
             "name": "Azer",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000442,
             "regionID": 10000037,
             "factionID": 500004
@@ -19559,7 +19559,7 @@ var appData = {
         },
         "30003021": {
             "name": "Mosson",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000442,
             "regionID": 10000037,
             "factionID": 500004
@@ -19587,7 +19587,7 @@ var appData = {
         },
         "30003025": {
             "name": "Lirsautton",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000443,
             "regionID": 10000037,
             "factionID": 500004
@@ -19608,7 +19608,7 @@ var appData = {
         },
         "30003028": {
             "name": "Aclan",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000443,
             "regionID": 10000037,
             "factionID": 500004
@@ -19629,21 +19629,21 @@ var appData = {
         },
         "30003031": {
             "name": "Athinard",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000444,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003032": {
             "name": "Meves",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000444,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003033": {
             "name": "Ethernity",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000444,
             "regionID": 10000037,
             "factionID": 500004
@@ -19657,7 +19657,7 @@ var appData = {
         },
         "30003035": {
             "name": "Gicodel",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000444,
             "regionID": 10000037,
             "factionID": 500004
@@ -19678,21 +19678,21 @@ var appData = {
         },
         "30003038": {
             "name": "Atlanins",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000445,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003039": {
             "name": "Leremblompes",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000445,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003040": {
             "name": "Bille",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000445,
             "regionID": 10000037,
             "factionID": 500004
@@ -19713,7 +19713,7 @@ var appData = {
         },
         "30003043": {
             "name": "Uphene",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000445,
             "regionID": 10000037,
             "factionID": 500004
@@ -19727,21 +19727,21 @@ var appData = {
         },
         "30003045": {
             "name": "Enedore",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000446,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003046": {
             "name": "Angymonne",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30003047": {
             "name": "Averon",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000446,
             "regionID": 10000037,
             "factionID": 500004
@@ -19769,14 +19769,14 @@ var appData = {
         },
         "30003051": {
             "name": "Antollare",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000446,
             "regionID": 10000037,
             "factionID": 500004
         },
         "30003052": {
             "name": "Tolle",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000446,
             "regionID": 10000037,
             "factionID": 500004
@@ -19811,7 +19811,7 @@ var appData = {
         },
         "30003057": {
             "name": "Groothese",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000447,
             "regionID": 10000037,
             "factionID": 500004
@@ -19832,7 +19832,7 @@ var appData = {
         },
         "30003060": {
             "name": "Mannar",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000447,
             "regionID": 10000037,
             "factionID": 500004
@@ -19853,7 +19853,7 @@ var appData = {
         },
         "30003063": {
             "name": "Lamaa",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000448,
             "regionID": 10000038,
             "factionID": 500003
@@ -19874,7 +19874,7 @@ var appData = {
         },
         "30003066": {
             "name": "Kuomi",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000448,
             "regionID": 10000038,
             "factionID": 500003
@@ -19944,7 +19944,7 @@ var appData = {
         },
         "30003076": {
             "name": "Gammel",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000449,
             "regionID": 10000038,
             "factionID": 500003
@@ -19993,7 +19993,7 @@ var appData = {
         },
         "30003083": {
             "name": "Junsen",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000450,
             "regionID": 10000038,
             "factionID": 500003
@@ -20007,28 +20007,28 @@ var appData = {
         },
         "30003085": {
             "name": "Hakodan",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000450,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003086": {
             "name": "Sahtogas",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000451,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003087": {
             "name": "Haras",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000451,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003088": {
             "name": "Oyonata",
-            "security": "0.25",
+            "security": "0.26",
             "constellationID": 20000451,
             "regionID": 10000038,
             "factionID": 500003
@@ -20049,42 +20049,42 @@ var appData = {
         },
         "30003091": {
             "name": "Tannakan",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000451,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003092": {
             "name": "Komaa",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000452,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003093": {
             "name": "Ayeroilen",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000452,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003094": {
             "name": "Imata",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000452,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003095": {
             "name": "Furskeshin",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000452,
             "regionID": 10000038,
             "factionID": 500003
         },
         "30003096": {
             "name": "Kurmaru",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000452,
             "regionID": 10000038,
             "factionID": 500003
@@ -20098,13 +20098,13 @@ var appData = {
         },
         "30003098": {
             "name": "VYJ-DA",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000453,
             "regionID": 10000039
         },
         "30003099": {
             "name": "HHQ-M1",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000453,
             "regionID": 10000039
         },
@@ -20122,13 +20122,13 @@ var appData = {
         },
         "30003102": {
             "name": "WAC-HW",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000453,
             "regionID": 10000039
         },
         "30003103": {
             "name": "HT4K-M",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000453,
             "regionID": 10000039
         },
@@ -20140,7 +20140,7 @@ var appData = {
         },
         "30003105": {
             "name": "4-OUKF",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000454,
             "regionID": 10000039
         },
@@ -20164,25 +20164,25 @@ var appData = {
         },
         "30003109": {
             "name": "C9N-CC",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000454,
             "regionID": 10000039
         },
         "30003110": {
             "name": "X-7BIX",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000454,
             "regionID": 10000039
         },
         "30003111": {
             "name": "5-9UXZ",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000454,
             "regionID": 10000039
         },
         "30003112": {
             "name": "Q0OH-V",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000454,
             "regionID": 10000039
         },
@@ -20194,13 +20194,13 @@ var appData = {
         },
         "30003114": {
             "name": "0-O6XF",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000455,
             "regionID": 10000039
         },
         "30003115": {
             "name": "D-FVI7",
-            "security": "-0.80",
+            "security": "-0.81",
             "constellationID": 20000455,
             "regionID": 10000039
         },
@@ -20212,43 +20212,43 @@ var appData = {
         },
         "30003117": {
             "name": "NH-R5B",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000455,
             "regionID": 10000039
         },
         "30003118": {
             "name": "FN-GFQ",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000455,
             "regionID": 10000039
         },
         "30003119": {
             "name": "XKZ8-H",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000456,
             "regionID": 10000039
         },
         "30003120": {
             "name": "WX-6UX",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000456,
             "regionID": 10000039
         },
         "30003121": {
             "name": "BZ-0GW",
-            "security": "-0.83",
+            "security": "-0.84",
             "constellationID": 20000456,
             "regionID": 10000039
         },
         "30003122": {
             "name": "16P-PX",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000456,
             "regionID": 10000039
         },
         "30003123": {
             "name": "CR-0E5",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000456,
             "regionID": 10000039
         },
@@ -20260,7 +20260,7 @@ var appData = {
         },
         "30003125": {
             "name": "A1-AUH",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000457,
             "regionID": 10000039
         },
@@ -20284,19 +20284,19 @@ var appData = {
         },
         "30003129": {
             "name": "VUAC-Y",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000457,
             "regionID": 10000039
         },
         "30003130": {
             "name": "V-XANH",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000457,
             "regionID": 10000039
         },
         "30003131": {
             "name": "450I-W",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000457,
             "regionID": 10000039
         },
@@ -20308,31 +20308,31 @@ var appData = {
         },
         "30003133": {
             "name": "G-YZUX",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000458,
             "regionID": 10000039
         },
         "30003134": {
             "name": "CZ6U-1",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000458,
             "regionID": 10000039
         },
         "30003135": {
             "name": "D-PNP9",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000458,
             "regionID": 10000039
         },
         "30003136": {
             "name": "E1UU-3",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000458,
             "regionID": 10000039
         },
         "30003137": {
             "name": "P-3XVV",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000458,
             "regionID": 10000039
         },
@@ -20374,7 +20374,7 @@ var appData = {
         },
         "30003144": {
             "name": "H-T40Z",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000459,
             "regionID": 10000039
         },
@@ -20386,19 +20386,19 @@ var appData = {
         },
         "30003146": {
             "name": "Q1-R7K",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000459,
             "regionID": 10000039
         },
         "30003147": {
             "name": "111-F1",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000459,
             "regionID": 10000039
         },
         "30003148": {
             "name": "JD-TYH",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000460,
             "regionID": 10000039
         },
@@ -20422,7 +20422,7 @@ var appData = {
         },
         "30003152": {
             "name": "SN9S-N",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000460,
             "regionID": 10000039
         },
@@ -20434,19 +20434,19 @@ var appData = {
         },
         "30003154": {
             "name": "Z-MO29",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000461,
             "regionID": 10000039
         },
         "30003155": {
             "name": "G-JC9R",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000461,
             "regionID": 10000039
         },
         "30003156": {
             "name": "DIBH-Q",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000461,
             "regionID": 10000039
         },
@@ -20464,7 +20464,7 @@ var appData = {
         },
         "30003159": {
             "name": "PE-H02",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000461,
             "regionID": 10000039
         },
@@ -20482,13 +20482,13 @@ var appData = {
         },
         "30003162": {
             "name": "HHE5-L",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000461,
             "regionID": 10000039
         },
         "30003163": {
             "name": "P9F-ZG",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000462,
             "regionID": 10000039
         },
@@ -20500,7 +20500,7 @@ var appData = {
         },
         "30003165": {
             "name": "7P-J38",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000462,
             "regionID": 10000039
         },
@@ -20512,49 +20512,49 @@ var appData = {
         },
         "30003167": {
             "name": "PK-PHZ",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000462,
             "regionID": 10000039
         },
         "30003168": {
             "name": "L-M6JK",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000462,
             "regionID": 10000039
         },
         "30003169": {
             "name": "C-PEWN",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000462,
             "regionID": 10000039
         },
         "30003170": {
             "name": "DL-CDY",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000463,
             "regionID": 10000039
         },
         "30003171": {
             "name": "29YH-V",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000463,
             "regionID": 10000039
         },
         "30003172": {
             "name": "LG-RO2",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000463,
             "regionID": 10000039
         },
         "30003173": {
             "name": "X-HISR",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000463,
             "regionID": 10000039
         },
         "30003174": {
             "name": "QS-530",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000463,
             "regionID": 10000039
         },
@@ -20566,7 +20566,7 @@ var appData = {
         },
         "30003176": {
             "name": "IPX-H5",
-            "security": "-0.90",
+            "security": "-0.91",
             "constellationID": 20000463,
             "regionID": 10000039
         },
@@ -20578,31 +20578,31 @@ var appData = {
         },
         "30003178": {
             "name": "YRV-MZ",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000464,
             "regionID": 10000039
         },
         "30003179": {
             "name": "6SB-BN",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000464,
             "regionID": 10000039
         },
         "30003180": {
             "name": "B1D-KU",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000464,
             "regionID": 10000039
         },
         "30003181": {
             "name": "QFIU-K",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000464,
             "regionID": 10000039
         },
         "30003182": {
             "name": "2R-KLH",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000464,
             "regionID": 10000039
         },
@@ -20614,7 +20614,7 @@ var appData = {
         },
         "30003184": {
             "name": "G-W1ND",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000465,
             "regionID": 10000040
         },
@@ -20632,7 +20632,7 @@ var appData = {
         },
         "30003187": {
             "name": "DGDT-3",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000465,
             "regionID": 10000040
         },
@@ -20644,13 +20644,13 @@ var appData = {
         },
         "30003189": {
             "name": "83-YGI",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000465,
             "regionID": 10000040
         },
         "30003190": {
             "name": "KH-EWC",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000465,
             "regionID": 10000040
         },
@@ -20662,13 +20662,13 @@ var appData = {
         },
         "30003192": {
             "name": "F-816R",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000466,
             "regionID": 10000040
         },
         "30003193": {
             "name": "DS3-6A",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000466,
             "regionID": 10000040
         },
@@ -20680,19 +20680,19 @@ var appData = {
         },
         "30003195": {
             "name": "T-HMWP",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000466,
             "regionID": 10000040
         },
         "30003196": {
             "name": "DYS-CG",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000466,
             "regionID": 10000040
         },
         "30003197": {
             "name": "MTGF-2",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000467,
             "regionID": 10000040
         },
@@ -20704,7 +20704,7 @@ var appData = {
         },
         "30003199": {
             "name": "GTQ-C9",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000467,
             "regionID": 10000040
         },
@@ -20716,19 +20716,19 @@ var appData = {
         },
         "30003201": {
             "name": "ORB4-J",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000467,
             "regionID": 10000040
         },
         "30003202": {
             "name": "GGMF-J",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000467,
             "regionID": 10000040
         },
         "30003203": {
             "name": "IG-4OF",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000467,
             "regionID": 10000040
         },
@@ -20770,13 +20770,13 @@ var appData = {
         },
         "30003210": {
             "name": "6U-MFQ",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000469,
             "regionID": 10000040
         },
         "30003211": {
             "name": "1EO-OE",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000469,
             "regionID": 10000040
         },
@@ -20788,7 +20788,7 @@ var appData = {
         },
         "30003213": {
             "name": "FZCR-3",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000469,
             "regionID": 10000040
         },
@@ -20800,7 +20800,7 @@ var appData = {
         },
         "30003215": {
             "name": "1-HDQ4",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000469,
             "regionID": 10000040
         },
@@ -20818,7 +20818,7 @@ var appData = {
         },
         "30003218": {
             "name": "R-ZESX",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000470,
             "regionID": 10000040
         },
@@ -20848,7 +20848,7 @@ var appData = {
         },
         "30003223": {
             "name": "5JEZ-I",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000471,
             "regionID": 10000040
         },
@@ -20866,13 +20866,13 @@ var appData = {
         },
         "30003226": {
             "name": "V-X0KM",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000471,
             "regionID": 10000040
         },
         "30003227": {
             "name": "U9SE-N",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000471,
             "regionID": 10000040
         },
@@ -20884,7 +20884,7 @@ var appData = {
         },
         "30003229": {
             "name": "RF-X7V",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000472,
             "regionID": 10000040
         },
@@ -20896,13 +20896,13 @@ var appData = {
         },
         "30003231": {
             "name": "3-JG3X",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000472,
             "regionID": 10000040
         },
         "30003232": {
             "name": "GK3-RX",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000472,
             "regionID": 10000040
         },
@@ -20932,13 +20932,13 @@ var appData = {
         },
         "30003237": {
             "name": "Y-0HVF",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000473,
             "regionID": 10000040
         },
         "30003238": {
             "name": "21M1-B",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000473,
             "regionID": 10000040
         },
@@ -20950,13 +20950,13 @@ var appData = {
         },
         "30003240": {
             "name": "U-RELP",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000473,
             "regionID": 10000040
         },
         "30003241": {
             "name": "IAMJ-Q",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000473,
             "regionID": 10000040
         },
@@ -20992,19 +20992,19 @@ var appData = {
         },
         "30003247": {
             "name": "VZEG-B",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000474,
             "regionID": 10000040
         },
         "30003248": {
             "name": "P-ZWKH",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000474,
             "regionID": 10000040
         },
         "30003249": {
             "name": "9G5J-1",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000475,
             "regionID": 10000040
         },
@@ -21022,7 +21022,7 @@ var appData = {
         },
         "30003252": {
             "name": "XM-RMD",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000475,
             "regionID": 10000040
         },
@@ -21040,7 +21040,7 @@ var appData = {
         },
         "30003255": {
             "name": "LA2-KV",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000476,
             "regionID": 10000040
         },
@@ -21058,25 +21058,25 @@ var appData = {
         },
         "30003258": {
             "name": "1-BK1Q",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000476,
             "regionID": 10000040
         },
         "30003259": {
             "name": "X-CYNC",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000476,
             "regionID": 10000040
         },
         "30003260": {
             "name": "RJBC-I",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000476,
             "regionID": 10000040
         },
         "30003261": {
             "name": "H-MHWF",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000477,
             "regionID": 10000040
         },
@@ -21094,19 +21094,19 @@ var appData = {
         },
         "30003264": {
             "name": "JXQJ-B",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000477,
             "regionID": 10000040
         },
         "30003265": {
             "name": "Y-BIPM",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000477,
             "regionID": 10000040
         },
         "30003266": {
             "name": "QYT-X8",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000477,
             "regionID": 10000040
         },
@@ -21121,168 +21121,168 @@ var appData = {
             "security": "-0.03",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003269": {
             "name": "F67E-Q",
             "security": "-0.02",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003270": {
             "name": "6E-578",
             "security": "-0.05",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003271": {
             "name": "Poitot",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003272": {
             "name": "ZVN5-H",
             "security": "-0.08",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003273": {
             "name": "ATY-2U",
             "security": "-0.07",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003274": {
             "name": "X-BV98",
             "security": "-0.04",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003275": {
             "name": "2X-PQG",
             "security": "-0.06",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003276": {
             "name": "FD-MLJ",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003277": {
             "name": "PF-346",
             "security": "-0.35",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003278": {
             "name": "X-M2LR",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003279": {
             "name": "K5-JRD",
             "security": "-0.09",
             "constellationID": 20000478,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003280": {
             "name": "6-CZ49",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000479,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003281": {
             "name": "EZA-FM",
             "security": "-0.16",
             "constellationID": 20000479,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003282": {
             "name": "8-JYPM",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000479,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003283": {
             "name": "PVH8-0",
             "security": "-0.10",
             "constellationID": 20000479,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003284": {
             "name": "M2-CF1",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000479,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003285": {
             "name": "JH-M2W",
             "security": "-0.12",
             "constellationID": 20000479,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003286": {
             "name": "PC9-AY",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000480,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003287": {
             "name": "T22-QI",
             "security": "-0.17",
             "constellationID": 20000480,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003288": {
             "name": "X-PYH5",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000480,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003289": {
             "name": "ZN0-SR",
             "security": "-0.23",
             "constellationID": 20000480,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003290": {
             "name": "5-DSFH",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000480,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003291": {
             "name": "AK-QBU",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000480,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003292": {
             "name": "QWF-6P",
@@ -21314,7 +21314,7 @@ var appData = {
         },
         "30003296": {
             "name": "0EK-NJ",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000481,
             "regionID": 10000041,
             "factionID": 500001
@@ -21328,535 +21328,535 @@ var appData = {
         },
         "30003298": {
             "name": "UM-Q7F",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000481,
             "regionID": 10000041,
             "factionID": 500001
         },
         "30003299": {
             "name": "T-LIWS",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000481,
             "regionID": 10000041,
             "factionID": 500001
         },
         "30003300": {
             "name": "KTHT-O",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000481,
             "regionID": 10000041,
             "factionID": 500001
         },
         "30003301": {
             "name": "97X-CH",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003302": {
             "name": "5-T0PZ",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003303": {
             "name": "6R-PWU",
             "security": "-0.27",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003304": {
             "name": "2Q-I6Q",
             "security": "-0.14",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003305": {
             "name": "A-ZLHX",
             "security": "-0.33",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003306": {
             "name": "UTKS-5",
-            "security": "-0.36",
-            "constellationID": 20000482,
-            "regionID": 10000041,
-            "factionID": 500009
-        },
-        "30003307": {
-            "name": "Y9G-KS",
             "security": "-0.37",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
+        },
+        "30003307": {
+            "name": "Y9G-KS",
+            "security": "-0.38",
+            "constellationID": 20000482,
+            "regionID": 10000041,
+            "factionID": 500001
         },
         "30003308": {
             "name": "I-YGGI",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000482,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003309": {
             "name": "VV-VCR",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003310": {
             "name": "5-75MB",
             "security": "-0.16",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003311": {
             "name": "IIRH-G",
-            "security": "-0.25",
-            "constellationID": 20000483,
-            "regionID": 10000041,
-            "factionID": 500009
-        },
-        "30003312": {
-            "name": "35-RK9",
-            "security": "-0.24",
-            "constellationID": 20000483,
-            "regionID": 10000041,
-            "factionID": 500009
-        },
-        "30003313": {
-            "name": "XS-XAY",
-            "security": "-0.33",
-            "constellationID": 20000483,
-            "regionID": 10000041,
-            "factionID": 500009
-        },
-        "30003314": {
-            "name": "DP34-U",
-            "security": "-0.35",
-            "constellationID": 20000483,
-            "regionID": 10000041,
-            "factionID": 500009
-        },
-        "30003315": {
-            "name": "617I-I",
             "security": "-0.26",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
+        },
+        "30003312": {
+            "name": "35-RK9",
+            "security": "-0.25",
+            "constellationID": 20000483,
+            "regionID": 10000041,
+            "factionID": 500001
+        },
+        "30003313": {
+            "name": "XS-XAY",
+            "security": "-0.34",
+            "constellationID": 20000483,
+            "regionID": 10000041,
+            "factionID": 500001
+        },
+        "30003314": {
+            "name": "DP34-U",
+            "security": "-0.36",
+            "constellationID": 20000483,
+            "regionID": 10000041,
+            "factionID": 500001
+        },
+        "30003315": {
+            "name": "617I-I",
+            "security": "-0.27",
+            "constellationID": 20000483,
+            "regionID": 10000041,
+            "factionID": 500001
         },
         "30003316": {
             "name": "6-U2M8",
             "security": "-0.33",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003317": {
             "name": "I0AB-R",
             "security": "-0.25",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003318": {
             "name": "MXYS-8",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003319": {
             "name": "A-3ES3",
             "security": "-0.23",
             "constellationID": 20000483,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003320": {
             "name": "8V-SJJ",
             "security": "-0.05",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003321": {
             "name": "5-FGQI",
             "security": "-0.03",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003322": {
             "name": "3KNK-A",
             "security": "-0.01",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003323": {
             "name": "TXW-EI",
             "security": "-0.01",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003324": {
             "name": "3MOG-V",
             "security": "-0.00",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003325": {
             "name": "NG-C6Y",
             "security": "-0.00",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003326": {
             "name": "XYY-IA",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000484,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003327": {
             "name": "BMNV-P",
             "security": "-0.18",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003328": {
             "name": "BY-S36",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003329": {
             "name": "31-MLU",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003330": {
             "name": "0LTQ-C",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003331": {
             "name": "A9D-R0",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003332": {
             "name": "2P-4LS",
             "security": "-0.12",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003333": {
             "name": "RF-GGF",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003334": {
             "name": "LSC4-P",
             "security": "-0.31",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003335": {
             "name": "A-SJ8X",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000485,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003336": {
             "name": "10UZ-P",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000486,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003337": {
             "name": "EN-VOD",
             "security": "-0.03",
             "constellationID": 20000486,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003338": {
             "name": "9GYL-O",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000486,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003339": {
             "name": "VLGD-R",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000486,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003340": {
             "name": "S-GKKR",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000486,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003341": {
             "name": "9U-TTJ",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000486,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003342": {
             "name": "Y-W6GF",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003343": {
             "name": "KFR-ZE",
             "security": "-0.01",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003344": {
             "name": "KLYN-8",
             "security": "-0.01",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003345": {
             "name": "D85-VD",
             "security": "-0.02",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003346": {
             "name": "5-VKCN",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003347": {
             "name": "U0V6-T",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003348": {
             "name": "5KS-AB",
             "security": "-0.00",
             "constellationID": 20000487,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003349": {
             "name": "0T-AMZ",
             "security": "-0.01",
             "constellationID": 20000488,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003350": {
             "name": "57-YRU",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000488,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003351": {
             "name": "4L-E5P",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000488,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003352": {
             "name": "UFXF-C",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000488,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003353": {
             "name": "RLL-9R",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000488,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003354": {
             "name": "51-5XG",
             "security": "-0.01",
             "constellationID": 20000488,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003355": {
             "name": "EF-F36",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000489,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003356": {
             "name": "3-IN0V",
             "security": "-0.03",
             "constellationID": 20000489,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003357": {
             "name": "Z-QENW",
-            "security": "-0.03",
-            "constellationID": 20000489,
-            "regionID": 10000041,
-            "factionID": 500009
-        },
-        "30003358": {
-            "name": "D-B7YK",
             "security": "-0.04",
             "constellationID": 20000489,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
+        },
+        "30003358": {
+            "name": "D-B7YK",
+            "security": "-0.05",
+            "constellationID": 20000489,
+            "regionID": 10000041,
+            "factionID": 500001
         },
         "30003359": {
             "name": "DUV-5Y",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000489,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003360": {
             "name": "GRNJ-3",
             "security": "-0.03",
             "constellationID": 20000489,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003361": {
             "name": "VSIG-K",
             "security": "-0.00",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003362": {
             "name": "RSS-KA",
             "security": "-0.01",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003363": {
             "name": "CIS-7X",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003364": {
             "name": "DCHR-L",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003365": {
             "name": "EU0I-T",
             "security": "-0.01",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003366": {
             "name": "4-JWWQ",
             "security": "-0.02",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003367": {
             "name": "G-6SXJ",
             "security": "-0.01",
             "constellationID": 20000490,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003368": {
             "name": "S-U8A4",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000491,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003369": {
             "name": "ZV-72W",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000491,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003370": {
             "name": "2G38-I",
             "security": "-0.41",
             "constellationID": 20000491,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003371": {
             "name": "CY-ZLP",
             "security": "-0.35",
             "constellationID": 20000491,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003372": {
             "name": "U4-Q2V",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000491,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003373": {
             "name": "98Q-8O",
             "security": "-0.39",
             "constellationID": 20000491,
             "regionID": 10000041,
-            "factionID": 500009
+            "factionID": 500001
         },
         "30003374": {
             "name": "Arlulf",
@@ -21888,14 +21888,14 @@ var appData = {
         },
         "30003378": {
             "name": "Nedegulf",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000492,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003379": {
             "name": "Aldilur",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000492,
             "regionID": 10000042,
             "factionID": 500002
@@ -21916,21 +21916,21 @@ var appData = {
         },
         "30003382": {
             "name": "Flost",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000493,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003383": {
             "name": "Todrir",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000493,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003384": {
             "name": "Asgeir",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000493,
             "regionID": 10000042,
             "factionID": 500002
@@ -21944,7 +21944,7 @@ var appData = {
         },
         "30003386": {
             "name": "Ongund",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000493,
             "regionID": 10000042,
             "factionID": 500002
@@ -21958,63 +21958,63 @@ var appData = {
         },
         "30003388": {
             "name": "Olbra",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000494,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003389": {
             "name": "Altrinur",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000494,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003390": {
             "name": "Vilur",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000494,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003391": {
             "name": "Reset",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000494,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003392": {
             "name": "Eygfe",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000494,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003393": {
             "name": "Eiluvodi",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000495,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003394": {
             "name": "Freatlidur",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000495,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003395": {
             "name": "Roleinn",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000495,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003396": {
             "name": "Maturat",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000495,
             "regionID": 10000042,
             "factionID": 500002
@@ -22042,7 +22042,7 @@ var appData = {
         },
         "30003400": {
             "name": "Hjortur",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000496,
             "regionID": 10000042,
             "factionID": 500002
@@ -22056,14 +22056,14 @@ var appData = {
         },
         "30003402": {
             "name": "Totkubad",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000496,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003403": {
             "name": "Meimungen",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000496,
             "regionID": 10000042,
             "factionID": 500002
@@ -22077,14 +22077,14 @@ var appData = {
         },
         "30003405": {
             "name": "Datulen",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000496,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003406": {
             "name": "Situner",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000496,
             "regionID": 10000042,
             "factionID": 500002
@@ -22112,7 +22112,7 @@ var appData = {
         },
         "30003410": {
             "name": "Ryddinjorn",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000497,
             "regionID": 10000042,
             "factionID": 500002
@@ -22126,14 +22126,14 @@ var appData = {
         },
         "30003412": {
             "name": "Elgoi",
-            "security": "0.88",
+            "security": "0.89",
             "constellationID": 20000497,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003413": {
             "name": "Eram",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000497,
             "regionID": 10000042,
             "factionID": 500002
@@ -22154,28 +22154,28 @@ var appData = {
         },
         "30003416": {
             "name": "Aldrat",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000498,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003417": {
             "name": "Urnhard",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000498,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003418": {
             "name": "Hardbako",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000498,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003419": {
             "name": "Erstur",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000498,
             "regionID": 10000042,
             "factionID": 500002
@@ -22189,7 +22189,7 @@ var appData = {
         },
         "30003421": {
             "name": "Libold",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000498,
             "regionID": 10000042,
             "factionID": 500002
@@ -22217,14 +22217,14 @@ var appData = {
         },
         "30003425": {
             "name": "Erstet",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000499,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003426": {
             "name": "Anstard",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000499,
             "regionID": 10000042,
             "factionID": 500002
@@ -22238,14 +22238,14 @@ var appData = {
         },
         "30003428": {
             "name": "Hilfhurmur",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000500,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003429": {
             "name": "Geffur",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000500,
             "regionID": 10000042,
             "factionID": 500002
@@ -22273,14 +22273,14 @@ var appData = {
         },
         "30003433": {
             "name": "Gedugaud",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000500,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003434": {
             "name": "Polstodur",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000501,
             "regionID": 10000042,
             "factionID": 500002
@@ -22322,14 +22322,14 @@ var appData = {
         },
         "30003440": {
             "name": "Ansher",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000501,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003441": {
             "name": "Earwik",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000502,
             "regionID": 10000042,
             "factionID": 500002
@@ -22343,14 +22343,14 @@ var appData = {
         },
         "30003443": {
             "name": "Moselgi",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000502,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003444": {
             "name": "Mateber",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000502,
             "regionID": 10000042,
             "factionID": 500002
@@ -22399,7 +22399,7 @@ var appData = {
         },
         "30003451": {
             "name": "Dantbeinn",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000503,
             "regionID": 10000042,
             "factionID": 500002
@@ -22420,35 +22420,35 @@ var appData = {
         },
         "30003454": {
             "name": "Engosi",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000504,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003455": {
             "name": "Atonder",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000504,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003456": {
             "name": "Hotrardik",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000504,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003457": {
             "name": "Ridoner",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000504,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003458": {
             "name": "Klaevik",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000504,
             "regionID": 10000042,
             "factionID": 500002
@@ -22462,21 +22462,21 @@ var appData = {
         },
         "30003460": {
             "name": "Offikatlin",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000505,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003461": {
             "name": "Diromitur",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000505,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003462": {
             "name": "Eldjaerin",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000505,
             "regionID": 10000042,
             "factionID": 500002
@@ -22504,7 +22504,7 @@ var appData = {
         },
         "30003466": {
             "name": "Eurgrana",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000505,
             "regionID": 10000042,
             "factionID": 500002
@@ -22525,14 +22525,14 @@ var appData = {
         },
         "30003469": {
             "name": "Hodrold",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000506,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30003470": {
             "name": "Odebeinn",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000506,
             "regionID": 10000042,
             "factionID": 500002
@@ -22553,21 +22553,21 @@ var appData = {
         },
         "30003473": {
             "name": "Fahruni",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000507,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003474": {
             "name": "Sahda",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000507,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003475": {
             "name": "Naguton",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000507,
             "regionID": 10000043,
             "factionID": 500003
@@ -22581,7 +22581,7 @@ var appData = {
         },
         "30003477": {
             "name": "Shajarleg",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000507,
             "regionID": 10000043,
             "factionID": 500003
@@ -22602,21 +22602,21 @@ var appData = {
         },
         "30003480": {
             "name": "Amod",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000507,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003481": {
             "name": "Unefsih",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000508,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003482": {
             "name": "Mista",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000508,
             "regionID": 10000043,
             "factionID": 500003
@@ -22637,35 +22637,35 @@ var appData = {
         },
         "30003485": {
             "name": "Andabiar",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000508,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003486": {
             "name": "Kheram",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000508,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003487": {
             "name": "Arbaz",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000509,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003488": {
             "name": "Penirgman",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000509,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003489": {
             "name": "Chaven",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000509,
             "regionID": 10000043,
             "factionID": 500003
@@ -22679,14 +22679,14 @@ var appData = {
         },
         "30003491": {
             "name": "Ashab",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000509,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003492": {
             "name": "Orkashu",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000509,
             "regionID": 10000043,
             "factionID": 500003
@@ -22700,21 +22700,21 @@ var appData = {
         },
         "30003494": {
             "name": "Ekid",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000510,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003495": {
             "name": "Raravoss",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30003496": {
             "name": "Nakri",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000510,
             "regionID": 10000043,
             "factionID": 500003
@@ -22735,7 +22735,7 @@ var appData = {
         },
         "30003499": {
             "name": "Mai",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000510,
             "regionID": 10000043,
             "factionID": 500003
@@ -22749,14 +22749,14 @@ var appData = {
         },
         "30003501": {
             "name": "Kudi",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000511,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003502": {
             "name": "Bahromab",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000511,
             "regionID": 10000043,
             "factionID": 500003
@@ -22770,7 +22770,7 @@ var appData = {
         },
         "30003504": {
             "name": "Niarja",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
@@ -22791,21 +22791,21 @@ var appData = {
         },
         "30003507": {
             "name": "Teshi",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000512,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003508": {
             "name": "Sayartchen",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000512,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003509": {
             "name": "Gosalav",
-            "security": "0.73",
+            "security": "0.74",
             "constellationID": 20000512,
             "regionID": 10000043,
             "factionID": 500003
@@ -22819,28 +22819,28 @@ var appData = {
         },
         "30003511": {
             "name": "Somouh",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000512,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003512": {
             "name": "Abaim",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000512,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003513": {
             "name": "Ides",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000513,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003514": {
             "name": "Yeeramoun",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000513,
             "regionID": 10000043,
             "factionID": 500003
@@ -22861,7 +22861,7 @@ var appData = {
         },
         "30003517": {
             "name": "Etav",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000513,
             "regionID": 10000043,
             "factionID": 500003
@@ -22875,14 +22875,14 @@ var appData = {
         },
         "30003519": {
             "name": "Lahnina",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000513,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003520": {
             "name": "Mahrokht",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
@@ -22896,14 +22896,14 @@ var appData = {
         },
         "30003522": {
             "name": "Sarum Prime",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003523": {
             "name": "Hama",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
@@ -22917,21 +22917,21 @@ var appData = {
         },
         "30003525": {
             "name": "Bagodan",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003526": {
             "name": "Murzi",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003527": {
             "name": "Chesoh",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
@@ -22945,7 +22945,7 @@ var appData = {
         },
         "30003529": {
             "name": "Chemilip",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000515,
             "regionID": 10000043,
             "factionID": 500003
@@ -22973,42 +22973,42 @@ var appData = {
         },
         "30003533": {
             "name": "Hahda",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000515,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003534": {
             "name": "Namaili",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000515,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003535": {
             "name": "Afivad",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000515,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003536": {
             "name": "Uzigh",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000515,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003537": {
             "name": "Erzoh",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000515,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003538": {
             "name": "Merz",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000516,
             "regionID": 10000043,
             "factionID": 500003
@@ -23043,49 +23043,49 @@ var appData = {
         },
         "30003543": {
             "name": "Zanka",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000516,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003544": {
             "name": "Galeh",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000516,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003545": {
             "name": "Yuhelia",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000517,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003546": {
             "name": "Maiah",
-            "security": "0.79",
+            "security": "0.80",
             "constellationID": 20000517,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003547": {
             "name": "Hamse",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000517,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003548": {
             "name": "Barira",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000517,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003549": {
             "name": "Lashkai",
-            "security": "0.91",
+            "security": "0.92",
             "constellationID": 20000517,
             "regionID": 10000043,
             "factionID": 500003
@@ -23113,14 +23113,14 @@ var appData = {
         },
         "30003553": {
             "name": "Warouh",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000518,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003554": {
             "name": "Jambu",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000518,
             "regionID": 10000043,
             "factionID": 500003
@@ -23134,14 +23134,14 @@ var appData = {
         },
         "30003556": {
             "name": "Arton",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000518,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003557": {
             "name": "Sieh",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000518,
             "regionID": 10000043,
             "factionID": 500003
@@ -23155,28 +23155,28 @@ var appData = {
         },
         "30003559": {
             "name": "Mamet",
-            "security": "0.14",
+            "security": "0.15",
             "constellationID": 20000519,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003560": {
             "name": "Hoshoun",
-            "security": "0.08",
+            "security": "0.09",
             "constellationID": 20000519,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003561": {
             "name": "Biphi",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000519,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003562": {
             "name": "Ziriert",
-            "security": "0.05",
+            "security": "0.06",
             "constellationID": 20000519,
             "regionID": 10000043,
             "factionID": 500003
@@ -23190,14 +23190,14 @@ var appData = {
         },
         "30003564": {
             "name": "Rephirib",
-            "security": "0.09",
+            "security": "0.10",
             "constellationID": 20000519,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30003565": {
             "name": "Conomette",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000520,
             "regionID": 10000044,
             "factionID": 500004
@@ -23225,28 +23225,28 @@ var appData = {
         },
         "30003569": {
             "name": "Cadelanne",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000520,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003570": {
             "name": "Elore",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000520,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003571": {
             "name": "Anckee",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000520,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003572": {
             "name": "Vevelonel",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000520,
             "regionID": 10000044,
             "factionID": 500004
@@ -23267,14 +23267,14 @@ var appData = {
         },
         "30003575": {
             "name": "Lour",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000521,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003576": {
             "name": "Maire",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000521,
             "regionID": 10000044,
             "factionID": 500004
@@ -23288,14 +23288,14 @@ var appData = {
         },
         "30003578": {
             "name": "Octanneve",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000521,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003579": {
             "name": "Larryn",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000522,
             "regionID": 10000044,
             "factionID": 500004
@@ -23309,7 +23309,7 @@ var appData = {
         },
         "30003581": {
             "name": "Postouvin",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000522,
             "regionID": 10000044,
             "factionID": 500004
@@ -23330,14 +23330,14 @@ var appData = {
         },
         "30003584": {
             "name": "Sarline",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000522,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003585": {
             "name": "Aeter",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000522,
             "regionID": 10000044,
             "factionID": 500004
@@ -23351,21 +23351,21 @@ var appData = {
         },
         "30003587": {
             "name": "Harner",
-            "security": "0.12",
+            "security": "0.13",
             "constellationID": 20000522,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003588": {
             "name": "Yvaeroure",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000523,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003589": {
             "name": "Vecodie",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000523,
             "regionID": 10000044,
             "factionID": 500004
@@ -23414,14 +23414,14 @@ var appData = {
         },
         "30003596": {
             "name": "Oruse",
-            "security": "0.19",
+            "security": "0.20",
             "constellationID": 20000524,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003597": {
             "name": "Hare",
-            "security": "0.16",
+            "security": "0.17",
             "constellationID": 20000524,
             "regionID": 10000044,
             "factionID": 500004
@@ -23449,14 +23449,14 @@ var appData = {
         },
         "30003601": {
             "name": "Babirmoult",
-            "security": "0.17",
+            "security": "0.18",
             "constellationID": 20000524,
             "regionID": 10000044,
             "factionID": 500004
         },
         "30003602": {
             "name": "Ratillose",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000525,
             "regionID": 10000044,
             "factionID": 500004
@@ -23477,7 +23477,7 @@ var appData = {
         },
         "30003605": {
             "name": "Eggheron",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000525,
             "regionID": 10000044,
             "factionID": 500004
@@ -23504,7 +23504,7 @@ var appData = {
         },
         "30003609": {
             "name": "3DR-CR",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000526,
             "regionID": 10000045
         },
@@ -23522,7 +23522,7 @@ var appData = {
         },
         "30003612": {
             "name": "EOY-BG",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000526,
             "regionID": 10000045
         },
@@ -23534,7 +23534,7 @@ var appData = {
         },
         "30003614": {
             "name": "IG-ZAM",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000526,
             "regionID": 10000045
         },
@@ -23546,19 +23546,19 @@ var appData = {
         },
         "30003616": {
             "name": "NCG-PW",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000526,
             "regionID": 10000045
         },
         "30003617": {
             "name": "1QH-0K",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000527,
             "regionID": 10000045
         },
         "30003618": {
             "name": "ZH3-BS",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000527,
             "regionID": 10000045
         },
@@ -23576,19 +23576,19 @@ var appData = {
         },
         "30003621": {
             "name": "I1-BE8",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000527,
             "regionID": 10000045
         },
         "30003622": {
             "name": "W8O-19",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000527,
             "regionID": 10000045
         },
         "30003623": {
             "name": "U1TX-A",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000528,
             "regionID": 10000045
         },
@@ -23600,19 +23600,19 @@ var appData = {
         },
         "30003625": {
             "name": "KMV-CQ",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000528,
             "regionID": 10000045
         },
         "30003626": {
             "name": "RKE-CP",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000528,
             "regionID": 10000045
         },
         "30003627": {
             "name": "NV-3KA",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000528,
             "regionID": 10000045
         },
@@ -23624,13 +23624,13 @@ var appData = {
         },
         "30003629": {
             "name": "S-KSWL",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000529,
             "regionID": 10000045
         },
         "30003630": {
             "name": "5-O8B1",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000529,
             "regionID": 10000045
         },
@@ -23648,13 +23648,13 @@ var appData = {
         },
         "30003633": {
             "name": "HB-FSO",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000529,
             "regionID": 10000045
         },
         "30003634": {
             "name": "J1-KJP",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000529,
             "regionID": 10000045
         },
@@ -23666,19 +23666,19 @@ var appData = {
         },
         "30003636": {
             "name": "G06-8Y",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000530,
             "regionID": 10000045
         },
         "30003637": {
             "name": "U-O2DA",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000530,
             "regionID": 10000045
         },
         "30003638": {
             "name": "WV-0R2",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000530,
             "regionID": 10000045
         },
@@ -23696,19 +23696,19 @@ var appData = {
         },
         "30003641": {
             "name": "IKTD-P",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000530,
             "regionID": 10000045
         },
         "30003642": {
             "name": "33CE-7",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000530,
             "regionID": 10000045
         },
         "30003643": {
             "name": "L-P3XM",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000530,
             "regionID": 10000045
         },
@@ -23726,13 +23726,13 @@ var appData = {
         },
         "30003646": {
             "name": "Z-LO6I",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000531,
             "regionID": 10000045
         },
         "30003647": {
             "name": "0M-103",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000531,
             "regionID": 10000045
         },
@@ -23744,7 +23744,7 @@ var appData = {
         },
         "30003649": {
             "name": "HE5T-A",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000531,
             "regionID": 10000045
         },
@@ -23756,7 +23756,7 @@ var appData = {
         },
         "30003651": {
             "name": "Y-YHZQ",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000532,
             "regionID": 10000045
         },
@@ -23774,7 +23774,7 @@ var appData = {
         },
         "30003654": {
             "name": "SF-XJS",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000532,
             "regionID": 10000045
         },
@@ -23786,19 +23786,19 @@ var appData = {
         },
         "30003656": {
             "name": "AR-5SY",
-            "security": "-0.93",
+            "security": "-0.94",
             "constellationID": 20000532,
             "regionID": 10000045
         },
         "30003657": {
             "name": "OE-4HB",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000532,
             "regionID": 10000045
         },
         "30003658": {
             "name": "ZK-YQ3",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000533,
             "regionID": 10000045
         },
@@ -23816,13 +23816,13 @@ var appData = {
         },
         "30003661": {
             "name": "JI-1UQ",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000533,
             "regionID": 10000045
         },
         "30003662": {
             "name": "EN-GTB",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000533,
             "regionID": 10000045
         },
@@ -23840,7 +23840,7 @@ var appData = {
         },
         "30003665": {
             "name": "M-UC0S",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000534,
             "regionID": 10000045
         },
@@ -23858,19 +23858,19 @@ var appData = {
         },
         "30003668": {
             "name": "2-3Q2G",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000534,
             "regionID": 10000045
         },
         "30003669": {
             "name": "Q1U-IU",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000534,
             "regionID": 10000045
         },
         "30003670": {
             "name": "C-XNUA",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000535,
             "regionID": 10000045
         },
@@ -23900,19 +23900,19 @@ var appData = {
         },
         "30003675": {
             "name": "3-QYVE",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000535,
             "regionID": 10000045
         },
         "30003676": {
             "name": "C8-CHY",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000536,
             "regionID": 10000046
         },
         "30003677": {
             "name": "E-9ORY",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000536,
             "regionID": 10000046
         },
@@ -23924,7 +23924,7 @@ var appData = {
         },
         "30003679": {
             "name": "HHK-VL",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000536,
             "regionID": 10000046
         },
@@ -23942,7 +23942,7 @@ var appData = {
         },
         "30003682": {
             "name": "DW-T2I",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000536,
             "regionID": 10000046
         },
@@ -23954,7 +23954,7 @@ var appData = {
         },
         "30003684": {
             "name": "L-SCBU",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000537,
             "regionID": 10000046
         },
@@ -23978,31 +23978,31 @@ var appData = {
         },
         "30003688": {
             "name": "X36Y-G",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000537,
             "regionID": 10000046
         },
         "30003689": {
             "name": "L-C3O7",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000537,
             "regionID": 10000046
         },
         "30003690": {
             "name": "YKSC-A",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000538,
             "regionID": 10000046
         },
         "30003691": {
             "name": "FIO1-8",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000538,
             "regionID": 10000046
         },
         "30003692": {
             "name": "C-OK0R",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000538,
             "regionID": 10000046
         },
@@ -24014,13 +24014,13 @@ var appData = {
         },
         "30003694": {
             "name": "E9KD-N",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000538,
             "regionID": 10000046
         },
         "30003695": {
             "name": "8W-OSE",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000538,
             "regionID": 10000046
         },
@@ -24032,7 +24032,7 @@ var appData = {
         },
         "30003697": {
             "name": "C4C-Z4",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000539,
             "regionID": 10000046
         },
@@ -24050,13 +24050,13 @@ var appData = {
         },
         "30003700": {
             "name": "X5-UME",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000539,
             "regionID": 10000046
         },
         "30003701": {
             "name": "I-UUI5",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000539,
             "regionID": 10000046
         },
@@ -24080,7 +24080,7 @@ var appData = {
         },
         "30003705": {
             "name": "YWS0-Z",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000540,
             "regionID": 10000047
         },
@@ -24092,13 +24092,13 @@ var appData = {
         },
         "30003707": {
             "name": "9UY4-H",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000540,
             "regionID": 10000047
         },
         "30003708": {
             "name": "49GC-R",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000540,
             "regionID": 10000047
         },
@@ -24116,7 +24116,7 @@ var appData = {
         },
         "30003711": {
             "name": "FX-7EM",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000541,
             "regionID": 10000047
         },
@@ -24134,7 +24134,7 @@ var appData = {
         },
         "30003714": {
             "name": "QBL-BV",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000541,
             "regionID": 10000047
         },
@@ -24146,19 +24146,19 @@ var appData = {
         },
         "30003716": {
             "name": "I7S-1S",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000541,
             "regionID": 10000047
         },
         "30003717": {
             "name": "U-HYMT",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000542,
             "regionID": 10000047
         },
         "30003718": {
             "name": "FC-3YI",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000542,
             "regionID": 10000047
         },
@@ -24182,25 +24182,25 @@ var appData = {
         },
         "30003722": {
             "name": "OXIY-V",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000542,
             "regionID": 10000047
         },
         "30003723": {
             "name": "H6-CX8",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000543,
             "regionID": 10000047
         },
         "30003724": {
             "name": "D61A-G",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000543,
             "regionID": 10000047
         },
         "30003725": {
             "name": "Shintaht",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000543,
             "regionID": 10000047
         },
@@ -24212,7 +24212,7 @@ var appData = {
         },
         "30003727": {
             "name": "D-6WS1",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000543,
             "regionID": 10000047
         },
@@ -24224,7 +24224,7 @@ var appData = {
         },
         "30003729": {
             "name": "KBP7-G",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000544,
             "regionID": 10000047
         },
@@ -24242,7 +24242,7 @@ var appData = {
         },
         "30003732": {
             "name": "E-YCML",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000544,
             "regionID": 10000047
         },
@@ -24254,19 +24254,19 @@ var appData = {
         },
         "30003734": {
             "name": "Y9-MDG",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000544,
             "regionID": 10000047
         },
         "30003735": {
             "name": "PI5-39",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000545,
             "regionID": 10000047
         },
         "30003736": {
             "name": "GN7-XY",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000545,
             "regionID": 10000047
         },
@@ -24278,7 +24278,7 @@ var appData = {
         },
         "30003738": {
             "name": "5KG-PY",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000545,
             "regionID": 10000047
         },
@@ -24302,13 +24302,13 @@ var appData = {
         },
         "30003742": {
             "name": "TU-RI6",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000546,
             "regionID": 10000047
         },
         "30003743": {
             "name": "08Z-JJ",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000546,
             "regionID": 10000047
         },
@@ -24326,7 +24326,7 @@ var appData = {
         },
         "30003746": {
             "name": "AY-YCU",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000546,
             "regionID": 10000047
         },
@@ -24338,7 +24338,7 @@ var appData = {
         },
         "30003748": {
             "name": "3GXF-U",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000547,
             "regionID": 10000047
         },
@@ -24380,7 +24380,7 @@ var appData = {
         },
         "30003755": {
             "name": "MVCJ-E",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000548,
             "regionID": 10000047
         },
@@ -24398,7 +24398,7 @@ var appData = {
         },
         "30003758": {
             "name": "K1I1-J",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000548,
             "regionID": 10000047
         },
@@ -24422,7 +24422,7 @@ var appData = {
         },
         "30003762": {
             "name": "DNR-7M",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000549,
             "regionID": 10000047
         },
@@ -24440,7 +24440,7 @@ var appData = {
         },
         "30003765": {
             "name": "IWZ3-C",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000549,
             "regionID": 10000047
         },
@@ -24452,7 +24452,7 @@ var appData = {
         },
         "30003767": {
             "name": "N8XA-L",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000550,
             "regionID": 10000047
         },
@@ -24470,7 +24470,7 @@ var appData = {
         },
         "30003770": {
             "name": "X-R3NM",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000550,
             "regionID": 10000047
         },
@@ -24482,7 +24482,7 @@ var appData = {
         },
         "30003772": {
             "name": "G-B22J",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000550,
             "regionID": 10000047
         },
@@ -24512,13 +24512,13 @@ var appData = {
         },
         "30003777": {
             "name": "GA9P-0",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000551,
             "regionID": 10000047
         },
         "30003778": {
             "name": "7YWV-S",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000551,
             "regionID": 10000047
         },
@@ -24530,7 +24530,7 @@ var appData = {
         },
         "30003780": {
             "name": "C1-HAB",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000551,
             "regionID": 10000047
         },
@@ -24566,20 +24566,20 @@ var appData = {
         },
         "30003786": {
             "name": "3D-CQU",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000552,
             "regionID": 10000047
         },
         "30003787": {
             "name": "Agoze",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000553,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003788": {
             "name": "Intaki",
-            "security": "0.6",
+            "security": "0.60",
             "constellationID": 20000553,
             "regionID": 10000048,
             "factionID": 500004
@@ -24593,7 +24593,7 @@ var appData = {
         },
         "30003790": {
             "name": "Vey",
-            "security": "0.18",
+            "security": "0.19",
             "constellationID": 20000553,
             "regionID": 10000048,
             "factionID": 500004
@@ -24614,28 +24614,28 @@ var appData = {
         },
         "30003793": {
             "name": "Harroule",
-            "security": "0.08",
+            "security": "0.09",
             "constellationID": 20000553,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003794": {
             "name": "Stacmon",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000554,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003795": {
             "name": "Covryn",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000554,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003796": {
             "name": "Iges",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000554,
             "regionID": 10000048,
             "factionID": 500004
@@ -24649,14 +24649,14 @@ var appData = {
         },
         "30003798": {
             "name": "Slays",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000554,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003799": {
             "name": "Uphallant",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000554,
             "regionID": 10000048,
             "factionID": 500004
@@ -24684,7 +24684,7 @@ var appData = {
         },
         "30003803": {
             "name": "Reynire",
-            "security": "0.15",
+            "security": "0.16",
             "constellationID": 20000555,
             "regionID": 10000048,
             "factionID": 500004
@@ -24740,63 +24740,63 @@ var appData = {
         },
         "30003811": {
             "name": "Algasienan",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000556,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003812": {
             "name": "Osmallanais",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000557,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003813": {
             "name": "Ivorider",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000557,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003814": {
             "name": "Mollin",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000557,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003815": {
             "name": "Iffrue",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000557,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003816": {
             "name": "Vilinnon",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000557,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003817": {
             "name": "Ommaerrer",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000557,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003818": {
             "name": "Aulbres",
-            "security": "0.13",
+            "security": "0.14",
             "constellationID": 20000558,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003819": {
             "name": "Barleguet",
-            "security": "0.06",
+            "security": "0.07",
             "constellationID": 20000558,
             "regionID": 10000048,
             "factionID": 500004
@@ -24817,7 +24817,7 @@ var appData = {
         },
         "30003822": {
             "name": "Espigoure",
-            "security": "0.04",
+            "security": "0.05",
             "constellationID": 20000558,
             "regionID": 10000048,
             "factionID": 500004
@@ -24845,7 +24845,7 @@ var appData = {
         },
         "30003826": {
             "name": "Frarie",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000559,
             "regionID": 10000048,
             "factionID": 500004
@@ -24866,35 +24866,35 @@ var appData = {
         },
         "30003829": {
             "name": "Renarelle",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000559,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003830": {
             "name": "Orvolle",
-            "security": "0.74",
+            "security": "0.75",
             "constellationID": 20000560,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003831": {
             "name": "Osmeden",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000560,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003832": {
             "name": "Adacyne",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000560,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003833": {
             "name": "Oulley",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000560,
             "regionID": 10000048,
             "factionID": 500004
@@ -24908,21 +24908,21 @@ var appData = {
         },
         "30003835": {
             "name": "Maut",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000560,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003836": {
             "name": "Vlillirier",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000561,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003837": {
             "name": "Aldranette",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000561,
             "regionID": 10000048,
             "factionID": 500004
@@ -24936,21 +24936,21 @@ var appData = {
         },
         "30003839": {
             "name": "Evaulon",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000561,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003840": {
             "name": "Anchauttes",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000561,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003841": {
             "name": "Alsavoinon",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000561,
             "regionID": 10000048,
             "factionID": 500004
@@ -24964,7 +24964,7 @@ var appData = {
         },
         "30003843": {
             "name": "Avaux",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000562,
             "regionID": 10000048,
             "factionID": 500004
@@ -24978,14 +24978,14 @@ var appData = {
         },
         "30003845": {
             "name": "Ruerrotta",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000562,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003846": {
             "name": "Hedoubel",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000562,
             "regionID": 10000048,
             "factionID": 500004
@@ -24999,7 +24999,7 @@ var appData = {
         },
         "30003848": {
             "name": "Amasiree",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000562,
             "regionID": 10000048,
             "factionID": 500004
@@ -25013,14 +25013,14 @@ var appData = {
         },
         "30003850": {
             "name": "Alparena",
-            "security": "0.14",
+            "security": "0.15",
             "constellationID": 20000563,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003851": {
             "name": "Reschard",
-            "security": "0.12",
+            "security": "0.13",
             "constellationID": 20000563,
             "regionID": 10000048,
             "factionID": 500004
@@ -25048,14 +25048,14 @@ var appData = {
         },
         "30003855": {
             "name": "Mantenault",
-            "security": "0.13",
+            "security": "0.14",
             "constellationID": 20000563,
             "regionID": 10000048,
             "factionID": 500004
         },
         "30003856": {
             "name": "Athounon",
-            "security": "0.07",
+            "security": "0.08",
             "constellationID": 20000563,
             "regionID": 10000048,
             "factionID": 500004
@@ -25076,7 +25076,7 @@ var appData = {
         },
         "30003859": {
             "name": "Neyi",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000564,
             "regionID": 10000049,
             "factionID": 500008
@@ -25090,7 +25090,7 @@ var appData = {
         },
         "30003861": {
             "name": "Ipref",
-            "security": "0.89",
+            "security": "0.90",
             "constellationID": 20000564,
             "regionID": 10000049,
             "factionID": 500008
@@ -25104,7 +25104,7 @@ var appData = {
         },
         "30003863": {
             "name": "Khanid Prime",
-            "security": "0.89",
+            "security": "0.90",
             "constellationID": 20000564,
             "regionID": 10000049,
             "factionID": 500008
@@ -25118,7 +25118,7 @@ var appData = {
         },
         "30003865": {
             "name": "Sazre",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000564,
             "regionID": 10000049,
             "factionID": 500008
@@ -25132,14 +25132,14 @@ var appData = {
         },
         "30003867": {
             "name": "Ervekam",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000565,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003868": {
             "name": "Mashtarmem",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000565,
             "regionID": 10000049,
             "factionID": 500008
@@ -25153,7 +25153,7 @@ var appData = {
         },
         "30003870": {
             "name": "Osis",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000565,
             "regionID": 10000049,
             "factionID": 500008
@@ -25174,7 +25174,7 @@ var appData = {
         },
         "30003873": {
             "name": "Kahah",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000565,
             "regionID": 10000049,
             "factionID": 500008
@@ -25188,14 +25188,14 @@ var appData = {
         },
         "30003875": {
             "name": "Hishai",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000565,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003876": {
             "name": "Molea",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000566,
             "regionID": 10000049,
             "factionID": 500008
@@ -25209,14 +25209,14 @@ var appData = {
         },
         "30003878": {
             "name": "Palas",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000566,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003879": {
             "name": "Safshela",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000566,
             "regionID": 10000049,
             "factionID": 500008
@@ -25230,14 +25230,14 @@ var appData = {
         },
         "30003881": {
             "name": "Moniyyuku",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000566,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003882": {
             "name": "Lansez",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000567,
             "regionID": 10000049,
             "factionID": 500008
@@ -25272,21 +25272,21 @@ var appData = {
         },
         "30003887": {
             "name": "Kaira",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000567,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003888": {
             "name": "Badivefi",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000568,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003889": {
             "name": "Talidal",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000568,
             "regionID": 10000049,
             "factionID": 500008
@@ -25307,21 +25307,21 @@ var appData = {
         },
         "30003892": {
             "name": "Efa",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000568,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003893": {
             "name": "Moro",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000568,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003894": {
             "name": "Sabusi",
-            "security": "0.50",
+            "security": "0.51",
             "constellationID": 20000568,
             "regionID": 10000049,
             "factionID": 500008
@@ -25342,7 +25342,7 @@ var appData = {
         },
         "30003897": {
             "name": "Gehi",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000569,
             "regionID": 10000049,
             "factionID": 500008
@@ -25356,7 +25356,7 @@ var appData = {
         },
         "30003899": {
             "name": "Vezila",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000569,
             "regionID": 10000049,
             "factionID": 500008
@@ -25370,28 +25370,28 @@ var appData = {
         },
         "30003901": {
             "name": "Upt",
-            "security": "0.14",
+            "security": "0.15",
             "constellationID": 20000569,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003902": {
             "name": "Hemouner",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000569,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003903": {
             "name": "Afnakat",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000570,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003904": {
             "name": "Col",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000570,
             "regionID": 10000049,
             "factionID": 500008
@@ -25405,7 +25405,7 @@ var appData = {
         },
         "30003906": {
             "name": "Firbha",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000570,
             "regionID": 10000049,
             "factionID": 500008
@@ -25426,7 +25426,7 @@ var appData = {
         },
         "30003909": {
             "name": "Parses",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000570,
             "regionID": 10000049,
             "factionID": 500008
@@ -25454,7 +25454,7 @@ var appData = {
         },
         "30003913": {
             "name": "Bomana",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000571,
             "regionID": 10000049,
             "factionID": 500008
@@ -25475,7 +25475,7 @@ var appData = {
         },
         "30003916": {
             "name": "Rilera",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000571,
             "regionID": 10000049,
             "factionID": 500008
@@ -25489,7 +25489,7 @@ var appData = {
         },
         "30003918": {
             "name": "Hakana",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000572,
             "regionID": 10000049,
             "factionID": 500008
@@ -25510,7 +25510,7 @@ var appData = {
         },
         "30003921": {
             "name": "Arzieh",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000572,
             "regionID": 10000049,
             "factionID": 500008
@@ -25524,21 +25524,21 @@ var appData = {
         },
         "30003923": {
             "name": "Nandeza",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000573,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003924": {
             "name": "Dimoohan",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000573,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003925": {
             "name": "Chitiamem",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000573,
             "regionID": 10000049,
             "factionID": 500008
@@ -25559,7 +25559,7 @@ var appData = {
         },
         "30003928": {
             "name": "Zephan",
-            "security": "0.25",
+            "security": "0.26",
             "constellationID": 20000573,
             "regionID": 10000049,
             "factionID": 500008
@@ -25573,14 +25573,14 @@ var appData = {
         },
         "30003930": {
             "name": "Goudiyah",
-            "security": "0.14",
+            "security": "0.15",
             "constellationID": 20000574,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003931": {
             "name": "Sassecho",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000574,
             "regionID": 10000049,
             "factionID": 500008
@@ -25594,14 +25594,14 @@ var appData = {
         },
         "30003933": {
             "name": "Ibani",
-            "security": "0.10",
+            "security": "0.11",
             "constellationID": 20000574,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003934": {
             "name": "Cabeki",
-            "security": "0.08",
+            "security": "0.09",
             "constellationID": 20000574,
             "regionID": 10000049,
             "factionID": 500008
@@ -25622,14 +25622,14 @@ var appData = {
         },
         "30003937": {
             "name": "Hezere",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000575,
             "regionID": 10000049,
             "factionID": 500008
         },
         "30003938": {
             "name": "Fanathor",
-            "security": "0.25",
+            "security": "0.26",
             "constellationID": 20000575,
             "regionID": 10000049,
             "factionID": 500008
@@ -25643,7 +25643,7 @@ var appData = {
         },
         "30003940": {
             "name": "Pout",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000575,
             "regionID": 10000049,
             "factionID": 500008
@@ -25657,13 +25657,13 @@ var appData = {
         },
         "30003942": {
             "name": "A2-V27",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000576,
             "regionID": 10000050
         },
         "30003943": {
             "name": "T8H-66",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000576,
             "regionID": 10000050
         },
@@ -25675,25 +25675,25 @@ var appData = {
         },
         "30003945": {
             "name": "7V-KHW",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000576,
             "regionID": 10000050
         },
         "30003946": {
             "name": "O3L-95",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000576,
             "regionID": 10000050
         },
         "30003947": {
             "name": "0-WT2D",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000576,
             "regionID": 10000050
         },
         "30003948": {
             "name": "7GCD-P",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000577,
             "regionID": 10000050
         },
@@ -25705,7 +25705,7 @@ var appData = {
         },
         "30003950": {
             "name": "K7D-II",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000577,
             "regionID": 10000050
         },
@@ -25741,37 +25741,37 @@ var appData = {
         },
         "30003956": {
             "name": "60M-TG",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000578,
             "regionID": 10000050
         },
         "30003957": {
             "name": "0TKF-6",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000578,
             "regionID": 10000050
         },
         "30003958": {
             "name": "TV8-HS",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000578,
             "regionID": 10000050
         },
         "30003959": {
             "name": "VT-G2P",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000578,
             "regionID": 10000050
         },
         "30003960": {
             "name": "YOP-0T",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000578,
             "regionID": 10000050
         },
         "30003961": {
             "name": "9-HM04",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000578,
             "regionID": 10000050
         },
@@ -25783,7 +25783,7 @@ var appData = {
         },
         "30003963": {
             "name": "GOP-GE",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000579,
             "regionID": 10000050
         },
@@ -25795,13 +25795,13 @@ var appData = {
         },
         "30003965": {
             "name": "V-3U8T",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000579,
             "regionID": 10000050
         },
         "30003966": {
             "name": "T8T-RA",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000579,
             "regionID": 10000050
         },
@@ -25831,7 +25831,7 @@ var appData = {
         },
         "30003971": {
             "name": "P4-3TJ",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000580,
             "regionID": 10000050
         },
@@ -25849,19 +25849,19 @@ var appData = {
         },
         "30003974": {
             "name": "8B-SAJ",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000580,
             "regionID": 10000050
         },
         "30003975": {
             "name": "Q2-N6W",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000580,
             "regionID": 10000050
         },
         "30003976": {
             "name": "C-9RRR",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000580,
             "regionID": 10000050
         },
@@ -25879,13 +25879,13 @@ var appData = {
         },
         "30003979": {
             "name": "9CG6-H",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000581,
             "regionID": 10000050
         },
         "30003980": {
             "name": "NDII-Q",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000581,
             "regionID": 10000050
         },
@@ -25897,7 +25897,7 @@ var appData = {
         },
         "30003982": {
             "name": "K-L690",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000581,
             "regionID": 10000050
         },
@@ -25927,13 +25927,13 @@ var appData = {
         },
         "30003987": {
             "name": "IGE-NE",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000582,
             "regionID": 10000050
         },
         "30003988": {
             "name": "UVHO-F",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000582,
             "regionID": 10000050
         },
@@ -25945,7 +25945,7 @@ var appData = {
         },
         "30003990": {
             "name": "YW-SYT",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000583,
             "regionID": 10000050
         },
@@ -25963,7 +25963,7 @@ var appData = {
         },
         "30003993": {
             "name": "BX2-ZX",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000583,
             "regionID": 10000050
         },
@@ -25981,37 +25981,37 @@ var appData = {
         },
         "30003996": {
             "name": "ZAU-JW",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000584,
             "regionID": 10000050
         },
         "30003997": {
             "name": "YF-6L1",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000584,
             "regionID": 10000050
         },
         "30003998": {
             "name": "K-YI1L",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000584,
             "regionID": 10000050
         },
         "30003999": {
             "name": "KEJY-U",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000584,
             "regionID": 10000050
         },
         "30004000": {
             "name": "3BK-O7",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000584,
             "regionID": 10000050
         },
         "30004001": {
             "name": "8-GE2P",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000584,
             "regionID": 10000050
         },
@@ -26023,7 +26023,7 @@ var appData = {
         },
         "30004003": {
             "name": "L3-I3K",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000585,
             "regionID": 10000050
         },
@@ -26035,25 +26035,25 @@ var appData = {
         },
         "30004005": {
             "name": "W-IIYI",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000585,
             "regionID": 10000050
         },
         "30004006": {
             "name": "AO-N1P",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000585,
             "regionID": 10000050
         },
         "30004007": {
             "name": "4-GJT1",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000585,
             "regionID": 10000050
         },
         "30004008": {
             "name": "5V-BJI",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000585,
             "regionID": 10000050
         },
@@ -26065,7 +26065,7 @@ var appData = {
         },
         "30004010": {
             "name": "M1BZ-2",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000585,
             "regionID": 10000050
         },
@@ -26077,7 +26077,7 @@ var appData = {
         },
         "30004012": {
             "name": "8QT-H4",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000585,
             "regionID": 10000050
         },
@@ -26089,13 +26089,13 @@ var appData = {
         },
         "30004014": {
             "name": "4-2UXV",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000586,
             "regionID": 10000050
         },
         "30004015": {
             "name": "RKM-GE",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000586,
             "regionID": 10000050
         },
@@ -26107,7 +26107,7 @@ var appData = {
         },
         "30004017": {
             "name": "K4-RFZ",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000586,
             "regionID": 10000050
         },
@@ -26137,7 +26137,7 @@ var appData = {
         },
         "30004022": {
             "name": "9SBB-9",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000587,
             "regionID": 10000050
         },
@@ -26149,7 +26149,7 @@ var appData = {
         },
         "30004024": {
             "name": "U-HYZN",
-            "security": "-0.87",
+            "security": "-0.88",
             "constellationID": 20000587,
             "regionID": 10000050
         },
@@ -26179,19 +26179,19 @@ var appData = {
         },
         "30004029": {
             "name": "BX-VEX",
-            "security": "-0.85",
+            "security": "-0.86",
             "constellationID": 20000588,
             "regionID": 10000050
         },
         "30004030": {
             "name": "B-7DFU",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000588,
             "regionID": 10000050
         },
         "30004031": {
             "name": "ZXJ-71",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000589,
             "regionID": 10000050
         },
@@ -26203,25 +26203,25 @@ var appData = {
         },
         "30004033": {
             "name": "ES-Q0W",
-            "security": "-0.77",
+            "security": "-0.78",
             "constellationID": 20000589,
             "regionID": 10000050
         },
         "30004034": {
             "name": "H74-B0",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000589,
             "regionID": 10000050
         },
         "30004035": {
             "name": "NU4-2G",
-            "security": "-0.96",
+            "security": "-0.97",
             "constellationID": 20000589,
             "regionID": 10000050
         },
         "30004036": {
             "name": "3D5K-R",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000589,
             "regionID": 10000050
         },
@@ -26257,25 +26257,25 @@ var appData = {
         },
         "30004042": {
             "name": "DY-F70",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000590,
             "regionID": 10000051
         },
         "30004043": {
             "name": "FD53-H",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000591,
             "regionID": 10000051
         },
         "30004044": {
             "name": "O-ZXUV",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000591,
             "regionID": 10000051
         },
         "30004045": {
             "name": "77-KDQ",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000591,
             "regionID": 10000051
         },
@@ -26293,7 +26293,7 @@ var appData = {
         },
         "30004048": {
             "name": "1-NW2G",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000591,
             "regionID": 10000051
         },
@@ -26329,7 +26329,7 @@ var appData = {
         },
         "30004054": {
             "name": "Q-UA3C",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000592,
             "regionID": 10000051
         },
@@ -26341,13 +26341,13 @@ var appData = {
         },
         "30004056": {
             "name": "8R-RTB",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000592,
             "regionID": 10000051
         },
         "30004057": {
             "name": "6Z9-0M",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000593,
             "regionID": 10000051
         },
@@ -26365,7 +26365,7 @@ var appData = {
         },
         "30004060": {
             "name": "O-BDXB",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000593,
             "regionID": 10000051
         },
@@ -26383,7 +26383,7 @@ var appData = {
         },
         "30004063": {
             "name": "Z-Y7R7",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000593,
             "regionID": 10000051
         },
@@ -26401,31 +26401,31 @@ var appData = {
         },
         "30004066": {
             "name": "QA1-BT",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000594,
             "regionID": 10000051
         },
         "30004067": {
             "name": "5S-KNL",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000594,
             "regionID": 10000051
         },
         "30004068": {
             "name": "00TY-J",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000594,
             "regionID": 10000051
         },
         "30004069": {
             "name": "XG-D1L",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000594,
             "regionID": 10000051
         },
         "30004070": {
             "name": "6RCQ-V",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000594,
             "regionID": 10000051
         },
@@ -26443,25 +26443,25 @@ var appData = {
         },
         "30004073": {
             "name": "6ON-RW",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000595,
             "regionID": 10000051
         },
         "30004074": {
             "name": "U65-CN",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000595,
             "regionID": 10000051
         },
         "30004075": {
             "name": "X-M9ON",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000595,
             "regionID": 10000051
         },
         "30004076": {
             "name": "P5-KCC",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000595,
             "regionID": 10000051
         },
@@ -26474,21 +26474,21 @@ var appData = {
         },
         "30004078": {
             "name": "Dresi",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000596,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004079": {
             "name": "Aphend",
-            "security": "0.62",
+            "security": "0.63",
             "constellationID": 20000596,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004080": {
             "name": "Romi",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000596,
             "regionID": 10000052,
             "factionID": 500003
@@ -26502,7 +26502,7 @@ var appData = {
         },
         "30004082": {
             "name": "Aharalel",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000596,
             "regionID": 10000052,
             "factionID": 500003
@@ -26551,7 +26551,7 @@ var appData = {
         },
         "30004089": {
             "name": "Neburab",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000597,
             "regionID": 10000052,
             "factionID": 500003
@@ -26565,21 +26565,21 @@ var appData = {
         },
         "30004091": {
             "name": "Uanim",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000598,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004092": {
             "name": "Murini",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000598,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004093": {
             "name": "Askonak",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000598,
             "regionID": 10000052,
             "factionID": 500003
@@ -26593,28 +26593,28 @@ var appData = {
         },
         "30004095": {
             "name": "Kador Prime",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000598,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004096": {
             "name": "Khafis",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000598,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004097": {
             "name": "Dantan",
-            "security": "0.65",
+            "security": "0.66",
             "constellationID": 20000598,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004098": {
             "name": "Turba",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000599,
             "regionID": 10000052,
             "factionID": 500003
@@ -26628,28 +26628,28 @@ var appData = {
         },
         "30004100": {
             "name": "Halibai",
-            "security": "0.74",
+            "security": "0.75",
             "constellationID": 20000599,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004101": {
             "name": "Suner",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000599,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004102": {
             "name": "Inis-Ilix",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000599,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004103": {
             "name": "Kothe",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000599,
             "regionID": 10000052,
             "factionID": 500003
@@ -26747,35 +26747,35 @@ var appData = {
         },
         "30004117": {
             "name": "Bushemal",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000602,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004118": {
             "name": "Ardhis",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000602,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004119": {
             "name": "Gasavak",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000602,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004120": {
             "name": "Iaokit",
-            "security": "0.40",
+            "security": "0.41",
             "constellationID": 20000602,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004121": {
             "name": "Menri",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000602,
             "regionID": 10000052,
             "factionID": 500003
@@ -26789,7 +26789,7 @@ var appData = {
         },
         "30004123": {
             "name": "Garisas",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000603,
             "regionID": 10000052,
             "factionID": 500003
@@ -26824,21 +26824,21 @@ var appData = {
         },
         "30004128": {
             "name": "Koona",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000603,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004129": {
             "name": "Munory",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000603,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004130": {
             "name": "Hostakoh",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000604,
             "regionID": 10000052,
             "factionID": 500003
@@ -26852,7 +26852,7 @@ var appData = {
         },
         "30004132": {
             "name": "Jeshideh",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000604,
             "regionID": 10000052,
             "factionID": 500003
@@ -26873,7 +26873,7 @@ var appData = {
         },
         "30004135": {
             "name": "Shura",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000604,
             "regionID": 10000052,
             "factionID": 500003
@@ -26908,7 +26908,7 @@ var appData = {
         },
         "30004140": {
             "name": "Zinoo",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000605,
             "regionID": 10000052,
             "factionID": 500003
@@ -26950,21 +26950,21 @@ var appData = {
         },
         "30004146": {
             "name": "Salah",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000606,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004147": {
             "name": "Akhmoh",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000606,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004148": {
             "name": "Jennim",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000607,
             "regionID": 10000052,
             "factionID": 500003
@@ -26978,14 +26978,14 @@ var appData = {
         },
         "30004150": {
             "name": "Shaggoth",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000607,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004151": {
             "name": "Ustnia",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000607,
             "regionID": 10000052,
             "factionID": 500003
@@ -27013,42 +27013,42 @@ var appData = {
         },
         "30004155": {
             "name": "Shemah",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000608,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004156": {
             "name": "Asrios",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000608,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004157": {
             "name": "Ithar",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000608,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004158": {
             "name": "Telang",
-            "security": "0.80",
+            "security": "0.81",
             "constellationID": 20000608,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004159": {
             "name": "Lazara",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000608,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30004160": {
             "name": "Zorrabed",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000608,
             "regionID": 10000052,
             "factionID": 500003
@@ -27067,7 +27067,7 @@ var appData = {
         },
         "30004163": {
             "name": "BI0Y-X",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000609,
             "regionID": 10000053
         },
@@ -27091,7 +27091,7 @@ var appData = {
         },
         "30004167": {
             "name": "GQLB-V",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000610,
             "regionID": 10000053
         },
@@ -27103,7 +27103,7 @@ var appData = {
         },
         "30004169": {
             "name": "9KE-IT",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000610,
             "regionID": 10000053
         },
@@ -27121,7 +27121,7 @@ var appData = {
         },
         "30004172": {
             "name": "S-W8CF",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000610,
             "regionID": 10000053
         },
@@ -27151,13 +27151,13 @@ var appData = {
         },
         "30004177": {
             "name": "I-CMZA",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000611,
             "regionID": 10000053
         },
         "30004178": {
             "name": "H23-B5",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000611,
             "regionID": 10000053
         },
@@ -27169,7 +27169,7 @@ var appData = {
         },
         "30004180": {
             "name": "CBY8-J",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000611,
             "regionID": 10000053
         },
@@ -27187,7 +27187,7 @@ var appData = {
         },
         "30004183": {
             "name": "MK-YNM",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000612,
             "regionID": 10000053
         },
@@ -27205,55 +27205,55 @@ var appData = {
         },
         "30004186": {
             "name": "E-B957",
-            "security": "-0.70",
+            "security": "-0.71",
             "constellationID": 20000612,
             "regionID": 10000053
         },
         "30004187": {
             "name": "P-H5IY",
-            "security": "-0.87",
+            "security": "-0.88",
             "constellationID": 20000612,
             "regionID": 10000053
         },
         "30004188": {
             "name": "4A-6NI",
-            "security": "-0.79",
+            "security": "-0.80",
             "constellationID": 20000612,
             "regionID": 10000053
         },
         "30004189": {
             "name": "1M7-RK",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000612,
             "regionID": 10000053
         },
         "30004190": {
             "name": "87-1PM",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000613,
             "regionID": 10000053
         },
         "30004191": {
             "name": "C2-1B5",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000613,
             "regionID": 10000053
         },
         "30004192": {
             "name": "JE-VLG",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000613,
             "regionID": 10000053
         },
         "30004193": {
             "name": "5ED-4E",
-            "security": "-0.85",
+            "security": "-0.86",
             "constellationID": 20000613,
             "regionID": 10000053
         },
         "30004194": {
             "name": "B-U299",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000613,
             "regionID": 10000053
         },
@@ -27271,19 +27271,19 @@ var appData = {
         },
         "30004197": {
             "name": "FV1-RQ",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000614,
             "regionID": 10000053
         },
         "30004198": {
             "name": "QT-EBC",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000614,
             "regionID": 10000053
         },
         "30004199": {
             "name": "O-F4SN",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000614,
             "regionID": 10000053
         },
@@ -27301,13 +27301,13 @@ var appData = {
         },
         "30004202": {
             "name": "U6R-F9",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000615,
             "regionID": 10000053
         },
         "30004203": {
             "name": "L-Z9NB",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000615,
             "regionID": 10000053
         },
@@ -27319,19 +27319,19 @@ var appData = {
         },
         "30004205": {
             "name": "HXK-J6",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000615,
             "regionID": 10000053
         },
         "30004206": {
             "name": "4LNE-M",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000615,
             "regionID": 10000053
         },
         "30004207": {
             "name": "DK0-N8",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000615,
             "regionID": 10000053
         },
@@ -27343,7 +27343,7 @@ var appData = {
         },
         "30004209": {
             "name": "KI2-S3",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000616,
             "regionID": 10000053
         },
@@ -27361,55 +27361,55 @@ var appData = {
         },
         "30004212": {
             "name": "58Z-IH",
-            "security": "-0.94",
+            "security": "-0.95",
             "constellationID": 20000616,
             "regionID": 10000053
         },
         "30004213": {
             "name": "M-VACR",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000616,
             "regionID": 10000053
         },
         "30004214": {
             "name": "0B-VOJ",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000616,
             "regionID": 10000053
         },
         "30004215": {
             "name": "J-QOKQ",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000617,
             "regionID": 10000053
         },
         "30004216": {
             "name": "4GSZ-1",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000617,
             "regionID": 10000053
         },
         "30004217": {
             "name": "E-EFAM",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000617,
             "regionID": 10000053
         },
         "30004218": {
             "name": "SBEN-Q",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000617,
             "regionID": 10000053
         },
         "30004219": {
             "name": "9-7SRQ",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000617,
             "regionID": 10000053
         },
         "30004220": {
             "name": "VEQ-3V",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000617,
             "regionID": 10000053
         },
@@ -27427,43 +27427,43 @@ var appData = {
         },
         "30004223": {
             "name": "MO-YDG",
-            "security": "-0.90",
+            "security": "-0.91",
             "constellationID": 20000618,
             "regionID": 10000053
         },
         "30004224": {
             "name": "42SU-L",
-            "security": "-0.80",
+            "security": "-0.81",
             "constellationID": 20000618,
             "regionID": 10000053
         },
         "30004225": {
             "name": "RGU1-T",
-            "security": "-0.88",
+            "security": "-0.89",
             "constellationID": 20000618,
             "regionID": 10000053
         },
         "30004226": {
             "name": "1GT-MA",
-            "security": "-0.82",
+            "security": "-0.83",
             "constellationID": 20000618,
             "regionID": 10000053
         },
         "30004227": {
             "name": "VY-866",
-            "security": "-0.98",
+            "security": "-0.99",
             "constellationID": 20000618,
             "regionID": 10000053
         },
         "30004228": {
             "name": "HB-5L3",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000618,
             "regionID": 10000053
         },
         "30004229": {
             "name": "Q-VTWJ",
-            "security": "-0.93",
+            "security": "-0.94",
             "constellationID": 20000618,
             "regionID": 10000053
         },
@@ -27476,7 +27476,7 @@ var appData = {
         },
         "30004231": {
             "name": "Shakasi",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000619,
             "regionID": 10000054,
             "factionID": 500003
@@ -27504,7 +27504,7 @@ var appData = {
         },
         "30004235": {
             "name": "Maseera",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000619,
             "regionID": 10000054,
             "factionID": 500003
@@ -27518,7 +27518,7 @@ var appData = {
         },
         "30004237": {
             "name": "Kenahehab",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000620,
             "regionID": 10000054,
             "factionID": 500003
@@ -27567,49 +27567,49 @@ var appData = {
         },
         "30004244": {
             "name": "Onanam",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000621,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004245": {
             "name": "Udianoor",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000621,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004246": {
             "name": "Vehan",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000621,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004247": {
             "name": "Marmeha",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000621,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004248": {
             "name": "Haimeh",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000622,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004249": {
             "name": "Avada",
-            "security": "0.68",
+            "security": "0.69",
             "constellationID": 20000622,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004250": {
             "name": "Chibi",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000622,
             "regionID": 10000054,
             "factionID": 500003
@@ -27637,7 +27637,7 @@ var appData = {
         },
         "30004254": {
             "name": "Fihrneh",
-            "security": "0.10",
+            "security": "0.11",
             "constellationID": 20000623,
             "regionID": 10000054,
             "factionID": 500003
@@ -27672,14 +27672,14 @@ var appData = {
         },
         "30004259": {
             "name": "Ertoo",
-            "security": "0.13",
+            "security": "0.14",
             "constellationID": 20000623,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004260": {
             "name": "Yiratal",
-            "security": "0.03",
+            "security": "0.04",
             "constellationID": 20000623,
             "regionID": 10000054,
             "factionID": 500003
@@ -27693,21 +27693,21 @@ var appData = {
         },
         "30004262": {
             "name": "Pemsah",
-            "security": "0.04",
+            "security": "0.05",
             "constellationID": 20000623,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004263": {
             "name": "Feshur",
-            "security": "0.03",
+            "security": "0.04",
             "constellationID": 20000623,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004264": {
             "name": "Hoseen",
-            "security": "0.07",
+            "security": "0.08",
             "constellationID": 20000623,
             "regionID": 10000054,
             "factionID": 500003
@@ -27728,14 +27728,14 @@ var appData = {
         },
         "30004267": {
             "name": "Nema",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000624,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004268": {
             "name": "Shenda",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000624,
             "regionID": 10000054,
             "factionID": 500003
@@ -27756,14 +27756,14 @@ var appData = {
         },
         "30004271": {
             "name": "Afrah",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000624,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004272": {
             "name": "Sota",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000624,
             "regionID": 10000054,
             "factionID": 500003
@@ -27798,14 +27798,14 @@ var appData = {
         },
         "30004277": {
             "name": "Ajna",
-            "security": "0.18",
+            "security": "0.19",
             "constellationID": 20000625,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004278": {
             "name": "Sheri",
-            "security": "0.05",
+            "security": "0.06",
             "constellationID": 20000625,
             "regionID": 10000054,
             "factionID": 500003
@@ -27819,7 +27819,7 @@ var appData = {
         },
         "30004280": {
             "name": "Nalnifan",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000626,
             "regionID": 10000054,
             "factionID": 500003
@@ -27833,7 +27833,7 @@ var appData = {
         },
         "30004282": {
             "name": "Getrenjesa",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000626,
             "regionID": 10000054,
             "factionID": 500003
@@ -27861,7 +27861,7 @@ var appData = {
         },
         "30004286": {
             "name": "Yahyerer",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000626,
             "regionID": 10000054,
             "factionID": 500003
@@ -27875,35 +27875,35 @@ var appData = {
         },
         "30004288": {
             "name": "Ghekon",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000627,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004289": {
             "name": "Vaini",
-            "security": "0.22",
+            "security": "0.23",
             "constellationID": 20000627,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004290": {
             "name": "Zaveral",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000627,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004291": {
             "name": "Anohel",
-            "security": "0.13",
+            "security": "0.14",
             "constellationID": 20000627,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004292": {
             "name": "Soza",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000627,
             "regionID": 10000054,
             "factionID": 500003
@@ -27931,7 +27931,7 @@ var appData = {
         },
         "30004296": {
             "name": "Bapraya",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000627,
             "regionID": 10000054,
             "factionID": 500003
@@ -27945,7 +27945,7 @@ var appData = {
         },
         "30004298": {
             "name": "Tisot",
-            "security": "0.08",
+            "security": "0.09",
             "constellationID": 20000628,
             "regionID": 10000054,
             "factionID": 500003
@@ -27973,14 +27973,14 @@ var appData = {
         },
         "30004302": {
             "name": "Omigiav",
-            "security": "0.15",
+            "security": "0.16",
             "constellationID": 20000628,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004303": {
             "name": "Fobiner",
-            "security": "0.17",
+            "security": "0.18",
             "constellationID": 20000629,
             "regionID": 10000054,
             "factionID": 500003
@@ -28008,28 +28008,28 @@ var appData = {
         },
         "30004307": {
             "name": "Nouta",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000629,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004308": {
             "name": "Ned",
-            "security": "0.17",
+            "security": "0.18",
             "constellationID": 20000629,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004309": {
             "name": "Hophib",
-            "security": "0.02",
+            "security": "0.03",
             "constellationID": 20000629,
             "regionID": 10000054,
             "factionID": 500003
         },
         "30004310": {
             "name": "UQ9-3C",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000630,
             "regionID": 10000055
         },
@@ -28047,13 +28047,13 @@ var appData = {
         },
         "30004313": {
             "name": "PKG4-7",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000630,
             "regionID": 10000055
         },
         "30004314": {
             "name": "EWN-2U",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000630,
             "regionID": 10000055
         },
@@ -28071,19 +28071,19 @@ var appData = {
         },
         "30004317": {
             "name": "4-48K1",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000631,
             "regionID": 10000055
         },
         "30004318": {
             "name": "NTV0-1",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000631,
             "regionID": 10000055
         },
         "30004319": {
             "name": "C-HCGU",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000631,
             "regionID": 10000055
         },
@@ -28095,19 +28095,19 @@ var appData = {
         },
         "30004321": {
             "name": "Q-FEEJ",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000631,
             "regionID": 10000055
         },
         "30004322": {
             "name": "0P9Z-I",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000631,
             "regionID": 10000055
         },
         "30004323": {
             "name": "AH-B84",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000632,
             "regionID": 10000055
         },
@@ -28119,7 +28119,7 @@ var appData = {
         },
         "30004325": {
             "name": "HB7R-F",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000632,
             "regionID": 10000055
         },
@@ -28149,7 +28149,7 @@ var appData = {
         },
         "30004330": {
             "name": "JRZ-B9",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000633,
             "regionID": 10000055
         },
@@ -28173,19 +28173,19 @@ var appData = {
         },
         "30004334": {
             "name": "OJ-A8M",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000633,
             "regionID": 10000055
         },
         "30004335": {
             "name": "CX-1XF",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000634,
             "regionID": 10000055
         },
         "30004336": {
             "name": "3-TD6L",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000634,
             "regionID": 10000055
         },
@@ -28215,7 +28215,7 @@ var appData = {
         },
         "30004341": {
             "name": "Z-K495",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000635,
             "regionID": 10000055
         },
@@ -28251,25 +28251,25 @@ var appData = {
         },
         "30004347": {
             "name": "6-O5GY",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000635,
             "regionID": 10000055
         },
         "30004348": {
             "name": "KV-8SN",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000635,
             "regionID": 10000055
         },
         "30004349": {
             "name": "UB-UQZ",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000635,
             "regionID": 10000055
         },
         "30004350": {
             "name": "YG-82V",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000635,
             "regionID": 10000055
         },
@@ -28281,19 +28281,19 @@ var appData = {
         },
         "30004352": {
             "name": "T-Q2DD",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000636,
             "regionID": 10000055
         },
         "30004353": {
             "name": "LRWD-B",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000636,
             "regionID": 10000055
         },
         "30004354": {
             "name": "QXQ-BA",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000636,
             "regionID": 10000055
         },
@@ -28311,13 +28311,13 @@ var appData = {
         },
         "30004357": {
             "name": "CS-ZGD",
-            "security": "-0.42",
+            "security": "-0.43",
             "constellationID": 20000637,
             "regionID": 10000055
         },
         "30004358": {
             "name": "3-N3OO",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000637,
             "regionID": 10000055
         },
@@ -28341,7 +28341,7 @@ var appData = {
         },
         "30004362": {
             "name": "P7Z-R3",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000637,
             "regionID": 10000055
         },
@@ -28377,13 +28377,13 @@ var appData = {
         },
         "30004368": {
             "name": "WO-AIJ",
-            "security": "-0.76",
+            "security": "-0.77",
             "constellationID": 20000638,
             "regionID": 10000055
         },
         "30004369": {
             "name": "MA-VDX",
-            "security": "-0.79",
+            "security": "-0.80",
             "constellationID": 20000638,
             "regionID": 10000055
         },
@@ -28395,7 +28395,7 @@ var appData = {
         },
         "30004371": {
             "name": "BWI1-9",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000639,
             "regionID": 10000055
         },
@@ -28419,13 +28419,13 @@ var appData = {
         },
         "30004375": {
             "name": "KMQ4-V",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000639,
             "regionID": 10000055
         },
         "30004376": {
             "name": "KJ-QWL",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000639,
             "regionID": 10000055
         },
@@ -28437,13 +28437,13 @@ var appData = {
         },
         "30004378": {
             "name": "C-4ZOS",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000640,
             "regionID": 10000055
         },
         "30004379": {
             "name": "K-8SQS",
-            "security": "-0.74",
+            "security": "-0.75",
             "constellationID": 20000640,
             "regionID": 10000055
         },
@@ -28467,7 +28467,7 @@ var appData = {
         },
         "30004383": {
             "name": "NEH-CS",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000640,
             "regionID": 10000055
         },
@@ -28485,31 +28485,31 @@ var appData = {
         },
         "30004386": {
             "name": "D4R-H7",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000641,
             "regionID": 10000055
         },
         "30004387": {
             "name": "313I-B",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000641,
             "regionID": 10000055
         },
         "30004388": {
             "name": "EQI2-2",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000641,
             "regionID": 10000055
         },
         "30004389": {
             "name": "Q-4DEC",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000641,
             "regionID": 10000055
         },
         "30004390": {
             "name": "3F-JZF",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000642,
             "regionID": 10000055
         },
@@ -28539,13 +28539,13 @@ var appData = {
         },
         "30004395": {
             "name": "PUWL-4",
-            "security": "-0.80",
+            "security": "-0.81",
             "constellationID": 20000642,
             "regionID": 10000055
         },
         "30004396": {
             "name": "Y-1918",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000642,
             "regionID": 10000055
         },
@@ -28557,13 +28557,13 @@ var appData = {
         },
         "30004398": {
             "name": "ME-4IU",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000643,
             "regionID": 10000055
         },
         "30004399": {
             "name": "BU-IU4",
-            "security": "-0.86",
+            "security": "-0.87",
             "constellationID": 20000643,
             "regionID": 10000055
         },
@@ -28575,13 +28575,13 @@ var appData = {
         },
         "30004401": {
             "name": "CH9L-K",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000643,
             "regionID": 10000055
         },
         "30004402": {
             "name": "QYZM-W",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000643,
             "regionID": 10000055
         },
@@ -28593,25 +28593,25 @@ var appData = {
         },
         "30004404": {
             "name": "UD-VZW",
-            "security": "-0.49",
+            "security": "-0.50",
             "constellationID": 20000644,
             "regionID": 10000056
         },
         "30004405": {
             "name": "3-YX2D",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000644,
             "regionID": 10000056
         },
         "30004406": {
             "name": "V-TN6Q",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000644,
             "regionID": 10000056
         },
         "30004407": {
             "name": "CFLF-P",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000644,
             "regionID": 10000056
         },
@@ -28623,13 +28623,13 @@ var appData = {
         },
         "30004409": {
             "name": "9-ZFCG",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000644,
             "regionID": 10000056
         },
         "30004410": {
             "name": "J-TPTA",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000645,
             "regionID": 10000056
         },
@@ -28641,13 +28641,13 @@ var appData = {
         },
         "30004412": {
             "name": "5-IZGE",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000645,
             "regionID": 10000056
         },
         "30004413": {
             "name": "OXC-UL",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000645,
             "regionID": 10000056
         },
@@ -28665,7 +28665,7 @@ var appData = {
         },
         "30004416": {
             "name": "X6-J6R",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000645,
             "regionID": 10000056
         },
@@ -28701,7 +28701,7 @@ var appData = {
         },
         "30004422": {
             "name": "BJD4-E",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000646,
             "regionID": 10000056
         },
@@ -28725,7 +28725,7 @@ var appData = {
         },
         "30004426": {
             "name": "OCU4-R",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000647,
             "regionID": 10000056
         },
@@ -28737,13 +28737,13 @@ var appData = {
         },
         "30004428": {
             "name": "Y-YGMW",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000647,
             "regionID": 10000056
         },
         "30004429": {
             "name": "75C-WN",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000647,
             "regionID": 10000056
         },
@@ -28767,7 +28767,7 @@ var appData = {
         },
         "30004433": {
             "name": "VF-FN6",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000647,
             "regionID": 10000056
         },
@@ -28785,19 +28785,19 @@ var appData = {
         },
         "30004436": {
             "name": "U-BXU9",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000648,
             "regionID": 10000056
         },
         "30004437": {
             "name": "ZXOG-O",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000648,
             "regionID": 10000056
         },
         "30004438": {
             "name": "NW2S-A",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000648,
             "regionID": 10000056
         },
@@ -28815,7 +28815,7 @@ var appData = {
         },
         "30004441": {
             "name": "U1-C18",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000648,
             "regionID": 10000056
         },
@@ -28827,13 +28827,13 @@ var appData = {
         },
         "30004443": {
             "name": "H65-HE",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000649,
             "regionID": 10000056
         },
         "30004444": {
             "name": "BJ-ZFD",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000649,
             "regionID": 10000056
         },
@@ -28845,7 +28845,7 @@ var appData = {
         },
         "30004446": {
             "name": "H-P4LB",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000649,
             "regionID": 10000056
         },
@@ -28863,7 +28863,7 @@ var appData = {
         },
         "30004449": {
             "name": "M-CMLV",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000649,
             "regionID": 10000056
         },
@@ -28887,13 +28887,13 @@ var appData = {
         },
         "30004453": {
             "name": "VNGJ-U",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000650,
             "regionID": 10000056
         },
         "30004454": {
             "name": "2-F3OE",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000650,
             "regionID": 10000056
         },
@@ -28911,7 +28911,7 @@ var appData = {
         },
         "30004457": {
             "name": "VVO-R6",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000650,
             "regionID": 10000056
         },
@@ -28923,7 +28923,7 @@ var appData = {
         },
         "30004459": {
             "name": "YHP2-D",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000651,
             "regionID": 10000056
         },
@@ -28941,31 +28941,31 @@ var appData = {
         },
         "30004462": {
             "name": "JO-32L",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000651,
             "regionID": 10000056
         },
         "30004463": {
             "name": "UB5Z-3",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000651,
             "regionID": 10000056
         },
         "30004464": {
             "name": "MSKR-1",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000651,
             "regionID": 10000056
         },
         "30004465": {
             "name": "GPUS-A",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000652,
             "regionID": 10000056
         },
         "30004466": {
             "name": "3-BADZ",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000652,
             "regionID": 10000056
         },
@@ -28983,7 +28983,7 @@ var appData = {
         },
         "30004469": {
             "name": "ZS-2LT",
-            "security": "-0.90",
+            "security": "-0.91",
             "constellationID": 20000652,
             "regionID": 10000056
         },
@@ -28995,7 +28995,7 @@ var appData = {
         },
         "30004471": {
             "name": "P8-BKO",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000653,
             "regionID": 10000056
         },
@@ -29025,7 +29025,7 @@ var appData = {
         },
         "30004476": {
             "name": "NLO-3Z",
-            "security": "-0.81",
+            "security": "-0.82",
             "constellationID": 20000653,
             "regionID": 10000056
         },
@@ -29067,13 +29067,13 @@ var appData = {
         },
         "30004483": {
             "name": "0OYZ-G",
-            "security": "-0.71",
+            "security": "-0.72",
             "constellationID": 20000654,
             "regionID": 10000056
         },
         "30004484": {
             "name": "SWBV-2",
-            "security": "-0.78",
+            "security": "-0.79",
             "constellationID": 20000654,
             "regionID": 10000056
         },
@@ -29103,7 +29103,7 @@ var appData = {
         },
         "30004489": {
             "name": "ZID-LE",
-            "security": "-0.95",
+            "security": "-0.96",
             "constellationID": 20000655,
             "regionID": 10000056
         },
@@ -29115,7 +29115,7 @@ var appData = {
         },
         "30004491": {
             "name": "D4-2XN",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000655,
             "regionID": 10000056
         },
@@ -29134,28 +29134,28 @@ var appData = {
         },
         "30004494": {
             "name": "RL-KT0",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000656,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004495": {
             "name": "UO9-YG",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000656,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004496": {
             "name": "ZQP-QV",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000656,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004497": {
             "name": "P-NUWP",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000656,
             "regionID": 10000057,
             "factionID": 500014
@@ -29176,7 +29176,7 @@ var appData = {
         },
         "30004500": {
             "name": "TQ-RR8",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000656,
             "regionID": 10000057,
             "factionID": 500014
@@ -29204,7 +29204,7 @@ var appData = {
         },
         "30004504": {
             "name": "4C-B7X",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000657,
             "regionID": 10000057,
             "factionID": 500014
@@ -29218,7 +29218,7 @@ var appData = {
         },
         "30004506": {
             "name": "BF-SDP",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000657,
             "regionID": 10000057,
             "factionID": 500014
@@ -29246,14 +29246,14 @@ var appData = {
         },
         "30004510": {
             "name": "0-9UHT",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000658,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004511": {
             "name": "M-NKZM",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000658,
             "regionID": 10000057,
             "factionID": 500014
@@ -29274,21 +29274,21 @@ var appData = {
         },
         "30004514": {
             "name": "J9SH-A",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000659,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004515": {
             "name": "JKJ-VJ",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000659,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004516": {
             "name": "RTX0-S",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000659,
             "regionID": 10000057,
             "factionID": 500014
@@ -29316,7 +29316,7 @@ var appData = {
         },
         "30004520": {
             "name": "3HQC-6",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000660,
             "regionID": 10000057,
             "factionID": 500014
@@ -29372,21 +29372,21 @@ var appData = {
         },
         "30004528": {
             "name": "ZXI-K2",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000661,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004529": {
             "name": "T-Z6J2",
-            "security": "-0.14",
+            "security": "-0.15",
             "constellationID": 20000661,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004530": {
             "name": "CT7-5V",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000661,
             "regionID": 10000057,
             "factionID": 500014
@@ -29400,7 +29400,7 @@ var appData = {
         },
         "30004532": {
             "name": "B0C-LD",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000662,
             "regionID": 10000057,
             "factionID": 500014
@@ -29414,7 +29414,7 @@ var appData = {
         },
         "30004534": {
             "name": "G-YT55",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000662,
             "regionID": 10000057,
             "factionID": 500014
@@ -29428,14 +29428,14 @@ var appData = {
         },
         "30004536": {
             "name": "G5-EN3",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000662,
             "regionID": 10000057,
             "factionID": 500014
         },
         "30004537": {
             "name": "W-Z3HW",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000662,
             "regionID": 10000057,
             "factionID": 500014
@@ -29470,7 +29470,7 @@ var appData = {
         },
         "30004542": {
             "name": "Z-40CG",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000663,
             "regionID": 10000057,
             "factionID": 500014
@@ -29512,7 +29512,7 @@ var appData = {
         },
         "30004548": {
             "name": "YVA-F0",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000664,
             "regionID": 10000057,
             "factionID": 500014
@@ -29546,19 +29546,19 @@ var appData = {
         },
         "30004553": {
             "name": "4-EP12",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000665,
             "regionID": 10000058
         },
         "30004554": {
             "name": "YZS5-4",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000665,
             "regionID": 10000058
         },
         "30004555": {
             "name": "3WE-KY",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000665,
             "regionID": 10000058
         },
@@ -29576,7 +29576,7 @@ var appData = {
         },
         "30004558": {
             "name": "A8-XBW",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000665,
             "regionID": 10000058
         },
@@ -29606,7 +29606,7 @@ var appData = {
         },
         "30004563": {
             "name": "AC2E-3",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000666,
             "regionID": 10000058
         },
@@ -29618,13 +29618,13 @@ var appData = {
         },
         "30004565": {
             "name": "CL-BWB",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000666,
             "regionID": 10000058
         },
         "30004566": {
             "name": "R3W-XU",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000666,
             "regionID": 10000058
         },
@@ -29636,7 +29636,7 @@ var appData = {
         },
         "30004568": {
             "name": "Y-1W01",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000667,
             "regionID": 10000058
         },
@@ -29660,7 +29660,7 @@ var appData = {
         },
         "30004572": {
             "name": "K8L-X7",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000667,
             "regionID": 10000058
         },
@@ -29672,19 +29672,19 @@ var appData = {
         },
         "30004574": {
             "name": "8ESL-G",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000668,
             "regionID": 10000058
         },
         "30004575": {
             "name": "JGOW-Y",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000668,
             "regionID": 10000058
         },
         "30004576": {
             "name": "APM-6K",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000668,
             "regionID": 10000058
         },
@@ -29714,7 +29714,7 @@ var appData = {
         },
         "30004581": {
             "name": "OW-TPO",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000668,
             "regionID": 10000058
         },
@@ -29726,25 +29726,25 @@ var appData = {
         },
         "30004583": {
             "name": "IGE-RI",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000668,
             "regionID": 10000058
         },
         "30004584": {
             "name": "Z9PP-H",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000669,
             "regionID": 10000058
         },
         "30004585": {
             "name": "7-8S5X",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000669,
             "regionID": 10000058
         },
         "30004586": {
             "name": "EI-O0O",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000669,
             "regionID": 10000058
         },
@@ -29756,7 +29756,7 @@ var appData = {
         },
         "30004588": {
             "name": "D2AH-Z",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000669,
             "regionID": 10000058
         },
@@ -29774,7 +29774,7 @@ var appData = {
         },
         "30004591": {
             "name": "6F-H3W",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000670,
             "regionID": 10000058
         },
@@ -29792,7 +29792,7 @@ var appData = {
         },
         "30004594": {
             "name": "U-SOH2",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000670,
             "regionID": 10000058
         },
@@ -29828,7 +29828,7 @@ var appData = {
         },
         "30004600": {
             "name": "C-N4OD",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000671,
             "regionID": 10000058
         },
@@ -29852,7 +29852,7 @@ var appData = {
         },
         "30004604": {
             "name": "671-ST",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000672,
             "regionID": 10000058
         },
@@ -29870,19 +29870,19 @@ var appData = {
         },
         "30004607": {
             "name": "Z30S-A",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000672,
             "regionID": 10000058
         },
         "30004608": {
             "name": "6VDT-H",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000673,
             "regionID": 10000058
         },
         "30004609": {
             "name": "NDH-NV",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000673,
             "regionID": 10000058
         },
@@ -29906,19 +29906,19 @@ var appData = {
         },
         "30004613": {
             "name": "XJP-Y7",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000673,
             "regionID": 10000058
         },
         "30004614": {
             "name": "AV-VB6",
-            "security": "-0.86",
+            "security": "-0.87",
             "constellationID": 20000673,
             "regionID": 10000058
         },
         "30004615": {
             "name": "HMF-9D",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000673,
             "regionID": 10000058
         },
@@ -29930,14 +29930,14 @@ var appData = {
         },
         "30004617": {
             "name": "YZ-LQL",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000674,
             "regionID": 10000058,
             "factionID": 500020
         },
         "30004618": {
             "name": "MN5N-X",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000674,
             "regionID": 10000058,
             "factionID": 500020
@@ -29951,7 +29951,7 @@ var appData = {
         },
         "30004620": {
             "name": "75FA-Z",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000674,
             "regionID": 10000058,
             "factionID": 500020
@@ -29985,13 +29985,13 @@ var appData = {
         },
         "30004625": {
             "name": "L-A5XP",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000675,
             "regionID": 10000058
         },
         "30004626": {
             "name": "D4KU-5",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000675,
             "regionID": 10000058
         },
@@ -30015,7 +30015,7 @@ var appData = {
         },
         "30004630": {
             "name": "LIWW-P",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000676,
             "regionID": 10000058
         },
@@ -30027,19 +30027,19 @@ var appData = {
         },
         "30004632": {
             "name": "38IA-E",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000676,
             "regionID": 10000058
         },
         "30004633": {
             "name": "M-KXEH",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000676,
             "regionID": 10000058
         },
         "30004634": {
             "name": "TU-Y2A",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000676,
             "regionID": 10000058
         },
@@ -30057,7 +30057,7 @@ var appData = {
         },
         "30004637": {
             "name": "J-RQMF",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000677,
             "regionID": 10000058
         },
@@ -30069,7 +30069,7 @@ var appData = {
         },
         "30004639": {
             "name": "14YI-D",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000677,
             "regionID": 10000058
         },
@@ -30099,7 +30099,7 @@ var appData = {
         },
         "30004644": {
             "name": "V6-NY1",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000678,
             "regionID": 10000058
         },
@@ -30111,31 +30111,31 @@ var appData = {
         },
         "30004646": {
             "name": "9DQW-W",
-            "security": "-0.79",
+            "security": "-0.80",
             "constellationID": 20000678,
             "regionID": 10000058
         },
         "30004647": {
             "name": "PXF-RF",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000678,
             "regionID": 10000058
         },
         "30004648": {
             "name": "R-BGSU",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000678,
             "regionID": 10000058
         },
         "30004649": {
             "name": "O-PNSN",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000679,
             "regionID": 10000058
         },
         "30004650": {
             "name": "1-5GBW",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000679,
             "regionID": 10000058
         },
@@ -30147,7 +30147,7 @@ var appData = {
         },
         "30004652": {
             "name": "F2-2C3",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000679,
             "regionID": 10000058
         },
@@ -30159,7 +30159,7 @@ var appData = {
         },
         "30004654": {
             "name": "ATQ-QS",
-            "security": "-0.53",
+            "security": "-0.54",
             "constellationID": 20000679,
             "regionID": 10000058
         },
@@ -30171,13 +30171,13 @@ var appData = {
         },
         "30004656": {
             "name": "006-L3",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000680,
             "regionID": 10000058
         },
         "30004657": {
             "name": "PB-0C1",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000680,
             "regionID": 10000058
         },
@@ -30189,7 +30189,7 @@ var appData = {
         },
         "30004659": {
             "name": "L7-APB",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000680,
             "regionID": 10000058
         },
@@ -30219,19 +30219,19 @@ var appData = {
         },
         "30004664": {
             "name": "G1CA-Y",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000681,
             "regionID": 10000058
         },
         "30004665": {
             "name": "Y-2ANO",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000681,
             "regionID": 10000058
         },
         "30004666": {
             "name": "Z-YN5Y",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000681,
             "regionID": 10000058
         },
@@ -30273,13 +30273,13 @@ var appData = {
         },
         "30004673": {
             "name": "4Y-OBL",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000683,
             "regionID": 10000059
         },
         "30004674": {
             "name": "0-MX34",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000683,
             "regionID": 10000059
         },
@@ -30291,13 +30291,13 @@ var appData = {
         },
         "30004676": {
             "name": "T-ZFID",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000683,
             "regionID": 10000059
         },
         "30004677": {
             "name": "0ZN7-G",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000683,
             "regionID": 10000059
         },
@@ -30321,7 +30321,7 @@ var appData = {
         },
         "30004681": {
             "name": "8Q-UYU",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000684,
             "regionID": 10000059
         },
@@ -30357,7 +30357,7 @@ var appData = {
         },
         "30004687": {
             "name": "ZWV-GD",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000685,
             "regionID": 10000059
         },
@@ -30375,7 +30375,7 @@ var appData = {
         },
         "30004690": {
             "name": "AA-GWF",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000685,
             "regionID": 10000059
         },
@@ -30399,25 +30399,25 @@ var appData = {
         },
         "30004694": {
             "name": "GQ2S-8",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000686,
             "regionID": 10000059
         },
         "30004695": {
             "name": "0SUF-3",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000686,
             "regionID": 10000059
         },
         "30004696": {
             "name": "G-M4GK",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000686,
             "regionID": 10000059
         },
         "30004697": {
             "name": "G1D0-G",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000686,
             "regionID": 10000059
         },
@@ -30429,7 +30429,7 @@ var appData = {
         },
         "30004699": {
             "name": "O1Q-P1",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000686,
             "regionID": 10000059
         },
@@ -30441,7 +30441,7 @@ var appData = {
         },
         "30004701": {
             "name": "ZBY-0I",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000687,
             "regionID": 10000059
         },
@@ -30453,25 +30453,25 @@ var appData = {
         },
         "30004703": {
             "name": "O-N589",
-            "security": "-0.92",
+            "security": "-0.93",
             "constellationID": 20000687,
             "regionID": 10000059
         },
         "30004704": {
             "name": "ZDYA-G",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000687,
             "regionID": 10000059
         },
         "30004705": {
             "name": "LX5K-W",
-            "security": "-0.66",
+            "security": "-0.67",
             "constellationID": 20000687,
             "regionID": 10000059
         },
         "30004706": {
             "name": "UHKL-N",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000688,
             "regionID": 10000060,
             "factionID": 500012
@@ -30485,7 +30485,7 @@ var appData = {
         },
         "30004708": {
             "name": "A-ELE2",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000688,
             "regionID": 10000060,
             "factionID": 500012
@@ -30499,14 +30499,14 @@ var appData = {
         },
         "30004710": {
             "name": "1DH-SX",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000688,
             "regionID": 10000060,
             "factionID": 500012
         },
         "30004711": {
             "name": "PR-8CA",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000688,
             "regionID": 10000060,
             "factionID": 500012
@@ -30543,20 +30543,20 @@ var appData = {
         },
         "30004717": {
             "name": "AJI-MA",
-            "security": "-0.00",
+            "security": "-0.01",
             "constellationID": 20000689,
             "regionID": 10000060
         },
         "30004718": {
             "name": "FWST-8",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000690,
             "regionID": 10000060,
             "factionID": 500012
         },
         "30004719": {
             "name": "YZ9-F6",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000690,
             "regionID": 10000060,
             "factionID": 500012
@@ -30570,7 +30570,7 @@ var appData = {
         },
         "30004721": {
             "name": "G-TT5V",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000690,
             "regionID": 10000060,
             "factionID": 500012
@@ -30584,7 +30584,7 @@ var appData = {
         },
         "30004723": {
             "name": "I3Q-II",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000690,
             "regionID": 10000060,
             "factionID": 500012
@@ -30597,7 +30597,7 @@ var appData = {
         },
         "30004725": {
             "name": "E3OI-U",
-            "security": "-0.04",
+            "security": "-0.05",
             "constellationID": 20000691,
             "regionID": 10000060
         },
@@ -30609,13 +30609,13 @@ var appData = {
         },
         "30004727": {
             "name": "R5-MM8",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000691,
             "regionID": 10000060
         },
         "30004728": {
             "name": "1B-VKF",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000691,
             "regionID": 10000060
         },
@@ -30627,13 +30627,13 @@ var appData = {
         },
         "30004730": {
             "name": "D-W7F0",
-            "security": "-0.11",
+            "security": "-0.12",
             "constellationID": 20000692,
             "regionID": 10000060
         },
         "30004731": {
             "name": "JP4-AA",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000692,
             "regionID": 10000060
         },
@@ -30687,7 +30687,7 @@ var appData = {
         },
         "30004740": {
             "name": "6Q-R50",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000693,
             "regionID": 10000060
         },
@@ -30699,7 +30699,7 @@ var appData = {
         },
         "30004742": {
             "name": "RCI-VL",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000693,
             "regionID": 10000060
         },
@@ -30711,7 +30711,7 @@ var appData = {
         },
         "30004744": {
             "name": "QC-YX6",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000694,
             "regionID": 10000060
         },
@@ -30759,13 +30759,13 @@ var appData = {
         },
         "30004752": {
             "name": "QY6-RK",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000695,
             "regionID": 10000060
         },
         "30004753": {
             "name": "W-KQPI",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000695,
             "regionID": 10000060
         },
@@ -30777,7 +30777,7 @@ var appData = {
         },
         "30004755": {
             "name": "J-LPX7",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000695,
             "regionID": 10000060
         },
@@ -30795,19 +30795,19 @@ var appData = {
         },
         "30004758": {
             "name": "SVM-3K",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000695,
             "regionID": 10000060
         },
         "30004759": {
             "name": "1DQ1-A",
-            "security": "-0.38",
+            "security": "-0.39",
             "constellationID": 20000696,
             "regionID": 10000060
         },
         "30004760": {
             "name": "8WA-Z6",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000696,
             "regionID": 10000060
         },
@@ -30819,7 +30819,7 @@ var appData = {
         },
         "30004762": {
             "name": "N-8YET",
-            "security": "-0.87",
+            "security": "-0.88",
             "constellationID": 20000696,
             "regionID": 10000060
         },
@@ -30831,7 +30831,7 @@ var appData = {
         },
         "30004764": {
             "name": "3-DMQT",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000696,
             "regionID": 10000060
         },
@@ -30843,7 +30843,7 @@ var appData = {
         },
         "30004766": {
             "name": "39P-1J",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000697,
             "regionID": 10000060
         },
@@ -30855,13 +30855,13 @@ var appData = {
         },
         "30004768": {
             "name": "7G-QIG",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000697,
             "regionID": 10000060
         },
         "30004769": {
             "name": "NIDJ-K",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000697,
             "regionID": 10000060
         },
@@ -30873,13 +30873,13 @@ var appData = {
         },
         "30004771": {
             "name": "8RQJ-2",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000697,
             "regionID": 10000060
         },
         "30004772": {
             "name": "KEE-N6",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000698,
             "regionID": 10000060
         },
@@ -30897,7 +30897,7 @@ var appData = {
         },
         "30004775": {
             "name": "I-E3TG",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000698,
             "regionID": 10000060
         },
@@ -30915,13 +30915,13 @@ var appData = {
         },
         "30004778": {
             "name": "GY6A-L",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000699,
             "regionID": 10000060
         },
         "30004779": {
             "name": "UEXO-Z",
-            "security": "-0.82",
+            "security": "-0.83",
             "constellationID": 20000699,
             "regionID": 10000060
         },
@@ -30945,7 +30945,7 @@ var appData = {
         },
         "30004783": {
             "name": "N8D9-Z",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000699,
             "regionID": 10000060
         },
@@ -30969,7 +30969,7 @@ var appData = {
         },
         "30004787": {
             "name": "Q-02UL",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000700,
             "regionID": 10000060
         },
@@ -30987,37 +30987,37 @@ var appData = {
         },
         "30004790": {
             "name": "7-K6UE",
-            "security": "-0.84",
+            "security": "-0.85",
             "constellationID": 20000701,
             "regionID": 10000060
         },
         "30004791": {
             "name": "C6Y-ZF",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000701,
             "regionID": 10000060
         },
         "30004792": {
             "name": "6Z-CKS",
-            "security": "-0.56",
+            "security": "-0.57",
             "constellationID": 20000701,
             "regionID": 10000060
         },
         "30004793": {
             "name": "G-M5L3",
-            "security": "-0.77",
+            "security": "-0.78",
             "constellationID": 20000701,
             "regionID": 10000060
         },
         "30004794": {
             "name": "KBAK-I",
-            "security": "-0.63",
+            "security": "-0.64",
             "constellationID": 20000701,
             "regionID": 10000060
         },
         "30004795": {
             "name": "M-SRKS",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000701,
             "regionID": 10000060
         },
@@ -31029,13 +31029,13 @@ var appData = {
         },
         "30004797": {
             "name": "YAW-7M",
-            "security": "-0.75",
+            "security": "-0.76",
             "constellationID": 20000702,
             "regionID": 10000060
         },
         "30004798": {
             "name": "C3N-3S",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000702,
             "regionID": 10000060
         },
@@ -31047,19 +31047,19 @@ var appData = {
         },
         "30004800": {
             "name": "LWX-93",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000702,
             "regionID": 10000060
         },
         "30004801": {
             "name": "1-2J4P",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000702,
             "regionID": 10000060
         },
         "30004802": {
             "name": "M0O-JG",
-            "security": "-0.05",
+            "security": "-0.06",
             "constellationID": 20000702,
             "regionID": 10000060
         },
@@ -31089,7 +31089,7 @@ var appData = {
         },
         "30004807": {
             "name": "UALX-3",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000703,
             "regionID": 10000061
         },
@@ -31119,7 +31119,7 @@ var appData = {
         },
         "30004812": {
             "name": "RH0-EG",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000704,
             "regionID": 10000061
         },
@@ -31137,7 +31137,7 @@ var appData = {
         },
         "30004815": {
             "name": "QRBN-M",
-            "security": "-0.50",
+            "security": "-0.51",
             "constellationID": 20000704,
             "regionID": 10000061
         },
@@ -31149,13 +31149,13 @@ var appData = {
         },
         "30004817": {
             "name": "ZD1-Z2",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000705,
             "regionID": 10000061
         },
         "30004818": {
             "name": "C-FD0D",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000705,
             "regionID": 10000061
         },
@@ -31167,19 +31167,19 @@ var appData = {
         },
         "30004820": {
             "name": "ZMV9-A",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000705,
             "regionID": 10000061
         },
         "30004821": {
             "name": "FE-6YQ",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000705,
             "regionID": 10000061
         },
         "30004822": {
             "name": "W-16DY",
-            "security": "-0.28",
+            "security": "-0.29",
             "constellationID": 20000705,
             "regionID": 10000061
         },
@@ -31191,7 +31191,7 @@ var appData = {
         },
         "30004824": {
             "name": "C3-0YD",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000706,
             "regionID": 10000061
         },
@@ -31209,7 +31209,7 @@ var appData = {
         },
         "30004827": {
             "name": "L2GN-K",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000706,
             "regionID": 10000061
         },
@@ -31233,31 +31233,31 @@ var appData = {
         },
         "30004831": {
             "name": "ABE-M2",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000707,
             "regionID": 10000061
         },
         "30004832": {
             "name": "IL-YTR",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000707,
             "regionID": 10000061
         },
         "30004833": {
             "name": "KW-OAM",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000707,
             "regionID": 10000061
         },
         "30004834": {
             "name": "U2U5-A",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000707,
             "regionID": 10000061
         },
         "30004835": {
             "name": "EQWO-Y",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000707,
             "regionID": 10000061
         },
@@ -31269,13 +31269,13 @@ var appData = {
         },
         "30004837": {
             "name": "QI9-42",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000707,
             "regionID": 10000061
         },
         "30004838": {
             "name": "YF-P4X",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000707,
             "regionID": 10000061
         },
@@ -31311,7 +31311,7 @@ var appData = {
         },
         "30004844": {
             "name": "TY2X-C",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000708,
             "regionID": 10000061
         },
@@ -31323,7 +31323,7 @@ var appData = {
         },
         "30004846": {
             "name": "Q5KZ-W",
-            "security": "-0.45",
+            "security": "-0.46",
             "constellationID": 20000709,
             "regionID": 10000061
         },
@@ -31353,13 +31353,13 @@ var appData = {
         },
         "30004851": {
             "name": "BB-EKF",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000709,
             "regionID": 10000061
         },
         "30004852": {
             "name": "DZ6-I5",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000710,
             "regionID": 10000061
         },
@@ -31377,19 +31377,19 @@ var appData = {
         },
         "30004855": {
             "name": "QCDG-H",
-            "security": "-0.12",
+            "security": "-0.13",
             "constellationID": 20000710,
             "regionID": 10000061
         },
         "30004856": {
             "name": "XUDX-A",
-            "security": "-0.24",
+            "security": "-0.25",
             "constellationID": 20000710,
             "regionID": 10000061
         },
         "30004857": {
             "name": "QLU-P0",
-            "security": "-0.26",
+            "security": "-0.27",
             "constellationID": 20000710,
             "regionID": 10000061
         },
@@ -31401,7 +31401,7 @@ var appData = {
         },
         "30004859": {
             "name": "Y-EQ0C",
-            "security": "-0.07",
+            "security": "-0.08",
             "constellationID": 20000711,
             "regionID": 10000061
         },
@@ -31419,13 +31419,13 @@ var appData = {
         },
         "30004862": {
             "name": "8-BEW8",
-            "security": "-0.23",
+            "security": "-0.24",
             "constellationID": 20000711,
             "regionID": 10000061
         },
         "30004863": {
             "name": "NZW-ZO",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000711,
             "regionID": 10000061
         },
@@ -31443,19 +31443,19 @@ var appData = {
         },
         "30004866": {
             "name": "NR8S-Y",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000712,
             "regionID": 10000061
         },
         "30004867": {
             "name": "F-ZBO0",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000712,
             "regionID": 10000061
         },
         "30004868": {
             "name": "3Q1T-O",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000712,
             "regionID": 10000061
         },
@@ -31479,13 +31479,13 @@ var appData = {
         },
         "30004872": {
             "name": "7KIK-H",
-            "security": "-0.31",
+            "security": "-0.32",
             "constellationID": 20000713,
             "regionID": 10000061
         },
         "30004873": {
             "name": "B-6STA",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000713,
             "regionID": 10000061
         },
@@ -31527,13 +31527,13 @@ var appData = {
         },
         "30004880": {
             "name": "EMIG-F",
-            "security": "-0.69",
+            "security": "-0.70",
             "constellationID": 20000714,
             "regionID": 10000061
         },
         "30004881": {
             "name": "M-RPN3",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000714,
             "regionID": 10000061
         },
@@ -31545,13 +31545,13 @@ var appData = {
         },
         "30004883": {
             "name": "JV1V-O",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000714,
             "regionID": 10000061
         },
         "30004884": {
             "name": "9MWZ-B",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000715,
             "regionID": 10000062
         },
@@ -31563,13 +31563,13 @@ var appData = {
         },
         "30004886": {
             "name": "S-XZHU",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000715,
             "regionID": 10000062
         },
         "30004887": {
             "name": "CO-7BI",
-            "security": "-0.08",
+            "security": "-0.09",
             "constellationID": 20000715,
             "regionID": 10000062
         },
@@ -31581,25 +31581,25 @@ var appData = {
         },
         "30004889": {
             "name": "C-WPWH",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000715,
             "regionID": 10000062
         },
         "30004890": {
             "name": "VULA-I",
-            "security": "-0.10",
+            "security": "-0.11",
             "constellationID": 20000716,
             "regionID": 10000062
         },
         "30004891": {
             "name": "R2TJ-1",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000716,
             "regionID": 10000062
         },
         "30004892": {
             "name": "G-B3PR",
-            "security": "-0.13",
+            "security": "-0.14",
             "constellationID": 20000716,
             "regionID": 10000062
         },
@@ -31611,7 +31611,7 @@ var appData = {
         },
         "30004894": {
             "name": "XPUM-L",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000716,
             "regionID": 10000062
         },
@@ -31623,31 +31623,31 @@ var appData = {
         },
         "30004896": {
             "name": "LQ-AHE",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000716,
             "regionID": 10000062
         },
         "30004897": {
             "name": "LOI-L1",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000716,
             "regionID": 10000062
         },
         "30004898": {
             "name": "Y-MSJN",
-            "security": "-0.35",
+            "security": "-0.36",
             "constellationID": 20000717,
             "regionID": 10000062
         },
         "30004899": {
             "name": "MJ-X5V",
-            "security": "-0.37",
+            "security": "-0.38",
             "constellationID": 20000717,
             "regionID": 10000062
         },
         "30004900": {
             "name": "3FKU-H",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000717,
             "regionID": 10000062
         },
@@ -31665,7 +31665,7 @@ var appData = {
         },
         "30004903": {
             "name": "DJK-67",
-            "security": "-0.39",
+            "security": "-0.40",
             "constellationID": 20000717,
             "regionID": 10000062
         },
@@ -31689,7 +31689,7 @@ var appData = {
         },
         "30004907": {
             "name": "X-EHHD",
-            "security": "-0.30",
+            "security": "-0.31",
             "constellationID": 20000718,
             "regionID": 10000062
         },
@@ -31701,7 +31701,7 @@ var appData = {
         },
         "30004909": {
             "name": "QSF-EJ",
-            "security": "-0.60",
+            "security": "-0.61",
             "constellationID": 20000718,
             "regionID": 10000062
         },
@@ -31713,13 +31713,13 @@ var appData = {
         },
         "30004911": {
             "name": "NZPK-G",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000719,
             "regionID": 10000062
         },
         "30004912": {
             "name": "K-1OY3",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000719,
             "regionID": 10000062
         },
@@ -31737,7 +31737,7 @@ var appData = {
         },
         "30004915": {
             "name": "X-3AUU",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000719,
             "regionID": 10000062
         },
@@ -31749,25 +31749,25 @@ var appData = {
         },
         "30004917": {
             "name": "0DD-MH",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000719,
             "regionID": 10000062
         },
         "30004918": {
             "name": "RI-JB1",
-            "security": "-0.25",
+            "security": "-0.26",
             "constellationID": 20000719,
             "regionID": 10000062
         },
         "30004919": {
             "name": "NQH-MR",
-            "security": "-0.33",
+            "security": "-0.34",
             "constellationID": 20000719,
             "regionID": 10000062
         },
         "30004920": {
             "name": "1I6F-9",
-            "security": "-0.64",
+            "security": "-0.65",
             "constellationID": 20000720,
             "regionID": 10000062
         },
@@ -31785,7 +31785,7 @@ var appData = {
         },
         "30004923": {
             "name": "66-PMM",
-            "security": "-0.93",
+            "security": "-0.94",
             "constellationID": 20000720,
             "regionID": 10000062
         },
@@ -31797,13 +31797,13 @@ var appData = {
         },
         "30004925": {
             "name": "7-8EOE",
-            "security": "-0.96",
+            "security": "-0.97",
             "constellationID": 20000720,
             "regionID": 10000062
         },
         "30004926": {
             "name": "7L9-ZC",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000720,
             "regionID": 10000062
         },
@@ -31815,7 +31815,7 @@ var appData = {
         },
         "30004928": {
             "name": "35-JWD",
-            "security": "-0.01",
+            "security": "-0.02",
             "constellationID": 20000721,
             "regionID": 10000063
         },
@@ -31827,7 +31827,7 @@ var appData = {
         },
         "30004930": {
             "name": "0-NTIS",
-            "security": "-0.02",
+            "security": "-0.03",
             "constellationID": 20000721,
             "regionID": 10000063
         },
@@ -31839,7 +31839,7 @@ var appData = {
         },
         "30004932": {
             "name": "XZ-SKZ",
-            "security": "-0.03",
+            "security": "-0.04",
             "constellationID": 20000721,
             "regionID": 10000063
         },
@@ -31863,7 +31863,7 @@ var appData = {
         },
         "30004936": {
             "name": "VYO-68",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000722,
             "regionID": 10000063
         },
@@ -31905,7 +31905,7 @@ var appData = {
         },
         "30004943": {
             "name": "VQE-CN",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000723,
             "regionID": 10000063
         },
@@ -31917,13 +31917,13 @@ var appData = {
         },
         "30004945": {
             "name": "G-C8QO",
-            "security": "-0.21",
+            "security": "-0.22",
             "constellationID": 20000723,
             "regionID": 10000063
         },
         "30004946": {
             "name": "EIMJ-M",
-            "security": "-0.91",
+            "security": "-0.92",
             "constellationID": 20000723,
             "regionID": 10000063
         },
@@ -31935,13 +31935,13 @@ var appData = {
         },
         "30004948": {
             "name": "E-DOF2",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000724,
             "regionID": 10000063
         },
         "30004949": {
             "name": "48I1-X",
-            "security": "-0.55",
+            "security": "-0.56",
             "constellationID": 20000724,
             "regionID": 10000063
         },
@@ -31953,7 +31953,7 @@ var appData = {
         },
         "30004951": {
             "name": "3OP-3E",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000724,
             "regionID": 10000063
         },
@@ -31965,7 +31965,7 @@ var appData = {
         },
         "30004953": {
             "name": "RJ3H-0",
-            "security": "-0.52",
+            "security": "-0.53",
             "constellationID": 20000724,
             "regionID": 10000063
         },
@@ -31983,7 +31983,7 @@ var appData = {
         },
         "30004956": {
             "name": "HIX4-H",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000725,
             "regionID": 10000063
         },
@@ -32013,19 +32013,19 @@ var appData = {
         },
         "30004961": {
             "name": "PA-VE3",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000726,
             "regionID": 10000063
         },
         "30004962": {
             "name": "G-Q5JU",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000726,
             "regionID": 10000063
         },
         "30004963": {
             "name": "RYQC-I",
-            "security": "-0.36",
+            "security": "-0.37",
             "constellationID": 20000726,
             "regionID": 10000063
         },
@@ -32037,26 +32037,26 @@ var appData = {
         },
         "30004965": {
             "name": "Z-M5A1",
-            "security": "-0.91",
+            "security": "-0.92",
             "constellationID": 20000726,
             "regionID": 10000063
         },
         "30004966": {
             "name": "MVUO-F",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000726,
             "regionID": 10000063
         },
         "30004967": {
             "name": "Luminaire",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000727,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004968": {
             "name": "Mies",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000727,
             "regionID": 10000064,
             "factionID": 500004
@@ -32070,35 +32070,35 @@ var appData = {
         },
         "30004970": {
             "name": "Renyn",
-            "security": "0.89",
+            "security": "0.90",
             "constellationID": 20000727,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004971": {
             "name": "Duripant",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000727,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004972": {
             "name": "Algogille",
-            "security": "0.92",
+            "security": "0.93",
             "constellationID": 20000727,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004973": {
             "name": "Caslemon",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000728,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004974": {
             "name": "Jolevier",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000728,
             "regionID": 10000064,
             "factionID": 500004
@@ -32119,7 +32119,7 @@ var appData = {
         },
         "30004977": {
             "name": "Yvangier",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000728,
             "regionID": 10000064,
             "factionID": 500004
@@ -32133,14 +32133,14 @@ var appData = {
         },
         "30004979": {
             "name": "Heydieles",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000729,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004980": {
             "name": "Fliet",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000729,
             "regionID": 10000064,
             "factionID": 500004
@@ -32168,28 +32168,28 @@ var appData = {
         },
         "30004984": {
             "name": "Abune",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000729,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004985": {
             "name": "Deven",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000729,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004986": {
             "name": "Estaunitte",
-            "security": "0.42",
+            "security": "0.43",
             "constellationID": 20000729,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004987": {
             "name": "Deninard",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000730,
             "regionID": 10000064,
             "factionID": 500004
@@ -32210,28 +32210,28 @@ var appData = {
         },
         "30004990": {
             "name": "Onne",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000730,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004991": {
             "name": "Vitrauze",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000730,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004992": {
             "name": "Palmon",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000730,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30004993": {
             "name": "Villore",
-            "security": "0.9",
+            "security": "0.90",
             "constellationID": 20000731,
             "regionID": 10000064,
             "factionID": 500004
@@ -32280,14 +32280,14 @@ var appData = {
         },
         "30005000": {
             "name": "Old Man Star",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000731,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30005001": {
             "name": "Arnon",
-            "security": "0.8",
+            "security": "0.80",
             "constellationID": 20000732,
             "regionID": 10000064,
             "factionID": 500004
@@ -32308,21 +32308,21 @@ var appData = {
         },
         "30005004": {
             "name": "Attyn",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000732,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30005005": {
             "name": "Ignebaener",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30005006": {
             "name": "Aere",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000732,
             "regionID": 10000064,
             "factionID": 500004
@@ -32336,7 +32336,7 @@ var appData = {
         },
         "30005008": {
             "name": "Aeschee",
-            "security": "0.15",
+            "security": "0.16",
             "constellationID": 20000732,
             "regionID": 10000064,
             "factionID": 500004
@@ -32364,7 +32364,7 @@ var appData = {
         },
         "30005012": {
             "name": "Haine",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000733,
             "regionID": 10000064,
             "factionID": 500004
@@ -32399,7 +32399,7 @@ var appData = {
         },
         "30005017": {
             "name": "Yona",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000734,
             "regionID": 10000064,
             "factionID": 500004
@@ -32413,7 +32413,7 @@ var appData = {
         },
         "30005019": {
             "name": "Aporulie",
-            "security": "0.78",
+            "security": "0.79",
             "constellationID": 20000734,
             "regionID": 10000064,
             "factionID": 500004
@@ -32434,14 +32434,14 @@ var appData = {
         },
         "30005022": {
             "name": "Ane",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000734,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30005023": {
             "name": "Clorteler",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000734,
             "regionID": 10000064,
             "factionID": 500004
@@ -32455,21 +32455,21 @@ var appData = {
         },
         "30005025": {
             "name": "Derririntel",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000735,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30005026": {
             "name": "Cat",
-            "security": "0.67",
+            "security": "0.68",
             "constellationID": 20000735,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30005027": {
             "name": "Ommare",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000735,
             "regionID": 10000064,
             "factionID": 500004
@@ -32483,14 +32483,14 @@ var appData = {
         },
         "30005029": {
             "name": "Vale",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30005030": {
             "name": "Fensi",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000736,
             "regionID": 10000065,
             "factionID": 500003
@@ -32518,14 +32518,14 @@ var appData = {
         },
         "30005034": {
             "name": "Bridi",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000736,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005035": {
             "name": "Ami",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000736,
             "regionID": 10000065,
             "factionID": 500003
@@ -32553,28 +32553,28 @@ var appData = {
         },
         "30005039": {
             "name": "Leva",
-            "security": "0.61",
+            "security": "0.62",
             "constellationID": 20000737,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005040": {
             "name": "Nishah",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000737,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005041": {
             "name": "Masanuh",
-            "security": "0.69",
+            "security": "0.70",
             "constellationID": 20000737,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005042": {
             "name": "Sehmy",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000737,
             "regionID": 10000065,
             "factionID": 500003
@@ -32602,7 +32602,7 @@ var appData = {
         },
         "30005046": {
             "name": "Jinkah",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000738,
             "regionID": 10000065,
             "factionID": 500003
@@ -32658,35 +32658,35 @@ var appData = {
         },
         "30005054": {
             "name": "Nare",
-            "security": "0.64",
+            "security": "0.65",
             "constellationID": 20000739,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005055": {
             "name": "Zinkon",
-            "security": "0.70",
+            "security": "0.71",
             "constellationID": 20000739,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005056": {
             "name": "Kizama",
-            "security": "0.66",
+            "security": "0.67",
             "constellationID": 20000740,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005057": {
             "name": "Shaha",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000740,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005058": {
             "name": "Neesher",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000740,
             "regionID": 10000065,
             "factionID": 500003
@@ -32714,7 +32714,7 @@ var appData = {
         },
         "30005062": {
             "name": "Abath",
-            "security": "0.16",
+            "security": "0.17",
             "constellationID": 20000741,
             "regionID": 10000065,
             "factionID": 500003
@@ -32728,14 +32728,14 @@ var appData = {
         },
         "30005064": {
             "name": "Mafra",
-            "security": "0.11",
+            "security": "0.12",
             "constellationID": 20000741,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005065": {
             "name": "Arzi",
-            "security": "0.13",
+            "security": "0.14",
             "constellationID": 20000741,
             "regionID": 10000065,
             "factionID": 500003
@@ -32756,7 +32756,7 @@ var appData = {
         },
         "30005068": {
             "name": "Oguser",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000741,
             "regionID": 10000065,
             "factionID": 500003
@@ -32777,7 +32777,7 @@ var appData = {
         },
         "30005071": {
             "name": "Tralasa",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000742,
             "regionID": 10000065,
             "factionID": 500003
@@ -32812,7 +32812,7 @@ var appData = {
         },
         "30005076": {
             "name": "Shokal",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000743,
             "regionID": 10000065,
             "factionID": 500003
@@ -32833,63 +32833,63 @@ var appData = {
         },
         "30005079": {
             "name": "Zatamaka",
-            "security": "0.40",
+            "security": "0.41",
             "constellationID": 20000743,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005080": {
             "name": "Rannoze",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000743,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005081": {
             "name": "Piri",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000743,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005082": {
             "name": "Enal",
-            "security": "0.40",
+            "security": "0.41",
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005083": {
             "name": "Jedandan",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005084": {
             "name": "Miroona",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005085": {
             "name": "Ranni",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005086": {
             "name": "Arza",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30005087": {
             "name": "Liparer",
-            "security": "0.44",
+            "security": "0.45",
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
@@ -32902,13 +32902,13 @@ var appData = {
         },
         "30005089": {
             "name": "TDP-T3",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000745,
             "regionID": 10000066
         },
         "30005090": {
             "name": "H-HGGJ",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000745,
             "regionID": 10000066
         },
@@ -32950,19 +32950,19 @@ var appData = {
         },
         "30005097": {
             "name": "V-3K7C",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000746,
             "regionID": 10000066
         },
         "30005098": {
             "name": "AK-L0Z",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000746,
             "regionID": 10000066
         },
         "30005099": {
             "name": "R-AG7W",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000746,
             "regionID": 10000066
         },
@@ -32980,7 +32980,7 @@ var appData = {
         },
         "30005102": {
             "name": "0FG-KS",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000747,
             "regionID": 10000066
         },
@@ -33004,37 +33004,37 @@ var appData = {
         },
         "30005106": {
             "name": "LW-YEW",
-            "security": "-0.48",
+            "security": "-0.49",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005107": {
             "name": "HB-KSF",
-            "security": "-0.43",
+            "security": "-0.44",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005108": {
             "name": "EH2I-P",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005109": {
             "name": "OP7-BP",
-            "security": "-0.29",
+            "security": "-0.30",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005110": {
             "name": "5ZU-VG",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005111": {
             "name": "6-1T6Z",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000748,
             "regionID": 10000066
         },
@@ -33052,19 +33052,19 @@ var appData = {
         },
         "30005114": {
             "name": "6-8QLA",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005115": {
             "name": "5T-A3D",
-            "security": "-0.19",
+            "security": "-0.20",
             "constellationID": 20000748,
             "regionID": 10000066
         },
         "30005116": {
             "name": "H-FOYG",
-            "security": "-0.18",
+            "security": "-0.19",
             "constellationID": 20000749,
             "regionID": 10000066
         },
@@ -33088,7 +33088,7 @@ var appData = {
         },
         "30005120": {
             "name": "K-3PQW",
-            "security": "-0.62",
+            "security": "-0.63",
             "constellationID": 20000749,
             "regionID": 10000066
         },
@@ -33112,13 +33112,13 @@ var appData = {
         },
         "30005124": {
             "name": "KOI8-Z",
-            "security": "-0.09",
+            "security": "-0.10",
             "constellationID": 20000750,
             "regionID": 10000066
         },
         "30005125": {
             "name": "D-QJR9",
-            "security": "-0.06",
+            "security": "-0.07",
             "constellationID": 20000750,
             "regionID": 10000066
         },
@@ -33142,7 +33142,7 @@ var appData = {
         },
         "30005129": {
             "name": "BEG-RL",
-            "security": "-0.59",
+            "security": "-0.60",
             "constellationID": 20000751,
             "regionID": 10000066
         },
@@ -33154,7 +33154,7 @@ var appData = {
         },
         "30005131": {
             "name": "U-W436",
-            "security": "-0.54",
+            "security": "-0.55",
             "constellationID": 20000751,
             "regionID": 10000066
         },
@@ -33166,7 +33166,7 @@ var appData = {
         },
         "30005133": {
             "name": "MJ-5F9",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000751,
             "regionID": 10000066
         },
@@ -33178,13 +33178,13 @@ var appData = {
         },
         "30005135": {
             "name": "JZ-UQC",
-            "security": "-0.68",
+            "security": "-0.69",
             "constellationID": 20000751,
             "regionID": 10000066
         },
         "30005136": {
             "name": "JPEZ-R",
-            "security": "-0.27",
+            "security": "-0.28",
             "constellationID": 20000751,
             "regionID": 10000066
         },
@@ -33196,13 +33196,13 @@ var appData = {
         },
         "30005138": {
             "name": "7M4-4C",
-            "security": "-0.46",
+            "security": "-0.47",
             "constellationID": 20000751,
             "regionID": 10000066
         },
         "30005139": {
             "name": "2-YO2K",
-            "security": "-0.17",
+            "security": "-0.18",
             "constellationID": 20000752,
             "regionID": 10000066
         },
@@ -33214,13 +33214,13 @@ var appData = {
         },
         "30005141": {
             "name": "SR-10Z",
-            "security": "-0.16",
+            "security": "-0.17",
             "constellationID": 20000752,
             "regionID": 10000066
         },
         "30005142": {
             "name": "W-KXEX",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000752,
             "regionID": 10000066
         },
@@ -33232,7 +33232,7 @@ var appData = {
         },
         "30005144": {
             "name": "QHY-RU",
-            "security": "-0.15",
+            "security": "-0.16",
             "constellationID": 20000752,
             "regionID": 10000066
         },
@@ -33244,13 +33244,13 @@ var appData = {
         },
         "30005146": {
             "name": "7MMJ-3",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000753,
             "regionID": 10000066
         },
         "30005147": {
             "name": "PVF-N9",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000753,
             "regionID": 10000066
         },
@@ -33280,19 +33280,19 @@ var appData = {
         },
         "30005152": {
             "name": "5V-Q1R",
-            "security": "-0.67",
+            "security": "-0.68",
             "constellationID": 20000754,
             "regionID": 10000066
         },
         "30005153": {
             "name": "M4-KX5",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000754,
             "regionID": 10000066
         },
         "30005154": {
             "name": "4F9Y-3",
-            "security": "-0.58",
+            "security": "-0.59",
             "constellationID": 20000754,
             "regionID": 10000066
         },
@@ -33304,13 +33304,13 @@ var appData = {
         },
         "30005156": {
             "name": "U-3FKL",
-            "security": "-0.44",
+            "security": "-0.45",
             "constellationID": 20000754,
             "regionID": 10000066
         },
         "30005157": {
             "name": "0XN-SK",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000754,
             "regionID": 10000066
         },
@@ -33328,19 +33328,19 @@ var appData = {
         },
         "30005160": {
             "name": "B-7LYC",
-            "security": "-0.20",
+            "security": "-0.21",
             "constellationID": 20000755,
             "regionID": 10000066
         },
         "30005161": {
             "name": "JM0A-4",
-            "security": "-0.57",
+            "security": "-0.58",
             "constellationID": 20000755,
             "regionID": 10000066
         },
         "30005162": {
             "name": "PT-2KR",
-            "security": "-0.22",
+            "security": "-0.23",
             "constellationID": 20000755,
             "regionID": 10000066
         },
@@ -33364,7 +33364,7 @@ var appData = {
         },
         "30005166": {
             "name": "3LL-O0",
-            "security": "-0.51",
+            "security": "-0.52",
             "constellationID": 20000755,
             "regionID": 10000066
         },
@@ -33376,7 +33376,7 @@ var appData = {
         },
         "30005168": {
             "name": "9-ZA4Z",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000756,
             "regionID": 10000066
         },
@@ -33388,13 +33388,13 @@ var appData = {
         },
         "30005170": {
             "name": "NGM-OK",
-            "security": "-0.41",
+            "security": "-0.42",
             "constellationID": 20000756,
             "regionID": 10000066
         },
         "30005171": {
             "name": "O-QKSM",
-            "security": "-0.40",
+            "security": "-0.41",
             "constellationID": 20000756,
             "regionID": 10000066
         },
@@ -33406,13 +33406,13 @@ var appData = {
         },
         "30005173": {
             "name": "VWES-Y",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000756,
             "regionID": 10000066
         },
         "30005174": {
             "name": "SY-OLX",
-            "security": "-0.61",
+            "security": "-0.62",
             "constellationID": 20000757,
             "regionID": 10000066
         },
@@ -33424,7 +33424,7 @@ var appData = {
         },
         "30005176": {
             "name": "7JRA-G",
-            "security": "-0.72",
+            "security": "-0.73",
             "constellationID": 20000757,
             "regionID": 10000066
         },
@@ -33454,13 +33454,13 @@ var appData = {
         },
         "30005181": {
             "name": "OBV-YC",
-            "security": "-0.32",
+            "security": "-0.33",
             "constellationID": 20000758,
             "regionID": 10000066
         },
         "30005182": {
             "name": "2AUL-X",
-            "security": "-0.34",
+            "security": "-0.35",
             "constellationID": 20000758,
             "regionID": 10000066
         },
@@ -33472,7 +33472,7 @@ var appData = {
         },
         "30005184": {
             "name": "F-A3TR",
-            "security": "-0.47",
+            "security": "-0.48",
             "constellationID": 20000758,
             "regionID": 10000066
         },
@@ -33496,38 +33496,38 @@ var appData = {
         },
         "30005188": {
             "name": "RZ8A-P",
-            "security": "-0.95",
+            "security": "-0.96",
             "constellationID": 20000759,
             "regionID": 10000066
         },
         "30005189": {
             "name": "MTO2-2",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000759,
             "regionID": 10000066
         },
         "30005190": {
             "name": "C3I-D5",
-            "security": "-0.97",
+            "security": "-0.98",
             "constellationID": 20000759,
             "regionID": 10000066
         },
         "30005191": {
             "name": "0-U2M4",
-            "security": "-0.89",
+            "security": "-0.90",
             "constellationID": 20000759,
             "regionID": 10000066
         },
         "30005192": {
             "name": "Shera",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000760,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005193": {
             "name": "Lor",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000760,
             "regionID": 10000067,
             "factionID": 500003
@@ -33555,21 +33555,21 @@ var appData = {
         },
         "30005197": {
             "name": "Atreen",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000760,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005198": {
             "name": "Pakhshi",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000761,
             "regionID": 10000067,
             "factionID": 500006
         },
         "30005199": {
             "name": "Tar",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000761,
             "regionID": 10000067,
             "factionID": 500006
@@ -33583,7 +33583,7 @@ var appData = {
         },
         "30005201": {
             "name": "Manarq",
-            "security": "0.81",
+            "security": "0.82",
             "constellationID": 20000761,
             "regionID": 10000067,
             "factionID": 500006
@@ -33604,21 +33604,21 @@ var appData = {
         },
         "30005204": {
             "name": "Yulai",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000761,
             "regionID": 10000067,
             "factionID": 500006
         },
         "30005205": {
             "name": "Tarta",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000761,
             "regionID": 10000067,
             "factionID": 500006
         },
         "30005206": {
             "name": "Kemerk",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000761,
             "regionID": 10000067,
             "factionID": 500006
@@ -33639,21 +33639,21 @@ var appData = {
         },
         "30005209": {
             "name": "Sibe",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000762,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005210": {
             "name": "Makhwasan",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000762,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005211": {
             "name": "Zarer",
-            "security": "0.36",
+            "security": "0.37",
             "constellationID": 20000762,
             "regionID": 10000067,
             "factionID": 500003
@@ -33681,28 +33681,28 @@ var appData = {
         },
         "30005215": {
             "name": "Avyuh",
-            "security": "0.56",
+            "security": "0.57",
             "constellationID": 20000763,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005216": {
             "name": "Apanake",
-            "security": "0.48",
+            "security": "0.49",
             "constellationID": 20000763,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005217": {
             "name": "Sheroo",
-            "security": "0.59",
+            "security": "0.60",
             "constellationID": 20000763,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005218": {
             "name": "Sosh",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000763,
             "regionID": 10000067,
             "factionID": 500003
@@ -33716,21 +33716,21 @@ var appData = {
         },
         "30005220": {
             "name": "Keseya",
-            "security": "0.60",
+            "security": "0.61",
             "constellationID": 20000763,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005221": {
             "name": "Zoohen",
-            "security": "0.46",
+            "security": "0.47",
             "constellationID": 20000764,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005222": {
             "name": "Serren",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000764,
             "regionID": 10000067,
             "factionID": 500003
@@ -33758,7 +33758,7 @@ var appData = {
         },
         "30005226": {
             "name": "Dom-Aphis",
-            "security": "0.43",
+            "security": "0.44",
             "constellationID": 20000764,
             "regionID": 10000067,
             "factionID": 500003
@@ -33786,35 +33786,35 @@ var appData = {
         },
         "30005230": {
             "name": "Manatirid",
-            "security": "0.54",
+            "security": "0.55",
             "constellationID": 20000765,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005231": {
             "name": "Pashanai",
-            "security": "0.45",
+            "security": "0.46",
             "constellationID": 20000765,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005232": {
             "name": "Pamah",
-            "security": "0.49",
+            "security": "0.50",
             "constellationID": 20000765,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005233": {
             "name": "Leran",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000765,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005234": {
             "name": "Beke",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000765,
             "regionID": 10000067,
             "factionID": 500003
@@ -33828,7 +33828,7 @@ var appData = {
         },
         "30005236": {
             "name": "Noranim",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000766,
             "regionID": 10000067,
             "factionID": 500003
@@ -33849,14 +33849,14 @@ var appData = {
         },
         "30005239": {
             "name": "Aring",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000766,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005240": {
             "name": "Gayar",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000766,
             "regionID": 10000067,
             "factionID": 500003
@@ -33870,14 +33870,14 @@ var appData = {
         },
         "30005242": {
             "name": "Naka",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000766,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005243": {
             "name": "Madomi",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000767,
             "regionID": 10000067,
             "factionID": 500003
@@ -33898,7 +33898,7 @@ var appData = {
         },
         "30005246": {
             "name": "Imya",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000767,
             "regionID": 10000067,
             "factionID": 500003
@@ -33926,7 +33926,7 @@ var appData = {
         },
         "30005250": {
             "name": "Habu",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000768,
             "regionID": 10000067,
             "factionID": 500003
@@ -33947,14 +33947,14 @@ var appData = {
         },
         "30005253": {
             "name": "Chiga",
-            "security": "0.72",
+            "security": "0.73",
             "constellationID": 20000768,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005254": {
             "name": "Abhan",
-            "security": "0.57",
+            "security": "0.58",
             "constellationID": 20000768,
             "regionID": 10000067,
             "factionID": 500003
@@ -33968,14 +33968,14 @@ var appData = {
         },
         "30005256": {
             "name": "Itrin",
-            "security": "0.38",
+            "security": "0.39",
             "constellationID": 20000769,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005257": {
             "name": "Bantish",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000769,
             "regionID": 10000067,
             "factionID": 500003
@@ -33989,7 +33989,7 @@ var appData = {
         },
         "30005259": {
             "name": "Lela",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000769,
             "regionID": 10000067,
             "factionID": 500003
@@ -34010,28 +34010,28 @@ var appData = {
         },
         "30005262": {
             "name": "Djimame",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000770,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005263": {
             "name": "Mozzidit",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000770,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005264": {
             "name": "Angur",
-            "security": "0.17",
+            "security": "0.18",
             "constellationID": 20000770,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005265": {
             "name": "Hangond",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000770,
             "regionID": 10000067,
             "factionID": 500003
@@ -34066,14 +34066,14 @@ var appData = {
         },
         "30005270": {
             "name": "Shalne",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000771,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005271": {
             "name": "Shapisin",
-            "security": "0.34",
+            "security": "0.35",
             "constellationID": 20000771,
             "regionID": 10000067,
             "factionID": 500003
@@ -34087,7 +34087,7 @@ var appData = {
         },
         "30005273": {
             "name": "Galnafsad",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000771,
             "regionID": 10000067,
             "factionID": 500003
@@ -34108,28 +34108,28 @@ var appData = {
         },
         "30005276": {
             "name": "Sharza",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000772,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005277": {
             "name": "Pirna",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000772,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005278": {
             "name": "Seshi",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000772,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005279": {
             "name": "Anara",
-            "security": "0.35",
+            "security": "0.36",
             "constellationID": 20000772,
             "regionID": 10000067,
             "factionID": 500003
@@ -34150,7 +34150,7 @@ var appData = {
         },
         "30005282": {
             "name": "Gateway",
-            "security": "0.16",
+            "security": "0.17",
             "constellationID": 20000773,
             "regionID": 10000067,
             "factionID": 500003
@@ -34164,14 +34164,14 @@ var appData = {
         },
         "30005284": {
             "name": "Promised Land",
-            "security": "0.27",
+            "security": "0.28",
             "constellationID": 20000773,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005285": {
             "name": "Dead End",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000773,
             "regionID": 10000067,
             "factionID": 500003
@@ -34192,21 +34192,21 @@ var appData = {
         },
         "30005288": {
             "name": "Girani-Fa",
-            "security": "0.58",
+            "security": "0.59",
             "constellationID": 20000774,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005289": {
             "name": "Nasreri",
-            "security": "0.52",
+            "security": "0.53",
             "constellationID": 20000774,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005290": {
             "name": "Heorah",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000774,
             "regionID": 10000067,
             "factionID": 500003
@@ -34220,7 +34220,7 @@ var appData = {
         },
         "30005292": {
             "name": "Agal",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000774,
             "regionID": 10000067,
             "factionID": 500003
@@ -34234,49 +34234,49 @@ var appData = {
         },
         "30005294": {
             "name": "Bania",
-            "security": "0.47",
+            "security": "0.48",
             "constellationID": 20000774,
             "regionID": 10000067,
             "factionID": 500003
         },
         "30005295": {
             "name": "Murethand",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000775,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005296": {
             "name": "Melmaniel",
-            "security": "0.25",
+            "security": "0.26",
             "constellationID": 20000775,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005297": {
             "name": "Ouelletta",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000775,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005298": {
             "name": "Costolle",
-            "security": "0.20",
+            "security": "0.21",
             "constellationID": 20000775,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005299": {
             "name": "Muetralle",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000775,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005300": {
             "name": "Loes",
-            "security": "0.26",
+            "security": "0.27",
             "constellationID": 20000775,
             "regionID": 10000068,
             "factionID": 500004
@@ -34304,14 +34304,14 @@ var appData = {
         },
         "30005304": {
             "name": "Alentene",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000776,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005305": {
             "name": "Cistuvaert",
-            "security": "1",
+            "security": "0.95",
             "constellationID": 20000776,
             "regionID": 10000068,
             "factionID": 500004
@@ -34346,14 +34346,14 @@ var appData = {
         },
         "30005310": {
             "name": "Scheenins",
-            "security": "0.53",
+            "security": "0.54",
             "constellationID": 20000777,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005311": {
             "name": "Amygnon",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000777,
             "regionID": 10000068,
             "factionID": 500004
@@ -34374,7 +34374,7 @@ var appData = {
         },
         "30005314": {
             "name": "Theruesse",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000777,
             "regionID": 10000068,
             "factionID": 500004
@@ -34402,7 +34402,7 @@ var appData = {
         },
         "30005318": {
             "name": "Vay",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000778,
             "regionID": 10000068,
             "factionID": 500004
@@ -34416,14 +34416,14 @@ var appData = {
         },
         "30005320": {
             "name": "Hevrice",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000778,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005321": {
             "name": "Jovainnon",
-            "security": "0.29",
+            "security": "0.30",
             "constellationID": 20000778,
             "regionID": 10000068,
             "factionID": 500004
@@ -34437,14 +34437,14 @@ var appData = {
         },
         "30005323": {
             "name": "Sortet",
-            "security": "0.77",
+            "security": "0.78",
             "constellationID": 20000779,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005324": {
             "name": "Claulenne",
-            "security": "0.71",
+            "security": "0.72",
             "constellationID": 20000779,
             "regionID": 10000068,
             "factionID": 500004
@@ -34458,7 +34458,7 @@ var appData = {
         },
         "30005326": {
             "name": "Annelle",
-            "security": "0.75",
+            "security": "0.76",
             "constellationID": 20000779,
             "regionID": 10000068,
             "factionID": 500004
@@ -34472,7 +34472,7 @@ var appData = {
         },
         "30005328": {
             "name": "Reblier",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000779,
             "regionID": 10000068,
             "factionID": 500004
@@ -34493,70 +34493,70 @@ var appData = {
         },
         "30005331": {
             "name": "Chantrousse",
-            "security": "0.63",
+            "security": "0.64",
             "constellationID": 20000780,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005332": {
             "name": "Osmomonne",
-            "security": "0.76",
+            "security": "0.77",
             "constellationID": 20000780,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005333": {
             "name": "Stou",
-            "security": "0.51",
+            "security": "0.52",
             "constellationID": 20000780,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30005334": {
             "name": "Tierijev",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000780,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30010141": {
             "name": "Sakenta",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30011392": {
             "name": "Jouvulen",
-            "security": "0.88",
+            "security": "0.89",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30011407": {
             "name": "Akiainavas",
-            "security": "0.74",
+            "security": "0.75",
             "constellationID": 20000206,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30011672": {
             "name": "Kerepa",
-            "security": "0.96",
+            "security": "0.95",
             "constellationID": 20000255,
             "regionID": 10000020,
             "factionID": 500003
         },
         "30012505": {
             "name": "Malukker",
-            "security": "0.98",
+            "security": "0.95",
             "constellationID": 20000367,
             "regionID": 10000030,
             "factionID": 500002
         },
         "30012547": {
             "name": "Hadaugago",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000373,
             "regionID": 10000030,
             "factionID": 500002
@@ -34570,7 +34570,7 @@ var appData = {
         },
         "30013410": {
             "name": "Abrat",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000492,
             "regionID": 10000042,
             "factionID": 500002
@@ -34591,35 +34591,35 @@ var appData = {
         },
         "30015042": {
             "name": "Akhwa",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000599,
             "regionID": 10000052,
             "factionID": 500003
         },
         "30015305": {
             "name": "Adallier",
-            "security": "0.88",
+            "security": "0.89",
             "constellationID": 20000776,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30020141": {
             "name": "Senda",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30021392": {
             "name": "Kappas",
-            "security": "0.86",
+            "security": "0.87",
             "constellationID": 20000199,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30021407": {
             "name": "Aokannitoh",
-            "security": "0.97",
+            "security": "0.95",
             "constellationID": 20000019,
             "regionID": 10000002,
             "factionID": 500001
@@ -34633,7 +34633,7 @@ var appData = {
         },
         "30022505": {
             "name": "Orgron",
-            "security": "0.96",
+            "security": "0.95",
             "constellationID": 20000492,
             "regionID": 10000042,
             "factionID": 500002
@@ -34654,7 +34654,7 @@ var appData = {
         },
         "30023410": {
             "name": "Embod",
-            "security": "0.96",
+            "security": "0.95",
             "constellationID": 20000497,
             "regionID": 10000042,
             "factionID": 500002
@@ -34668,7 +34668,7 @@ var appData = {
         },
         "30024971": {
             "name": "Hecarrin",
-            "security": "0.82",
+            "security": "0.83",
             "constellationID": 20000735,
             "regionID": 10000064,
             "factionID": 500004
@@ -34682,7 +34682,7 @@ var appData = {
         },
         "30025305": {
             "name": "Channace",
-            "security": "0.89",
+            "security": "0.90",
             "constellationID": 20000776,
             "regionID": 10000068,
             "factionID": 500004
@@ -34696,14 +34696,14 @@ var appData = {
         },
         "30031392": {
             "name": "Komo",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000787,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30031407": {
             "name": "Hitanishio",
-            "security": "0.94",
+            "security": "0.95",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
@@ -34717,7 +34717,7 @@ var appData = {
         },
         "30032505": {
             "name": "Todeko",
-            "security": "0.99",
+            "security": "0.95",
             "constellationID": 20000369,
             "regionID": 10000030,
             "factionID": 500002
@@ -34738,21 +34738,21 @@ var appData = {
         },
         "30033410": {
             "name": "Erego",
-            "security": "0.92",
+            "security": "0.93",
             "constellationID": 20000496,
             "regionID": 10000042,
             "factionID": 500002
         },
         "30033489": {
             "name": "Hanan",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000514,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30034971": {
             "name": "Henebene",
-            "security": "0.83",
+            "security": "0.84",
             "constellationID": 20000734,
             "regionID": 10000064,
             "factionID": 500004
@@ -34773,28 +34773,28 @@ var appData = {
         },
         "30040141": {
             "name": "Urhinichi",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30041392": {
             "name": "Laah",
-            "security": "0.91",
+            "security": "0.92",
             "constellationID": 20000413,
             "regionID": 10000033,
             "factionID": 500001
         },
         "30041407": {
             "name": "Ichinumi",
-            "security": "0.87",
+            "security": "0.88",
             "constellationID": 20000201,
             "regionID": 10000016,
             "factionID": 500001
         },
         "30041672": {
             "name": "Seitam",
-            "security": "0.93",
+            "security": "0.94",
             "constellationID": 20000256,
             "regionID": 10000020,
             "factionID": 500003
@@ -34829,35 +34829,35 @@ var appData = {
         },
         "30043489": {
             "name": "Horir",
-            "security": "0.91",
+            "security": "0.92",
             "constellationID": 20000512,
             "regionID": 10000043,
             "factionID": 500003
         },
         "30044971": {
             "name": "Mesokel",
-            "security": "0.85",
+            "security": "0.86",
             "constellationID": 20000734,
             "regionID": 10000064,
             "factionID": 500004
         },
         "30045042": {
             "name": "Conoban",
-            "security": "0.90",
+            "security": "0.91",
             "constellationID": 20000737,
             "regionID": 10000065,
             "factionID": 500003
         },
         "30045305": {
             "name": "Clellinon",
-            "security": "0.84",
+            "security": "0.85",
             "constellationID": 20000778,
             "regionID": 10000068,
             "factionID": 500004
         },
         "30045306": {
             "name": "Hykanima",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000781,
             "regionID": 10000069,
             "factionID": 500001
@@ -34871,7 +34871,7 @@ var appData = {
         },
         "30045308": {
             "name": "Kehjari",
-            "security": "0.24",
+            "security": "0.25",
             "constellationID": 20000781,
             "regionID": 10000069,
             "factionID": 500001
@@ -34885,7 +34885,7 @@ var appData = {
         },
         "30045310": {
             "name": "Sarenemi",
-            "security": "0.21",
+            "security": "0.22",
             "constellationID": 20000781,
             "regionID": 10000069,
             "factionID": 500001
@@ -34899,42 +34899,42 @@ var appData = {
         },
         "30045312": {
             "name": "Korasen",
-            "security": "0.12",
+            "security": "0.13",
             "constellationID": 20000781,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045313": {
             "name": "Ienakkamon",
-            "security": "0.10",
+            "security": "0.11",
             "constellationID": 20000781,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045314": {
             "name": "Kinakka",
-            "security": "0.41",
+            "security": "0.42",
             "constellationID": 20000783,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045315": {
             "name": "Raihbaka",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000783,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045316": {
             "name": "Innia",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000783,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045317": {
             "name": "Iralaja",
-            "security": "0.31",
+            "security": "0.32",
             "constellationID": 20000783,
             "regionID": 10000069,
             "factionID": 500001
@@ -34948,14 +34948,14 @@ var appData = {
         },
         "30045319": {
             "name": "Eha",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000783,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045320": {
             "name": "Pavanakka",
-            "security": "0.39",
+            "security": "0.40",
             "constellationID": 20000783,
             "regionID": 10000069,
             "factionID": 500001
@@ -34983,7 +34983,7 @@ var appData = {
         },
         "30045324": {
             "name": "Onnamon",
-            "security": "0.55",
+            "security": "0.56",
             "constellationID": 20000784,
             "regionID": 10000069,
             "factionID": 500001
@@ -35011,21 +35011,21 @@ var appData = {
         },
         "30045328": {
             "name": "Ahtila",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000788,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30045329": {
             "name": "Ichoriya",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20000789,
             "regionID": 10000070,
             "factionID": 500026
         },
         "30045330": {
             "name": "Okkamon",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000786,
             "regionID": 10000069,
             "factionID": 500001
@@ -35039,14 +35039,14 @@ var appData = {
         },
         "30045332": {
             "name": "Asakai",
-            "security": "0.25",
+            "security": "0.26",
             "constellationID": 20000786,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045333": {
             "name": "Prism",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000786,
             "regionID": 10000069,
             "factionID": 500001
@@ -35060,7 +35060,7 @@ var appData = {
         },
         "30045335": {
             "name": "Teskanen",
-            "security": "0.28",
+            "security": "0.29",
             "constellationID": 20000786,
             "regionID": 10000069,
             "factionID": 500001
@@ -35088,14 +35088,14 @@ var appData = {
         },
         "30045339": {
             "name": "Enaluri",
-            "security": "0.32",
+            "security": "0.33",
             "constellationID": 20000785,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045340": {
             "name": "Aivonen",
-            "security": "0.37",
+            "security": "0.38",
             "constellationID": 20000785,
             "regionID": 10000069,
             "factionID": 500001
@@ -35130,14 +35130,14 @@ var appData = {
         },
         "30045345": {
             "name": "Hirri",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045346": {
             "name": "Kedama",
-            "security": "0.33",
+            "security": "0.34",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
@@ -35151,7 +35151,7 @@ var appData = {
         },
         "30045348": {
             "name": "Notoras",
-            "security": "0.18",
+            "security": "0.19",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
@@ -35172,41 +35172,412 @@ var appData = {
         },
         "30045351": {
             "name": "Iwisoda",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045352": {
             "name": "Nisuwa",
-            "security": "0.30",
+            "security": "0.31",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045353": {
             "name": "Pynekastoh",
-            "security": "0.23",
+            "security": "0.24",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30045354": {
             "name": "Reitsato",
-            "security": "0.18",
+            "security": "0.19",
             "constellationID": 20000782,
             "regionID": 10000069,
             "factionID": 500001
         },
         "30100000": {
             "name": "Zarzakh",
-            "security": "-1",
+            "security": "-1.00",
             "constellationID": 20010000,
             "regionID": 10001000,
             "factionID": 500029
         },
+        "30100032": {
+            "name": "Manifest",
+            "security": "1.00",
+            "constellationID": 20010001,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100033": {
+            "name": "Gallant",
+            "security": "1.00",
+            "constellationID": 20010002,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100034": {
+            "name": "Fortitude",
+            "security": "1.00",
+            "constellationID": 20010002,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100035": {
+            "name": "Forte",
+            "security": "1.00",
+            "constellationID": 20010003,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100036": {
+            "name": "Triumph",
+            "security": "1.00",
+            "constellationID": 20010004,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100037": {
+            "name": "Decorum",
+            "security": "1.00",
+            "constellationID": 20010005,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100038": {
+            "name": "Lustre",
+            "security": "1.00",
+            "constellationID": 20010002,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100039": {
+            "name": "Celerity",
+            "security": "1.00",
+            "constellationID": 20010003,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100040": {
+            "name": "Ratiocinate",
+            "security": "1.00",
+            "constellationID": 20010003,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100041": {
+            "name": "Rigor",
+            "security": "1.00",
+            "constellationID": 20010004,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100042": {
+            "name": "Lenity",
+            "security": "1.00",
+            "constellationID": 20010004,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100043": {
+            "name": "Steadfast",
+            "security": "1.00",
+            "constellationID": 20010005,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100044": {
+            "name": "Couth",
+            "security": "1.00",
+            "constellationID": 20010005,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100045": {
+            "name": "Mettle",
+            "security": "1.00",
+            "constellationID": 20010002,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100046": {
+            "name": "Venerate",
+            "security": "1.00",
+            "constellationID": 20010002,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100047": {
+            "name": "Repute",
+            "security": "1.00",
+            "constellationID": 20010002,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100048": {
+            "name": "Adroit",
+            "security": "1.00",
+            "constellationID": 20010003,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100049": {
+            "name": "Sagacity",
+            "security": "1.00",
+            "constellationID": 20010003,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100050": {
+            "name": "Erudite",
+            "security": "1.00",
+            "constellationID": 20010003,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100051": {
+            "name": "Solemn",
+            "security": "1.00",
+            "constellationID": 20010004,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100052": {
+            "name": "Tenacity",
+            "security": "1.00",
+            "constellationID": 20010004,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100053": {
+            "name": "Valiance",
+            "security": "1.00",
+            "constellationID": 20010004,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100054": {
+            "name": "Chivalric",
+            "security": "1.00",
+            "constellationID": 20010005,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100055": {
+            "name": "Equity",
+            "security": "1.00",
+            "constellationID": 20010005,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100056": {
+            "name": "Abstention",
+            "security": "1.00",
+            "constellationID": 20010005,
+            "regionID": 10001004,
+            "factionID": 500006
+        },
+        "30100057": {
+            "name": "Tiberis",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100058": {
+            "name": "Rotonos",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100059": {
+            "name": "Ligare",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100060": {
+            "name": "Axiosere",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100061": {
+            "name": "Waison",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100062": {
+            "name": "Maso",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100063": {
+            "name": "Mondaekus",
+            "security": "1.00",
+            "constellationID": 20010006,
+            "regionID": 10001004,
+            "factionID": 500004
+        },
+        "30100064": {
+            "name": "Kita-Aino",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100065": {
+            "name": "Aldoras",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100066": {
+            "name": "Pamirasu",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100067": {
+            "name": "Hotak",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100068": {
+            "name": "Dyka-hau",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100069": {
+            "name": "Urtasvaar",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100070": {
+            "name": "Tatrys",
+            "security": "1.00",
+            "constellationID": 20010007,
+            "regionID": 10001004,
+            "factionID": 500001
+        },
+        "30100071": {
+            "name": "Vatna",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100072": {
+            "name": "Tungna",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100073": {
+            "name": "Dranga",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100074": {
+            "name": "Tindfjalla",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100075": {
+            "name": "Lang",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100076": {
+            "name": "Hofs",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100077": {
+            "name": "Dettisolin",
+            "security": "1.00",
+            "constellationID": 20010008,
+            "regionID": 10001004,
+            "factionID": 500002
+        },
+        "30100078": {
+            "name": "Adaz",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
+        "30100079": {
+            "name": "Mazor",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
+        "30100080": {
+            "name": "Kanta",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
+        "30100081": {
+            "name": "Taikud",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
+        "30100082": {
+            "name": "Vaejra",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
+        "30100083": {
+            "name": "Sakizra",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
+        "30100084": {
+            "name": "Ichorah",
+            "security": "1.00",
+            "constellationID": 20010009,
+            "regionID": 10001004,
+            "factionID": 500003
+        },
         "31000001": {
-            "name": "J055520",
+            "name": "Sentinel MZ",
             "security": "-0.99",
             "constellationID": 21000334,
             "regionID": 11000033,
@@ -35223,7 +35594,7 @@ var appData = {
             ]
         },
         "31000002": {
-            "name": "J110145",
+            "name": "Liberated Barbican",
             "security": "-0.99",
             "constellationID": 21000334,
             "regionID": 11000033,
@@ -35240,7 +35611,7 @@ var appData = {
             ]
         },
         "31000003": {
-            "name": "J164710",
+            "name": "Sanctified Vidette",
             "security": "-0.99",
             "constellationID": 21000334,
             "regionID": 11000033,
@@ -35257,7 +35628,7 @@ var appData = {
             ]
         },
         "31000004": {
-            "name": "J200727",
+            "name": "Conflux Eyrie",
             "security": "-0.99",
             "constellationID": 21000334,
             "regionID": 11000033,
@@ -35286,7 +35657,7 @@ var appData = {
             ]
         },
         "31000006": {
-            "name": "J174618",
+            "name": "Azdaja Redoubt",
             "security": "-0.99",
             "constellationID": 21000334,
             "regionID": 11000033,
@@ -63049,6 +63420,7 @@ var appData = {
             "regionID": 11000024,
             "class": 5,
             "statics": [
+                "Y790",
                 "U210"
             ]
         },
@@ -66283,8 +66655,8 @@ var appData = {
             "class": 19
         },
         "36000001": {
-            "name": "No System Name",
-            "security": "1",
+            "name": "GPMS-01",
+            "security": "1.00",
             "constellationID": 26000001,
             "regionID": 19000001,
             "class": 7
@@ -66498,6 +66870,9 @@ var appData = {
         "10001000": {
             "name": "Yasna Zakh"
         },
+        "10001004": {
+            "name": "Exordium"
+        },
         "11000001": {
             "name": "A-R00001"
         },
@@ -66628,7 +67003,7 @@ var appData = {
             "name": "VR-05"
         },
         "19000001": {
-            "name": "No Name"
+            "name": "GPMR-01"
         }
     },
     "factions": {
@@ -67310,7 +67685,7 @@ var appData = {
             "jump": 1000000000
         },
         "Q003": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -67325,7 +67700,7 @@ var appData = {
             "jump": 5000000
         },
         "G008": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -67340,7 +67715,7 @@ var appData = {
             "jump": 5000000
         },
         "C008": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -67355,7 +67730,7 @@ var appData = {
             "jump": 5000000
         },
         "M001": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -67370,7 +67745,7 @@ var appData = {
             "jump": 5000000
         },
         "Z006": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -67385,7 +67760,7 @@ var appData = {
             "jump": 5000000
         },
         "L005": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -67400,7 +67775,7 @@ var appData = {
             "jump": 5000000
         },
         "E004": {
-            "life": "16 Hours",
+            "life": "5 Hours",
             "from": [
                 "Class-1",
                 "Class-2",
@@ -90817,7 +91192,8 @@ var appData = {
             "5204": {
                 "5203": 0,
                 "5206": 0,
-                "5301": 0
+                "5301": 0,
+                "100032": 0
             },
             "5205": {
                 "5195": 0,
@@ -91827,6 +92203,305 @@ var appData = {
                 "1269": 0,
                 "2086": 0,
                 "3841": 0
+            },
+            "100032": {
+                "5204": 0,
+                "100034": 0,
+                "100039": 0,
+                "100041": 0,
+                "100043": 0
+            },
+            "100033": {
+                "100034": 0,
+                "100039": 0,
+                "100041": 0,
+                "100043": 0,
+                "100045": 0,
+                "100046": 0,
+                "100047": 0
+            },
+            "100034": {
+                "100032": 0,
+                "100033": 0,
+                "100035": 0,
+                "100036": 0,
+                "100037": 0,
+                "100038": 0,
+                "100057": 0
+            },
+            "100035": {
+                "100034": 0,
+                "100039": 0,
+                "100041": 0,
+                "100043": 0,
+                "100048": 0,
+                "100049": 0,
+                "100050": 0
+            },
+            "100036": {
+                "100034": 0,
+                "100039": 0,
+                "100041": 0,
+                "100043": 0,
+                "100051": 0,
+                "100052": 0,
+                "100053": 0
+            },
+            "100037": {
+                "100034": 0,
+                "100039": 0,
+                "100041": 0,
+                "100043": 0,
+                "100054": 0,
+                "100055": 0,
+                "100056": 0
+            },
+            "100038": {
+                "100034": 0,
+                "100040": 0,
+                "100044": 0
+            },
+            "100039": {
+                "100032": 0,
+                "100033": 0,
+                "100035": 0,
+                "100036": 0,
+                "100037": 0,
+                "100040": 0,
+                "100064": 0
+            },
+            "100040": {
+                "100038": 0,
+                "100039": 0,
+                "100042": 0
+            },
+            "100041": {
+                "100032": 0,
+                "100033": 0,
+                "100035": 0,
+                "100036": 0,
+                "100037": 0,
+                "100042": 0,
+                "100071": 0
+            },
+            "100042": {
+                "100040": 0,
+                "100041": 0,
+                "100044": 0
+            },
+            "100043": {
+                "100032": 0,
+                "100033": 0,
+                "100035": 0,
+                "100036": 0,
+                "100037": 0,
+                "100044": 0,
+                "100078": 0
+            },
+            "100044": {
+                "100038": 0,
+                "100042": 0,
+                "100043": 0
+            },
+            "100045": {
+                "100033": 0
+            },
+            "100046": {
+                "100033": 0
+            },
+            "100047": {
+                "100033": 0
+            },
+            "100048": {
+                "100035": 0
+            },
+            "100049": {
+                "100035": 0
+            },
+            "100050": {
+                "100035": 0
+            },
+            "100051": {
+                "100036": 0
+            },
+            "100052": {
+                "100036": 0
+            },
+            "100053": {
+                "100036": 0
+            },
+            "100054": {
+                "100037": 0
+            },
+            "100055": {
+                "100037": 0
+            },
+            "100056": {
+                "100037": 0
+            },
+            "100057": {
+                "100034": 0,
+                "100058": 0,
+                "100059": 0,
+                "100060": 0
+            },
+            "100058": {
+                "100057": 0,
+                "100059": 0,
+                "100060": 0,
+                "100061": 0
+            },
+            "100059": {
+                "100057": 0,
+                "100058": 0,
+                "100060": 0,
+                "100062": 0
+            },
+            "100060": {
+                "100057": 0,
+                "100058": 0,
+                "100059": 0,
+                "100061": 0,
+                "100062": 0,
+                "100063": 0
+            },
+            "100061": {
+                "100058": 0,
+                "100060": 0,
+                "100063": 0
+            },
+            "100062": {
+                "100059": 0,
+                "100060": 0,
+                "100063": 0
+            },
+            "100063": {
+                "100060": 0,
+                "100061": 0,
+                "100062": 0
+            },
+            "100064": {
+                "100039": 0,
+                "100065": 0,
+                "100066": 0,
+                "100067": 0
+            },
+            "100065": {
+                "100064": 0,
+                "100066": 0,
+                "100067": 0,
+                "100068": 0
+            },
+            "100066": {
+                "100064": 0,
+                "100065": 0,
+                "100067": 0,
+                "100069": 0
+            },
+            "100067": {
+                "100064": 0,
+                "100065": 0,
+                "100066": 0,
+                "100068": 0,
+                "100069": 0,
+                "100070": 0
+            },
+            "100068": {
+                "100065": 0,
+                "100067": 0,
+                "100070": 0
+            },
+            "100069": {
+                "100066": 0,
+                "100067": 0,
+                "100070": 0
+            },
+            "100070": {
+                "100067": 0,
+                "100068": 0,
+                "100069": 0
+            },
+            "100071": {
+                "100041": 0,
+                "100072": 0,
+                "100073": 0,
+                "100074": 0
+            },
+            "100072": {
+                "100071": 0,
+                "100073": 0,
+                "100074": 0,
+                "100075": 0
+            },
+            "100073": {
+                "100071": 0,
+                "100072": 0,
+                "100074": 0,
+                "100076": 0
+            },
+            "100074": {
+                "100071": 0,
+                "100072": 0,
+                "100073": 0,
+                "100075": 0,
+                "100076": 0,
+                "100077": 0
+            },
+            "100075": {
+                "100072": 0,
+                "100074": 0,
+                "100077": 0
+            },
+            "100076": {
+                "100073": 0,
+                "100074": 0,
+                "100077": 0
+            },
+            "100077": {
+                "100074": 0,
+                "100075": 0,
+                "100076": 0
+            },
+            "100078": {
+                "100043": 0,
+                "100079": 0,
+                "100080": 0,
+                "100081": 0
+            },
+            "100079": {
+                "100078": 0,
+                "100080": 0,
+                "100081": 0,
+                "100082": 0
+            },
+            "100080": {
+                "100078": 0,
+                "100079": 0,
+                "100081": 0,
+                "100083": 0
+            },
+            "100081": {
+                "100078": 0,
+                "100079": 0,
+                "100080": 0,
+                "100082": 0,
+                "100083": 0,
+                "100084": 0
+            },
+            "100082": {
+                "100079": 0,
+                "100081": 0,
+                "100084": 0
+            },
+            "100083": {
+                "100080": 0,
+                "100081": 0,
+                "100084": 0
+            },
+            "100084": {
+                "100081": 0,
+                "100082": 0,
+                "100083": 0
             }
         }
     },
@@ -92341,6 +93016,10 @@ var appData = {
             "typeName": "Metamorphosis",
             "mass": 1000000
         },
+        "89648": {
+            "typeName": "Venture Consortium Issue",
+            "mass": 1200000
+        },
         "620": {
             "typeName": "Osprey",
             "mass": 11100000
@@ -92401,10 +93080,6 @@ var appData = {
             "typeName": "Exequror",
             "mass": 11020000
         },
-        "635": {
-            "typeName": "Opux Luxury Yacht",
-            "mass": 13075000
-        },
         "1904": {
             "typeName": "Concord Police Cruiser",
             "mass": 12155000
@@ -92452,10 +93127,6 @@ var appData = {
         "17922": {
             "typeName": "Ashimmu",
             "mass": 11010000
-        },
-        "25560": {
-            "typeName": "Opux Dragoon Yacht",
-            "mass": 13075000
         },
         "29336": {
             "typeName": "Scythe Fleet Issue",
@@ -92524,10 +93195,6 @@ var appData = {
         "34475": {
             "typeName": "\u6bd2\u8725\u7ea7YC117\u5e74\u7279\u522b\u7248",
             "mass": 9600000
-        },
-        "34590": {
-            "typeName": "Victorieux Luxury Yacht",
-            "mass": 1000000
         },
         "47270": {
             "typeName": "Vedmak",
@@ -93427,7 +94094,7 @@ var appData = {
         },
         "42685": {
             "typeName": "Sunesis",
-            "mass": 1500000
+            "mass": 1550000
         },
         "49710": {
             "typeName": "Kikimora",
@@ -93460,6 +94127,18 @@ var appData = {
         "85087": {
             "typeName": "Tholos",
             "mass": 1700000
+        },
+        "89240": {
+            "typeName": "Pioneer",
+            "mass": 1600000
+        },
+        "89647": {
+            "typeName": "Pioneer Consortium Issue",
+            "mass": 1600000
+        },
+        "91174": {
+            "typeName": "Perseverance",
+            "mass": 1600000
         },
         "17476": {
             "typeName": "Covetor",
@@ -94073,6 +94752,10 @@ var appData = {
             "typeName": "Tornado",
             "mass": 15228000
         },
+        "89807": {
+            "typeName": "Anhinga",
+            "mass": 14760000
+        },
         "12729": {
             "typeName": "Crane",
             "mass": 11000000
@@ -94117,6 +94800,10 @@ var appData = {
             "typeName": "Hecate",
             "mass": 1050000
         },
+        "89808": {
+            "typeName": "Skua",
+            "mass": 1100000
+        },
         "37457": {
             "typeName": "Deacon",
             "mass": 1630000
@@ -94152,6 +94839,10 @@ var appData = {
         "52254": {
             "typeName": "Draugur",
             "mass": 1450000
+        },
+        "89649": {
+            "typeName": "Outrider",
+            "mass": 1300000
         },
         "37604": {
             "typeName": "Apostle",
@@ -94204,6 +94895,34 @@ var appData = {
         "77288": {
             "typeName": "Valravn",
             "mass": 1260000000
+        },
+        "89607": {
+            "typeName": "Odysseus",
+            "mass": 15000000
+        },
+        "635": {
+            "typeName": "Opux Luxury Yacht",
+            "mass": 13075000
+        },
+        "25560": {
+            "typeName": "Opux Dragoon Yacht",
+            "mass": 13075000
+        },
+        "34590": {
+            "typeName": "Victorieux Luxury Yacht",
+            "mass": 1000000
+        },
+        "92282": {
+            "typeName": "Tenzin YC128 Campaign Bus",
+            "mass": 1000000
+        },
+        "92283": {
+            "typeName": "Moreau YC128 Campaign Bus",
+            "mass": 1000000
+        },
+        "92284": {
+            "typeName": "Roden YC128 Campaign Bus",
+            "mass": 1000000
         }
     }
 }

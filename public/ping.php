@@ -15,7 +15,8 @@ if(!$hook) {
 }
 
 $url_base = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['SERVER_NAME'].dirname($_SERVER["REQUEST_URI"].'?');
-$content = 'Tripwire ping from *' . $_SESSION['username'] . '* in **' . $_REQUEST['systemText'] . "**\n<" . $url_base . '/?system=' . $_REQUEST['systemName'] . ">\n" . $_REQUEST['message'];
+$ping_type_text = isset($_REQUEST['pingType']) ? ' as @' . $_REQUEST['pingType'] : '';
+$content = 'Tripwire ping from *' . $_SESSION['username'] . '* in **' . $_REQUEST['systemText'] . "**$ping_type_text\n<" . $url_base . '/?system=' . $_REQUEST['systemName'] . ">\n" . $_REQUEST['message'];
 
 $data = array('content' => $content);
 

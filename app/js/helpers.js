@@ -28,7 +28,7 @@ Object.find = function(obj, prop, val, cs) {
 	for (var key in obj) {
 		if (!cs && obj[key][prop] == val) {
 			return obj[key];
-		} else if (obj[key][prop] && obj[key][prop].toLowerCase() == val.toLowerCase()) {
+		} else if (obj[key][prop] && obj[key][prop].toLowerCase && obj[key][prop].toLowerCase() == val.toLowerCase()) {
 			return obj[key];
 		}
 	}
@@ -119,8 +119,8 @@ function positionRelativeTo(elem, ancestor) {
 		ancestorPos = ancestor.getBoundingClientRect(),
 		ancestorZoom = 1 * (window.getComputedStyle(ancestor).getPropertyValue('zoom') || '1');
 	return { 
-		left: (elemPos.left - ancestorPos.left + ancestor.scrollLeft) / ancestorZoom,
-		top: (elemPos.top - ancestorPos.top + ancestor.scrollTop) / ancestorZoom
+		left: ((elemPos.left - ancestorPos.left) / ancestorZoom) + ancestor.scrollLeft,
+		top: ((elemPos.top - ancestorPos.top) / ancestorZoom) + ancestor.scrollTop
 	};
 }
 

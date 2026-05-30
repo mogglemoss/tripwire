@@ -410,6 +410,7 @@ $system = $_REQUEST['system'];
 						<span data-autocomplete="sigTypeFrom">
 							<input name="wormholeType" type="text" class="wormholeType" maxlength="4" size="4" autocomplete="off" />
 						</span>
+						<span id="wormholeTypeQuickSelectFrom" class="wormholeTypeQuickSelect quickSelectBar"></span>
 						<!-- <span class="bookmark">
 							<span class="label">BM:</span>
 							<input name="" type="text" maxlength="10" size="8" />
@@ -423,6 +424,10 @@ $system = $_REQUEST['system'];
 								<!-- Values filled in by signature dialog JS -->
 							</select>
 						</span>
+						<!-- needs to not be whitespace between the buttons for alignment, even though it's ugly markup -->
+						<div id="leadsToQuickBar" class="quickSelectBar"><button type="button" class="quick-select" value="Class-1" tabindex="-1"><span class="class-1">C1<span></button><button type="button" class="quick-select" value="Class-2" tabindex="-1"><span class="class-2">C2<span></button><button type="button" class="quick-select" value="Class-3" tabindex="-1"><span class="class-3">C3<span></button><button type="button" class="quick-select" value="Class-4" tabindex="-1"><span class="class-4">C4<span></button><button type="button" class="quick-select" value="Class-5" tabindex="-1"><span class="class-5">C5<span></button><button type="button" class="quick-select" value="Class-6" tabindex="-1"><span class="class-6">C6<span></button> |
+						<button type="button" class="quick-select" value="High-Sec" tabindex="-1"><span class="hisec">HS<span></button><button type="button" class="quick-select" value="Low-Sec" tabindex="-1"><span class="lowsec">LS<span></button><button type="button" class="quick-select" value="Null-Sec" tabindex="-1"><span class="nullsec">NS<span></button>
+						</div>
 					</div>
 					<div class="row">
 						<span class="label">Name:</span>
@@ -430,22 +435,19 @@ $system = $_REQUEST['system'];
 					</div>
 					<div class="row">
 						<span class="label">Life:</span>
-						<span class="select">
-							<select name="wormholeLife">
-								<option value="stable">Stable</option>
-								<option value="critical">End of life</option>
-							</select>
-						</span>
-						<span id="wormholeMass">
-							<span class="label">Mass:</span>
-							<span class="select">
-								<select name="wormholeMass">
-									<option value="stable">Stable</option>
-									<option value="destab">Destab</option>
-									<option value="critical">Critical</option>
-								</select>
-							</span>
-						</span>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeStable"  value="stable"/>
+						<label for="wormholeLifeStable" class="stable">Stable</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeEOL"  value="critical"/>
+						<label for="wormholeLifeEOL" class="critical">EOL</label>
+					</div>
+					<div class="row">
+						<span class="label">Mass:</span>
+						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassStable"  value="stable"/>
+						<label for="wormholeMassStable" class="stable">Stable</label>
+						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassDestab" value="destab"/>
+						<label for="wormholeMassDestab" class="destab">Destab</label>
+						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassCritical" value="critical" />
+						<label for="wormholeMassCritical" class="critical">Critical</label>
 					</div>
 				</div>
 				<hr/>
@@ -462,6 +464,7 @@ $system = $_REQUEST['system'];
 						<span data-autocomplete="sigTypeTo">
 							<input name="wormholeType2" type="text" class="wormholeType" data-autocomplete="sigType" maxlength="4" size="4" autocomplete="off" />
 						</span>
+						<span id="wormholeTypeQuickSelectTo" class="wormholeTypeQuickSelect quickSelectBar"></span>
 						<!-- <span class="bookmark">
 							<span class="label">BM:</span>
 							<input name="" type="text" maxlength="10" size="8" />
@@ -1192,11 +1195,15 @@ $system = $_REQUEST['system'];
 	<?php
 		$analytics_file = dirname( __FILE__ ) . "/analytics.inc.php";
 		if ( file_exists( $analytics_file ) ) include_once( $analytics_file );
+		$init_fields = [
+			'characterID' => $_SESSION['characterID'],
+			'characterName' => $_SESSION['characterName'],
+			'options' => $_SESSION['options']
+		];
 	?>
 
 	<script type="text/javascript">
-
-		const init = <?= json_encode($_SESSION) ?>;
+		const init = <?= json_encode($init_fields) ?>;
 		init.masks = <?= json_encode(getMasks($_SESSION['characterID'], $_SESSION['corporationID'], $_SESSION['admin'], $_SESSION['mask'])) ?>;
 
 		var passiveHitTimer;

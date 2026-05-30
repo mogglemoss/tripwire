@@ -641,7 +641,7 @@ BEGIN
       SET life = 'critical';
 
     DELETE FROM signatures
-      WHERE lifeLeft < NOW() - INTERVAL -0.1 * lifeLength SECOND
+      WHERE lifeLeft < NOW() - INTERVAL 0.1 * lifeLength SECOND
         AND lifeLength <> 0
         AND type = 'wormhole';
 

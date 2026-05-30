@@ -38,10 +38,12 @@ $.widget("custom.inlinecomplete", $.ui.autocomplete, {
 			const dataSource = this.options.source;
 			var maxSize = this.options.maxSize || 25; // maximum result size
 			// simple loop for the options
+			const extraMatchFunction = typeof this.options.extraMatch === 'function' ? this.options.extraMatch : function(x) { return false; }
 			for (var i = 0, l = dataSource.length; i < l; i++) {
-				const target = dataSource[i].name || dataSource[i].key || dataSource[i];
-				if (matcher.test(target)) {
-					results.push( { value: target, label: target, content: typeof dataSource[i] === 'object' ? dataSource[i] : undefined });
+				const value = dataSource[i];
+				const target = value.name || value.key || value;
+				if (matcher.test(target) || extraMatchFunction(request.term, value)) {
+					results.push( { value: target, label: target, content: typeof value === 'object' ? value : undefined });
 
 					if (maxSize && request.term !== '' && results.length > maxSize) {
 						break;
