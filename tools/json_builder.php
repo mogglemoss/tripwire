@@ -64,7 +64,7 @@ if (isset($_REQUEST['combine'])) {
 		$stmt->execute();
 		while ($row = $stmt->fetchObject()) {
 			$output['systems'][$row->solarSystemID]['name'] = $row->solarSystemName;
-			$output['systems'][$row->solarSystemID]['security'] = sprintf('%.2f', $row->security);
+			$output['systems'][$row->solarSystemID]['security'] = $row->security;
 			$output['systems'][$row->solarSystemID]['constellationID'] = $row->constellationID;
 			$output['systems'][$row->solarSystemID]['regionID'] = $row->regionID;
 			if ($row->factionID) $output['systems'][$row->solarSystemID]['factionID'] = $row->factionID;
