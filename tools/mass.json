@@ -453,7 +453,7 @@
     },
     "29337": {
         "typeName": "Augoror Navy Issue",
-        "mass": 10650000
+        "mass": 13150000
     },
     "29340": {
         "typeName": "Osprey Navy Issue",
@@ -1459,6 +1459,22 @@
         "typeName": "Perseverance",
         "mass": 1600000
     },
+    "91775": {
+        "typeName": "Dragoon Navy Issue",
+        "mass": 1700000
+    },
+    "91849": {
+        "typeName": "Algos Navy Issue",
+        "mass": 1600000
+    },
+    "91857": {
+        "typeName": "Corax Navy Issue",
+        "mass": 1750000
+    },
+    "91858": {
+        "typeName": "Talwar Fleet Issue",
+        "mass": 1650000
+    },
     "17476": {
         "typeName": "Covetor",
         "mass": 15000000
@@ -2242,5 +2258,21 @@
     "92284": {
         "typeName": "Roden YC128 Campaign Bus",
         "mass": 1000000
+    },
+    "92822": {
+        "typeName": "Salvation",
+        "mass": 1260000000
+    },
+    "92823": {
+        "typeName": "Simurgh",
+        "mass": 1270000000
+    },
+    "92824": {
+        "typeName": "Gaia",
+        "mass": 1220000000
+    },
+    "92825": {
+        "typeName": "Ymir",
+        "mass": 1230000000
     }
 }
