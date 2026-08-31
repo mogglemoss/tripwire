@@ -162,7 +162,7 @@ $system = $_REQUEST['system'] ?? '';
 				</div>
 				<div class="content">
 					<div id="infoGeneral" style="float: left; width: 50%; text-align: left;">
-						<h1 class="pointer" style="color: #CCC;"><span id="infoSystem"><?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?></span><a class="copy" href="#" title="Copy system name"></a></h1>
+						<h1 class="pointer" style="color: var(--n-800);"><span id="infoSystem"><?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?></span><a class="copy" href="#" title="Copy system name"></a></h1>
 						<h4 id="infoSecurity" class="pointer">&nbsp;</h4>
 						<h4 id="infoRegion" class="pointer">&nbsp;</h4>
 						<h4 id="infoFaction" class="pointer">&nbsp;</h4>

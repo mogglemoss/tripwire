@@ -10,10 +10,14 @@ try {
             // Fail loudly. Without this a failed query returns false and the
             // app carries on with no data, which reads as "empty" rather than
             // "broken" -- a dead database looks like a quiet one.
-            PDO::ATTR_ERRMODE        => PDO::ERRMODE_EXCEPTION,
-            // Send real prepared statements to MySQL instead of interpolating
-            // them client-side.
-            PDO::ATTR_EMULATE_PREPARES => false
+            PDO::ATTR_ERRMODE        => PDO::ERRMODE_EXCEPTION
+            // NOTE: do not set PDO::ATTR_EMULATE_PREPARES => false here.
+            // Fifteen queries in this codebase bind one named placeholder that
+            // appears twice in the statement (login.php:80, refresh.php:135
+            // and :228, lib.inc.php:42, masks.inc.php:23 among others).
+            // Client-side emulation tolerates that; native prepares reject it
+            // with "Invalid parameter number", which breaks login and the
+            // refresh poll. Those queries must be rewritten first.
         )
     );
 } catch (PDOException $error) {
