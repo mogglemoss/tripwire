@@ -13,13 +13,13 @@ require_once('settings.php');
 require_once('masks.inc.php');
 require('lib.inc.php');
 
-$system = $_REQUEST['system'];
+$system = $_REQUEST['system'] ?? '';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="system" content="<?= $system ?>">
+	<meta name="system" content="<?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?>">
 	<meta name="server" content="<?= CDN_DOMAIN ?>">
 	<meta name="app_name" content="<?= APP_NAME ?>">
 	<meta name="version" content="<?= VERSION ?>">
@@ -58,7 +58,7 @@ $system = $_REQUEST['system'];
 		</span>
 		<span class="align-right">
 			<span id="login">
-				<h3><a id="user" href=""><span id="user-no-track"><?= $_SESSION['characterName'] ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span></a></h3>
+				<h3><a id="user" href=""><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span></a></h3>
 				<div id="panel">
 					<div id="content" class="dialog-like">
 						<div class="triangle"></div>
@@ -103,11 +103,11 @@ $system = $_REQUEST['system'];
 									<table id="account">
 										<tr><th colspan="2">Characters</th></tr>
 										<tr>
-											<td id="avatar" rowspan="4"><img src="https://image.eveonline.com/Character/<?= $_SESSION['characterID'] ?>_64.jpg" /></td>
-											<td id="characterName" class="text"><?= $_SESSION['characterName'] ?></td>
+											<td id="avatar" rowspan="4"><img src="https://image.eveonline.com/Character/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>_64.jpg" /></td>
+											<td id="characterName" class="text"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></td>
 										</tr>
 										<tr>
-											<td class="text"><?= $_SESSION['corporationName'] ?></td>
+											<td class="text"><?= htmlspecialchars($_SESSION['corporationName'], ENT_QUOTES, 'UTF-8') ?></td>
 										</tr>
 										<tr><td rowspan="2"></td></tr>
 									</table>
@@ -162,7 +162,7 @@ $system = $_REQUEST['system'];
 				</div>
 				<div class="content">
 					<div id="infoGeneral" style="float: left; width: 50%; text-align: left;">
-						<h1 class="pointer" style="color: #CCC;"><span id="infoSystem"><?=$system?></span><a class="copy" href="#" title="Copy system name"></a></h1>
+						<h1 class="pointer" style="color: #CCC;"><span id="infoSystem"><?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?></span><a class="copy" href="#" title="Copy system name"></a></h1>
 						<h4 id="infoSecurity" class="pointer">&nbsp;</h4>
 						<h4 id="infoRegion" class="pointer">&nbsp;</h4>
 						<h4 id="infoFaction" class="pointer">&nbsp;</h4>
@@ -1203,8 +1203,8 @@ $system = $_REQUEST['system'];
 	?>
 
 	<script type="text/javascript">
-		const init = <?= json_encode($init_fields) ?>;
-		init.masks = <?= json_encode(getMasks($_SESSION['characterID'], $_SESSION['corporationID'], $_SESSION['admin'], $_SESSION['mask'])) ?>;
+		const init = <?= json_encode($init_fields, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+		init.masks = <?= json_encode(getMasks($_SESSION['characterID'], $_SESSION['corporationID'], $_SESSION['admin'], $_SESSION['mask']), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 
 		var passiveHitTimer;
 		function passiveHit() {

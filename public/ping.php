@@ -15,10 +15,26 @@ if(!$hook) {
 }
 
 $url_base = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['SERVER_NAME'].dirname($_SERVER["REQUEST_URI"].'?');
-$ping_type_text = isset($_REQUEST['pingType']) ? ' as @' . $_REQUEST['pingType'] : '';
-$content = 'Tripwire ping from *' . $_SESSION['username'] . '* in **' . $_REQUEST['systemText'] . "**$ping_type_text\n<" . $url_base . '/?system=' . $_REQUEST['systemName'] . ">\n" . $_REQUEST['message'];
 
-$data = array('content' => $content);
+// Only the two ping types the dialog actually offers. Anything else would be
+// pasted verbatim into the corp channel, so an unrecognised value pings nobody.
+$ping_type = isset($_REQUEST['pingType']) && in_array($_REQUEST['pingType'], array('here', 'everyone'), true)
+	? $_REQUEST['pingType']
+	: null;
+$ping_type_text = $ping_type ? ' as @' . $ping_type : '';
+
+$systemText = isset($_REQUEST['systemText']) ? $_REQUEST['systemText'] : '';
+$systemName = isset($_REQUEST['systemName']) ? $_REQUEST['systemName'] : '';
+$message    = isset($_REQUEST['message']) ? $_REQUEST['message'] : '';
+
+$content = 'Tripwire ping from *' . $_SESSION['username'] . '* in **' . $systemText . "**$ping_type_text\n<" . $url_base . '/?system=' . rawurlencode($systemName) . ">\n" . $message;
+
+// The button decides who gets pinged, not the message text: without this an
+// @everyone typed into the free-text body would notify the whole server.
+$data = array(
+	'content' => $content,
+	'allowed_mentions' => array('parse' => $ping_type ? array('everyone') : array()),
+);
 
 // use key 'http' even if you send the request to https://...
 $options = array(

@@ -128,8 +128,8 @@ require_once('settings.php');
 <?php if (isset($_SESSION['userID'])) { ?>
 				<h1>You're currently logged in as...</h1>
 				<div style="text-align: center;">
-					<img src="//image.eveonline.com/Character/<?= $_SESSION['characterID'] ?>_128.jpg" />
-					<p><?= $_SESSION['characterName'] ?></p>
+					<img src="//image.eveonline.com/Character/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>_128.jpg" />
+					<p><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></p>
 					<p style="padding-top: 25px;">
 						<a href="?system=" class="large_button proceed" style="text-align: center;">
 							<span>Continue</span>
@@ -206,7 +206,7 @@ require_once('settings.php');
 							<br/>
 							<?= isset($_REQUEST['error']) && $_REQUEST['error'] == 'login-account' ? '<p class="error">No Tripwire account for that character</p><br/>' : '' ?>
 							<?= isset($_REQUEST['error']) && $_REQUEST['error'] == 'login-unknown' ? '<p class="error">Unknown error processing EVE SSO login</p><br/>' : '' ?>
-							<a href="login.php?mode=sso&login=sso<?= isset($_GET['system']) ? '&system=' . $_GET['system'] : '' ?>"><img src="//<?= CDN_DOMAIN ?>/images/landing/eve_sso.png"/></a>
+							<a href="login.php?mode=sso&login=sso<?= isset($_GET['system']) ? '&amp;system=' . htmlspecialchars(rawurlencode($_GET['system']), ENT_QUOTES, 'UTF-8') : '' ?>"><img src="//<?= CDN_DOMAIN ?>/images/landing/eve_sso.png"/></a>
 						</center>
 					</div>
 				</div>

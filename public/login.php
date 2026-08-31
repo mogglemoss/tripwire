@@ -311,5 +311,13 @@ if ($mode == 'login') {
 
 $output['proccessTime'] = sprintf('%.4f', microtime(true) - $startTime);
 
-if (isset($_REQUEST['mode'])) echo json_encode($output);
+if (isset($_REQUEST['mode'])) {
+	// Only label the response when login.php is the requested script -- the XHR
+	// path in landing.js. index.php also include()s this file mid-page, and
+	// typing that page as JSON would break the HTML that follows.
+	if (realpath($_SERVER['SCRIPT_FILENAME']) === __FILE__) {
+		header('Content-Type: application/json');
+	}
+	echo json_encode($output);
+}
 ?>
