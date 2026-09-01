@@ -34,6 +34,14 @@ var activity = new function() {
 				json.rows.reverse();
 				activity.view = new google.visualization.DataView(new google.visualization.DataTable(json));
 				activity.view.setColumns(activity.columns);
+
+				// A window with almost no readings should not hold full height
+				// for three gridlines and a dot.
+				var withData = json.rows.filter(function(r) {
+					return r.c.slice(1).some(function(c) { return c && c.v !== null && c.v > 0; });
+				}).length;
+				$("#activityGraph").toggleClass("is-sparse", withData < 3);
+
 				activity.graph.draw(activity.view, activity.options);
 			}
 		});

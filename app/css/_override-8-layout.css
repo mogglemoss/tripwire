@@ -1,0 +1,189 @@
+/* ============================================================================
+   DESKTOP LAYOUT
+
+   Everything below fixes one root cause: the desktop layout was gridster's
+   fixed pixel grid, positioned absolutely from saved coordinates. It did not
+   use the window it was in -- at 1600x1000 the panels stopped at 1250x440 and
+   the rest was raw background plus footer, which read as a page that had not
+   finished loading.
+
+   The grid now fills the viewport at every width. The panel registry still
+   controls what is shown; what is gone is drag-and-resize, which only existed
+   to work around a layout that never fit in the first place.
+   ========================================================================= */
+
+html, body { height: 100%; overflow: hidden; }
+
+#wrapper {
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+#inner-wrapper {
+	flex: 1 1 auto;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#topbar { flex: 0 0 auto; position: static; }
+
+.gridster {
+	flex: 1 1 auto;
+	min-height: 0;
+	visibility: visible !important;
+	padding: var(--space-2);
+	box-sizing: border-box;
+}
+
+.gridster > ul {
+	position: static !important;
+	width: auto !important;
+	height: 100% !important;
+	margin: 0 !important;
+	padding: 0;
+	list-style: none;
+
+	display: grid;
+	gap: var(--space-2);
+	/* Weighted by how much each panel earns: signatures widest, notes least. */
+	grid-template-columns: minmax(260px, 1fr) minmax(340px, 1.35fr) minmax(220px, 0.85fr);
+	/* The chain is the reason the tool exists, so it takes what is left. */
+	grid-template-rows: minmax(180px, 32vh) 1fr;
+}
+
+.gridWidget {
+	position: static !important;
+	width: auto !important;
+	height: auto !important;
+	min-height: 0;
+	margin: 0 !important;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.gridWidget > .controls {
+	position: static !important;
+	flex: 0 0 auto;
+	width: auto !important;
+	height: auto !important;
+	top: auto !important; right: auto !important;
+	bottom: auto !important; left: auto !important;
+}
+
+.gridWidget > .content {
+	position: static !important;
+	flex: 1 1 auto;
+	min-height: 0;
+	width: auto !important;
+	height: auto !important;
+	top: auto !important; right: auto !important;
+	bottom: auto !important; left: auto !important;
+	overflow: auto;
+}
+
+#chainWidget { grid-column: 1 / -1; }
+
+/* Resize handles belong to a grid that no longer exists. */
+.grid-resize { display: none !important; }
+
+/* A hidden panel should give its space back now the grid can reflow. */
+.gridWidget.panel-hidden { display: none !important; }
+
+/* ============================================================================
+   BACKGROUND
+
+   The image was the brightest, highest-contrast thing on screen, showing
+   through translucent panels and pulling the eye off the data every time. It
+   stays -- it is the corp's ship -- but well behind a wash, and the panels go
+   opaque so nothing reads through them.
+   ========================================================================= */
+
+#wrapper::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: linear-gradient(
+		to bottom,
+		color-mix(in oklab, var(--background) 88%, transparent),
+		color-mix(in oklab, var(--background) 94%, transparent)
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+#inner-wrapper { position: relative; z-index: 1; }
+
+.gridWidget {
+	background-color: var(--card);   /* opaque: nothing reads through a panel */
+}
+
+/* ============================================================================
+   FOOTER
+   Donation plea, a yellow button and a wall of CCP legalese, centred on the
+   background. It belongs on the landing page, not on the instrument.
+   ========================================================================= */
+
+#footer { display: none !important; }
+
+/* ============================================================================
+   TOPBAR
+   Was a left cluster and a right cluster with ~1000px of nothing between.
+   ========================================================================= */
+
+#topbar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+	padding: 0 var(--space-3);
+	height: auto;
+	min-height: 2.6rem;
+	line-height: normal;
+}
+#topbar > .align-left  { display: flex; align-items: center; gap: var(--space-3); flex: 1 1 auto; }
+#topbar > .align-right { display: flex; align-items: center; gap: var(--space-2); flex: 0 0 auto; padding-right: 0; }
+#topbar h1, #topbar h3 { margin: 0; display: flex; align-items: center; gap: var(--space-1); }
+
+/* ============================================================================
+   DENSITY AND EMPHASIS
+   Everything was the same mid-grey, so nothing said where to look.
+   ========================================================================= */
+
+/* The chain panel is the subject; give its header the accent rule. */
+#chainWidget > .controls { border-bottom-color: color-mix(in oklab, var(--primary) 45%, var(--border)); }
+#chainWidget .panel-title { color: var(--primary); }
+
+/* Gate chips should not strand a single item on its own line. */
+.gate-list { row-gap: var(--space-1); }
+.gate-chip { flex: 0 0 auto; }
+
+/* Panel headers all one height, whatever they contain. */
+.gridWidget > .controls { min-height: 2.1rem; }
+
+/* The activity graph earns its space or gives it up. */
+#activityGraph { min-height: 0; }
+#activityGraph.is-sparse { height: 84px !important; opacity: .75; }
+#activityGraphControls { margin-top: var(--space-1); }
+
+/* gridster.css sets `.gridster .gs-w { background: var(--scrim-60) }` -- two
+   classes, which outranks a plain .gridWidget. That translucent scrim is what
+   let the background image read straight through every panel. */
+.gridster .gs-w,
+.gridster .gridWidget {
+	background-color: var(--card);
+	background-image: none;
+}
+
+/* With every panel opaque the background image is hidden completely, which
+   throws away the one piece of brand on the page. The chain panel is the one
+   surface with real empty space, so it alone stays slightly translucent -- the
+   ship reads faintly behind the map and nowhere near the tables. */
+.gridster .gs-w#chainWidget {
+	background-color: color-mix(in oklab, var(--card) 88%, transparent);
+}
+
+/* The map itself sits on nothing, so the node is what stands out. */
+#chainWidget > .content { background: transparent; }
