@@ -40,7 +40,9 @@
 
     function candidates(query) {
         var q = (query || "").toLowerCase().trim();
-        var acts = tripwire.keyboard.actions.filter(function(a) {
+        var all = tripwire.keyboard.actions.concat(
+            tripwire.keyboard.panelActions ? tripwire.keyboard.panelActions() : []);
+        var acts = all.filter(function(a) {
             return !q || a.label.toLowerCase().indexOf(q) > -1 || a.group.toLowerCase().indexOf(q) > -1;
         });
         return acts.concat(tripwire.keyboard.systemActions(q));

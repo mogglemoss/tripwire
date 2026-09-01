@@ -1,4 +1,4 @@
-const eveScout = new _EveScoutSignatureConnection();
+const eveScout = mapDataSuppliers.register(new _EveScoutSignatureConnection());
 
 function _EveScoutSignatureConnection() {
 	const _this = this;

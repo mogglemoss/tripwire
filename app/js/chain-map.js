@@ -5,7 +5,7 @@ var chain = new function() {
 	// Third party suppliers should have:
 	//  findLinks(systemId, ids) - Find links from the given system coming from the third party. ids contain a parent and a child ID; the child ID should be incremented for every new connection
 	
-	thirdPartySuppliers = [ eveScout ];
+	// Suppliers register themselves; see app/js/map-data-suppliers/_registry.js
 
 	// Renderer should have:
 	//  ready() - Whether the renderer is initialised and can accept draw calls
@@ -338,7 +338,7 @@ var chain = new function() {
 				}
 			}
 			
-			thirdPartySuppliers.forEach(function(supplier) {				
+			mapDataSuppliers.all().forEach(function(supplier) {				
 				const ids = { parentID: parentID, nextChildID: ++childID };
 				const supplierNodes = supplier.findLinks(1 * system[0], ids);
 				if(!supplierNodes) { return; }

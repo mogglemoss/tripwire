@@ -98,8 +98,25 @@ tripwire.keyboard = (function() {
                $t.closest("[role='dialog'], .ui-dialog, .cke").length > 0;
     }
 
+    // Panel show/hide, generated from the panel registry rather than declared
+    // here, so adding a panel adds its command for free. Resolved lazily
+    // because panels.js loads after this file.
+    function panelActions() {
+        if (!tripwire.panels) { return []; }
+        return tripwire.panels.all().map(function(p) {
+            return {
+                id: "panel-" + p.id,
+                label: (tripwire.panels.isVisible(p.id) ? "Hide " : "Show ") + p.title + " panel",
+                group: "Panels",
+                enabled: function() { return true; },
+                perform: function() { tripwire.panels.toggle(p.id); }
+            };
+        });
+    }
+
     return {
         actions: ACTIONS,
+        panelActions: panelActions,
         bindings: KEY_BINDINGS,
         systemActions: systemActions,
         isTyping: isTyping
