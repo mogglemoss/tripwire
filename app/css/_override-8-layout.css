@@ -187,3 +187,107 @@ html, body { height: 100%; overflow: hidden; }
 
 /* The map itself sits on nothing, so the node is what stands out. */
 #chainWidget > .content { background: transparent; }
+
+/* ============================================================================
+   PROPORTION, WITH REAL DATA IN FRONT OF ME
+
+   A one-signature system flattered the 32vh top row. With a dozen signatures
+   the table shows four and clips, while the chain holds 60% of the screen for
+   a single node. Signatures are what you read during a scan, so the top row
+   grows and the chain takes what is left rather than the reverse.
+   ========================================================================= */
+
+.gridster > ul {
+	grid-template-rows: minmax(240px, 46vh) 1fr;
+}
+
+/* ============================================================================
+   SIGNATURE TABLE COLUMN SIZING
+   The id was wrapping mid-value ("ABC-" / "111"), the group was stated twice
+   (dot plus word), site names were centre-aligned under a left-aligned header,
+   and life/mass held full width while empty for every non-wormhole row.
+   ========================================================================= */
+
+#sigTable { table-layout: fixed; }
+
+#sigTable th:nth-child(1), #sigTable td:nth-child(1) { width: 5.5rem; white-space: nowrap; }
+#sigTable th:nth-child(2), #sigTable td:nth-child(2) { width: 6rem;   white-space: nowrap; }
+#sigTable th:nth-child(3), #sigTable td:nth-child(3) { width: 4.5rem; white-space: nowrap; }
+#sigTable th:nth-child(4), #sigTable td:nth-child(4) { width: auto; }
+#sigTable th:nth-child(5), #sigTable td:nth-child(5),
+#sigTable th:nth-child(6), #sigTable td:nth-child(6) { width: 4.5rem; white-space: nowrap; }
+
+/* Everything reads left except the state columns, which line up on the right
+   so they scan as a pair. */
+#sigTable td, #sigTable th { text-align: left; }
+#sigTable td:nth-child(5), #sigTable th:nth-child(5),
+#sigTable td:nth-child(6), #sigTable th:nth-child(6) { text-align: right; }
+
+/* The alignment classes the app writes inline fight the above. */
+#sigTable td.centerAlign, #sigTable td.rightAlign { text-align: inherit; }
+
+/* The signature id is an identifier; never break it. */
+#sigTable td:nth-child(1) { font-variant-numeric: tabular-nums; overflow: hidden; text-overflow: ellipsis; }
+
+/* Header row is chrome, not content. */
+#sigTable thead th { position: sticky; top: 0; background: var(--card); z-index: 1; }
+
+/* ============================================================================
+   HIERARCHY
+   Three text tokens used almost interchangeably meant nothing led the eye.
+   Primary content sits at full strength, supporting detail steps back.
+   ========================================================================= */
+
+.sys-panel .sys-name        { color: var(--foreground); font-weight: 600; }
+.sys-statics, .sys-extra    { color: var(--card-foreground); }
+.sys-links a, #version,
+#activityGraphControls a,
+.sig-stats                  { color: var(--muted-foreground); }
+
+/* The filter bar is a control surface; it should sit quieter than the rows it
+   filters. */
+.sig-filter { padding: var(--space-1) var(--space-2); }
+.sig-chip   { font-size: calc(var(--fs-xs) * 0.95); }
+
+/* The version chip was absolutely positioned at top:4px right:20px inside the
+   logo, which worked when the topbar was a line-height hack. In a flex row it
+   lands on top of the wordmark. It is a sibling, so it sits like one. */
+#topbar #logo { position: static; display: flex; align-items: baseline; gap: var(--space-2); }
+
+#version {
+	position: static;
+	top: auto; right: auto;
+	height: auto;
+	font-size: var(--fs-xs);
+	color: var(--muted-foreground);
+	letter-spacing: .04em;
+	white-space: nowrap;
+}
+
+/* Panel visibility menu, opened from the layout control. */
+#panel-menu {
+	position: absolute;
+	z-index: 3000;
+	min-width: 12rem;
+	padding: var(--space-1) 0;
+	background: var(--popover);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	box-shadow: 0 8px 24px rgba(0,0,0,.5);
+}
+#panel-menu button {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	width: 100%;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	color: var(--foreground);
+	font-size: var(--fs-sm);
+	text-align: left;
+	padding: var(--space-1) var(--space-3);
+	min-height: 0;
+}
+#panel-menu button:hover { background: var(--muted); }
+#panel-menu .tick { width: 1em; color: var(--primary); }
