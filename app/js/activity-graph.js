@@ -70,7 +70,10 @@ var activity = new function() {
 			hAxis: {textStyle: {color: "#999", fontName: "Verdana", fontSize: 10}, showTextEvery: 3},
 			vAxis: {textStyle: {color: "#666", fontName: "Verdana", fontSize: 10}, viewWindowMode: "maximized", viewWindow: {min: 0}, maxValue: 5},
 			gridlineColor: "#454545",
-			pointSize: 2,
+			pointSize: 4,
+			// Hours with no reading come back as null, so a sparse window draws as
+			// isolated points rather than a line. They have to be big enough to see.
+			interpolateNulls: false,
 			lineWidth: 1,
 			height: 150,
 			chartArea: {left: "10%", top: "5%", width: "88%", height: "85%"},

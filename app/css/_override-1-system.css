@@ -484,3 +484,114 @@ tr.line td, tr.line th { border-bottom: 1px solid var(--border); }
 	outline: 2px solid var(--ring);
 	outline-offset: 1px;
 }
+
+/* ============================================================================
+   LEGIBILITY CORRECTIONS
+
+   Not rebranding: these are data colours and they keep their meaning. They are
+   lightened only enough to clear 4.5:1 against the card ground, measured. The
+   originals were written for a near-black page and the card surface is lighter
+   than that, so blue text in particular was failing badly -- the "Blue loot
+   buyer" line sat at 2.63:1.
+   ========================================================================= */
+
+:root {
+	--data-info:       #47a2fe;   /* was #4399f0  4.18:1 -> 4.66:1 */
+	--data-loot-blue:  #9090ff;   /* was #6060f0  2.63:1 -> 4.52:1 */
+	--data-link:       #4ca1ea;   /* was #428bca  3.43:1 -> 4.50:1 */
+	--data-class-sky:  #3ca0ff;   /* was #3388dd  3.38:1 -> 4.54:1 */
+	--chart-1:         #4e9dff;   /* was #3366cc  2.32:1 -> 4.50:1 */
+}
+
+/* In the light theme the same hues need darkening instead. */
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		--data-info:      #1668c4;
+		--data-loot-blue: #3b3bc9;
+		--data-link:      #1a6aa8;
+		--data-class-sky: #1466a8;
+		--chart-1:        #1f4f9e;
+	}
+}
+:root[data-theme="light"] {
+	--data-info:      #1668c4;
+	--data-loot-blue: #3b3bc9;
+	--data-link:      #1a6aa8;
+	--data-class-sky: #1466a8;
+	--chart-1:        #1f4f9e;
+}
+
+/* ============================================================================
+   HOVER / ACTIVE STATES
+
+   forms.css styles these through `.ui-button:hover:not([disabled])` and
+   `input[type="button"]:not([disabled]):hover` -- three selectors deep, which
+   outranks a plain :hover. That is why the raised-bevel gradient survived on
+   hover and press after the rest was flattened.
+   ========================================================================= */
+
+button:hover, button:active,
+input[type="button"]:hover, input[type="submit"]:hover,
+input[type="button"]:active, input[type="submit"]:active,
+input[type="button"]:not([disabled]):hover,
+input[type="submit"]:not([disabled]):hover,
+input[type="button"]:not([disabled]):active,
+input[type="submit"]:not([disabled]):active,
+.ui-button:hover, .ui-button:active,
+.ui-button:hover:not([disabled]), .ui-button:active:not([disabled]),
+.ui-button.ui-widget:hover:not([disabled]),
+.ui-button.ui-widget:active:not([disabled]),
+.ui-state-hover, .ui-state-active, .ui-state-focus,
+a.ui-button:hover, a.ui-button:active {
+	background-image: none !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+}
+
+/* ============================================================================
+   GATE CHIPS
+   The gate list was comma-separated prose. Each gate is a destination you can
+   click, so it reads as a chip like everything else that is a discrete thing.
+   ========================================================================= */
+
+.gate-list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-1);
+	margin: 0;
+}
+
+.gate-list > b {
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	margin-right: var(--space-1);
+}
+
+.gate-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	padding: 0 var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--muted);
+	font-size: var(--fs-xs);
+	line-height: 1.7;
+	white-space: nowrap;
+	transition: border-color .12s ease, background-color .12s ease;
+}
+.gate-chip:hover { border-color: var(--border-strong); background: var(--accent-surface); }
+.gate-chip a { font-weight: 500; }
+.gate-chip.is-closed { opacity: .5; text-decoration: line-through; }
+
+/* The last two gradients in the app: a fade on the account dropdown and the
+   chain zoom-reset button. Both are bevel-era leftovers. */
+#content.dialog-like,
+#chain-zoom-reset {
+	background-image: none !important;
+}
+#content.dialog-like { background-color: var(--popover); }

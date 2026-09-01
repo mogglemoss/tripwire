@@ -74,11 +74,15 @@ for ($x = 0; $x <= $length -1; $x++) {
 
 		$row = $stmt->fetchObject();
 	} else {
+		// No row for this hour means no reading was taken, which is not the
+		// same as an hour with no activity. Filling it with 0 invents data:
+		// a single real sample then draws as a spike out of a flat zero line
+		// across the whole window. null leaves a gap, which is the truth.
 		$data[0] = Array('v' => $x);
-		$data[1] = Array('v' => 0);
-		$data[2] = Array('v' => 0);
-		$data[3] = Array('v' => 0);
-		$data[4] = Array('v' => 0);
+		$data[1] = Array('v' => null);
+		$data[2] = Array('v' => null);
+		$data[3] = Array('v' => null);
+		$data[4] = Array('v' => null);
 	}
 
 	$output['rows'][]['c'] = $data;

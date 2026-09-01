@@ -108,10 +108,12 @@ tripwire.systemChange = function(systemID, mode) {
 		// Gates
 		const connections = guidance.connections(tripwire.map.shortest, viewingSystemID);
 		if(connections.length) {
-			$('#infoStatics').append('<p><b>Gates</b>: ' + connections.map(c => {
+			$('#infoStatics').append('<p class="gate-list"><b>Gates</b>' + connections.map(c => {
 				const system = systemAnalysis.analyse(c.systemID);
-				return c.closed ? '<s>' + system.name + '</s> (closed)' : systemRendering.renderSystem(system); 
-			}).join(', ') + '</p>');
+				return c.closed
+					? '<span class="gate-chip is-closed" title="Closed">' + system.name + '</span>'
+					: '<span class="gate-chip">' + systemRendering.renderSystem(system) + '</span>';
+			}).join('') + '</p>');
 		}
 		
 		// Route to favourites
