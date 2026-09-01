@@ -166,3 +166,84 @@
 	color: var(--muted-foreground);
 	font-size: var(--fs-sm);
 }
+
+/* ============================================================================
+   SIGNATURE FILTER BAR
+   After Aperture's SignatureModule: group chips, a scan-state cycle, and live
+   counts. Scanning a long list down one column is the whole job, so the bar
+   stays pinned and only the table scrolls.
+   ========================================================================= */
+
+.sig-filter {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-1);
+	padding: var(--space-2) var(--space-2);
+	border-bottom: 1px solid var(--border);
+}
+
+.sig-filter-groups { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+.sig-chip {
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: transparent;
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 500;
+	line-height: 1.6;
+	padding: 0 var(--space-2);
+	min-height: 0;
+	cursor: pointer;
+	transition: border-color .12s ease, background-color .12s ease, color .12s ease;
+}
+.sig-chip:hover { border-color: var(--border-strong); background: var(--muted); color: var(--foreground); }
+
+/* Active filters stand out without the harshness of a solid fill. */
+.sig-chip.on {
+	border-color: var(--primary);
+	color: var(--primary);
+	background: color-mix(in oklab, var(--primary) 14%, transparent);
+}
+
+/* The scan cycle earns its own colours: scanned reads as settled, unscanned as
+   outstanding work. */
+.sig-chip.sig-scan[data-state="scanned"].on {
+	border-color: var(--data-good); color: var(--data-good);
+	background: color-mix(in oklab, var(--data-good) 14%, transparent);
+}
+.sig-chip.sig-scan[data-state="unscanned"].on {
+	border-color: var(--data-info); color: var(--data-info);
+	background: color-mix(in oklab, var(--data-info) 14%, transparent);
+}
+
+.sig-stats {
+	margin-left: auto;
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+#sigTable tbody tr.sig-filtered { display: none; }
+
+/* Unscanned rows are outstanding work; mark the id rather than shouting the
+   whole row, the way Aperture marks the still-empty required cells. */
+#sigTable tbody tr.sig-unscanned > td:first-child {
+	box-shadow: inset 2px 0 0 var(--data-info);
+}
+
+/* Site-safety glyph, derived from the group. A combat site is somewhere rats
+   can shoot you; an exploration site is not; a wormhole is neither. */
+#sigTable tbody tr[data-activity="combat"]  > td:nth-child(2)::before,
+#sigTable tbody tr[data-activity="explore"] > td:nth-child(2)::before {
+	content: "";
+	display: inline-block;
+	width: .5em; height: .5em;
+	margin-right: .45em;
+	border-radius: 50%;
+	vertical-align: .05em;
+}
+#sigTable tbody tr[data-activity="combat"]  > td:nth-child(2)::before { background: var(--data-critical); }
+#sigTable tbody tr[data-activity="explore"] > td:nth-child(2)::before { background: var(--data-good); }
