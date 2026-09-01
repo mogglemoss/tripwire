@@ -1,59 +1,206 @@
-/* Signature dialog refinements.
-   Layout and legibility only -- every field the dialog had, it still has. */
+/* ============================================================================
+   SIGNATURE DIALOG — form layout
 
-/* The id inputs allow three characters but were sized for two, so real values
-   ("ACI", "444") were clipped by their own box. */
-#dialog-signature .signatureID {
-	width: 3.4em;
-	box-sizing: content-box;
+   The dialog kept its original markup (.row > .label + controls) with new
+   paint on top, and it showed: bold oversized labels competing with the
+   values, no field affordance at all, ragged alignment, and controls landing
+   on the wrong rows.
+
+   This lays a real form grid over that markup. Every field the dialog had, it
+   still has, in the same order.
+   ========================================================================= */
+
+#dialog-signature .ui-dialog-content,
+#dialog-signature {
+	font-size: var(--fs-base);
 }
 
-#dialog-signature .wormholeType {
-	width: 4.2em;
-	box-sizing: content-box;
+/* One row = quiet label in a fixed column, controls flowing after it. */
+#dialog-signature .row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: 0 0 var(--space-3) 0;
+	line-height: 1.4;
 }
 
-/* Unresolved required fields read red at a glance, so an unfinished signature
-   is obvious without parsing it. Applied by signature-dialog-keyboard.js to
-   the id, and for wormholes also type and destination -- the fields the chain
-   is actually drawn from. */
+/* Labels are wayfinding, not content: small, quiet, consistent width so every
+   value starts on the same vertical line. */
+#dialog-signature .row > .label:first-child {
+	flex: 0 0 5.5rem;
+	text-align: right;
+	font-size: var(--fs-sm);
+	font-weight: 500;
+	color: var(--muted-foreground);
+	letter-spacing: .02em;
+}
+
+/* The separator between the two id halves must not take a label column. */
+#dialog-signature .row > .label:not(:first-child) {
+	flex: 0 0 auto;
+	color: var(--muted-foreground);
+	font-weight: 400;
+}
+
+/* ---- fields look like fields --------------------------------------------
+   The system layer keeps controls flat so table rows read as data. A form is
+   the opposite case: here the whole point is showing what can be edited. */
+
+#dialog-signature input[type="text"],
+#dialog-signature input[type="password"],
+#dialog-signature select,
+#dialog-signature .ui-selectmenu-button {
+	background-color: var(--muted);
+	border: 1px solid var(--input);
+	border-radius: var(--radius-sm);
+	color: var(--foreground);
+	font-size: var(--fs-base);
+	padding: var(--space-1) var(--space-2);
+	min-height: 1.9rem;
+}
+
+#dialog-signature input[type="text"]:hover,
+#dialog-signature select:hover { border-color: var(--border-strong); }
+
+#dialog-signature input[type="text"]:focus,
+#dialog-signature select:focus {
+	border-color: var(--ring);
+	background-color: var(--background);
+}
+
+/* Values sized by what they hold, not by a stray `size` attribute. */
+#dialog-signature .signatureID  { width: 3.6rem; text-align: center; text-transform: uppercase; }
+#dialog-signature .wormholeType { width: 4.4rem; text-align: center; text-transform: uppercase; }
+#dialog-signature .leadsTo      { width: 12rem; }
+#dialog-signature [name="signatureName"],
+#dialog-signature [name="wormholeName"] { flex: 1 1 12rem; min-width: 8rem; }
+
+/* Unresolved required fields read red at a glance. Applied by
+   signature-dialog-keyboard.js: the id always, plus type and destination for
+   a wormhole -- the fields the chain is drawn from. */
 #dialog-signature .sig-missing,
 #dialog-signature .sig-missing:focus {
-	border-color: var(--data-critical);
-	box-shadow: 0 0 0 1px var(--data-critical);
+	border-color: var(--destructive);
+	box-shadow: 0 0 0 1px var(--destructive);
 }
 
-/* The side labels were rotated 90 degrees and absolutely positioned, which is
-   hard to read for no layout gain. Set them upright as ordinary headings for
-   the group they title. */
+/* ---- lifetime reads as one control, not three loose numbers ------------- */
+#dialog-signature #durationPicker,
+#dialog-signature .duration-picker {
+	font-size: var(--fs-base);
+}
+#dialog-signature .duration-picker input {
+	width: 2.4rem;
+	text-align: center;
+}
+#dialog-signature .duration-picker span,
+#dialog-signature .duration-picker label {
+	font-size: var(--fs-sm);
+	color: var(--muted-foreground);
+}
+
+/* ---- section headings ---------------------------------------------------
+   Were rotated 90 degrees in a left gutter. One divider weight, one style. */
 #dialog-signature .sideLabel {
 	position: static;
-	left: auto;
-	bottom: auto;
-	width: auto;
 	transform: none;
 	display: block;
-	margin: 0 0 4px;
-	padding-bottom: 2px;
-	border-bottom: 1px solid var(--n-300);
-	color: var(--n-600);
-	font-weight: bold;
-	font-size: .9em;
-	text-align: left;
-	text-transform: uppercase;
-	letter-spacing: .08em;
-}
-
-/* Those two rules existed only to place the rotated labels. */
-#dialog-signature #wormhole .side:first-child .sideLabel,
-#dialog-signature #wormhole .side:last-child .sideLabel {
-	bottom: auto;
 	width: auto;
+	margin: var(--space-4) 0 var(--space-3);
+	padding-bottom: var(--space-1);
+	border-bottom: 1px solid var(--border);
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .12em;
+	text-transform: uppercase;
 	text-align: left;
 }
 
-/* The rotated labels were sitting in a left gutter that is no longer needed. */
-#dialog-signature .side {
-	padding-left: 0;
+#dialog-signature .side { padding-left: 0; }
+#dialog-signature hr { display: none; }   /* the second, heavier divider */
+
+/* ---- quick-select chips ------------------------------------------------
+   Were wrapping into a ragged second line. One wrap-safe row, aligned under
+   the value column rather than starting at the dialog edge. */
+#dialog-signature .quickSelectBar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-1);
+	flex: 1 1 100%;
+	margin-left: 6rem;      /* clears the label column */
+	margin-top: calc(var(--space-1) * -1);
 }
 
+#dialog-signature .quickSelectBar button {
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	background: transparent;
+	padding: 1px var(--space-2);
+	min-width: 0;
+	min-height: 0;
+	font-size: var(--fs-xs);
+	line-height: 1.6;
+}
+
+#dialog-signature .quickSelectBar button:hover {
+	border-color: var(--border-strong);
+	background: var(--muted);
+}
+
+/* The bare "|" divider inside the bar. */
+#dialog-signature .quickSelectBar { align-items: center; }
+
+/* ---- the wormhole-type shortcut button beside the type field ----------- */
+#dialog-signature .wormholeTypeQuickSelect button {
+	font-size: var(--fs-xs);
+	padding: 1px var(--space-2);
+	min-height: 0;
+}
+
+/* ---- width -------------------------------------------------------------
+   The dialog was sized for the old cramped layout, so the type selector wrapped
+   off the ID row and the class chips broke onto a ragged second line. */
+.ui-dialog:has(#dialog-signature) {
+	width: min(30rem, calc(100vw - 2rem)) !important;
+}
+#dialog-signature { width: auto !important; }
+
+/* ID row holds both id halves and the signature type together -- they are one
+   statement ("this signature, of this kind"), so they belong on one line. */
+#dialog-signature .row:first-of-type { flex-wrap: nowrap; }
+#dialog-signature #signatureType { margin-left: auto; }
+#dialog-signature #signatureType .ui-selectmenu-button { min-width: 8rem; }
+
+/* Class chips: one tidy row under the destination field. */
+#dialog-signature .quickSelectBar {
+	margin-left: 6rem;
+	gap: 3px;
+}
+#dialog-signature .quickSelectBar button {
+	min-width: 2rem;
+	text-align: center;
+	font-size: var(--fs-xs);
+	padding: 2px 0;
+}
+
+/* Lifetime: the three numbers are one value, so box them as one control
+   rather than leaving them adrift in the row. */
+#dialog-signature #durationPicker,
+#dialog-signature .duration-picker {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	padding: 2px var(--space-2);
+	border: 1px solid var(--input);
+	border-radius: var(--radius-sm);
+	background: var(--muted);
+}
+#dialog-signature .duration-picker input {
+	border: 0;
+	background: transparent;
+	min-height: 0;
+	padding: 0;
+	width: 2rem;
+}

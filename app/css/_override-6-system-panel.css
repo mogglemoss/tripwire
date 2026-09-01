@@ -1,0 +1,113 @@
+/* ============================================================================
+   SYSTEM PANEL
+
+   Was two 50% floats with a <br clear="all">: the system identity on the left,
+   and "Blue loot buyer" stranded in a right-hand column it did not belong in.
+   Statics sat last, below the links, so the rows that matter most needed
+   scrolling to reach.
+
+   Rebuilt as a single column in reading order -- identity, what it connects
+   to, then the supporting detail -- with the metadata as chips.
+   ========================================================================= */
+
+.sys-panel {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	padding: var(--space-3);
+	overflow-y: auto;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+/* ---- identity ----------------------------------------------------------- */
+.sys-head { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.sys-panel .sys-name {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	margin: 0;
+	font-size: var(--fs-lg);
+	font-weight: 600;
+	line-height: 1.1;
+	color: var(--foreground);
+	letter-spacing: -.01em;
+}
+
+/* Security / region / faction as chips: three small facts, read at a glance,
+   in the same register as the life and mass chips elsewhere. */
+.sys-meta { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+.sys-meta .chip {
+	margin: 0;
+	padding: 1px var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--muted);
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 500;
+	line-height: 1.7;
+	white-space: nowrap;
+}
+/* An empty chip should not draw a pill. */
+.sys-meta .chip:empty { display: none; }
+/* Security colouring comes from the data tokens already on the element. */
+.sys-meta #infoSecurity { color: inherit; }
+
+/* ---- what it connects to, promoted above the supporting detail ---------- */
+.sys-statics {
+	font-size: var(--fs-sm);
+	line-height: 1.7;
+	color: var(--card-foreground);
+}
+.sys-statics:empty { display: none; }
+
+/* ---- blue-loot buyer and other route notes ------------------------------
+   Was floated into a right-hand column of its own. It is a note about this
+   system, so it reads inline with the rest. */
+.sys-extra {
+	font-size: var(--fs-sm);
+	color: var(--muted-foreground);
+	line-height: 1.6;
+}
+.sys-extra:empty { display: none; }
+
+/* ---- graph -------------------------------------------------------------- */
+#activityGraph { min-height: 120px; }
+
+/* Range switch as a segmented control rather than "Week - 48Hour - 24Hour". */
+.sys-range {
+	display: flex;
+	gap: var(--space-1);
+	justify-content: center;
+}
+.sys-range a {
+	padding: 1px var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 500;
+	text-decoration: none;
+}
+.sys-range a:hover {
+	border-color: var(--border-strong);
+	background: var(--muted);
+	color: var(--foreground);
+	text-decoration: none;
+}
+
+/* ---- external links ----------------------------------------------------- */
+.sys-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	justify-content: center;
+	padding-top: var(--space-1);
+	border-top: 1px solid var(--border);
+	font-size: var(--fs-sm);
+}
+.sys-links a { color: var(--muted-foreground); font-weight: 500; }
+.sys-links a:hover { color: var(--primary); }

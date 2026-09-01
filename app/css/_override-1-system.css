@@ -425,3 +425,62 @@ tr.line td, tr.line th { border-bottom: 1px solid var(--border); }
 	background-image: none;
 	text-shadow: none;
 }
+
+/* ============================================================================
+   DIALOG SIZING
+   Settings holds two-column option rows and was squeezed into the default
+   dialog width, which is why its labels wrapped and its controls crowded.
+   ========================================================================= */
+
+.ui-dialog:has(#dialog-options) { width: min(46rem, calc(100vw - 2rem)) !important; }
+#dialog-options { width: auto !important; }
+
+/* Option rows: label left, control right, on one rhythm. */
+#dialog-options .optionsTable { width: 100%; table-layout: fixed; }
+#dialog-options .optionsTable th {
+	width: 55%;
+	text-align: left;
+	font-weight: 500;
+	color: var(--muted-foreground);
+	font-size: var(--fs-base);
+	vertical-align: middle;
+}
+#dialog-options .optionsTable td { text-align: right; vertical-align: middle; }
+#dialog-options input[type="text"],
+#dialog-options input[type="password"],
+#dialog-options select {
+	width: 100%;
+	max-width: 16rem;
+	background-color: var(--muted);
+	border: 1px solid var(--input);
+}
+#dialog-options div.ui-slider { width: calc(100% - 3rem); }
+
+/* Yes/No and other radio pairs read as a segmented control, like the map's
+   life and mass. */
+#dialog-options input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+#dialog-options input[type="radio"] + label {
+	display: inline-block;
+	padding: 2px var(--space-3);
+	margin-left: var(--space-1);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-size: var(--fs-sm);
+	color: var(--muted-foreground);
+	cursor: pointer;
+	vertical-align: middle;
+}
+#dialog-options input[type="radio"] + label:hover {
+	border-color: var(--border-strong);
+	background: var(--muted);
+}
+#dialog-options input[type="radio"]:checked + label {
+	border-color: var(--primary);
+	color: var(--primary);
+	background: color-mix(in oklab, var(--primary) 12%, transparent);
+	font-weight: 600;
+}
+#dialog-options input[type="radio"]:focus-visible + label {
+	outline: 2px solid var(--ring);
+	outline-offset: 1px;
+}

@@ -19,6 +19,7 @@ $system = $_REQUEST['system'] ?? '';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<meta name="system" content="<?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?>">
 	<meta name="server" content="<?= CDN_DOMAIN ?>">
 	<meta name="app_name" content="<?= APP_NAME ?>">
@@ -160,24 +161,24 @@ $system = $_REQUEST['system'] ?? '';
 						<i class="tutorial" data-tooltip="Show tutorial for this section">?</i>
 					</div>
 				</div>
-				<div class="content">
-					<div id="infoGeneral" style="float: left; width: 50%; text-align: left;">
-						<h1 class="pointer" style="color: var(--n-800);"><span id="infoSystem"><?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?></span><a class="copy" href="#" title="Copy system name"></a></h1>
-						<h4 id="infoSecurity" class="pointer">&nbsp;</h4>
-						<h4 id="infoRegion" class="pointer">&nbsp;</h4>
-						<h4 id="infoFaction" class="pointer">&nbsp;</h4>
+				<div class="content sys-panel">
+					<div id="infoGeneral" class="sys-head">
+						<h1 class="pointer sys-name"><span id="infoSystem"><?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?></span><a class="copy" href="#" title="Copy system name"></a></h1>
+						<div class="sys-meta">
+							<h4 id="infoSecurity" class="pointer chip"></h4>
+							<h4 id="infoRegion" class="pointer chip"></h4>
+							<h4 id="infoFaction" class="pointer chip"></h4>
+						</div>
 					</div>
-					<div id="infoExtra" style="float: right; width: 50%; text-align: right;">
-					</div>
-					<br clear="all"/>
+					<div id="infoStatics" class="pointer sys-statics"></div>
+					<div id="infoExtra" class="sys-extra"></div>
 					<div id="activityGraph"></div>
-					<div id="activityGraphControls" style="text-align: center;"><a href="javascript: activity.time(168);">Week</a> - <a href="javascript: activity.time(48);">48Hour</a> - <a href="javascript: activity.time(24);">24Hour</a></div>
-					<div id="infoLinks" style="text-align: center;">
-						<a class="infoLink" data-href="http://anoik.is/systems/$systemName" href="" target="_blank">Anoik.is</a> - 
-						<a class="infoLink" data-href="https://evemaps.dotlan.net/search?q=$systemName" href="" target="_blank">dotlan</a> - 
+					<div id="activityGraphControls" class="sys-range"><a href="javascript: activity.time(168);">Week</a><a href="javascript: activity.time(48);">48h</a><a href="javascript: activity.time(24);">24h</a></div>
+					<div id="infoLinks" class="sys-links">
+						<a class="infoLink" data-href="http://anoik.is/systems/$systemName" href="" target="_blank">Anoik.is</a>
+						<a class="infoLink" data-href="https://evemaps.dotlan.net/search?q=$systemName" href="" target="_blank">dotlan</a>
 						<a class="infoLink" data-href='https://zkillboard.com/system/$systemID/' href="" target="_blank">zKillboard</a>
 					</div>
-					<div id="infoStatics" class="pointer"></div>
 				</div>
 			</li>
 			<li id="signaturesWidget" class="gridWidget" data-row="1" data-col="8" data-sizex="7" data-sizey="6" data-min-sizex="5" data-min-sizey="2" style="width: 410px; height: 350px;">

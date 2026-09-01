@@ -10,7 +10,7 @@ require_once('settings.php');
 	<title><?= APP_NAME ?></title>
 
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 	<meta name="description" content="Tripwire is an open source wormhole mapping tool, hosted for free to the public, built for use with EVE Online. Using the latest in internet security standards it is the most secure tool in New Eden." />
 	<meta property="og:type" content="article"/>
 	<meta property="og:url" content="https://tripwire.eve-apps.com/"/>

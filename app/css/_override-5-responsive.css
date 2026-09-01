@@ -1,0 +1,229 @@
+/* ============================================================================
+   RESPONSIVE — Track 6
+
+   Scope is deliberately asymmetric, per the corp's actual use:
+
+     READ band     phones. Check a chain, see what is scanned. No editing
+                   chrome. width < 768px OR height < 600px.
+     EDIT band     tablets. Update signatures, drive the map. Touch-sized
+                   targets. width >= 768px AND height >= 600px.
+     DESKTOP       width >= 1280px AND a fine pointer.
+
+   The height clause is what catches a landscape phone: an iPhone 15 turned
+   sideways is 852px wide -- past any sensible tablet breakpoint -- but only
+   393px tall, with no room for the editing layout. Width alone gets this
+   wrong.
+
+   The fine-pointer clause on desktop is what keeps a landscape iPad Pro 11"
+   (~1194px) in the EDIT band rather than handing it the dense mouse layout it
+   cannot hit accurately.
+
+   Density is width-driven; control sizing is pointer-driven. They are separate
+   questions: a 1000px window on a desktop wants the multi-panel layout but not
+   44px touch targets.
+   ========================================================================= */
+
+/* ── READ: stack the panels ──────────────────────────────────────────────
+   Gridster positions every widget absolutely from saved coordinates. Below
+   the breakpoint that layout is abandoned entirely and the panels return to
+   document flow -- which is the reflow the fixed grid cannot do. The saved
+   coordinates are untouched, so rotating back restores the arrangement. */
+
+@media (max-width: 767px), (max-height: 599px) {
+	#wrapper { overflow-x: hidden; }
+
+	.gridster,
+	.gridster > ul {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		margin: 0 !important;
+	}
+
+	.gridWidget {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		min-height: 12rem;
+		margin: 0 0 var(--space-3) 0 !important;
+		overflow: visible;
+	}
+
+	/* Gridster absolutely-positions .content inside each widget, so once the
+	   widget's fixed height is removed it has no in-flow children and collapses
+	   to the height of its controls bar. Put the content back in flow. */
+	.gridWidget > .content,
+	.gridWidget > .controls {
+		position: static !important;
+		height: auto !important;
+		width: auto !important;
+		top: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+	}
+
+	/* Chain map wants the most room; signatures next. */
+	#chainWidget .content { min-height: 55vh; }
+	#notesWidget .content { min-height: 14rem; }
+
+	/* Resize handles are meaningless without a grid. */
+	.grid-resize { display: none !important; }
+
+	/* Editing chrome is out of scope on a phone: this band is for reading. */
+	#signaturesWidget #add-signature,
+	#signaturesWidget #edit-signature,
+	#signaturesWidget #delete-signature,
+	#signaturesWidget #undo,
+	#signaturesWidget #redo,
+	#notesWidget #add-comment,
+	#layout {
+		display: none !important;
+	}
+
+	/* The topbar carries a lot for 393px. Keep identity, time and search. */
+	#serverStatus,
+	#topbar h3:nth-of-type(2) { display: none; }
+
+	#topbar { position: sticky; }
+
+	/* Signature table: drop the columns that only matter while editing. */
+	#sigTable th:nth-child(n+5),
+	#sigTable td:nth-child(n+5) { display: none; }
+}
+
+/* ── EDIT: tablets ───────────────────────────────────────────────────────
+   Two columns rather than four panels on a fixed grid; the arrangement a
+   1194px tablet can actually use. */
+
+@media (min-width: 768px) and (max-width: 1279px) and (min-height: 600px) {
+	.gridster,
+	.gridster > ul {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+	}
+
+	.gridster > ul {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-3);
+		padding: 0 var(--space-2);
+	}
+
+	.gridWidget {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		margin: 0 !important;
+	}
+
+	/* Gridster absolutely-positions .content inside each widget, so once the
+	   widget's fixed height is removed it has no in-flow children and collapses
+	   to the height of its controls bar. Put the content back in flow. */
+	.gridWidget > .content,
+	.gridWidget > .controls {
+		position: static !important;
+		height: auto !important;
+		width: auto !important;
+		top: auto !important;
+		right: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+	}
+
+	#infoWidget       { min-height: 34vh; }
+	#signaturesWidget { min-height: 34vh; }
+	#notesWidget      { min-height: 26vh; }
+
+	/* The chain is the reason you are here; give it the full width. */
+	#chainWidget {
+		grid-column: 1 / -1;
+		min-height: 46vh;
+	}
+
+	.grid-resize { display: none !important; }
+}
+
+/* ── Touch sizing, independent of width ──────────────────────────────────
+   Driven by pointer, not viewport, because they are different questions. A
+   coarse pointer needs a 44px target whatever the screen is. */
+
+@media (pointer: coarse) {
+	.controls i,
+	.controls span.control,
+	.panel-hide,
+	#topbar i,
+	.quickSelectBar button {
+		min-width: 44px;
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	button, .ui-button, input[type="button"], input[type="submit"] {
+		min-height: 44px;
+		padding: var(--space-2) var(--space-4);
+	}
+
+	input[type="text"], input[type="password"], input[type="number"],
+	select, textarea {
+		min-height: 40px;
+		font-size: 1.15rem;   /* keeps iOS from zooming the field on focus */
+	}
+
+	#sigTable td { padding: var(--space-3) var(--space-2); }
+
+	#dialog-signature .mini-selector + label {
+		padding: var(--space-2) var(--space-4);
+	}
+
+	/* Hover styling is misleading on touch -- it sticks after a tap. */
+	#sigTable tbody tr:hover > td { background-color: transparent; }
+}
+
+/* Dialogs must not exceed a small viewport. */
+@media (max-width: 767px), (max-height: 599px) {
+	.ui-dialog {
+		max-width: calc(100vw - var(--space-4)) !important;
+		max-height: calc(100vh - var(--space-4)) !important;
+		left: var(--space-2) !important;
+		overflow: auto;
+	}
+	.ui-dialog .ui-dialog-content { max-height: 60vh; overflow: auto; }
+}
+
+/* Respect the OS setting; the map already animates a great deal. */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: .001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .001ms !important;
+	}
+}
+
+/* ── Touch on the chain map ──────────────────────────────────────────────
+   #chainParent is a scroll container driven by dragscroll.js, which is a
+   mouse-only library (mousedown/mousemove). Rather than port it, let the
+   browser do what it is already good at: native touch panning and pinch-zoom
+   on the scroll container. dragscroll keeps working for mice untouched.
+
+   touch-action must be set explicitly because the map suppresses user-select
+   and jQuery UI's draggable calls preventDefault on pointer events, which
+   otherwise kills native scrolling on touch. */
+
+#chainParent {
+	touch-action: pan-x pan-y pinch-zoom;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: contain;
+}
+
+/* Nodes stay draggable at tablet width and above; on a phone the map is for
+   reading, so a drag should pan the map rather than move somebody's system. */
+@media (max-width: 767px), (max-height: 599px) {
+	#chainMap .system,
+	#chainMap [class*="system"] {
+		touch-action: inherit;
+	}
+}
