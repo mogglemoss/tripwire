@@ -1,0 +1,16 @@
+/* Panel structure.
+   Appearance now comes from the design system (_override-1-system.css); what
+   remains here is layout the system cannot express generically. */
+
+/* The controls bar mixes floated children with the flow, so the floated group
+   has to be pulled back into the flex line rather than escaping it. */
+.gridWidget > .controls > div[style*="float"] {
+	margin-left: auto;
+	float: none !important;
+}
+
+/* A hidden panel leaves its grid cell empty rather than reflowing the others.
+   Gridster positions every widget absolutely from saved coordinates, so
+   collapsing the gap would mean rewriting them and discarding the arrangement
+   the user made. Bring it back from the palette. */
+.gridWidget.panel-hidden { display: none; }

@@ -57,11 +57,3 @@
 	padding-left: 0;
 }
 
-/* Visible focus, which matters a great deal more now the dialog is meant to be
-   driven from the keyboard. */
-#dialog-signature input:focus-visible,
-#dialog-signature select:focus-visible,
-#dialog-signature button:focus-visible {
-	outline: 2px solid var(--accent, var(--data-info));
-	outline-offset: 1px;
-}

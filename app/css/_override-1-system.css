@@ -1,0 +1,427 @@
+/* ============================================================================
+   TRIPWIRE DESIGN SYSTEM
+
+   A reimagining of the interface in Aperture's design language, not a patch
+   over the old one. The vocabulary below is Aperture's, taken from its
+   globals.css so the two tools speak the same language:
+
+     role tokens, not a grey ramp   --background / --card / --popover / --muted
+     borders as light               --border is white at 10%, --input at 15%
+     one radius                     --radius: 0.625rem, everything derives
+     muted-foreground for secondary text, ring for focus
+
+   Tripwire's own --n-* ramp and --data-* semantics still exist underneath and
+   still drive the map, because those encode EVE meaning. This layer governs
+   chrome: surfaces, controls, type, tables, dialogs, states.
+
+   Ordering: this file must load after the component stylesheets, which is what
+   the _override-* group in gulpfile.js exists for.
+   ========================================================================= */
+
+:root {
+	/* ---- surfaces -------------------------------------------------------- */
+	--background:            oklch(0.145 0 0);
+	--foreground:            oklch(0.80 0 0);
+	--card:                  oklch(0.205 0 0);
+	--card-foreground:       oklch(0.82 0 0);
+	--popover:               oklch(0.205 0 0);
+	--popover-foreground:    oklch(0.80 0 0);
+	--muted:                 oklch(0.269 0 0);
+	--muted-foreground:      oklch(0.66 0 0);
+	--accent-surface:        oklch(0.269 0 0);
+
+	/* ---- lines and focus ------------------------------------------------- */
+	--border:                oklch(1 0 0 / 10%);
+	--border-strong:         oklch(1 0 0 / 18%);
+	--input:                 oklch(1 0 0 / 15%);
+	--ring:                  var(--accent, oklch(0.556 0 0));
+
+	/* ---- intent ---------------------------------------------------------- */
+	--primary:               var(--accent, oklch(0.922 0 0));
+	--primary-foreground:    oklch(0.205 0 0);
+	--destructive:           oklch(68.025% 0.2081 23.639);
+
+	/* ---- geometry -------------------------------------------------------- */
+	--radius:                0.625rem;
+	--radius-sm:             calc(var(--radius) * 0.5);
+	--radius-md:             calc(var(--radius) * 0.75);
+
+	/* ---- rhythm ---------------------------------------------------------- */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.5rem;
+
+	/* ---- type ------------------------------------------------------------ */
+	--fs-xs:   0.8rem;
+	--fs-sm:   0.9rem;
+	--fs-base: 1rem;
+	--fs-md:   1.15rem;
+	--fs-lg:   1.5rem;
+	--fs-xl:   2rem;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		--background:         oklch(1 0 0);
+		--foreground:         oklch(0.145 0 0);
+		--card:               oklch(1 0 0);
+		--card-foreground:    oklch(0.145 0 0);
+		--popover:            oklch(1 0 0);
+		--popover-foreground: oklch(0.145 0 0);
+		--muted:              oklch(0.97 0 0);
+		--muted-foreground:   oklch(0.556 0 0);
+		--accent-surface:     oklch(0.97 0 0);
+		--border:             oklch(0.922 0 0);
+		--border-strong:      oklch(0.85 0 0);
+		--input:              oklch(0.922 0 0);
+		--destructive:        oklch(0.577 0.245 27.325);
+		--primary-foreground: oklch(0.985 0 0);
+	}
+}
+:root[data-theme="light"] {
+	--background:         oklch(1 0 0);
+	--foreground:         oklch(0.145 0 0);
+	--card:               oklch(1 0 0);
+	--card-foreground:    oklch(0.145 0 0);
+	--popover:            oklch(1 0 0);
+	--popover-foreground: oklch(0.145 0 0);
+	--muted:              oklch(0.97 0 0);
+	--muted-foreground:   oklch(0.556 0 0);
+	--accent-surface:     oklch(0.97 0 0);
+	--border:             oklch(0.922 0 0);
+	--border-strong:      oklch(0.85 0 0);
+	--input:              oklch(0.922 0 0);
+	--destructive:        oklch(0.577 0.245 27.325);
+	--primary-foreground: oklch(0.985 0 0);
+}
+
+/* ============================================================================
+   BASE
+   ========================================================================= */
+
+html {
+	/* Was .6em -> 9.6px, with nine ad-hoc sizes from 6px to 19.2px in use.
+	   Verified before changing: no panel overflows at 12px. */
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+body {
+	color: var(--foreground);
+	font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+a { color: var(--primary); font-weight: 500; }
+a:hover { color: var(--primary); text-decoration: underline; }
+
+::selection { background: var(--primary); color: var(--primary-foreground); }
+
+/* One focus treatment everywhere. Matters more now the app is keyboard-driven. */
+:focus-visible {
+	outline: 2px solid var(--ring);
+	outline-offset: 1px;
+	border-radius: var(--radius-sm);
+}
+
+/* ============================================================================
+   SURFACES
+   Everything raised is a card: same ground, same edge, same radius.
+   ========================================================================= */
+
+.gridWidget,
+.ui-dialog,
+.jBox-container {
+	background-color: var(--card);
+	background-image: none;
+	color: var(--card-foreground);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: none;
+}
+
+.gridWidget > .controls,
+.ui-dialog .ui-dialog-titlebar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	background: transparent;
+	background-image: none;
+	border: 0;
+	border-bottom: 1px solid var(--border);
+	border-radius: var(--radius) var(--radius) 0 0;
+	padding: var(--space-2) var(--space-3);
+	min-height: 0;
+}
+
+.ui-dialog .ui-dialog-title {
+	font-size: var(--fs-sm);
+	font-weight: 600;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+	margin: 0;
+	float: none;
+}
+
+.panel-title {
+	flex: 0 0 auto;
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+	white-space: nowrap;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: var(--space-4);
+	color: var(--card-foreground);
+	background: transparent;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	background: transparent;
+	background-image: none;
+	border: 0;
+	border-top: 1px solid var(--border);
+	margin: 0;
+	padding: var(--space-3) var(--space-4);
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: none; text-align: right; }
+
+/* The dialog's own close affordance, and the panel hide control, are the same
+   thing and should look it. */
+.ui-dialog .ui-dialog-titlebar-close,
+.panel-hide {
+	order: 99;
+	margin-left: auto;
+	width: auto; height: auto;
+	position: static;
+	border: 0;
+	background: none;
+	color: var(--muted-foreground);
+	font-size: var(--fs-md);
+	line-height: 1;
+	padding: 0 var(--space-1);
+	cursor: pointer;
+}
+.ui-dialog .ui-dialog-titlebar-close:hover,
+.panel-hide:hover { color: var(--destructive); background: none; }
+.ui-dialog .ui-dialog-titlebar-close .ui-icon { display: none; }
+.ui-dialog .ui-dialog-titlebar-close::after { content: "\00d7"; }
+
+/* ============================================================================
+   CONTROLS
+   Flat at rest so rows read as data; the affordance arrives on approach.
+   ========================================================================= */
+
+input[type="text"], input[type="password"], input[type="number"],
+input[type="search"], select, textarea {
+	appearance: none;
+	background-color: transparent;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	color: var(--foreground);
+	font: inherit;
+	font-size: var(--fs-base);
+	padding: var(--space-1) var(--space-2);
+	box-shadow: none;
+	transition: border-color .12s ease, background-color .12s ease;
+}
+
+input:hover, select:hover, textarea:hover { border-color: var(--border); }
+
+input:focus, select:focus, textarea:focus {
+	border-color: var(--ring);
+	background-color: var(--muted);
+	outline: none;
+}
+
+::placeholder { color: var(--muted-foreground); opacity: 1; }
+
+button, .ui-button, .ui-button.ui-widget,
+input[type="button"], input[type="submit"] {
+	appearance: none;
+	background-color: transparent;
+	background-image: none;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	color: var(--foreground);
+	font: inherit;
+	font-size: var(--fs-sm);
+	font-weight: 500;
+	padding: var(--space-1) var(--space-3);
+	box-shadow: none;
+	text-shadow: none;
+	cursor: pointer;
+	transition: border-color .12s ease, background-color .12s ease, color .12s ease;
+}
+
+button:hover, .ui-button:hover, .ui-button.ui-widget:hover,
+input[type="button"]:hover, input[type="submit"]:hover {
+	border-color: var(--border-strong);
+	background-color: var(--muted);
+	color: var(--foreground);
+}
+
+.ui-dialog-buttonpane button.is-primary {
+	border-color: var(--primary);
+	color: var(--primary);
+}
+.ui-dialog-buttonpane button.is-primary:hover {
+	background-color: var(--primary);
+	color: var(--primary-foreground);
+}
+.ui-dialog-buttonpane button.is-destructive:hover {
+	border-color: var(--destructive);
+	color: var(--destructive);
+	background-color: transparent;
+}
+
+button[disabled], .disabled { opacity: .4; cursor: default; }
+
+/* ============================================================================
+   DATA
+   ========================================================================= */
+
+#sigTable { border-collapse: collapse; width: 100%; }
+
+#sigTable th {
+	background: transparent;
+	background-image: none;
+	border: 0;
+	border-bottom: 1px solid var(--border);
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .09em;
+	text-transform: uppercase;
+	text-align: left;
+	padding: var(--space-2) var(--space-2);
+	box-shadow: none;
+}
+
+#sigTable td {
+	border: 0;
+	padding: var(--space-2);
+	font-size: var(--fs-base);
+	color: var(--card-foreground);
+}
+
+#sigTable tbody tr { transition: background-color .1s ease; }
+#sigTable tbody tr:nth-child(even) > td { background-color: oklch(1 0 0 / 3%); }
+#sigTable tbody tr:hover > td { background-color: var(--muted); }
+#sigTable tbody tr.selected > td { background-color: color-mix(in oklab, var(--primary) 18%, transparent); }
+
+/* Chips. Life, mass and security are small closed sets; they read faster as
+   pills, and it keeps state out of the same register as the data beside it. */
+#sigTable td .stable, #sigTable td .critical, #sigTable td .destab,
+.chip-pill {
+	display: inline-block;
+	padding: 0 var(--space-2);
+	border: 1px solid currentColor;
+	border-radius: 999px;
+	background: transparent;
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	line-height: 1.7;
+	letter-spacing: .04em;
+	white-space: nowrap;
+}
+
+/* Segmented control for the dialog's life/mass radios. */
+#dialog-signature .mini-selector { position: absolute; opacity: 0; pointer-events: none; }
+#dialog-signature .mini-selector + label {
+	display: inline-block;
+	padding: var(--space-1) var(--space-3);
+	margin-right: var(--space-1);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-size: var(--fs-sm);
+	cursor: pointer;
+	transition: border-color .12s ease, background-color .12s ease;
+}
+#dialog-signature .mini-selector + label:hover { border-color: var(--border-strong); background: var(--muted); }
+#dialog-signature .mini-selector:checked + label {
+	border-color: currentColor;
+	background: color-mix(in oklab, currentColor 15%, transparent);
+	font-weight: 600;
+}
+#dialog-signature .mini-selector:focus-visible + label { outline: 2px solid var(--ring); outline-offset: 1px; }
+
+/* ============================================================================
+   NAVIGATION
+   ========================================================================= */
+
+#topbar {
+	background: color-mix(in oklab, var(--background) 82%, transparent);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--border);
+}
+
+#topbar #logo a { font-size: var(--fs-xl); }
+#version { font-size: var(--fs-xs); color: var(--muted-foreground); }
+#legal   { font-size: var(--fs-xs); color: var(--muted-foreground); }
+
+/* Accordion: jQuery UI ships grey gradient headers over a black inset panel.
+   Rebuilt as a plain list of sections. */
+.ui-accordion .ui-accordion-header {
+	background: transparent;
+	background-image: none;
+	border: 0;
+	border-bottom: 1px solid var(--border);
+	border-radius: 0;
+	margin: 0;
+	padding: var(--space-3) var(--space-1) var(--space-3) var(--space-5);
+	color: var(--foreground);
+	font-size: var(--fs-base);
+	font-weight: 600;
+}
+.ui-accordion .ui-accordion-header:hover { color: var(--primary); }
+.ui-accordion .ui-accordion-header.ui-state-active {
+	color: var(--primary);
+	border-bottom-color: var(--primary);
+}
+.ui-accordion .ui-accordion-content {
+	background: transparent;
+	border: 0;
+	border-bottom: 1px solid var(--border);
+	border-radius: 0;
+	padding: var(--space-3) var(--space-1) var(--space-4) var(--space-5);
+	color: var(--card-foreground);
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+	background: none;
+	text-indent: 0;
+	left: var(--space-1);
+	width: 12px; height: 12px;
+	margin-top: -6px;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon::before {
+	content: "";
+	display: block;
+	width: 5px; height: 5px;
+	border-right: 1.5px solid currentColor;
+	border-bottom: 1.5px solid currentColor;
+	transform: rotate(-45deg);
+	transition: transform .15s ease;
+}
+.ui-accordion .ui-accordion-header.ui-state-active .ui-accordion-header-icon::before {
+	transform: rotate(45deg);
+}
+
+.optionsTable tr { height: auto; }
+.optionsTable th, .optionsTable td { padding: var(--space-2); font-size: var(--fs-base); }
+.optionsTable th { color: var(--muted-foreground); font-weight: 500; }
+tr.line td, tr.line th { border-bottom: 1px solid var(--border); }
+
+/* jQuery UI's state classes carry the old theme's gradients wherever they land. */
+.ui-state-default, .ui-state-hover, .ui-state-active, .ui-state-focus,
+.ui-widget-header, .ui-widget-content {
+	background-image: none;
+	text-shadow: none;
+}
