@@ -124,6 +124,14 @@ const ChainMapRendererBase = function(owner) {
 		// Remember the scroll on the outer container so we can reset it if the map didn't change a lot
 		const chainParent = document.getElementById('chainParent');
 		const previousScroll = { x: chainParent.scrollLeft, y: chainParent.scrollTop };
+		// Which system the map is rooted on. When that changes the old scroll
+		// position is meaningless -- on a chain wider than the viewport it
+		// leaves you looking at empty grid several screens from the system you
+		// just opened, with no indication of which way to drag.
+		const rootNode = maps.length && maps[0].circles.length && maps[0].circles[0].nodes.length
+			? maps[0].circles[0].nodes[0] : null;
+		const rootSystemID = rootNode ? 1 * rootNode.systemID : null;
+		const rootChanged = rootSystemID !== null && rootSystemID !== _this.lastCentredSystemID;
 		const CANVAS_SCALE = 1;
 		for(var mi = 0; mi < maps.length; mi++) {
 			const map = maps[mi];
@@ -219,9 +227,19 @@ const ChainMapRendererBase = function(owner) {
 			else { break; }
 		}
 		
-		// Set scroll back to where it was
-		chainParent.scrollLeft = previousScroll.x;
-		chainParent.scrollTop = previousScroll.y;
+		// A refresh of the same chain must not yank the view around, so the
+		// scroll is restored -- but a new root system is centred, because
+		// keeping the old offset is the thing that loses you.
+		if (rootChanged && rootNode && rootNode.domNode) {
+			_this.lastCentredSystemID = rootSystemID;
+			// scrollIntoView rather than arithmetic on offsets: #chainParent
+			// carries a CSS zoom, and the browser accounts for it correctly
+			// where hand-rolled offset maths does not.
+			rootNode.domNode.scrollIntoView({block: "center", inline: "center"});
+		} else {
+			chainParent.scrollLeft = previousScroll.x;
+			chainParent.scrollTop = previousScroll.y;
+		}
 	}
 	
 	function drawConnections(ctx, nodes, drawFunction) {

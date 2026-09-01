@@ -45,6 +45,16 @@ var activity = new function() {
 				// shrinking the box around it afterwards leaves the SVG
 				// overflowing -- measured: an 84px box holding a 170px chart,
 				// painting 86px over the range buttons and links below it.
+				// Nothing at all to plot reads as a broken chart if it is drawn
+				// anyway: axes, gridlines and no line. Say so instead.
+				var $g = $("#activityGraph");
+				if (!withData) {
+					activity.graph.clearChart();
+					$g.addClass("is-empty").attr("data-empty", "No activity recorded yet \u2014 the hourly feed fills in from here.");
+					return;
+				}
+				$g.removeClass("is-empty").removeAttr("data-empty");
+
 				var sparse = withData < 3;
 				var c = activity.tokens();
 				$("#activityGraph").toggleClass("is-sparse", sparse);
@@ -92,8 +102,15 @@ var activity = new function() {
 		const cs = getComputedStyle(document.documentElement);
 		const t = n => cs.getPropertyValue(n).trim();
 		return {
-			text:   t("--muted-foreground") || "#999",
-			line:   t("--border")           || "#454545",
+			// The axis wants the opposite of what the panel border wants. A
+			// gridline is a reading aid behind the data, so it sits below the
+			// border weight; the numbers beside it are content and were being
+			// rendered at muted-foreground, which is a weight meant for labels
+			// you skim past, not values you read off a chart. Two dedicated
+			// tokens rather than borrowing two that pull the wrong way.
+			text:   t("--chart-axis-text") || t("--muted-foreground") || "#999",
+			line:   t("--chart-gridline")  || t("--border")           || "#454545",
+			axisLine: t("--border")        || "#454545",
 			jumps:  t("--data-info")        || "#47a2fe",
 			pod:    t("--data-critical")    || "#ff4747",
 			ship:   t("--data-warn")        || "#f5b544",
@@ -123,7 +140,7 @@ var activity = new function() {
 			hAxis: {
 				textStyle: axis,
 				showTextEvery: 3,
-				baselineColor: c.line,
+				baselineColor: c.axisLine,
 				gridlines: {color: "transparent"}
 			},
 			vAxis: {
@@ -131,7 +148,7 @@ var activity = new function() {
 				viewWindowMode: "maximized",
 				viewWindow: {min: 0},
 				maxValue: 5,
-				baselineColor: c.line,
+				baselineColor: c.axisLine,
 				gridlines: {color: c.line, count: 4},
 				minorGridlines: {count: 0}
 			},

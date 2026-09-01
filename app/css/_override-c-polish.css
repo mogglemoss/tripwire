@@ -1,0 +1,246 @@
+/* ============================================================================
+   POLISH PASS
+
+   Six things, all of which come back to the same habit: space and weight were
+   applied per-element as each one was noticed, so nothing shared a rule and
+   nothing agreed with anything else. These set the shared rules.
+   ========================================================================= */
+
+/* ── 1. PANEL INSETS ─────────────────────────────────────────────────────
+   Measured before writing this, per panel, first painted child against the
+   content box:
+
+     Notes         padding 0      -- "Posted by" flush against the left border
+     Signatures    padding 0      -- filter chips flush against both
+     Chain         padding 0      -- correct, the map is meant to be full bleed
+     System        12px 9px 9px   -- three different values, none of them a
+                                     token, top too tight to read as intended
+
+   Content that touches its own frame reads as a rendering fault, which is
+   what it looked like. One inset, one token, every panel. */
+
+/* Explicit pixels, not var(--space-4). The root font-size here is 12px, not
+   the 16px rem maths assumes, so every rem-based value lands 25% short of
+   what it reads as -- var(--space-4) is "1rem" and resolves to 12px. Rather
+   than redefine the scale under everything already tuned against it, the
+   values that need to be a specific size are stated as that size. */
+.gridWidget > .content,
+#infoWidget > .content,
+#notesWidget > .content,
+#signaturesWidget > .content {
+	padding: 16px;
+	box-sizing: border-box;
+	overflow: auto;
+	min-height: 0;
+}
+
+/* The map is the exception and stays edge to edge: it is a canvas that pans,
+   and an inset would clip it rather than frame it. The breathing room goes
+   inside the scroll area instead, so nodes never butt against the divider. */
+#chainWidget > .content { padding: 0; min-height: 0; overflow: hidden; }
+#chainParent { padding: var(--space-3); box-sizing: border-box; max-height: 100%; overflow: auto; }
+
+/* Rhythm between the blocks inside a panel, which previously had none. */
+#sigFilterBar { margin-bottom: var(--space-3); }
+.sys-panel > * + * { margin-top: var(--space-3); }
+#activityGraphControls { margin-top: var(--space-2); }
+
+/* ── 2. SPACE ALLOCATION ─────────────────────────────────────────────────
+   Rows were fixed at 46vh regardless of what was in them. Measured fill:
+
+     Notes         82% empty
+     Signatures    48% empty
+     System         3% empty  (close to overflowing)
+     Chain        -60%        (501px of map in a 312px box)
+
+   Notes held a third of the screen for one line while the map -- the reason
+   the tool exists -- was the only panel that could not fit its content. The
+   top row gives some back and notes narrows, since it is the panel that
+   demonstrably needs least. */
+/* The top row stays where it was. Taking 6vh off it to feed the chain made
+   the System panel clip instead -- it needs 341px and 40vh gave it 320 -- and
+   a panel you have to scroll to see the statics is a worse trade than a map
+   that pans, which is what a map is for. The chain "overflowing" was my own
+   mis-framing: a canvas sixteen screens wide is supposed to exceed its box.
+   What was actually wrong with it was that it never scrolled to where you
+   are, which is fixed in the renderer rather than here. */
+.gridster > ul {
+	grid-template-columns: minmax(260px, 1fr) minmax(360px, 1.5fr) minmax(210px, 0.78fr);
+	grid-template-rows: minmax(240px, 46vh) 1fr;
+}
+
+/* ── 3. TYPE SCALE ───────────────────────────────────────────────────────
+   Footer 9.6px, body ~11px, panel titles 12px: three sizes inside three
+   pixels, which reads as inconsistency rather than hierarchy. The footer was
+   also simply too small to read, and it is the only place the server's
+   player count and EVE time appear. */
+#statusbar { font-size: 11px; }
+#statusbar .bar-label { font-size: inherit; letter-spacing: .07em; opacity: .72; }
+#statusbar .bar-value { font-size: inherit; font-variant-numeric: tabular-nums; }
+
+/* ── 4. AVATAR ───────────────────────────────────────────────────────────
+   The header was given room for a larger portrait and then never used it. */
+#topbar #user-avatar.avatar { width: 34px; height: 34px; }
+#topbar #login h3 { display: inline-flex; align-items: center; gap: var(--space-2); }
+
+/* ── 5. GRAPH AXIS ───────────────────────────────────────────────────────
+   The chart borrowed --border for its gridlines and --muted-foreground for
+   its numbers, and both pull the wrong way: a gridline sits *behind* the
+   data and should be lighter than a panel border, while the numbers are
+   values you read off the chart, not labels you skim. Dedicated tokens. */
+:root {
+	--chart-gridline: rgba(255, 255, 255, .055);
+	--chart-axis-text: #b7b7b7;
+}
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		--chart-gridline: rgba(0, 0, 0, .075);
+		--chart-axis-text: #4a4a4a;
+	}
+}
+:root[data-theme="light"] {
+	--chart-gridline: rgba(0, 0, 0, .075);
+	--chart-axis-text: #4a4a4a;
+}
+
+/* ── 6. EMPTY STATES ─────────────────────────────────────────────────────
+   An empty box is indistinguishable from a broken one. Both of these are
+   normal states -- a system nobody has annotated, a system whose hourly
+   activity has not accumulated yet -- and should say so. */
+#comment-container:empty::before,
+#activityGraph.is-empty::before {
+	content: attr(data-empty);
+	display: block;
+	padding: var(--space-5) var(--space-3);
+	text-align: center;
+	color: var(--muted-foreground);
+	font-size: 12px;
+	line-height: 1.5;
+}
+#comment-container:empty::before { content: "No notes on this system yet."; }
+#activityGraph.is-empty { height: auto; min-height: 0; }
+
+/* ── 7. GATE CHIPS ───────────────────────────────────────────────────────
+   Was "Ikuchi ( HS )" per gate, six of them wrapping to three rows. The
+   brackets are noise and the security repeats as text what colour already
+   says. Name plus a security badge, on one or two rows instead of three. */
+.gate-list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.gate-list-label {
+	color: var(--muted-foreground);
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+.gate-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	padding: 2px var(--space-1) 2px var(--space-2);
+	border-radius: 999px;
+	background: var(--muted);
+	color: var(--foreground);
+	font-size: 11px;
+	line-height: 1.6;
+	text-decoration: none;
+}
+.gate-chip:hover { background: var(--accent); }
+.gate-chip .gate-sec {
+	padding: 0 5px;
+	border-radius: 999px;
+	background: currentColor;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: .02em;
+}
+/* The badge paints the security colour as its ground; the letters knock out
+   of it. currentColor above is the security class colour inherited from the
+   named-colour mapping, so the fill stays correct in both themes. */
+.gate-chip .gate-sec::after { content: none; }
+.gate-chip .gate-sec { -webkit-text-fill-color: var(--card); }
+.gate-chip.is-closed { opacity: .5; text-decoration: line-through; }
+
+/* ── 8. SIGNATURE COLUMNS ────────────────────────────────────────────────
+   Leads To held 168px against 66-84px for everything else, with slack left
+   over; life and mass were cramped for no reason while the id column had
+   room to spare. */
+#sigTable th:nth-child(1), #sigTable td:nth-child(1) { width: 5.25rem; }
+#sigTable th:nth-child(2), #sigTable td:nth-child(2) { width: 6.5rem; }
+#sigTable th:nth-child(3), #sigTable td:nth-child(3) { width: 4.25rem; }
+#sigTable th:nth-child(5), #sigTable td:nth-child(5),
+#sigTable th:nth-child(6), #sigTable td:nth-child(6) { width: 5rem; }
+
+
+/* ── 9. THE NOTES OVERLAP ────────────────────────────────────────────────
+   Not a spacing problem -- the two lines were drawn on top of each other.
+
+   .commentToolbar contains a floated .commentTitle. Nothing contained the
+   float, so the toolbar collapsed to 26px while the title's two lines ran
+   67px, and .commentBody was laid out from the collapsed height: body at
+   y=130 with the title still painting to y=172. Measured, not inferred.
+
+   The float dates from a layout that no longer exists. Flex row, and the
+   toolbar is the height of its contents. */
+.comment {
+	padding: var(--space-2) 0;
+	border-bottom: 1px solid var(--border);
+}
+.comment:last-child { border-bottom: 0; }
+
+.commentToolbar {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--space-3);
+	margin-bottom: 6px;
+}
+.commentToolbar > .commentTitle,
+.commentToolbar > .commentControls {
+	float: none;
+	min-width: 0;
+}
+.commentTitle {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	flex: 1 1 auto;
+}
+.commentTitle .commentModified,
+.commentTitle .commentCreated {
+	display: block;
+	font-size: 10px;
+	line-height: 1.35;
+	color: var(--muted-foreground);
+}
+.commentControls {
+	display: flex;
+	gap: var(--space-2);
+	flex: 0 0 auto;
+	font-size: 11px;
+}
+.commentBody { font-size: 12px; line-height: 1.5; }
+.commentBody > *:first-child { margin-top: 0; }
+.commentBody > *:last-child  { margin-bottom: 0; }
+
+/* ── 10. THE SYSTEM PANEL IS A FLEX COLUMN ───────────────────────────────
+   Which means every block in it is a flex item, and flex items shrink to
+   fit by default. In a column that scrolls, nothing should: the whole point
+   of the scroll is that content keeps its size and the viewport moves.
+
+   The activity graph is where this showed. Computed height 0px around a
+   92px chart SVG, with overflow hidden -- so what rendered was the 8px of
+   padding and nothing else, a blank band where the graph should be. Two
+   things were doing it at once: the flex shrink above, and a leftover
+   `height: 84px !important` clamp from the earlier attempt at sparse
+   sizing, which I had described as removed and had not been. The chart
+   sizes itself now (activity-graph.js sets options.height), so the
+   container must simply take the height it is given. */
+.sys-panel > * { flex: 0 0 auto; }
+
+#activityGraph,
+#activityGraph.is-sparse,
+#activityGraph.is-empty {
+	height: auto !important;
+	min-height: 0;
+	opacity: 1;
+}

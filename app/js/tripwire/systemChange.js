@@ -108,11 +108,21 @@ tripwire.systemChange = function(systemID, mode) {
 		// Gates
 		const connections = guidance.connections(tripwire.map.shortest, viewingSystemID);
 		if(connections.length) {
-			$('#infoStatics').append('<p class="gate-list"><b>Gates</b>' + connections.map(c => {
+			// Built here rather than through renderSystem, which emits the
+			// security as parenthesised text: "Ikuchi ( HS )". Six of those
+			// wrap to three rows and the brackets carry no information. The
+			// security becomes a coloured badge on the chip instead -- same
+			// fact, roughly half the width, readable by colour before you read
+			// the letters.
+			$('#infoStatics').append('<p class="gate-list"><b class="gate-list-label">Gates</b>' + connections.map(c => {
 				const system = systemAnalysis.analyse(c.systemID);
-				return c.closed
-					? '<span class="gate-chip is-closed" title="Closed">' + system.name + '</span>'
-					: '<span class="gate-chip">' + systemRendering.renderSystem(system) + '</span>';
+				if (c.closed) {
+					return '<span class="gate-chip is-closed" title="Closed">' + system.name + '</span>';
+				}
+				return '<a class="gate-chip" href=".?system=' + encodeURIComponent(system.name) + '">' +
+					'<span class="gate-name">' + system.name + '</span>' +
+					'<span class="gate-sec ' + system.systemTypeClass + '">' + system.systemTypeName + '</span>' +
+					'</a>';
 			}).join('') + '</p>');
 		}
 		
