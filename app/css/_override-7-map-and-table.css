@@ -1,0 +1,168 @@
+/* ============================================================================
+   CHAIN MAP + SIGNATURE TABLE
+
+   The two surfaces the tool is actually used through, and the last places
+   carrying the old look.
+
+   The map nodes kept their bevels because they are built from VENDOR-PREFIXED
+   gradients (-moz-linear-gradient, -webkit-gradient), which the earlier sweep
+   for `linear-gradient` did not match.
+   ========================================================================= */
+
+/* ---- copy affordance ---------------------------------------------------
+   tripwire.css set `content: '\01F4C4\00FE0E'` -- the page-facing-up emoji
+   with the text-presentation variation selector, asking for a monochrome
+   glyph most fonts only ship in colour. The result was fallback tofu, which
+   is the "broken document" after the system name. There is no copy glyph in
+   the icon font, so it is drawn: two offset sheets, the usual copy sign. */
+.copy::after { content: none; }
+
+.copy {
+	position: relative;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.1em;
+	opacity: .55;
+	transition: opacity .12s ease;
+}
+.copy:hover, .copy:focus-visible { opacity: 1; }
+
+.copy::before,
+.copy::after {
+	content: "";
+	position: absolute;
+	width: .62em;
+	height: .78em;
+	border: 1px solid currentColor;
+	border-radius: 2px;
+}
+.copy::before { left: 0;     top: .22em; }
+.copy::after  { left: .3em;  top: 0;     background: var(--card); }
+
+/* ============================================================================
+   CHAIN MAP
+   ========================================================================= */
+
+/* Flat fills. The class colour moves to the border, where it reads as a label
+   rather than as a lit surface, and the node ground stays consistent so the
+   map is one plane instead of a tray of buttons. */
+#chainMap .currentNode > div.node,
+#chainMap div.redNode.node,
+#chainMap div.yellowNode.node,
+#chainMap div.greenNode.node,
+#chainMap div.loop,
+#chainMap div.node {
+	background-image: none !important;
+	box-shadow: none;
+	border-radius: var(--radius-md);
+	border-width: 1px;
+	border-style: solid;
+	transition: border-color .12s ease, background-color .12s ease;
+}
+
+#chainMap div.node            { background-color: var(--card); }
+#chainMap div.redNode.node    { background-color: color-mix(in oklab, var(--data-class-red)    22%, var(--card)); }
+#chainMap div.yellowNode.node { background-color: color-mix(in oklab, var(--data-class-orange) 22%, var(--card)); }
+#chainMap div.greenNode.node  { background-color: color-mix(in oklab, var(--data-class-green)  22%, var(--card)); }
+#chainMap div.loop            { background-color: color-mix(in oklab, var(--data-class-void)   40%, var(--card)); }
+
+/* Where you are is the one thing that should be unmistakable. */
+#chainMap .currentNode > div.node {
+	background-color: color-mix(in oklab, var(--primary) 18%, var(--card));
+	border-color: var(--primary);
+	box-shadow: 0 0 0 1px var(--primary);
+}
+
+#chainMap div.node:hover { border-color: var(--border-strong); }
+
+/* Badges were 9px monospace with a 6px glow. Same chip language as everywhere
+   else, so a count on the map reads like a count in the table. */
+#chainMap span.badge {
+	background-color: var(--muted);
+	color: var(--muted-foreground);
+	box-shadow: none;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-family: inherit;
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	line-height: 1.5;
+	padding: 0 5px;
+	min-width: 1.1em;
+}
+
+#chainMap .nodeType {
+	font-size: var(--fs-xs);
+	color: var(--muted-foreground);
+	letter-spacing: .04em;
+}
+
+#chainMap .statics span {
+	border-radius: 999px;
+	padding: 0 5px;
+	font-size: var(--fs-xs);
+}
+
+/* ============================================================================
+   SIGNATURE TABLE
+   ========================================================================= */
+
+#sigTableWrapper { padding: 0; }
+
+#sigTable th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+#sigTable th.sortable:hover { color: var(--foreground); }
+
+/* The sort arrow was an empty <i data-icon=""> -- an icon element with no
+   icon. Draw the state instead, and only on the column actually sorted. */
+#sigTable th.sortable i[data-icon=""] { display: none; }
+
+#sigTable th.sortable::after {
+	content: "";
+	display: inline-block;
+	width: 0; height: 0;
+	margin-left: var(--space-1);
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	opacity: 0;
+	transition: opacity .12s ease;
+}
+#sigTable th.tablesorter-headerAsc::after {
+	border-bottom: 4px solid var(--primary);
+	opacity: 1;
+}
+#sigTable th.tablesorter-headerDesc::after {
+	border-top: 4px solid var(--primary);
+	opacity: 1;
+}
+
+/* Signature type as a chip, so the group reads at a glance down the column
+   the way life and mass already do. */
+#sigTable td.sigType > span,
+#sigTable td .sigTypeName {
+	display: inline-block;
+	padding: 0 var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--muted);
+	font-size: var(--fs-xs);
+	font-weight: 500;
+	line-height: 1.7;
+}
+
+/* Age is context, not content. */
+#sigTable td.sigAge { color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+
+/* Numeric-ish columns line up. */
+#sigTable td.sigID { font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+
+/* An empty table should say so rather than being a blank rectangle. */
+#sigTable tbody:empty::after,
+#sigTableWrapper > .sig-empty {
+	content: "No signatures in this system";
+	display: block;
+	padding: var(--space-5) var(--space-3);
+	text-align: center;
+	color: var(--muted-foreground);
+	font-size: var(--fs-sm);
+}
