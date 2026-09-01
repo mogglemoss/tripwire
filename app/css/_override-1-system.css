@@ -574,3 +574,44 @@ a.ui-button:hover, a.ui-button:active {
 	background-image: none !important;
 }
 #content.dialog-like { background-color: var(--popover); }
+
+/* ============================================================================
+   DIALOG SCROLLING
+
+   jQuery UI sizes a dialog to its content, so a tall one grows past the
+   viewport and the page scrolls behind it instead of the dialog scrolling
+   inside itself. Settings was 1476px tall in a 900px window.
+
+   The dialog becomes a flex column capped at the viewport: title bar and
+   button pane hold their size, the content takes the remaining space and
+   scrolls. Nothing else has to know its height.
+   ========================================================================= */
+
+.ui-dialog {
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - 2rem);
+	max-width: calc(100vw - 2rem);
+	box-sizing: border-box;
+}
+
+.ui-dialog > .ui-dialog-titlebar,
+.ui-dialog > .ui-dialog-buttonpane { flex: 0 0 auto; }
+
+.ui-dialog > .ui-dialog-content {
+	flex: 1 1 auto;
+	min-height: 0;          /* without this a flex child refuses to shrink */
+	overflow-y: auto;
+	max-height: none !important;
+	height: auto !important;
+}
+
+/* Settings no longer needs its own cap now the dialog handles it. */
+#dialog-options { max-height: none; }
+
+/* The page itself must paint a ground. body was transparent, so anything that
+   scrolled past #wrapper -- an over-tall dialog, the footer -- showed the
+   browser's white through the app. */
+html, body {
+	background-color: var(--background);
+}
