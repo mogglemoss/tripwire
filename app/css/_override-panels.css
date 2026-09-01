@@ -6,8 +6,7 @@
 
 .gridWidget {
 	border: 1px solid var(--n-300);
-	border-radius: 3px;
-	box-shadow: 0 1px 3px var(--shadow-25);
+	border-radius: var(--radius, 8px);
 }
 
 .gridWidget > .controls {
@@ -17,7 +16,7 @@
 	border-bottom: 1px solid var(--n-300);
 	background: var(--n-120);
 	padding: 3px 6px;
-	border-radius: 3px 3px 0 0;
+	border-radius: var(--radius, 8px) var(--radius, 8px) 0 0;
 }
 
 /* The controls bar mixes floated children with the flow; let the floated

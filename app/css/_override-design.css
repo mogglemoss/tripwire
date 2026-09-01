@@ -1,0 +1,226 @@
+/* ============================================================================
+   Design pass: flat, modern, less cramped.
+
+   Tripwire's chrome is 2010-era: sixteen linear-gradients, inset shadows and
+   text-shadows faking bevels, 3px radii, and controls that carry a raised
+   "pill" whether or not you are using them.
+
+   The direction follows Aperture, which the corp already likes. Three of its
+   conventions carry over literally:
+
+     - borders are a translucent lightening of the surface (white at ~10%)
+       rather than a distinct grey line, so panels read as planes of light
+       instead of boxes drawn with pen;
+     - a real radius scale off one --radius (0.625rem) rather than 3px
+       everywhere;
+     - controls are FLAT at rest -- no border, no fill, no shadow -- and gain
+       them on hover, focus or open. Rows then read as data, and the affordance
+       appears when you reach for it.
+
+   Everything is token-driven, so it follows whichever theme is loaded, and it
+   lives in the override layer so upstream's stylesheets are untouched.
+   ========================================================================= */
+
+:root {
+	--radius:      0.5rem;
+	--radius-sm:   calc(var(--radius) * 0.5);
+	--radius-md:   calc(var(--radius) * 0.75);
+	--radius-lg:   var(--radius);
+
+	/* Borders as light, not as line. */
+	--edge:        rgba(255, 255, 255, .10);
+	--edge-strong: rgba(255, 255, 255, .16);
+	--fill-subtle: rgba(255, 255, 255, .05);
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		--edge:        rgba(0, 0, 0, .12);
+		--edge-strong: rgba(0, 0, 0, .20);
+		--fill-subtle: rgba(0, 0, 0, .04);
+	}
+}
+:root[data-theme="light"] {
+	--edge:        rgba(0, 0, 0, .12);
+	--edge-strong: rgba(0, 0, 0, .20);
+	--fill-subtle: rgba(0, 0, 0, .04);
+}
+
+/* ── 1. Kill the faux 3D ─────────────────────────────────────────────────
+   Every gradient in app/css exists to fake a bevel or a raised button. */
+
+#topbar,
+.gridWidget,
+.gridWidget > .controls,
+.ui-dialog,
+.ui-dialog .ui-dialog-titlebar,
+.ui-dialog .ui-dialog-buttonpane,
+.jBox-container, .jBox-content,
+#sigTable th,
+.quickSelectBar button {
+	background-image: none;
+	text-shadow: none;
+}
+
+/* forms.css styles controls through attribute selectors and .ui-button, so the
+   reset has to match that specificity or the gradients survive. Includes the
+   :hover and :active variants, which carry their own gradients and an inset
+   shadow for the "pressed" bevel. */
+input[type="text"], input[type="password"], input[type="number"],
+input[type="button"], input[type="submit"], select, textarea, button,
+.ui-button, .ui-button.ui-widget,
+.ui-button.ui-widget:hover, .ui-button.ui-widget:active,
+input[type="button"]:hover, input[type="submit"]:hover, .ui-button:hover,
+input[type="button"]:active, input[type="submit"]:active, .ui-button:active,
+input[type="button"]:not([disabled]):hover, input[type="submit"]:not([disabled]):hover,
+.ui-button:hover:not([disabled]),
+input[type="button"]:not([disabled]):active, input[type="submit"]:not([disabled]):active,
+.ui-button:active:not([disabled]) {
+	background-image: none;
+	box-shadow: none;
+	text-shadow: none;
+}
+
+/* ── 2. Surfaces ─────────────────────────────────────────────────────────── */
+
+.gridWidget {
+	border: 1px solid var(--edge);
+	border-radius: var(--radius);
+	box-shadow: none;
+	background-color: var(--scrim-60);
+}
+
+.gridWidget > .controls {
+	border-bottom: 1px solid var(--edge);
+	border-radius: var(--radius) var(--radius) 0 0;
+	background-color: var(--fill-subtle);
+	padding: 7px 10px;
+	gap: 8px;
+}
+
+.panel-title {
+	color: var(--n-700);
+	font-size: .9em;
+	letter-spacing: .12em;
+}
+
+/* ── 3. Controls: flat at rest, affordance on approach ───────────────────── */
+
+input[type="text"], input[type="password"], input[type="number"],
+select, textarea {
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	background-color: var(--fill-subtle);
+	color: var(--n-800);
+	padding: 4px 7px;
+	transition: border-color .12s ease, background-color .12s ease;
+}
+
+input[type="text"]:hover, input[type="password"]:hover,
+input[type="number"]:hover, select:hover, textarea:hover {
+	border-color: var(--edge);
+}
+
+input[type="text"]:focus, input[type="password"]:focus,
+input[type="number"]:focus, select:focus, textarea:focus {
+	border-color: var(--accent, var(--data-info));
+	background-color: var(--n-100);
+	outline: none;
+}
+
+button, .ui-dialog .ui-dialog-buttonpane button,
+.ui-button.ui-widget, .ui-dialog .ui-dialog-buttonpane .ui-button.ui-widget {
+	border: 1px solid var(--edge);
+	border-radius: var(--radius-sm);
+	background-color: transparent;
+	color: var(--n-800);
+	padding: 5px 14px;
+	font-weight: normal;
+	transition: border-color .12s ease, background-color .12s ease, color .12s ease;
+}
+
+button:hover, .ui-dialog .ui-dialog-buttonpane button:hover,
+.ui-button.ui-widget:hover, .ui-dialog .ui-dialog-buttonpane .ui-button.ui-widget:hover {
+	border-color: var(--edge-strong);
+	background-color: var(--fill-subtle);
+	color: var(--n-999);
+}
+
+/* The primary action should read as the primary action. */
+.ui-dialog .ui-dialog-buttonpane button:last-child,
+.ui-dialog .ui-dialog-buttonpane .ui-button.ui-widget:last-child {
+	border-color: var(--accent, var(--data-info));
+	color: var(--accent, var(--data-info));
+}
+
+/* ── 4. Room to breathe ──────────────────────────────────────────────────
+   The "cramped" complaint is mostly row height and padding, not type size --
+   the root is 0.6em and raising it would reflow the fixed grid, so give the
+   space back where it is actually missing. */
+
+#sigTable th,
+#sigTable td {
+	padding: 5px 7px;
+	line-height: 1.5;
+}
+
+#sigTable th {
+	border-bottom: 1px solid var(--edge);
+	background-color: transparent;
+	color: var(--n-650);
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .08em;
+}
+
+/* Zebra striping, the way Aperture's signature table does it -- scanning a
+   long list down one column is the whole job. */
+#sigTable tbody tr:nth-child(even) > td {
+	background-color: var(--fill-subtle);
+}
+
+#sigTable tbody tr:hover > td {
+	background-color: var(--edge);
+}
+
+.ui-dialog .row {
+	margin-bottom: 7px;
+	line-height: 1.7;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: 14px 16px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	border: 0;
+	border-bottom: 1px solid var(--edge);
+	border-radius: var(--radius) var(--radius) 0 0;
+	padding: 10px 14px;
+}
+
+.ui-dialog {
+	border: 1px solid var(--edge);
+	border-radius: var(--radius);
+}
+
+/* ── 5. Chrome ───────────────────────────────────────────────────────────── */
+
+#topbar {
+	border-bottom: 1px solid var(--edge);
+}
+
+/* The quick-select chips under wormhole type / destination were beveled
+   buttons; flatten them into chips. */
+.quickSelectBar button {
+	border: 1px solid var(--edge);
+	border-radius: var(--radius-sm);
+	background-color: transparent;
+	padding: 2px 5px;
+	margin: 0 2px 0 0;
+}
+
+.quickSelectBar button:hover {
+	border-color: var(--edge-strong);
+	background-color: var(--fill-subtle);
+}
