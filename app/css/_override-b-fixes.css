@@ -94,3 +94,23 @@ code, pre, .mono,
 	font-variant-numeric: tabular-nums;
 	letter-spacing: .04em;
 }
+
+/* ── The header overflow, root cause ─────────────────────────────────────
+   #topbar is content-box (this stylesheet predates border-box being the
+   default anyone reaches for), so `width: 100%` plus `padding: 6px 9px`
+   resolves to viewport + 18px. The bar hangs 18px off the right of the
+   screen and the last control -- the layout icon -- is cut in half.
+
+   Every check I ran against this measured `scrollWidth - clientWidth` on
+   the bar, which is 0: the bar is not overflowing its own box, its box is
+   bigger than the viewport. The document does not report it either,
+   because overflow-x is hidden upstream. Both numbers read clean while
+   the icon was visibly severed. The right question is whether the bar's
+   right edge exceeds documentElement.clientWidth.
+
+   Padding belongs inside the width. */
+#topbar {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+}
