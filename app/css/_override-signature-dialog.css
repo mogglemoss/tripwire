@@ -1,0 +1,67 @@
+/* Signature dialog refinements.
+   Layout and legibility only -- every field the dialog had, it still has. */
+
+/* The id inputs allow three characters but were sized for two, so real values
+   ("ACI", "444") were clipped by their own box. */
+#dialog-signature .signatureID {
+	width: 3.4em;
+	box-sizing: content-box;
+}
+
+#dialog-signature .wormholeType {
+	width: 4.2em;
+	box-sizing: content-box;
+}
+
+/* Unresolved required fields read red at a glance, so an unfinished signature
+   is obvious without parsing it. Applied by signature-dialog-keyboard.js to
+   the id, and for wormholes also type and destination -- the fields the chain
+   is actually drawn from. */
+#dialog-signature .sig-missing,
+#dialog-signature .sig-missing:focus {
+	border-color: var(--data-critical);
+	box-shadow: 0 0 0 1px var(--data-critical);
+}
+
+/* The side labels were rotated 90 degrees and absolutely positioned, which is
+   hard to read for no layout gain. Set them upright as ordinary headings for
+   the group they title. */
+#dialog-signature .sideLabel {
+	position: static;
+	left: auto;
+	bottom: auto;
+	width: auto;
+	transform: none;
+	display: block;
+	margin: 0 0 4px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid var(--n-300);
+	color: var(--n-600);
+	font-weight: bold;
+	font-size: .9em;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: .08em;
+}
+
+/* Those two rules existed only to place the rotated labels. */
+#dialog-signature #wormhole .side:first-child .sideLabel,
+#dialog-signature #wormhole .side:last-child .sideLabel {
+	bottom: auto;
+	width: auto;
+	text-align: left;
+}
+
+/* The rotated labels were sitting in a left gutter that is no longer needed. */
+#dialog-signature .side {
+	padding-left: 0;
+}
+
+/* Visible focus, which matters a great deal more now the dialog is meant to be
+   driven from the keyboard. */
+#dialog-signature input:focus-visible,
+#dialog-signature select:focus-visible,
+#dialog-signature button:focus-visible {
+	outline: 2px solid var(--accent, var(--data-info));
+	outline-offset: 1px;
+}

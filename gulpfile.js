@@ -46,10 +46,14 @@ var cssFiles = [
         name: 'app.css',
         nameMin: 'app.min.css',
         src: ['app/css/_tokens.css', 'app/css/base.css', 'app/css/*.css', 'app/css/**/*.css',
-              // Themes must land LAST: they override component rules at equal
-              // specificity, and gulp.src dedupes, so the globs above have to be
-              // told to skip them or the trailing entry is a no-op.
-              '!app/css/_theme-*.css', 'app/css/_theme-corp.css'],
+              // Load order is tokens -> components -> overrides -> theme. The
+              // last two groups override component rules at equal specificity,
+              // so they have to come after them -- and gulp.src dedupes, so the
+              // globs above must be told to skip them or the trailing entries
+              // are no-ops. (_override-* sorts before signatures.css otherwise,
+              // which silently lost every tie.)
+              '!app/css/_override-*.css', '!app/css/_theme-*.css',
+              'app/css/_override-*.css', 'app/css/_theme-corp.css'],
         output: 'public/css'
     }
 ];
