@@ -1,0 +1,119 @@
+/* Command palette and the shortcuts overlay.
+   Colours come from the token layer, so this follows whatever theme is loaded
+   rather than hard-coding the the corp palette. */
+
+#cmd-palette,
+#cmd-help {
+	position: fixed;
+	inset: 0;
+	z-index: 10000;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding-top: 12vh;
+	background: var(--scrim-60);
+}
+
+#cmd-palette.hidden,
+#cmd-help.hidden { display: none; }
+
+#cmd-palette .cmd-box,
+#cmd-help .cmd-box {
+	width: min(560px, 92vw);
+	background: var(--n-100);
+	border: 1px solid var(--n-300);
+	box-shadow: 0 12px 40px var(--scrim-70);
+	font-size: 1.25em;
+}
+
+#cmd-input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 12px 14px;
+	border: 0;
+	border-bottom: 1px solid var(--n-300);
+	background: transparent;
+	color: var(--n-999);
+	font-family: inherit;
+	font-size: 1em;
+	outline: none;
+}
+
+#cmd-input::placeholder { color: var(--n-600); }
+
+#cmd-list {
+	list-style: none;
+	margin: 0;
+	padding: 4px 0;
+	max-height: 46vh;
+	overflow-y: auto;
+}
+
+#cmd-list li {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	padding: 7px 14px;
+	cursor: pointer;
+	color: var(--n-800);
+}
+
+#cmd-list li.sel { background: var(--n-200); color: var(--n-999); }
+
+/* Listed but unavailable -- undo with nothing to undo, edit with nothing
+   selected. Shown rather than hidden so the palette is a stable map of what
+   exists. */
+#cmd-list li.off { opacity: .4; cursor: default; }
+
+#cmd-list li.danger.sel { background: var(--data-critical); color: var(--n-050); }
+
+#cmd-list .cmd-label { flex: 1 1 auto; }
+
+#cmd-list .cmd-group,
+#cmd-list .cmd-keys {
+	flex: 0 0 auto;
+	font-size: .8em;
+	color: var(--n-600);
+	text-transform: uppercase;
+	letter-spacing: .06em;
+}
+
+#cmd-list li.sel .cmd-group,
+#cmd-list li.sel .cmd-keys { color: var(--n-750); }
+
+#cmd-list .cmd-keys {
+	text-transform: none;
+	letter-spacing: 0;
+	border: 1px solid var(--n-400);
+	border-radius: 2px;
+	padding: 1px 5px;
+}
+
+#cmd-list .cmd-empty { color: var(--n-600); cursor: default; }
+
+.cmd-foot {
+	display: flex;
+	gap: 16px;
+	padding: 8px 14px;
+	border-top: 1px solid var(--n-300);
+	font-size: .78em;
+	color: var(--n-600);
+}
+
+.cmd-foot b { color: var(--n-800); font-weight: normal; }
+
+/* Shortcuts overlay */
+#cmd-help .cmd-box { padding: 18px 20px; }
+#cmd-help h2 { margin: 0 0 12px; color: var(--n-999); font-size: 1.1em; }
+#cmd-help table { border-collapse: collapse; width: 100%; }
+#cmd-help th {
+	text-align: left;
+	padding: 4px 14px 4px 0;
+	white-space: nowrap;
+	color: var(--n-999);
+	font-weight: normal;
+}
+#cmd-help td { padding: 4px 0; color: var(--n-800); }
+#cmd-help p { margin: 14px 0 0; color: var(--n-600); font-size: .9em; }
+#cmd-help b { color: var(--n-999); }
