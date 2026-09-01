@@ -124,3 +124,38 @@
 /* The chain panel's own title is redundant next to a strip of named chains,
    and at thirteen tabs the space is worth more than the label. */
 #chainWidget .panel-title { display: none; }
+
+/* ============================================================================
+   PANEL HEADER: RIGHT-ANCHORED CONTROLS
+
+   .controls is a flex row, and two of its children carried `margin-left: auto`
+   -- the group the markup floats right, and the panel-hide button. Flexbox
+   divides free space equally between every auto margin, so instead of both
+   sitting at the right edge the trailing group was parked in the middle of
+   the header (measured: 203px short of the right in System, 206px in
+   Signatures, 168px in Notes).
+
+   Exactly one element opens the gap. Everything after it packs against the
+   right edge behind it.
+   ========================================================================= */
+
+.gridWidget > .controls > div[style*="float"] {
+	margin-left: auto;
+	float: none !important;
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+}
+
+/* No second auto margin -- this just follows the group above. */
+.gridWidget > .controls > .panel-hide { margin-left: 0; }
+
+/* If a panel ever has no floated group, the hide button still needs to open
+   the gap itself. :only-of-type is too narrow, so match on it being the sole
+   right-hand item. */
+.gridWidget > .controls > div[style*="float"] ~ .panel-hide { margin-left: 0; }
+.gridWidget > .controls > .panel-hide:first-of-type { margin-left: auto; }
+
+/* The chain header sizes its strip with flex-grow instead, so nothing there
+   should also claim the free space. */
+#chainWidget > .controls > div[style*="float"] { margin-left: 0; }
