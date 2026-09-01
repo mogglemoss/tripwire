@@ -8,6 +8,9 @@ var tripwire = new function() {
 	this.activity = {};
 	this.data = {tracking: {}, esi: {}};
 	this.refreshRate = 5000;
+	// Used while document.hidden. Long enough to stop the traffic, short enough
+	// that a tab surfaced by a notification is not minutes out of date.
+	this.refreshRateHidden = 60000;
 	this.connected = true;
 	this.ageFormat = "HM";
 	this.instance = window.name ? window.name : (new Date().getTime() / 1000, window.name = new Date().getTime() / 1000);

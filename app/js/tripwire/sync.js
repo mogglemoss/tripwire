@@ -113,7 +113,14 @@ tripwire.sync = function(mode, data, successCallback, alwaysCallback) {
         tripwire.data = {tracking: {}, esi: {}};
         successCallback ? successCallback(data) : null;
     }).always(function(data, status) {
-        tripwire.timer = setTimeout("tripwire.refresh();", tripwire.refreshRate);
+        // Back off hard while the tab is hidden. Nobody is reading a chain
+        // they cannot see, and a corp leaves these open all day -- at five
+        // seconds each that is 720 pointless round trips an hour per idle tab.
+        // Returning is instant: visibility-refresh.js refreshes on becoming
+        // visible, so nothing is stale on the way back.
+        // (Also drops the string form, which is an implicit eval.)
+        tripwire.timer = setTimeout(tripwire.refresh,
+            document.hidden ? tripwire.refreshRateHidden : tripwire.refreshRate);
 
         alwaysCallback ? alwaysCallback(data) : null;
 
