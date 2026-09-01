@@ -1,0 +1,51 @@
+name: CI
+
+# The Bitbucket pipeline this replaces was manual-trigger only, ran on node:16
+# (end of life September 2023), never ran the test suite, and committed build
+# artifacts back to the repo. This runs on every push and PR, and checks the
+# build output matches what is committed rather than rewriting it.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      # The repo tracks public/css/app.min.css and public/js/app.min.js. If a
+      # source change landed without its rebuild, the bundle here differs from
+      # the committed one -- catch that rather than letting the two drift.
+      - name: Built assets match committed ones
+        run: |
+          if ! git diff --quiet -- public/css public/js; then
+            echo "::error::Committed build output is stale. Run 'npm run build' and commit the result."
+            git diff --stat -- public/css public/js
+            exit 1
+          fi
+
+  php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Lint PHP
+        run: find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
