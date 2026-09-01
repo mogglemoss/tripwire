@@ -40,7 +40,22 @@ var activity = new function() {
 				var withData = json.rows.filter(function(r) {
 					return r.c.slice(1).some(function(c) { return c && c.v !== null && c.v > 0; });
 				}).length;
-				$("#activityGraph").toggleClass("is-sparse", withData < 3);
+				// The height has to be given to the chart, not applied to the
+				// container as CSS. Google Charts renders a fixed-height SVG;
+				// shrinking the box around it afterwards leaves the SVG
+				// overflowing -- measured: an 84px box holding a 170px chart,
+				// painting 86px over the range buttons and links below it.
+				var sparse = withData < 3;
+				var c = activity.tokens();
+				$("#activityGraph").toggleClass("is-sparse", sparse);
+				activity.options.height = sparse ? 92 : 170;
+				activity.options.chartArea = sparse
+					? {left: 48, top: 10, right: 12, bottom: 22}
+					: {left: 48, top: 24, right: 12, bottom: 28};
+				activity.options.legend = sparse
+					? {position: "none"}
+					: {position: "top", alignment: "start",
+					   textStyle: {color: c.text, fontName: c.font, fontSize: 11}};
 
 				activity.graph.draw(activity.view, activity.options);
 			}

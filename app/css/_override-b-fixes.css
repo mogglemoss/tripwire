@@ -1,0 +1,96 @@
+/* ============================================================================
+   TYPOGRAPHY: ONE FAMILY
+
+   The stylesheets declare thirteen different font stacks -- Arial, Verdana,
+   "Arial, verdana, tahoma", lucida, bare sans-serif, and so on. Most were
+   already being overridden by the body rule, but two <td> rules still resolved
+   to `lucida`, and any of the rest would resurface the moment a component was
+   touched.
+
+   One family everywhere, except the icon font and deliberate monospace.
+   ========================================================================= */
+
+body, input, select, textarea, button,
+table, td, th, h1, h2, h3, h4, h5, h6, p, div, span, a, li {
+	font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+[data-icon], [data-icon]::before, [data-icon]::after,
+.icon, .icon::before { font-family: 'icon' !important; }
+
+code, pre, .mono,
+#sigTable td:nth-child(1),
+#statusbar .bar-value,
+#topbar #serverTime { font-variant-numeric: tabular-nums; }
+
+/* ============================================================================
+   SETTINGS SECTION HEADINGS
+
+   They were sticky, which needed a solid background to avoid text scrolling
+   through them -- and the background did not match every surface they crossed,
+   so they rendered as a band that did not line up. Sticky buys little in a
+   dialog this short. They are plain headings now.
+   ========================================================================= */
+
+.settings-sections > h3 {
+	position: static;
+	background: transparent;
+}
+
+/* ============================================================================
+   HEADER: NEVER CLIP THE RIGHT CLUSTER
+
+   Reported repeatedly. The right cluster is fixed-size and the left is
+   flexible, but the left contains a search input with an intrinsic minimum
+   width, so at narrow widths it refused to shrink and pushed the icons past
+   the edge. Truncating the left is always preferable to losing a control.
+   ========================================================================= */
+
+#topbar > .align-left { overflow: hidden; }
+#topbar #systemSearch,
+#topbar #currentSpan,
+#topbar #searchSpan { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+#topbar #systemSearch input[type="text"] { max-width: 14rem; min-width: 0; }
+#topbar > .align-right { z-index: 2; }
+
+/* ============================================================================
+   SYSTEM PANEL: BREATHING ROOM AT THE TOP
+   The system name sat hard against the panel header.
+   ========================================================================= */
+
+.sys-panel { padding-top: var(--space-4); }
+.sys-panel .sys-name { margin-top: 0; }
+
+/* ============================================================================
+   STATUS BAR: THREE SLOTS
+   Population left, Tripwire version centred, EVE time right.
+   ========================================================================= */
+
+#statusbar {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+}
+#statusbar > #serverStatus { justify-self: start; }
+#statusbar > #version      { justify-self: center; }
+#statusbar > #eveTime      { justify-self: end; }
+
+/* The chart still renders a few pixels past its box even when told the height,
+   because Google Charts adds its own chrome. Clip rather than let it paint over
+   what follows. */
+#activityGraph { overflow: hidden; }
+
+/* Two <td> rules still resolved to the bundled `lucida` face. */
+#dialog-options td, #logoutTable td, table td {
+	font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* signatures.css uses a bundled `lucida` TTF for the signature-id column, to
+   keep ids aligned down the column. The intent is right; shipping a font file
+   for one column is not. A system monospace stack with tabular figures does
+   the same job with no download. */
+#sigTable td:nth-child(1) {
+	font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+	font-variant-numeric: tabular-nums;
+	letter-spacing: .04em;
+}

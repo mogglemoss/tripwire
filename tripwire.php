@@ -26,6 +26,14 @@ $system = $_REQUEST['system'] ?? '';
 	<meta name="version" content="<?= VERSION ?>">
 	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
 
+	<!-- Montserrat is the the corp brand face. It was being asked for in CSS but
+	     never loaded, so it only appeared for people who happened to have it
+	     installed and silently fell back to system-ui for everyone else.
+	     Self-hosting under public/fonts would remove this third-party request. -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.duration-picker.css">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox.css">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox-notice.css">
@@ -45,7 +53,6 @@ $system = $_REQUEST['system'] ?? '';
 		<span class="align-left">
 			<h1 id="logo">
 				<a href="."><?= APP_NAME ?></a>
-				<span id="version"><?= VERSION ?></span>
 				<!-- <span data-tooltip="System activity update countdown"><input id="APIclock" class="hidden" /></span> -->
 			</h1>
 			<h3 id="systemSearch"><i id="search" data-icon="search" data-tooltip="Toggle system search"></i>
@@ -353,6 +360,7 @@ $system = $_REQUEST['system'] ?? '';
 
 	<div id="statusbar">
 		<span id="serverStatus" class="pointer" data-tooltip="EVE server status and player count"><span class="bar-label">Tranquility</span><span class="bar-value">??,???</span></span>
+		<span id="version" class="pointer" data-tooltip="Tripwire version"><span class="bar-label">Tripwire</span><span class="bar-value"><?= VERSION ?></span></span>
 		<span id="eveTime" class="pointer" data-tooltip="EVE time (UTC)"><span class="bar-label">EVE Time</span><span id="serverTime" class="bar-value">??:??</span></span>
 	</div>
 
