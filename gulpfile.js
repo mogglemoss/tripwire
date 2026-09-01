@@ -45,7 +45,7 @@ var cssFiles = [
     {
         name: 'app.css',
         nameMin: 'app.min.css',
-        src: ['app/css/_tokens.css', 'app/css/base.css', 'app/css/*.css', 'app/css/**/*.css'],
+        src: ['app/css/_tokens.css', 'app/css/base.css', 'app/css/*.css', 'app/css/**/*.css', 'app/css/_theme-corp.css'],
         output: 'public/css'
     }
 ];
