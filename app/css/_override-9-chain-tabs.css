@@ -1,0 +1,126 @@
+/* ============================================================================
+   CHAIN TAB STRIP
+
+   On a real the corp map this is the primary navigation -- the chain runs
+   roughly sixteen screen widths, so you reach a system by picking its chain,
+   not by scrolling to it. Thirteen-plus tabs is normal.
+
+   The old strip could not survive that: `.tab { min-width: 75px }` with no
+   overflow handling meant thirteen tabs demanded ~975px and simply pushed the
+   rest of the header off the right edge. It also used floats inside
+   inline-blocks with text-align:right, so the label and its controls fought
+   each other.
+
+   Now: one scrolling row that takes the space left over, with every other
+   control held in place beside it.
+   ========================================================================= */
+
+#chainWidget > .controls {
+	flex-wrap: nowrap;
+	gap: var(--space-2);
+}
+
+/* Everything that is not the strip keeps its size. */
+#chainWidget > .controls > *:not(#chainTabs) { flex: 0 0 auto; }
+
+#chainTabs {
+	flex: 1 1 auto;
+	min-width: 0;              /* without this a flex child refuses to shrink */
+	display: flex;
+	align-items: stretch;
+	gap: 2px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: thin;
+	scroll-snap-type: x proximity;
+	/* Fade the edges so it is obvious there are more chains off-screen. */
+	mask-image: linear-gradient(to right, transparent 0, #000 12px,
+	                            #000 calc(100% - 12px), transparent 100%);
+}
+
+#chainTabs::-webkit-scrollbar { height: 4px; }
+#chainTabs::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+#chainTabs::-webkit-scrollbar-track { background: transparent; }
+
+/* ---- the tab itself ----------------------------------------------------- */
+
+#chainTabs .tab {
+	flex: 0 0 auto;
+	min-width: 0;                  /* was 75px, which is what broke the header */
+	max-width: 12rem;
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+	padding: 2px var(--space-2);
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+	border-bottom: 2px solid transparent;
+	background: transparent;
+	color: var(--muted-foreground);
+	font-size: var(--fs-sm);
+	line-height: 1.6;
+	text-align: left;
+	white-space: nowrap;
+	scroll-snap-align: start;
+	transition: color .12s ease, background-color .12s ease, border-color .12s ease;
+}
+
+#chainTabs .tab:hover {
+	background: var(--muted);
+	color: var(--foreground);
+	border-bottom-color: var(--border-strong);
+}
+
+/* The active chain is where you are; a 2px blue rule was too quiet for the
+   one control you navigate by. */
+#chainTabs .tab.current {
+	background: var(--muted);
+	color: var(--foreground);
+	border-bottom-color: var(--primary);
+	font-weight: 600;
+}
+
+/* Floats inside an inline-block, with the row right-aligned, meant the label
+   and its buttons never agreed on a baseline. */
+#chainTabs .tab .name {
+	float: none;
+	padding-left: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#chainTabs .tab .closeTab,
+#chainTabs .tab .editTab {
+	float: none;
+	flex: 0 0 auto;
+	padding: 0 2px;
+	font-size: .85em;
+	line-height: 1;
+	color: var(--muted-foreground);
+}
+
+/* Reveal the controls on the tab you are pointing at, and always on the active
+   one -- otherwise renaming the chain you are in means hunting for a target
+   that appears only on hover. */
+#chainTabs .tab:hover .closeTab,
+#chainTabs .tab:hover .editTab,
+#chainTabs .tab.current .closeTab,
+#chainTabs .tab.current .editTab {
+	opacity: 1;
+	visibility: visible;
+}
+
+#chainTabs .tab .closeTab:hover { color: var(--destructive); }
+#chainTabs .tab .editTab:hover  { color: var(--primary); }
+
+/* While dragging to reorder. */
+#chainTabs .ui-sortable-helper {
+	background: var(--card);
+	border-color: var(--border);
+	box-shadow: 0 4px 12px rgba(0,0,0,.4);
+}
+
+/* The chain panel's own title is redundant next to a strip of named chains,
+   and at thirteen tabs the space is worth more than the label. */
+#chainWidget .panel-title { display: none; }
