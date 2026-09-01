@@ -2,11 +2,10 @@ tripwire.comments = function() {
     this.comments.data = {};
 
     this.comments.parse = function(data) {
-		function sanitise(html) {
-			const validTags = [ 'b', 'i', 'em', 'strong', 'font', 's', 'pre', 'span', 'p', 'br', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'table', 'tr', 'td', 'th', 'thead', 'tbody', 'div', 'a', 'img' ];
-			return html.replaceAll(/<\s*(\/?)\s*(\w+)([^>]*)>/g, (match, p0, p1, p2) => validTags.indexOf(p1) >= 0 ? match : '') // remove bad tags (especially <script> but default to not allowing anything new we don't know
-				.replaceAll(/(on\w+)=/g, 'x_$1='); // remove JS event handlers
-		}
+		// Parse-based; see app/js/sanitise-html.js for why the previous
+		// regex version was bypassable.
+		const sanitise = sanitiseHtml;
+
 		
         for (var x in data) {
             var id = data[x].id;
