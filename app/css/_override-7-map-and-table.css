@@ -247,3 +247,13 @@
 }
 #sigTable tbody tr[data-activity="combat"]  > td:nth-child(2)::before { background: var(--data-critical); }
 #sigTable tbody tr[data-activity="explore"] > td:nth-child(2)::before { background: var(--data-good); }
+
+/* Chip labels sit on a fill now, so they take the full-strength text colour --
+   muted-on-muted was the low-contrast case that made these hard to read. */
+.sys-meta .chip,
+.gate-chip,
+.sig-chip {
+	color: var(--foreground);
+}
+.gate-chip a { color: var(--foreground); }
+.gate-chip a:hover { color: var(--primary); }

@@ -615,3 +615,163 @@ a.ui-button:hover, a.ui-button:active {
 html, body {
 	background-color: var(--background);
 }
+
+/* ============================================================================
+   ROUTE SQUARES AND THE BLUE-LOOT LINE
+
+   base.css:119 sets `.blue-loot, .blue-loot .hisec { color: loot-blue }`,
+   which painted the whole line blue AND overrode the security colour on its
+   route squares -- so the one place the squares carry meaning was the one
+   place they did not show it.
+
+   The line reads as normal text; each square keeps its own security colour and
+   is big enough to actually read.
+   ========================================================================= */
+
+.blue-loot,
+.sys-extra,
+.sys-extra .blue-loot {
+	color: var(--foreground);
+}
+
+/* Only the destination is a link. */
+.sys-extra a, .blue-loot a { color: var(--primary); }
+
+/* Security colours win on the squares. */
+.blue-loot .hisec  { color: var(--data-good)     !important; }
+.blue-loot .lowsec { color: var(--data-warn)     !important; }
+.blue-loot .nullsec{ color: var(--data-critical) !important; }
+
+.path span,
+.blue-loot .path span {
+	font-size: 1.35em;
+	line-height: 1;
+	letter-spacing: .06em;
+	cursor: pointer;
+}
+.path span:hover { filter: brightness(1.35); }
+
+/* ============================================================================
+   CHIPS — filled, not outlined
+
+   Outlined chips in a colour put the meaning in a 1px border and left the
+   label low-contrast. Filled reads at a glance and the label sits on white.
+   ========================================================================= */
+
+.sys-meta .chip,
+.gate-chip,
+.sig-chip,
+#sigTable td .stable,
+#sigTable td .critical,
+#sigTable td .destab,
+.chip-pill {
+	border: 1px solid transparent;
+	color: #fff;
+	font-weight: 600;
+}
+
+/* Neutral facts keep a quiet fill rather than shouting a colour. */
+.sys-meta .chip,
+.gate-chip,
+.sig-chip {
+	background: var(--muted);
+	color: var(--foreground);
+	border-color: var(--border);
+}
+.gate-chip:hover, .sig-chip:hover {
+	background: var(--accent-surface);
+	border-color: var(--border-strong);
+}
+
+/* State chips carry their colour as fill. */
+#sigTable td .stable   { background: var(--data-good);     border-color: var(--data-good); }
+#sigTable td .destab   { background: var(--data-warn);     border-color: var(--data-warn);   color: #1b1b1b; }
+#sigTable td .critical { background: var(--data-critical); border-color: var(--data-critical); }
+
+/* Selected filter and option chips fill with the accent. */
+.sig-chip.on {
+	background: var(--primary);
+	border-color: var(--primary);
+	color: var(--primary-foreground);
+}
+.sig-chip.sig-scan[data-state="scanned"].on {
+	background: var(--data-good); border-color: var(--data-good); color: #1b1b1b;
+}
+.sig-chip.sig-scan[data-state="unscanned"].on {
+	background: var(--data-info); border-color: var(--data-info); color: #1b1b1b;
+}
+
+#dialog-signature .mini-selector:checked + label,
+#dialog-options input[type="radio"]:checked + label {
+	background: var(--primary);
+	border-color: var(--primary);
+	color: var(--primary-foreground);
+	font-weight: 600;
+}
+
+/* Life and mass keep their own meaning when selected. */
+#dialog-signature .mini-selector:checked + label.stable   { background: var(--data-good);     border-color: var(--data-good);     color: #1b1b1b; }
+#dialog-signature .mini-selector:checked + label.destab   { background: var(--data-warn);     border-color: var(--data-warn);     color: #1b1b1b; }
+#dialog-signature .mini-selector:checked + label.critical { background: var(--data-critical); border-color: var(--data-critical); color: #fff; }
+
+/* ============================================================================
+   NAMED COLOURS
+
+   The original token extraction swept hex and rgb() literals and missed CSS
+   NAMED colours entirely -- fifteen of them survived, including the green mask
+   star in the topbar. Mapped onto the token set here.
+   ========================================================================= */
+
+body .mask .corporate      { color: var(--foreground); }
+.source_bar.corporate      { background: var(--data-good); }
+.source_bar.alliance       { background: var(--data-alliance); }
+#chainMap .statics span    { background: var(--muted); }
+#chainMap .gate            { border-color: var(--border-strong); }
+.jBox-container            { color: var(--foreground); }
+
+/* ============================================================================
+   TOPBAR
+
+   TQ and the mask star were carrying data colours -- green for "server is up",
+   green for "corporate mask". Neither is a reading you act on, and colour in
+   the header competes with the map, where colour does mean something. Both go
+   white; the count itself is the information.
+   ========================================================================= */
+
+#topbar #serverStatus,
+#topbar #serverStatus .stable,
+#topbar #serverStatus .critical,
+#topbar #mask,
+#topbar #mask *,
+#topbar .mask .corporate,
+#topbar .mask .alliance,
+#topbar .mask .character,
+#topbar .mask .global {
+	color: var(--foreground) !important;
+}
+
+/* A genuinely down server is worth the red, though. */
+#topbar #serverStatus.is-down,
+#topbar #serverStatus.is-down .critical {
+	color: var(--data-critical) !important;
+}
+
+/* ============================================================================
+   ROUTE LINES
+   The squares belong beside the sentence they describe, not wrapped under it.
+   ========================================================================= */
+
+.sys-extra > * ,
+.sys-extra {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: .35em;
+}
+
+.sys-extra .path {
+	display: inline-flex;
+	align-items: baseline;
+	gap: .1em;
+	margin-left: .2em;
+}
