@@ -59,7 +59,7 @@ $system = $_REQUEST['system'] ?? '';
 		</span>
 		<span class="align-right">
 			<span id="login">
-				<h3><a id="user" href=""><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span></a></h3>
+				<h3><a id="user" href=""><img id="user-avatar" class="avatar" alt="" src="https://images.evetech.net/characters/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>/portrait?size=64" /><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span></a></h3>
 				<div id="panel">
 					<div id="content" class="dialog-like">
 						<div class="triangle"></div>
@@ -104,7 +104,7 @@ $system = $_REQUEST['system'] ?? '';
 									<table id="account">
 										<tr><th colspan="2">Characters</th></tr>
 										<tr>
-											<td id="avatar" rowspan="4"><img src="https://image.eveonline.com/Character/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>_64.jpg" /></td>
+											<td id="avatar" rowspan="4"><img class="avatar avatar-lg" alt="" src="https://images.evetech.net/characters/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>/portrait?size=128" /></td>
 											<td id="characterName" class="text"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></td>
 										</tr>
 										<tr>

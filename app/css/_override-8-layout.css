@@ -291,3 +291,52 @@ html, body { height: 100%; overflow: hidden; }
 }
 #panel-menu button:hover { background: var(--muted); }
 #panel-menu .tick { width: 1em; color: var(--primary); }
+
+/* ============================================================================
+   CHARACTER PORTRAIT
+
+   EVE portraits are square, so they need masking to read as an avatar. Served
+   from images.evetech.net -- image.eveonline.com is the retired host and the
+   settings portrait was still pointing at it.
+   ========================================================================= */
+
+.avatar {
+	display: inline-block;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	object-fit: cover;
+	vertical-align: middle;
+	background: var(--muted);
+	/* A thin ring keeps a dark portrait from bleeding into a dark topbar. */
+	box-shadow: 0 0 0 1px var(--border);
+}
+
+#topbar #user {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.avatar-lg {
+	width: 3.4rem;
+	height: 3.4rem;
+	box-shadow: 0 0 0 1px var(--border);
+}
+
+#dialog-options #avatar { padding-right: var(--space-3); vertical-align: top; }
+
+/* account.css sets `#login img { border-radius: 3px }` -- an id plus an
+   element, which outranks .avatar and squared the portrait off again. */
+#login img.avatar,
+#topbar img.avatar,
+img.avatar {
+	border-radius: 50%;
+}
+
+/* Corporation and alliance logos are marks, not faces; they stay square. */
+img.logo {
+	width: 1.6rem; height: 1.6rem;
+	object-fit: contain;
+	vertical-align: middle;
+}
