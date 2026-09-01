@@ -160,3 +160,24 @@
 #sigTable tbody tr.selected td {
   background: var(--accent-dim);
 }
+
+/* ============================================================================
+   Background.
+
+   Overridden here rather than in tripwire.css so upstream's default survives a
+   rebase. The source is 21:9; under the existing `cover` + `center` a 16:9
+   viewport trims the sides, which keeps the ship and loses the brightest edge
+   of the nebula -- the framing this was chosen for.
+   ========================================================================= */
+
+#wrapper {
+  background-image: url(../images/landing-bg.jpg);
+}
+
+/* Read band: the background is decorative at phone width, so serve 79KB
+   instead of 460KB. */
+@media (max-width: 767px) {
+  #wrapper {
+    background-image: url(../images/landing-bg-small.jpg);
+  }
+}
