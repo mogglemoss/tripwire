@@ -46,12 +46,9 @@ $system = $_REQUEST['system'] ?? '';
 			<h1 id="logo">
 				<a href="."><?= APP_NAME ?></a>
 				<span id="version"><?= VERSION ?></span>
-				<span>|</span>
 				<!-- <span data-tooltip="System activity update countdown"><input id="APIclock" class="hidden" /></span> -->
 			</h1>
-			<h3 id="serverStatus" class="pointer" data-tooltip="EVE server status and player count">TQ: ??,???</h3>
-			<h3 class="pointer" data-tooltip="EVE time (UTC)">| ET: <span id="serverTime">??.??</span></h3>
-			<h3 id="systemSearch">| <i id="search" data-icon="search" data-tooltip="Toggle system search"></i>
+			<h3 id="systemSearch"><i id="search" data-icon="search" data-tooltip="Toggle system search"></i>
 				<span id="currentSpan" class="hidden"><span class="pointer">Current System: </span><span id="EVEsystem">?</span><i id="follow" data-icon="follow" data-tooltip="Follow my in-game system" style="padding-left: 10px;"></i></span>
 				<span id="searchSpan"><form id="systemSearch" method="GET" action=".?"><input type="text" size="18" class="systemsAutocomplete" name="system" /></form></span>
 				<span id="APItimer" class="hidden"></span>
@@ -126,7 +123,6 @@ $system = $_REQUEST['system'] ?? '';
 				</div>
 			</span>
 
-			<h3> | </h3>
 			<h3><a href="#" id="mask-menu-link" data-tooltip="Current mask"><span id="mask">(???)</span></a></h3>
 			<div id="mask-menu" class="toggle-panel" style="right: 68px; top:34px; display:none">
 				<div class="triangle"></div>
@@ -135,10 +131,9 @@ $system = $_REQUEST['system'] ?? '';
 				<a href="#" id="mask-link">Manage masks</a>
 				<a href="#" id="admin"<?= checkAdmin($_SESSION['mask']) || checkOwner($_SESSION['mask']) ? '' : 'style="display: none"' ?>>Mask Admin</a>
 			</div>
-			<h3> | </h3>
 
-			<i id="settings" style="font-size: 1.7em;" data-icon="settings" class="options" data-tooltip="Settings"></i>
-			<i id="layout" style="font-size: 1.7em;" data-icon="layout" data-tooltip="Customize layout"></i>
+			<i id="settings" data-icon="settings" class="options" data-tooltip="Settings"></i>
+			<i id="layout" data-icon="layout" data-tooltip="Customize layout"></i>
 		</span>
 	</div>
 
@@ -354,6 +349,11 @@ $system = $_REQUEST['system'] ?? '';
 				</div>
 			</li>
 		</ul>
+	</div>
+
+	<div id="statusbar">
+		<span id="serverStatus" class="pointer" data-tooltip="EVE server status and player count"><span class="bar-label">Tranquility</span><span class="bar-value">??,???</span></span>
+		<span id="eveTime" class="pointer" data-tooltip="EVE time (UTC)"><span class="bar-label">EVE Time</span><span id="serverTime" class="bar-value">??:??</span></span>
 	</div>
 
 	<div id="footer">

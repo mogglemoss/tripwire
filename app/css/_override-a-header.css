@@ -1,0 +1,94 @@
+/* ============================================================================
+   MAIN HEADER
+
+   Was one cramped line of unrelated things divided by literal "|" characters,
+   with two inline `font-size: 1.7em` overrides and a portrait too small to
+   recognise.
+
+   An earlier attempt made this a grid with `display: contents` on the
+   wrappers; that placed every right-hand control into the same grid cell, so
+   they stacked and ran off the right edge. A flex row cannot do that: the
+   right cluster is one item that keeps its own width.
+
+   Server population and EVE time have moved out entirely, to the status bar
+   along the bottom -- they are ambient readings, not navigation.
+   ========================================================================= */
+
+#topbar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+	padding: var(--space-2) var(--space-3);
+	height: auto;
+	min-height: 0;
+	line-height: normal;
+	flex-wrap: nowrap;
+}
+
+#topbar > .align-left {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	flex: 1 1 auto;
+	min-width: 0;              /* lets the left side shrink instead of shoving */
+}
+
+#topbar > .align-right {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	flex: 0 0 auto;            /* never compressed, never pushed out */
+	padding-right: 0;
+}
+
+#topbar #logo {
+	display: flex;
+	align-items: baseline;
+	gap: var(--space-2);
+	margin: 0;
+	flex: 0 0 auto;
+}
+#topbar #logo a { font-size: 1.8rem; line-height: 1.1; }
+
+#topbar h3 { margin: 0; display: flex; align-items: center; gap: var(--space-1); }
+
+/* Twice the previous portrait; the header height follows it. */
+#topbar .avatar { width: 2.4rem; height: 2.4rem; }
+#topbar #user { gap: var(--space-2); font-size: 1.05rem; }
+
+#topbar #settings,
+#topbar #layout { font-size: 1.3rem; flex: 0 0 auto; }
+
+/* The system search takes the slack in the middle rather than the icons. */
+#topbar #systemSearch { flex: 1 1 auto; min-width: 0; }
+
+/* ============================================================================
+   STATUS BAR
+
+   Ambient readings, out of the way: server population left, EVE time right.
+   ========================================================================= */
+
+#statusbar {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+	padding: var(--space-1) var(--space-3);
+	border-top: 1px solid var(--border);
+	background: color-mix(in oklab, var(--background) 82%, transparent);
+	font-size: var(--fs-sm);
+	color: var(--foreground);
+}
+
+#statusbar .bar-value { font-variant-numeric: tabular-nums; font-weight: 600; }
+#statusbar #serverStatus.is-down .bar-value { color: var(--data-critical); }
+
+.bar-label {
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	margin-right: var(--space-1);
+}
