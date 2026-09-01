@@ -62,27 +62,72 @@ var activity = new function() {
 		}
 	}
 
-	this.init = function() {
-		activity.graph = new google.visualization.AreaChart(document.getElementById("activityGraph"));
-		activity.options = {
+	// Chart styling reads from the design tokens rather than hard-coding hexes,
+	// so the graph follows whichever theme is loaded instead of being a
+	// differently-coloured island in the panel.
+	this.tokens = function() {
+		const cs = getComputedStyle(document.documentElement);
+		const t = n => cs.getPropertyValue(n).trim();
+		return {
+			text:   t("--muted-foreground") || "#999",
+			line:   t("--border")           || "#454545",
+			jumps:  t("--data-info")        || "#47a2fe",
+			pod:    t("--data-critical")    || "#ff4747",
+			ship:   t("--data-warn")        || "#f5b544",
+			npc:    t("--data-good")        || "#50d25a",
+			font:   "Montserrat, system-ui, sans-serif"
+		};
+	};
+
+	this.buildOptions = function() {
+		const c = activity.tokens();
+		const axis = {color: c.text, fontName: c.font, fontSize: 11};
+		return {
 			isStacked: false,
 			backgroundColor: "transparent",
-			hAxis: {textStyle: {color: "#999", fontName: "Verdana", fontSize: 10}, showTextEvery: 3},
-			vAxis: {textStyle: {color: "#666", fontName: "Verdana", fontSize: 10}, viewWindowMode: "maximized", viewWindow: {min: 0}, maxValue: 5},
-			gridlineColor: "#454545",
-			pointSize: 4,
-			// Hours with no reading come back as null, so a sparse window draws as
-			// isolated points rather than a line. They have to be big enough to see.
+
+			// Series in the order the columns are declared: jumps, pod, ship, npc.
+			// Semantic rather than decorative -- kills are danger colours, jumps
+			// are neutral traffic.
+			colors: [c.jumps, c.pod, c.ship, c.npc],
+			areaOpacity: 0.18,
+			lineWidth: 2,
+			pointSize: 0,
+			// A sparse window (a preview, or a gap in the cron) must read as
+			// isolated readings rather than a line drawn through nothing.
 			interpolateNulls: false,
-			lineWidth: 1,
-			height: 150,
-			chartArea: {left: "10%", top: "5%", width: "88%", height: "85%"},
-			legend: {position: "in", textStyle: {color: "#CCC", fontName: "Verdana", fontSize: 8.5}},
-			animation: {duration: 500, easing: "inAndout"},
-			tooltip: {showColorCode: true},
-			annotations: {style: "line", textStyle: {fontSize: 12, color: "#ccc"}, domain: 0},
-			focusTarget: "category"
-		}
+
+			hAxis: {
+				textStyle: axis,
+				showTextEvery: 3,
+				baselineColor: c.line,
+				gridlines: {color: "transparent"}
+			},
+			vAxis: {
+				textStyle: axis,
+				viewWindowMode: "maximized",
+				viewWindow: {min: 0},
+				maxValue: 5,
+				baselineColor: c.line,
+				gridlines: {color: c.line, count: 4},
+				minorGridlines: {count: 0}
+			},
+
+			height: 170,
+			chartArea: {left: 48, top: 24, right: 12, bottom: 28},
+			legend: {position: "top", alignment: "start",
+			         textStyle: {color: c.text, fontName: c.font, fontSize: 11}},
+			animation: {duration: 300, easing: "out"},
+			tooltip: {showColorCode: true, textStyle: {fontName: c.font, fontSize: 12}},
+			focusTarget: "category",
+			crosshair: {trigger: "both", orientation: "vertical",
+			            color: c.line, opacity: 0.6}
+		};
+	};
+
+	this.init = function() {
+		activity.graph = new google.visualization.AreaChart(document.getElementById("activityGraph"));
+		activity.options = activity.buildOptions();
 
 		google.visualization.events.addListener(activity.graph, "select", activity.selectHandler);
 

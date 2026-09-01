@@ -111,7 +111,12 @@ $(".options").click(function(e) {
 			$("#dialog-options #background-image").val(options.background);
 		},
 		create: function() {
-			$("#optionsAccordion").accordion({heightStyle: "content", collapsible: true, active: false});
+			// No accordion. Four short sections behind click-to-reveal meant the
+			// settings you wanted were always one click away and never visible
+			// together. They are laid out as plain sections in a scrolling pane
+			// instead; the <h3>/<div> pairs the accordion used are already the
+			// right structure for that.
+			$("#optionsAccordion").addClass("settings-sections");
 			function setUpSlider(id, value, change, range) {
 				range = Object.assign({min: 0.7, max:1.4, step:0.05}, range);
 				$("#" + id).slider({

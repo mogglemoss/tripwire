@@ -367,52 +367,31 @@ button[disabled], .disabled { opacity: .4; cursor: default; }
 #version { font-size: var(--fs-xs); color: var(--muted-foreground); }
 #legal   { font-size: var(--fs-xs); color: var(--muted-foreground); }
 
-/* Accordion: jQuery UI ships grey gradient headers over a black inset panel.
-   Rebuilt as a plain list of sections. */
-.ui-accordion .ui-accordion-header {
-	background: transparent;
-	background-image: none;
-	border: 0;
+/* Settings sections. The accordion is gone -- see options-dialog.js. These
+   are the same <h3>/<div> pairs, laid out flat in a scrolling pane so every
+   setting is visible and scannable. */
+.settings-sections { display: flex; flex-direction: column; }
+
+.settings-sections > h3 {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	margin: var(--space-4) 0 var(--space-2);
+	padding: var(--space-2) 0;
+	background: var(--card);
 	border-bottom: 1px solid var(--border);
-	border-radius: 0;
-	margin: 0;
-	padding: var(--space-3) var(--space-1) var(--space-3) var(--space-5);
-	color: var(--foreground);
-	font-size: var(--fs-base);
+	color: var(--muted-foreground);
+	font-size: var(--fs-xs);
 	font-weight: 600;
+	letter-spacing: .12em;
+	text-transform: uppercase;
 }
-.ui-accordion .ui-accordion-header:hover { color: var(--primary); }
-.ui-accordion .ui-accordion-header.ui-state-active {
-	color: var(--primary);
-	border-bottom-color: var(--primary);
-}
-.ui-accordion .ui-accordion-content {
-	background: transparent;
-	border: 0;
-	border-bottom: 1px solid var(--border);
-	border-radius: 0;
-	padding: var(--space-3) var(--space-1) var(--space-4) var(--space-5);
-	color: var(--card-foreground);
-}
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-	background: none;
-	text-indent: 0;
-	left: var(--space-1);
-	width: 12px; height: 12px;
-	margin-top: -6px;
-}
-.ui-accordion .ui-accordion-header .ui-accordion-header-icon::before {
-	content: "";
-	display: block;
-	width: 5px; height: 5px;
-	border-right: 1.5px solid currentColor;
-	border-bottom: 1.5px solid currentColor;
-	transform: rotate(-45deg);
-	transition: transform .15s ease;
-}
-.ui-accordion .ui-accordion-header.ui-state-active .ui-accordion-header-icon::before {
-	transform: rotate(45deg);
-}
+.settings-sections > h3:first-child { margin-top: 0; }
+.settings-sections > h3 a { color: inherit; font-weight: inherit; text-decoration: none; cursor: default; }
+
+.settings-sections > div { padding: 0 0 var(--space-3); }
+
+#dialog-options { max-height: 62vh; overflow-y: auto; }
 
 .optionsTable tr { height: auto; }
 .optionsTable th, .optionsTable td { padding: var(--space-2); font-size: var(--fs-base); }
