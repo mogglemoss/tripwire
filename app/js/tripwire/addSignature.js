@@ -88,7 +88,10 @@ tripwire.addSig = function(add, option, disabled) {
         $(tr).find('span[data-age]').countdown({since: moment.utc(add.lifeTime).toDate(), compact: true, format: this.ageFormat, serverSync: this.serverTime.getTime});
     }
 
-    if (animate) {
+    // Same reasoning as deleteSig: the wrapper is only unwrapped by the
+    // slideDown callback, so animating in a hidden tab leaves the new row
+    // invisible until the backlog drains. Show it outright instead.
+    if (animate && !document.hidden) {
         $(tr)
             .find('td')
             .wrapInner('<div class="hidden" />')
