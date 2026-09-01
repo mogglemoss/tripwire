@@ -129,10 +129,24 @@
    its own colours.
    ========================================================================= */
 
-/* The wordmark carries the brand; the version chip stays quiet beside it. */
+/* The wordmark carries the brand; the version chip stays quiet beside it.
+   The Wing Icon is set as a ::before rather than edited into tripwire.php, so
+   the template stays untouched and this whole theme remains one deletable
+   file. Brand guidelines allow the standalone Wing Icon to form new lockups;
+   the full lockup may not be modified, so it is not used here. */
 #topbar #logo a {
   color: var(--accent);
   letter-spacing: .01em;
+}
+
+#topbar #logo a::before {
+  content: "";
+  display: inline-block;
+  width: 1.5em;
+  height: 1.22em;          /* the mark is 256x208 */
+  margin-right: .38em;
+  vertical-align: -.18em;
+  background: url(../images/brand/mark.png) no-repeat center / contain;
 }
 
 /* Front office uses the dark lockup, not the orange one -- which the brand
