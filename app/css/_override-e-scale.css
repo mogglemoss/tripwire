@@ -196,3 +196,7 @@ kbd                                      { font-size: var(--fs-xs); }
 #activityLegend .legend-chip.off { color: var(--muted-foreground); }
 #activityLegend .legend-chip.off .swatch { opacity: .3; }
 #activityGraphControls > a { margin-left: 0; }
+/* space-between was distributing the three range links across the row along
+   with the legend; the legend takes the slack and the ranges stay a group. */
+#activityGraphControls { justify-content: flex-start; }
+#activityLegend { margin-right: auto; }

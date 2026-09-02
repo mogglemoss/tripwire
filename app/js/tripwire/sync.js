@@ -119,7 +119,14 @@ tripwire.sync = function(mode, data, successCallback, alwaysCallback) {
         // Returning is instant: visibility-refresh.js refreshes on becoming
         // visible, so nothing is stale on the way back.
         // (Also drops the string form, which is an implicit eval.)
-        tripwire.timer = setTimeout(tripwire.refresh,
+        //
+        // A closure, not `setTimeout(tripwire.refresh, ...)`. refresh() calls
+        // this.sync(), and a detached reference runs with `this` as window,
+        // so the very first scheduled poll threw "this.sync is not a
+        // function" and nothing was ever scheduled again. The page loaded
+        // once and never polled: measured, zero refresh.php calls in twelve
+        // seconds. The string form had been doing this right for a decade.
+        tripwire.timer = setTimeout(function() { tripwire.refresh(); },
             document.hidden ? tripwire.refreshRateHidden : tripwire.refreshRate);
 
         alwaysCallback ? alwaysCallback(data) : null;

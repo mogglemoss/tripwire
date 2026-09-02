@@ -1,0 +1,55 @@
+/* ============================================================================
+   TWO TYPE ROLES
+
+   Montserrat was chosen as the brand face and is right for that: geometric,
+   round, of a piece with the wing mark. It was then used for every table
+   cell, label and chip -- and it is a wide face with a large x-height, which
+   at 11-13px in a three-column layout of "GHJ-456", "23:26", "Class-3" costs
+   the width budget and reads soft. The signature-id column having to fall
+   back to a monospace to stay aligned was the symptom.
+
+   Display stays Montserrat. Everything read as data is IBM Plex Sans:
+   narrower set, tabular figures, a technical character that suits a mapping
+   tool, and a grotesque that sits cleanly under a geometric display face.
+   Ids move to Plex Mono so the family holds.
+
+   Same selector list as the rule in _override-b-fixes.css that forced one
+   family everywhere; this file sorts after it, so equal specificity wins.
+   ========================================================================= */
+
+:root {
+	--font-ui:      'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-display: 'Montserrat', 'IBM Plex Sans', system-ui, sans-serif;
+	--font-mono:    'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+body, input, select, textarea, button,
+table, td, th, h1, h2, h3, h4, h5, h6, p, div, span, a, li,
+#dialog-options td, #logoutTable td, table td {
+	font-family: var(--font-ui);
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---- brand surfaces keep the display face ---------------------------- */
+#topbar #logo, #topbar #logo a,
+.panel-title,
+.ui-dialog .ui-dialog-title,
+.sys-panel .sys-name,
+#cmd-palette .cmd-title,
+.settings-tabs [role="tab"],
+#statusbar .bar-label {
+	font-family: var(--font-display);
+}
+
+/* ---- data ids in the mono of the same family --------------------------- */
+#sigTable td:nth-child(1),
+#chainMap div.node > h4.nodeType,
+kbd {
+	font-family: var(--font-mono);
+	letter-spacing: 0;
+}
+
+/* Plex sits a touch smaller on the body than Montserrat did at the same
+   size; the base step comes up one pixel so line lengths, not legibility,
+   are what change. */
+:root { --fs-base: 13px; --fs-sm: 12px; }
