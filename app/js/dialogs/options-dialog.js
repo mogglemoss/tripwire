@@ -22,9 +22,9 @@ $(".options").click(function(e) {
 				options.chain.routeIgnore.enabled = $("#dialog-options #route-ignore-enabled").prop('checked');
 				options.chain.routeIgnore.systems = $("#dialog-options #route-ignore").val().split(",").map(x => x.trim());
 
-				options.chain.gridlines = 'true' == $("#dialog-options input[name=gridlines]:checked").val();
-				options.chain.aura = 'true' == $("#dialog-options input[name=aura]:checked").val();
-				options.chain.scrollWithoutCtrl = 'true' == $("#dialog-options input[name=scrollWithoutCtrl]:checked").val();
+				options.chain.gridlines = $("#dialog-options #gridlines").prop("checked");
+				options.chain.aura = $("#dialog-options #aura").prop("checked");
+				options.chain.scrollWithoutCtrl = $("#dialog-options #scrollWithoutCtrl").prop("checked");
 
 				options.chain.nodeSpacing.x = $("#dialog-options #node-spacing-x-slider").slider("value");
 				options.chain.nodeSpacing.y = $("#dialog-options #node-spacing-y-slider").slider("value");
@@ -102,21 +102,30 @@ $(".options").click(function(e) {
 			$("#dialog-options #route-ignore").val(options.chain.routeIgnore.systems.join(','));
 			$("#dialog-options #renderer").val(options.chain.renderer);
 			$("#dialog-options input[name='node-reference'][value='"+options.chain["node-reference"]+"']").prop("checked", true);
-			$("#dialog-options input[name='gridlines'][value='"+options.chain.gridlines+"']").prop("checked", true);
-			$("#dialog-options input[name='aura'][value='"+options.chain.aura+"']").prop("checked", true);
-			$("#dialog-options input[name='scrollWithoutCtrl'][value='"+options.chain.scrollWithoutCtrl+"']").prop("checked", true);
+			// Stored as booleans by save() but as the strings "true"/"false" by
+			// older saves, so both spellings have to read as on.
+			var on = function(v) { return v === true || v === "true"; };
+			$("#dialog-options #gridlines").prop("checked", on(options.chain.gridlines));
+			$("#dialog-options #aura").prop("checked", on(options.chain.aura));
+			$("#dialog-options #scrollWithoutCtrl").prop("checked", on(options.chain.scrollWithoutCtrl));
 			$("#dialog-options #node-spacing-x-slider").slider("value", options.chain.nodeSpacing.x);
 			$("#dialog-options #node-spacing-y-slider").slider("value", options.chain.nodeSpacing.y);
 			$("#dialog-options #node-spacing-line-weight-slider").slider("value", options.chain.lineWeight);
 			$("#dialog-options #background-image").val(options.background);
 		},
 		create: function() {
-			// No accordion. Four short sections behind click-to-reveal meant the
-			// settings you wanted were always one click away and never visible
-			// together. They are laid out as plain sections in a scrolling pane
-			// instead; the <h3>/<div> pairs the accordion used are already the
-			// right structure for that.
-			$("#optionsAccordion").addClass("settings-sections");
+			// Tabs. Twenty-four controls in one 1,056px scroll was the previous
+			// arrangement; five short panes means the pane you want is one click
+			// and no scrolling. Plain buttons rather than jQuery UI tabs so the
+			// strip is styled by the same rules as every other control.
+			$("#optionsAccordion .settings-tabs [role=tab]").on("click", function() {
+				var tab = $(this).attr("data-tab");
+				$("#optionsAccordion [role=tab]").attr("aria-selected", "false");
+				$(this).attr("aria-selected", "true");
+				$("#optionsAccordion .settings-pane").each(function() {
+					this.hidden = $(this).attr("data-pane") !== tab;
+				});
+			});
 			function setUpSlider(id, value, change, range) {
 				range = Object.assign({min: 0.7, max:1.4, step:0.05}, range);
 				$("#" + id).slider({

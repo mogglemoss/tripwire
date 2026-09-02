@@ -1,0 +1,245 @@
+/* ============================================================================
+   ONE DIALOG
+
+   Every real workflow -- add, edit, settings, ping, confirm -- runs through a
+   jQuery UI dialog, and jQuery UI's structure showed through the restyle:
+   its titlebar, its button pane as a separate strip, buttons in whatever
+   order the config object listed them. The panels are the branch's; the
+   dialogs were the library's. This makes the dialog the same object as the
+   command palette: one surface, one radius, a header with a title and one
+   close, a body, and a footer with the primary action filled and on the
+   right, the quiet action beside it, the destructive one alone on the left.
+
+   jQuery UI stays underneath for positioning and focus. Only the skin and
+   the button roles change; dialog-polish.js assigns the roles.
+   ========================================================================= */
+
+.ui-dialog {
+	background: var(--popover);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 16px 48px rgba(0,0,0,.45);
+	padding: 0;
+	max-width: min(94vw, 720px);
+	overflow: hidden;
+}
+.ui-dialog-shadow { box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 16px 48px rgba(0,0,0,.45); }
+
+.ui-dialog .ui-dialog-titlebar {
+	padding: var(--space-3) var(--space-4);
+	min-height: var(--control-standard);
+	background: transparent;
+	border-bottom: 1px solid var(--border);
+}
+.ui-dialog .ui-dialog-title {
+	font-size: var(--fs-sm);
+	letter-spacing: .1em;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: var(--space-4);
+	font-size: var(--fs-base);
+	line-height: 1.5;
+}
+
+/* ---- footer ---------------------------------------------------------- */
+.ui-dialog .ui-dialog-buttonpane {
+	padding: var(--space-3) var(--space-4);
+	border-top: 1px solid var(--border);
+}
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--space-2);
+	float: none;
+	width: 100%;
+}
+.ui-dialog-buttonpane button {
+	order: 2;
+	margin: 0;
+	padding: 0 var(--space-4);
+	min-height: var(--control-standard);
+	border-radius: var(--radius-sm);
+	font-size: var(--fs-base);
+	font-weight: 500;
+}
+/* Quiet: cancel, close, and the "reset" style choices that are not destructive. */
+.ui-dialog-buttonpane button.is-quiet {
+	order: 1;
+	border-color: transparent;
+	color: var(--muted-foreground);
+}
+.ui-dialog-buttonpane button.is-quiet:hover {
+	border-color: transparent;
+	background: var(--muted);
+	color: var(--foreground);
+}
+/* Primary: filled, last. */
+.ui-dialog-buttonpane button.is-primary {
+	order: 3;
+	background: var(--primary);
+	border-color: var(--primary);
+	color: var(--primary-foreground);
+}
+.ui-dialog-buttonpane button.is-primary:hover {
+	background: color-mix(in oklab, var(--primary) 88%, white);
+	border-color: color-mix(in oklab, var(--primary) 88%, white);
+	color: var(--primary-foreground);
+}
+/* Destructive: alone on the left, red only when approached. */
+.ui-dialog-buttonpane button.is-destructive {
+	order: 0;
+	margin-right: auto;
+	border-color: transparent;
+	color: var(--muted-foreground);
+}
+.ui-dialog-buttonpane button.is-destructive:hover {
+	border-color: var(--destructive);
+	color: var(--destructive);
+	background: transparent;
+}
+.ui-dialog-buttonpane button[disabled],
+.ui-dialog-buttonpane button.ui-state-disabled { opacity: .45; pointer-events: none; }
+
+/* Modal scrim, one value. */
+.ui-widget-overlay { background: rgba(0,0,0,.55); opacity: 1; }
+
+/* ============================================================================
+   FORM ROWS INSIDE DIALOGS
+   The palette's row is the dialog's row: label left in a quiet weight,
+   control right, one vertical rhythm.
+   ========================================================================= */
+
+.settings { display: flex; flex-direction: column; gap: 0; }
+
+.settings-tabs {
+	display: flex;
+	gap: var(--space-1);
+	margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4);
+	padding: 0 var(--space-4);
+	border-bottom: 1px solid var(--border);
+}
+.settings-tabs [role="tab"] {
+	border: 0;
+	border-bottom: 2px solid transparent;
+	border-radius: 0;
+	background: transparent;
+	padding: var(--space-3) var(--space-2);
+	margin-bottom: -1px;
+	color: var(--muted-foreground);
+	font-size: var(--fs-sm);
+	font-weight: 500;
+}
+.settings-tabs [role="tab"]:hover { color: var(--foreground); background: transparent; }
+.settings-tabs [role="tab"][aria-selected="true"] {
+	color: var(--foreground);
+	border-bottom-color: var(--primary);
+}
+
+.settings-pane { display: flex; flex-direction: column; gap: var(--space-2); min-height: 300px; }
+.settings-pane[hidden] { display: none; }
+
+.field {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: var(--space-3);
+	min-height: var(--control-standard);
+	padding: var(--space-1) 0;
+}
+.field.field-block { grid-template-columns: 1fr; align-items: start; }
+.field-label { color: var(--foreground); font-size: var(--fs-base); }
+.field-label small { display: block; color: var(--muted-foreground); font-size: var(--fs-xs); margin-top: 1px; }
+.field-value { color: var(--foreground); font-variant-numeric: tabular-nums; }
+.field-inline { display: inline-flex; align-items: center; gap: var(--space-2); }
+.field-inline input[type="text"] { width: 12rem; }
+.field-actions { display: flex; gap: var(--space-2); justify-content: flex-end; padding-top: var(--space-3); }
+.field-group {
+	margin: var(--space-4) 0 var(--space-1);
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+.field select, .field input[type="text"] { min-width: 14rem; }
+
+/* ---- switch: the one idiom for a boolean ----------------------------- */
+.switch { position: relative; display: inline-block; width: 38px; height: 22px; cursor: pointer; }
+.switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.switch-track {
+	position: absolute; inset: 0;
+	border-radius: 999px;
+	background: var(--input);
+	transition: background .15s ease;
+}
+.switch-track::after {
+	content: "";
+	position: absolute; top: 3px; left: 3px;
+	width: 16px; height: 16px;
+	border-radius: 50%;
+	background: var(--foreground);
+	transition: transform .15s ease;
+}
+.switch input:checked + .switch-track { background: var(--primary); }
+.switch input:checked + .switch-track::after { transform: translateX(16px); background: var(--primary-foreground); }
+.switch input:focus-visible + .switch-track { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+/* ---- segmented: two to four options ---------------------------------- */
+.segmented { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.segmented input { position: absolute; opacity: 0; pointer-events: none; }
+.segmented label {
+	padding: 0 var(--space-3);
+	min-height: calc(var(--control-standard) - 8px);
+	display: inline-flex; align-items: center;
+	font-size: var(--fs-sm);
+	color: var(--muted-foreground);
+	cursor: pointer;
+	border-right: 1px solid var(--border);
+}
+.segmented label:last-of-type { border-right: 0; }
+.segmented input:checked + label { background: var(--muted); color: var(--foreground); }
+.segmented input:focus-visible + label { outline: 2px solid var(--ring); outline-offset: -2px; }
+
+/* ---- slider: jQuery UI's, skinned ------------------------------------ */
+.slider-wrap { display: inline-flex; align-items: center; gap: var(--space-2); min-width: 14rem; }
+.slider-pair { flex-direction: column; align-items: stretch; gap: var(--space-1); }
+.slider-pair > span { display: flex; align-items: center; gap: var(--space-2); font-size: var(--fs-xs); color: var(--muted-foreground); }
+.slider-wrap .ui-slider { flex: 1 1 auto; height: 4px; border: 0; background: var(--input); border-radius: 999px; margin: 0; }
+.slider-wrap .ui-slider .ui-slider-handle {
+	top: -6px; width: 16px; height: 16px; margin-left: -8px;
+	border-radius: 50%; border: 0; background: var(--foreground); cursor: pointer;
+}
+.slider-wrap .ui-slider .ui-slider-handle:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.slider-value { min-width: 2.5em; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted-foreground); font-size: var(--fs-sm); }
+#dialog-options div.ui-slider { width: auto; }
+
+/* ---- statistics ------------------------------------------------------ */
+.stats { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-4); margin: 0; }
+.stats dt { color: var(--muted-foreground); }
+.stats dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ============================================================================
+   ADD SIGNATURE: THE WORMHOLE HALF IS A SECOND STEP, NOT A REVEAL
+   ========================================================================= */
+#dialog-signature #wormhole { margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border); }
+#dialog-signature #wormhole::before {
+	content: "Wormhole";
+	display: block;
+	margin-bottom: var(--space-2);
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+#dialog-signature #wormhole > hr { display: none; }
+#dialog-signature #wormhole .side + .side { margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px dashed var(--border); }
+#dialog-signature #wormhole .side + .side::before {
+	content: "Other side";
+	display: block;
+	margin-bottom: var(--space-2);
+	font-size: var(--fs-xs);
+	color: var(--muted-foreground);
+}

@@ -56,7 +56,7 @@ $system = $_REQUEST['system'] ?? '';
 				<!-- <span data-tooltip="System activity update countdown"><input id="APIclock" class="hidden" /></span> -->
 			</h1>
 			<h3 id="systemSearch"><i id="search" data-icon="search" data-tooltip="Toggle system search"></i>
-				<span id="currentSpan" class="hidden"><span class="pointer">Current System: </span><span id="EVEsystem">?</span><i id="follow" data-icon="follow" data-tooltip="Follow my in-game system" style="padding-left: 10px;"></i></span>
+				<span id="currentSpan" class="hidden"><span class="pointer bar-label" data-tooltip="Where your tracked character is right now. The panels below show the system you are viewing, which may differ.">Location</span><span id="EVEsystem">?</span><i id="follow" data-icon="follow" data-tooltip="Follow my in-game system" style="padding-left: 10px;"></i></span>
 				<span id="searchSpan"><form id="systemSearch" method="GET" action=".?"><input type="text" size="18" class="systemsAutocomplete" name="system" /></form></span>
 				<span id="APItimer" class="hidden"></span>
 			</h3>
@@ -148,10 +148,10 @@ $system = $_REQUEST['system'] ?? '';
 		<ul>
 			<li id="infoWidget" class="gridWidget" data-row="1" data-col="1" data-sizex="7" data-sizey="6" data-min-sizex="5" data-min-sizey="4" style="width: 410px; height: 350px;">
 				<div class="controls">
-					<div style="float: right;">
+					<div class="bar-right">
 						<span id="favorite-control-wrapper"><!-- for tutorial -->
-							<i id="system-favorite" data-icon="star-empty" data-tooltip="Add/Remove favorite"></i>
-							<span id="favorite-dropdown-toggle" class="control" data-tooltip="Show all favorites">...</span>
+							<i id="system-favorite" data-icon="star-empty" class="bar-btn" data-tooltip="Add or remove favourite"><span class="bar-label">Favourite</span></i>
+							<span id="favorite-dropdown-toggle" class="control bar-btn bar-icon" data-tooltip="Show all favourites">&hellip;</span>
 						</span>
 						<div id="favorite-panel" class="toggle-panel" style="right: 17px; display: none">
 							<h4>Favorites</h4>
@@ -159,8 +159,7 @@ $system = $_REQUEST['system'] ?? '';
 								<p>Favorites loading ...</p>
 							</div>
 						</div>
-						<span>|</span>
-						<i class="tutorial" data-tooltip="Show tutorial for this section">?</i>
+						<i class="tutorial bar-btn bar-icon" data-tooltip="Show tutorial for this section">?</i>
 					</div>
 				</div>
 				<div class="content sys-panel">
@@ -185,16 +184,18 @@ $system = $_REQUEST['system'] ?? '';
 			</li>
 			<li id="signaturesWidget" class="gridWidget" data-row="1" data-col="8" data-sizex="7" data-sizey="6" data-min-sizex="5" data-min-sizey="2" style="width: 410px; height: 350px;">
 				<div class="controls">
-					<i id="add-signature" data-icon="plus" data-tooltip="Add a new signature"></i>
-					<i id="edit-signature" data-icon="edit" data-tooltip="Edit selected signature" class="disabled"></i>
-					<i id="delete-signature" data-icon="trash" data-tooltip="Delete selected signature(s)" class="disabled"></i>
-					<span>|</span>
-					<i id="signature-count" style="font-style: normal; cursor: default;" data-tooltip="Total signature count">0</i>
-					<i id="undo" data-icon="undo" class="disabled" data-tooltip="Undo last signature change"></i>
-					<i id="redo" data-icon="redo" class="disabled" data-tooltip="Redo what was undone"></i>
-					<div style="float: right;">
-						<i id="toggle-automapper" class="disabled" data-icon="auto" data-tooltip="Toggle Auto-Mapper"></i>
-						<i class="tutorial" data-tooltip="Show tutorial for this section">?</i>
+					<i id="signature-count" class="bar-count" data-tooltip="Signatures in this system">0</i>
+					<i id="add-signature" data-icon="plus" class="bar-btn bar-primary" data-tooltip="Add a signature by hand"><span class="bar-label">Add</span></i>
+					<i id="paste-signatures" class="bar-btn" data-tooltip="Paste probe scanner results. Ctrl-V anywhere on the page does the same."><span class="bar-label">Paste scan</span><kbd>&#8984;V</kbd></i>
+					<span class="bar-sep"></span>
+					<i id="edit-signature" data-icon="edit" class="bar-btn disabled" data-tooltip="Edit the selected signature"><span class="bar-label">Edit</span></i>
+					<i id="delete-signature" data-icon="trash" class="bar-btn disabled" data-tooltip="Delete the selected signatures"><span class="bar-label">Delete</span></i>
+					<div class="bar-right">
+						<i id="undo" data-icon="undo" class="bar-btn bar-icon disabled" data-tooltip="Undo (Ctrl-Z)"></i>
+						<i id="redo" data-icon="redo" class="bar-btn bar-icon disabled" data-tooltip="Redo (Ctrl-Y)"></i>
+						<span class="bar-sep"></span>
+						<i id="toggle-automapper" class="bar-btn bar-icon disabled" data-icon="auto" data-tooltip="Auto-mapper"></i>
+						<i class="tutorial bar-btn bar-icon" data-tooltip="Show tutorial for this section">?</i>
 					</div>
 				</div>
 				<div class="content">
@@ -217,10 +218,10 @@ $system = $_REQUEST['system'] ?? '';
 			</li>
 			<li id="notesWidget" class="gridWidget" data-row="1" data-col="15" data-sizex="7" data-sizey="6" data-min-sizex="5" data-min-sizey="2" style="width: 410px; height: 350px;">
 				<div class="controls">
-					<i id="add-comment" data-icon="plus" data-tooltip="Add a new comment"></i>
-					<i id="comment-sort" data-icon="sort" data-tooltip="Sort comments by creation date"></i>
-					<div style="float: right;">
-						<i class="tutorial" data-tooltip="Show tutorial for this section">?</i>
+					<i id="add-comment" data-icon="plus" class="bar-btn bar-primary" data-tooltip="Add a note about this system"><span class="bar-label">Add note</span></i>
+					<div class="bar-right">
+						<i id="comment-sort" data-icon="sort" class="bar-btn bar-icon" data-tooltip="Sort by date"></i>
+						<i class="tutorial bar-btn bar-icon" data-tooltip="Show tutorial for this section">?</i>
 					</div>
 				</div>
 				<div class="content" id="comment-outer-container">
@@ -254,22 +255,22 @@ $system = $_REQUEST['system'] ?? '';
 			<li id="chainWidget" class="gridWidget" data-row="7" data-col="1" data-sizex="21" data-sizey="8" data-min-sizex="5" data-min-sizey="4" style="width: 1250px; height: 470px;">
 				<div class="controls">
 					<span id="chainTabs"></span>
-					<i id="newTab" data-icon="plus" data-tooltip="New tab"></i>
-					<span>|</span>
-					<i id="show-viewing" data-icon="eye" data-tooltip="Add viewing system to chain"></i>
-					<i id="show-favorite" data-icon="star" data-tooltip="Add favorite systems to chain"></i>
-					<i id="show-chainLegend" data-tooltip="<table id='guide'>
+					<i id="newTab" data-icon="plus" class="bar-btn bar-icon" data-tooltip="New tab"></i>
+					<span class="bar-sep"></span>
+					<i id="show-viewing" data-icon="eye" class="bar-btn bar-icon" data-tooltip="Add the system you are viewing to the chain"></i>
+					<i id="show-favorite" data-icon="star" class="bar-btn bar-icon" data-tooltip="Add favourite systems to the chain"></i>
+					<i id="show-chainLegend" class="bar-btn bar-icon" data-tooltip="<table id='guide'>
 						<tr><td><div class='guide stable'></td><td>Stable</td><th>Auras</th></tr>
 						<tr><td><div class='guide eol'></div></td><td>End of Life</td><td><div class='guide aura jm-5kt frig'></div></td><td>Small</td></tr>
 						<tr><td><div class='guide destab'></div></td><td>Mass Destabbed</td><td><div class='guide aura jm-62kt'></div></td><td>Medium</td></tr>
 						<tr><td><div class='guide critical'></div></td><td>Mass Critical</td><td><div class='guide aura jm-375kt'></div></td><td>Large</td></tr>
 						<tr><td><div class='guide frig'></div></td><td>Frigate</td><td><div class='guide aura jm-2000kt'></div></td><td>X-Large</td></tr>
 					</table>">&equiv;</i>
-					<span>|</span>
-					<i id="hot-jump" data-icon="prop-mod" data-tooltip="Jumping hot (prop on)"></i>
-					<i id="higgs-jump" data-icon="anchor" data-tooltip="Higgs Anchor fitted"></i>
-					<div style="float: right;">
-						<button id="chain-zoom-reset" class="hidden">Reset Zoom</button>
+					<span class="bar-sep"></span>
+					<i id="hot-jump" data-icon="prop-mod" class="bar-btn bar-icon bar-toggle" data-tooltip="Jumping hot (prop mod on)"></i>
+					<i id="higgs-jump" data-icon="anchor" class="bar-btn bar-icon bar-toggle" data-tooltip="Higgs anchor fitted"></i>
+					<div class="bar-right">
+						<button id="chain-zoom-reset" class="hidden bar-btn">Reset zoom</button>
 						<!-- <i class="tutorial" data-tooltip="Show tutorial for this section">?</i> -->
 					</div>
 				</div>
@@ -635,223 +636,144 @@ $system = $_REQUEST['system'] ?? '';
 	</div>
 
 	<div id="dialog-options" title="Settings" class="hidden">
-		<div id="optionsAccordion">
-			<h3><a href="#">Account Settings</a></h3>
-			<div>
-				<table class="optionsTable" width="100%" cellpadding="1" cellspacing="0">
-					<tr>
-						<th>Username:</th>
-						<td id="username"></td>
-					</tr>
-					<tr>
-						<th colspan="2">Characters:</th>
-					</tr>
-					<tr>
-						<th colspan="2" id="characters"></th>
-					</tr>
+		<div id="optionsAccordion" class="settings">
+			<nav class="settings-tabs" role="tablist" aria-label="Settings sections">
+				<button type="button" role="tab" data-tab="account" aria-selected="true">Account</button>
+				<button type="button" role="tab" data-tab="map" aria-selected="false">Map</button>
+				<button type="button" role="tab" data-tab="signatures" aria-selected="false">Signatures</button>
+				<button type="button" role="tab" data-tab="display" aria-selected="false">Display</button>
+				<button type="button" role="tab" data-tab="stats" aria-selected="false">Statistics</button>
+			</nav>
 
-				</table>
-				<div style="border-top: 1px solid black; text-align: right; margin: 0 -5px; padding: 5px 5px 0 5px;">
-					<input type="button" id="usernameChange" value="Change Username" />
-					<input type="button" id="pwChange" value="Change Password" />
+			<section class="settings-pane" data-pane="account" role="tabpanel">
+				<div class="field"><span class="field-label">Username</span><span class="field-value" id="username"></span></div>
+				<div class="field field-block"><span class="field-label">Characters</span><div class="field-value" id="characters"></div></div>
+				<div class="field-actions">
+					<input type="button" id="usernameChange" value="Change username" />
+					<input type="button" id="pwChange" value="Change password" />
 				</div>
-			</div>
-			<h3><a href="#">Chain Map Settings</a></h3>
-			<div>
-				<table class="optionsTable" width="100%" cellpadding="1" cellspacing="0">
-					<tr>
-						<th>Chain Renderer:</th>
-						<td>
-							<select id="renderer">
-								<option value="orgChartTop">New Org Chart (System at top)</option>
-								<option value="orgChartSide">New Org Chart (System at left)</option>
-								<option value="radial">Radial (System in middle)</option>
-								<option value="orgChart">Old legacy org chart</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>Show Chain Map Gridlines:</th>
-						<td>
-							<input type="radio" name="gridlines" id="gridlines-yes" value="true" /><label for="gridlines-yes"> Yes</label>
-							<input type="radio" name="gridlines" id="gridlines-no" value="false" /><label for="gridlines-no"> No</label>
-						</td>
-					</tr>
-					<tr>
-						<th>Show Line Aura*:</th>
-						<td>
-							<input type="radio" name="aura" id="aura-yes" value="true" /><label for="aura-yes"> Yes</label>
-							<input type="radio" name="aura" id="aura-no" value="false" /><label for="aura-no"> No</label>
-						</td>
-					</tr>
-					<tr>
-						<th>Line Weight Factor*:</th>
-						<td>
-							<label for="node-spacing-line-weight-slider"></label><div id="node-spacing-line-weight-slider" class="spacing-slider"></div>
-						</td>
-					</tr>
-					<tr>
-						<th>Allow Scroll Without Ctrl Key:</th>
-						<td>
-							<input type="radio" name="scrollWithoutCtrl" id="scrollWithoutCtrl-yes" value="true" /><label for="scrollWithoutCtrl-yes"> Yes</label>
-							<input type="radio" name="scrollWithoutCtrl" id="scrollWithoutCtrl-no" value="false" /><label for="scrollWithoutCtrl-no"> No</label>
-						</td>
-					</tr>
-					<tr>
-						<th>Chain Map Node Reference:</th>
-						<td>
-							<input type="radio" name="node-reference" id="node-reference-type" value="type" /><label for="node-reference-type"> Wormhole Type</label>
-							<input type="radio" name="node-reference" id="node-reference-id" value="id" /><label for="node-reference-id"> Signature ID</label>
-						</td>
-					</tr>
-					<tr>
-						<th>Show sig name on map:</th>
-						<td>
-							<select id="chainSigNameLocation">
-								<option value="name">System name - replace</option>
-								<option value="name_prefix">System name - prefix</option>
-								<option value="ref">Reference - replace</option>
-								<option value="ref_prefix">Reference - prefix</option>
-								<option value="none">Don't put it on the map</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>Node Spacing Factor*:</th>
-						<td>
-							X: <label for="node-spacing-x-slider"></label><div id="node-spacing-x-slider" class="spacing-slider"></div><br/>
-							Y: <label for="node-spacing-y-slider"></label><div id="node-spacing-y-slider" class="spacing-slider"></div>
-						</td>
-					</tr>
-					<tr><td colspan=2 style="font-size: 80%; text-align: left">*: No effect in old org chart renderer</td></tr>
-				</table>
-			</div>
-			<h3><a href="#">General Preferences</a></h3>
-			<div>
-				<table class="optionsTable" width="100%" cellpadding="1" cellspacing="0">
-					<tr>
-						<th>Show Route as Blobs up to:</th>
-						<td>
-							<select id="chainRoutingLimit">
-								<option value="0">Off</option>
-								<option value="5">5 Jumps</option>
-								<option value="10">10 Jumps</option>
-								<option value="15">15 Jumps</option>
-								<option value="20">20 Jumps</option>
-								<option value="1000">Entire Cluster</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>K-space route selection:</th>
-						<td>
-							<select id="chainRouteSecurity" style="width: 30%">
-								<option value="shortest">Shortest</option>
-								<option value="highsec">Prefer HS</option>
-								<option value="avoid-null">Avoid NS</option>
-								<option value="avoid-high">Avoid HS</option>
-							</select> <label><input type="checkbox" name="route-ignore-enabled" id="route-ignore-enabled">Avoiding:</label> <input type="text" style="width: 30%" name="route-ignore" id="route-ignore" />
-						</td>
-					</tr>				
-					<tr>
-						<th>Signature Add Dialog default type:</th>
-						<td>
-							<select id="editType">
-								<option value="unknown">Unknown</option>
-								<option value="combat">Combat</option>
-								<option value="wormhole">Wormhole</option>
-								<option value="ore">Ore</option>
-								<option value="data">Data</option>
-								<option value="gas">Gas</option>
-								<option value="relic">Relic</option>
-							</select>
-						</td>
-					<tr>
-						<th>Signature paste default life:</th>
-						<td>
-							<select id="pasteLife">
-								<option value="24">24 Hours</option>
-								<option value="48">48 Hours</option>
-								<option value="72">72 Hours</option>
-								<option value="168">7 Days</option>
-								<option value="672">28 Days</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th>Signature copy output separator:</th>
-						<td>
-							<input type="text" id="copySeparator" maxlength="20" />
-						</td>
-					</tr>
-					<tr>
-						<th>Background Image:</th>
-						<td>
-							<input type="text" id="background-image" maxlength="200" />
-						</td>
-					</tr>
-					<tr>
-						<th>UI Scale:</th>
-						<td>
-							<label for="uiscale-slider"></label>
-							<div id="uiscale-slider"></div>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<h3><a href="#">Personal Statistics</a></h3>
-			<div>
-				<table class="optionsTable" width="100%" cellpadding="1" cellspacing="0">
-					<tr>
-						<th>Signatures added:</th>
-						<td id="signatures_added"></td>
-					</tr>
-					<tr>
-						<th>Signatures updated:</th>
-						<td id="signatures_updated"></td>
-					</tr>
-					<tr>
-						<th>Signatures deleted:</th>
-						<td id="signatures_deleted"></td>
-					</tr>
-					<tr>
-						<th>Wormholes added:</th>
-						<td id="wormholes_added"></td>
-					</tr>
-					<tr>
-						<th>Wormholes updated:</th>
-						<td id="wormholes_updated"></td>
-					</tr>
-					<tr>
-						<th>Wormholes deleted:</th>
-						<td id="wormholes_deleted"></td>
-					</tr>
-					<tr>
-						<th>Comments added:</th>
-						<td id="comments_added"></td>
-					</tr>
-					<tr>
-						<th>Comments updated:</th>
-						<td id="comments_updated"></td>
-					</tr>
-					<tr>
-						<th>Comments deleted:</th>
-						<td id="comments_deleted"></td>
-					</tr>
-					<tr>
-						<th>Systems visited:</th>
-						<td id="systems_visited"></td>
-					</tr>
-					<tr>
-						<th>Logins:</th>
-						<td id="logins"></td>
-					</tr>
-					<tr>
-						<th>Last login:</th>
-						<td id="lastLogin"></td>
-					</tr>
-				</table>
-			</div>
+			</section>
+
+			<section class="settings-pane" data-pane="map" role="tabpanel" hidden>
+				<div class="field"><label class="field-label" for="renderer">Layout</label>
+					<select id="renderer">
+						<option value="orgChartTop">Tree, current system at top</option>
+						<option value="orgChartSide">Tree, current system at left</option>
+						<option value="radial">Radial, current system in the middle</option>
+						<option value="orgChart">Classic tree</option>
+					</select>
+				</div>
+				<div class="field"><label class="field-label" for="gridlines">Gridlines</label>
+					<label class="switch"><input type="checkbox" id="gridlines" name="gridlines" /><span class="switch-track"></span></label>
+				</div>
+				<div class="field"><label class="field-label" for="aura">Line aura <small>not in Classic</small></label>
+					<label class="switch"><input type="checkbox" id="aura" name="aura" /><span class="switch-track"></span></label>
+				</div>
+				<div class="field"><span class="field-label">Line weight <small>not in Classic</small></span>
+					<span class="slider-wrap"><div id="node-spacing-line-weight-slider" class="spacing-slider"></div><label for="node-spacing-line-weight-slider" class="slider-value"></label></span>
+				</div>
+				<div class="field"><label class="field-label" for="scrollWithoutCtrl">Zoom with plain scroll <small>instead of Ctrl + scroll</small></label>
+					<label class="switch"><input type="checkbox" id="scrollWithoutCtrl" name="scrollWithoutCtrl" /><span class="switch-track"></span></label>
+				</div>
+				<div class="field"><span class="field-label">Label wormholes by</span>
+					<span class="segmented" role="radiogroup">
+						<input type="radio" name="node-reference" id="node-reference-type" value="type" /><label for="node-reference-type">Type</label>
+						<input type="radio" name="node-reference" id="node-reference-id" value="id" /><label for="node-reference-id">Signature</label>
+					</span>
+				</div>
+				<div class="field"><label class="field-label" for="chainSigNameLocation">Signature name on map</label>
+					<select id="chainSigNameLocation">
+						<option value="name">Instead of the system name</option>
+						<option value="name_prefix">Before the system name</option>
+						<option value="ref">Instead of the reference</option>
+						<option value="ref_prefix">Before the reference</option>
+						<option value="none">Not shown</option>
+					</select>
+				</div>
+				<div class="field"><span class="field-label">Node spacing <small>not in Classic</small></span>
+					<span class="slider-wrap slider-pair">
+						<span>X <div id="node-spacing-x-slider" class="spacing-slider"></div><label for="node-spacing-x-slider" class="slider-value"></label></span>
+						<span>Y <div id="node-spacing-y-slider" class="spacing-slider"></div><label for="node-spacing-y-slider" class="slider-value"></label></span>
+					</span>
+				</div>
+				<h4 class="field-group">Routes</h4>
+				<div class="field"><label class="field-label" for="chainRoutingLimit">Show route squares up to</label>
+					<select id="chainRoutingLimit">
+						<option value="0">Off</option>
+						<option value="5">5 jumps</option>
+						<option value="10">10 jumps</option>
+						<option value="15">15 jumps</option>
+						<option value="20">20 jumps</option>
+						<option value="1000">Any distance</option>
+					</select>
+				</div>
+				<div class="field"><label class="field-label" for="chainRouteSecurity">K-space routing</label>
+					<select id="chainRouteSecurity">
+						<option value="shortest">Shortest</option>
+						<option value="highsec">Prefer high-sec</option>
+						<option value="avoid-null">Avoid null-sec</option>
+						<option value="avoid-high">Avoid high-sec</option>
+					</select>
+				</div>
+				<div class="field"><label class="field-label" for="route-ignore">Avoid systems</label>
+					<span class="field-inline">
+						<label class="switch"><input type="checkbox" name="route-ignore-enabled" id="route-ignore-enabled" /><span class="switch-track"></span></label>
+						<input type="text" name="route-ignore" id="route-ignore" placeholder="Jita, Amarr" />
+					</span>
+				</div>
+			</section>
+
+			<section class="settings-pane" data-pane="signatures" role="tabpanel" hidden>
+				<div class="field"><label class="field-label" for="editType">Default type when adding</label>
+					<select id="editType">
+						<option value="unknown">Unknown</option>
+						<option value="combat">Combat</option>
+						<option value="wormhole">Wormhole</option>
+						<option value="ore">Ore</option>
+						<option value="data">Data</option>
+						<option value="gas">Gas</option>
+						<option value="relic">Relic</option>
+					</select>
+				</div>
+				<div class="field"><label class="field-label" for="pasteLife">Lifetime for pasted signatures</label>
+					<select id="pasteLife">
+						<option value="24">24 hours</option>
+						<option value="48">48 hours</option>
+						<option value="72">72 hours</option>
+						<option value="168">7 days</option>
+						<option value="672">28 days</option>
+					</select>
+				</div>
+				<div class="field"><label class="field-label" for="copySeparator">Separator when copying</label>
+					<input type="text" id="copySeparator" maxlength="20" />
+				</div>
+			</section>
+
+			<section class="settings-pane" data-pane="display" role="tabpanel" hidden>
+				<div class="field"><label class="field-label" for="background-image">Background image <small>URL</small></label>
+					<input type="text" id="background-image" maxlength="200" />
+				</div>
+				<div class="field"><span class="field-label">Interface scale</span>
+					<span class="slider-wrap"><div id="uiscale-slider"></div><label for="uiscale-slider" class="slider-value"></label></span>
+				</div>
+			</section>
+
+			<section class="settings-pane" data-pane="stats" role="tabpanel" hidden>
+				<dl class="stats">
+					<dt>Signatures added</dt><dd id="signatures_added"></dd>
+					<dt>Signatures updated</dt><dd id="signatures_updated"></dd>
+					<dt>Signatures deleted</dt><dd id="signatures_deleted"></dd>
+					<dt>Wormholes added</dt><dd id="wormholes_added"></dd>
+					<dt>Wormholes updated</dt><dd id="wormholes_updated"></dd>
+					<dt>Wormholes deleted</dt><dd id="wormholes_deleted"></dd>
+					<dt>Notes added</dt><dd id="comments_added"></dd>
+					<dt>Notes updated</dt><dd id="comments_updated"></dd>
+					<dt>Notes deleted</dt><dd id="comments_deleted"></dd>
+					<dt>Systems visited</dt><dd id="systems_visited"></dd>
+					<dt>Logins</dt><dd id="logins"></dd>
+					<dt>Last login</dt><dd id="lastLogin"></dd>
+				</dl>
+			</section>
 		</div>
 	</div>
 

@@ -1,0 +1,113 @@
+/* ============================================================================
+   PANEL BARS WITH WORDS ON THEM
+
+   Twenty-five unlabelled icons across four bars, sixty-eight hover tooltips
+   to explain them. Hover does not exist on a tablet, which is the device
+   this branch was meant to make editing work on.
+
+   Primary actions get a word. Secondary actions stay as icons but sit in a
+   right-hand group with a real gap, and state toggles (hot, higgs) show
+   their state. The elements are the same <i> tags the JavaScript has always
+   bound to; only a class and a label span were added, so nothing rebinds.
+   ========================================================================= */
+
+.gridWidget > .controls { gap: var(--space-1); }
+
+.controls .bar-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: var(--control-dense);
+	padding: 0 10px;
+	margin: 0;
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	font-style: normal;
+	font-size: var(--fs-sm);
+	font-weight: 500;
+	line-height: 1;
+	color: var(--foreground);
+	cursor: pointer;
+	white-space: nowrap;
+	transition: background-color .12s ease, border-color .12s ease;
+}
+.controls .bar-btn::before { font-size: var(--icon); }
+.controls .bar-btn:hover { background: var(--muted); border-color: var(--border); color: var(--foreground); }
+.controls .bar-btn.bar-icon { padding: 0 6px; }
+.controls .bar-btn.bar-icon:not([data-icon]) { font-weight: 600; }
+
+.controls .bar-btn.bar-primary { background: var(--primary); color: var(--primary-foreground); }
+.controls .bar-btn.bar-primary:hover {
+	background: color-mix(in oklab, var(--primary) 88%, white);
+	border-color: transparent;
+	color: var(--primary-foreground);
+}
+
+.controls .bar-btn.disabled { opacity: .4; pointer-events: none; }
+
+/* A toggle that is on says so with the accent, not by hover. */
+.controls .bar-btn.bar-toggle.active,
+.controls .bar-btn.bar-toggle.on,
+.controls .bar-btn.bar-toggle[data-active="true"] { color: var(--primary); background: color-mix(in oklab, var(--primary) 14%, transparent); }
+
+.controls .bar-btn kbd {
+	font-family: inherit;
+	font-size: var(--fs-xs);
+	color: var(--muted-foreground);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	padding: 1px 4px;
+	line-height: 1;
+}
+
+.controls .bar-sep { width: 1px; height: 16px; background: var(--border); margin: 0 var(--space-1); }
+
+.gridWidget > .controls > .bar-right {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+	float: none;
+}
+/* The hide control sits after the right group. */
+.gridWidget > .controls > .bar-right ~ .panel-hide { margin-left: 0; }
+
+/* The signature count belongs with the title, as a chip. */
+.controls .bar-count {
+	display: inline-flex;
+	align-items: center;
+	height: 18px;
+	padding: 0 7px;
+	margin-right: var(--space-2);
+	border-radius: 999px;
+	background: var(--muted);
+	color: var(--muted-foreground);
+	font-style: normal;
+	font-size: var(--fs-xs);
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	cursor: default;
+}
+
+/* Labels give way before icons do. */
+@media (max-width: 1439px) {
+	#signaturesWidget .bar-btn:not(.bar-primary) .bar-label,
+	#infoWidget .bar-btn .bar-label { display: none; }
+	#signaturesWidget .bar-btn:not(.bar-primary):not(.bar-icon) { padding: 0 6px; }
+}
+
+/* The bar inherits the panel title's uppercase and letter-spacing; a button
+   label is a word, not a heading. And a bar button is its own width -- the
+   notes bar was stretching "Add note" across the whole panel because the
+   bar's children default to flex: 1 there. */
+.controls .bar-btn { text-transform: none; letter-spacing: 0; flex: 0 0 auto; }
+.controls .bar-btn kbd { border-radius: var(--radius-sm); }
+#chainMap div.node > .statics span,
+#chainMap div.node > .statics span:nth-child(2) { border-radius: var(--radius-sm); }
+/* The label span inherits the bar's uppercase from a more specific rule than
+   .bar-btn can beat; set it on the span itself. */
+.gridWidget > .controls .bar-btn > .bar-label { text-transform: none; letter-spacing: 0; font-size: var(--fs-sm); }
+/* The label takes the button's colour, whatever rule the bar had for spans. */
+.gridWidget > .controls .bar-btn > .bar-label { color: inherit; -webkit-text-fill-color: currentColor; }
+/* .bar-btn's display was beating .hidden's; a hidden button is hidden. */
+.controls .bar-btn.hidden { display: none !important; }
