@@ -1,0 +1,68 @@
+/* ============================================================================
+   READ BAND CHROME (phones, landscape phones)
+
+   The layout bands in _override-5 put the panels back in flow; this file is
+   the chrome that goes with it. Sorted after every other override so the
+   phone wins its own argument -- the header and control-bar rules in
+   _override-a/b/c were written for desktop widths and used to apply here too.
+
+   Measured before writing: header 125px tall for one row of controls; chain
+   panel bar 460px wide in a 375px viewport, with close/edit tab icons and the
+   panel-hide control off the right edge.
+   ========================================================================= */
+
+@media (max-width: 767px), (max-height: 599px) {
+	/* One row: avatar, name, corp, settings. The wordmark is redundant next to
+	   the wing mark on a screen this size, and the search field lives in the
+	   palette. */
+	#topbar {
+		min-height: 0;
+		height: auto;
+		padding: 8px 12px;
+		gap: 8px;
+	}
+	#topbar > .align-left { display: none; }
+	#topbar > .align-right {
+		flex: 1 1 auto;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+	#topbar #user-avatar.avatar { width: 28px; height: 28px; }
+	#topbar h3 { margin: 0; font-size: 13px; }
+
+	.gridster { padding: 12px; }
+
+	/* Control bars wrap rather than overflow, and the map's editing chrome is
+	   desktop and tablet work -- a phone reads the chain. */
+	.gridWidget > .controls { flex-wrap: wrap; row-gap: 4px; }
+	#chainWidget > .controls > div[style*="float"] > i:not(.panel-hide),
+	#chainWidget > .controls > .control,
+	#chainWidget > .controls #newTab,
+	.chainTab .closeTab,
+	.chainTab .editTab,
+	#chainTabs .closeTab,
+	#chainTabs .editTab { display: none !important; }
+	#chainTabs { flex: 1 1 100%; min-width: 0; order: 2; }
+
+	/* Google Charts paginates the legend at this width ("1/2"). Two rows of
+	   legend beats a pager nobody expected. */
+	#activityGraph svg > g:first-of-type { }
+}
+
+/* Phone bars: the right-hand group takes its own row rather than being pushed
+   past the edge, and the paste control is desktop/tablet work like the rest
+   of the editing chrome. */
+@media (max-width: 767px), (max-height: 599px) {
+	.gridWidget > .controls > .bar-right { flex: 1 1 100%; margin-left: 0; justify-content: flex-end; }
+	#signaturesWidget #paste-signatures,
+	#signaturesWidget .bar-sep { display: none !important; }
+}
+@media (max-width: 767px), (max-height: 599px) {
+	/* Every control in this group is editing chrome that the READ band hides
+	   individually; the empty group was still taking a row of its own. */
+	#signaturesWidget > .controls > .bar-right,
+	#notesWidget > .controls > .bar-right { display: none; }
+}

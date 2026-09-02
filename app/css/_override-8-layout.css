@@ -12,46 +12,54 @@
    to work around a layout that never fit in the first place.
    ========================================================================= */
 
-html, body { height: 100%; overflow: hidden; }
+/* Desktop only. Below 1280px the READ and EDIT bands in
+   _override-5-responsive.css own the layout: panels return to document flow
+   and the page scrolls. These rules used to apply at every width, which put
+   three columns on a 375px phone with two of them off the right edge -- the
+   responsive file sorts earlier and could not win. The guard is what the
+   earlier file was always assuming. */
+@media (min-width: 1280px) {
+	html, body { height: 100%; overflow: hidden; }
 
-#wrapper {
-	height: 100vh;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-}
+	#wrapper {
+		height: 100vh;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
 
-#inner-wrapper {
-	flex: 1 1 auto;
-	min-height: 0;
-	display: flex;
-	flex-direction: column;
-}
+	#inner-wrapper {
+		flex: 1 1 auto;
+		min-height: 0;
+		display: flex;
+		flex-direction: column;
+	}
 
-#topbar { flex: 0 0 auto; position: static; }
+	#topbar { flex: 0 0 auto; position: static; }
 
-.gridster {
-	flex: 1 1 auto;
-	min-height: 0;
-	visibility: visible !important;
-	padding: var(--space-2);
-	box-sizing: border-box;
-}
+	.gridster {
+		flex: 1 1 auto;
+		min-height: 0;
+		visibility: visible !important;
+		padding: var(--space-2);
+		box-sizing: border-box;
+	}
 
-.gridster > ul {
-	position: static !important;
-	width: auto !important;
-	height: 100% !important;
-	margin: 0 !important;
-	padding: 0;
-	list-style: none;
+	.gridster > ul {
+		position: static !important;
+		width: auto !important;
+		height: 100% !important;
+		margin: 0 !important;
+		padding: 0;
+		list-style: none;
 
-	display: grid;
-	gap: var(--space-2);
-	/* Weighted by how much each panel earns: signatures widest, notes least. */
-	grid-template-columns: minmax(260px, 1fr) minmax(340px, 1.35fr) minmax(220px, 0.85fr);
-	/* The chain is the reason the tool exists, so it takes what is left. */
-	grid-template-rows: minmax(180px, 32vh) 1fr;
+		display: grid;
+		gap: var(--space-2);
+		/* Weighted by how much each panel earns: signatures widest, notes least. */
+		grid-template-columns: minmax(260px, 1fr) minmax(340px, 1.35fr) minmax(220px, 0.85fr);
+		/* The chain is the reason the tool exists, so it takes what is left. */
+		grid-template-rows: minmax(180px, 32vh) 1fr;
+	}
 }
 
 .gridWidget {
@@ -197,8 +205,10 @@ html, body { height: 100%; overflow: hidden; }
    grows and the chain takes what is left rather than the reverse.
    ========================================================================= */
 
-.gridster > ul {
-	grid-template-rows: minmax(240px, 46vh) 1fr;
+@media (min-width: 1280px) {
+	.gridster > ul {
+		grid-template-rows: minmax(240px, 46vh) 1fr;
+	}
 }
 
 /* ============================================================================
