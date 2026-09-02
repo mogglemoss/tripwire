@@ -53,7 +53,7 @@ var cssFiles = [
               // are no-ops. (_override-* sorts before signatures.css otherwise,
               // which silently lost every tie.)
               '!app/css/_override-*.css', '!app/css/_theme-*.css',
-              'app/css/_override-*.css', 'app/css/_theme-corp.css', 'app/css/_theme-observance.css'],
+              'app/css/_override-*.css', 'app/css/_theme-corp.css', 'app/css/_theme-ministry.css'],
         output: 'public/css'
     }
 ];

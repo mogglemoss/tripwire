@@ -1,0 +1,175 @@
+/* ============================================================================
+   THE PALETTE  (default)
+
+   The Ministry palette from PANTOSCOPE (retrospex/src/app/globals.css),
+   adopted as Tripwire's default after a side-by-side on the preview. A warm
+   charcoal scale that was chosen rather than inherited; two surfaces and one
+   rule colour; bone text with dim as the subordinate weight (4.5:1 on both
+   surfaces); blood for danger; sage / rust-bright / blood / void for hisec /
+   lowsec / nullsec / J-space -- the EVE convention in a muted register, so
+   the map's security colours are information rather than the loudest thing
+   on the screen.
+
+   What stays constant: the wing, the Montserrat wordmark, and orange as the one
+   accent -- the primary action, the ring, links. This is the Ministry's
+   discipline under the corp's flag, not the Ministry's brand on the corp's
+   tool. Security chips stay filled with white text, per the author.
+
+   Type: Geist for text, Geist Mono for labels, ids and stats. The label is
+   the signature -- 10px, uppercase, wide-tracked, dim -- and it is applied
+   to every panel title, table header and footer label uniformly.
+
+   Light theme is the Ministry's print palette: paper, not white.
+   ========================================================================= */
+
+:root {
+	--background:         #12100e;
+	--foreground:         #e8e2d9;
+	--card:               #1a1714;
+	--card-foreground:    #e8e2d9;
+	--popover:            #211d19;
+	--popover-foreground: #e8e2d9;
+	--muted:              #211d19;
+	--muted-foreground:   #8a8074;
+	--accent-surface:     #211d19;
+	--border:             #3a3530;
+	--border-strong:      #4f4842;
+	--input:              #2a2521;
+
+	/* The WDS accent. */
+	--primary:            var(--accent, #f07c00);
+	--primary-foreground: #12100e;
+	--ring:               var(--accent, #f07c00);
+	--destructive:        #c04543;
+
+	--data-good:          #7d9b76;   /* hisec, stable */
+	--data-warn:          #e07b52;   /* lowsec, destab */
+	--data-critical:      #c04543;   /* nullsec, critical, EOL */
+	--data-info:          #8b7aa8;   /* J-space, jumps */
+
+	--node-surface:       #211d19;
+	--node-edge:          #4f4842;
+
+	--chart-gridline:     rgba(232, 226, 217, .06);
+	--chart-axis-text:    #a89e90;
+
+	--font-ui:      'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+	--font-display: 'Montserrat', 'Geist', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		--background:         #f4f1ec;
+		--foreground:         #171310;
+		--card:               #ffffff;
+		--card-foreground:    #171310;
+		--popover:            #ffffff;
+		--popover-foreground: #171310;
+		--muted:              #e8e3db;
+		--muted-foreground:   #6f675c;
+		--accent-surface:     #e8e3db;
+		--border:             #cfc7bb;
+		--border-strong:      #b5aca0;
+		--input:              #e8e3db;
+		--primary-foreground: #ffffff;
+		--destructive:        #9c2f2d;
+		--data-good:          #4c6a45;
+		--data-warn:          #a44a2b;
+		--data-critical:      #9c2f2d;
+		--data-info:          #5d4f78;
+		--node-surface:       #ffffff;
+		--node-edge:          #b5aca0;
+		--chart-gridline:     rgba(23, 19, 16, .08);
+		--chart-axis-text:    #4a443c;
+	}
+}
+:root[data-theme="light"] {
+	--background:         #f4f1ec;
+	--foreground:         #171310;
+	--card:               #ffffff;
+	--card-foreground:    #171310;
+	--popover:            #ffffff;
+	--popover-foreground: #171310;
+	--muted:              #e8e3db;
+	--muted-foreground:   #6f675c;
+	--accent-surface:     #e8e3db;
+	--border:             #cfc7bb;
+	--border-strong:      #b5aca0;
+	--input:              #e8e3db;
+	--primary-foreground: #ffffff;
+	--destructive:        #9c2f2d;
+	--data-good:          #4c6a45;
+	--data-warn:          #a44a2b;
+	--data-critical:      #9c2f2d;
+	--data-info:          #5d4f78;
+	--node-surface:       #ffffff;
+	--node-edge:          #b5aca0;
+	--chart-gridline:     rgba(23, 19, 16, .08);
+	--chart-axis-text:    #4a443c;
+}
+
+/* Flat ink. The ship stays on the landing page, where it is a brand
+   moment; behind three columns of data it was competition. */
+#wrapper::before { background: var(--background); }
+body { background-image: none; }
+
+/* The label: mono, small, uppercase, tracked, dim. Everywhere it means
+   "this is a label", so it reads as one system. */
+.panel-title,
+.ui-dialog .ui-dialog-title,
+#sigTable th,
+.gate-list-label,
+.field-group,
+.settings-tabs [role="tab"],
+#statusbar .bar-label,
+.sys-links a,
+#activityGraphControls > a,
+#cmd-palette .cmd-group,
+.sig-stats {
+	font-family: var(--font-mono);
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+.sys-links a:hover,
+#activityGraphControls > a:hover,
+.settings-tabs [role="tab"]:hover { color: var(--foreground); }
+.settings-tabs [role="tab"][aria-selected="true"] { color: var(--foreground); }
+
+/* Ids, times and counts in the mono. */
+#sigTable td:nth-child(1),
+#sigTable td:nth-child(3),
+#statusbar .bar-value,
+#signature-count,
+.node .nodeType,
+kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Surfaces: one small radius, a thin rule, and a deep shadow only where
+   something floats. */
+.gridWidget { border-radius: 4px; }
+.ui-dialog, #cmd-palette, #inline-edit, #panel-menu {
+	border-radius: 4px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, .5);
+}
+#chainMap div.node, #chainMap div.loop { border-radius: 4px; }
+
+/* Neutral chips flat on panel-2 with a rule; security and state chips keep
+   their fill and white text. */
+.sig-chip, h4.chip, .chip, .gate-chip {
+	background: var(--popover);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+}
+.sig-chip.on { background: var(--muted); border-color: var(--border-strong); color: var(--foreground); }
+
+/* Primary action: orange fill, ink text; brighter on approach. */
+.controls .bar-btn.bar-primary:hover,
+.ui-dialog-buttonpane button.is-primary:hover {
+	background: color-mix(in oklab, var(--primary) 85%, white);
+	border-color: color-mix(in oklab, var(--primary) 85%, white);
+}
+
+::selection { background: var(--primary); color: var(--background); }

@@ -39,7 +39,7 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 	<meta name="description" content="Tripwire is an open source wormhole mapping tool for EVE Online." />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/landing/wds.css" />
 	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />

@@ -2,12 +2,12 @@
    Static file: the landing page does not go through the gulp bundle. */
 
 :root {
-	--bg: #0d0d0e;
-	--card: #16171a;
-	--fg: #e6e4df;
-	--muted: #8d9199;
-	--border: rgba(255,255,255,.10);
-	--border-strong: rgba(255,255,255,.2);
+	--bg: #12100e;
+	--card: #1a1714;
+	--fg: #e8e2d9;
+	--muted: #8a8074;
+	--border: #3a3530;
+	--border-strong: #4f4842;
 	--orange: #f07c00;
 	--orange-ink: #1b1207;
 	--critical: #e5484d;
@@ -20,7 +20,7 @@ html, body { margin: 0; min-height: 100%; }
 body {
 	background: var(--bg);
 	color: var(--fg);
-	font-family: Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+	font-family: Geist, Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
 	font-size: 15px;
 	line-height: 1.55;
 	-webkit-font-smoothing: antialiased;
@@ -35,7 +35,7 @@ body::before {
 body::after {
 	content: "";
 	position: fixed; inset: 0; z-index: 0;
-	background: linear-gradient(to bottom, rgba(13,13,14,.2), rgba(13,13,14,.9) 70%, #0d0d0e);
+	background: linear-gradient(to bottom, rgba(18,16,14,.2), rgba(18,16,14,.9) 70%, #12100e);
 	pointer-events: none;
 }
 a { color: var(--orange); text-decoration: none; }
@@ -71,7 +71,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 900px) { .hero { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
 
 .intro .wing-lg { width: 64px; height: 64px; background: url(../../images/brand/mark.png) center / contain no-repeat; margin-bottom: 20px; }
-.intro h1 { font-size: 44px; line-height: 1.05; letter-spacing: -.01em; margin: 0 0 10px; font-weight: 700; }
+.intro h1 { font-family: Montserrat, Geist, sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: -.01em; margin: 0 0 10px; font-weight: 700; }
 .intro h1 small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
 .intro p { margin: 0 0 14px; color: var(--muted); max-width: 46ch; }
 .intro .version { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
