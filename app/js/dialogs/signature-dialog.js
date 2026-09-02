@@ -321,15 +321,10 @@ sigDialog.openSignatureDialog = function(e) {
 								}
 							}
 
-							payload = {"signatures": {"update": [{"wormhole": wormhole, "signatures": [signature, signature2]}]}};
-
-							if (tripwire.client.wormholes[wormhole.id]) {
-									//used to be a wormhole
-									undo.push({"wormhole": tripwire.client.wormholes[wormhole.id], "signatures": [tripwire.client.signatures[signature.id], tripwire.client.signatures[signature2.id]]});
-							} else {
-									// used to be just a regular signature
-									undo.push(tripwire.client.signatures[signature.id]);
-							}
+							// Shape and undo entry come from the shared module, so the
+							// inline editor and this dialog cannot drift apart.
+							payload = tripwire.signaturePayload.wormholeUpdatePayload(wormhole, signature, signature2);
+							undo.push(tripwire.signaturePayload.undoEntryFor(signature.id));
 						} else {
 							payload = {"signatures": {"add": [{"wormhole": wormhole, "signatures": [signature, signature2]}]}};
 						}
@@ -343,17 +338,8 @@ sigDialog.openSignatureDialog = function(e) {
 								"name": form.signatureName,
 								"lifeLength": form.signatureLength
 							};
-							payload = {"signatures": {"update": [signature]}};
-
-							if (tripwire.client.signatures[signature.id].type == "wormhole") {
-								//used to be a wormhole
-								var wormhole = $.map(tripwire.client.wormholes, function(wormhole) { if (wormhole.initialID == signature.id || wormhole.secondaryID == signature.id) return wormhole; })[0];
-								var signature2 = signature.id == wormhole.initialID ? tripwire.client.signatures[wormhole.secondaryID] : tripwire.client.signatures[wormhole.initialID];
-								undo.push({"wormhole": tripwire.client.wormholes[wormhole.id], "signatures": [tripwire.client.signatures[signature.id], tripwire.client.signatures[signature2.id]]});
-							} else {
-								// used to be just a regular signature
-								undo.push(tripwire.client.signatures[signature.id]);
-							}
+							payload = tripwire.signaturePayload.signatureUpdatePayload(signature);
+							undo.push(tripwire.signaturePayload.undoEntryFor(signature.id));
 						} else {
 							var signature = {
 								"signatureID": form.signatureID_Alpha + form.signatureID_Numeric,
