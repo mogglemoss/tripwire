@@ -140,7 +140,7 @@ var activity = new function() {
 			// tokens rather than borrowing two that pull the wrong way.
 			text:   t("--chart-axis-text") || t("--muted-foreground") || "#999",
 			line:   t("--chart-gridline")  || t("--border")           || "#454545",
-			axisLine: t("--border")        || "#454545",
+			axisLine: t("--border-strong") || t("--border") || "#454545",
 			jumps:  t("--data-info")        || "#47a2fe",
 			pod:    t("--data-critical")    || "#ff4747",
 			ship:   t("--data-warn")        || "#f5b544",
@@ -160,9 +160,19 @@ var activity = new function() {
 			// Semantic rather than decorative -- kills are danger colours, jumps
 			// are neutral traffic.
 			colors: [c.jumps, c.pod, c.ship, c.npc],
-			areaOpacity: 0.18,
-			lineWidth: 2,
+			// Four equal area fills in a muted palette lost distinction from
+			// each other. Jumps is the traffic reading and gets the one real
+			// fill; the three kill series are thinner strokes with a whisper
+			// of area so they still read as bands where they overlap.
+			areaOpacity: 0.10,
+			lineWidth: 1.25,
 			pointSize: 0,
+			series: {
+				0: {lineWidth: 2, areaOpacity: 0.22},
+				1: {lineWidth: 1.25, areaOpacity: 0.08},
+				2: {lineWidth: 1.25, areaOpacity: 0.08},
+				3: {lineWidth: 1.25, areaOpacity: 0.08}
+			},
 			// A sparse window (a preview, or a gap in the cron) must read as
 			// isolated readings rather than a line drawn through nothing.
 			interpolateNulls: false,

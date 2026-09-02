@@ -173,3 +173,41 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 }
 
 ::selection { background: var(--primary); color: var(--background); }
+
+/* ── Second look ─────────────────────────────────────────────────────────
+   Bar hierarchy: title · primary · everything else. The right-hand group
+   sits at the label weight at rest and comes up on approach, so eleven
+   controls on a strip read as three things. */
+.gridWidget > .controls > .bar-right .bar-btn,
+.gridWidget > .controls > .bar-right .panel-hide,
+.gridWidget > .controls > .panel-hide,
+#chainWidget > .controls > .bar-btn.bar-icon { color: var(--muted-foreground); }
+.gridWidget > .controls > .bar-right .bar-btn:hover,
+.gridWidget > .controls > .panel-hide:hover,
+#chainWidget > .controls > .bar-btn.bar-icon:hover { color: var(--foreground); }
+.gridWidget > .controls > .bar-right .bar-btn.bar-toggle.active { color: var(--primary); }
+
+/* Range chips had become tiny bordered boxes next to the borderless legend:
+   two idioms in one row. They are quiet mono text like the links beneath. */
+#activityGraphControls > a {
+	border: 0;
+	background: transparent;
+	padding: 0 2px;
+	height: auto;
+	color: var(--muted-foreground);
+}
+#activityGraphControls > a.active,
+#activityGraphControls > a[aria-current] { color: var(--primary); }
+#activityGraphControls { gap: var(--space-2) var(--space-3); }
+#activityLegend .legend-chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground); }
+#activityLegend .legend-chip:hover { color: var(--foreground); }
+#activityLegend .legend-chip.off { opacity: .5; }
+
+/* The graph sits in the panel like a card of its own. */
+#activityGraph { margin: var(--space-2) 0 0; }
+
+/* Sliders: the last control not in the palette. */
+.slider-wrap .ui-slider { background: var(--input); height: 3px; }
+.slider-wrap .ui-slider .ui-slider-handle { background: var(--primary); width: 14px; height: 14px; top: -6px; margin-left: -7px; border: 2px solid var(--popover); box-sizing: border-box; }
+.slider-value { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); }
+.slider-pair > span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
