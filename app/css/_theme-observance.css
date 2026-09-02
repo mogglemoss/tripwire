@@ -1,0 +1,124 @@
+/* ============================================================================
+   MINISTRY THEME  (html[data-brand="observance"])
+
+   The PANTOSCOPE palette and type roles, mapped onto Tripwire's role tokens
+   so the two can be compared live on the preview. Nothing here is a new
+   component; every value lands on a token the components already read.
+
+   Palette from retrospex/src/app/globals.css: warm charcoal ink, panel and
+   panel-2 as the two surfaces, one rule colour, bone text, dim for the
+   subordinate weight (4.5:1 on both surfaces), rust as the single accent,
+   blood for danger, sage / rust-bright / blood / void for hisec / lowsec /
+   nullsec / J-space.
+
+   Type from retrospex/src/app/layout.tsx: Geist for text, Geist Mono for
+   labels, stats and anything tracked-uppercase. The Ministry's signature is
+   the 10-11px mono uppercase label at wide tracking, in dim.
+
+   Activate with ?brand=observance (persists in localStorage); ?brand=corp
+   returns to the corp theme.
+   ========================================================================= */
+
+html[data-brand="observance"] {
+	--background:         #12100e;
+	--foreground:         #e8e2d9;
+	--card:               #1a1714;
+	--card-foreground:    #e8e2d9;
+	--popover:            #211d19;
+	--popover-foreground: #e8e2d9;
+	--muted:              #211d19;
+	--muted-foreground:   #8a8074;
+	--accent-surface:     #211d19;
+	--border:             #3a3530;
+	--border-strong:      #4f4842;
+	--input:              #2a2521;
+	--ring:               #e07b52;
+
+	--primary:            #c15f3c;
+	--primary-foreground: #12100e;
+	--destructive:        #c04543;
+
+	/* Data semantics: the EVE conventions, in the Ministry's muted register. */
+	--data-good:          #7d9b76;   /* hisec, stable */
+	--data-warn:          #e07b52;   /* lowsec, destab, EOL warning */
+	--data-critical:      #c04543;   /* nullsec, critical */
+	--data-info:          #8b7aa8;   /* J-space, jumps */
+
+	--node-surface:       #211d19;
+	--node-edge:          #4f4842;
+
+	--font-ui:      'Geist', 'IBM Plex Sans', system-ui, sans-serif;
+	--font-mono:    'Geist Mono', 'IBM Plex Mono', ui-monospace, monospace;
+	--font-display: 'Geist Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+	--chart-gridline:  rgba(232, 226, 217, .06);
+	--chart-axis-text: #a89e90;
+}
+
+/* The wing mark stays; the background image goes -- the Ministry works on
+   flat ink, and the ship behind the panels is a WDS decision. */
+html[data-brand="observance"] #wrapper::before { background: var(--background); }
+html[data-brand="observance"] body { background-image: none; }
+
+/* Labels: the Ministry's signature. Mono, small, uppercase, tracked, dim. */
+html[data-brand="observance"] .panel-title,
+html[data-brand="observance"] .ui-dialog .ui-dialog-title,
+html[data-brand="observance"] #sigTable th,
+html[data-brand="observance"] .gate-list-label,
+html[data-brand="observance"] .field-group,
+html[data-brand="observance"] .settings-tabs [role="tab"],
+html[data-brand="observance"] #statusbar .bar-label,
+html[data-brand="observance"] .finding dt,
+html[data-brand="observance"] .sys-links a,
+html[data-brand="observance"] #activityGraphControls > a {
+	font-family: var(--font-mono);
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+html[data-brand="observance"] .sys-links a:hover,
+html[data-brand="observance"] #activityGraphControls > a:hover { color: var(--ring); }
+
+/* Wordmark in the header: tracked mono rust, as the letterhead. */
+html[data-brand="observance"] #topbar #logo a {
+	font-family: var(--font-mono);
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--primary);
+}
+
+/* Surfaces: one radius, thin rule, no glow. */
+html[data-brand="observance"] .gridWidget,
+html[data-brand="observance"] .ui-dialog,
+html[data-brand="observance"] #cmd-palette,
+html[data-brand="observance"] #inline-edit,
+html[data-brand="observance"] #panel-menu {
+	border-radius: 4px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, .5);
+}
+html[data-brand="observance"] #chainMap div.node { border-radius: 4px; }
+
+/* Primary control: rust fill, ink text; hover to rust-bright. */
+html[data-brand="observance"] .controls .bar-btn.bar-primary:hover,
+html[data-brand="observance"] .ui-dialog-buttonpane button.is-primary:hover {
+	background: #e07b52;
+	border-color: #e07b52;
+}
+
+/* Selection colour, as on the site. */
+html[data-brand="observance"] ::selection { background: var(--primary); color: var(--background); }
+
+/* Chips take the flat register: panel-2 ground, rule border, no fills except
+   security and state, which keep their colour as text on a tinted ground. */
+html[data-brand="observance"] .sig-chip,
+html[data-brand="observance"] .gate-chip,
+html[data-brand="observance"] h4.chip,
+html[data-brand="observance"] .chip {
+	background: var(--popover);
+	border: 1px solid var(--border);
+	border-radius: 3px;
+}
