@@ -42,7 +42,11 @@ $("body").on("click", ".commentSave, .commentCancel", function(e) {
 			dataType: "JSON"
 		}).done(function(data) {
 			if (data && data.result == true) {
-				$comment.find(".commentModified").text("Edited by " + data.comment.modifiedByName + " at " + data.comment.modifiedDate);
+				// "Edited by X at T" and "Posted by X at T" were both shown even when
+				// they were the same event. The edit line only earns its place when
+				// it says something the post line does not.
+				var same = data.comment.modifiedDate === data.comment.createdDate && data.comment.modifiedByName === data.comment.createdByName;
+				$comment.find(".commentModified").text("Edited by " + data.comment.modifiedByName + " at " + data.comment.modifiedDate).toggleClass("is-same", same);
 				$comment.find(".commentCreated").text("Posted by " + data.comment.createdByName + " at " + data.comment.createdDate);
 				Tooltips.attach($comment.find("[data-tooltip]"));
 
