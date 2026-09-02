@@ -109,7 +109,7 @@
    An empty box is indistinguishable from a broken one. Both of these are
    normal states -- a system nobody has annotated, a system whose hourly
    activity has not accumulated yet -- and should say so. */
-#comment-container:empty::before,
+#comment-container:not(:has(.comment:not(.hidden)))::before,
 #activityGraph.is-empty::before {
 	content: attr(data-empty);
 	display: block;
@@ -119,7 +119,9 @@
 	font-size: 12px;
 	line-height: 1.5;
 }
-#comment-container:empty::before { content: "No notes on this system yet."; }
+/* :empty could never match -- the container always holds the hidden template
+   row -- so the empty state never showed. :has() asks the real question. */
+#comment-container:not(:has(.comment:not(.hidden)))::before { content: "No notes on this system yet."; }
 #activityGraph.is-empty { height: auto; min-height: 0; }
 
 /* ── 7. GATE CHIPS ───────────────────────────────────────────────────────

@@ -64,11 +64,54 @@ var activity = new function() {
 					: {left: 48, top: 24, right: 12, bottom: 28};
 				activity.options.legend = sparse
 					? {position: "none"}
-					: {position: "top", alignment: "start",
-					   textStyle: {color: c.text, fontName: c.font, fontSize: 11}};
+					: {position: "none"};
+				activity.renderLegend();
 
 				activity.graph.draw(activity.view, activity.options);
 			}
+		});
+	};
+
+	// Google's legend paginates in a panel this narrow ("1/2" with arrows),
+	// which is a pager where a legend should be. This is the same four
+	// series as chips in the controls row, in the same colours the chart
+	// draws them, toggling the same columns the built-in legend did.
+	this.toggleSeries = function(c) {
+		if (activity.columns[c].sourceColumn) {
+			activity.columns[c].label = activity.columns[c].title + " (off)";
+			delete activity.columns[c].sourceColumn;
+		} else {
+			activity.columns[c].sourceColumn = activity.columns[c].column;
+			activity.columns[c].label = activity.columns[c].title;
+		}
+		activity.view.setColumns(activity.columns);
+		activity.options.animation.duration = 0;
+		activity.graph.draw(activity.view, activity.options);
+		activity.options.animation.duration = 500;
+		activity.renderLegend();
+	};
+
+	this.renderLegend = function() {
+		var $bar = $("#activityGraphControls");
+		if (!$bar.length) { return; }
+		var $legend = $("#activityLegend");
+		if (!$legend.length) {
+			$legend = $('<span id="activityLegend" role="group" aria-label="Series"></span>').prependTo($bar);
+		}
+		var c = activity.tokens();
+		var colours = {jumps: c.jumps, podkills: c.pod, shipkills: c.ship, npckills: c.npc};
+		$legend.empty();
+		activity.columns.forEach(function(col, i) {
+			if (col.role !== "data") { return; }
+			var on = !!col.sourceColumn;
+			$('<button type="button" class="legend-chip"></button>')
+				.toggleClass("off", !on)
+				.attr("aria-pressed", on ? "true" : "false")
+				.attr("title", on ? "Hide " + col.title : "Show " + col.title)
+				.append($('<i class="swatch"></i>').css("background", colours[col.id]))
+				.append(document.createTextNode(col.title))
+				.on("click", function() { activity.toggleSeries(i); })
+				.appendTo($legend);
 		});
 	};
 
@@ -78,20 +121,7 @@ var activity = new function() {
 		if (selections[0] && selections[0].row == null) {
 			var c = selections[0].column;
 
-			if (activity.columns[c].sourceColumn) {
-				//activity.columns[c].calc = function() { return null };
-				activity.columns[c].label = activity.columns[c].title + " (off)";
-				delete activity.columns[c].sourceColumn;
-			} else {
-				activity.columns[c].sourceColumn = activity.columns[c].column;
-				activity.columns[c].label = activity.columns[c].title;
-				//delete activity.columns[c].calc;
-			}
-
-			activity.view.setColumns(activity.columns);
-			activity.options.animation.duration = 0;
-			activity.graph.draw(activity.view, activity.options);
-			activity.options.animation.duration = 500;
+			activity.toggleSeries(c);
 		}
 	}
 

@@ -66,3 +66,33 @@
 	#signaturesWidget > .controls > .bar-right,
 	#notesWidget > .controls > .bar-right { display: none; }
 }
+
+/* ── Second look at the READ band, from screenshots ─────────────────────
+   The header spread name / corp / settings across the full width with
+   nothing between them; the panel bars' right-hand group was forced onto
+   its own row, which left the hide control alone on a third; and the chain
+   bar showed five map icons before the tabs. */
+@media (max-width: 767px), (max-height: 599px) {
+	#topbar > .align-right { justify-content: flex-start; gap: 14px; }
+	#topbar > .align-right > #settings,
+	#topbar > .align-right > i#settings { margin-left: auto; }
+	#topbar > .align-right > #layout { display: none; }
+
+	.gridWidget > .controls > .bar-right { flex: 0 0 auto; margin-left: auto; }
+	.gridWidget > .controls > .bar-right ~ .panel-hide { margin-left: var(--space-1); }
+
+	#chainWidget > .controls > #show-viewing,
+	#chainWidget > .controls > #show-favorite,
+	#chainWidget > .controls > #show-chainLegend,
+	#chainWidget > .controls > #hot-jump,
+	#chainWidget > .controls > #higgs-jump,
+	#chainWidget > .controls > .bar-sep { display: none !important; }
+	#chainTabs { order: 0; }
+}
+@media (max-width: 767px), (max-height: 599px) {
+	/* Life and mass cells are hidden here, and they were carrying the row's
+	   hover and selected background -- so a wormhole row's highlight stopped
+	   two columns short. Paint the row instead. */
+	#sigTable tbody tr:hover, #sigTable tbody tr.selected { background-color: var(--muted); }
+	#sigTable tbody tr:hover > td, #sigTable tbody tr.selected > td { background-color: transparent; }
+}

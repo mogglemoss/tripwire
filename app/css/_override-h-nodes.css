@@ -160,3 +160,12 @@
    rule (measured oklch(0.8 0 0) in both themes -- invisible on a white card). */
 #chainMap div.node > h4.nodeSystem,
 #chainMap div.node > h4.nodeSystem a { color: var(--foreground) !important; }
+
+/* The base stylesheet gives div.node a fixed height. As a flex column that
+   meant every child shrank to fit -- measured: the name heading at 3px with
+   overflow hidden around a 19px link, which rendered as a dark smudge where
+   the system name should be. The card takes the height of its contents and
+   nothing inside it shrinks. */
+#chainMap div.node { height: auto !important; max-height: none !important; }
+#chainMap div.node > * { flex: 0 0 auto; }
+#chainMap div.node > h4.nodeSystem { height: auto; line-height: 1.25; }
