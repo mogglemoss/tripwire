@@ -18,9 +18,35 @@
  */
 
 if (!defined('BRAND')) { define('BRAND', 'tripwire'); }
+if (!defined('BRAND_SWITCH')) { define('BRAND_SWITCH', false); }
+
+/**
+ * The active pack's slug. With BRAND_SWITCH on (demos, previews), a browser
+ * can pick its own pack: ?brand=<slug> sets a cookie for that browser only,
+ * ?brand= clears it, and nothing on the server changes. Only packs that
+ * exist on disk are honoured.
+ */
+function brand_slug() {
+	static $slug = null;
+	if ($slug !== null) { return $slug; }
+	$slug = BRAND;
+	if (!BRAND_SWITCH) { return $slug; }
+	$valid = function($v) { return is_string($v) && preg_match('/^[a-z0-9-]{1,40}$/', $v) && is_dir(__DIR__ . '/public/brands/' . $v); };
+	if (isset($_GET['brand'])) {
+		if ($valid($_GET['brand'])) {
+			setcookie('tripwire_brand', $_GET['brand'], time() + 86400 * 365, '/');
+			$slug = $_GET['brand'];
+		} else {
+			setcookie('tripwire_brand', '', time() - 3600, '/');
+		}
+	} elseif (isset($_COOKIE['tripwire_brand']) && $valid($_COOKIE['tripwire_brand'])) {
+		$slug = $_COOKIE['tripwire_brand'];
+	}
+	return $slug;
+}
 
 function brand_dir() {
-	return __DIR__ . '/public/brands/' . BRAND;
+	return __DIR__ . '/public/brands/' . brand_slug();
 }
 
 function brand() {
@@ -30,11 +56,11 @@ function brand() {
 	$defaults = json_decode(file_get_contents(__DIR__ . '/public/brands/tripwire/brand.json'), true);
 	$brand = $defaults;
 	$file = brand_dir() . '/brand.json';
-	if (BRAND !== 'tripwire' && is_readable($file)) {
+	if (brand_slug() !== 'tripwire' && is_readable($file)) {
 		$own = json_decode(file_get_contents($file), true);
 		if (is_array($own)) { $brand = brand_merge($defaults, $own); }
 	}
-	$brand['slug'] = BRAND;
+	$brand['slug'] = brand_slug();
 	$brand['product'] = defined('APP_NAME') ? APP_NAME : 'Tripwire';
 	return $brand;
 }
@@ -48,7 +74,7 @@ function brand_merge($base, $over) {
 
 /** URL of a file inside the active pack (served by the CDN/static host). */
 function brand_url($file) {
-	return '//' . CDN_DOMAIN . '/brands/' . BRAND . '/' . ltrim($file, '/');
+	return '//' . CDN_DOMAIN . '/brands/' . brand_slug() . '/' . ltrim($file, '/');
 }
 
 function brand_h($s) { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
@@ -119,7 +145,7 @@ function brand_head($landing = false) {
 		echo "\t<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n";
 		echo "\t<link rel=\"stylesheet\" href=\"" . brand_h($b['fonts']['google']) . "\">\n";
 	}
-	echo "\t<link rel=\"manifest\" href=\"/manifest.php\">\n";
+	echo "\t<link rel=\"manifest\" href=\"/manifest.php\" crossorigin=\"use-credentials\">\n";
 	echo "\t<meta name=\"theme-color\" content=\"" . brand_h($theme) . "\">\n";
 	echo "\t<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n";
 	echo "\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">\n";
@@ -159,3 +185,7 @@ function brand_logo_html() {
 	return '<img class="logo-dark"  src="' . brand_h(brand_url($b['logo']['dark'])) . '" alt="' . $alt . '" />'
 	     . '<img class="logo-light" src="' . brand_h(brand_url($light)) . '" alt="" />';
 }
+
+// Resolve the pack now, while headers can still be sent: the switch cookie
+// is set here, not when the letterhead is printed.
+brand_slug();

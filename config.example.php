@@ -11,6 +11,10 @@ define('APP_NAME', 'Tripwire');
 // worked example of a corp's own.
 define('BRAND', 'tripwire');
 
+// Let a browser pick its own pack with ?brand=<slug> (a cookie; ?brand= clears
+// it). For demos and previews; leave off on a corp's own instance.
+define('BRAND_SWITCH', false);
+
 // Content file server (Use CDN here if you have one) - used for serving images, css, js files
 define('CDN_DOMAIN', 'your domain');
 
