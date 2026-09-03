@@ -26,6 +26,9 @@ if not mark or not mark.lower().endswith(".png"):
     sys.exit("need a PNG mark (SVG marks: export a PNG first, then --mark it)")
 
 src = Image.open(os.path.join(d, mark)).convert("RGBA")
+rot = float((brand.get("logo") or {}).get("rotate") or 0)
+if rot:
+    src = src.rotate(-rot, resample=Image.BICUBIC, expand=True)  # PIL rotates counter-clockwise for positive angles
 rgb = tuple(int(bg.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))
 
 def icon(size, scale, name):

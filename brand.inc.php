@@ -79,7 +79,10 @@ function brand_tokens_css() {
 		'font-mono'    => $b['fonts']['mono']    ?? null,
 		'font-display' => $b['fonts']['display'] ?? null,
 	);
-	$fonts['brand-logo-height'] = !empty($b['logo']['height']) ? intval($b['logo']['height']) . 'px' : null;
+	$h = !empty($b['logo']['height']) ? intval($b['logo']['height']) : 64;
+	$fonts['brand-logo-height']   = $h . 'px';
+	$fonts['brand-logo-overhang'] = max(0, $h - 64) . 'px';
+	$fonts['brand-logo-rotate']   = (!empty($b['logo']['rotate']) ? floatval($b['logo']['rotate']) : 0) . 'deg';
 	$css  = ":root {\n" . brand_css_vars($dark) . brand_css_vars($fonts) . "}\n";
 	$css .= "@media (prefers-color-scheme: light) {\n\t:root:not([data-theme=\"dark\"]) {\n" . brand_css_vars($light, "\t\t") . "\t}\n}\n";
 	$css .= ":root[data-theme=\"light\"] {\n" . brand_css_vars($light) . "}\n";
@@ -101,6 +104,7 @@ function brand_landing_tokens_css() {
 		'orange-ink'    => $b['accent']['on-dark'] ?? null,
 		'critical'      => $d['destructive'] ?? null,
 		'landing-bg'    => !empty($b['landing_bg']) ? 'url(' . brand_url($b['landing_bg']) . ')' : 'none',
+		'landing-mark-rotate' => (!empty($b['logo']['rotate']) ? floatval($b['logo']['rotate']) : 0) . 'deg',
 	);
 	return ":root {\n" . brand_css_vars($vars) . "}\n";
 }

@@ -414,8 +414,14 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	#topbar > .align-center { align-self: flex-start; position: relative; z-index: 3; }
 	/* A pack may ask for a taller mark (logo.height); a round seal wants a
 	   little more than a wide wordmark. It rides the bar's bottom edge. */
-	#topbar #logo img { height: var(--brand-logo-height, 64px); margin-top: 0; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .55)); }
-	.gridster { padding-top: 10px; }
+	#topbar #logo img {
+		height: var(--brand-logo-height, 64px); margin-top: 0;
+		transform: rotate(var(--brand-logo-rotate, 0deg)); transform-origin: 50% 50%;
+		filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .55));
+	}
+	/* A mark taller than the bar overhangs it like a stamp; the panels step
+	   down by the overhang so nothing sits under it. */
+	.gridster { padding-top: calc(10px + var(--brand-logo-overhang, 0px)); }
 }
 
 /* Below the desktop breakpoint the legacy stylesheet fixes the header to the

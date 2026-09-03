@@ -73,7 +73,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 900px) { .hero { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
 
 /* The mark and wordmark are the brand's own file; the app name sits under it as a filing line. */
-.intro .brand-mark { display: block; width: min(360px, 80vw); height: auto; margin: 0 0 22px -6px; }
+.intro .brand-mark { display: block; width: min(360px, 80vw); height: auto; margin: 0 0 22px -6px; transform: rotate(var(--landing-mark-rotate, 0deg)); transform-origin: 50% 50%; }
 .intro h1 { font-family: Montserrat, Geist, sans-serif; font-size: 30px; line-height: 1.1; letter-spacing: -.01em; margin: 0 0 12px; font-weight: 700; }
 .intro h1 small { display: block; font-family: "Geist Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .intro p { margin: 0 0 14px; color: #adadad; max-width: 46ch; }
