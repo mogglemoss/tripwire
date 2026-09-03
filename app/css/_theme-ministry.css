@@ -407,8 +407,8 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	   hangs 14px past the hairline into the gap the panel area gives back. */
 	#topbar { overflow: visible; height: 64px; min-height: 64px; padding-top: 0; padding-bottom: 0; }
 	#topbar > .align-center { align-self: flex-start; position: relative; z-index: 3; }
-	#topbar #logo img { height: 64px; margin-top: 8px; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .55)); }
-	.gridster { padding-top: 16px; }
+	#topbar #logo img { height: 64px; margin-top: 0; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .55)); }
+	.gridster { padding-top: 10px; }
 }
 
 /* Below the desktop breakpoint the legacy stylesheet fixes the header to the
