@@ -58,7 +58,7 @@ var activity = new function() {
 				var sparse = withData < 3;
 				var c = activity.tokens();
 				$("#activityGraph").toggleClass("is-sparse", sparse);
-				activity.options.height = sparse ? 92 : 170;
+				activity.options.height = sparse ? 92 : (window.systemFit ? systemFit.graphHeight() : 170);
 				activity.options.chartArea = sparse
 					? {left: 48, top: 10, right: 12, bottom: 22}
 					: {left: 48, top: 24, right: 12, bottom: 28};

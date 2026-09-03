@@ -433,3 +433,10 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase;
 	color: var(--primary);
 }
+
+/* ── The top row takes what the System panel needs ─────────────────────
+   system-fit.js sets --top-row when the panel cannot hold the graph at its
+   floor; otherwise the row is the 46vh the layout chose. */
+@media (min-width: 1280px) {
+	.gridster > ul { grid-template-rows: minmax(240px, var(--top-row, 46vh)) 1fr; }
+}
