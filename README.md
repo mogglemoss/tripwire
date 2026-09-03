@@ -7,12 +7,14 @@
 ### EVE Online wormhole mapping — a fork of Tripwire
 - MIT licence (see `LICENSE`); upstream is [daimian/tripwire](https://bitbucket.org/daimian/tripwire)
 
-**It looks new because it is.** The same app, on the neutral default and on the
-template corp pack, dark and light rooms, the edit dialog and Settings:
+**It looks new because it is.** The same app on three packs -- the neutral
+default, the template, and a real corp's -- dark and light rooms, the edit
+dialog and Settings. A pack is one folder; the packs shown are not in this
+repo, only the walk-throughs.
 
-| The default | A corp pack (the template) |
-|---|---|
-| ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) |
+| The default | The template pack | A corp's own pack |
+|---|---|---|
+| ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) | ![Tripwire on the Ministry's pack](docs/demo-ministry.gif) |
 
 Same Tripwire underneath: same data, same sync, same chain. This fork rebuilds
 how it reads and how fast you can work it, and makes the look a **brand
