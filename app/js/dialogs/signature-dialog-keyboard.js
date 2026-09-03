@@ -104,7 +104,24 @@
             else { $("#form-signature").trigger("submit"); }
         });
 
-        $(document).on("input change", "#form-signature", markMissing);
+        // A fresh dialog is not a failed one. Nothing reads red until you have
+        // left a required field empty or tried to save; after a save attempt
+        // the marks track every keystroke.
+        var attempted = false;
+        $(document).on("input change", "#form-signature", function() { if (attempted) { markMissing(); } });
+        $(document).on("focusout", "#form-signature", function(e) {
+            var $f = $(e.target);
+            if (!$f.is("input")) { return; }
+            var required = requiredFields().some(function($r) { return $r[0] === $f[0]; });
+            if (required && !$.trim($f.val() || "")) { $f.addClass("sig-missing"); }
+            else { $f.removeClass("sig-missing"); }
+        });
+        $(document).on("submit", "#form-signature", function() { attempted = true; markMissing(); });
+        $(document).on("click", ".ui-dialog-buttonpane button", function() {
+            if (!$(this).closest(".ui-dialog").find(SIG).length) { return; }
+            if ($(this).text().trim() === "Cancel") { return; }
+            attempted = true; markMissing();
+        });
 
         $(document).on("dialogopen", ".ui-dialog", function() {
             if (!$(this).find(SIG).length) { return; }
@@ -112,7 +129,8 @@
             // Deferred: the dialog's own open handler populates fields, and
             // this has to run after it.
             setTimeout(function() {
-                markMissing();
+                attempted = false;
+                $(SIG + " .sig-missing").removeClass("sig-missing");
                 focusFirstUnfilled();
 
                 // Keep Delete off the keyboard path entirely. It sits beside
