@@ -25,6 +25,8 @@ $system = $_REQUEST['system'] ?? '';
 	<meta name="app_name" content="<?= APP_NAME ?>">
 	<meta name="version" content="<?= VERSION ?>">
 	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
+	<script>/* The room lights, before first paint: a stored choice wins over the OS. */
+	try { var t = localStorage.getItem("tripwire.theme"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 
 	<!-- Montserrat is the the corp brand face. It was being asked for in CSS but
 	     never loaded, so it only appeared for people who happened to have it
@@ -143,6 +145,7 @@ $system = $_REQUEST['system'] ?? '';
 			</div>
 
 			<span class="hdr-tools">
+				<button id="theme-toggle" class="themebtn" type="button" aria-label="Switch to light" title="Switch to light">&#9788;</button>
 				<i id="settings" data-icon="settings" class="options" data-tooltip="Settings"></i>
 			</span>
 		</span>

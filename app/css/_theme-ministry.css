@@ -440,3 +440,119 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 @media (min-width: 1280px) {
 	.gridster > ul { grid-template-rows: minmax(240px, var(--top-row, 46vh)) 1fr; }
 }
+
+/* ── The room lights: sun and moon on the letterhead (as in DISPATCH) ─── */
+#topbar .hdr-tools .themebtn {
+	background: none; border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+	color: var(--muted-foreground); font-size: 14px; line-height: 1; padding: 4px 8px;
+	height: 26px; display: inline-flex; align-items: center; flex: 0 0 auto;
+	font-family: var(--font-ui);
+}
+#topbar .hdr-tools .themebtn:hover { color: var(--primary); border-color: var(--primary); }
+
+/* ── The pilot dropdown: cards, not nested tables ──────────────────────
+   The tracking list is a table per character (avatar cell spanning five
+   rows of name, system, station, ship, ship name) inside a table inside a
+   table. Rendered as-is the portrait floated over the name and the eye and
+   ship icons drifted down the middle. The table skeleton stays (tracking.js
+   clones it); its rows are flattened and each character is laid out as a
+   card: portrait, status and controls in a narrow left column, the five
+   text lines stacked beside it. */
+#login #content #logoutTable { border-collapse: separate; border-spacing: 0; }
+#login #content #logoutTable > tbody > tr > td { vertical-align: top; padding: 0 12px; }
+#login #content #logoutTable > tbody > tr > td:first-child { padding-left: 0; }
+#login #content #logoutTable > tbody > tr > td:last-child { padding-right: 0; }
+#login #content #track, #login #content #account { min-width: 260px; }
+#login #content #track th, #login #content #account th { text-align: left; padding: 0 0 6px; }
+#login #content #tracking { display: flex; flex-direction: column; gap: 6px; padding: 0; }
+
+#login #content #track .tracking-clone,
+#login #content #track .tracking-clone > tbody { display: block; }
+#login #content #track .tracking-clone > tbody > tr { display: contents; }
+#login #content #track .tracking-clone > tbody {
+	display: grid;
+	grid-template-columns: 44px minmax(0, 1fr);
+	grid-template-rows: repeat(5, auto);
+	column-gap: 10px; row-gap: 1px;
+	padding: 8px 10px;
+}
+#login #content #track .tracking-clone td { padding: 0; border: 0; line-height: 1.3; }
+#login #content #track .tracking-clone td.avatar {
+	grid-column: 1; grid-row: 1 / span 5;
+	display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+#login #content #track .tracking-clone td.avatar img.avatar { display: block; }
+#login #content #track .tracking-clone td.avatar hr.bar { width: 36px; margin: 0; height: 3px; border: 0; border-radius: 2px; }
+#login #content #track .tracking-clone td.avatar .control-group { display: flex; gap: 6px; margin-top: 2px; }
+#login #content #track .tracking-clone td.avatar .control-group i { font-size: 14px; color: var(--muted-foreground); cursor: pointer; }
+#login #content #track .tracking-clone td.avatar .control-group i.active,
+#login #content #track .tracking-clone td.avatar .control-group i:hover { color: var(--primary); }
+#login #content #track .tracking-clone td.name     { grid-column: 2; grid-row: 1; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#login #content #track .tracking-clone td.system   { grid-column: 2; grid-row: 2; }
+#login #content #track .tracking-clone td.station  { grid-column: 2; grid-row: 3; color: var(--muted-foreground); font-size: var(--fs-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#login #content #track .tracking-clone td.ship     { grid-column: 2; grid-row: 4; }
+#login #content #track .tracking-clone td.shipname { grid-column: 2; grid-row: 5; color: var(--muted-foreground); font-size: var(--fs-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#login #content #track .tracking-clone td.text:empty::before,
+#login #content #track .tracking-clone td.text:has(> :empty):not(:has(*))::before { content: none; }
+#login #content #track .tracking-clone i.alert { grid-column: 2; grid-row: 1; justify-self: end; }
+
+/* The signed-in character: portrait beside name and corporation. */
+#login #content #account, #login #content #account > tbody { display: block; }
+#login #content #account > tbody { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 12px; align-items: start; }
+#login #content #account > tbody > tr { display: contents; }
+#login #content #account th { grid-column: 1 / -1; }
+#login #content #account td { padding: 0; border: 0; }
+#login #content #account td#avatar { grid-column: 1; grid-row: 2 / span 2; }
+#login #content #account td#characterName { grid-column: 2; grid-row: 2; font-weight: 600; padding-top: 4px; }
+#login #content #account td.text:not(#characterName) { grid-column: 2; grid-row: 3; color: var(--muted-foreground); }
+#login #content #account td:empty { display: none; }
+
+/* Buttons row. */
+#login #content #logoutTable > tbody > tr:last-child > td { padding-top: 12px; }
+#login #content #logoutTable > tbody > tr:last-child > td:last-child { text-align: right; }
+
+/* The security badge on a gate chip: white on the class colour in both
+   rooms. In the light front office the text had resolved to the badge
+   colour itself and vanished. */
+.gate-chip .gate-sec { color: #fff !important; -webkit-text-fill-color: #fff; }
+
+/* ── The mask menu: a popover, in the capsule's language ──────────────
+   Was orange links stacked with a stray glyph each. Rows: the same source
+   dot the capsule wears, the label, and a tick on the one you are in.
+   Manage and admin sit under a rule in the quiet register. */
+#topbar #mask-menu {
+	min-width: 176px; padding: 4px 0;
+	background: var(--popover); border: 1px solid var(--border); border-radius: 4px;
+	box-shadow: 0 8px 24px rgba(0,0,0,.45);
+}
+#topbar #mask-menu .triangle { display: none; }
+#topbar #mask-menu a {
+	display: flex; align-items: center; gap: 8px;
+	padding: 6px 12px; margin: 0;
+	color: var(--foreground); font-size: var(--fs-sm); font-weight: 500; text-decoration: none;
+	line-height: 1.2;
+}
+#topbar #mask-menu a:hover { background: var(--muted); color: var(--foreground); }
+#topbar #mask-menu a .mask { display: inline-flex; align-items: center; gap: 8px; color: inherit; font-size: inherit; }
+#topbar #mask-menu a .mask i[data-icon] {
+	width: 8px; height: 8px; border-radius: 50%; padding: 0; margin: 0; flex: 0 0 auto;
+	display: inline-block; transform: none; background: var(--muted-foreground);
+}
+#topbar #mask-menu a .mask i[data-icon]::before { content: none; }
+#topbar #mask-menu a .mask i.global    { background: var(--muted-foreground); }
+#topbar #mask-menu a .mask i.personal,
+#topbar #mask-menu a .mask i.character { background: var(--data-good); }
+#topbar #mask-menu a .mask i.corporate { background: var(--primary); }
+#topbar #mask-menu a .mask i.alliance  { background: var(--data-info); }
+#topbar #mask .mask i.personal         { background: var(--data-good); }
+#topbar #mask-menu a.active::after {
+	content: "\2713"; margin-left: auto; color: var(--primary); font-size: 12px; font-weight: 700;
+}
+#topbar #mask-menu hr.bar { height: 1px; border: 0; margin: 4px 0; background: var(--border); }
+#topbar #mask-menu #mask-link, #topbar #mask-menu #admin {
+	color: var(--muted-foreground); font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+}
+#topbar #mask-menu #mask-link:hover, #topbar #mask-menu #admin:hover { color: var(--foreground); }
+
+/* The eye and ship toggles sit in a row under the portrait. */
+#login #content #track .tracking-clone td.avatar .control-group { width: auto; min-width: 36px; justify-content: center; }

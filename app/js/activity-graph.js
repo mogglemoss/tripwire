@@ -235,6 +235,21 @@ var activity = new function() {
 		this.graph.draw(this.view, this.options);
 	}
 
+	// The chart reads its colours from the tokens at build time, so a theme
+	// switch rebuilds the options -- keeping the fitted height, chart area
+	// and tick spacing -- and redraws in place.
+	this.retheme = function() {
+		if (!this.graph || !this.options) return;
+		var keep = {height: this.options.height, chartArea: this.options.chartArea, every: this.options.hAxis.showTextEvery};
+		this.options = this.buildOptions();
+		this.options.height = keep.height;
+		this.options.chartArea = keep.chartArea;
+		this.options.legend = {position: "none"};
+		this.options.hAxis.showTextEvery = keep.every;
+		this.renderLegend();
+		if (this.view) this.redraw();
+	}
+
 	this.refresh = function(cache) {
 		this.getData(this.span, cache);
 	}
