@@ -816,3 +816,10 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 /* signatures.css offsets the toggle with right:-20px for its absolute
    layout; on a relative box that is a 20px shove. */
 #dialog-signature .custom-combobox .custom-combobox-toggle { right: auto; left: auto; top: auto; bottom: auto; width: 24px; }
+
+/* Phone: the panel bar has no room for the range control beside the
+   panel buttons -- the close button was wrapping onto a second line. The
+   graph still shows the last 24h. */
+@media (max-width: 767px) {
+	#infoWidget > .controls .bar-right #sys-range { display: none; }
+}
