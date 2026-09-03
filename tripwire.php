@@ -25,6 +25,13 @@ $system = $_REQUEST['system'] ?? '';
 	<meta name="app_name" content="<?= APP_NAME ?>">
 	<meta name="version" content="<?= VERSION ?>">
 	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<meta name="theme-color" content="#1b1b1b">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="Tripwire">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 	<script>/* The room lights, before first paint: a stored choice wins over the OS. */
 	try { var t = localStorage.getItem("tripwire.theme"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 

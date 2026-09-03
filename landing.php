@@ -42,6 +42,13 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/landing/wds.css?v=<?= VERSION ?>" />
 	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
+	<link rel="manifest" href="/manifest.webmanifest">
+	<meta name="theme-color" content="#1b1b1b">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="Tripwire">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 </head>
 <body>

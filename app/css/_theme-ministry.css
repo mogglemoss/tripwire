@@ -564,3 +564,33 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	color: var(--muted-foreground); white-space: nowrap; line-height: 18px;
 }
 #topbar .hdr-ship.hidden { display: none; }
+
+/* ── Phone header: the mask dot is a dot, and the name gives way ───────
+   The coarse-pointer rule makes every #topbar i a 44px target; the mask
+   capsule's source dot is an i too, and became a 44px orange disc beside
+   the avatar. And the system name did not shrink, so the pilot block sat
+   on top of it. */
+@media (pointer: coarse) {
+	#topbar #mask .mask i[data-icon], #topbar #mask-menu a .mask i[data-icon] {
+		min-width: 0; min-height: 0; width: 7px; height: 7px; padding: 0;
+	}
+}
+@media (max-width: 767px), (max-height: 599px) {
+	#topbar > .align-left { min-width: 0; }
+	#topbar #hdr-system { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	#topbar > .align-right { flex-shrink: 0; }
+	#topbar #login h3 > a#user { gap: 6px; }
+}
+
+/* ── Install tip (phones) ─────────────────────────────────────────────── */
+#install-tip {
+	display: flex; align-items: center; gap: 10px;
+	padding: 8px 12px;
+	background: color-mix(in oklab, var(--primary) 14%, var(--card));
+	border-bottom: 1px solid var(--border);
+	font-size: var(--fs-sm); color: var(--foreground);
+}
+#install-tip .tip-text { flex: 1 1 auto; min-width: 0; }
+#install-tip button { min-height: 32px; border-radius: 4px; font: inherit; cursor: pointer; }
+#install-tip .tip-install { background: var(--primary); color: #1b1207; border: 0; padding: 0 12px; font-weight: 600; }
+#install-tip .tip-close { background: none; border: 0; color: var(--muted-foreground); font-size: 18px; line-height: 1; padding: 0 6px; }
