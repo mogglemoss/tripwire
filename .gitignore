@@ -9,3 +9,9 @@ traefik-data/acme.json
 e2e/.auth/
 test-results/
 playwright-report/
+# Brand packs: only the packs this repo ships are tracked. A corp's own pack
+# lives in a private repo and is copied in with scripts/brands-sync.sh.
+public/brands/*
+!public/brands/tripwire/
+!public/brands/example/
+!public/brands/README.md

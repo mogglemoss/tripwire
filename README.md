@@ -1,7 +1,12 @@
-# README  
+# Tripwire, refit
 
-### Tripwire - EVE Online wormhole mapping web tool  
-- MIT license
+### EVE Online wormhole mapping — a fork of Tripwire
+- MIT licence (see `LICENSE`); upstream is [daimian/tripwire](https://bitbucket.org/daimian/tripwire)
+
+Same Tripwire underneath: same data, same sync, same chain. This fork rebuilds
+how it reads and how fast you can work it, and makes the look a **brand
+pack** so any corp can run it as their own (see *Brand packs* below). Light
+and dark rooms with a toggle; installs on a phone; end-to-end tests.
 
 ### Setup guide for Linux  
 
@@ -140,6 +145,7 @@ If you see that the .env file is not being loaded, run the stack with
 - Tripwire Public in-game channel
 - Discord: https://discord.gg/xjFkJAx
 - Josh Glassmaker AKA Daimian Mercer (Creator)
+- Cormorant Fell (this fork: the refit and brand packs)
 
 ## End-to-end tests
 
@@ -158,18 +164,102 @@ focus. Each test creates and removes its own `ZZQ-*` signatures.
 The suite signs in once (Tripwire rate-limits logins to one per IP per 30s)
 and keeps the session in `e2e/.auth/`, which is git-ignored.
 
-
 ## Brand packs
 
 Everything a corp changes about the look lives in one directory:
-`public/brands/<slug>/` holds a `brand.json` (corp name, tagline, palette for
-the dark and light rooms, accent, fonts), the logo for each room, a mark, and
-the icon set. Pick the pack in `config.php` with `define('BRAND', '<slug>')`.
-`tripwire` is the neutral default; `ministry` is the worked example; copy one
-and edit. Icons are built from the mark with
-`python3 scripts/brand-icons.py <slug>`. With `define('BRAND_SWITCH', true)`
-a browser can pick its own pack for a demo: open `?brand=ministry`, and
-`?brand=` to go back. The palette is emitted as the same
-CSS custom properties the stylesheets already read, so a pack overrides
-token values and never restyles a component; wormhole class, security and
-mass colours are not brandable because they encode meaning.
+
+```
+public/brands/<slug>/
+  brand.json          names, tagline, palette, accent, fonts, logo, icons
+  <logo files>        the logo for each room, or none (see "logo")
+  mark.png            a square PNG with transparency; icons are built from it
+  icon-192.png  icon-512.png  icon-maskable-512.png  apple-touch-icon.png  favicon-32.png
+  landing-bg.jpg      optional backdrop for the sign-in page
+```
+
+Pick the pack in `config.php`:
+
+```php
+define('BRAND', 'example');        // a directory under public/brands/
+define('BRAND_SWITCH', false);     // true lets a browser pick a pack with ?brand=<slug> (demos)
+```
+
+`tripwire` is the neutral default (cool greys, a blue accent, a text logo).
+`example` is a complete fictional pack: copy it, rename the directory, edit
+`brand.json`, drop in your mark and logo, then build the icons:
+
+```bash
+cp -r public/brands/example public/brands/mycorp
+python3 scripts/brand-icons.py mycorp
+```
+
+Nothing else in the app knows a corp's name. The loader (`brand.inc.php`)
+merges your `brand.json` over the neutral pack's, so you only need the keys
+you change, and emits the palette as the CSS custom properties the
+stylesheets already read, in a `<style>` after the app stylesheet. A pack
+overrides token *values* and never restyles a component, so it survives
+upstream merges. The manifest (`manifest.php`), the head tags for fonts,
+theme colour and iOS install, the letterhead and the sign-in page all come
+from the pack.
+
+### brand.json
+
+| Key | What it drives |
+|---|---|
+| `corp` | The corp's name: the manifest's long name, image alt text, the sign-in page. Empty for the neutral pack. |
+| `short` | Short uppercase form, for places that need one. |
+| `tagline` | The small line above the product name on the sign-in page (`Chain desk`). |
+| `description` | The manifest description and the sign-in page's meta description. |
+| `logo.dark`, `logo.light` | Logo image file for each room (PNG or SVG, any aspect; drawn 64px tall in the header, 360px wide on the sign-in page). `light` falls back to `dark`. Both `null` → see `lockup`, else the product name is set as text. |
+| `logo.lockup` | A typographic letterhead instead of an image, set in the page's own fonts: `above` (small line), `main` (the name, in `fonts.brand` and the accent), `below` (small line), `flourish` (rules either side of the name). |
+| `mark` | Square PNG with transparency. `scripts/brand-icons.py` builds the icon set from it on the dark background colour. |
+| `mark_rotate` | Degrees to tilt the mark on the sign-in page and in the icons (negative is counter-clockwise). A stamp lands at `-15`. |
+| `landing_mark` | Image for the sign-in page; defaults to `logo.dark`. Use it when the letterhead is a lockup but the sign-in page should show a seal or mark. |
+| `landing_bg` | Optional backdrop image for the sign-in page; `null` for none. |
+| `icons.192`, `icons.512`, `icons.maskable`, `icons.apple`, `icons.favicon` | The icon files, normally the script's output. `maskable` keeps the mark inside the centre 80% for Android. |
+| `fonts.google` | A Google Fonts stylesheet URL, or `null` to load none. |
+| `fonts.ui`, `fonts.mono`, `fonts.display`, `fonts.brand` | CSS `font-family` stacks: running text; labels, ids and counts; headings; the lockup's name (defaults to `display`). |
+| `accent.dark`, `accent.light` | The one accent colour per room: primary buttons, the current range, focus rings, the letterhead name. |
+| `accent.on-dark`, `accent.on-light` | Text colour on the accent in each room. |
+| `palette.dark`, `palette.light` | The surface tokens per room, below. |
+
+### Palette tokens
+
+Each of `palette.dark` and `palette.light` is a map of token → colour. Any
+CSS colour works; the neutral pack shows the expected relationships.
+
+| Token | Where it paints |
+|---|---|
+| `background` | The page ground and the manifest's theme colour (dark). |
+| `foreground` | Headings, names, values. |
+| `card`, `card-foreground` | Panels and the signature dialog. |
+| `popover`, `popover-foreground` | Menus, dropdowns, tooltips. |
+| `muted`, `muted-foreground` | Hover grounds; labels and secondary text. |
+| `text-body` | Running text (notes, descriptions). |
+| `accent-surface` | Tinted grounds behind selected rows and chips. |
+| `border`, `border-soft`, `border-strong` | Rules and edges at three weights. |
+| `input` | Field grounds. |
+| `glow` | The faint highlight inside raised cards. |
+| `destructive` | Delete, and the missing-field mark. |
+| `node-surface`, `node-edge` | Chain map cards. |
+| `chart-gridline`, `chart-axis-text` | The activity graph. |
+
+Not brandable, on purpose: the `--data-*` colours for wormhole class,
+security band, mass and life. They encode meaning on the map and stay the
+same for every corp.
+
+### Keeping your pack private
+
+`public/brands/` is git-ignored except for `tripwire` and `example`. Keep
+your corp's pack in a private repository beside this one and copy it in at
+deploy time:
+
+```bash
+scripts/brands-sync.sh ../my-private-brands     # rsyncs every <slug>/ with a brand.json
+```
+
+### Demo switching
+
+With `BRAND_SWITCH` on, `?brand=<slug>` puts that browser on that pack (a
+cookie) and `?brand=` clears it. Nothing on the server changes, so two tabs
+can show two corps at once. Leave it off on a corp's own instance.
