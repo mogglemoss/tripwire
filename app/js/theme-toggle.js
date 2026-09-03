@@ -1,4 +1,4 @@
-// The room lights. Sun and moon on the letterhead, as in DISPATCH: the
+// The room lights. Sun and moon on the letterhead: the
 // button shows the light you would switch to. A stored choice wins over the
 // OS; with no choice the page follows the OS and the button still works.
 var themeToggle = new function() {

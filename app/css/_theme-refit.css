@@ -1,7 +1,7 @@
 /* ============================================================================
    THE PALETTE  (default)
 
-   The Ministry palette from PANTOSCOPE (retrospex/src/app/globals.css),
+   The refit palette,
    adopted as Tripwire's default after a side-by-side on the preview. A warm
    charcoal scale that was chosen rather than inherited; two surfaces and one
    rule colour; bone text with dim as the subordinate weight (4.5:1 on both
@@ -10,31 +10,31 @@
    the map's security colours are information rather than the loudest thing
    on the screen.
 
-   What stays constant: the wing, the Montserrat wordmark, and orange as the one
-   accent -- the primary action, the ring, links. This is the Ministry's
-   discipline under the corp's flag, not the Ministry's brand on the corp's
+   What stays constant: the mark, the wordmark, and one
+   accent -- the primary action, the ring, links. One discipline under a
+   corp's flag, not one corp's brand on another's
    tool. Security chips stay filled with white text, per the author.
 
    Type: Geist for text, Geist Mono for labels, ids and stats. The label is
    the signature -- 10px, uppercase, wide-tracked, dim -- and it is applied
    to every panel title, table header and footer label uniformly.
 
-   Light theme is the Ministry's print palette: paper, not white.
+   Light theme is a print palette: paper, not white.
    ========================================================================= */
 
 /* ── THE DECK ──────────────────────────────────────────────────────────
-   Grounds and neutrals from DISPATCH (dispatch/src/styles/tokens.css),
-   which is the the corp brand guideline v1.0 verbatim: neutral charcoal,
+   Grounds and neutrals from the house letterhead palette,
+   a neutral charcoal ramp:
    brand grey #ADADAD for body text, brand dark grey #4D4D4D for rules,
    orange as the one accent. This puts Tripwire on the same deck as
-   DISPATCH -- same letterhead, same labels, same orange -- rather than on
-   the Ministry's warm ink.
+   the letterhead -- same labels, same accent -- rather than on
+   a warm ink.
 
    Data colours deliberately do NOT take the brand callouts. #57DB57 green
    and #0073F0 blue are display colours for a few words on a log line;
    a map paints them on a hundred chips at once and they shout (measured
    and rejected earlier on this branch). Sage / void / a desaturated warn
-   stay, with DISPATCH's danger red. */
+   stay, with the danger red. */
 :root {
 	--background:         #1b1b1b;
 	--foreground:         #f2f2f2;   /* bone: headings, names, values */
@@ -73,7 +73,7 @@
 	--font-display: 'Montserrat', 'Geist', system-ui, sans-serif;
 }
 
-/* The front office: DISPATCH's light theme. Same brand hexes, light
+/* The front office: the light theme. Same brand hexes, light
    neutral grounds, dark grey ink. */
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme="dark"]) {
@@ -241,7 +241,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* ── The letterhead ──────────────────────────────────────────────────────
    Three zones. Left: the system you are viewing, large, with your own
-   location and the search beneath it. Centre: the the corp mark and
+   location and the search beneath it. Centre: the corp's mark and
    wordmark. Right: you -- a portrait you can actually make out, name and
    mask beside it, then the two tools. The app's own name lives in the
    footer with its version; the header is the corp's. */
@@ -323,7 +323,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 /* The mask menu anchors to the letterhead, not to a pixel offset. */
 #topbar #mask-menu { top: 64px; right: 18px; }
 
-/* Panel heads: DISPATCH's band under the title. */
+/* Panel heads: a band under the title. */
 .gridWidget > .controls {
 	background: linear-gradient(180deg, var(--popover), var(--card));
 	border-bottom: 1px solid var(--border);
@@ -448,7 +448,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	.gridster > ul { grid-template-rows: minmax(240px, var(--top-row, 46vh)) 1fr; }
 }
 
-/* ── The room lights: sun and moon on the letterhead (as in DISPATCH) ─── */
+/* ── The room lights: sun and moon on the letterhead ─────────────────── */
 #topbar .hdr-tools .themebtn {
 	background: none; border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
 	color: var(--muted-foreground); font-size: 14px; line-height: 1; padding: 4px 8px;

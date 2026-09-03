@@ -1,6 +1,6 @@
 /* Command palette and the shortcuts overlay.
    Colours come from the token layer, so this follows whatever theme is loaded
-   rather than hard-coding the the corp palette. */
+   rather than hard-coding a palette. */
 
 #cmd-palette,
 #cmd-help {

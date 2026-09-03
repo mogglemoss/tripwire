@@ -7,7 +7,7 @@ date_default_timezone_set('UTC');
 define('APP_NAME', 'Tripwire');
 
 // Brand pack: a directory under public/brands/ with a brand.json, logo and
-// icons. 'tripwire' is the neutral default; see public/brands/ministry for a
+// icons. 'tripwire' is the neutral default; see public/brands/example for a
 // worked example of a corp's own.
 define('BRAND', 'tripwire');
 

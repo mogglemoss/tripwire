@@ -1,41 +1,37 @@
 /* ============================================================================
-   the corp theme.
+   Base theme.
 
    Overrides token VALUES from _tokens.css -- it does not restyle components,
-   so it stays out of the way of upstream merges. Palette is brand guidelines
-   v1.0, matching dispatch/src/styles/tokens.css so the two house tools share one
-   vocabulary.
-
-     #F07C00  orange, the accent      #ADADAD  brand gray, body text
-     #4D4D4D  brand dark gray, rules
+   so it stays out of the way of upstream merges. The values here are the
+   built-in defaults; a brand pack (brand.inc.php) overrides them at runtime.
 
    Two notes on scope:
 
-   - The neutral ramp is re-pointed at brand greys. Tripwire's original palette
-     has no accent token -- every emphasis was just a lighter grey -- so the
-     orange cannot be placed by re-pointing alone. The short accent block at
-     the bottom introduces it at the few sites that carry identity.
+   - The neutral ramp is re-pointed at a warmer grey ramp. Tripwire's original
+     palette has no accent token -- every emphasis was just a lighter grey --
+     so the accent cannot be placed by re-pointing alone. The short accent
+     block at the bottom introduces it at the few sites that carry identity.
    - --data-* is deliberately untouched. Wormhole class, mass band and
      security colours encode meaning, and repainting them to fit a brand would
      make the map lie.
    ========================================================================= */
 
 :root {
-  /* -- corp brand constants, used by the accent rules below ---------------- */
+  /* -- accent constants, used by the accent rules below ------------------- */
   --accent:      #f07c00;
   --accent-dim:  rgba(240, 124, 0, .18);
   --brand-gray:        #adadad;
   --brand-gray-dark:   #4d4d4d;
 
-  /* -- ops floor: neutral ramp re-pointed at brand greys --------------------
+  /* -- ops floor: neutral ramp re-pointed at the brand greys -------------
      Ordering and relative contrast follow the original ramp, so component
      styling keeps working; only the values move. */
   --n-000: #000000;
   --n-020: #101010;
-  --n-050: #1b1b1b;   /* page ground   (DISPATCH --ink)   */
-  --n-100: #232323;   /* raised panel  (DISPATCH --panel) */
+  --n-050: #1b1b1b;   /* page ground */
+  --n-100: #232323;   /* raised panel */
   --n-120: #2a2a2a;   /* second surface                   */
-  --n-200: #303030;   /* hairlines     (DISPATCH --line-soft) */
+  --n-200: #303030;   /* hairlines */
   --n-220: #3a3a3a;
   --n-250: #444444;
   --n-300: #4d4d4d;   /* rules/borders (brand dark gray)  */
@@ -43,7 +39,7 @@
   --n-500: #6b6b6b;
   --n-550: #7d7d7d;
   --n-560: #838383;
-  --n-600: #8c8c8c;   /* secondary text (DISPATCH --dim)  */
+  --n-600: #8c8c8c;   /* secondary text */
   --n-650: #9a9a9a;
   --n-700: #a3a3a3;
   --n-750: #adadad;   /* brand gray                        */
@@ -55,7 +51,7 @@
   --n-920: #f0f0f0;
   --n-940: #f5f5f5;
   --n-960: #f8f8f8;
-  --n-999: #f2f2f2;   /* emphasis text (DISPATCH --bone)   */
+  --n-999: #f2f2f2;   /* emphasis text */
 }
 
 /* Front office. The brand orange is identical in both themes by rule, so only
@@ -139,15 +135,6 @@
   letter-spacing: .01em;
 }
 
-#topbar #logo a::before {
-  content: "";
-  display: inline-block;
-  width: 1.5em;
-  height: 1.22em;          /* the mark is 256x208 */
-  margin-right: .38em;
-  vertical-align: -.18em;
-  background: url(../images/brand/mark.png) no-repeat center / contain;
-}
 
 /* Front office uses the dark lockup, not the orange one -- which the brand
    guidelines call for, and which also fixes the contrast: #F07C00 on a light
@@ -184,14 +171,7 @@
    of the nebula -- the framing this was chosen for.
    ========================================================================= */
 
-#wrapper {
-  background-image: url(../images/landing-bg.jpg);
-}
 
 /* Read band: the background is decorative at phone width, so serve 79KB
    instead of 460KB. */
-@media (max-width: 767px) {
-  #wrapper {
-    background-image: url(../images/landing-bg-small.jpg);
-  }
 }
