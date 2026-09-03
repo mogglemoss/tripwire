@@ -144,7 +144,6 @@ $system = $_REQUEST['system'] ?? '';
 
 			<span class="hdr-tools">
 				<i id="settings" data-icon="settings" class="options" data-tooltip="Settings"></i>
-				<i id="layout" data-icon="layout" data-tooltip="Show or hide panels"></i>
 			</span>
 		</span>
 	</div>
@@ -759,6 +758,12 @@ $system = $_REQUEST['system'] ?? '';
 			</section>
 
 			<section class="settings-pane" data-pane="display" role="tabpanel" hidden>
+				<h4 class="field-group">Panels</h4>
+				<div class="field field-block">
+					<span class="field-label">Show and order <small>the chain always sits below the row of three</small></span>
+					<div class="field-value" id="panel-settings"></div>
+				</div>
+				<h4 class="field-group">Appearance</h4>
 				<div class="field"><label class="field-label" for="background-image">Background image <small>URL</small></label>
 					<input type="text" id="background-image" maxlength="200" />
 				</div>

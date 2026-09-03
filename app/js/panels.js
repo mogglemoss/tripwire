@@ -37,9 +37,37 @@ tripwire.panels = (function() {
         return !p || p.defaultVisible !== false;
     }
 
+    // Order among the top row. The chain spans the full width of the second
+    // grid row (grid-column: 1 / -1), so it always sorts last; the other three
+    // take the saved order, or declaration order if none. CSS grid honours
+    // `order` on its items, so no markup moves.
+    function order() {
+        var saved = store().order;
+        var ids = PANELS.map(function(p) { return p.id; });
+        if (!Array.isArray(saved)) { return ids; }
+        var known = saved.filter(function(id) { return ids.indexOf(id) > -1; });
+        ids.forEach(function(id) { if (known.indexOf(id) < 0) { known.push(id); } });
+        return known;
+    }
+
+    function move(id, dir) {
+        var ids = order().filter(function(x) { return x !== "chainWidget"; });
+        var i = ids.indexOf(id);
+        var j = i + dir;
+        if (i < 0 || j < 0 || j >= ids.length) { return; }
+        ids.splice(i, 1); ids.splice(j, 0, id);
+        ids.push("chainWidget");
+        store().order = ids;
+        apply();
+        options.save();
+    }
+
     function apply() {
+        var ids = order();
         PANELS.forEach(function(p) {
-            $("#" + p.id).toggleClass("panel-hidden", !isVisible(p.id));
+            var $w = $("#" + p.id);
+            $w.toggleClass("panel-hidden", !isVisible(p.id));
+            $w.css("order", p.id === "chainWidget" ? 99 : ids.indexOf(p.id));
         });
     }
 
@@ -84,6 +112,8 @@ tripwire.panels = (function() {
         isVisible: isVisible,
         setVisible: setVisible,
         toggle: toggle,
+        order: order,
+        move: move,
         apply: apply
     };
 })();

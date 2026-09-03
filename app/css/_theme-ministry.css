@@ -352,3 +352,47 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	#topbar .hdr-tools { margin-left: 0; padding-left: 8px; }
 	#topbar #mask-menu { top: 52px; right: 12px; }
 }
+
+/* ── The tracking dropdown ────────────────────────────────────────────────
+   account.css collapses every .avatar inside it to 1px -- a legacy trick
+   from when the portrait was painted some other way -- which is why the
+   character rows showed a name and no face. Portraits at a size a face
+   survives, and the dropdown on the same surfaces as everything else. */
+#login #content .tracking-clone td.avatar img.avatar { width: 36px; height: 36px; border-radius: 3px; border: 1px solid var(--border); }
+#login #content #account #avatar img.avatar-lg { width: 56px; height: 56px; border-radius: 4px; border: 1px solid var(--border); }
+#login #content.dialog-like {
+	background: var(--popover); border: 1px solid var(--border); border-radius: 4px;
+	box-shadow: 0 8px 30px rgba(0,0,0,.5); padding: var(--space-2);
+}
+#login #content .triangle { display: none; }
+#login #logoutTable tbody th {
+	font-family: var(--font-mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+	color: var(--muted-foreground); background: transparent; border-bottom: 1px solid var(--border); text-align: left; padding: 4px 6px;
+}
+#login #content #track { border-right: 1px solid var(--border-soft); }
+#login #content #track .tracking-clone { border: 1px solid var(--border); border-radius: 3px; opacity: .7; }
+#login #content #track .tracking-clone.active { border-color: var(--primary); opacity: 1; }
+#login #content #track .tracking-clone:hover { border-color: var(--border-strong); opacity: 1; }
+#login #content table .text { color: var(--text-body); }
+#login #content table td.name.text { color: var(--foreground); }
+
+/* ── The mask as a capsule ────────────────────────────────────────────────
+   Was a star glyph and the word "Corp" run together. A capsule: a source
+   dot -- orange for corporate, void for alliance, sage for personal, dim for
+   global -- and the label in the label register. */
+#topbar #mask-menu-link { display: inline-block; }
+#topbar #mask .mask {
+	display: inline-flex; align-items: center; gap: 6px;
+	height: 18px; padding: 0 8px 0 7px;
+	border: 1px solid var(--border); border-radius: 999px;
+	background: var(--popover);
+	font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+#topbar #mask-menu-link:hover .mask { border-color: var(--border-strong); color: var(--foreground); }
+#topbar #mask .mask i[data-icon] { width: 7px; height: 7px; border-radius: 50%; background: var(--muted-foreground); display: inline-block; }
+#topbar #mask .mask i[data-icon]::before { content: none; }
+#topbar #mask .mask i.corporate { background: var(--primary); }
+#topbar #mask .mask i.alliance  { background: var(--data-info); }
+#topbar #mask .mask i.character { background: var(--data-good); }
+#topbar #mask .mask i.global    { background: var(--muted-foreground); }

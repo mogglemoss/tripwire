@@ -113,6 +113,7 @@ $(".options").click(function(e) {
 			$("#dialog-options #node-spacing-line-weight-slider").slider("value", options.chain.lineWeight);
 			$("#dialog-options #background-image").val(options.background);
 			if (tripwire.settingsCharacters) { tripwire.settingsCharacters.render(); }
+			if (tripwire.settingsPanels) { tripwire.settingsPanels.render(); }
 		},
 		create: function() {
 			// Tabs. Twenty-four controls in one 1,056px scroll was the previous
