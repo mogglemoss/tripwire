@@ -33,7 +33,8 @@ async function ready(page) {
 (async () => {
 	fs.mkdirSync(OUT, { recursive: true });
 	const browser = await chromium.launch();
-	for (const slug of ["example", "tripwire"]) {
+	const packs = (process.env.DEMO_PACKS || "example,tripwire").split(",");   // DEMO_PACKS=mycorp for a corp's own
+	for (const slug of packs) {
 		const cookie = { name: "tripwire_brand", value: slug, url: BASE };
 		// sign-in page
 		let ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, colorScheme: "dark" });
