@@ -116,17 +116,38 @@ sigDialog.openSignatureDialog = function(e) {
 					}
 				});
 
-				// Ensure first signature ID field only accepts letters
+				// A whole id in the first field -- "ABC-123" pasted from the
+				// scanner, or typed straight through -- splits itself across the
+				// two fields rather than being clipped to "ABC" by the filter.
 				$("#dialog-signature [name='signatureID_Alpha'], #dialog-signature [name='signatureID2_Alpha']").on("input", function() {
+					var m = /^([a-zA-Z?]{3})-?([0-9?]{1,3})/.exec(this.value);
+					if (m) {
+						var numeric = this.name === "signatureID_Alpha" ? "signatureID_Numeric" : "signatureID2_Numeric";
+						this.value = m[1];
+						$("#dialog-signature [name='" + numeric + "']").val(m[2]).trigger("focus");
+						return;
+					}
 					while (!/^[a-zA-Z?]*$/g.test(this.value)) {
 						this.value = this.value.substring(0, this.value.length -1);
 					}
 				});
 
-				// Move to the numeric ID after filling out alpha ID
+				// Move to the numeric ID after filling out alpha ID -- and absorb
+				// the habitual Tab that follows. Measured: type "ZZQ", focus has
+				// already moved, Tab moves it again to the type menu, the digits
+				// go there, and the row saves as "ZZQ-###". The Tab pressed right
+				// after an auto-advance, into a still-empty numeric field, means
+				// "next field", and the numeric field is the next field.
+				var autoAdvancedAt = 0;
 				$("#dialog-signature [name='signatureID_Alpha']").on("input", function() {
 					if (this.value.length === 3) {
+						autoAdvancedAt = Date.now();
 						$("#dialog-signature [name='signatureID_Numeric']").select();
+					}
+				});
+				$("#dialog-signature [name='signatureID_Numeric']").on("keydown", function(e) {
+					if (e.key === "Tab" && !e.shiftKey && this.value === "" && Date.now() - autoAdvancedAt < 1500) {
+						e.preventDefault();
 					}
 				});
 

@@ -140,3 +140,21 @@ If you see that the .env file is not being loaded, run the stack with
 - Tripwire Public in-game channel
 - Discord: https://discord.gg/xjFkJAx
 - Josh Glassmaker AKA Daimian Mercer (Creator)
+
+## End-to-end tests
+
+`npm run e2e` drives a real browser (Playwright) against a running Tripwire
+-- by default `http://localhost:8080`, the OrbStack preview through the SSH
+tunnel -- and exercises the ways signatures get in: typed into the dialog and
+saved with Enter or the Add button, pasted with Ctrl-V, pasted with the
+Paste-scan button, re-pasted (update, not duplicate), and undone. It also
+covers the traps a person hits: Tab after the id auto-advances, a whole
+`ABC-123` typed into the first field, and Ctrl-V while the search box has
+focus. Each test creates and removes its own `ZZQ-*` signatures.
+
+    E2E_BASE_URL=https://host:port E2E_USER=... E2E_PASS=... npm run e2e
+    npm run e2e:headed          # watch it
+
+The suite signs in once (Tripwire rate-limits logins to one per IP per 30s)
+and keeps the session in `e2e/.auth/`, which is git-ignored.
+

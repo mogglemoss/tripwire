@@ -391,7 +391,7 @@ $system = $_REQUEST['system'] ?? '';
 			<input autocomplete="false" name="hidden" type="text" class="hidden" />
 			<div class="row">
 				<span class="label">ID:</span>
-				<input name="signatureID_Alpha" type="text" maxlength="3" size="2" class="signatureID" autocomplete="off" />
+				<input name="signatureID_Alpha" type="text" maxlength="7" size="2" class="signatureID" autocomplete="off" placeholder="ABC" />
 				<span class="label">-</span>
 				<input name="signatureID_Numeric" type="text" maxlength="3" size="2" placeholder="###" class="signatureID" autocomplete="off" />
 				<span id="signatureType" class="select">

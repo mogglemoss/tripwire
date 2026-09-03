@@ -250,7 +250,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
 	align-items: center;
 	gap: 16px;
-	min-height: 68px;
+	min-height: 76px;
 	padding: 8px 18px;
 	background: linear-gradient(180deg, var(--card), var(--background));
 	border-bottom: 1px solid var(--border);
@@ -288,7 +288,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* Centre: the mark. Two files, one per theme. */
 #topbar #logo { display: block; line-height: 0; }
-#topbar #logo img { height: 34px; width: auto; display: block; }
+#topbar #logo img { height: 46px; width: auto; display: block; }
 #topbar #logo a::before, #topbar #logo::before { content: none !important; }
 #topbar #logo .logo-light { display: none; }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) #topbar #logo .logo-dark { display: none; } :root:not([data-theme="dark"]) #topbar #logo .logo-light { display: block; } }

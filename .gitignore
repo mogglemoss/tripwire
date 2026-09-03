@@ -6,3 +6,6 @@ tweetie/config.php
 .env
 backup.sql
 traefik-data/acme.json
+e2e/.auth/
+test-results/
+playwright-report/

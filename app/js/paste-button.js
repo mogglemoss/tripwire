@@ -11,6 +11,7 @@
 // keystroke. Either way the text ends up in the same parsePaste path the
 // keystroke uses, so the two routes cannot drift.
 
+var __tripwirePasteIngest;
 (function() {
 	function ingest(text) {
 		if (!text || !text.trim()) {
@@ -21,6 +22,8 @@
 		$("#fullPaste").data("paste", text);
 		tripwire.pasteSignatures.parsePaste(text);
 	}
+
+	__tripwirePasteIngest = ingest;
 
 	function fallback() {
 		$("#clipboard").focus();
@@ -37,4 +40,31 @@
 			}
 		});
 	});
+})();
+
+// Paste from anywhere.
+//
+// paste.js only listens on a hidden textarea it focuses when Ctrl-V is
+// pressed with nothing else focused. Click the system name (which opens
+// search), or the palette, or any field, and focus is in an input -- so the
+// keystroke pastes there and the scan never reaches the parser. That is
+// "I can't paste sigs" from the user's side of the screen.
+//
+// If what is being pasted looks like probe-scanner output -- tab-separated
+// rows starting with a signature id -- it is a scan wherever it lands. The
+// exceptions are places where a person is genuinely editing text: the
+// signature dialog, the notes editor, and settings.
+(function() {
+	var SCAN = /^[A-Z]{3}-\d{3}\t/m;
+	document.addEventListener("paste", function(e) {
+		var t = e.target;
+		if (t && t.closest && t.closest("#dialog-signature, .rte, #dialog-options, #clipboard")) { return; }
+		var cb = e.clipboardData; if (!cb) { return; }
+		var text = cb.getData("text/plain") || "";
+		if (!SCAN.test(text)) { return; }
+		e.preventDefault();
+		e.stopPropagation();
+		if (t && t.blur) { t.blur(); }
+		__tripwirePasteIngest(text);
+	}, true);
 })();

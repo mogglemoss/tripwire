@@ -226,6 +226,13 @@ function addSignature($signature, $mysql) {
     $success = $stmt->execute();
 
     if ($success) {
+        // Take the new row's id NOW. It used to be read after the statistics
+        // upsert below, and INSERT ... ON DUPLICATE KEY UPDATE resets
+        // lastInsertId(), so every signature added through the dialog came
+        // back to the client with id 0 -- and undo, which removes by id,
+        // sent "remove: [0]", got "Signature ID not found", and stuck.
+        $signature->id = $mysql->lastInsertId();
+
         // Log the user stats
         if ($signature->type != 'wormhole') {
             $query = 'INSERT INTO statistics (userID, characterID, maskID, signatures_added) VALUES (:userID, :characterID, :maskID, 1)
@@ -237,7 +244,6 @@ function addSignature($signature, $mysql) {
             $success = $stmt->execute();
         }
 
-        $signature->id = $mysql->lastInsertId();
         return array(true, $signature, null);
     }
 
