@@ -1,9 +1,18 @@
 # Tripwire, refit
 
+<img src="docs/cormorantfell-portrait.jpeg" width="72" align="right">
+
+> [Cormorant Fell](https://evewho.com/character/93594488) — WiNGSPAN alumni and, on balance, more of a wormhole enthusiast than a wormhole survivor — refit this. The map underneath is the one you already trust. It has simply stopped dressing like 2015.
+
 ### EVE Online wormhole mapping — a fork of Tripwire
 - MIT licence (see `LICENSE`); upstream is [daimian/tripwire](https://bitbucket.org/daimian/tripwire)
 
-![Tripwire refit demo: the template pack and the neutral default, both rooms](docs/demo.gif)
+**It looks new because it is.** The same app, on the neutral default and on the
+template corp pack, dark and light rooms, the edit dialog and Settings:
+
+| The default | A corp pack (the template) |
+|---|---|
+| ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) |
 
 Same Tripwire underneath: same data, same sync, same chain. This fork rebuilds
 how it reads and how fast you can work it, and makes the look a **brand
@@ -265,8 +274,12 @@ scripts/brands-sync.sh ../my-private-brands     # rsyncs every <slug>/ with a br
 
 The README's GIF is built with `node scripts/demo-gif.js <frames>` (a signed-in
 Playwright walk on the template pack and the default) and
-`python3 scripts/demo-gif.py <frames> docs/demo.gif`.
+`python3 scripts/demo-gif.py <frames> docs/demo-<pack>.gif`, one pack per run (`DEMO_PACKS=<slug>`).
 
 With `BRAND_SWITCH` on, `?brand=<slug>` puts that browser on that pack (a
 cookie) and `?brand=` clears it. Nothing on the server changes, so two tabs
 can show two corps at once. Leave it off on a corp's own instance.
+
+---
+
+— [Cormorant Fell](https://evewho.com/character/93594488), somewhere down the chain, probably not where the map says
