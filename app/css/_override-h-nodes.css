@@ -256,3 +256,15 @@
 #chainMap div.node, #chainMap div.loop { width: 144px; }
 #chainMap div.node > h4.nodeSystem { padding-right: 26px; }
 #chainMap div.node > .nodeActivity { top: 27px; right: 8px; gap: 3px; }
+
+/* Height budget. Three systems in a straight line filled the chain panel and
+   forced a scrollbar at 900px tall; a card is two lines and a chip row, and
+   should cost about 60px, not 90. */
+#chainMap div.node,
+#chainMap div.redNode.node,
+#chainMap div.yellowNode.node,
+#chainMap div.greenNode.node { padding: 5px 8px 9px; min-height: 0; gap: 1px; margin-bottom: 6px; }
+#chainMap div.node > h4.nodeSystem { line-height: 1.15; }
+#chainMap div.node > h4.nodeType:empty, #chainMap div.node > h4.nodeType { min-height: 0; }
+#chainMap div.node > h4.nodeClass > span { height: 15px; }
+#chainMap div.node > .nodeActivity { top: 24px; }

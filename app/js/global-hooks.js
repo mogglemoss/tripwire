@@ -425,8 +425,11 @@ $("#chainTabs").sortable({
 
 $("#chainTabs").on("click", ".tab", function(e) {
 	e.preventDefault();
+	// Clicking the selected tab again deselects it: the map then roots at
+	// whichever system you are viewing ("Following you" in the strip).
 	chain.setActiveTab($(this).hasClass("current") ? null : $(this).index())
 });
+$("#chainTabs").attr("title", "Click a tab to root the map there. Click the selected tab again to follow the system you are viewing.");
 
 $("#chainTabs").on("click", ".closeTab", function(e) {
 	e.stopPropagation();
