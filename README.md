@@ -3,6 +3,8 @@
 ### EVE Online wormhole mapping — a fork of Tripwire
 - MIT licence (see `LICENSE`); upstream is [daimian/tripwire](https://bitbucket.org/daimian/tripwire)
 
+![Tripwire refit demo: the template pack and the neutral default, both rooms](docs/demo.gif)
+
 Same Tripwire underneath: same data, same sync, same chain. This fork rebuilds
 how it reads and how fast you can work it, and makes the look a **brand
 pack** so any corp can run it as their own (see *Brand packs* below). Light
@@ -260,6 +262,10 @@ scripts/brands-sync.sh ../my-private-brands     # rsyncs every <slug>/ with a br
 ```
 
 ### Demo switching
+
+The README's GIF is built with `node scripts/demo-gif.js <frames>` (a signed-in
+Playwright walk on the template pack and the default) and
+`python3 scripts/demo-gif.py <frames> docs/demo.gif`.
 
 With `BRAND_SWITCH` on, `?brand=<slug>` puts that browser on that pack (a
 cookie) and `?brand=` clears it. Nothing on the server changes, so two tabs
