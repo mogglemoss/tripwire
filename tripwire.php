@@ -652,8 +652,12 @@ $system = $_REQUEST['system'] ?? '';
 
 			<section class="settings-pane" data-pane="account" role="tabpanel">
 				<div class="field"><span class="field-label">Username</span><span class="field-value" id="username"></span></div>
-				<div class="field field-block"><span class="field-label">Characters</span><div class="field-value" id="characters"></div></div>
+				<div class="field field-block">
+					<span class="field-label">Characters <small>tracked by this account; the active one drives the map</small></span>
+					<div class="field-value" id="characters"></div>
+				</div>
 				<div class="field-actions">
+					<input type="button" id="addESI" class="is-primary" value="Add character" />
 					<input type="button" id="usernameChange" value="Change username" />
 					<input type="button" id="pwChange" value="Change password" />
 				</div>
