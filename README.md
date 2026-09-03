@@ -185,8 +185,9 @@ define('BRAND_SWITCH', false);     // true lets a browser pick a pack with ?bran
 ```
 
 `tripwire` is the neutral default (cool greys, a blue accent, a text logo).
-`example` is a complete fictional pack: copy it, rename the directory, edit
-`brand.json`, drop in your mark and logo, then build the icons:
+`example` is the template: a complete pack for "Your Corp" with placeholder
+logo images for both rooms and a mark. Copy it, rename the directory, edit
+`brand.json`, replace the two logos and the mark, then build the icons:
 
 ```bash
 cp -r public/brands/example public/brands/mycorp
