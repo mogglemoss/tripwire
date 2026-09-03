@@ -21,7 +21,13 @@
 		padding: 8px 12px;
 		gap: 8px;
 	}
-	#topbar > .align-left { display: none; }
+	#topbar { display: flex; min-height: 0; }
+	#topbar > .align-left { display: flex; flex: 1 1 auto; }
+	#topbar > .align-left #systemSearch { display: none; }
+	#topbar #hdr-system { font-size: 17px; }
+	#topbar > .align-center { display: none; }
+	#topbar .hdr-pilot { display: none; }
+	#topbar .hdr-tools { padding-left: 8px; }
 	#topbar > .align-right {
 		flex: 1 1 auto;
 		width: 100%;
@@ -30,7 +36,7 @@
 		justify-content: space-between;
 		gap: 12px;
 	}
-	#topbar #user-avatar.avatar { width: 28px; height: 28px; }
+	#topbar #user-avatar.avatar { width: 32px; height: 32px; }
 	#topbar h3 { margin: 0; font-size: 13px; }
 
 	.gridster { padding: 12px; }

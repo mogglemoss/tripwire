@@ -240,44 +240,83 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .slider-pair > span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 
 /* ── The letterhead ──────────────────────────────────────────────────────
-   DISPATCH's header: a band that fades from panel to ink over a hairline,
-   the wordmark left with a filing line beneath it, the pilot on the right
-   as a square portrait with name over a small tracked line. Tripwire's
-   markup is unchanged apart from the filing line; the rest is arrangement. */
+   Three zones. Left: the system you are viewing, large, with your own
+   location and the search beneath it. Centre: the the corp mark and
+   wordmark. Right: you -- a portrait you can actually make out, name and
+   mask beside it, then the two tools. The app's own name lives in the
+   footer with its version; the header is the corp's. */
 #topbar {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	align-items: center;
+	gap: 16px;
+	min-height: 68px;
+	padding: 8px 18px;
 	background: linear-gradient(180deg, var(--card), var(--background));
 	border-bottom: 1px solid var(--border);
-	padding: 8px 16px;
-	gap: 14px;
 }
-#topbar #logo { display: flex; flex-direction: column; line-height: 1.1; }
-#topbar #logo a { text-shadow: 0 0 18px rgba(240, 124, 0, .22); }
-#topbar #logo .filing {
-	font-family: var(--font-mono);
-	font-size: 9px;
-	font-weight: 400;
-	letter-spacing: .2em;
-	text-transform: uppercase;
-	color: var(--muted-foreground);
-	margin-top: 2px;
-}
-#topbar #systemSearch { margin-left: var(--space-2); }
-#topbar #currentSpan .bar-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted-foreground); }
+#topbar > .align-left, #topbar > .align-right, #topbar > .align-center { display: flex; align-items: center; min-width: 0; }
+#topbar > .align-left  { justify-content: flex-start; flex-direction: column; align-items: flex-start; gap: 2px; overflow: visible; }
+#topbar > .align-center{ justify-content: center; }
+#topbar > .align-right { justify-content: flex-end; gap: 14px; }
 
-#topbar > .align-right { gap: 12px; }
-#topbar #user-avatar.avatar { width: 30px; height: 30px; border-radius: 3px; border: 1px solid var(--border); }
-#topbar #login h3 a { color: var(--foreground); font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; }
-#topbar #mask-menu-link,
-#topbar #mask-menu-link #mask {
-	font-family: var(--font-mono);
-	font-size: 9.5px;
-	letter-spacing: .1em;
-	text-transform: uppercase;
-	color: var(--muted-foreground);
+/* Left: the viewed system. */
+.hdr-sys { display: flex; align-items: center; gap: 8px; }
+#hdr-system {
+	font-family: var(--font-display);
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: -.01em;
+	line-height: 1.1;
+	color: var(--foreground);
+	text-decoration: none;
+	white-space: nowrap;
 }
-#topbar #mask-menu-link:hover, #topbar #mask-menu-link:hover #mask { color: var(--foreground); }
-#topbar > .align-right > i[data-icon] { color: var(--muted-foreground); }
-#topbar > .align-right > i[data-icon]:hover { color: var(--foreground); }
+#hdr-system:hover { color: var(--primary); }
+#topbar #search { color: var(--muted-foreground); cursor: pointer; }
+#topbar #search:hover { color: var(--foreground); }
+#topbar #systemSearch { margin: 0; display: flex; align-items: center; gap: 8px; font-size: 11px; }
+#topbar #currentSpan { display: inline-flex; align-items: center; gap: 6px; }
+#topbar #currentSpan .bar-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted-foreground); }
+#topbar #EVEsystem { font-family: var(--font-mono); font-size: 11px; color: var(--text-body); }
+#topbar #follow { color: var(--muted-foreground); }
+#topbar #searchSpan input {
+	font-family: var(--font-mono); font-size: 11px;
+	min-height: 24px; padding: 0 8px; max-width: 12rem;
+	background: var(--input); border: 1px solid var(--border); border-radius: 3px; color: var(--foreground);
+}
+
+/* Centre: the mark. Two files, one per theme. */
+#topbar #logo { display: block; line-height: 0; }
+#topbar #logo img { height: 34px; width: auto; display: block; }
+#topbar #logo a::before, #topbar #logo::before { content: none !important; }
+#topbar #logo .logo-light { display: none; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) #topbar #logo .logo-dark { display: none; } :root:not([data-theme="dark"]) #topbar #logo .logo-light { display: block; } }
+:root[data-theme="light"] #topbar #logo .logo-dark { display: none; }
+:root[data-theme="light"] #topbar #logo .logo-light { display: block; }
+
+/* Right: you. */
+#topbar #login h3 { margin: 0; }
+#topbar #login h3 > a#user { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+#topbar #user-avatar.avatar {
+	width: 44px; height: 44px; border-radius: 4px;
+	border: 1px solid var(--border); object-fit: cover; display: block;
+}
+#topbar .hdr-pilot { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.15; }
+#topbar #user-no-track, #topbar #user-track-name { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: var(--foreground); }
+#topbar #user-track { display: inline-flex; align-items: center; gap: 4px; }
+#topbar .hdr-mask, #topbar .hdr-mask a, #topbar #mask {
+	font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+	color: var(--muted-foreground); text-decoration: none;
+}
+#topbar .hdr-mask a:hover, #topbar .hdr-mask a:hover #mask { color: var(--foreground); }
+#topbar .hdr-tools { display: flex; align-items: center; gap: 4px; margin-left: 4px; padding-left: 14px; border-left: 1px solid var(--border-soft); }
+#topbar .hdr-tools i { color: var(--muted-foreground); cursor: pointer; }
+#topbar .hdr-tools i:hover { color: var(--foreground); }
+#topbar .hdr-tools [data-icon]::before { font-size: 18px; }
+
+/* The mask menu anchors to the letterhead, not to a pixel offset. */
+#topbar #mask-menu { top: 64px; right: 18px; }
 
 /* Panel heads: DISPATCH's band under the title. */
 .gridWidget > .controls {
@@ -289,3 +328,27 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* Hairlines inside content take the soft rule. */
 #sigTable tbody tr, .comment { border-color: var(--border-soft); }
+
+/* ── The letterhead on a phone ───────────────────────────────────────────
+   This file sorts after _override-d-phone.css, so the phone header has to
+   be written here or the grid above wins. One row: system name, portrait,
+   tools. The mark and the location line are desktop and tablet things. */
+@media (max-width: 767px), (max-height: 599px) {
+	#topbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		min-height: 0;
+		padding: 8px 12px;
+	}
+	#topbar > .align-center { display: none; }
+	#topbar > .align-left { flex: 1 1 auto; flex-direction: column; align-items: flex-start; }
+	#topbar #systemSearch { display: none; }
+	#topbar #hdr-system { font-size: 17px; }
+	#topbar > .align-right { flex: 0 0 auto; width: auto; justify-content: flex-end; gap: 8px; }
+	#topbar .hdr-pilot { display: none; }
+	#topbar #user-avatar.avatar { width: 32px; height: 32px; }
+	#topbar .hdr-tools { margin-left: 0; padding-left: 8px; }
+	#topbar #mask-menu { top: 52px; right: 12px; }
+}

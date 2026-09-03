@@ -49,21 +49,26 @@ $system = $_REQUEST['system'] ?? '';
 	<div id="wrapper">
 	<div id="inner-wrapper">
 	<div id="topbar">
-		<span class="align-left">
-			<h1 id="logo">
-				<a href="."><?= APP_NAME ?></a>
-				<span class="filing">the corp &middot; Chain desk</span>
-				<!-- <span data-tooltip="System activity update countdown"><input id="APIclock" class="hidden" /></span> -->
-			</h1>
-			<h3 id="systemSearch"><i id="search" data-icon="search" data-tooltip="Toggle system search"></i>
-				<span id="currentSpan" class="hidden"><span class="pointer bar-label" data-tooltip="Where your tracked character is right now. The panels below show the system you are viewing, which may differ.">Location</span><span id="EVEsystem">?</span><i id="follow" data-icon="follow" data-tooltip="Follow my in-game system" style="padding-left: 10px;"></i></span>
-				<span id="searchSpan"><form id="systemSearch" method="GET" action=".?"><input type="text" size="18" class="systemsAutocomplete" name="system" /></form></span>
+		<span class="align-left hdr-left">
+			<div class="hdr-sys">
+				<a id="hdr-system" href="#" title="Viewing"><?= htmlspecialchars($system, ENT_QUOTES, 'UTF-8') ?></a>
+				<i id="search" data-icon="search" data-tooltip="Search for a system"></i>
+			</div>
+			<h3 id="systemSearch">
+				<span id="currentSpan" class="hidden"><span class="pointer bar-label" data-tooltip="Where your tracked character is right now. The panels show the system you are viewing, which may differ.">You</span><span id="EVEsystem">?</span><i id="follow" data-icon="follow" data-tooltip="Follow my in-game system"></i></span>
+				<span id="searchSpan"><form id="systemSearch" method="GET" action=".?"><input type="text" size="18" class="systemsAutocomplete" name="system" placeholder="Go to system" /></form></span>
 				<span id="APItimer" class="hidden"></span>
 			</h3>
 		</span>
-		<span class="align-right">
+		<span class="align-center hdr-brand">
+			<a id="logo" href="." title="<?= APP_NAME ?>">
+				<img class="logo-dark"  src="//<?= CDN_DOMAIN ?>/images/brand/logo-dark.png" alt="the corp" />
+				<img class="logo-light" src="//<?= CDN_DOMAIN ?>/images/brand/logo-light.png" alt="" />
+			</a>
+		</span>
+		<span class="align-right hdr-right">
 			<span id="login">
-				<h3><a id="user" href=""><img id="user-avatar" class="avatar" alt="" src="https://images.evetech.net/characters/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>/portrait?size=64" /><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span></a></h3>
+				<h3><a id="user" href=""><img id="user-avatar" class="avatar" alt="" src="https://images.evetech.net/characters/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>/portrait?size=128" /><span class="hdr-pilot"><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span><span class="hdr-mask"><a href="#" id="mask-menu-link" data-tooltip="Current mask"><span id="mask">(???)</span></a></span></span></a></h3>
 				<div id="panel">
 					<div id="content" class="dialog-like">
 						<div class="triangle"></div>
@@ -129,8 +134,6 @@ $system = $_REQUEST['system'] ?? '';
 					</div>
 				</div>
 			</span>
-
-			<h3><a href="#" id="mask-menu-link" data-tooltip="Current mask"><span id="mask">(???)</span></a></h3>
 			<div id="mask-menu" class="toggle-panel" style="right: 68px; top:34px; display:none">
 				<div class="triangle"></div>
 				<div id="mask-menu-mask-list"></div>
@@ -139,8 +142,10 @@ $system = $_REQUEST['system'] ?? '';
 				<a href="#" id="admin"<?= checkAdmin($_SESSION['mask']) || checkOwner($_SESSION['mask']) ? '' : 'style="display: none"' ?>>Mask Admin</a>
 			</div>
 
-			<i id="settings" data-icon="settings" class="options" data-tooltip="Settings"></i>
-			<i id="layout" data-icon="layout" data-tooltip="Customize layout"></i>
+			<span class="hdr-tools">
+				<i id="settings" data-icon="settings" class="options" data-tooltip="Settings"></i>
+				<i id="layout" data-icon="layout" data-tooltip="Show or hide panels"></i>
+			</span>
 		</span>
 	</div>
 
