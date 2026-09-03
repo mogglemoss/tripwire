@@ -79,10 +79,7 @@ function brand_tokens_css() {
 		'font-mono'    => $b['fonts']['mono']    ?? null,
 		'font-display' => $b['fonts']['display'] ?? null,
 	);
-	$h = !empty($b['logo']['height']) ? intval($b['logo']['height']) : 64;
-	$fonts['brand-logo-height']   = $h . 'px';
-	$fonts['brand-logo-overhang'] = max(0, $h - 64) . 'px';
-	$fonts['brand-logo-rotate']   = (!empty($b['logo']['rotate']) ? floatval($b['logo']['rotate']) : 0) . 'deg';
+	$fonts['font-brand'] = $b['fonts']['brand'] ?? ($b['fonts']['display'] ?? null);
 	$css  = ":root {\n" . brand_css_vars($dark) . brand_css_vars($fonts) . "}\n";
 	$css .= "@media (prefers-color-scheme: light) {\n\t:root:not([data-theme=\"dark\"]) {\n" . brand_css_vars($light, "\t\t") . "\t}\n}\n";
 	$css .= ":root[data-theme=\"light\"] {\n" . brand_css_vars($light) . "}\n";
@@ -104,7 +101,7 @@ function brand_landing_tokens_css() {
 		'orange-ink'    => $b['accent']['on-dark'] ?? null,
 		'critical'      => $d['destructive'] ?? null,
 		'landing-bg'    => !empty($b['landing_bg']) ? 'url(' . brand_url($b['landing_bg']) . ')' : 'none',
-		'landing-mark-rotate' => (!empty($b['logo']['rotate']) ? floatval($b['logo']['rotate']) : 0) . 'deg',
+		'landing-mark-rotate' => (!empty($b['mark_rotate']) ? floatval($b['mark_rotate']) : 0) . 'deg',
 	);
 	return ":root {\n" . brand_css_vars($vars) . "}\n";
 }
@@ -132,10 +129,29 @@ function brand_head($landing = false) {
 	echo "\t<style id=\"brand-tokens\">\n" . ($landing ? brand_landing_tokens_css() : brand_tokens_css()) . "\t</style>\n";
 }
 
-/** The letterhead: the corp's logo for each room, or the product name. */
+/** The mark on the sign-in page: its own file, else the dark-room logo. */
+function brand_landing_mark() {
+	$b = brand();
+	if (!empty($b['landing_mark'])) { return $b['landing_mark']; }
+	return !empty($b['logo']['dark']) ? $b['logo']['dark'] : null;
+}
+
+/**
+ * The letterhead: the corp's logo for each room; or a typographic lockup
+ * (a small line above, the name, a small line below, set in the page's
+ * own fonts); or the product name.
+ */
 function brand_logo_html() {
 	$b = brand();
 	$alt = brand_h($b['corp'] ?? $b['product']);
+	if (!empty($b['logo']['lockup'])) {
+		$l = $b['logo']['lockup'];
+		$html = '<span class="logo-lockup" aria-label="' . $alt . '">';
+		if (!empty($l['above'])) { $html .= '<span class="lockup-small">' . brand_h($l['above']) . '</span>'; }
+		$html .= '<span class="lockup-main' . (!empty($l['flourish']) ? ' has-flourish' : '') . '">' . brand_h($l['main'] ?? $b['product']) . '</span>';
+		if (!empty($l['below'])) { $html .= '<span class="lockup-small">' . brand_h($l['below']) . '</span>'; }
+		return $html . '</span>';
+	}
 	if (empty($b['logo']['dark'])) {
 		return '<span class="logo-text">' . brand_h($b['product']) . '</span>';
 	}

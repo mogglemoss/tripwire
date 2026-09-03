@@ -45,7 +45,7 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 <div class="page">
 
 	<div class="bar">
-		<a class="brand" href="."><?php if (!empty(brand()['logo']['dark'])): ?><img class="brand-small" src="<?= brand_h(brand_url(brand()['logo']['dark'])) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php else: ?><span class="brand-text"><?= APP_NAME ?></span><?php endif; ?></a>
+		<a class="brand" href="."><?php if (brand_landing_mark()): ?><img class="brand-small" src="<?= brand_h(brand_url(brand_landing_mark())) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php else: ?><span class="brand-text"><?= APP_NAME ?></span><?php endif; ?></a>
 		<nav>
 			<a href="https://bitbucket.org/daimian/tripwire/issues?status=new&status=open" target="_blank" rel="noopener">Issues</a>
 			<a href="#privacy">Privacy</a>
@@ -55,7 +55,7 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 
 	<main class="hero">
 		<section class="intro">
-			<?php if (!empty(brand()['logo']['dark'])): ?><img class="brand-mark" src="<?= brand_h(brand_url(brand()['logo']['dark'])) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php endif; ?>
+			<?php if (brand_landing_mark()): ?><img class="brand-mark" src="<?= brand_h(brand_url(brand_landing_mark())) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php endif; ?>
 			<h1><small><?= brand_h(brand()['tagline']) ?></small><?= APP_NAME ?></h1>
 			<p>Wormhole mapping for the corp: signatures, chains, and who is where. Sign in with your EVE character and the map is where you left it.</p>
 			<p class="version"><?= APP_NAME ?> <?= VERSION ?></p>
