@@ -1,7 +1,6 @@
 // The ship under the pilot's name. ESI already polls the tracked character's
 // ship every five seconds and writes it into the tracking dropdown; this
-// mirrors the active character's hull (and its name, when it has one) into
-// the letterhead, and clears it when nothing is tracked.
+// mirrors the active character's hull into the letterhead, and clears it when nothing is tracked.
 (function() {
 	function sync() {
 		var $el = $("#hdr-ship");
@@ -10,11 +9,9 @@
 		var c = chars && window.options && options.tracking ? chars[options.tracking.active] : null;
 		var type = c && c.shipTypeName;
 		if (!type) { $el.addClass("hidden").empty(); return; }
-		var html = $("<span/>").text(type).prop("outerHTML");
-		if (c.shipName && c.shipName !== type) {
-			html += '<span class="sep">·</span>' + $('<span class="shipname"/>').text(c.shipName).prop("outerHTML");
-		}
-		$el.html(html).removeClass("hidden");
+		// The hull only. What the pilot named the ship is theirs, not a fact
+		// the desk needs.
+		$el.text(type).removeClass("hidden");
 	}
 	$(function() {
 		sync();
