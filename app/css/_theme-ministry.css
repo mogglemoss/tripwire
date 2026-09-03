@@ -396,3 +396,25 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #topbar #mask .mask i.alliance  { background: var(--data-info); }
 #topbar #mask .mask i.character { background: var(--data-good); }
 #topbar #mask .mask i.global    { background: var(--muted-foreground); }
+
+/* ── The mark, larger, riding the letterhead's edge ──────────────────────
+   At 46px the wordmark read as a label. It is the letterhead; it gets the
+   height, and it hangs a little over the hairline into the gap above the
+   panels so the header reads as a plate the mark is mounted on rather than
+   a strip the mark is squeezed into. The panel area gives back the room. */
+@media (min-width: 768px) and (min-height: 600px) {
+	/* The header keeps its height; the mark is taller than the header and
+	   hangs 14px past the hairline into the gap the panel area gives back. */
+	#topbar { overflow: visible; height: 64px; min-height: 64px; padding-top: 0; padding-bottom: 0; }
+	#topbar > .align-center { align-self: flex-start; position: relative; z-index: 3; }
+	#topbar #logo img { height: 64px; margin-top: 8px; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .55)); }
+	.gridster { padding-top: 16px; }
+}
+
+/* Below the desktop breakpoint the legacy stylesheet fixes the header to the
+   viewport and nothing offsets the content, so the panels started at y=20
+   underneath it (measured at 1100x700). The tablet page scrolls; the header
+   stays in flow and sticks to the top as it goes. */
+@media (max-width: 1279px) {
+	#topbar { position: sticky; top: 0; z-index: 30; }
+}
