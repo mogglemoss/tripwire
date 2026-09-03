@@ -14,7 +14,7 @@ an illustrative third -- the Ministry, the identity of
 It is not a corp; it is there to show a pack with its own face. A pack is
 one folder; the packs shown are not in this repo, only the walk-throughs.
 
-| The default | The template pack | An illustrative pack (observance.app) |
+| The default | The template pack | An illustrative pack ([observance.app](https://observance.app)) |
 |---|---|---|
 | ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) | ![Tripwire on the observance.app pack](docs/demo-ministry.gif) |
 
