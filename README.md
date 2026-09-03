@@ -158,3 +158,16 @@ focus. Each test creates and removes its own `ZZQ-*` signatures.
 The suite signs in once (Tripwire rate-limits logins to one per IP per 30s)
 and keeps the session in `e2e/.auth/`, which is git-ignored.
 
+
+## Brand packs
+
+Everything a corp changes about the look lives in one directory:
+`public/brands/<slug>/` holds a `brand.json` (corp name, tagline, palette for
+the dark and light rooms, accent, fonts), the logo for each room, a mark, and
+the icon set. Pick the pack in `config.php` with `define('BRAND', '<slug>')`.
+`tripwire` is the neutral default; `ministry` is the worked example; copy one
+and edit. Icons are built from the mark with
+`python3 scripts/brand-icons.py <slug>`. The palette is emitted as the same
+CSS custom properties the stylesheets already read, so a pack overrides
+token values and never restyles a component; wormhole class, security and
+mass colours are not brandable because they encode meaning.

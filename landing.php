@@ -1,6 +1,7 @@
 <?php
 
 require_once('config.php');
+require_once('brand.inc.php');
 require_once('settings.php');
 
 // The landing page is the first thing every member sees, every session. It
@@ -36,26 +37,15 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 	<title><?= APP_NAME ?></title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-	<meta name="description" content="Tripwire is an open source wormhole mapping tool for EVE Online." />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/landing/wds.css?v=<?= VERSION ?>" />
-	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
-	<link rel="manifest" href="/manifest.webmanifest">
-	<meta name="theme-color" content="#1b1b1b">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="apple-mobile-web-app-title" content="Tripwire">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+	<meta name="description" content="<?= brand_h(brand()['description']) ?>" />
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/landing/landing.css?v=<?= VERSION ?>" />
+<?php brand_head(true); ?>
 </head>
 <body>
 <div class="page">
 
 	<div class="bar">
-		<a class="brand" href="."><img class="brand-small" src="//<?= CDN_DOMAIN ?>/images/brand/logo-dark.png" alt="the corp" /></a>
+		<a class="brand" href="."><?php if (!empty(brand()['logo']['dark'])): ?><img class="brand-small" src="<?= brand_h(brand_url(brand()['logo']['dark'])) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php else: ?><span class="brand-text"><?= APP_NAME ?></span><?php endif; ?></a>
 		<nav>
 			<a href="https://bitbucket.org/daimian/tripwire/issues?status=new&status=open" target="_blank" rel="noopener">Issues</a>
 			<a href="#privacy">Privacy</a>
@@ -65,8 +55,8 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 
 	<main class="hero">
 		<section class="intro">
-			<img class="brand-mark" src="//<?= CDN_DOMAIN ?>/images/brand/logo-dark.png" alt="the corp" />
-			<h1><small>Chain desk</small><?= APP_NAME ?></h1>
+			<?php if (!empty(brand()['logo']['dark'])): ?><img class="brand-mark" src="<?= brand_h(brand_url(brand()['logo']['dark'])) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php endif; ?>
+			<h1><small><?= brand_h(brand()['tagline']) ?></small><?= APP_NAME ?></h1>
 			<p>Wormhole mapping for the corp: signatures, chains, and who is where. Sign in with your EVE character and the map is where you left it.</p>
 			<p class="version"><?= APP_NAME ?> <?= VERSION ?></p>
 		</section>

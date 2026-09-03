@@ -624,3 +624,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #activityLegend .legend-chip { padding: 0 5px 0 4px; letter-spacing: .06em; gap: 5px; }
 #activityGraphControls #infoLinks.in-legend-row { gap: 8px; }
 #activityGraphControls #infoLinks.in-legend-row a { letter-spacing: .12em; padding: 0; }
+
+/* ── Brand packs ─────────────────────────────────────────────────────────
+   A pack without a logo image shows the product name in the display face. */
+#topbar #logo .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: .02em; color: var(--foreground); line-height: 64px; }

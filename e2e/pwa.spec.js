@@ -4,7 +4,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("manifest, icons and service worker are in place", async ({ page, request }) => {
-	const manifest = await request.get("/manifest.webmanifest");
+	const manifest = await request.get("/manifest.php");
 	expect(manifest.status()).toBe(200);
 	expect(manifest.headers()["content-type"]).toContain("application/manifest+json");
 	const m = await manifest.json();
@@ -20,7 +20,7 @@ test("manifest, icons and service worker are in place", async ({ page, request }
 	expect(sw.headers()["cache-control"] || "").not.toContain("immutable");
 
 	await page.goto("/?system=Perimeter");
-	expect(await page.locator('link[rel="manifest"]').getAttribute("href")).toBe("/manifest.webmanifest");
+	expect(await page.locator('link[rel="manifest"]').getAttribute("href")).toBe("/manifest.php");
 	const reg = await page.evaluate(async () => {
 		const r = await navigator.serviceWorker.register("/sw.js");
 		await navigator.serviceWorker.ready;

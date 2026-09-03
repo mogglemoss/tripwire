@@ -1,0 +1,48 @@
+{
+  "corp": "",
+  "short": "TRIPWIRE",
+  "tagline": "Wormhole mapping",
+  "description": "Tripwire: wormhole signatures, chains and pilot tracking for EVE Online.",
+  "logo": { "dark": null, "light": null },
+  "mark": "mark.png",
+  "icons": {
+    "192": "icon-192.png",
+    "512": "icon-512.png",
+    "maskable": "icon-maskable-512.png",
+    "apple": "apple-touch-icon.png",
+    "favicon": "favicon-32.png"
+  },
+  "fonts": {
+    "google": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap",
+    "ui": "'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    "mono": "'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+    "display": "'Geist', system-ui, sans-serif"
+  },
+  "accent": { "dark": "#4f8fe0", "on-dark": "#0e1420", "light": "#2f6fc4", "on-light": "#ffffff" },
+  "palette": {
+    "dark": {
+      "background": "#161718", "foreground": "#eceef0",
+      "card": "#1e2022", "card-foreground": "#eceef0",
+      "popover": "#26282b", "popover-foreground": "#eceef0",
+      "muted": "#26282b", "muted-foreground": "#8b9096", "text-body": "#b3b8be",
+      "accent-surface": "#26282b",
+      "border": "#43474c", "border-soft": "#2c2f33", "border-strong": "#565b61",
+      "input": "#2c2f33", "glow": "#202224",
+      "destructive": "#e05252",
+      "node-surface": "#26282b", "node-edge": "#565b61",
+      "chart-gridline": "rgba(236, 238, 240, .06)", "chart-axis-text": "#b3b8be"
+    },
+    "light": {
+      "background": "#e8eaed", "foreground": "#1c1f22",
+      "card": "#f4f5f7", "card-foreground": "#1c1f22",
+      "popover": "#fdfdfe", "popover-foreground": "#1c1f22",
+      "muted": "#e1e4e8", "muted-foreground": "#6f757c", "text-body": "#43474c",
+      "accent-surface": "#e1e4e8",
+      "border": "#aeb3b9", "border-soft": "#d5d9de", "border-strong": "#8b9096",
+      "input": "#e1e4e8", "glow": "#ffffff",
+      "destructive": "#b03a3a",
+      "node-surface": "#fdfdfe", "node-edge": "#aeb3b9",
+      "chart-gridline": "rgba(28, 31, 34, .08)", "chart-axis-text": "#43474c"
+    }
+  }
+}

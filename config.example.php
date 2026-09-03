@@ -3,8 +3,13 @@
 // Place all app configs here
 date_default_timezone_set('UTC');
 
-// Application name
+// Application name (the product; the corp comes from the brand pack)
 define('APP_NAME', 'Tripwire');
+
+// Brand pack: a directory under public/brands/ with a brand.json, logo and
+// icons. 'tripwire' is the neutral default; see public/brands/ministry for a
+// worked example of a corp's own.
+define('BRAND', 'tripwire');
 
 // Content file server (Use CDN here if you have one) - used for serving images, css, js files
 define('CDN_DOMAIN', 'your domain');

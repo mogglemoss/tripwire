@@ -10,6 +10,7 @@ $startTime = microtime(true);
 
 require_once('config.php');
 require_once('settings.php');
+require_once('brand.inc.php');
 require_once('masks.inc.php');
 require('lib.inc.php');
 
@@ -24,24 +25,8 @@ $system = $_REQUEST['system'] ?? '';
 	<meta name="server" content="<?= CDN_DOMAIN ?>">
 	<meta name="app_name" content="<?= APP_NAME ?>">
 	<meta name="version" content="<?= VERSION ?>">
-	<link rel="shortcut icon" href="//<?= CDN_DOMAIN ?>/images/favicon.png" />
-	<link rel="manifest" href="/manifest.webmanifest">
-	<meta name="theme-color" content="#1b1b1b">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="apple-mobile-web-app-title" content="Tripwire">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
 	<script>/* The room lights, before first paint: a stored choice wins over the OS. */
 	try { var t = localStorage.getItem("tripwire.theme"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
-
-	<!-- Montserrat is the the corp brand face. It was being asked for in CSS but
-	     never loaded, so it only appeared for people who happened to have it
-	     installed and silently fell back to system-ui for everyone else.
-	     Self-hosting under public/fonts would remove this third-party request. -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;700&display=swap">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.duration-picker.css">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox.css">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox-notice.css">
@@ -50,6 +35,7 @@ $system = $_REQUEST['system'] ?? '';
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery-ui-custom.css?v=<?= VERSION ?>">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/introjs.min.css">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/app.min.css?v=<?= VERSION ?>">
+<?php brand_head(); ?>
 
 	<title></title>
 </head>
@@ -71,8 +57,7 @@ $system = $_REQUEST['system'] ?? '';
 		</span>
 		<span class="align-center hdr-brand">
 			<a id="logo" href="." title="<?= APP_NAME ?>">
-				<img class="logo-dark"  src="//<?= CDN_DOMAIN ?>/images/brand/logo-dark.png" alt="the corp" />
-				<img class="logo-light" src="//<?= CDN_DOMAIN ?>/images/brand/logo-light.png" alt="" />
+				<?= brand_logo_html() ?>
 			</a>
 		</span>
 		<span class="align-right hdr-right">
@@ -375,7 +360,7 @@ $system = $_REQUEST['system'] ?? '';
 
 	<div id="statusbar">
 		<span id="serverStatus" class="pointer" data-tooltip="EVE server status and player count"><span class="bar-label">Tranquility</span><span class="bar-value">??,???</span></span>
-		<span id="version" class="pointer" data-tooltip="Tripwire version"><span class="bar-label">Tripwire</span><span class="bar-value"><?= VERSION ?></span></span>
+		<span id="version" class="pointer" data-tooltip="Tripwire version"><span class="bar-label"><?= APP_NAME ?></span><span class="bar-value"><?= VERSION ?></span></span>
 		<span id="eveTime" class="pointer" data-tooltip="EVE time (UTC)"><span class="bar-label">EVE Time</span><span id="serverTime" class="bar-value">??:??</span></span>
 	</div>
 
