@@ -50,8 +50,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 	padding: 14px 24px;
 	font-size: 12px; color: var(--muted);
 }
-.bar .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--fg); font-weight: 600; letter-spacing: .02em; }
-.bar .brand .wing { width: 22px; height: 22px; background: url(../../images/brand/mark.png) center / contain no-repeat; }
+.bar .brand { display: inline-flex; align-items: center; line-height: 0; }
+.bar .brand-small { height: 28px; width: auto; display: block; }
 .bar nav { display: flex; gap: 18px; }
 .bar nav a { color: var(--muted); }
 .bar nav a:hover { color: var(--fg); text-decoration: none; }
@@ -70,9 +70,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 @media (min-width: 900px) { .hero { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
 
-.intro .wing-lg { width: 64px; height: 64px; background: url(../../images/brand/mark.png) center / contain no-repeat; margin-bottom: 20px; }
-.intro h1 { font-family: Montserrat, Geist, sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: -.01em; margin: 0 0 10px; font-weight: 700; }
-.intro h1 small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
+/* The mark and wordmark are the brand's own file; the app name sits under it as a filing line. */
+.intro .brand-mark { display: block; width: min(360px, 80vw); height: auto; margin: 0 0 22px -6px; }
+.intro h1 { font-family: Montserrat, Geist, sans-serif; font-size: 30px; line-height: 1.1; letter-spacing: -.01em; margin: 0 0 12px; font-weight: 700; }
+.intro h1 small { display: block; font-family: "Geist Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 .intro p { margin: 0 0 14px; color: #adadad; max-width: 46ch; }
 .intro .version { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 
