@@ -778,3 +778,41 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* A missing required field: the edge in the danger colour, no halo. */
 #dialog-signature .sig-missing, #dialog-signature .sig-missing:focus { border-color: var(--destructive); box-shadow: none; }
+/* Combobox menu button: its sprite icon was absolutely positioned against
+   the wrapper, so it landed inside the input. The button is the positioned
+   box, the sprite is gone, and a chevron is drawn in the current colour. */
+#dialog-signature .custom-combobox .custom-combobox-toggle { position: relative; text-indent: 0; overflow: hidden; }
+#dialog-signature .custom-combobox .custom-combobox-toggle .ui-icon,
+#dialog-signature .custom-combobox .custom-combobox-toggle .ui-button-icon-space { display: none; }
+#dialog-signature .custom-combobox .custom-combobox-toggle::after {
+	content: ""; width: 6px; height: 6px; margin-top: -3px;
+	border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg);
+}
+/* The type menu: text first, chevron at the right edge. */
+#dialog-signature #signatureType .ui-selectmenu-button { display: inline-flex; align-items: center; gap: 6px; padding: 0 8px; width: auto !important; }
+#dialog-signature #signatureType .ui-selectmenu-button .ui-selectmenu-text { flex: 1 1 auto; margin: 0; }
+#dialog-signature #signatureType .ui-selectmenu-button .ui-selectmenu-icon { order: 2; margin: 0; position: static; }
+/* Lifetime: the duration picker's blocks in one boxed control, numbers in the mono. */
+#dialog-signature .bdp-input {
+	display: inline-flex; align-items: center; gap: 12px; height: 26px; padding: 0 10px;
+	border: 1px solid var(--border); border-radius: 3px; background: var(--input);
+}
+#dialog-signature .bdp-block { display: inline-flex; align-items: baseline; gap: 4px; }
+#dialog-signature .bdp-block br { display: none; }
+#dialog-signature .bdp-block a { text-decoration: none; }
+#dialog-signature .bdp-block a span { font-family: var(--font-mono); font-size: 13px !important; font-weight: 500; color: var(--foreground); line-height: 1; }
+#dialog-signature .bdp-block a:hover span { color: var(--primary); }
+#dialog-signature .bdp-block .bdp-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-foreground); }
+/* The picker's seconds block is hidden by class; keep it that way. The
+   control then fits the LENGTH row. */
+#dialog-signature .bdp-block.hidden { display: none !important; }
+#dialog-signature .bdp-input { gap: 10px; padding: 0 8px; }
+/* Combobox: input and button touch, and the pair never outgrows the row. */
+#dialog-signature .custom-combobox { gap: 0; max-width: 100%; }
+#dialog-signature .custom-combobox > * { margin: 0; }
+#dialog-signature .custom-combobox .custom-combobox-toggle { margin-left: -1px; flex: 0 0 24px; }
+#dialog-signature .custom-combobox input.leadsTo { flex: 1 1 0; width: 0; min-width: 0; }
+#dialog-signature [data-autocomplete="sigSystems"] { max-width: 100%; }
+/* signatures.css offsets the toggle with right:-20px for its absolute
+   layout; on a relative box that is a 20px shove. */
+#dialog-signature .custom-combobox .custom-combobox-toggle { right: auto; left: auto; top: auto; bottom: auto; width: 24px; }
