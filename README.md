@@ -18,6 +18,14 @@ one folder; the packs shown are not in this repo, only the walk-throughs.
 |---|---|---|
 | ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) | ![Tripwire on the observance.app pack](docs/demo-ministry.gif) |
 
+On a phone it reads; on a tablet it edits. It installs to the home screen.
+
+<p>
+<img src="docs/phone-tripwire.png" width="230" alt="Tripwire on a phone, neutral default">&nbsp;
+<img src="docs/phone-example.png" width="230" alt="Tripwire on a phone, template pack">&nbsp;
+<img src="docs/phone-ministry.png" width="230" alt="Tripwire on a phone, observance.app pack">
+</p>
+
 Same Tripwire underneath: same data, same sync, same chain. This fork rebuilds
 how it reads and how fast you can work it, and makes the look a **brand
 pack** so any corp can run it as their own (see *Brand packs* below). Light
@@ -278,7 +286,8 @@ scripts/brands-sync.sh ../my-private-brands     # rsyncs every <slug>/ with a br
 
 The README's GIF is built with `node scripts/demo-gif.js <frames>` (a signed-in
 Playwright walk on the template pack and the default) and
-`python3 scripts/demo-gif.py <frames> docs/demo-<pack>.gif`, one pack per run (`DEMO_PACKS=<slug>`).
+`python3 scripts/demo-gif.py <frames> docs/demo-<pack>.gif`, one pack per run (`DEMO_PACKS=<slug>`);
+the phone shots with `node scripts/demo-phone.js docs <packs>`.
 
 With `BRAND_SWITCH` on, `?brand=<slug>` puts that browser on that pack (a
 cookie) and `?brand=` clears it. Nothing on the server changes, so two tabs
