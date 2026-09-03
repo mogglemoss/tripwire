@@ -190,9 +190,9 @@ $system = $_REQUEST['system'] ?? '';
 					<div id="activityGraph"></div>
 					<div id="activityGraphControls" class="sys-range"><a href="javascript: activity.time(168);">Week</a><a href="javascript: activity.time(48);">48h</a><a href="javascript: activity.time(24);">24h</a></div>
 					<div id="infoLinks" class="sys-links">
-						<a class="infoLink" data-href="http://anoik.is/systems/$systemName" href="" target="_blank">Anoik.is</a>
-						<a class="infoLink" data-href="https://evemaps.dotlan.net/search?q=$systemName" href="" target="_blank">dotlan</a>
-						<a class="infoLink" data-href='https://zkillboard.com/system/$systemID/' href="" target="_blank">zKillboard</a>
+						<a class="infoLink" data-href="http://anoik.is/systems/$systemName" href="" target="_blank">Anoik</a>
+						<a class="infoLink" data-href="https://evemaps.dotlan.net/search?q=$systemName" href="" target="_blank">Dotlan</a>
+						<a class="infoLink" data-href='https://zkillboard.com/system/$systemID/' href="" target="_blank">zKill</a>
 					</div>
 				</div>
 			</li>

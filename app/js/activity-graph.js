@@ -5,10 +5,10 @@ var activity = new function() {
 	this.span = 24;
 	this.columns = [
 		{id: "time", label: "Time", role: "domain", type: "string", calc: function(d, r) { return d.getValue(r, 0) + "h"; }},
-		{id: "jumps", label: "Jumps", role: "data", type: "number", sourceColumn: 1, column: 1, title: "Jumps"},
-		{id: "podkills", label: "Pod Kills", role: "data", type: "number", sourceColumn: 2, column: 2, title: "Pod Kills"},
-		{id: "shipkills", label: "Ship Kills", role: "data", type: "number", sourceColumn: 3, column: 3, title: "Ship Kills"},
-		{id: "npckills", label: "NPC Kills", role: "data", type: "number", sourceColumn: 4, column: 4, title: "NPC Kills"},
+		{id: "jumps", label: "Jumps", role: "data", type: "number", sourceColumn: 1, column: 1, title: "Jumps", short: "Jumps"},
+		{id: "podkills", label: "Pod Kills", role: "data", type: "number", sourceColumn: 2, column: 2, title: "Pod Kills", short: "Pods"},
+		{id: "shipkills", label: "Ship Kills", role: "data", type: "number", sourceColumn: 3, column: 3, title: "Ship Kills", short: "Ships"},
+		{id: "npckills", label: "NPC Kills", role: "data", type: "number", sourceColumn: 4, column: 4, title: "NPC Kills", short: "NPC"},
 		//{id: "annotationLabel", label: "Test", role: "annotation", type: "string", sourceColumn: 5, title: "Test"},
 		//{id: "annotationText", label: "Test", role: "annotationText", type: "string", sourceColumn: 6, title: "Test"}
 	];
@@ -109,7 +109,7 @@ var activity = new function() {
 				.attr("aria-pressed", on ? "true" : "false")
 				.attr("title", on ? "Hide " + col.title : "Show " + col.title)
 				.append($('<i class="swatch"></i>').css("background", colours[col.id]))
-				.append(document.createTextNode(col.title))
+				.append(document.createTextNode(col.short || col.title))
 				.on("click", function() { activity.toggleSeries(i); })
 				.appendTo($legend);
 		});

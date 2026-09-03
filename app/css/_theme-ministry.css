@@ -594,3 +594,33 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #install-tip button { min-height: 32px; border-radius: 4px; font: inherit; cursor: pointer; }
 #install-tip .tip-install { background: var(--primary); color: #1b1207; border: 0; padding: 0 12px; font-weight: 600; }
 #install-tip .tip-close { background: none; border: 0; color: var(--muted-foreground); font-size: 18px; line-height: 1; padding: 0 6px; }
+
+/* ── The top row: smaller by default, and it does not follow the system ──
+   40vh unless a visited system needed more (system-fit.js remembers the
+   largest, per window height). The chain gets the rest. */
+@media (min-width: 1280px) {
+	.gridster > ul { grid-template-rows: minmax(240px, var(--top-row, 40vh)) 1fr; }
+}
+
+/* ── Range in the header, links beside the legend ─────────────────────── */
+#infoWidget > .controls .bar-right #sys-range {
+	display: inline-flex; align-items: center; gap: 2px; margin-right: 6px;
+	padding-right: 8px; border-right: 1px solid var(--border-soft);
+}
+#infoWidget > .controls .bar-right #sys-range a {
+	display: inline-flex; align-items: center; height: 22px; padding: 0 6px;
+	border-radius: 3px; text-decoration: none;
+	font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+#infoWidget > .controls .bar-right #sys-range a:hover { color: var(--foreground); background: var(--muted); }
+#infoWidget > .controls .bar-right #sys-range a.active { color: var(--primary); background: var(--muted); }
+#activityGraphControls { flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+#activityGraphControls #infoLinks.in-legend-row { margin: 0 0 0 auto; padding: 0; border: 0; }
+#activityGraphControls #activityLegend { margin-right: 0; }
+
+/* Legend and links on one row: short chip labels, tighter tracking. */
+#activityLegend { gap: 2px 4px; }
+#activityLegend .legend-chip { padding: 0 5px 0 4px; letter-spacing: .06em; gap: 5px; }
+#activityGraphControls #infoLinks.in-legend-row { gap: 8px; }
+#activityGraphControls #infoLinks.in-legend-row a { letter-spacing: .12em; padding: 0; }

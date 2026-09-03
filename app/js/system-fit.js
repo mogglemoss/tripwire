@@ -12,8 +12,18 @@
 // keeps a real share), and the chain takes what is left -- the trade the
 // layout notes already chose: a map that pans beats a panel you scroll.
 var systemFit = new function() {
-	var MIN = 110, MAX = 170, ROW = 0.46, ROW_CAP = 0.64;
+	var MIN = 96, MAX = 170, ROW = 0.40, ROW_CAP = 0.64;
 	var appliedRow = null, self = this;
+
+	// The row only ever grows, and remembers. Switching between a k-space
+	// system (gates, blue loot, legend) and a J-space one (statics, often no
+	// activity) changed what the panel needed by ~50px, and a row that
+	// followed it made all four panels jump on every system change. Now the
+	// row is the largest any visited system has needed at this window height,
+	// kept in localStorage, so after the first visit it does not move.
+	function rowKey() { return "tripwire.toprow." + window.innerHeight; }
+	function storedRow() { try { return parseFloat(localStorage.getItem(rowKey())) || null; } catch (e) { return null; } }
+	function storeRow(px) { try { localStorage.setItem(rowKey(), String(Math.round(px))); } catch (e) {} }
 
 	function panel() { return document.querySelector("#infoWidget > .content.sys-panel"); }
 	function px(v) { return parseFloat(v) || 0; }
@@ -49,8 +59,10 @@ var systemFit = new function() {
 		var chrome = widget.getBoundingClientRect().height - p.clientHeight;
 		var wanted = need + chrome;
 		var row = Math.max(ROW * window.innerHeight, Math.min(wanted, ROW_CAP * window.innerHeight));
+		row = Math.max(row, appliedRow || 0, storedRow() || 0);
 		if (appliedRow !== null && Math.abs(row - appliedRow) < 1) return;
 		appliedRow = row;
+		storeRow(row);
 		grid.style.setProperty("--top-row", Math.round(row) + "px");
 	}
 
@@ -85,6 +97,12 @@ var systemFit = new function() {
 	}
 
 	$(function() {
+		// Apply the remembered row before anything is measured.
+		var grid = document.querySelector(".gridster > ul"), remembered = storedRow();
+		if (grid && remembered && window.innerWidth >= 1280) {
+			appliedRow = remembered;
+			grid.style.setProperty("--top-row", Math.round(remembered) + "px");
+		}
 		var p = panel();
 		if (!p || !window.ResizeObserver) return;
 		var ro = new ResizeObserver(schedule);
