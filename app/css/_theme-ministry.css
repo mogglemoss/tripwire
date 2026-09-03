@@ -22,97 +22,124 @@
    Light theme is the Ministry's print palette: paper, not white.
    ========================================================================= */
 
-:root {
-	--background:         #12100e;
-	--foreground:         #e8e2d9;
-	--card:               #1a1714;
-	--card-foreground:    #e8e2d9;
-	--popover:            #211d19;
-	--popover-foreground: #e8e2d9;
-	--muted:              #211d19;
-	--muted-foreground:   #8a8074;
-	--accent-surface:     #211d19;
-	--border:             #3a3530;
-	--border-strong:      #4f4842;
-	--input:              #2a2521;
+/* ── THE DECK ──────────────────────────────────────────────────────────
+   Grounds and neutrals from DISPATCH (dispatch/src/styles/tokens.css),
+   which is the the corp brand guideline v1.0 verbatim: neutral charcoal,
+   brand grey #ADADAD for body text, brand dark grey #4D4D4D for rules,
+   orange as the one accent. This puts Tripwire on the same deck as
+   DISPATCH -- same letterhead, same labels, same orange -- rather than on
+   the Ministry's warm ink.
 
-	/* The WDS accent. */
+   Data colours deliberately do NOT take the brand callouts. #57DB57 green
+   and #0073F0 blue are display colours for a few words on a log line;
+   a map paints them on a hundred chips at once and they shout (measured
+   and rejected earlier on this branch). Sage / void / a desaturated warn
+   stay, with DISPATCH's danger red. */
+:root {
+	--background:         #1b1b1b;
+	--foreground:         #f2f2f2;   /* bone: headings, names, values */
+	--card:               #232323;
+	--card-foreground:    #f2f2f2;
+	--popover:            #2a2a2a;
+	--popover-foreground: #f2f2f2;
+	--muted:              #2a2a2a;
+	--muted-foreground:   #8c8c8c;   /* dim: labels, secondary */
+	--text-body:          #adadad;   /* fog: brand grey, running text */
+	--accent-surface:     #2a2a2a;
+	--border:             #4d4d4d;   /* brand dark grey */
+	--border-soft:        #303030;
+	--border-strong:      #5a5a5a;
+	--input:              #303030;
+	--glow:               #242424;
+
 	--primary:            var(--accent, #f07c00);
-	--primary-foreground: #12100e;
+	--primary-foreground: #1b1b1b;
 	--ring:               var(--accent, #f07c00);
-	--destructive:        #c04543;
+	--destructive:        #e05252;
 
 	--data-good:          #7d9b76;   /* hisec, stable */
-	--data-warn:          #e07b52;   /* lowsec, destab */
-	--data-critical:      #c04543;   /* nullsec, critical, EOL */
+	--data-warn:          #d9a441;   /* lowsec, destab -- desaturated brand yellow */
+	--data-critical:      #e05252;   /* nullsec, critical, EOL */
 	--data-info:          #8b7aa8;   /* J-space, jumps */
 
-	--node-surface:       #211d19;
-	--node-edge:          #4f4842;
+	--node-surface:       #2a2a2a;
+	--node-edge:          #5a5a5a;
 
-	--chart-gridline:     rgba(232, 226, 217, .06);
-	--chart-axis-text:    #a89e90;
+	--chart-gridline:     rgba(242, 242, 242, .06);
+	--chart-axis-text:    #adadad;
 
 	--font-ui:      'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
 	--font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 	--font-display: 'Montserrat', 'Geist', system-ui, sans-serif;
 }
 
+/* The front office: DISPATCH's light theme. Same brand hexes, light
+   neutral grounds, dark grey ink. */
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme="dark"]) {
-		--background:         #f4f1ec;
-		--foreground:         #171310;
-		--card:               #ffffff;
-		--card-foreground:    #171310;
-		--popover:            #ffffff;
-		--popover-foreground: #171310;
-		--muted:              #e8e3db;
-		--muted-foreground:   #6f675c;
-		--accent-surface:     #e8e3db;
-		--border:             #cfc7bb;
-		--border-strong:      #b5aca0;
-		--input:              #e8e3db;
+		--background:         #e9e9e9;
+		--foreground:         #1f1f1f;
+		--card:               #f5f5f5;
+		--card-foreground:    #1f1f1f;
+		--popover:            #fdfdfd;
+		--popover-foreground: #1f1f1f;
+		--muted:              #e4e4e4;
+		--muted-foreground:   #767676;
+		--text-body:          #4d4d4d;
+		--accent-surface:     #e4e4e4;
+		--border:             #adadad;
+		--border-soft:        #d8d8d8;
+		--border-strong:      #8c8c8c;
+		--input:              #e4e4e4;
+		--glow:               #ffffff;
 		--primary-foreground: #ffffff;
-		--destructive:        #9c2f2d;
+		--destructive:        #b03a3a;
 		--data-good:          #4c6a45;
-		--data-warn:          #a44a2b;
-		--data-critical:      #9c2f2d;
+		--data-warn:          #9a6d12;
+		--data-critical:      #b03a3a;
 		--data-info:          #5d4f78;
-		--node-surface:       #ffffff;
-		--node-edge:          #b5aca0;
-		--chart-gridline:     rgba(23, 19, 16, .08);
-		--chart-axis-text:    #4a443c;
+		--node-surface:       #fdfdfd;
+		--node-edge:          #adadad;
+		--chart-gridline:     rgba(31, 31, 31, .08);
+		--chart-axis-text:    #4d4d4d;
 	}
 }
 :root[data-theme="light"] {
-	--background:         #f4f1ec;
-	--foreground:         #171310;
-	--card:               #ffffff;
-	--card-foreground:    #171310;
-	--popover:            #ffffff;
-	--popover-foreground: #171310;
-	--muted:              #e8e3db;
-	--muted-foreground:   #6f675c;
-	--accent-surface:     #e8e3db;
-	--border:             #cfc7bb;
-	--border-strong:      #b5aca0;
-	--input:              #e8e3db;
+	--background:         #e9e9e9;
+	--foreground:         #1f1f1f;
+	--card:               #f5f5f5;
+	--card-foreground:    #1f1f1f;
+	--popover:            #fdfdfd;
+	--popover-foreground: #1f1f1f;
+	--muted:              #e4e4e4;
+	--muted-foreground:   #767676;
+	--text-body:          #4d4d4d;
+	--accent-surface:     #e4e4e4;
+	--border:             #adadad;
+	--border-soft:        #d8d8d8;
+	--border-strong:      #8c8c8c;
+	--input:              #e4e4e4;
+	--glow:               #ffffff;
 	--primary-foreground: #ffffff;
-	--destructive:        #9c2f2d;
+	--destructive:        #b03a3a;
 	--data-good:          #4c6a45;
-	--data-warn:          #a44a2b;
-	--data-critical:      #9c2f2d;
+	--data-warn:          #9a6d12;
+	--data-critical:      #b03a3a;
 	--data-info:          #5d4f78;
-	--node-surface:       #ffffff;
-	--node-edge:          #b5aca0;
-	--chart-gridline:     rgba(23, 19, 16, .08);
-	--chart-axis-text:    #4a443c;
+	--node-surface:       #fdfdfd;
+	--node-edge:          #adadad;
+	--chart-gridline:     rgba(31, 31, 31, .08);
+	--chart-axis-text:    #4d4d4d;
 }
 
 /* Flat ink. The ship stays on the landing page, where it is a brand
    moment; behind three columns of data it was competition. */
-#wrapper::before { background: var(--background); }
+#wrapper::before { background: radial-gradient(ellipse at 30% -20%, var(--glow) 0%, var(--background) 60%); }
 body { background-image: none; }
+
+/* Running text in the brand grey; names, values and headings in bone. */
+#sigTable td, .commentBody, .sys-meta, .sys-extra, .field-label, .ui-dialog .ui-dialog-content { color: var(--text-body); }
+#sigTable td:nth-child(1), .sys-name, .field-value, #chainMap div.node > h4.nodeSystem, .stats dd { color: var(--foreground); }
 
 /* The label: mono, small, uppercase, tracked, dim. Everywhere it means
    "this is a label", so it reads as one system. */
@@ -130,7 +157,7 @@ body { background-image: none; }
 	font-family: var(--font-mono);
 	font-size: 10px;
 	font-weight: 500;
-	letter-spacing: .18em;
+	letter-spacing: .22em;
 	text-transform: uppercase;
 	color: var(--muted-foreground);
 }
@@ -211,3 +238,54 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .slider-wrap .ui-slider .ui-slider-handle { background: var(--primary); width: 14px; height: 14px; top: -6px; margin-left: -7px; border: 2px solid var(--popover); box-sizing: border-box; }
 .slider-value { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); }
 .slider-pair > span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ── The letterhead ──────────────────────────────────────────────────────
+   DISPATCH's header: a band that fades from panel to ink over a hairline,
+   the wordmark left with a filing line beneath it, the pilot on the right
+   as a square portrait with name over a small tracked line. Tripwire's
+   markup is unchanged apart from the filing line; the rest is arrangement. */
+#topbar {
+	background: linear-gradient(180deg, var(--card), var(--background));
+	border-bottom: 1px solid var(--border);
+	padding: 8px 16px;
+	gap: 14px;
+}
+#topbar #logo { display: flex; flex-direction: column; line-height: 1.1; }
+#topbar #logo a { text-shadow: 0 0 18px rgba(240, 124, 0, .22); }
+#topbar #logo .filing {
+	font-family: var(--font-mono);
+	font-size: 9px;
+	font-weight: 400;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+	margin-top: 2px;
+}
+#topbar #systemSearch { margin-left: var(--space-2); }
+#topbar #currentSpan .bar-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted-foreground); }
+
+#topbar > .align-right { gap: 12px; }
+#topbar #user-avatar.avatar { width: 30px; height: 30px; border-radius: 3px; border: 1px solid var(--border); }
+#topbar #login h3 a { color: var(--foreground); font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; }
+#topbar #mask-menu-link,
+#topbar #mask-menu-link #mask {
+	font-family: var(--font-mono);
+	font-size: 9.5px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--muted-foreground);
+}
+#topbar #mask-menu-link:hover, #topbar #mask-menu-link:hover #mask { color: var(--foreground); }
+#topbar > .align-right > i[data-icon] { color: var(--muted-foreground); }
+#topbar > .align-right > i[data-icon]:hover { color: var(--foreground); }
+
+/* Panel heads: DISPATCH's band under the title. */
+.gridWidget > .controls {
+	background: linear-gradient(180deg, var(--popover), var(--card));
+	border-bottom: 1px solid var(--border);
+}
+.gridWidget, #chainMap div.node, .ui-dialog { border-radius: 3px; }
+.gridWidget { border: 1px solid var(--border); }
+
+/* Hairlines inside content take the soft rule. */
+#sigTable tbody tr, .comment { border-color: var(--border-soft); }

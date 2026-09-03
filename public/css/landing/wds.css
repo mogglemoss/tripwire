@@ -2,12 +2,12 @@
    Static file: the landing page does not go through the gulp bundle. */
 
 :root {
-	--bg: #12100e;
-	--card: #1a1714;
-	--fg: #e8e2d9;
-	--muted: #8a8074;
-	--border: #3a3530;
-	--border-strong: #4f4842;
+	--bg: #1b1b1b;
+	--card: #232323;
+	--fg: #f2f2f2;
+	--muted: #8c8c8c;
+	--border: #4d4d4d;
+	--border-strong: #5a5a5a;
 	--orange: #f07c00;
 	--orange-ink: #1b1207;
 	--critical: #e5484d;
@@ -35,7 +35,7 @@ body::before {
 body::after {
 	content: "";
 	position: fixed; inset: 0; z-index: 0;
-	background: linear-gradient(to bottom, rgba(18,16,14,.2), rgba(18,16,14,.9) 70%, #12100e);
+	background: linear-gradient(to bottom, rgba(27,27,27,.2), rgba(27,27,27,.9) 70%, #1b1b1b);
 	pointer-events: none;
 }
 a { color: var(--orange); text-decoration: none; }
@@ -73,7 +73,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .intro .wing-lg { width: 64px; height: 64px; background: url(../../images/brand/mark.png) center / contain no-repeat; margin-bottom: 20px; }
 .intro h1 { font-family: Montserrat, Geist, sans-serif; font-size: 44px; line-height: 1.05; letter-spacing: -.01em; margin: 0 0 10px; font-weight: 700; }
 .intro h1 small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 10px; }
-.intro p { margin: 0 0 14px; color: var(--muted); max-width: 46ch; }
+.intro p { margin: 0 0 14px; color: #adadad; max-width: 46ch; }
 .intro .version { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* ---- card ------------------------------------------------------------- */

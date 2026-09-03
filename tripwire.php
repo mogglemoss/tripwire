@@ -52,6 +52,7 @@ $system = $_REQUEST['system'] ?? '';
 		<span class="align-left">
 			<h1 id="logo">
 				<a href="."><?= APP_NAME ?></a>
+				<span class="filing">the corp &middot; Chain desk</span>
 				<!-- <span data-tooltip="System activity update countdown"><input id="APIclock" class="hidden" /></span> -->
 			</h1>
 			<h3 id="systemSearch"><i id="search" data-icon="search" data-tooltip="Toggle system search"></i>
