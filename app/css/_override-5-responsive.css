@@ -96,7 +96,7 @@
    Two columns rather than four panels on a fixed grid; the arrangement a
    1194px tablet can actually use. */
 
-@media (min-width: 768px) and (max-width: 1279px) and (min-height: 600px) {
+@media (min-width: 768px) and (max-width: 959px) and (min-height: 600px) {
 	.gridster,
 	.gridster > ul {
 		position: static !important;

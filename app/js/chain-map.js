@@ -196,7 +196,7 @@ var chain = new function() {
 			var chainNode = "<div id='node"+id+"' data-nodeid='"+systemID+"'"
 				+(whId ? " data-sigid='"+whId+"'" : '')
 				+(inSigId ? " data-inSigid='"+inSigId+"'" : '')
-				+" class='node " + ((additionalClasses || []).join(' ')) + "'>"
+				+" class='node sec-" + String(system.systemTypeClass || 'unknown').split(' ')[0] + (system.class ? " cls-" + system.class[0] : "") + " " + ((additionalClasses || []).join(' ')) + "'>"
 							+	"<div class='nodeIcons'>"
 							+		"<div style='float: left;'>"
 							+ systemRendering.renderEffect(system, 'i')

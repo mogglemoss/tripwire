@@ -40,8 +40,12 @@
 
     function candidates(query) {
         var q = (query || "").toLowerCase().trim();
-        var all = tripwire.keyboard.actions.concat(
-            tripwire.keyboard.panelActions ? tripwire.keyboard.panelActions() : []);
+        var k = tripwire.keyboard;
+        var all = k.actions.concat(
+            k.selectionActions ? k.selectionActions() : [],
+            k.chainTabActions ? k.chainTabActions() : [],
+            k.maskActions ? k.maskActions() : [],
+            k.panelActions ? k.panelActions() : []);
         var acts = all.filter(function(a) {
             return !q || a.label.toLowerCase().indexOf(q) > -1 || a.group.toLowerCase().indexOf(q) > -1;
         });

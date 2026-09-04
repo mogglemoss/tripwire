@@ -14,10 +14,12 @@ $("body").on("click", ".commentEdit", function(e) {
 
 	$comment.find(".commentToolbar").hide();
 
-	tripwire.editor.replace($comment.find(".commentBody").attr("id"), function() {
+	tripwire.editor.replace($comment.find(".commentBody").attr("id"), function(inst) {
 		$comment.find(".commentStatus").text("");
 		$comment.find(".commentFooter").show();
 		$comment.find(".commentFooter .commentControls").show();
+		// The editor opened without focus, so a paste went to the page.
+		if (inst && inst.focus) { inst.focus(); }
 	});
 
 	tripwire.activity.editComment = $comment.data("id");

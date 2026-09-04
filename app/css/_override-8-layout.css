@@ -18,7 +18,7 @@
    three columns on a 375px phone with two of them off the right edge -- the
    responsive file sorts earlier and could not win. The guard is what the
    earlier file was always assuming. */
-@media (min-width: 1280px) {
+@media (min-width: 960px) {
 	html, body { height: 100%; overflow: hidden; }
 
 	#wrapper {
@@ -205,7 +205,7 @@
    grows and the chain takes what is left rather than the reverse.
    ========================================================================= */
 
-@media (min-width: 1280px) {
+@media (min-width: 960px) {
 	.gridster > ul {
 		grid-template-rows: minmax(240px, 46vh) 1fr;
 	}

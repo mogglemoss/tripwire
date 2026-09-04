@@ -113,9 +113,57 @@ tripwire.keyboard = (function() {
         });
     }
 
+    // Jump to a chain tab by name.
+    function chainTabActions() {
+        return $("#chainTabs .tab").map(function(i, t) {
+            var name = $(t).find(".name").text().trim();
+            return {
+                id: "chain-tab-" + i, label: "Chain: " + name, group: "Chain",
+                enabled: function() { return true; },
+                perform: function() { if (window.chain && chain.setActiveTab) { chain.setActiveTab(i); } }
+            };
+        }).get();
+    }
+
+    // Switch mask by name.
+    function maskActions() {
+        return $("#mask-menu-mask-list a").map(function(i, a) {
+            var $m = $(a).find(".mask"), name = $m.text().trim();
+            return {
+                id: "mask-" + $m.data("mask"), label: "Mask: " + name, group: "App",
+                enabled: function() { return !$(a).hasClass("active"); },
+                perform: function() { $(a).trigger("click"); }
+            };
+        }).get();
+    }
+
+    // Life and mass on the selected wormhole rows, without the dialog.
+    function selectionActions() {
+        var $rows = $("#sigTable tbody tr.selected");
+        if (!$rows.length || !tripwire.signaturePayload) { return []; }
+        var whs = $rows.map(function() { var w = tripwire.signaturePayload.wormholeForSignature($(this).data("id")); return w ? w.id : null; }).get();
+        if (!whs.length) { return []; }
+        var set = function(field, value, label) {
+            return {
+                id: "sel-" + field + "-" + value, label: label + (whs.length > 1 ? " (" + whs.length + " wormholes)" : ""), group: "Selected wormhole",
+                enabled: function() { return true; },
+                perform: function() {
+                    whs.forEach(function(id) { var c = {}; c[field] = value; tripwire.signaturePayload.changeWormhole(id, c); });
+                    if (tripwire.signaturePayload.recordUndo) { try { tripwire.signaturePayload.recordUndo(); } catch (e) {} }
+                    tripwire.refresh();
+                }
+            };
+        };
+        return [set("life", "stable", "Life: stable"), set("life", "critical", "Life: end of life"),
+                set("mass", "stable", "Mass: stable"), set("mass", "destab", "Mass: destabilised"), set("mass", "critical", "Mass: critical")];
+    }
+
     return {
         actions: ACTIONS,
         panelActions: panelActions,
+        chainTabActions: chainTabActions,
+        maskActions: maskActions,
+        selectionActions: selectionActions,
         bindings: KEY_BINDINGS,
         systemActions: systemActions,
         isTyping: isTyping

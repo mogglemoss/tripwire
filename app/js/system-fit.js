@@ -54,7 +54,7 @@ var systemFit = new function() {
 	// Grow the top row if the panel cannot hold the graph at its floor.
 	function fitRow(p, need) {
 		var grid = document.querySelector(".gridster > ul");
-		if (!grid || window.innerWidth < 1280) return;
+		if (!grid || window.innerWidth < 960) return;
 		var widget = document.getElementById("infoWidget");
 		var chrome = widget.getBoundingClientRect().height - p.clientHeight;
 		var wanted = need + chrome;
@@ -99,7 +99,7 @@ var systemFit = new function() {
 	$(function() {
 		// Apply the remembered row before anything is measured.
 		var grid = document.querySelector(".gridster > ul"), remembered = storedRow();
-		if (grid && remembered && window.innerWidth >= 1280) {
+		if (grid && remembered && window.innerWidth >= 960) {
 			appliedRow = remembered;
 			grid.style.setProperty("--top-row", Math.round(remembered) + "px");
 		}

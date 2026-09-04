@@ -444,7 +444,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 /* ── The top row takes what the System panel needs ─────────────────────
    system-fit.js sets --top-row when the panel cannot hold the graph at its
    floor; otherwise the row is the 46vh the layout chose. */
-@media (min-width: 1280px) {
+@media (min-width: 960px) {
 	.gridster > ul { grid-template-rows: minmax(240px, var(--top-row, 46vh)) 1fr; }
 }
 
@@ -600,7 +600,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 /* ── The top row: smaller by default, and it does not follow the system ──
    40vh unless a visited system needed more (system-fit.js remembers the
    largest, per window height). The chain gets the rest. */
-@media (min-width: 1280px) {
+@media (min-width: 960px) {
 	.gridster > ul { grid-template-rows: minmax(240px, var(--top-row, 40vh)) 1fr; }
 }
 
@@ -823,3 +823,163 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 @media (max-width: 767px) {
 	#infoWidget > .controls .bar-right #sys-range { display: none; }
 }
+
+/* ══ Feedback round (the corp, 2026-09-04) ═══════════════════════════════ */
+
+/* ── 1. Chain nodes: the same card, half the height ──────────────────────
+   The class chip sat on its own line above the name and the statics hung
+   half below the card; at zoom 1.2 that was 173x70 with an 84px row pitch
+   against upstream's 30px pill. Two lines: chip + name + pips, then hull or
+   sig id + statics inline. About 120x40 at zoom 1. Security reads at full
+   strength on the left edge and in the chip, in both rooms. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	grid-template-areas: "class name pips" "type type statics";
+	align-items: center; column-gap: 5px; row-gap: 2px;
+	width: 120px; min-height: 0; height: auto !important;
+	padding: 4px 7px 4px 6px; margin: 0;
+	border-left: 3px solid var(--node-edge);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+	overflow: visible;
+}
+#chainMap div.node > .nodeClass  { grid-area: class; margin: 0; order: 0; }
+#chainMap div.node > .nodeSystem { grid-area: name;  margin: 0; padding: 0; order: 0; font-size: 12px; line-height: 16px; }
+#chainMap div.node > .nodeActivity { grid-area: pips; position: static; margin: 0; order: 0; gap: 2px; font-size: 8px; }
+#chainMap div.node > .nodeType   { grid-area: type;  margin: 0; order: 0; min-height: 0; font-size: 10px; line-height: 14px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .04em; }
+#chainMap div.node > .statics    { grid-area: statics; position: static; transform: none; margin: 0; gap: 3px; justify-content: flex-end; order: 0; }
+#chainMap div.node > .statics span, #chainMap div.node > .statics span:nth-child(2) { height: 14px; min-width: 18px; padding: 0 5px; font-size: 9px; box-shadow: none; }
+#chainMap div.node > .nodeClass > span { height: 15px; padding: 0 5px; font-size: 10px; }
+#chainMap div.node > .nodeIcons { top: 2px; right: 4px; }
+#chainMap div.node > .nodeType:empty { display: none; }
+#chainMap div.node:has(> .nodeType:empty) { grid-template-areas: "class name pips" "statics statics statics"; }
+#chainMap div.node:has(> .nodeType:empty):not(:has(> .statics span)) { grid-template-areas: "class name pips"; }
+#chainMap div.loop { width: 120px; padding: 4px 7px; }
+
+/* Security and class on the edge, full strength; tokens carry both rooms. */
+#chainMap div.greenNode.node  { border-left-color: var(--data-good); }
+#chainMap div.yellowNode.node { border-left-color: var(--data-loot-orange); }
+#chainMap div.redNode.node    { border-left-color: var(--data-critical); }
+#chainMap div.node:has(> .nodeClass .wh),
+#chainMap div.node:has(> .nodeClass .class-1), #chainMap div.node:has(> .nodeClass .class-2), #chainMap div.node:has(> .nodeClass .class-3) { border-left-color: var(--data-info); }
+#chainMap div.node:has(> .nodeClass .class-4), #chainMap div.node:has(> .nodeClass .class-5) { border-left-color: var(--data-loot-purple); }
+#chainMap div.node:has(> .nodeClass .class-6)  { border-left-color: var(--data-loot-pink); }
+#chainMap div.node:has(> .nodeClass .class-12) { border-left-color: var(--data-loot-gold); }
+#chainMap div.node:has(> .nodeClass .class-15), #chainMap div.node:has(> .nodeClass .class-16), #chainMap div.node:has(> .nodeClass .class-17) { border-left-color: var(--data-loot-red); }
+#chainMap .currentNode > div.node { border-left-color: var(--primary); }
+/* The class tint stays but reads as a ground, not a wash. */
+#chainMap div.redNode.node    { background-color: color-mix(in oklab, var(--data-critical) 10%, var(--node-surface)); }
+#chainMap div.yellowNode.node { background-color: color-mix(in oklab, var(--data-loot-orange) 10%, var(--node-surface)); }
+#chainMap div.greenNode.node  { background-color: color-mix(in oklab, var(--data-good) 10%, var(--node-surface)); }
+
+/* ── 4. The chain pans with the wheel again ───────────────────────────────
+   #chainParent is the widget's .content, so the panel rule that hides
+   overflow outranked its own overflow: auto. Drag-to-pan (dragscroll) had
+   kept working, which is why it felt like drag became the only way. */
+#chainWidget > #chainParent.content { overflow: auto; }
+
+/* ── 5. Signature columns: header and cells share one alignment ──────────
+   The cells carry the per-column alignment classes from Settings; the
+   header now wears the same classes (sig-align.js), so the two agree. */
+#sigTable th, #sigTable td { text-align: left; }
+#sigTable .centerAlign { text-align: center; }
+#sigTable .rightAlign  { text-align: right; }
+#sigTable .leftAlign   { text-align: left; }
+
+/* ── 7. Three columns from 960px; what gives at the narrow end ─────────── */
+@media (min-width: 960px) and (max-width: 1099px) {
+	#infoWidget > .controls .bar-right #sys-range { display: none; }
+	#sigTable th:nth-child(5), #sigTable td:nth-child(5),
+	#sigTable th:nth-child(6), #sigTable td:nth-child(6) { width: 3.2rem; padding-left: 2px; padding-right: 4px; }
+	#sigTable th:nth-child(2), #sigTable td:nth-child(2) { width: 4.6rem; }
+}
+
+/* ── 6. Phone: a signature is two lines, nothing hidden ─────────────────── */
+@media (max-width: 767px) {
+	#sigTable thead { display: none; }
+	#sigTable tbody tr {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto auto;
+		grid-template-areas: "id type type age" "leads leads life mass";
+		column-gap: 10px; row-gap: 2px;
+		padding: 7px 10px;
+	}
+	#sigTable tbody td { display: block; width: auto !important; padding: 0 !important; height: auto; line-height: 18px; text-align: left !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	#sigTable tbody td:nth-child(1) { grid-area: id; font-weight: 600; }
+	#sigTable tbody td:nth-child(2) { grid-area: type; }
+	#sigTable tbody td:nth-child(3) { grid-area: age; text-align: right !important; }
+	#sigTable tbody td:nth-child(4) { grid-area: leads; }
+	#sigTable tbody td:nth-child(5) { grid-area: life; text-align: right !important; font-size: var(--fs-xs); color: var(--muted-foreground); }
+	#sigTable tbody td:nth-child(6) { grid-area: mass; text-align: right !important; font-size: var(--fs-xs); color: var(--muted-foreground); }
+	#sigTable tbody td:empty { display: none; }
+}
+/* Older per-column rules (an id and a pseudo-class) outranked the shared
+   alignment classes on the header; match them with the section in the
+   selector. And the phone block had hidden Life and Mass outright. */
+#sigTable thead th.leftAlign,   #sigTable tbody td.leftAlign   { text-align: left; }
+#sigTable thead th.centerAlign, #sigTable tbody td.centerAlign { text-align: center; }
+#sigTable thead th.rightAlign,  #sigTable tbody td.rightAlign  { text-align: right; }
+@media (max-width: 767px) {
+	#sigTable tbody tr > td:nth-child(5), #sigTable tbody tr > td:nth-child(6) { display: block !important; }
+	#sigTable tbody tr > td:empty { display: none !important; }
+}
+/* The name was being cut to one letter: the pips' non-breaking spaces and
+   an old right padding on the name ate the column. The card sizes to its
+   name between 118 and 168px, as upstream's pill did; the pips are dots. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { width: auto; min-width: 118px; max-width: 168px; }
+#chainMap div.node > .nodeSystem { padding-right: 0; overflow: visible; text-overflow: clip; }
+#chainMap div.node > .nodeActivity { font-size: 0; gap: 3px; }
+#chainMap div.node > .nodeActivity > span { font-size: 8px; line-height: 8px; }
+#chainMap div.node > .nodeActivity > span.invisible { display: none; }
+#chainMap div.loop { width: auto; min-width: 118px; }
+/* The name column: sized to the name (the card grows to 168px), and the
+   older h4 rule that ellipsised it is matched at its own specificity. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { grid-template-columns: auto auto minmax(0, auto); }
+#chainMap div.node > h4.nodeSystem { padding-right: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 120px; height: auto; line-height: 16px; }
+/* k-space security on the edge, both rooms, from the same tokens the chips use. */
+#chainMap div.node:has(> .nodeClass .hisec)  { border-left-color: var(--data-good); }
+#chainMap div.node:has(> .nodeClass .lowsec) { border-left-color: var(--data-loot-orange); }
+#chainMap div.node:has(> .nodeClass .nullsec) { border-left-color: var(--data-critical); }
+#chainMap .currentNode > div.node { border-left-color: var(--primary); }
+/* The name track sizes to the name (max-content), so the card grows with
+   it up to its cap; overflow on the h4 had made its automatic minimum 0. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { grid-template-columns: auto max-content auto; }
+/* Flares (a colour a pilot sets on a node from its menu) are not security:
+   they tint the ground and the top edge; the left edge stays security. */
+#chainMap div.greenNode.node  { border-left-color: var(--node-edge); border-top: 2px solid var(--data-good); }
+#chainMap div.yellowNode.node { border-left-color: var(--node-edge); border-top: 2px solid var(--data-loot-orange); }
+#chainMap div.redNode.node    { border-left-color: var(--node-edge); border-top: 2px solid var(--data-critical); }
+#chainMap div.greenNode.node:has(> .nodeClass .hisec), #chainMap div.yellowNode.node:has(> .nodeClass .hisec), #chainMap div.redNode.node:has(> .nodeClass .hisec) { border-left-color: var(--data-good); }
+#chainMap div.greenNode.node:has(> .nodeClass .lowsec), #chainMap div.yellowNode.node:has(> .nodeClass .lowsec), #chainMap div.redNode.node:has(> .nodeClass .lowsec) { border-left-color: var(--data-loot-orange); }
+#chainMap div.greenNode.node:has(> .nodeClass .nullsec), #chainMap div.yellowNode.node:has(> .nodeClass .nullsec), #chainMap div.redNode.node:has(> .nodeClass .nullsec) { border-left-color: var(--data-critical); }
+#chainMap div.greenNode.node:has(> .nodeClass .wh), #chainMap div.yellowNode.node:has(> .nodeClass .wh), #chainMap div.redNode.node:has(> .nodeClass .wh) { border-left-color: var(--data-info); }
+#chainMap div.greenNode.node:has(> .nodeClass .class-4), #chainMap div.greenNode.node:has(> .nodeClass .class-5),
+#chainMap div.yellowNode.node:has(> .nodeClass .class-4), #chainMap div.yellowNode.node:has(> .nodeClass .class-5),
+#chainMap div.redNode.node:has(> .nodeClass .class-4), #chainMap div.redNode.node:has(> .nodeClass .class-5) { border-left-color: var(--data-loot-purple); }
+#chainMap div.greenNode.node:has(> .nodeClass .class-6), #chainMap div.yellowNode.node:has(> .nodeClass .class-6), #chainMap div.redNode.node:has(> .nodeClass .class-6) { border-left-color: var(--data-loot-pink); }
+#chainMap .currentNode > div.node { border-left-color: var(--primary); }
+/* Security on the left edge from classes the node now carries itself
+   (sec-hisec / sec-lowsec / sec-nullsec / sec-wh + cls-N), so no :has()
+   is needed and the build cannot drop it. The card shrink-wraps its name. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { width: fit-content; margin: 0 auto; }
+#chainMap div.node.sec-hisec,  #chainMap div.greenNode.node.sec-hisec,  #chainMap div.yellowNode.node.sec-hisec,  #chainMap div.redNode.node.sec-hisec  { border-left-color: var(--data-good); }
+#chainMap div.node.sec-lowsec, #chainMap div.greenNode.node.sec-lowsec, #chainMap div.yellowNode.node.sec-lowsec, #chainMap div.redNode.node.sec-lowsec { border-left-color: var(--data-loot-orange); }
+#chainMap div.node.sec-nullsec, #chainMap div.greenNode.node.sec-nullsec, #chainMap div.yellowNode.node.sec-nullsec, #chainMap div.redNode.node.sec-nullsec { border-left-color: var(--data-critical); }
+#chainMap div.node.sec-triglavian, #chainMap div.greenNode.node.sec-triglavian, #chainMap div.yellowNode.node.sec-triglavian, #chainMap div.redNode.node.sec-triglavian { border-left-color: var(--data-loot-red); }
+#chainMap div.node.sec-wh, #chainMap div.greenNode.node.sec-wh, #chainMap div.yellowNode.node.sec-wh, #chainMap div.redNode.node.sec-wh { border-left-color: var(--data-info); }
+#chainMap div.node.cls-4, #chainMap div.node.cls-5, #chainMap div.greenNode.node.cls-4, #chainMap div.greenNode.node.cls-5, #chainMap div.yellowNode.node.cls-4, #chainMap div.yellowNode.node.cls-5, #chainMap div.redNode.node.cls-4, #chainMap div.redNode.node.cls-5 { border-left-color: var(--data-loot-purple); }
+#chainMap div.node.cls-6, #chainMap div.greenNode.node.cls-6, #chainMap div.yellowNode.node.cls-6, #chainMap div.redNode.node.cls-6 { border-left-color: var(--data-loot-pink); }
+#chainMap div.node.cls-12, #chainMap div.greenNode.node.cls-12, #chainMap div.yellowNode.node.cls-12, #chainMap div.redNode.node.cls-12 { border-left-color: var(--data-loot-gold); }
+#chainMap div.node.cls-15, #chainMap div.node.cls-16, #chainMap div.node.cls-17 { border-left-color: var(--data-loot-red); }
+#chainMap .currentNode > div.node, #chainMap .currentNode > div.node.sec-hisec, #chainMap .currentNode > div.node.sec-wh { border-left-color: var(--primary); }
+/* Chrome trimmed so the width is the name's, not the card's. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { column-gap: 4px; padding: 3px 6px 3px 5px; min-width: 104px; }
+#chainMap div.node > .nodeClass > span { padding: 0 4px; height: 14px; }
+#chainMap div.node > .nodeActivity { gap: 2px; }
+#chainMap div.node > .nodeActivity > span { font-size: 7px; line-height: 7px; }

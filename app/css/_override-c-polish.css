@@ -64,9 +64,9 @@
    mis-framing: a canvas sixteen screens wide is supposed to exceed its box.
    What was actually wrong with it was that it never scrolled to where you
    are, which is fixed in the renderer rather than here. */
-@media (min-width: 1280px) {
+@media (min-width: 960px) {
 	.gridster > ul {
-		grid-template-columns: minmax(260px, 1fr) minmax(360px, 1.5fr) minmax(210px, 0.78fr);
+		grid-template-columns: minmax(230px, 1fr) minmax(320px, 1.5fr) minmax(190px, 0.78fr);
 		grid-template-rows: minmax(240px, 46vh) 1fr;
 	}
 }
