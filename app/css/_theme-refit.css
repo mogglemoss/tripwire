@@ -1005,3 +1005,254 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #chainMap div.node > h4.nodeClass > span.class-6    { background: var(--data-loot-pink); }
 #chainMap div.node > h4.nodeClass > span.class-12   { background: var(--data-loot-gold); color: #1b1b1b; -webkit-text-fill-color: #1b1b1b; }
 #chainMap div.node > h4.nodeClass > span.class-15, #chainMap div.node > h4.nodeClass > span.class-16, #chainMap div.node > h4.nodeClass > span.class-17 { background: var(--data-loot-red); }
+
+/* ── Statics span the second row and wrap; three capsules no longer run
+   off the edge (they sat in the column the activity pips size). ───────── */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { grid-template-areas: "class name pips" "type statics statics"; }
+#chainMap div.node > .nodeType { white-space: nowrap; }
+#chainMap div.node > .statics { flex-wrap: wrap; justify-content: flex-end; row-gap: 2px; min-width: 0; }
+#chainMap div.node:has(> .nodeType:empty) { grid-template-areas: "class name pips" "statics statics statics"; }
+
+/* ── Flares breathe. ──────────────────────────────────────────────────────
+   As Aperture's underglow: a blurred pad in the flare colour behind the
+   card, scaling 0.96 -> 1.06 and 28% -> 80% opacity on a 1.4s cycle. The
+   card itself keeps its security edge and a faint tint; the top edge is
+   gone. Still under reduced-motion. */
+@keyframes flare-glow {
+	0%, 100% { opacity: .28; transform: scale(.96); }
+	50%      { opacity: .8;  transform: scale(1.06); }
+}
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { position: relative; z-index: 0; border-top-width: 1px; border-top-color: var(--node-edge); }
+#chainMap div.redNode.node::before, #chainMap div.yellowNode.node::before, #chainMap div.greenNode.node::before {
+	content: ""; position: absolute; inset: -3px; z-index: -1; border-radius: inherit;
+	background: var(--flare, transparent); filter: blur(9px);
+	animation: flare-glow 1400ms ease-in-out infinite; pointer-events: none;
+}
+#chainMap div.redNode.node    { --flare: var(--data-critical); }
+#chainMap div.yellowNode.node { --flare: var(--data-loot-orange); }
+#chainMap div.greenNode.node  { --flare: var(--data-good); }
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { background-color: color-mix(in oklab, var(--flare) 8%, var(--node-surface)); }
+@media (prefers-reduced-motion: reduce) {
+	#chainMap div.redNode.node::before, #chainMap div.yellowNode.node::before, #chainMap div.greenNode.node::before { animation: none; opacity: .55; }
+}
+
+/* ── Three lines, narrow: chains grow sideways, so width is the currency.
+   Line 1 chip + name, line 2 hull or sig id with the pips at the right,
+   line 3 the statics (J-space only; k-space cards are two lines). About
+   100 wide and 52 tall at zoom 1, against upstream's ~100 x 30. ─────────── */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	grid-template-columns: auto minmax(0, max-content);
+	grid-template-areas: "class name" "type pips" "statics statics";
+	column-gap: 4px; row-gap: 1px;
+	min-width: 92px; max-width: 140px; padding: 3px 6px 3px 5px;
+}
+#chainMap div.node > .nodeType { grid-area: type; }
+#chainMap div.node > .nodeActivity { grid-area: pips; justify-self: end; }
+#chainMap div.node > .statics { grid-area: statics; justify-content: flex-start; margin-top: 1px; }
+#chainMap div.node > h4.nodeSystem { max-width: 104px; }
+#chainMap div.node:has(> .nodeType:empty) { grid-template-areas: "class name" "statics statics"; }
+#chainMap div.node:has(> .nodeType:empty):not(:has(> .statics span)) { grid-template-areas: "class name"; }
+#chainMap div.node:not(:has(> .statics span)) { grid-template-areas: "class name" "type pips"; }
+#chainMap div.node:has(> .nodeType:empty) > .nodeActivity { grid-area: name; justify-self: end; }
+#chainMap div.node > .nodeIcons { top: auto; bottom: 3px; right: 5px; }
+#chainMap div.node > .nodeIcons > div { gap: 3px; }
+
+/* ── Upstream's skeleton: a 32px box. Name, then the hull or sig id under
+   it; the class chip rides the top-left corner; statics hang off the
+   bottom edge as capsules; pips are dots at the bottom right. About
+   100 x 32 at zoom 1 (upstream: ~100 x 30). ────────────────────────────── */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	display: block; position: relative; overflow: visible;
+	width: fit-content; min-width: 96px; max-width: 150px; height: auto !important;
+	padding: 3px 10px 3px 10px; margin: 6px auto 8px;
+	text-align: center;
+}
+#chainMap div.node > h4.nodeSystem { display: block; margin: 0; padding: 0 10px 0 0; font-size: 12px; line-height: 14px; max-width: none; }
+#chainMap div.node > .nodeType { display: block; margin: 0; font-size: 9.5px; line-height: 11px; letter-spacing: .04em; min-height: 0; }
+#chainMap div.node > .nodeType:empty { display: none; }
+#chainMap div.node > .nodeClass {
+	position: absolute; top: -7px; left: -5px; margin: 0; line-height: 1; z-index: 2;
+}
+#chainMap div.node > .nodeClass > span { height: 13px; padding: 0 4px; font-size: 9px; box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.node > .statics {
+	position: absolute; left: 6px; right: 6px; bottom: -7px; margin: 0; z-index: 2;
+	display: flex; justify-content: center; gap: 3px; flex-wrap: nowrap;
+}
+#chainMap div.node > .statics span, #chainMap div.node > .statics span:nth-child(2) { height: 12px; min-width: 16px; padding: 0 4px; font-size: 8.5px; box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.node > .nodeActivity { position: absolute; right: 4px; bottom: 3px; top: auto; margin: 0; gap: 2px; z-index: 1; }
+#chainMap div.node > .nodeActivity > span { font-size: 6px; line-height: 6px; }
+#chainMap div.node > .nodeIcons { position: absolute; top: -6px; right: -4px; bottom: auto; left: auto; }
+#chainMap div.node > .nodeIcons > div { gap: 2px; }
+#chainMap div.node > .nodeIcons .badge { height: 12px; font-size: 9px; padding: 0 4px; }
+#chainMap div.node.frig-chain { border-width: 1px; }
+#chainMap div.loop { width: fit-content; min-width: 0; padding: 3px 10px; margin: 6px auto 8px; }
+/* The glow is a halo around and behind the box, not a wash across it: an
+   animated shadow instead of a pad inside the card's own stacking layer. */
+#chainMap div.redNode.node::before, #chainMap div.yellowNode.node::before, #chainMap div.greenNode.node::before { content: none; animation: none; }
+@keyframes flare-halo {
+	0%, 100% { box-shadow: 0 0 6px 1px color-mix(in oklab, var(--flare) 45%, transparent), 0 2px 8px rgba(0, 0, 0, .35); }
+	50%      { box-shadow: 0 0 16px 5px color-mix(in oklab, var(--flare) 85%, transparent), 0 2px 8px rgba(0, 0, 0, .35); }
+}
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	z-index: auto; border-color: color-mix(in oklab, var(--flare) 60%, var(--node-edge));
+	animation: flare-halo 1400ms ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+	#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { animation: none; box-shadow: 0 0 12px 3px color-mix(in oklab, var(--flare) 70%, transparent); }
+}
+/* The chip sits inline before the name (it was covering the first letter
+   from the corner); the type line gets room above the hanging capsules. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	display: grid; grid-template-columns: auto max-content; grid-template-areas: "class name" "type type";
+	align-items: center; column-gap: 4px; row-gap: 0;
+	min-width: 92px; max-width: 160px; padding: 3px 8px 9px 6px; margin: 4px auto 9px; text-align: left;
+}
+#chainMap div.node > .nodeClass { position: static; grid-area: class; margin: 0; line-height: 1; }
+#chainMap div.node > .nodeClass > span { height: 13px; padding: 0 4px; font-size: 9px; box-shadow: none; }
+#chainMap div.node > h4.nodeSystem { grid-area: name; padding: 0; line-height: 15px; max-width: 110px; }
+#chainMap div.node > .nodeType { grid-area: type; text-align: left; padding-right: 24px; line-height: 11px; }
+#chainMap div.node > .nodeType:empty { display: none; }
+#chainMap div.node:has(> .nodeType:empty) { padding-bottom: 3px; grid-template-areas: "class name"; }
+#chainMap div.node:has(> .nodeType:empty):has(> .statics span) { padding-bottom: 8px; }
+#chainMap div.node > .statics { bottom: -7px; left: 4px; right: 4px; justify-content: flex-start; }
+#chainMap div.node > .nodeActivity { right: 5px; bottom: 9px; }
+#chainMap div.node:has(> .nodeType:empty) > .nodeActivity { bottom: 4px; }
+#chainMap div.node > .nodeIcons { top: -5px; right: -3px; }
+
+/* ══ Chain node, settled ═══════════════════════════════════════════════════
+   Everything in flow on one grid, so nothing can land on anything else at
+   any zoom. Row 1: class chip, name, effect / occupant icons, activity
+   pips. Row 2: hull or sig id. Statics hang off the bottom edge into space
+   the card reserves below itself. 34px tall with a type line, 22 without;
+   about 100 wide for a J-name. Upstream: ~100 x 30 with its tabs below. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	display: grid;
+	grid-template-columns: auto minmax(0, max-content) auto auto;
+	grid-template-areas: "class name icons pips" "type type type type";
+	align-items: center; column-gap: 4px; row-gap: 1px;
+	width: fit-content; min-width: 96px; max-width: 176px; height: auto !important;
+	padding: 3px 7px 4px 5px; margin: 3px auto 12px;
+	position: relative; overflow: visible; text-align: left;
+}
+#chainMap div.node:has(> .nodeType:empty) { grid-template-areas: "class name icons pips"; padding-bottom: 3px; }
+#chainMap div.node > .nodeClass { grid-area: class; position: static; margin: 0; line-height: 1; }
+#chainMap div.node > .nodeClass > span { height: 13px; padding: 0 4px; font-size: 9px; box-shadow: none; }
+#chainMap div.node > h4.nodeSystem { grid-area: name; margin: 0; padding: 0; line-height: 15px; font-size: 12px; max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#chainMap div.node > .nodeIcons { grid-area: icons; position: static; display: flex; align-items: center; gap: 3px; width: auto; height: auto; margin: 0; top: auto; right: auto; left: auto; bottom: auto; }
+#chainMap div.node > .nodeIcons:empty { display: none; }
+#chainMap div.node > .nodeIcons > div { float: none; display: flex; align-items: center; gap: 3px; }
+#chainMap div.node > .nodeIcons .invisible { display: none; }
+#chainMap div.node > .nodeIcons .badge { height: 12px; padding: 0 4px; font-size: 9px; }
+#chainMap div.node > .nodeIcons [data-icon]::before { font-size: 11px; }
+#chainMap div.node > .nodeActivity { grid-area: pips; position: static; justify-self: end; display: flex; align-items: center; gap: 2px; width: auto; height: auto; margin: 0; font-size: 0; }
+#chainMap div.node > .nodeActivity > span { font-size: 6px; line-height: 6px; }
+#chainMap div.node > .nodeActivity > span.invisible { display: none; }
+#chainMap div.node > .nodeType { grid-area: type; margin: 0; padding: 0; text-align: left; font-family: var(--font-mono); font-size: 9.5px; line-height: 11px; letter-spacing: .04em; text-transform: uppercase; min-height: 0; white-space: nowrap; }
+#chainMap div.node > .nodeType:empty { display: none; }
+#chainMap div.node > .statics {
+	position: absolute; left: 5px; right: 5px; top: 100%; bottom: auto; margin: -4px 0 0; transform: none; z-index: 2;
+	display: flex; justify-content: flex-start; gap: 3px; flex-wrap: nowrap;
+}
+#chainMap div.node > .statics:empty { display: none; }
+#chainMap div.node > .statics span, #chainMap div.node > .statics span:nth-child(2) { height: 12px; min-width: 16px; padding: 0 4px; font-size: 8.5px; line-height: 1; box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.loop { display: block; width: fit-content; min-width: 0; padding: 3px 8px; margin: 3px auto 12px; }
+/* Placement by line numbers, not area names: the minifier had reordered
+   the named areas and the icons fell into an implicit fourth row. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	grid-template-areas: none;
+	grid-template-columns: auto minmax(0, max-content) auto auto;
+	grid-template-rows: auto auto;
+	grid-auto-rows: 0;
+}
+#chainMap div.node > .nodeClass    { grid-area: auto; grid-column: 1; grid-row: 1; }
+#chainMap div.node > h4.nodeSystem { grid-area: auto; grid-column: 2; grid-row: 1; }
+#chainMap div.node > .nodeIcons    { grid-area: auto; grid-column: 3; grid-row: 1; }
+#chainMap div.node > .nodeActivity { grid-area: auto; grid-column: 4; grid-row: 1; }
+#chainMap div.node > .nodeType     { grid-area: auto; grid-column: 1 / 5; grid-row: 2; }
+#chainMap div.node > .statics      { grid-area: auto; }
+#chainMap div.node:has(> .nodeType:empty) { grid-template-rows: auto; }
+/* The name's own text is its minimum: overflow: clip is not a scroll
+   container, so the grid and the org-chart cell size to the name instead of
+   collapsing it to "P." at their minimum. Still ellipsises past 110px. */
+#chainMap div.node > h4.nodeSystem { overflow: clip; text-overflow: ellipsis; min-width: min-content; }
+#chainMap div.node > h4.nodeSystem a { white-space: nowrap; }
+
+/* ══ Chain node: the original's layout, in our clothes ═════════════════════
+   Three centred lines -- class chip with the effect beside it, the name,
+   the hull or sig id -- the statics hanging off the bottom edge into the
+   space between rows, activity dots on the edge, the occupant badge on the
+   top-right corner. About 100 x 46 at zoom 1, which is what the original
+   measured once its three lines were in it. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	display: grid; grid-template-columns: minmax(0, max-content); grid-template-rows: auto auto auto; grid-auto-rows: 0;
+	justify-items: center; align-items: center; row-gap: 0; column-gap: 0;
+	width: fit-content; min-width: 96px; max-width: 176px; height: auto !important;
+	padding: 4px 10px 5px; margin: 3px auto 12px;
+	position: relative; overflow: visible; text-align: center;
+}
+#chainMap div.node > .nodeClass    { grid-column: 1; grid-row: 1; position: static; margin: 0; display: inline-flex; align-items: center; gap: 4px; line-height: 1; }
+#chainMap div.node > .nodeClass > span { height: 13px; padding: 0 5px; font-size: 9px; }
+#chainMap div.node > h4.nodeSystem { grid-column: 1; grid-row: 2; margin: 0; padding: 0; line-height: 16px; font-size: 12.5px; font-weight: 600; max-width: 150px; min-width: min-content; overflow: clip; text-overflow: ellipsis; white-space: nowrap; }
+#chainMap div.node > .nodeType     { grid-column: 1; grid-row: 3; margin: 0; padding: 0; text-align: center; font-family: var(--font-mono); font-size: 10px; line-height: 12px; letter-spacing: .06em; text-transform: uppercase; min-height: 0; white-space: nowrap; }
+#chainMap div.node > .nodeType:empty { display: none; }
+#chainMap div.node:has(> .nodeType:empty) { grid-template-rows: auto auto; }
+/* The effect sits beside the class, in flow; the occupant badge rides the corner. */
+#chainMap div.node > .nodeIcons { grid-column: 1; grid-row: 1; position: static; display: contents; }
+#chainMap div.node > .nodeIcons > div { float: none; display: contents; }
+#chainMap div.node > .nodeIcons > div:first-child { display: inline-flex; align-items: center; position: absolute; top: 4px; right: 8px; gap: 2px; }
+#chainMap div.node > .nodeIcons > div:last-child { display: inline-flex; align-items: center; position: absolute; top: -6px; right: -6px; gap: 2px; }
+#chainMap div.node > .nodeIcons .invisible { display: none; }
+#chainMap div.node > .nodeIcons .badge { height: 13px; padding: 0 5px; font-size: 9px; box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.node > .nodeIcons [data-icon]::before { font-size: 11px; }
+/* Dots on the bottom edge, left; statics hanging from the edge, right of them. */
+#chainMap div.node > .nodeActivity { position: absolute; left: 8px; bottom: -3px; top: auto; right: auto; margin: 0; width: auto; height: auto; display: flex; gap: 3px; font-size: 0; z-index: 2; }
+#chainMap div.node > .nodeActivity > span { font-size: 7px; line-height: 7px; }
+#chainMap div.node > .nodeActivity > span.invisible { display: none; }
+#chainMap div.node > .statics { position: absolute; left: auto; right: 6px; top: 100%; bottom: auto; margin: -5px 0 0; transform: none; display: flex; justify-content: flex-end; gap: 3px; flex-wrap: nowrap; z-index: 2; }
+#chainMap div.node > .statics:empty { display: none; }
+#chainMap div.node > .statics span, #chainMap div.node > .statics span:nth-child(2) { height: 13px; min-width: 17px; padding: 0 5px; font-size: 9px; line-height: 1; box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.loop { display: block; width: fit-content; min-width: 0; padding: 4px 10px; margin: 3px auto 12px; }
+/* The class / security capsule hangs off the top-left corner, the effect
+   off the top-right; the box holds name and sig; statics and dots hang off
+   the bottom. The gaps between rows carry the capsules, as the original's
+   tabs did. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node {
+	grid-template-rows: auto auto; padding: 7px 10px 6px; margin: 9px auto 12px; min-width: 92px;
+}
+#chainMap div.node:has(> .nodeType:empty) { grid-template-rows: auto; }
+#chainMap div.node > .nodeClass { position: absolute; top: -7px; left: -5px; margin: 0; z-index: 3; }
+#chainMap div.node > .nodeClass > span { box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.node > h4.nodeSystem { grid-row: 1; }
+#chainMap div.node > .nodeType { grid-row: 2; }
+#chainMap div.node > .nodeIcons > div:first-child { top: -7px; right: 6px; }
+#chainMap div.node > .nodeIcons > div:last-child { top: -7px; right: -6px; }
+#chainMap div.node > .nodeIcons [data-icon]::before { font-size: 12px; text-shadow: 0 0 3px var(--background); }
+#chainMap div.node > .nodeActivity { bottom: -4px; left: 7px; }
+#chainMap div.node > .statics { margin-top: -6px; right: 5px; }
+/* Tooltips appended inside the chain panel position against it, not the
+   page: the panel is the containing block. */
+#chainWidget > #chainParent.content { position: relative; }
+/* The corner chip straddles the top edge in the box's own top padding; the
+   name starts below it. Mirrors the statics on the bottom edge. */
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { padding-top: 10px; padding-bottom: 7px; margin-top: 10px; }
+#chainMap div.node > .nodeClass { top: -7px; left: -5px; }
+#chainMap div.node > .nodeClass > span { height: 14px; }
+/* The desktop layout pins every panel's .content static with !important;
+   the chain panel must be the containing block for its tooltips. */
+#chainWidget > #chainParent.content { position: relative !important; }
+/* An absolutely positioned child of a grid is placed against its grid
+   area when it has one; the chip and the dots must be placed against the
+   box, so they get no area. And the rows sit 5px closer. */
+#chainMap div.node > .nodeClass, #chainMap div.node > .nodeActivity, #chainMap div.node > .statics,
+#chainMap div.node > .nodeIcons > div { grid-area: auto; grid-row: auto; grid-column: auto; }
+#chainMap div.node,
+#chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { margin-top: 8px; margin-bottom: 9px; }

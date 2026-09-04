@@ -102,7 +102,7 @@ gulp.task('css', function(cb) {
         pump([
             gulp.src(cssFiles[c].src),
             sourcemaps.init(),
-            cleancss(),
+            cleancss({level: {1: {all: true}, 2: {all: false}}}) /* level 2 merges identical selectors into the first occurrence, which reorders the cascade; the theme relies on source order */,
             concat(cssFiles[c].name),
             rename(cssFiles[c].nameMin),
             sourcemaps.write('.'),

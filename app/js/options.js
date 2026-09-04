@@ -127,6 +127,7 @@ var options = new function() {
 		// Chain zoom
 		if (this.chain.zoom) {
 			$("#chainParent").css("zoom", this.chain.zoom);
+			if (window.chainZoomButton) { chainZoomButton(); }
 		}
 
 		// Background
