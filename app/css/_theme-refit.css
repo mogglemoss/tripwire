@@ -824,7 +824,7 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	#infoWidget > .controls .bar-right #sys-range { display: none; }
 }
 
-/* ══ Feedback round (the corp, 2026-09-04) ═══════════════════════════════ */
+/* ══ Feedback round (first corp feedback, 2026-09-04) ════════════════════ */
 
 /* ── 1. Chain nodes: the same card, half the height ──────────────────────
    The class chip sat on its own line above the name and the statics hung

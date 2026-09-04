@@ -14,9 +14,13 @@ an illustrative third -- the Ministry, the identity of
 It is not a corp; it is there to show a pack with its own face. A pack is
 one folder; the packs shown are not in this repo, only the walk-throughs.
 
-| The default | The template pack | An illustrative pack ([observance.app](https://observance.app)) |
-|---|---|---|
-| ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) | ![Tripwire on the observance.app pack](docs/demo-ministry.gif) |
+<table><tr>
+<th width="33%">The default</th><th width="33%">The template pack</th><th width="33%">Illustrative: <a href="https://observance.app">observance.app</a></th>
+</tr><tr>
+<td><img src="docs/demo-tripwire.gif" width="100%" alt="Tripwire on the neutral default pack"></td>
+<td><img src="docs/demo-example.gif" width="100%" alt="Tripwire on the template corp pack"></td>
+<td><img src="docs/demo-ministry.gif" width="100%" alt="Tripwire on the observance.app pack"></td>
+</tr></table>
 
 It works at phone width too, editing included, and installs to the home screen.
 
