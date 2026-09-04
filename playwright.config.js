@@ -1,7 +1,7 @@
 // End-to-end tests against a running Tripwire.
 //
 // These run against a real instance -- by default the OrbStack preview on
-// nautilus through the SSH tunnel at localhost:8080 -- because the paths
+// the preview box through an SSH tunnel at localhost:8080 -- because the paths
 // worth testing (paste, add, edit, undo) round-trip through refresh.php and
 // MySQL, and a mocked server would only prove the mocks. Point E2E_BASE_URL
 // elsewhere to run them against another instance. Credentials come from
