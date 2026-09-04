@@ -1264,3 +1264,6 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #chainMap div.node > .nodeIcons .badge { height: 12px; padding: 0 4px; font-size: 8.5px; box-shadow: 0 0 0 2px var(--background); }
 #chainMap div.node > .nodeIcons [data-icon]::before { font-size: 11px; }
 #chainWidget > #chainParent.content { padding-top: 12px !important; }
+/* The pilot count is centred in its capsule (it is a flex box, which does
+   not centre on its own), with a round minimum so "1" and "12" both sit true. */
+#chainMap div.node > .nodeIcons .badge { justify-content: center; min-width: 14px; padding: 0 4px; box-sizing: border-box; text-align: center; }
