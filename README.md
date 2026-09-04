@@ -2,7 +2,7 @@
 
 <img src="docs/cormorantfell-portrait.jpeg" width="72" align="right">
 
-> [Cormorant Fell](https://evewho.com/character/93594488) — WiNGSPAN alumni and, on balance, more of a wormhole enthusiast than a wormhole survivor — refit this. The map underneath is the one you already trust. It has simply stopped dressing like 2015.
+> [Cormorant Fell](https://evewho.com/character/93594488) — WiNGSPAN boomerang and, on balance, more of a wormhole enthusiast than a wormhole survivor — refit this. The map underneath is the one you already trust. It has simply stopped dressing like 2015.
 
 ### EVE Online wormhole mapping — a fork of Tripwire
 - MIT licence (see `LICENSE`); upstream is [daimian/tripwire](https://bitbucket.org/daimian/tripwire)
