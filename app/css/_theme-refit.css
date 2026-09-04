@@ -988,3 +988,20 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #sigTable thead th:nth-child(4), #sigTable tbody td:nth-child(4),
 #sigTable thead th:nth-child(4).centerAlign, #sigTable tbody td:nth-child(4).centerAlign,
 #sigTable thead th:nth-child(4).rightAlign,  #sigTable tbody td:nth-child(4).rightAlign { text-align: left; }
+/* The class chip, top-left, filled in its class colour with white text --
+   hisec green, lowsec orange, nullsec red, C1-3 blue, C4-5 purple, C6 pink,
+   Thera gold, drifter red -- as upstream coloured its nodes. A later rule
+   had been greying the chip's currentColor. Same tokens in both rooms. */
+#chainMap div.node > h4.nodeClass > span {
+	background: var(--node-edge); color: #fff; -webkit-text-fill-color: #fff;
+	font-weight: 700; letter-spacing: .04em;
+}
+#chainMap div.node > h4.nodeClass > span.hisec      { background: var(--data-good); }
+#chainMap div.node > h4.nodeClass > span.lowsec     { background: var(--data-loot-orange); }
+#chainMap div.node > h4.nodeClass > span.nullsec    { background: var(--data-critical); }
+#chainMap div.node > h4.nodeClass > span.triglavian { background: var(--data-loot-red); }
+#chainMap div.node > h4.nodeClass > span.wh         { background: var(--data-info); }
+#chainMap div.node > h4.nodeClass > span.class-4, #chainMap div.node > h4.nodeClass > span.class-5 { background: var(--data-loot-purple); }
+#chainMap div.node > h4.nodeClass > span.class-6    { background: var(--data-loot-pink); }
+#chainMap div.node > h4.nodeClass > span.class-12   { background: var(--data-loot-gold); color: #1b1b1b; -webkit-text-fill-color: #1b1b1b; }
+#chainMap div.node > h4.nodeClass > span.class-15, #chainMap div.node > h4.nodeClass > span.class-16, #chainMap div.node > h4.nodeClass > span.class-17 { background: var(--data-loot-red); }

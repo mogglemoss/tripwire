@@ -147,10 +147,20 @@ tripwire.keyboard = (function() {
             return {
                 id: "sel-" + field + "-" + value, label: label + (whs.length > 1 ? " (" + whs.length + " wormholes)" : ""), group: "Selected wormhole",
                 enabled: function() { return true; },
+                // The same sequence as the inline editor: build the payload, send
+                // it, and record the undo entry only once the server accepts it.
                 perform: function() {
-                    whs.forEach(function(id) { var c = {}; c[field] = value; tripwire.signaturePayload.changeWormhole(id, c); });
-                    if (tripwire.signaturePayload.recordUndo) { try { tripwire.signaturePayload.recordUndo(); } catch (e) {} }
-                    tripwire.refresh();
+                    var systemID = viewingSystemID;
+                    whs.forEach(function(id) {
+                        var c = {}; c[field] = value;
+                        var built = tripwire.signaturePayload.changeWormhole(id, c);
+                        if (!built) { return; }
+                        tripwire.refresh("refresh", built.payload, function(data) {
+                            if (data && data.resultSet && data.resultSet[0] && data.resultSet[0].result == true) {
+                                tripwire.signaturePayload.recordUndo(systemID, "update", built.undo);
+                            }
+                        });
+                    });
                 }
             };
         };
