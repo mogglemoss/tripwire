@@ -983,3 +983,8 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #chainMap div.node > .nodeClass > span { padding: 0 4px; height: 14px; }
 #chainMap div.node > .nodeActivity { gap: 2px; }
 #chainMap div.node > .nodeActivity > span { font-size: 7px; line-height: 7px; }
+/* Leads To is the column that takes the table's slack; centred text in it
+   drifts away from Age. Upstream pinned it left whatever the setting. */
+#sigTable thead th:nth-child(4), #sigTable tbody td:nth-child(4),
+#sigTable thead th:nth-child(4).centerAlign, #sigTable tbody td:nth-child(4).centerAlign,
+#sigTable thead th:nth-child(4).rightAlign,  #sigTable tbody td:nth-child(4).rightAlign { text-align: left; }
