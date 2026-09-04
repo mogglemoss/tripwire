@@ -3,8 +3,8 @@
 // The top row was a fixed 46vh and the graph a fixed 170px, so on anything
 // under 1080px tall the panel scrolled: at 1440x900 it had 370px and needed
 // 479; at 1280x800, 324 against 504. The reference (Tripwire as shipped)
-// shows name, graph, ranges, links and gates with no scrollbar, and Scott
-// asked for the same.
+// shows name, graph, ranges, links and gates with no scrollbar, and this
+// fork keeps that.
 //
 // Two dials, in this order. The graph gives up height first, down to a
 // floor where it still reads. If the rest of the panel plus that floor is
