@@ -18,7 +18,7 @@ one folder; the packs shown are not in this repo, only the walk-throughs.
 |---|---|---|
 | ![Tripwire on the neutral default pack](docs/demo-tripwire.gif) | ![Tripwire on the template corp pack](docs/demo-example.gif) | ![Tripwire on the observance.app pack](docs/demo-ministry.gif) |
 
-On a phone it reads; on a tablet it edits. It installs to the home screen.
+It works at phone width too, editing included, and installs to the home screen.
 
 <p>
 <img src="docs/phone-tripwire.png" width="230" alt="Tripwire on a phone, neutral default">&nbsp;
