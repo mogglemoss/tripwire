@@ -31,6 +31,23 @@ how it reads and how fast you can work it, and makes the look a **brand
 pack** so any corp can run it as their own (see *Brand packs* below). Light
 and dark rooms with a toggle; installs on a phone; end-to-end tests.
 
+What the refit changes, in one screen:
+
+- **Chain map** on the original's layout, denser: a security or class capsule
+  on each box's corner, name and sig inside, statics hanging off the bottom
+  edge, activity dots on the edge, pilots on the top-right. Flares breathe.
+  The wheel pans, Ctrl-wheel zooms, Reset zoom is always there when needed.
+- **Signatures**: paste a scan anywhere (Ctrl-V, or the Paste-scan button),
+  re-paste to update, type an id as `ABC-123`, click Life or Mass on a row to
+  change it in place, undo. Columns line up. On phones a row is two lines.
+- **A layout that holds still**: panels do not resize when you change
+  systems; the System panel fits without scrolling; three columns from 960px.
+- **Command palette** (`/` or Ctrl-K): jump to a system, a chain tab or a
+  mask; set life or mass on the selection; show or hide panels.
+- **Settings** in tabs: characters, map, signatures, panels, statistics.
+- Fixed upstream: the TQ counter flicker after the tab sits in the
+  background, and the background poll that had stopped polling.
+
 ### Setup guide for Linux  
 
 **Requirements:**  
