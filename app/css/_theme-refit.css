@@ -1256,3 +1256,11 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #chainMap div.node > .nodeIcons > div { grid-area: auto; grid-row: auto; grid-column: auto; }
 #chainMap div.node,
 #chainMap div.redNode.node, #chainMap div.yellowNode.node, #chainMap div.greenNode.node { margin-top: 8px; margin-bottom: 9px; }
+/* The pilot icon and its count sit a little inside the top-right corner,
+   and the chain panel keeps headroom above its first row so nothing that
+   rides a top edge is clipped by the panel. */
+#chainMap div.node > .nodeIcons > div:last-child { top: -5px; right: -3px; gap: 1px; }
+#chainMap div.node > .nodeIcons > div:first-child { top: -6px; right: 22px; }
+#chainMap div.node > .nodeIcons .badge { height: 12px; padding: 0 4px; font-size: 8.5px; box-shadow: 0 0 0 2px var(--background); }
+#chainMap div.node > .nodeIcons [data-icon]::before { font-size: 11px; }
+#chainWidget > #chainParent.content { padding-top: 12px !important; }
