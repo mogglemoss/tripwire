@@ -755,7 +755,7 @@ $system = $_REQUEST['system'] ?? '';
 			<section class="settings-pane" data-pane="display" role="tabpanel" hidden>
 				<h4 class="field-group">Panels</h4>
 				<div class="field field-block">
-					<span class="field-label">Show and order <small>the chain always sits below the row of three</small></span>
+					<span class="field-label">Show and order <small>the chain stays full width and can sit above or below the row of three</small></span>
 					<div class="field-value" id="panel-settings"></div>
 				</div>
 				<h4 class="field-group">Appearance</h4>

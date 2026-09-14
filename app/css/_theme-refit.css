@@ -1267,3 +1267,11 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 /* The pilot count is centred in its capsule (it is a flex box, which does
    not centre on its own), with a round minimum so "1" and "12" both sit true. */
 #chainMap div.node > .nodeIcons .badge { justify-content: center; min-width: 14px; padding: 0 4px; box-sizing: border-box; text-align: center; }
+
+/* ── Chain above the row of three ────────────────────────────────────────
+   The top row has the fixed height and the bottom row takes the rest. With
+   the chain leading (Settings > Display), the roles swap so the chain still
+   gets the room and the three panels keep their fitted height. */
+@media (min-width: 960px) {
+	.gridster > ul.chain-first { grid-template-rows: 1fr minmax(240px, var(--top-row, 40vh)); }
+}

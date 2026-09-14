@@ -37,27 +37,44 @@ tripwire.panels = (function() {
         return !p || p.defaultVisible !== false;
     }
 
-    // Order among the top row. The chain spans the full width of the second
-    // grid row (grid-column: 1 / -1), so it always sorts last; the other three
-    // take the saved order, or declaration order if none. CSS grid honours
-    // `order` on its items, so no markup moves.
+    // The three compact panels share one row and the chain spans another. The
+    // saved order therefore has two useful states for the chain: before or
+    // after the compact-panel row. Compact panels retain their own saved order.
+    // CSS grid honours `order` on its items, so no markup moves.
     function order() {
         var saved = store().order;
         var ids = PANELS.map(function(p) { return p.id; });
         if (!Array.isArray(saved)) { return ids; }
         var known = saved.filter(function(id) { return ids.indexOf(id) > -1; });
         ids.forEach(function(id) { if (known.indexOf(id) < 0) { known.push(id); } });
-        return known;
+        var chainFirst = known[0] === "chainWidget";
+        var compact = known.filter(function(id) { return id !== "chainWidget"; });
+        return chainFirst ? ["chainWidget"].concat(compact) : compact.concat(["chainWidget"]);
     }
 
     function move(id, dir) {
-        var ids = order().filter(function(x) { return x !== "chainWidget"; });
-        var i = ids.indexOf(id);
+        var current = order();
+        var compact = current.filter(function(x) { return x !== "chainWidget"; });
+
+        // A full-width panel cannot sit between two compact panels without
+        // creating a mostly empty third row. Its arrows move the whole chain
+        // row above or below the compact row instead.
+        if (id === "chainWidget") {
+            store().order = dir < 0
+                ? ["chainWidget"].concat(compact)
+                : compact.concat(["chainWidget"]);
+            apply();
+            options.save();
+            return;
+        }
+
+        var i = compact.indexOf(id);
         var j = i + dir;
-        if (i < 0 || j < 0 || j >= ids.length) { return; }
-        ids.splice(i, 1); ids.splice(j, 0, id);
-        ids.push("chainWidget");
-        store().order = ids;
+        if (i < 0 || j < 0 || j >= compact.length) { return; }
+        compact.splice(i, 1); compact.splice(j, 0, id);
+        store().order = current[0] === "chainWidget"
+            ? ["chainWidget"].concat(compact)
+            : compact.concat(["chainWidget"]);
         apply();
         options.save();
     }
@@ -67,8 +84,11 @@ tripwire.panels = (function() {
         PANELS.forEach(function(p) {
             var $w = $("#" + p.id);
             $w.toggleClass("panel-hidden", !isVisible(p.id));
-            $w.css("order", p.id === "chainWidget" ? 99 : ids.indexOf(p.id));
+            $w.css("order", ids.indexOf(p.id));
         });
+        // The grid gives its first row the fixed height and the second the
+        // rest; when the chain leads, the rows swap roles (see the theme).
+        $(".gridster > ul").toggleClass("chain-first", ids[0] === "chainWidget");
     }
 
     function setVisible(id, on) {
