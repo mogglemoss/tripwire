@@ -360,7 +360,7 @@ $system = $_REQUEST['system'] ?? '';
 
 	<div id="statusbar">
 		<span id="serverStatus" class="pointer" data-tooltip="EVE server status and player count"><span class="bar-label">Tranquility</span><span class="bar-value">??,???</span></span>
-		<span id="version" class="pointer" data-tooltip="Tripwire version"><span class="bar-label"><?= APP_NAME ?></span><span class="bar-value"><?= VERSION ?></span></span>
+		<span id="version" class="pointer" data-tooltip="Tripwire version"><span class="bar-label"><?= APP_NAME ?></span><span class="bar-value"><?= VERSION_TAG ?></span></span>
 		<span id="eveTime" class="pointer" data-tooltip="EVE time (UTC)"><span class="bar-label">EVE Time</span><span id="serverTime" class="bar-value">??:??</span></span>
 	</div>
 
