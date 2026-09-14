@@ -255,5 +255,3 @@
 .sig-chip {
 	color: var(--foreground);
 }
-.gate-chip a { color: var(--foreground); }
-.gate-chip a:hover { color: var(--primary); }

@@ -148,7 +148,13 @@
 	line-height: 1.6;
 	text-decoration: none;
 }
-.gate-chip:hover { background: var(--accent); }
+/* The chip is the link itself. Pair the brand's primary fill with its
+   explicitly chosen on-primary ink so hover cannot become blue on orange. */
+.gate-chip:hover {
+	background: var(--primary);
+	color: var(--primary-foreground);
+	text-decoration: none;
+}
 .gate-chip .gate-sec {
 	padding: 0 5px;
 	border-radius: 999px;
