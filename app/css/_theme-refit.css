@@ -1291,3 +1291,40 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 @media (min-width: 960px) {
 	.gridster > ul.chain-first { grid-template-rows: 1fr minmax(240px, var(--top-row, 40vh)); }
 }
+
+/* ── The tutorial (Intro.js) on the theme ────────────────────────────────
+   The tooltip surface was themed; the buttons, bullets, highlight and
+   overlay were still stock. Buttons follow the dialog buttons (Next is the
+   primary), the highlight is a ring in the accent, the overlay is the deck
+   dimmed, and it all reads the same in both rooms. */
+.introjs-overlay { background: var(--background) !important; opacity: .72 !important; }
+.introjs-helperLayer {
+	background: transparent !important;
+	border: 0; border-radius: 6px;
+	box-shadow: 0 0 0 2px var(--primary), 0 0 0 6px color-mix(in oklab, var(--primary) 30%, transparent) !important;
+}
+.introjs-tooltip {
+	border-radius: 8px; padding: 14px 16px 12px; min-width: 260px; max-width: 360px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, .45);
+	font-family: var(--font-ui); font-size: 13px; line-height: 1.5; color: var(--text-body);
+}
+.introjs-tooltiptext h4 { margin: 0 0 6px; font-size: 14px; font-weight: 600; color: var(--foreground); }
+.introjs-tooltiptext p { margin: 0; }
+.introjs-tooltiptext b { color: var(--foreground); }
+.introjs-bullets { padding-top: 10px; }
+.introjs-bullets ul li a { width: 6px; height: 6px; background: var(--border-strong); }
+.introjs-bullets ul li a.active, .introjs-bullets ul li a:hover { background: var(--primary); }
+.introjs-tooltipbuttons { border-top: 1px solid var(--border-soft); margin-top: 10px; padding-top: 10px; text-align: right; }
+.introjs-tooltipbuttons a.introjs-button {
+	display: inline-flex; align-items: center; min-height: 28px; padding: 0 12px; margin: 0 0 0 6px;
+	border: 1px solid var(--border); border-radius: 4px; background: var(--input);
+	font: inherit; font-size: 12px; font-weight: 500; color: var(--foreground); text-shadow: none; box-shadow: none;
+}
+.introjs-tooltipbuttons a.introjs-button:hover, .introjs-tooltipbuttons a.introjs-button:focus { background: var(--muted); border-color: var(--border-strong); color: var(--foreground); box-shadow: none; }
+.introjs-tooltipbuttons a.introjs-nextbutton { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); font-weight: 600; }
+.introjs-tooltipbuttons a.introjs-nextbutton:hover { background: var(--primary); color: var(--primary-foreground); filter: brightness(1.08); }
+.introjs-tooltipbuttons a.introjs-skipbutton { float: left; margin-left: 0; background: transparent; border-color: transparent; color: var(--muted-foreground); }
+.introjs-tooltipbuttons a.introjs-skipbutton:hover { color: var(--foreground); background: transparent; }
+.introjs-tooltipbuttons a.introjs-disabled, .introjs-tooltipbuttons a.introjs-disabled:hover { opacity: .45; background: var(--input); border-color: var(--border); color: var(--foreground); cursor: default; }
+.introjs-helperNumberLayer { display: none; }
+.introjs-progress { background: var(--muted); } .introjs-progressbar { background: var(--primary); }
