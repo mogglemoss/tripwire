@@ -1,6 +1,18 @@
 const sigDialog = {};
 const sigDialogVM = {};
 
+sigDialog.positionInViewport = function() {
+	const dialog = $("#dialog-signature");
+	if (!dialog.hasClass("ui-dialog-content") || !dialog.dialog("isOpen")) return;
+
+	dialog.dialog("option", "position", {
+		my: "center",
+		at: "center",
+		of: window,
+		collision: "fit"
+	});
+};
+
 sigDialog.openSignatureDialog = function(e) {
 	if(e.preventDefault) { e.preventDefault(); }	// Allow calls with fake event-like objects too
 	sigDialogVM.mode = e.data.mode;
@@ -31,7 +43,7 @@ sigDialog.openSignatureDialog = function(e) {
 			autoOpen: true,
 			resizable: false,
 			dialogClass: "dialog-noeffect ui-dialog-shadow",
-			position: {my: "center", at: "center", of: $("#signaturesWidget")},
+			position: {my: "center", at: "center", of: window, collision: "fit"},
 			buttons: {
 				Delete: function() {
 					const d = $(this);
@@ -203,11 +215,21 @@ sigDialog.openSignatureDialog = function(e) {
 				// Toggle between wormhole and regular signatures
 				$("#dialog-signature").on("selectmenuchange", "[name='signatureType']", function() {
 					if (this.value == "wormhole") {
-						$("#dialog-signature #site").slideUp(200, function() { $(this).hide(0); });
-						$("#dialog-signature #wormhole").slideDown(200, function() { $(this).show(200); });
+						$("#dialog-signature #site").slideUp(200, function() {
+							$(this).hide(0);
+							sigDialog.positionInViewport();
+						});
+						$("#dialog-signature #wormhole").slideDown(200, function() {
+							$(this).show(200, sigDialog.positionInViewport);
+						});
 					} else {
-						$("#dialog-signature #site").slideDown(200, function() { $(this).show(200); });
-						$("#dialog-signature #wormhole").slideUp(200, function() { $(this).hide(0); });
+						$("#dialog-signature #site").slideDown(200, function() {
+							$(this).show(200, sigDialog.positionInViewport);
+						});
+						$("#dialog-signature #wormhole").slideUp(200, function() {
+							$(this).hide(0);
+							sigDialog.positionInViewport();
+						});
 					}
 
 					ValidationTooltips.close();
@@ -494,6 +516,8 @@ sigDialog.openSignatureDialog = function(e) {
 						$("#dialog-signature #wormhole").show();
 					}
 				}
+
+				sigDialog.positionInViewport();
 			},
 			close: function() {
 				ValidationTooltips.close();

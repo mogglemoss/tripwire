@@ -137,6 +137,22 @@
 #wrapper::before { background: radial-gradient(ellipse at 30% -20%, var(--glow) 0%, var(--background) 60%); }
 body { background-image: none; }
 
+/* Bring Intro.js tooltips onto the active theme surface. Its bundled CSS
+   otherwise leaves the panel and arrow white in dark mode. */
+.introjs-tooltip {
+	background-color: var(--popover);
+	border: 1px solid var(--border);
+	color: var(--popover-foreground);
+}
+.introjs-arrow.top,
+.introjs-arrow.top-right,
+.introjs-arrow.top-middle { border-bottom-color: var(--popover); }
+.introjs-arrow.right,
+.introjs-arrow.right-bottom { border-left-color: var(--popover); }
+.introjs-arrow.bottom { border-top-color: var(--popover); }
+.introjs-arrow.left,
+.introjs-arrow.left-bottom { border-right-color: var(--popover); }
+
 /* Running text in the brand grey; names, values and headings in bone. */
 #sigTable td, .commentBody, .sys-meta, .sys-extra, .field-label, .ui-dialog .ui-dialog-content { color: var(--text-body); }
 #sigTable td:nth-child(1), .sys-name, .field-value, #chainMap div.node > h4.nodeSystem, .stats dd { color: var(--foreground); }
