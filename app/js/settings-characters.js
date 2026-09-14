@@ -12,8 +12,7 @@
 
 tripwire.settingsCharacters = (function() {
 	function ownerID() {
-		var m = /characters\/(\d+)\//.exec($("#user-avatar").attr("src") || "");
-		return m ? m[1] : null;
+		return options.character && options.character.id || null;
 	}
 
 	function render() {
