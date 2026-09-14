@@ -21,16 +21,16 @@
   "accent": { "dark": "#4f8fe0", "on-dark": "#0e1420", "light": "#2f6fc4", "on-light": "#ffffff" },
   "palette": {
     "dark": {
-      "background": "#161718", "foreground": "#eceef0",
-      "card": "#1e2022", "card-foreground": "#eceef0",
-      "popover": "#26282b", "popover-foreground": "#eceef0",
-      "muted": "#26282b", "muted-foreground": "#8b9096", "text-body": "#b3b8be",
-      "accent-surface": "#26282b",
-      "border": "#43474c", "border-soft": "#2c2f33", "border-strong": "#565b61",
-      "input": "#2c2f33", "glow": "#202224",
+      "background": "#000000", "foreground": "#f2f2f2",
+      "card": "#080808", "card-foreground": "#f2f2f2",
+      "popover": "#101010", "popover-foreground": "#f2f2f2",
+      "muted": "#161616", "muted-foreground": "#8c8c8c", "text-body": "#adadad",
+      "accent-surface": "#161616",
+      "border": "#303030", "border-soft": "#181818", "border-strong": "#4d4d4d",
+      "input": "#161616", "glow": "#101010",
       "destructive": "#e05252",
-      "node-surface": "#26282b", "node-edge": "#565b61",
-      "chart-gridline": "rgba(236, 238, 240, .06)", "chart-axis-text": "#b3b8be"
+      "node-surface": "#0d0d0d", "node-edge": "#3a3a3a",
+      "chart-gridline": "rgba(242, 242, 242, .06)", "chart-axis-text": "#adadad"
     },
     "light": {
       "background": "#e8eaed", "foreground": "#1c1f22",

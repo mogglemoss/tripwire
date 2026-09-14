@@ -27,13 +27,13 @@ $system = $_REQUEST['system'] ?? '';
 	<meta name="version" content="<?= VERSION ?>">
 	<script>/* The room lights, before first paint: a stored choice wins over the OS. */
 	try { var t = localStorage.getItem("tripwire.theme"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.duration-picker.css">
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox.css">
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox-notice.css">
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/gridster.min.css">
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery-ui-1.12.1.min.css">
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.duration-picker.css?v=<?= VERSION ?>">
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox.css?v=<?= VERSION ?>">
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery.jbox-notice.css?v=<?= VERSION ?>">
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/gridster.min.css?v=<?= VERSION ?>">
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery-ui-1.12.1.min.css?v=<?= VERSION ?>">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/jquery-ui-custom.css?v=<?= VERSION ?>">
-	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/introjs.min.css">
+	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/introjs.min.css?v=<?= VERSION ?>">
 	<link rel="stylesheet" type="text/css" href="//<?= CDN_DOMAIN ?>/css/app.min.css?v=<?= VERSION ?>">
 <?php brand_head(); ?>
 
@@ -1173,24 +1173,24 @@ $system = $_REQUEST['system'] ?? '';
 	</script>
 
 	<!-- JS Includes -->
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery-ui-1.12.1.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.tablesorter.combined.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.ui-contextmenu.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.plugin.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.countdown.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.gridster.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.knob.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.jbox-0.4.9.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.jbox-notice-0.4.9.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.duration-picker.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/dragscroll.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/lodash.js"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery-3.3.1.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery-ui-1.12.1.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.tablesorter.combined.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.ui-contextmenu.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.plugin.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.countdown.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.gridster.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.knob.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.jbox-0.4.9.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.jbox-notice-0.4.9.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/jquery.duration-picker.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/dragscroll.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/lodash.js?v=<?= VERSION ?>"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!-- Google Charts -->
 	<script type="text/javascript">google.charts.load('current', {packages: ['corechart', 'orgchart']});</script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/moment.min.js"></script>
-	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/intro.min.js"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/moment.min.js?v=<?= VERSION ?>"></script>
+	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/intro.min.js?v=<?= VERSION ?>"></script>
 	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/combine.js?v=<?= VERSION ?>"></script>
 	<script type="text/javascript" src="//<?= CDN_DOMAIN ?>/js/app.min.js?v=<?= VERSION ?>"></script>
 	<!-- JS Includes -->
