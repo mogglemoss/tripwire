@@ -2,9 +2,9 @@
    THE PALETTE  (default)
 
    The refit palette,
-   adopted as Tripwire's default after a side-by-side on the preview. A warm
-   charcoal scale that was chosen rather than inherited; two surfaces and one
-   rule colour; bone text with dim as the subordinate weight (4.5:1 on both
+   adopted as Tripwire's default after a side-by-side on the preview. A black
+   deck with near-black raised surfaces and one rule colour; bone text with dim
+   as the subordinate weight (4.5:1 on both
    surfaces); blood for danger; sage / rust-bright / blood / void for hisec /
    lowsec / nullsec / J-space -- the EVE convention in a muted register, so
    the map's security colours are information rather than the loudest thing
@@ -24,7 +24,7 @@
 
 /* ── THE DECK ──────────────────────────────────────────────────────────
    Grounds and neutrals from the house letterhead palette,
-   a neutral charcoal ramp:
+   a black-first neutral ramp:
    brand grey #ADADAD for body text, brand dark grey #4D4D4D for rules,
    orange as the one accent. This puts Tripwire on the same deck as
    the letterhead -- same labels, same accent -- rather than on
@@ -36,24 +36,24 @@
    and rejected earlier on this branch). Sage / void / a desaturated warn
    stay, with the danger red. */
 :root {
-	--background:         #1b1b1b;
+	--background:         #000000;
 	--foreground:         #f2f2f2;   /* bone: headings, names, values */
-	--card:               #232323;
+	--card:               #080808;
 	--card-foreground:    #f2f2f2;
-	--popover:            #2a2a2a;
+	--popover:            #101010;
 	--popover-foreground: #f2f2f2;
-	--muted:              #2a2a2a;
+	--muted:              #161616;
 	--muted-foreground:   #8c8c8c;   /* dim: labels, secondary */
 	--text-body:          #adadad;   /* fog: brand grey, running text */
-	--accent-surface:     #2a2a2a;
-	--border:             #4d4d4d;   /* brand dark grey */
-	--border-soft:        #303030;
-	--border-strong:      #5a5a5a;
-	--input:              #303030;
-	--glow:               #242424;
+	--accent-surface:     #161616;
+	--border:             #303030;
+	--border-soft:        #181818;
+	--border-strong:      #4d4d4d;   /* brand dark grey */
+	--input:              #161616;
+	--glow:               #101010;
 
 	--primary:            var(--accent, #f07c00);
-	--primary-foreground: #1b1b1b;
+	--primary-foreground: #000000;
 	--ring:               var(--accent, #f07c00);
 	--destructive:        #e05252;
 
@@ -62,8 +62,8 @@
 	--data-critical:      #e05252;   /* nullsec, critical, EOL */
 	--data-info:          #8b7aa8;   /* J-space, jumps */
 
-	--node-surface:       #2a2a2a;
-	--node-edge:          #5a5a5a;
+	--node-surface:       #0d0d0d;
+	--node-edge:          #3a3a3a;
 
 	--chart-gridline:     rgba(242, 242, 242, .06);
 	--chart-axis-text:    #adadad;
