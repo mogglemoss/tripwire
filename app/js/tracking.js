@@ -85,8 +85,12 @@ $("#login").on("click", "#removeESI", function() {
 
 /** Set UI text based on the current tracked character */
 function set_tracking_text() {
-	if(tripwire.esi.characters[options.tracking.active]) {
-		document.getElementById('user-track-name').textContent = tripwire.esi.characters[options.tracking.active].characterName;
+	var character = tripwire.esi.characters[options.tracking.active];
+	var characterID = character ? character.characterID : options.character.id;
+	document.getElementById('user-avatar').src = 'https://images.evetech.net/characters/' + characterID + '/portrait?size=128';
+
+	if(character) {
+		document.getElementById('user-track-name').textContent = character.characterName;
 		document.getElementById('user-track').style.display = '';
 		document.getElementById('user-no-track').style.display = 'none';
 	} else {
