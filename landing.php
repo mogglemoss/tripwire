@@ -166,14 +166,15 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 
 	<footer class="foot">
 		<span>Tripwire is open source. CCP Partner Programme community app.</span>
-		<?php include 'donation_panel.inc'; ?>
+		<?php if (defined('ENABLE_DONATIONS') && ENABLE_DONATIONS) include 'donation_panel.inc'; ?>
 	</footer>
 
 </div>
 
 <?php
+	$analytics_enabled = defined('ENABLE_ANALYTICS') && ENABLE_ANALYTICS;
 	$analytics_file = dirname( __FILE__ ) . "/analytics.inc.php";
-	if ( file_exists( $analytics_file ) ) include_once( $analytics_file );
+	if ( $analytics_enabled && file_exists( $analytics_file ) ) include_once( $analytics_file );
 ?>
 
 <script>
