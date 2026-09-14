@@ -4,7 +4,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/daimian/tripwire"
+        "url": "https://github.com/mogglemoss/tripwire"
     },
     "dependencies": {
         "gulp": "^4.0.0",

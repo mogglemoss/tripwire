@@ -47,7 +47,7 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 	<div class="bar">
 		<a class="brand" href="."><?php if (brand_landing_mark()): ?><img class="brand-small" src="<?= brand_h(brand_url(brand_landing_mark())) ?>" alt="<?= brand_h(brand()['corp']) ?>" /><?php else: ?><span class="brand-text"><?= APP_NAME ?></span><?php endif; ?></a>
 		<nav>
-			<a href="https://bitbucket.org/daimian/tripwire/issues?status=new&status=open" target="_blank" rel="noopener">Issues</a>
+			<a href="https://github.com/mogglemoss/tripwire/issues" target="_blank" rel="noopener">Issues</a>
 			<a href="#privacy">Privacy</a>
 			<a href="#ccp">CCP copyright</a>
 		</nav>

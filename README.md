@@ -5,7 +5,7 @@
 > [Cormorant Fell](https://evewho.com/character/93594488) — WiNGSPAN boomerang and, on balance, more of a wormhole enthusiast than a wormhole survivor — refit this. The map underneath is the one you already trust. It has simply stopped dressing like 2015.
 
 ### EVE Online wormhole mapping — a fork of Tripwire
-- MIT licence (see `LICENSE`); upstream is [daimian/tripwire](https://bitbucket.org/daimian/tripwire)
+- MIT licence (see `LICENSE`); upstream is [astriania/tripwire](https://github.com/astriania/tripwire) on GitHub (its earlier home was [daimian/tripwire](https://bitbucket.org/daimian/tripwire) on Bitbucket)
 
 **It looks new because it is.** The same app on three packs, dark and light
 rooms, the edit dialog and Settings: the neutral default, the template, and
@@ -183,6 +183,7 @@ If you see that the .env file is not being loaded, run the stack with
 - Base off of production or development
 - Create PRs into development
 - Look over issues, branches or get with me to ensure it isn't already being worked on
+- Issues with this fork go to [mogglemoss/tripwire/issues](https://github.com/mogglemoss/tripwire/issues); issues with Tripwire itself to [astriania/tripwire/issues](https://github.com/astriania/tripwire/issues)
 
 ### Who do I talk to?
 - Astriania / Kariyo Astrien (Main contributor/maintainer)
