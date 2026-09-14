@@ -365,7 +365,7 @@ $system = $_REQUEST['system'] ?? '';
 	</div>
 
 	<div id="footer">
-		<?php include 'donation_panel.inc'; ?>
+		<?php if (defined('ENABLE_DONATIONS') && ENABLE_DONATIONS) include 'donation_panel.inc'; ?>
 		<?php printf("<span id='pageTime'>Page generated in %.3f seconds.</span>", microtime(true) - $startTime); ?>
 		<p>All Eve Related Materials are Property Of <a href="https://www.ccpgames.com" target="_blank">CCP Games</a></p>
 		<p id="legal" class="pointer">EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
@@ -1133,8 +1133,9 @@ $system = $_REQUEST['system'] ?? '';
 	<textarea id="clipboard"></textarea>
 
 	<?php
+		$analytics_enabled = defined('ENABLE_ANALYTICS') && ENABLE_ANALYTICS;
 		$analytics_file = dirname( __FILE__ ) . "/analytics.inc.php";
-		if ( file_exists( $analytics_file ) ) include_once( $analytics_file );
+		if ( $analytics_enabled && file_exists( $analytics_file ) ) include_once( $analytics_file );
 		$init_fields = [
 			'characterID' => $_SESSION['characterID'],
 			'characterName' => $_SESSION['characterName'],
@@ -1146,6 +1147,7 @@ $system = $_REQUEST['system'] ?? '';
 		const init = <?= json_encode($init_fields, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 		init.masks = <?= json_encode(getMasks($_SESSION['characterID'], $_SESSION['corporationID'], $_SESSION['admin'], $_SESSION['mask']), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 
+		<?php if ($analytics_enabled): ?>
 		var passiveHitTimer;
 		function passiveHit() {
 			ga('send', 'pageview');
@@ -1154,6 +1156,7 @@ $system = $_REQUEST['system'] ?? '';
 		}
 
 		setTimeout("passiveHit()", 240000);
+		<?php endif; ?>
 
 		// Monitor event listeners
 		var listenerCount = 0;
