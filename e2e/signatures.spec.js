@@ -111,6 +111,23 @@ test.describe("the traps", () => {
 	test.beforeEach(async ({ page }) => { await login(page, SYSTEM); await removeSigsByPrefix(page, PREFIX); });
 	test.afterEach(async ({ page }) => { await removeSigsByPrefix(page, PREFIX).catch(() => {}); });
 
+	test("the signature dialog remains inside the viewport when it expands", async ({ page }) => {
+		const viewport = { width: 800, height: 600 };
+		await page.setViewportSize(viewport);
+		await page.click("#add-signature");
+		await chooseType(page, "Wormhole");
+
+		const dialog = page.locator(".ui-dialog:visible");
+		await expect(dialog.locator("#wormhole")).toBeVisible();
+		await page.waitForFunction(() => !$("#dialog-signature #site, #dialog-signature #wormhole").is(":animated"));
+		const bounds = await dialog.boundingBox();
+
+		expect(bounds.x).toBeGreaterThanOrEqual(0);
+		expect(bounds.y).toBeGreaterThanOrEqual(0);
+		expect(bounds.x + bounds.width).toBeLessThanOrEqual(viewport.width + 1);
+		expect(bounds.y + bounds.height).toBeLessThanOrEqual(viewport.height + 1);
+	});
+
 	test("typing the id then Tab does not skip the numeric half", async ({ page }) => {
 		await page.click("#add-signature");
 		await page.locator("#dialog-signature input[name=signatureID_Alpha]").click();
