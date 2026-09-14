@@ -4,7 +4,7 @@ const tracking = {
 	},
 	add: function(character) {
 		var $clone = $("#tracking-clone").clone();
-		$clone.attr("data-characterid", characterID);
+		$clone.attr("data-characterid", character.characterID);
 		$clone.find(".avatar img").addClass("avatar").attr("src", "https://images.evetech.net/characters/"+ character.characterID +"/portrait?size=64");
 		$clone.find(".name").html(character.characterName);
 		$clone.removeAttr("id");
