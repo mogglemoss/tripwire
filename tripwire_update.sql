@@ -6,6 +6,15 @@
 -- This file never drops, truncates, or recreates application tables. MySQL DDL
 -- commits implicitly, so a backup is still required before running it.
 
+-- Stored objects retain the character set and SQL mode in effect when they are
+-- created. Match the canonical schema, then restore the caller's session below.
+SET @tripwire_old_character_set_client := @@SESSION.character_set_client;
+SET @tripwire_old_character_set_results := @@SESSION.character_set_results;
+SET @tripwire_old_collation_connection := @@SESSION.collation_connection;
+SET @tripwire_old_sql_mode := @@SESSION.sql_mode;
+SET NAMES utf8mb4;
+SET SESSION sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
 SET @tripwire_database := DATABASE();
 
 DELIMITER ;;
@@ -296,3 +305,8 @@ DELIMITER ;
 
 -- The server must have event_scheduler=ON for these events to execute.
 SELECT @@event_scheduler AS event_scheduler;
+
+SET SESSION sql_mode = @tripwire_old_sql_mode;
+SET SESSION character_set_client = @tripwire_old_character_set_client;
+SET SESSION character_set_results = @tripwire_old_character_set_results;
+SET SESSION collation_connection = @tripwire_old_collation_connection;
