@@ -56,7 +56,7 @@ What the refit changes, in one screen:
 
 **Requirements:**  
 
-- PHP7+ (older requires polyfill for public/login.php as documented in that file)
+- PHP 8+ (php-jwt 7 needs it; the Docker image is `php:8-fpm-alpine`)
 - php-mbstring must be installed
 - MySQL (or some flavor of MySQL - needed because database EVENTS)
 - A my.cnf MySQL config file example is located in `.docker/mysql/my.cnf`
