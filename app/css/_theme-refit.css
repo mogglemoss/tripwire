@@ -1364,3 +1364,14 @@ body.panel-resizing-column, body.panel-resizing-column * { cursor: col-resize !i
 body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !important; }
 @media (max-width: 959px) { .panel-handle { display: none; } }
 .panel-row-foot { margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--border-soft); }
+
+/* Life has five states now (Stable, <1d, <4h, <1h, Expired); they sit on
+   one row when the pills carry less side padding. Mass matches. On a phone
+   the pills keep their touch height and wrap if they must. */
+@media (min-width: 768px) {
+	#dialog-signature .mini-selector + label { padding: 0 9px; }
+	#dialog-signature .row:has([name="wormholeLife"]) .mini-selector + label { padding: 0 8px; letter-spacing: 0; }
+}
+@media (max-width: 767px) {
+	#dialog-signature .row:has([name="wormholeLife"]) .mini-selector + label { padding: var(--space-2) 10px; }
+}

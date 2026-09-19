@@ -203,3 +203,57 @@ test.describe("delete confirmation", () => {
 		await expect(dialog).toBeHidden();
 	});
 });
+
+// Life and mass as the EVE client says them: a wormhole walks down the
+// ladder through the inline editor, the table follows, and the dialog
+// reopens on the state the expiry implies.
+test.describe("wormhole life and mass ladder", () => {
+	const PREFIX = "ZZQ-9";
+	test.beforeEach(async ({ page }) => { await login(page, "Perimeter"); await removeSigsByPrefix(page, PREFIX); });
+	test.afterEach(async ({ page }) => {
+		// Wormhole rows are removed through the delete dialog, which knows to take the connection with them.
+		await page.evaluate(() => { $("#sigTable tbody tr.selected").removeClass("selected"); $("#sigTable tbody tr").filter((i, tr) => /ZZQ-9/i.test(tr.textContent)).addClass("selected"); }).catch(() => {});
+		if (await page.locator("#sigTable tbody tr.selected").count()) {
+			await page.click("#delete-signature");
+			await page.locator(".ui-dialog:visible").getByRole("button", { name: "Delete" }).click().catch(() => {});
+		}
+		await removeSigsByPrefix(page, PREFIX).catch(() => {});
+	});
+
+	test("inline presets set the expiry, the table reads it back, the dialog reopens on it", async ({ page }) => {
+		await page.click("#add-signature");
+		await page.locator("#dialog-signature input[name=signatureID_Alpha]").click();
+		await page.keyboard.type("ZZQ"); await page.keyboard.type("901");
+		await chooseType(page, "Wormhole");
+		await page.waitForFunction(() => !$("#dialog-signature #site, #dialog-signature #wormhole").is(":animated"));
+		await expect(page.locator("#dialog-signature label[for=wormholeLifeDay]")).toHaveText("<1d");
+		await expect(page.locator("#dialog-signature label[for=wormholeMassDestab]")).toHaveText("<50%");
+		await page.locator(".ui-dialog:visible").getByRole("button", { name: "Add", exact: true }).click();
+		const row = page.locator("#sigTable tbody tr", { hasText: /ZZQ-901/i }).first();
+		await expect(row).toBeVisible();
+		await expect(row.locator("td").nth(4)).toHaveText("Stable");
+
+		const pick = async (label) => {
+			await row.locator("td").nth(4).click();
+			await page.locator("#inline-edit .inline-chip", { hasText: label }).click();
+			await expect(row.locator("td").nth(4)).toHaveText(label, { timeout: 15000 });
+		};
+		await pick("<1h");
+		const left = await page.evaluate(() => {
+			const s = Object.values(tripwire.client.signatures).find(x => /zzq901/i.test(x.signatureID || ""));
+			return tripwire.wormholeState.remainingSeconds(s);
+		});
+		expect(left).toBeGreaterThan(3000);
+		expect(left).toBeLessThanOrEqual(3600);
+
+		await pick("Expired");
+		await row.click();
+		await page.click("#edit-signature");
+		await expect(page.locator("#dialog-signature input[name=wormholeLife][value=expired]")).toBeChecked();
+		await page.keyboard.press("Escape");
+
+		await row.locator("td").nth(5).click();
+		await page.locator("#inline-edit .inline-chip", { hasText: "<10%" }).click();
+		await expect(row.locator("td").nth(5)).toHaveText("<10%", { timeout: 15000 });
+	});
+});

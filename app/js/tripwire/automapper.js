@@ -145,7 +145,7 @@ tripwire.autoMapper = function(from, to) {
 						  + "<td class='centerAlign'>" + sigInfo.formattedType + "</td>"
 						  + "<td class='centerAlign'>" + sigInfo.leadsTo + "</td>"
 						  + "<td class='centerAlign " + wormholes[i].life + "'>" + sigInfo.lifeText + "</td>"
-						  + "<td class='centerAlign " + wormholes[i].mass + "'>" + wormholes[i].mass + "</td>"
+						  + "<td class='centerAlign " + wormholes[i].mass + "'>" + sigInfo.massText + "</td>"
                           + "</tr>";
 						  
 						const trElem = $(tr);

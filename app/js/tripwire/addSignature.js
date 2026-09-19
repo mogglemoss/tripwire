@@ -26,7 +26,10 @@ tripwire.makeSigInfo = function(sig, wormhole) {
 		leadsTo: leadsTo,
 		wormhole: wormhole,
 		formattedType: (wormhole[wormhole.parent+"ID"] == sig.id ? wormholeTypeText : (wormhole.parent ? "[" + wormholeTypeText + "]" : "")),
-		lifeText: { critical: 'EOL', stable: 'Stable' }[wormhole.life] || wormhole.life,
+		lifeText:  tripwire.wormholeState.lifeState(wormhole, sig).label,
+		lifeClass: tripwire.wormholeState.lifeState(wormhole, sig).cls,
+		massText:  tripwire.wormholeState.massState(wormhole).label,
+		massClass: tripwire.wormholeState.massState(wormhole).cls
 	}
 }
 
@@ -56,8 +59,8 @@ tripwire.addSig = function(add, option, disabled) {
             + "<td class='type-tooltip "+ options.signatures.alignment.sigType +"' data-tooltip=\""+this.whTooltip(wormhole)+"\">"+sigInfo.formattedType+"</td>"
             + "<td class='age-tooltip "+ options.signatures.alignment.sigAge + (parseInt(add.lifeLength) === 0 ? " disabled" : "") +"' data-tooltip='"+this.ageTooltip(add)+"'><span data-age='"+add.lifeTime+"'></span></td>"
             + "<td class='"+ options.signatures.alignment.leadsTo +"'>"+leadsToText+"</td>"
-            + "<td class='"+wormhole.life+" "+ options.signatures.alignment.sigLife +"'>"+sigInfo.lifeText+"</td>"
-            + "<td class='"+wormhole.mass+" "+ options.signatures.alignment.sigMass +"'>"+wormhole.mass+"</td>"
+            + "<td class='"+sigInfo.lifeClass+" "+ options.signatures.alignment.sigLife +"'>"+sigInfo.lifeText+"</td>"
+            + "<td class='"+sigInfo.massClass+" "+ options.signatures.alignment.sigMass +"'>"+sigInfo.massText+"</td>"
             + "</tr>";
 
         var tr = $(row);

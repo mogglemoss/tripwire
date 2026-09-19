@@ -164,7 +164,7 @@ tripwire.keyboard = (function() {
                 perform: function() {
                     var systemID = viewingSystemID;
                     whs.forEach(function(id) {
-                        var c = {}; c[field] = value;
+                        var c = field === "life" ? tripwire.wormholeState.lifeChanges(value) : {mass: value};
                         var built = tripwire.signaturePayload.changeWormhole(id, c);
                         if (!built) { return; }
                         tripwire.refresh("refresh", built.payload, function(data) {
@@ -176,8 +176,9 @@ tripwire.keyboard = (function() {
                 }
             };
         };
-        return [set("life", "stable", "Life: stable"), set("life", "critical", "Life: end of life"),
-                set("mass", "stable", "Mass: stable"), set("mass", "destab", "Mass: destabilised"), set("mass", "critical", "Mass: critical")];
+        // The states as the EVE client names them, from tripwire.wormholeState.
+        return tripwire.wormholeState.LIFE.map(function(p) { return set("life", p.value, "Life: " + p.label); })
+            .concat(tripwire.wormholeState.MASS.map(function(m) { return set("mass", m.value, "Mass: " + m.label); }));
     }
 
     return {

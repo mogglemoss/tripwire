@@ -15,8 +15,8 @@ tripwire.editSig = function(edit, disabled) {
             + "<td class='type-tooltip "+ options.signatures.alignment.sigType +"' data-tooltip=\""+this.whTooltip(wormhole)+"\">"+sigInfo.formattedType+"</td>"
             + "<td class='age-tooltip "+ options.signatures.alignment.sigAge + (parseInt(edit.lifeLength) === 0 ? " disabled" : "") +"' data-tooltip='"+this.ageTooltip(edit)+"'><span data-age='"+edit.lifeTime+"'></span></td>"
             + "<td class='"+ options.signatures.alignment.leadsTo +"'>"+(sigInfo.leadsTo || "")+"</td>"
-            + "<td class='"+wormhole.life+" "+ options.signatures.alignment.sigLife +"'>"+sigInfo.lifeText+"</td>"
-            + "<td class='"+wormhole.mass+" "+ options.signatures.alignment.sigMass +"'>"+wormhole.mass+"</td>"
+            + "<td class='"+sigInfo.lifeClass+" "+ options.signatures.alignment.sigLife +"'>"+sigInfo.lifeText+"</td>"
+            + "<td class='"+sigInfo.massClass+" "+ options.signatures.alignment.sigMass +"'>"+sigInfo.massText+"</td>"
             + "</tr>";
 
         var tr = $(row);

@@ -97,6 +97,7 @@ tripwire.sync = function(mode, data, successCallback, alwaysCallback) {
 
             if (data.sync) {
                 tripwire.serverTime.time = new Date(data.sync);
+                tripwire.serverTime.syncedAt = Date.now();   // so the clock can be advanced between syncs
             }
 
             if (data.signatures) {

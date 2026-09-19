@@ -260,9 +260,9 @@ $system = $_REQUEST['system'] ?? '';
 					<i id="show-favorite" data-icon="star" class="bar-btn bar-icon" data-tooltip="Add favourite systems to the chain"></i>
 					<i id="show-chainLegend" class="bar-btn bar-icon" data-tooltip="<table id='guide'>
 						<tr><td><div class='guide stable'></td><td>Stable</td><th>Auras</th></tr>
-						<tr><td><div class='guide eol'></div></td><td>End of Life</td><td><div class='guide aura jm-5kt frig'></div></td><td>Small</td></tr>
-						<tr><td><div class='guide destab'></div></td><td>Mass Destabbed</td><td><div class='guide aura jm-62kt'></div></td><td>Medium</td></tr>
-						<tr><td><div class='guide critical'></div></td><td>Mass Critical</td><td><div class='guide aura jm-375kt'></div></td><td>Large</td></tr>
+						<tr><td><div class='guide eol'></div></td><td>Life &lt;4h / &lt;1h</td><td><div class='guide aura jm-5kt frig'></div></td><td>Small</td></tr>
+						<tr><td><div class='guide destab'></div></td><td>Mass &lt;50%</td><td><div class='guide aura jm-62kt'></div></td><td>Medium</td></tr>
+						<tr><td><div class='guide critical'></div></td><td>Mass &lt;10%</td><td><div class='guide aura jm-375kt'></div></td><td>Large</td></tr>
 						<tr><td><div class='guide frig'></div></td><td>Frigate</td><td><div class='guide aura jm-2000kt'></div></td><td>X-Large</td></tr>
 					</table>">&equiv;</i>
 					<span class="bar-sep"></span>
@@ -447,19 +447,25 @@ $system = $_REQUEST['system'] ?? '';
 					</div>
 					<div class="row">
 						<span class="label">Life:</span>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeStable"  value="stable"/>
-						<label for="wormholeLifeStable" class="stable">Stable</label>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeEOL"  value="critical"/>
-						<label for="wormholeLifeEOL" class="critical">EOL</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeStable" value="stable"/>
+						<label for="wormholeLifeStable" class="stable" title="More than a day">Stable</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeDay" value="day"/>
+						<label for="wormholeLifeDay" class="destab" title="Less than 1 day remaining">&lt;1d</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLife4h" value="critical4"/>
+						<label for="wormholeLife4h" class="critical" title="Less than 4 hours remaining">&lt;4h</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLife1h" value="critical1"/>
+						<label for="wormholeLife1h" class="critical" title="Less than 1 hour remaining">&lt;1h</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeExpired" value="expired"/>
+						<label for="wormholeLifeExpired" class="critical" title="Reliable lifetime over; could close any moment">Expired</label>
 					</div>
 					<div class="row">
 						<span class="label">Mass:</span>
 						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassStable"  value="stable"/>
-						<label for="wormholeMassStable" class="stable">Stable</label>
+						<label for="wormholeMassStable" class="stable" title="More than 50% remaining">Stable</label>
 						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassDestab" value="destab"/>
-						<label for="wormholeMassDestab" class="destab">Destab</label>
+						<label for="wormholeMassDestab" class="destab" title="Less than 50% remaining">&lt;50%</label>
 						<input type="radio" class="mini-selector" name="wormholeMass" id="wormholeMassCritical" value="critical" />
-						<label for="wormholeMassCritical" class="critical">Critical</label>
+						<label for="wormholeMassCritical" class="critical" title="Less than 10% remaining">&lt;10%</label>
 					</div>
 				</div>
 				<hr/>
