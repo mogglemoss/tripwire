@@ -44,11 +44,27 @@ What the refit changes, in one screen:
 - **Signatures**: paste a scan anywhere (Ctrl-V, or the Paste-scan button),
   re-paste to update, type an id as `ABC-123`, click Life or Mass on a row to
   change it in place, undo. Columns line up. On phones a row is two lines.
-- **A layout that holds still**: panels do not resize when you change
-  systems; the System panel fits without scrolling; three columns from 960px.
+- **A layout that holds still, until you move it**: panels do not resize
+  when you change systems; the System panel fits without scrolling; three
+  columns from 960px. Drag the gap between panels to resize them (a hairline
+  shows on hover, arrow keys on a focused divider step it); a dragged size
+  wins until *Reset layout* in Settings. Bar labels give way to icons by the
+  panel's own width, not the window's.
+- **Fresh entry opens on your pilot**: arriving without a system boots in
+  place and lands on the tracked character's location instead of Jita.
 - **Command palette** (`/` or Ctrl-K): jump to a system, a chain tab or a
   mask; set life or mass on the selection; show or hide panels.
 - **Settings** in tabs: characters, map, signatures, panels, statistics.
+- **Notes are cleaned on the server** as well as in the browser, so an older
+  client is never handed executable markup; the two allow-lists are held
+  equal by a test. Paste and Ctrl+A inside a note stay in the note.
+- **One connection per automapped jump**, however many tabs saw it: the
+  server holds a lock per system pair and reuses an existing connection.
+- **Delete asks properly**: what, where, a chip per signature when there are
+  several, the safe action focused.
+- With thanks to Squizz (squizzlabs/tripwire) for the server-side note
+  sanitiser, the note guards, the picker fixes, the panel-width idea and
+  the fr-seeding in the splitter, all credited in the history.
 - Fixed upstream: the TQ counter flicker after the tab sits in the
   background, and the background poll that had stopped polling.
 
