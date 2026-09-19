@@ -21,6 +21,7 @@ if(!isset($_SESSION['userID'])) {
 
 require_once('../config.php');
 require_once('../db.inc.php');
+require_once('../note-html.inc.php');
 
 header('Content-Type: application/json');
 
@@ -34,6 +35,22 @@ $mode = 		isset($_REQUEST['mode']) ? $_REQUEST['mode'] : null;
 $output = 		null;
 
 if ($mode == 'save') {
+	// Notes are shared stored content: an older client must never be handed
+	// executable markup because it predates the client-side sanitiser, so the
+	// server cleans on the way in as well as on the way out. Without the DOM
+	// extension the sanitiser cannot run, and saving must wait rather than
+	// permanently replace a rich note with escaped markup.
+	if (!noteHtmlSanitizerAvailable()) {
+		http_response_code(503);
+		echo json_encode(array('result' => false, 'error' => 'PHP DOM extension is required to save notes.'));
+		exit();
+	}
+	$comment = sanitizeNoteHtml($comment);
+	if (!noteHtmlHasContent($comment)) {
+		http_response_code(422);
+		echo json_encode(array('result' => false, 'error' => 'A note must contain content.'));
+		exit();
+	}
 	$query = 'INSERT INTO comments (id, systemID, comment, created, createdByID, createdByName, modifiedByID, modifiedByName, maskID)
 				VALUES (:commentID, :systemID, :comment, NOW(), :createdByID, :createdByName, :modifiedByID, :modifiedByName, :maskID)
 				ON DUPLICATE KEY UPDATE
