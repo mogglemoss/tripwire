@@ -1,5 +1,5 @@
 const { test } = require("@playwright/test");
-const { login, expect } = require("./helpers");
+const { login, clientSigIds, removeSigsByPrefix, setClipboard, expect } = require("./helpers");
 
 // The client sanitiser as the browser actually runs it. The parity test in
 // tests/php/ keeps its allow-lists equal to the server's; this checks the
@@ -41,4 +41,54 @@ test("a hostile note is stored clean, and an empty one is refused", async ({ pag
 	} finally {
 		await post("comments.php", { mode: "delete", commentID: saved.body.comment.id });
 	}
+});
+
+// Two of Squizz's tests (squizzlabs/tripwire b5b909e, 7d13b7a), under our
+// fixture prefix: the global key handlers must leave a note alone.
+test.describe("keys inside a note stay in the note", () => {
+	test.afterEach(async ({ page }) => { await removeSigsByPrefix(page, "ZZQ").catch(() => {}); });
+
+	test("pasting scan-shaped text into a note stays in the note", async ({ page, context }) => {
+		await login(page, "Perimeter");
+		const note = "ZZQ-991\tCosmic Signature\tData Site\tThis belongs in a note\t100.0%\t1.00 AU";
+		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+		await setClipboard(page, note);
+
+		await page.click("#add-comment");
+		const editor = page.locator("#notesWidget .rte-area");
+		await expect(editor).toBeVisible();
+		await expect(editor).toBeFocused();
+		await page.keyboard.press(process.platform === "darwin" ? "Meta+V" : "Control+V");
+
+		await expect(editor).toContainText("ZZQ-991");
+		expect(await clientSigIds(page)).not.toContain("zzq991");
+
+		await page.locator("#notesWidget .commentCancel:visible").click();
+	});
+
+	test("Ctrl+A in a note selects only the note contents", async ({ page }) => {
+		await login(page, "Perimeter");
+		await page.click("#add-comment");
+		const editor = page.locator("#notesWidget .rte-area");
+		await editor.fill("first line\nsecond line");
+
+		await page.keyboard.press(process.platform === "darwin" ? "Meta+A" : "Control+A");
+
+		const selection = await page.evaluate(() => {
+			const editor = document.querySelector("#notesWidget .rte-area");
+			const selected = window.getSelection();
+			return {
+				text: selected.toString(),
+				anchorInEditor: editor.contains(selected.anchorNode),
+				focusInEditor: editor.contains(selected.focusNode),
+				selectedSignatures: document.querySelectorAll("#sigTable tbody tr.selected").length
+			};
+		});
+		expect(selection.text).toBe("first line\nsecond line");
+		expect(selection.anchorInEditor).toBe(true);
+		expect(selection.focusInEditor).toBe(true);
+		expect(selection.selectedSignatures).toBe(0);
+
+		await page.locator("#notesWidget .commentCancel:visible").click();
+	});
 });
