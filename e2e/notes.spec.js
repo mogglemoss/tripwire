@@ -92,3 +92,29 @@ test.describe("keys inside a note stay in the note", () => {
 		await page.locator("#notesWidget .commentCancel:visible").click();
 	});
 });
+
+// In a narrow panel the "Posted by … at …" line wraps. The toolbar must grow
+// with it rather than let the second line paint into the next note.
+test("a wrapped 'posted by' line never paints into the next note", async ({ page }) => {
+	await page.setViewportSize({ width: 1100, height: 1000 });
+	await login(page, "Perimeter");
+	const post = (data) => page.evaluate((data) => $.ajax({ url: "comments.php", type: "POST", data: data, dataType: "JSON" }).then((r) => r, (xhr) => ({ result: false, status: xhr.status })), data);
+	const systemID = await page.evaluate(() => viewingSystemID);
+	const a = await post({ mode: "save", systemID: systemID, comment: "<p>ZZQ note one</p>" });
+	const b = await post({ mode: "save", systemID: systemID, comment: "<p>ZZQ note two</p>" });
+	try {
+		expect(a.result && b.result).toBe(true);
+		await page.evaluate(() => tripwire.refresh("refresh", { commentCount: -1, commentTime: "1970-01-01 00:00:00" }));
+		await page.waitForFunction(() => document.querySelectorAll("#notesWidget .comment:not(.hidden)").length >= 2, null, { timeout: 15000 });
+		const layout = await page.evaluate(() => Array.from(document.querySelectorAll("#notesWidget .comment:not(.hidden)")).map((cm) => {
+			const tb = cm.querySelector(".commentToolbar"), title = cm.querySelector(".commentTitle"), r = cm.getBoundingClientRect();
+			return { top: r.top, bottom: r.bottom, toolbarH: tb.getBoundingClientRect().height, titleH: title.scrollHeight };
+		}));
+		expect(layout.length).toBeGreaterThanOrEqual(2);
+		for (const c of layout) expect(c.toolbarH).toBeGreaterThanOrEqual(c.titleH - 1);
+		for (let i = 1; i < layout.length; i++) expect(layout[i].top).toBeGreaterThanOrEqual(layout[i - 1].bottom - 1);
+	} finally {
+		await post({ mode: "delete", commentID: a.comment && a.comment.id });
+		await post({ mode: "delete", commentID: b.comment && b.comment.id });
+	}
+});
