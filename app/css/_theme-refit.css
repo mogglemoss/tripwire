@@ -503,10 +503,14 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #login #content #track .tracking-clone td.avatar {
 	grid-column: 1; grid-row: 1 / span 5;
 	display: flex; flex-direction: column; align-items: center; gap: 4px;
+	/* account.css shrinks this cell to 1px by 1px (a table-era trick); as a
+	   grid item that centred its content over a 1px box and the left half
+	   was clipped by the scrolling list. The column is the size now. */
+	width: auto; height: auto;
 }
 #login #content #track .tracking-clone td.avatar img.avatar { display: block; }
 #login #content #track .tracking-clone td.avatar hr.bar { width: 36px; margin: 0; height: 3px; border: 0; border-radius: 2px; }
-#login #content #track .tracking-clone td.avatar .control-group { display: flex; gap: 6px; margin-top: 2px; }
+#login #content #track .tracking-clone td.avatar .control-group { display: flex; gap: 4px; margin-top: 2px; }
 #login #content #track .tracking-clone td.avatar .control-group i { font-size: 14px; color: var(--muted-foreground); cursor: pointer; }
 #login #content #track .tracking-clone td.avatar .control-group i.active,
 #login #content #track .tracking-clone td.avatar .control-group i:hover { color: var(--primary); }
@@ -1375,3 +1379,4 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 @media (max-width: 767px) {
 	#dialog-signature .row:has([name="wormholeLife"]) .mini-selector + label { padding: var(--space-2) 10px; }
 }
+.jBox-Tooltip .tip-muted { color: var(--muted-foreground); font-style: italic; }

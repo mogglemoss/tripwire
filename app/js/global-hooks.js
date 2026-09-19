@@ -396,14 +396,22 @@ var OccupiedToolTips = new jBox("Tooltip", {
 
 		this.options.position = {x: targetPos.left + this.target[0].offsetWidth, y: targetPos.top - 3};
 
-		tooltip.setContent("&nbsp;");
+		// Never a blank box: say what is happening until the names arrive, and
+		// say so if they do not.
+		tooltip.setContent("<span class='tip-muted'>Loading pilots\u2026</span>");
 
 		$.ajax({
 			url: "occupants.php",
 			dataType: "JSON",
 			data: "systemID="+systemID,
 			cache: false
+		}).fail(function() {
+			tooltip.setContent("<span class='tip-muted'>Pilots unavailable</span>");
 		}).done(function(data) {
+			if (!data || !data.occupants || !data.occupants.length) {
+				tooltip.setContent("<span class='tip-muted'>No pilots here</span>");
+				return;
+			}
 			if (data && data.occupants) {
 				var chars = "<table>";
 
