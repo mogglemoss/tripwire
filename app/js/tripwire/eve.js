@@ -1,8 +1,21 @@
+// The first known tracked location becomes the view, once, when the user
+// arrived without naming a system and has not moved off the bootstrap
+// system since. Pure, so it can be tested without a page.
+function shouldUseTrackedSystemAsInitialView(defaultPending, trackedSystemID, viewingID, bootstrapID) {
+    return !!defaultPending && trackedSystemID != null && viewingID == bootstrapID;
+}
+
 // Handles data from EVE in-game data
 tripwire.EVE = function(EVE, characterChange) {
     var systemChange = this.client.EVE && this.client.EVE.systemChange || false;
 
     if (EVE) {
+        var trackedSystemID = EVE.systemID && tripwire.systems[EVE.systemID] ? EVE.systemID : null;
+        if (shouldUseTrackedSystemAsInitialView(defaultToTrackedSystem, trackedSystemID, viewingSystemID, defaultSystemID)) {
+            defaultToTrackedSystem = false;
+            if (trackedSystemID != viewingSystemID) { tripwire.systemChange(trackedSystemID); }
+        }
+
         // Automapper
         if (!characterChange) {
             // Did the system change or did it previously and we have yet to try an autoMapper call?

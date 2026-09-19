@@ -11,8 +11,21 @@ var server = $("meta[name=server]").attr("content");
 var app_name = $("meta[name=app_name]").attr("content");
 var version = $("meta[name=version]").attr("content");
 
-// Reload with default system if it was invalid
-if(!viewingSystemID) { window.stop(); window.location = '?system=Jita'; }
+// A blank system is a fresh entry (no ?system= on the URL). It used to
+// reload straight to Jita, and stay there. Now the first sync bootstraps
+// on Jita without a reload, and the tracked pilot's location replaces it
+// as soon as the first one arrives -- unless the user has already gone
+// somewhere else. An explicit but invalid system still reloads to Jita.
+var defaultToTrackedSystem = !viewingSystem;
+var defaultSystemID = null;
+if (defaultToTrackedSystem) {
+	viewingSystem = "Jita";
+	viewingSystemID = findSystemID(viewingSystem);
+	defaultSystemID = viewingSystemID;
+} else if (!viewingSystemID) {
+	window.stop();
+	window.location = '?system=Jita';
+}
 
 // Use this to test performance of javascript code lines
 // var startTime = window.performance.now();
