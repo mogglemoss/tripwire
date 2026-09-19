@@ -271,7 +271,7 @@ from the pack.
 |---|---|
 | `corp` | The corp's name: the manifest's long name, image alt text, the sign-in page. Empty for the neutral pack. |
 | `short` | Short uppercase form, for places that need one. |
-| `tagline` | The small line above the product name on the sign-in page (`Chain desk`). |
+| `tagline` | The small line above the product name on the sign-in page (`Wormhole mapping`). |
 | `description` | The manifest description and the sign-in page's meta description. |
 | `logo.dark`, `logo.light` | Logo image file for each room (PNG or SVG, any aspect; drawn 64px tall in the header, 360px wide on the sign-in page). `light` falls back to `dark`. Both `null` → see `lockup`, else the product name is set as text. |
 | `logo.lockup` | A typographic letterhead instead of an image, set in the page's own fonts: `above` (small line), `main` (the name, in `fonts.brand` and the accent), `below` (small line), `flourish` (rules either side of the name). |

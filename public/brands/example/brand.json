@@ -1,8 +1,8 @@
 {
   "corp": "Your Corp",
   "short": "YOURCORP",
-  "tagline": "Chain desk",
-  "description": "Your Corp's chain desk: wormhole signatures, chains and pilot tracking.",
+  "tagline": "Wormhole mapping",
+  "description": "Your Corp's wormhole map: signatures, chains and pilot tracking.",
   "logo": {
     "dark": "logo-dark.png",
     "light": "logo-light.png",
