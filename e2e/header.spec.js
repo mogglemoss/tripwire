@@ -1,5 +1,6 @@
 // Header toggles: what you click must change, visibly, and stay changed.
 const { test, expect } = require("@playwright/test");
+const { login } = require("./helpers");
 
 async function ready(page) {
 	await page.goto("/?system=Perimeter");
@@ -39,4 +40,37 @@ test("follow-my-system toggles on click, shows it, and survives a reload", async
 	await follow.click();
 	await page.waitForTimeout(1500);
 	expect((await state()).active).toBe(before.active);
+});
+
+// The header system picker: Escape closes it, and picking a suggestion goes
+// there without a second Enter (ported from squizzlabs/tripwire b0fef1b).
+test.describe("system picker", () => {
+	test("Escape closes the picker", async ({ page }) => {
+		await login(page, "Perimeter");
+		await page.click("#search");
+		const input = page.locator("#searchSpan input.systemsAutocomplete");
+		await expect(input).toBeVisible();
+		await expect(input).toBeFocused();
+		await page.keyboard.press("Escape");
+		await expect(page.locator("#searchSpan")).toBeHidden();
+		await expect(page.locator("#search")).not.toHaveClass(/active/);
+	});
+
+	test("choosing a suggestion opens that system", async ({ page }) => {
+		await login(page, "Perimeter");
+		await page.click("#search");
+		const input = page.locator("#searchSpan input.systemsAutocomplete");
+		await input.fill("Jita");
+		await expect(page.locator("ul.ui-autocomplete li.ui-menu-item").first()).toBeVisible();
+		await Promise.all([
+			page.waitForURL(/system=Jita/),
+			page.keyboard.press("ArrowDown").then(() => page.keyboard.press("Enter"))
+		]);
+		await expect(page).toHaveURL(/system=Jita/);
+	});
+
+	test("the auto-mapper button is a toggle like the others", async ({ page }) => {
+		await login(page, "Perimeter");
+		await expect(page.locator("#toggle-automapper")).toHaveClass(/bar-toggle/);
+	});
 });
