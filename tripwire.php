@@ -367,8 +367,8 @@ $system = $_REQUEST['system'] ?? '';
 	<div id="footer">
 		<?php if (defined('ENABLE_DONATIONS') && ENABLE_DONATIONS) include 'donation_panel.inc'; ?>
 		<?php printf("<span id='pageTime'>Page generated in %.3f seconds.</span>", microtime(true) - $startTime); ?>
-		<p>All Eve Related Materials are Property Of <a href="https://www.ccpgames.com" target="_blank">CCP Games</a></p>
-		<p id="legal" class="pointer">EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
+		<p>All EVE related materials are the property of <a href="https://fenris.com" target="_blank" rel="noopener">Fenris Creations</a>, formerly CCP Games</p>
+		<p id="legal" class="pointer">All EVE related materials are the property of Fenris Creations, formerly CCP Games. EVE Online&reg; and Fenris Creations&trade; and all related logos and other elements are trademarks of Fenris Creations. &copy; 2026 Fenris Creations. All rights reserved. All other trademarks are the property of their respective owners. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of Fenris Creations. Fenris Creations is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
 	</div>
 	</div>
 	</div>

@@ -49,7 +49,7 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 		<nav>
 			<a href="https://github.com/mogglemoss/tripwire/issues" target="_blank" rel="noopener">Issues</a>
 			<a href="#privacy">Privacy</a>
-			<a href="#ccp">CCP copyright</a>
+			<a href="#ccp">Fenris copyright</a>
 		</nav>
 	</div>
 
@@ -157,15 +157,15 @@ $startOnRegister = $success || ($error && strpos($error, 'register') === 0);
 			</div>
 		</details>
 		<details id="ccp">
-			<summary>CCP copyright notice</summary>
+			<summary>Fenris Creations copyright notice</summary>
 			<div class="body">
-				<p>All EVE related materials are property of CCP Games. EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
+				<p>All EVE related materials are the property of Fenris Creations, formerly CCP Games. EVE Online&reg; and Fenris Creations&trade; and all related logos and other elements are trademarks of Fenris Creations. &copy; 2026 Fenris Creations. All rights reserved. All other trademarks are the property of their respective owners. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of Fenris Creations. Fenris Creations is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.</p>
 			</div>
 		</details>
 	</section>
 
 	<footer class="foot">
-		<span>Tripwire is open source. CCP Partner Programme community app.</span>
+		<span>Tripwire is open source. EVE Online Partner Programme community app.</span>
 		<?php if (defined('ENABLE_DONATIONS') && ENABLE_DONATIONS) include 'donation_panel.inc'; ?>
 	</footer>
 
