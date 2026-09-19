@@ -73,8 +73,9 @@ $("#chain-zoom-reset").on("click", function() {
 });
 
 $(document).keydown(function(e)	{
-	//Abort - user is in input or textarea
-	if ($(document.activeElement).is("textarea, input")) return;
+	// Editable surfaces keep their native keys: Ctrl+A inside a note selects
+	// the note, not every signature row.
+	if (tripwire.keyboard.isTyping(e.target)) return;
 
 	// Ctrl key hooks
 	if (e.metaKey || e.ctrlKey) {

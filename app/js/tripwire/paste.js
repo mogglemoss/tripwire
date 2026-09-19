@@ -247,8 +247,10 @@ tripwire.pasteSignatures = function() {
     this.pasteSignatures.init = function() {
         $(document).keydown(function(e)	{
             if ((e.metaKey || e.ctrlKey) && (e.keyCode == 86 || e.keyCode == 91) && !processing) {
-                //Abort - user is in input or textarea
-                if ($(document.activeElement).is("textarea, input")) return;
+                // Do not steal a normal paste from anything the user can edit.
+                // Notes are a contenteditable div, not a textarea; moving focus
+                // to #clipboard here made the importer eat the note text.
+                if (tripwire.keyboard.isTyping(e.target)) return;
 
                 $("#clipboard").focus();
             }

@@ -91,10 +91,16 @@ tripwire.keyboard = (function() {
     // True when a keystroke belongs to something else: a field being typed in,
     // or an open dialog. The dialog test cannot be a tag test -- jQuery UI's
     // dialogs put focus on plain containers, so match the role/class instead.
+    // Every global key handler (palette, paste import, undo/redo/select-all)
+    // asks this one question, so the answer is the same everywhere. closest,
+    // not is: a keystroke inside a bold word in a note has that <b> as its
+    // target, not the editable surface. And the active element is consulted
+    // too, because some events land on body while the caret is in a note.
     function isTyping(target) {
         var $t = $(target);
-        return $t.is("input, textarea, select, [contenteditable=true]") ||
-               $t.closest("[role='dialog'], .ui-dialog, .cke").length > 0;
+        if ($t.closest("input, textarea, select, [contenteditable=true], [role='dialog'], .ui-dialog, .cke").length > 0) { return true; }
+        var active = document.activeElement;
+        return !!(active && active !== target && (active.isContentEditable || $(active).is("input, textarea, select")));
     }
 
     // Panel show/hide, generated from the panel registry rather than declared
