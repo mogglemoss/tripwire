@@ -904,12 +904,18 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 #sigTable .leftAlign   { text-align: left; }
 
 /* ── 7. Three columns from 960px; what gives at the narrow end ─────────── */
+/* Secondary controls and column room go by the panel's own width
+   (panel-density.js); the viewport rule holds only until measured. */
 @media (min-width: 960px) and (max-width: 1099px) {
-	#infoWidget > .controls .bar-right #sys-range { display: none; }
-	#sigTable th:nth-child(5), #sigTable td:nth-child(5),
-	#sigTable th:nth-child(6), #sigTable td:nth-child(6) { width: 3.2rem; padding-left: 2px; padding-right: 4px; }
-	#sigTable th:nth-child(2), #sigTable td:nth-child(2) { width: 4.6rem; }
+	html:not(.panels-measured) #infoWidget > .controls .bar-right #sys-range { display: none; }
+	html:not(.panels-measured) #sigTable th:nth-child(5), html:not(.panels-measured) #sigTable td:nth-child(5),
+	html:not(.panels-measured) #sigTable th:nth-child(6), html:not(.panels-measured) #sigTable td:nth-child(6) { width: 3.2rem; padding-left: 2px; padding-right: 4px; }
+	html:not(.panels-measured) #sigTable th:nth-child(2), html:not(.panels-measured) #sigTable td:nth-child(2) { width: 4.6rem; }
 }
+#infoWidget.panel-narrow > .controls .bar-right #sys-range { display: none; }
+#signaturesWidget.panel-narrow #sigTable th:nth-child(5), #signaturesWidget.panel-narrow #sigTable td:nth-child(5),
+#signaturesWidget.panel-narrow #sigTable th:nth-child(6), #signaturesWidget.panel-narrow #sigTable td:nth-child(6) { width: 3.2rem; padding-left: 2px; padding-right: 4px; }
+#signaturesWidget.panel-narrow #sigTable th:nth-child(2), #signaturesWidget.panel-narrow #sigTable td:nth-child(2) { width: 4.6rem; }
 
 /* ── 6. Phone: a signature is two lines, nothing hidden ─────────────────── */
 @media (max-width: 767px) {

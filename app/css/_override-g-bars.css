@@ -89,12 +89,19 @@
 	cursor: default;
 }
 
-/* Labels give way before icons do. */
+/* Labels give way before icons do. Driven by each panel's own width
+   (panel-density.js); the viewport rule only holds until the first
+   measurement lands, so nothing flashes on load. */
 @media (max-width: 1439px) {
-	#signaturesWidget .bar-btn:not(.bar-primary) .bar-label,
-	#infoWidget .bar-btn .bar-label { display: none; }
-	#signaturesWidget .bar-btn:not(.bar-primary):not(.bar-icon) { padding: 0 6px; }
+	html:not(.panels-measured) #signaturesWidget .bar-btn:not(.bar-primary) .bar-label,
+	html:not(.panels-measured) #infoWidget .bar-btn .bar-label { display: none; }
+	html:not(.panels-measured) #signaturesWidget .bar-btn:not(.bar-primary):not(.bar-icon) { padding: 0 6px; }
 }
+#signaturesWidget.panel-compact .bar-btn:not(.bar-primary) .bar-label,
+#infoWidget.panel-compact .bar-btn .bar-label { display: none; }
+#signaturesWidget.panel-compact .bar-btn:not(.bar-primary):not(.bar-icon) { padding: 0 6px; }
+/* Narrower still, the bar wraps to a second line rather than clip actions. */
+#signaturesWidget.panel-wrap > .controls { flex-wrap: wrap; row-gap: var(--space-1); }
 
 /* The bar inherits the panel title's uppercase and letter-spacing; a button
    label is a word, not a heading. And a bar button is its own width -- the
