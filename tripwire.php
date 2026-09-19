@@ -193,7 +193,7 @@ $system = $_REQUEST['system'] ?? '';
 						<i id="undo" data-icon="undo" class="bar-btn bar-icon disabled" data-tooltip="Undo (Ctrl-Z)"></i>
 						<i id="redo" data-icon="redo" class="bar-btn bar-icon disabled" data-tooltip="Redo (Ctrl-Y)"></i>
 						<span class="bar-sep"></span>
-						<i id="toggle-automapper" class="bar-btn bar-icon disabled" data-icon="auto" data-tooltip="Auto-mapper"></i>
+						<i id="toggle-automapper" class="bar-btn bar-icon bar-toggle disabled" data-icon="auto" data-tooltip="Auto-mapper"></i>
 						<i class="tutorial bar-btn bar-icon" data-tooltip="Show tutorial for this section">?</i>
 					</div>
 				</div>

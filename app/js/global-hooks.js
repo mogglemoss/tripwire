@@ -226,6 +226,22 @@ $("#search").click(function(e) {
 	}
 });
 
+// The header system picker is a transient filter, not a form users should
+// have to dismiss separately. jQuery UI closes only its suggestion popup on
+// Escape, and selecting a suggestion ordinarily just fills the input. Close
+// the whole picker on Escape and submit a selected system immediately.
+$("body").on("keydown", "#searchSpan input.systemsAutocomplete", function(e) {
+	if (e.key === "Escape" && $("#search").hasClass("active")) {
+		e.preventDefault();
+		$("#search").trigger("click");
+	}
+});
+
+$("body").on("inlinecompleteselect", "#searchSpan input.systemsAutocomplete", function(e, ui) {
+	e.preventDefault();
+	$(this).val(ui.item.value).closest("form").trigger("submit");
+});
+
 $("#toggle-automapper").click(function(e) {
 	e.preventDefault();
 

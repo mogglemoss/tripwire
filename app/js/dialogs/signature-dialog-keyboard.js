@@ -29,10 +29,17 @@
             .filter(function($f) { return $f.length > 0; });
     }
 
+    // The dialog shows an unknown signature id as ???; that is a blank, not
+    // an answer.
+    function isMissing($field) {
+        var value = $.trim($field.val() || "");
+        return !value || ($field.attr("name") === "signatureID_Alpha" && value === "???");
+    }
+
     function markMissing() {
         $(SIG + " .sig-missing").removeClass("sig-missing");
         requiredFields().forEach(function($f) {
-            if (!$.trim($f.val() || "")) { $f.addClass("sig-missing"); }
+            if (isMissing($f)) { $f.addClass("sig-missing"); }
         });
     }
 
@@ -42,7 +49,7 @@
     function focusFirstUnfilled() {
         var fields = requiredFields();
         for (var i = 0; i < fields.length; i++) {
-            if (!$.trim(fields[i].val() || "")) {
+            if (isMissing(fields[i])) {
                 fields[i].trigger("focus").trigger("select");
                 return;
             }
@@ -113,7 +120,7 @@
             var $f = $(e.target);
             if (!$f.is("input")) { return; }
             var required = requiredFields().some(function($r) { return $r[0] === $f[0]; });
-            if (required && !$.trim($f.val() || "")) { $f.addClass("sig-missing"); }
+            if (required && isMissing($f)) { $f.addClass("sig-missing"); }
             else { $f.removeClass("sig-missing"); }
         });
         $(document).on("submit", "#form-signature", function() { attempted = true; markMissing(); });
