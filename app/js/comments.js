@@ -35,7 +35,14 @@ $("body").on("click", ".commentSave, .commentCancel", function(e) {
 	$this.attr("disabled", "true");
 
 	if ($this.hasClass("commentSave")) {
-		var data = {"mode": "save", "commentID": $comment.data("id"), "systemID": $comment.find(".commentSticky").hasClass("active") ? 0 : viewingSystemID, "comment": tripwire.editor.get($comment.find(".commentBody").attr("id")).getData()};
+		var commentHtml = tripwire.editor.get($comment.find(".commentBody").attr("id")).getData();
+		// An editor's idea of empty is <div><br></div>; do not save that.
+		if (!noteHtmlHasContent(commentHtml)) {
+			$comment.find(".commentStatus").text("Add content before saving.");
+			$this.removeAttr("disabled");
+			return false;
+		}
+		var data = {"mode": "save", "commentID": $comment.data("id"), "systemID": $comment.find(".commentSticky").hasClass("active") ? 0 : viewingSystemID, "comment": commentHtml};
 
 		$.ajax({
 			url: "comments.php",
@@ -58,6 +65,12 @@ $("body").on("click", ".commentSave, .commentCancel", function(e) {
 				$comment.find(".commentFooter").hide();
 				$this.removeAttr("disabled");
 			}
+		}).fail(function(xhr) {
+			// The server refused (no DOM extension, or nothing to save): say so
+			// and give the button back rather than leaving it dead.
+			var body = xhr.responseJSON || {};
+			$comment.find(".commentStatus").text(body.error || "The note could not be saved.");
+			$this.removeAttr("disabled");
 		});
 	} else {
 		tripwire.editor.destroy($comment.find(".commentBody").attr("id"), true);
