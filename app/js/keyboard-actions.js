@@ -108,7 +108,7 @@ tripwire.keyboard = (function() {
     // because panels.js loads after this file.
     function panelActions() {
         if (!tripwire.panels) { return []; }
-        return tripwire.panels.all().map(function(p) {
+        var acts = tripwire.panels.all().map(function(p) {
             return {
                 id: "panel-" + p.id,
                 label: (tripwire.panels.isVisible(p.id) ? "Hide " : "Show ") + p.title + " panel",
@@ -117,6 +117,12 @@ tripwire.keyboard = (function() {
                 perform: function() { tripwire.panels.toggle(p.id); }
             };
         });
+        acts.push({
+            id: "reset-layout", label: "Reset panel layout", group: "Panels",
+            enabled: function() { return !!(tripwire.panelLayout && (tripwire.panelLayout.hasColumnPreference() || tripwire.panelLayout.hasRowPreference())); },
+            perform: function() { if (tripwire.panelLayout) { tripwire.panelLayout.reset(); } }
+        });
+        return acts;
     }
 
     // Jump to a chain tab by name.

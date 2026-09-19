@@ -89,6 +89,7 @@ tripwire.panels = (function() {
         // The grid gives its first row the fixed height and the second the
         // rest; when the chain leads, the rows swap roles (see the theme).
         $(".gridster > ul").toggleClass("chain-first", ids[0] === "chainWidget");
+        $(document).trigger("panels:layout");
     }
 
     function setVisible(id, on) {

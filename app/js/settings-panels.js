@@ -50,6 +50,13 @@ tripwire.settingsPanels = (function() {
 			$row.append($acts);
 			$list.append($row);
 		});
+		// Sizes set by dragging a divider win until reset; this is the reset.
+		var $foot = $('<div class="panel-row panel-row-foot"></div>');
+		$foot.append($('<span class="panel-row-name char-note"></span>').text("Dragged sizes"));
+		$foot.append($('<span class="panel-row-actions"></span>').append(
+			$('<button type="button" class="char-btn" id="reset-layout">Reset layout</button>')
+				.on("click", function() { if (tripwire.panelLayout) { tripwire.panelLayout.reset(); } })));
+		$list.append($foot);
 	}
 	return {render: render};
 })();

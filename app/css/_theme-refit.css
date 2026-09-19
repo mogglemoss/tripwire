@@ -1334,3 +1334,33 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .introjs-tooltipbuttons a.introjs-disabled, .introjs-tooltipbuttons a.introjs-disabled:hover { opacity: .45; background: var(--input); border-color: var(--border); color: var(--foreground); cursor: default; }
 .introjs-helperNumberLayer { display: none; }
 .introjs-progress { background: var(--muted); } .introjs-progressbar { background: var(--primary); }
+
+/* ── Resizable panels (panel-layout.js) ───────────────────────────────────
+   The gaps between panels are the handles. Nothing is drawn until hover,
+   then a one-pixel accent line shows what you have hold of; it stays for
+   the drag and fades when you let go. Below 960px the module removes them. */
+.gridster { position: relative; }
+.panel-handle {
+	position: absolute; z-index: 20;
+	background: transparent;
+	outline: none;
+}
+.panel-handle-column { cursor: col-resize; }
+.panel-handle-row    { cursor: row-resize; }
+.panel-handle::after {
+	content: ""; position: absolute;
+	background: var(--primary);
+	opacity: 0;
+	transition: opacity .15s ease .12s;
+}
+.panel-handle-column::after { top: 0; bottom: 0; left: 50%; width: 1px; margin-left: -0.5px; }
+.panel-handle-row::after    { left: 0; right: 0; top: 50%; height: 1px; margin-top: -0.5px; }
+.panel-handle:hover::after,
+.panel-handle.is-dragging::after,
+.panel-handle:focus-visible::after { opacity: 1; transition-delay: 0s; }
+.panel-handle:focus-visible::after { box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 35%, transparent); }
+body.panel-resizing { user-select: none; -webkit-user-select: none; }
+body.panel-resizing-column, body.panel-resizing-column * { cursor: col-resize !important; }
+body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !important; }
+@media (max-width: 959px) { .panel-handle { display: none; } }
+.panel-row-foot { margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--border-soft); }

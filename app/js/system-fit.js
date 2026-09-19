@@ -55,6 +55,8 @@ var systemFit = new function() {
 	function fitRow(p, need) {
 		var grid = document.querySelector(".gridster > ul");
 		if (!grid || window.innerWidth < 960) return;
+		// A row the user set by hand wins until they reset it.
+		if (tripwire.panelLayout && tripwire.panelLayout.hasRowPreference()) return;
 		var widget = document.getElementById("infoWidget");
 		var chrome = widget.getBoundingClientRect().height - p.clientHeight;
 		var wanted = need + chrome;
@@ -96,10 +98,23 @@ var systemFit = new function() {
 		pending = requestAnimationFrame(function() { pending = null; self.run(); });
 	}
 
+	// After a layout reset: forget what was applied, put the remembered row
+	// back, and fit again.
+	this.reset = function() {
+		var grid = document.querySelector(".gridster > ul"), remembered = storedRow();
+		appliedRow = null;
+		if (grid && remembered && window.innerWidth >= 960) {
+			appliedRow = remembered;
+			grid.style.setProperty("--top-row", Math.round(remembered) + "px");
+		}
+		schedule();
+	};
+
 	$(function() {
 		// Apply the remembered row before anything is measured.
 		var grid = document.querySelector(".gridster > ul"), remembered = storedRow();
-		if (grid && remembered && window.innerWidth >= 960) {
+		var preferred = tripwire.panelLayout && tripwire.panelLayout.hasRowPreference();
+		if (grid && remembered && window.innerWidth >= 960 && !preferred) {
 			appliedRow = remembered;
 			grid.style.setProperty("--top-row", Math.round(remembered) + "px");
 		}
