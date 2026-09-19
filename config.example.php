@@ -27,6 +27,10 @@ define('TRIPWIRE_API', true);
 // EVE API userAgent
 define('USER_AGENT', 'Tripwire Server - adminEmail@example.com');
 
+// Shown on the sign-in page's "What this installation stores" section as the
+// contact for questions: a name, a Discord handle, an address. Empty for none.
+define('OPERATOR_CONTACT', '');
+
 // EVE SSO info
 define('EVE_SSO_CLIENT', 'client');
 define('EVE_SSO_SECRET', 'secret');
