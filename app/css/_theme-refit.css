@@ -507,6 +507,10 @@ kbd { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	   grid item that centred its content over a 1px box and the left half
 	   was clipped by the scrolling list. The column is the size now. */
 	width: auto; height: auto;
+	/* The cell carries class="avatar" in the markup, so the round-portrait
+	   rule (50% radius, light ground, ring) lands on it; at 1px that was
+	   invisible, at column size it was an oval. This cell is a column. */
+	border-radius: 0; background: transparent; box-shadow: none;
 }
 #login #content #track .tracking-clone td.avatar img.avatar { display: block; }
 #login #content #track .tracking-clone td.avatar hr.bar { width: 36px; margin: 0; height: 3px; border: 0; border-radius: 2px; }
