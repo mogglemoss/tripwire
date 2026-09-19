@@ -373,12 +373,15 @@ $system = $_REQUEST['system'] ?? '';
 	</div>
 	</div>
 
-	<div id="dialog-deleteComment" title="Delete Comment" class="hidden">
-		<i data-icon="alert"></i> This comment will be removed. Are you sure?
+	<div id="dialog-deleteComment" title="Delete note" class="hidden confirm">
+		<p class="confirm-lead">This note will be removed.</p>
+		<p class="confirm-note">Everyone on the mask loses it; there is no undo for notes.</p>
 	</div>
 
-	<div id="dialog-deleteSig" title="Delete Signature(s)" class="hidden">
-		<i data-icon="alert"></i> <span id="deleteSigText">This signature</span> will be removed from <span id="deleteSigSystem">this system</span>. Are you sure?
+	<div id="dialog-deleteSig" title="Delete signature" class="hidden confirm">
+		<p class="confirm-lead" id="deleteSigLead"></p>
+		<ul class="confirm-list" id="deleteSigList"></ul>
+		<p class="confirm-note" id="deleteSigNote"></p>
 	</div>
 
 	<div id="dialog-signature" title="Add Signature" class="hidden">

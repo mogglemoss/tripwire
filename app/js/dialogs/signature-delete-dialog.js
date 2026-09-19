@@ -25,11 +25,12 @@ function openDeleteDialog(vm, successFunction) {
 		$("#dialog-deleteSig").dialog({
 			resizable: false,
 			minHeight: 0,
+			width: 420,
 			dialogClass: "dialog-noeffect ui-dialog-shadow",
 			buttons: {
 				Delete: function() {
-					// Prevent duplicate submitting
-					$("#dialog-deleteSig").parent().find(":button:contains('Delete')").button("enable");
+					// One submit at a time: the button comes back in `always`.
+					$("#dialog-deleteSig").parent().find(":button:contains('Delete')").button("disable");
 					var payload = {"signatures": {"remove": []}, "systemID": viewingSystemID};
 					var undo = [];
 
@@ -72,13 +73,37 @@ function openDeleteDialog(vm, successFunction) {
 				}
 			},
 			open: function() {
+				// The dialog's own language: a title that says what, a lead that
+				// says where, a list only when there is more than one, a note only
+				// when a wormhole is among them, and the safe action focused.
 				const sigs = openDeleteDialog.deleteDialogVM.signatures;
-				$("#dialog-deleteSig").dialog("option", "title", sigs.length == 1 ? 'Delete Signature ' + formatSignatureID(sigs[0].signatureID) : 'Delete Multiple Signatures');
-				document.getElementById('deleteSigText').innerText = sigs.length == 1 ? 'The ' + sigs[0].type + ' signature ' + formatSignatureID(sigs[0].signatureID) 
-					: 'The signatures ' + sigs.map(s => formatSignatureID(s.signatureID)).join(', ');
-				document.getElementById('deleteSigSystem').innerHTML = systemRendering.renderSystem(systemAnalysis.analyse(sigs[0].systemID));
-				
-				$("#dialog-deleteSig").parent().find(".ui-dialog-buttonset button:eq(0)").focus();
+				const one = sigs.length == 1;
+				const idOf = (s) => s.signatureID ? formatSignatureID(s.signatureID) : "";
+				$("#dialog-deleteSig").dialog("option", "title", one ? "Delete signature" : "Delete " + sigs.length + " signatures");
+
+				const $lead = $("#deleteSigLead").empty();
+				if (one) {
+					$lead.append(sigs[0].signatureID ? $("<span class='confirm-sig'></span>").text(idOf(sigs[0])) : $("<span class='confirm-unidentified'></span>").text("An unidentified " + sigs[0].type + " signature"));
+				} else {
+					$lead.append(document.createTextNode(sigs.length + " signatures"));
+				}
+				$lead.append(document.createTextNode(" will be removed from "))
+					.append(systemRendering.renderSystem(systemAnalysis.analyse(sigs[0].systemID)))
+					.append(document.createTextNode("."));
+
+				const $list = $("#deleteSigList").empty();
+				if (!one) {
+					sigs.forEach(function(s) {
+						$("<li></li>")
+							.append(s.signatureID ? $("<span class='confirm-sig'></span>").text(idOf(s)) : $("<span class='confirm-unidentified'></span>").text("unidentified"))
+							.append($("<span class='confirm-type'></span>").text(s.type || ""))
+							.appendTo($list);
+					});
+				}
+				const wormholes = sigs.filter(function(s) { return s.type == "wormhole"; }).length;
+				$("#deleteSigNote").text(wormholes ? (wormholes == 1 && one ? "Its connection and the signature on the other side go with it." : "A wormhole's connection and the signature on the other side go with it.") : "");
+
+				$("#dialog-deleteSig").parent().find(".ui-dialog-buttonpane button.is-quiet, .ui-dialog-buttonpane button:contains('Cancel')").first().focus();
 			},
 			close: function() {
 				$("#sigTable tr.selected").removeClass("selected");

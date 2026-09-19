@@ -99,6 +99,7 @@ $("body").on("click", ".commentDelete", function(e) {
 		$("#dialog-deleteComment").data("comment", $comment).dialog({
 			resizable: false,
 			minHeight: 0,
+			width: 380,
 			position: {my: "center", at: "center", of: $("#notesWidget")},
 			dialogClass: "dialog-noeffect ui-dialog-shadow",
 			buttons: {
@@ -126,6 +127,10 @@ $("body").on("click", ".commentDelete", function(e) {
 				Cancel: function() {
 					$(this).dialog("close");
 				}
+			},
+			open: function() {
+				// The safe action is the default one.
+				$("#dialog-deleteComment").parent().find(".ui-dialog-buttonpane button:contains('Cancel')").first().focus();
 			}
 		});
 	} else if (!$("#dialog-deleteComment").dialog("isOpen")) {

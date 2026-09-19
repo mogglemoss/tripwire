@@ -157,3 +157,49 @@ test.describe("the traps", () => {
 		await expect(page.locator("#searchSpan input")).toHaveValue("");
 	});
 });
+
+// The delete confirmation: says what and where, lists several, focuses the
+// safe action, and deletes on Delete.
+test.describe("delete confirmation", () => {
+	const PREFIX = "ZZQ-8";
+	test.beforeEach(async ({ page }) => { await login(page, "Perimeter"); await removeSigsByPrefix(page, PREFIX); });
+	test.afterEach(async ({ page }) => { await removeSigsByPrefix(page, PREFIX).catch(() => {}); });
+
+	async function pasteSigs(page, context, lines) {
+		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+		await setClipboard(page, lines.join("\n"));
+		await page.click("#paste-signatures");
+		await page.waitForFunction((n) => (Object.values((tripwire.client && tripwire.client.signatures) || {}).filter(s => /zzq8/i.test(s.signatureID || "")).length) >= n, lines.length, { timeout: 15000 });
+	}
+	function row(page, id) { return page.locator("#sigTable tbody tr", { hasText: new RegExp(id, "i") }).first(); }
+
+	test("one signature: lead names it and the system, Cancel is focused, Delete removes it", async ({ page, context }) => {
+		await pasteSigs(page, context, ["ZZQ-801\tCosmic Signature\tRelic Site\tE2E delete me\t100.0%\t1.00 AU"]);
+		await row(page, "ZZQ-801").click();
+		await page.click("#delete-signature");
+		const dialog = page.locator(".ui-dialog:visible");
+		await expect(dialog).toBeVisible();
+		await expect(dialog.locator(".ui-dialog-title")).toHaveText(/Delete signature/i);
+		await expect(dialog.locator("#deleteSigLead")).toContainText("ZZQ-801");
+		await expect(dialog.locator("#deleteSigLead")).toContainText("Perimeter");
+		await expect(dialog.locator("#deleteSigList")).toBeHidden();
+		await expect(dialog.getByRole("button", { name: "Cancel" })).toBeFocused();
+		await dialog.getByRole("button", { name: "Delete" }).click();
+		await expect(dialog).toBeHidden();
+		await page.waitForFunction(() => !Object.values((tripwire.client && tripwire.client.signatures) || {}).some(s => /zzq801/i.test(s.signatureID || "")), null, { timeout: 15000 });
+	});
+
+	test("several signatures: a count in the title and a chip per signature", async ({ page, context }) => {
+		await pasteSigs(page, context, ["ZZQ-802\tCosmic Signature\tRelic Site\tE2E a\t100.0%\t1.00 AU", "ZZQ-803\tCosmic Signature\tGas Site\tE2E b\t100.0%\t2.00 AU"]);
+		await row(page, "ZZQ-802").click();
+		await row(page, "ZZQ-803").click({ modifiers: [process.platform === "darwin" ? "Meta" : "Control"] });
+		await page.click("#delete-signature");
+		const dialog = page.locator(".ui-dialog:visible");
+		await expect(dialog.locator(".ui-dialog-title")).toHaveText(/Delete 2 signatures/i);
+		await expect(dialog.locator("#deleteSigList li")).toHaveCount(2);
+		await expect(dialog.locator("#deleteSigList")).toContainText("ZZQ-802");
+		await expect(dialog.locator("#deleteSigList")).toContainText("ZZQ-803");
+		await page.keyboard.press("Escape");
+		await expect(dialog).toBeHidden();
+	});
+});

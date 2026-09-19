@@ -285,3 +285,28 @@
 .panel-row-actions { display: flex; align-items: center; gap: var(--space-2); }
 .panel-row-actions .char-btn { padding: 0 var(--space-2); font-size: 10px; }
 .panel-row-actions .char-btn[disabled] { opacity: .3; pointer-events: none; }
+
+/* ---- confirm ---------------------------------------------------------
+   A confirmation is a short document: a lead that says what and where, a
+   list only when there are several, a note only when there is a
+   consequence worth knowing. The destructive button says the rest; no
+   warning icon. */
+.confirm { min-width: 300px; max-width: 420px; }
+.confirm .confirm-lead { margin: 0; color: var(--foreground); }
+.confirm .confirm-sig { font-family: var(--font-mono); font-weight: 600; letter-spacing: .04em; }
+.confirm .confirm-unidentified { color: var(--muted-foreground); font-style: italic; }
+.confirm .confirm-list {
+	list-style: none; margin: var(--space-3) 0 0; padding: 0;
+	display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2);
+	max-height: 9.5rem; overflow: auto;
+}
+.confirm .confirm-list:empty { display: none; }
+.confirm .confirm-list li {
+	display: inline-flex; align-items: baseline; gap: var(--space-1);
+	padding: 2px var(--space-2); border-radius: 999px;
+	background: var(--accent-surface); border: 1px solid var(--border-soft);
+	font-size: var(--fs-sm);
+}
+.confirm .confirm-list .confirm-type { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-foreground); }
+.confirm .confirm-note { margin: var(--space-3) 0 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+.confirm .confirm-note:empty { display: none; }
