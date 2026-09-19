@@ -70,16 +70,11 @@
 	/* Resize handles are meaningless without a grid. */
 	.grid-resize { display: none !important; }
 
-	/* Editing chrome is out of scope on a phone: this band is for reading. */
-	#signaturesWidget #add-signature,
-	#signaturesWidget #edit-signature,
-	#signaturesWidget #delete-signature,
-	#signaturesWidget #undo,
-	#signaturesWidget #redo,
-	#notesWidget #add-comment,
-	#layout {
-		display: none !important;
-	}
+	/* The phone edits too (the first cut of this band hid Add, Edit, Delete,
+	   Undo, Redo and Add note as 'reading only'; that scope was dropped and
+	   the README promises editing at phone width). Only the old layout
+	   control stays hidden: Settings replaced it. */
+	#layout { display: none !important; }
 
 	/* The topbar carries a lot for 393px. Keep identity, time and search. */
 	#serverStatus,

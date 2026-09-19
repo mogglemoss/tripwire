@@ -63,14 +63,11 @@
    of the editing chrome. */
 @media (max-width: 767px), (max-height: 599px) {
 	.gridWidget > .controls > .bar-right { flex: 1 1 100%; margin-left: 0; justify-content: flex-end; }
-	#signaturesWidget #paste-signatures,
 	#signaturesWidget .bar-sep { display: none !important; }
-}
-@media (max-width: 767px), (max-height: 599px) {
-	/* Every control in this group is editing chrome that the READ band hides
-	   individually; the empty group was still taking a row of its own. */
-	#signaturesWidget > .controls > .bar-right,
-	#notesWidget > .controls > .bar-right { display: none; }
+	/* Paste keeps its button (Ctrl-V has no phone equivalent) but not its
+	   key hint; undo and redo sit in the wrapped right-hand group. */
+	#signaturesWidget #paste-signatures kbd { display: none; }
+	.gridWidget > .controls .bar-btn { min-height: 34px; }
 }
 
 /* ── Second look at the READ band, from screenshots ─────────────────────
@@ -101,4 +98,15 @@
 	   two columns short. Paint the row instead. */
 	#sigTable tbody tr:hover, #sigTable tbody tr.selected { background-color: var(--muted); }
 	#sigTable tbody tr:hover > td, #sigTable tbody tr.selected > td { background-color: transparent; }
+}
+
+/* The phone edits (see the READ band's note). Two things the touch-target
+   rule got wrong once the controls came back: the count pill is not a
+   control and must not grow to a 44px disc, and Paste has no icon, so with
+   labels hidden it was an empty button. */
+@media (max-width: 767px), (max-height: 599px), (pointer: coarse) {
+	#signaturesWidget .bar-count { min-width: 0; min-height: 0; }
+}
+@media (max-width: 767px), (max-height: 599px) {
+	#signaturesWidget.panel-compact #paste-signatures .bar-label { display: inline !important; }
 }

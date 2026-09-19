@@ -257,3 +257,23 @@ test.describe("wormhole life and mass ladder", () => {
 		await expect(row.locator("td").nth(5)).toHaveText("<10%", { timeout: 15000 });
 	});
 });
+
+// The phone edits too: the controls are there and the dialog opens by tap.
+test.describe("phone editing", () => {
+	test.use({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+	test("add and edit are reachable at phone width", async ({ page }) => {
+		await login(page, "Perimeter");
+		for (const id of ["#add-signature", "#paste-signatures", "#edit-signature", "#delete-signature", "#undo", "#redo"]) {
+			await expect(page.locator(id), id).toBeVisible();
+		}
+		await expect(page.locator("#notesWidget #add-comment")).toBeVisible();
+		await page.locator("#add-signature").tap();
+		const dialog = page.locator(".ui-dialog:visible");
+		await expect(dialog).toBeVisible();
+		const box = await dialog.boundingBox();
+		expect(box.x).toBeGreaterThanOrEqual(0);
+		expect(box.x + box.width).toBeLessThanOrEqual(391);
+		await page.keyboard.press("Escape");
+		await expect(dialog).toBeHidden();
+	});
+});
