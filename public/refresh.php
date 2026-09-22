@@ -94,7 +94,13 @@ if (isset($_SESSION['oauth']) && isset($_SESSION['oauth']['tokenExpire'])) {
 			$_SESSION['oauth']['refreshToken'] = $esi->refreshToken;
 			$_SESSION['oauth']['tokenExpire'] = $esi->tokenExpire;
 		} else if ($esi->httpCode >= 400 && $esi->httpCode < 500) {
-			error_log("unable to refresh account oauth token");
+			// The account's own token is dead (revoked, or invalid_grant): the
+			// session has nothing left to act with, so end it. The client treats
+			// a 403 from refresh as "signed out" and returns to the sign-in page.
+			error_log("account oauth token refused (" . $esi->httpCode . "); ending session for user " . $userID);
+			session_destroy();
+			http_response_code(403);
+			exit();
 		}
 	}
 	$output['oauth'] = $_SESSION['oauth'];
