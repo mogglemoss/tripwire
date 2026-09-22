@@ -115,6 +115,7 @@ body .nullsec, body .critical {
 }
 
 body .triglavian { color: var(--data-triglavian); }
+body .drifter { color: var(--data-loot-red); }
 
 .blue-loot, .blue-loot .hisec { color: var(--data-loot-blue); }
 
