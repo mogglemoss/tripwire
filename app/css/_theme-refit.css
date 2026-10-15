@@ -1432,3 +1432,6 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 .sys-killstream.is-failed .sys-killstream-fallback { display: block; }
 .sys-killstream-fallback a { color: var(--primary); }
 @media (max-width: 767px) { .sys-killstream-strip { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; } .sys-killstream-strip .kill-hull { width: 40px; height: 40px; } }
+
+/* A chip with nothing in it is not a chip. */
+#infoWidget .sys-meta .chip:empty { display: none; }

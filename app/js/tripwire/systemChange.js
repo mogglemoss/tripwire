@@ -96,7 +96,9 @@ tripwire.systemChange = function(systemID, mode) {
         }
 
         // Faction
-        $("#infoFaction").html("&nbsp;");
+        // No faction (every wormhole system): nothing, not a non-breaking space
+        // that kept an empty pill on the row.
+        $("#infoFaction").empty();
     } else {
         // Security
 		const securityText = {HS: 'High-Sec', LS: 'Low-Sec', NS: 'Null-Sec', 'Trig': 'Triglavian' }[system.systemTypeName];
