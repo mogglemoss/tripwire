@@ -1,14 +1,7 @@
 /* Styles relating to the radial map renderer */
-#chainMap .radial-map .node.top-level {
-	border-radius:200px;
-	padding: 10px;
-	border: 4px var(--data-class-temp) solid;
-	font-size: 120%;
-}
-
-#chainMap .radial-map .top-level .nodeIcons {
-    top: 0.9em;
-}
+/* The root is a card like the others (the original drew it as a large
+   oval), told apart by its heavier name. */
+#chainMap .radial-map .node.top-level > h4.nodeSystem { font-weight: 700; }
 
 .radial-map  {
 	position: relative;
@@ -37,6 +30,7 @@
 
 #chainMap .node-wrapper > div.node {
 	transform: translate(-50%, -50%);	/* centre around position */
+	width: max-content; margin: 0;	/* the wrapper is 0 wide: fit-content would collapse to the minimum, and auto margins would skew the centre */
 }
 
 .map-drawing {
@@ -45,9 +39,13 @@
 
 .temp { border-style: solid; }	/* Some border properties don't resolve if the element has no border */
 
-/* 'color' is used to cue the aura effect in canvas drawing */
-.temp { border-width: 2px; border-color: var(--data-class-temp); }
+/* 'color' is used to cue the aura effect in canvas drawing. The line is the
+   guide's sky blue, one to four pixels by jump mass (the original drew two
+   to seven in a dark blue, heavy against the cards). */
+.temp { border-width: 2px; border-color: var(--data-class-sky); }
 .temp.jm-5kt, #guide .jm-5kt { border-width: 1px; color: var(--data-jm-5kt); }
-.temp.jm-62kt, #guide .jm-62kt { border-width: 3px; color: var(--data-jm-62kt); }
-.temp.jm-375kt, #guide .jm-375kt { border-width: 5px; color: var(--data-jm-375kt); }
-.temp.jm-2000kt, #guide .jm-2000kt { border-width: 7px; color: var(--data-jm-2000kt); }
+.temp.jm-62kt, #guide .jm-62kt { border-width: 2px; color: var(--data-jm-62kt); }
+.temp.jm-375kt, #guide .jm-375kt { border-width: 3px; color: var(--data-jm-375kt); }
+.temp.jm-2000kt, #guide .jm-2000kt { border-width: 4px; color: var(--data-jm-2000kt); }
+/* Ring and level gridlines, faint in both rooms (resolved from body colour before) */
+.temp.grid-default { color: var(--n-300); }

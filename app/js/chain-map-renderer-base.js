@@ -48,6 +48,19 @@ const ChainMapRendererBase = function(owner) {
 	/** Calculate the minimum arc for this node, for example taking into account text size */
 	this.calcMinArc = function(node) { return 1; }
 
+	/** Called once per draw, after every node has been measured and before any
+	is placed, with every node on every map. A renderer that spaces its grid or
+	rings by the size of the cards sets that up here. */
+	this.prepareLayout = function(nodes) { }
+
+	/** The largest width and height over the given nodes' requested sizes */
+	this.maxNodeSize = function(nodes) {
+		return nodes.reduce(function(acc, n) {
+			const size = n.requestedSize || { width: 0, height: 0 };
+			return { width: Math.max(acc.width, size.width), height: Math.max(acc.height, size.height) };
+		}, { width: 0, height: 0 });
+	}
+
 	const _this = this;
 	const drawInner = function(map, lines, collapsed) {
 		const maps = [];
@@ -82,6 +95,7 @@ const ChainMapRendererBase = function(owner) {
 			mapNode.markup = inNode.f;
 			mapNode.requestedSize = measureNode(mapNode.markup);
 		}
+		_this.prepareLayout(Object.keys(nodesById).map(function(id) { return nodesById[id]; }));
 
 		// Second pass - for each map, find the allocation of arc needed for each node
 		for(var mi = 0; mi < maps.length; mi++) {
@@ -368,16 +382,25 @@ function propertyFromCssClass(className, property) {
 }	
 
 /** https://stackoverflow.com/questions/118241
-Using the DOM approach because we have a fully styled node, not just text */
+Using the DOM approach because we have a fully styled node, not just text.
+The scratch wrapper lives inside #chainMap, in the same container structure
+the map uses, so every rule that shapes a card on the map shapes it here
+too: measured on the body, the card came out as upstream's 5em pill and the
+real cards were placed on a grid sized for that, overlapping each other.
+offsetWidth/Height are layout pixels, unaffected by the chain's zoom. */
 function measureNode(markup) {
 	var elem = document.getElementById('temp-div-node-width');
 	if(!elem) {
-	  elem = document.createElement("div");
-	  elem.id = 'temp-div-node-width';
-	  elem.style.cssText = "position:fixed;left:-100px;top:-100px;";
-	  elem.className = 'node-wrapper';
-	  document.body.appendChild(elem);  // required in some browsers
-  }
-  elem.innerHTML = markup;
-  return elem.firstChild.getBoundingClientRect();
+		const scratch = document.createElement("div");
+		scratch.className = 'radial-map map-measure';
+		scratch.style.cssText = "position:fixed;left:-1000px;top:-1000px;visibility:hidden;pointer-events:none;";
+		scratch.innerHTML = '<div class="map-inner-container"><div class="node-wrapper" id="temp-div-node-width"></div></div>';
+		(document.getElementById('chainMap') || document.body).appendChild(scratch);
+		elem = document.getElementById('temp-div-node-width');
+	}
+	elem.innerHTML = markup;
+	const node = elem.firstChild;
+	const size = { width: node.offsetWidth, height: node.offsetHeight };
+	elem.innerHTML = '';	// a copy of the card left here would answer #chainMap selectors and share the real card's id
+	return size;
 }
