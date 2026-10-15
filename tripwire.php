@@ -378,6 +378,12 @@ $system = $_REQUEST['system'] ?? '';
 		<p class="confirm-note">Everyone on the mask loses it; there is no undo for notes.</p>
 	</div>
 
+	<div id="dialog-match-holes" title="Match scanned holes" class="hidden confirm match-holes">
+		<p class="confirm-lead" id="matchHolesLead"></p>
+		<div class="match-rows" id="matchHolesRows"></div>
+		<p class="confirm-note">A match gives the auto-mapped connection the scanned id, so nothing is deleted and the map keeps its shape. Unmatched holes are imported as new connections.</p>
+	</div>
+
 	<div id="dialog-deleteSig" title="Delete signature" class="hidden confirm">
 		<p class="confirm-lead" id="deleteSigLead"></p>
 		<ul class="confirm-list" id="deleteSigList"></ul>

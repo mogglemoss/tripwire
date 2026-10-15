@@ -310,3 +310,16 @@
 .confirm .confirm-list .confirm-type { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-foreground); }
 .confirm .confirm-note { margin: var(--space-3) 0 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
 .confirm .confirm-note:empty { display: none; }
+
+/* ---- match scanned holes --------------------------------------------
+   One row per scanned hole: its id, then which auto-mapped placeholder it
+   is, or a new connection. */
+.match-holes { max-width: 460px; }
+.match-holes .match-rows { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-2) var(--space-3); align-items: center; margin-top: var(--space-3); }
+.match-holes .match-sig { font-family: var(--font-mono); font-weight: 600; letter-spacing: .04em; }
+.match-holes select {
+	width: 100%; min-height: 28px; padding: 0 var(--space-2);
+	border: 1px solid var(--border); border-radius: var(--radius-sm);
+	background: var(--input); color: var(--foreground); font: inherit; font-size: var(--fs-sm);
+}
+.match-holes select:focus { outline: 2px solid var(--ring); outline-offset: 1px; }

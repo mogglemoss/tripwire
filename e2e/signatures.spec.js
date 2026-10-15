@@ -295,3 +295,65 @@ test("quick bar: Drifter and Triglavian chips set leads-to; a gap click is harml
 	expect(box.x + box.width).toBeLessThanOrEqual(dlg.x + dlg.width);
 	await page.keyboard.press("Escape");
 });
+
+// The auto-mapper draws a connection before anyone scans it. When a scan then
+// arrives with a wormhole in it, the paste asks which placeholder it is and
+// merges: the placeholder takes the scanned id, nothing is deleted.
+test.describe("matching scanned holes to auto-mapped placeholders", () => {
+	const FAR = 31000005;   // a J-system nothing else uses
+	const bySig = (page, id) => page.evaluate((id) => Object.values(tripwire.client.signatures || {}).find(s => (s.signatureID || "").toLowerCase() === id) || null, id);
+	const holesTo = (page, far) => page.evaluate((far) => { const sigs = tripwire.client.signatures || {}; return Object.values(tripwire.client.wormholes || {}).filter(w => { const a = sigs[w.initialID], b = sigs[w.secondaryID]; return a && b && ((a.systemID == viewingSystemID && b.systemID == far) || (b.systemID == viewingSystemID && a.systemID == far)); }).map(w => ({ id: w.id, local: sigs[w.initialID].systemID == viewingSystemID ? sigs[w.initialID] : sigs[w.secondaryID], other: sigs[w.initialID].systemID == viewingSystemID ? sigs[w.secondaryID] : sigs[w.initialID] })); }, far);
+	async function cleanup(page) {
+		const holes = await holesTo(page, FAR);
+		const ids = holes.flatMap(h => [h.local.id, h.other.id]);
+		if (ids.length) { await page.evaluate((ids) => new Promise((res) => tripwire.refresh("refresh", { signatures: { remove: ids }, systemID: viewingSystemID }, () => res(), () => setTimeout(res, 500))), ids); }
+		await page.waitForFunction((far) => { const sigs = tripwire.client.signatures || {}; return !Object.values(tripwire.client.wormholes || {}).some(w => [sigs[w.initialID], sigs[w.secondaryID]].some(s => s && s.systemID == far)); }, FAR, { timeout: 15000 }).catch(() => {});
+	}
+	test.beforeEach(async ({ page, context }) => { await context.grantPermissions(["clipboard-read", "clipboard-write"]); await login(page, "Perimeter"); await cleanup(page); });
+	test.afterEach(async ({ page }) => { await cleanup(page).catch(() => {}); });
+
+	test("a scanned hole can claim the placeholder, and the next scan starts a new connection", async ({ page }) => {
+		// An auto-mapped connection: no id on this side.
+		await page.evaluate((far) => new Promise((res) => tripwire.refresh("refresh", { signatures: { add: [{ wormhole: { type: null, parent: "initial", life: "stable", mass: "stable" }, signatures: [{ systemID: viewingSystemID, type: "wormhole" }, { systemID: far, type: "wormhole" }] }], update: [] }, automap: { character: 0 }, systemID: viewingSystemID }, () => res(), () => setTimeout(res, 500))), FAR);
+		await page.waitForFunction((far) => { const sigs = tripwire.client.signatures || {}; return Object.values(sigs).some(s => s.systemID == far && s.type === "wormhole"); }, FAR, { timeout: 15000 });
+		const placeholder = (await holesTo(page, FAR))[0];
+		expect(placeholder.local.signatureID || "").toBe("");
+
+		await setClipboard(page, "ZZQ-311\tCosmic Signature\tWormhole\tUnstable Wormhole\t100.0%\t2.00 AU");
+		await page.click("#paste-signatures");
+		const dialog = page.locator(".ui-dialog:visible", { has: page.locator("#dialog-match-holes") });
+		await expect(dialog).toBeVisible();
+		await expect(dialog.locator("#matchHolesRows .match-sig")).toHaveText("ZZQ-311");
+		await expect(dialog.locator("select")).toHaveValue(String(placeholder.id));   // one and one: preselected
+		await dialog.getByRole("button", { name: "Import", exact: true }).click();
+		await page.waitForFunction(() => Object.values(tripwire.client.signatures || {}).some(s => (s.signatureID || "").toLowerCase() === "zzq311"), null, { timeout: 15000 });
+		const claimed = await bySig(page, "zzq311");
+		expect(claimed.id).toBe(placeholder.local.id);          // the same row, now identified
+		expect((await holesTo(page, FAR)).length).toBe(1);      // still one connection
+
+		// No placeholder left: the next scanned hole is simply a new connection, no dialog.
+		await setClipboard(page, "ZZQ-312\tCosmic Signature\tWormhole\tUnstable Wormhole\t100.0%\t3.00 AU");
+		await page.click("#paste-signatures");
+		await page.waitForFunction(() => Object.values(tripwire.client.signatures || {}).some(s => (s.signatureID || "").toLowerCase() === "zzq312"), null, { timeout: 15000 });
+		await expect(page.locator("#dialog-match-holes")).toBeHidden();
+		await page.evaluate(() => new Promise((res) => { const s = Object.values(tripwire.client.signatures).find(x => (x.signatureID || "").toLowerCase() === "zzq312"); const w = Object.values(tripwire.client.wormholes).find(w => w.initialID == s.id || w.secondaryID == s.id); const o = tripwire.client.signatures[w.initialID == s.id ? w.secondaryID : w.initialID]; tripwire.refresh("refresh", { signatures: { remove: [s.id, o.id] }, systemID: viewingSystemID }, () => res(), () => setTimeout(res, 500)); }));
+	});
+
+	test("Cancel imports nothing", async ({ page }) => {
+		await page.evaluate((far) => new Promise((res) => tripwire.refresh("refresh", { signatures: { add: [{ wormhole: { type: null, parent: "initial", life: "stable", mass: "stable" }, signatures: [{ systemID: viewingSystemID, type: "wormhole" }, { systemID: far, type: "wormhole" }] }], update: [] }, automap: { character: 0 }, systemID: viewingSystemID }, () => res(), () => setTimeout(res, 500))), FAR);
+		await page.waitForFunction((far) => Object.values(tripwire.client.signatures || {}).some(s => s.systemID == far && s.type === "wormhole"), FAR, { timeout: 15000 });
+		await setClipboard(page, "ZZQ-313\tCosmic Signature\tWormhole\tUnstable Wormhole\t100.0%\t2.00 AU");
+		await page.click("#paste-signatures");
+		const dialog = page.locator(".ui-dialog:visible", { has: page.locator("#dialog-match-holes") });
+		await expect(dialog).toBeVisible();
+		await dialog.getByRole("button", { name: "Cancel" }).click();
+		await expect(dialog).toBeHidden();
+		await page.waitForTimeout(2500);
+		expect(await bySig(page, "zzq313")).toBeNull();
+		// and the importer is not stuck: a plain paste still lands
+		await setClipboard(page, "ZZQ-314\tCosmic Signature\tRelic Site\tE2E after cancel\t100.0%\t1.00 AU");
+		await page.click("#paste-signatures");
+		await page.waitForFunction(() => Object.values(tripwire.client.signatures || {}).some(s => (s.signatureID || "").toLowerCase() === "zzq314"), null, { timeout: 15000 });
+		await removeSigsByPrefix(page, "ZZQ-31");
+	});
+});

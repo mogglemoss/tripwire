@@ -117,6 +117,7 @@ tripwire.pasteSignatures = function() {
         var paste = paste.split("\n");
         var payload = {"signatures": {"add": [], "update": []}, "systemID": viewingSystemID};
         var undo = [];
+        var pendingHoles = [];   // scanned wormholes with no existing row: candidates for a placeholder
         processing = true;
 
         for (var i in paste) {
@@ -174,7 +175,7 @@ tripwire.pasteSignatures = function() {
                 } else {
                     // Add signature
                     if (scanner.type == "Wormhole") {
-                        payload.signatures.add.push({
+                        var addition = {
                             "wormhole": {
                                 "type": null,
                                 "parent": "initial",
@@ -195,7 +196,9 @@ tripwire.pasteSignatures = function() {
                                     "lifeLength": options.signatures.pasteLife * 60 * 60
                                 }
                             ]
-                        });
+                        };
+                        payload.signatures.add.push(addition);
+                        pendingHoles.push({signatureID: scanner.id[0] + scanner.id[1], add: addition});
                     } else {
                         payload.signatures.add.push({
                             "signatureID": scanner.id[0] + scanner.id[1],
@@ -209,6 +212,105 @@ tripwire.pasteSignatures = function() {
             }
         }
 
+        // The auto-mapper draws a connection before anyone scans it, leaving a
+        // signature with no id on this side. A scan that then arrives with a
+        // wormhole in it is usually that hole. Ask which, and merge: the
+        // placeholder takes the scanned id, nothing is deleted, the map keeps
+        // its shape. Only placeholders are candidates; a scanned hole never
+        // offers to overwrite a connection someone already identified.
+        var placeholders = pendingHoles.length ? tripwire.pasteSignatures.placeholders() : [];
+        if (pendingHoles.length && placeholders.length) {
+            tripwire.pasteSignatures.matchDialog(pendingHoles, placeholders, payload, undo);
+            return;
+        }
+        tripwire.pasteSignatures.submit(payload, undo);
+    };
+
+    // Unidentified wormhole signatures in the viewed system, with their far side.
+    this.pasteSignatures.placeholders = function() {
+        var out = [];
+        $.each(tripwire.client.wormholes || {}, function(_, wh) {
+            if (wh.type === "GATE") { return; }
+            var a = tripwire.client.signatures[wh.initialID], b = tripwire.client.signatures[wh.secondaryID];
+            if (!a || !b) { return; }
+            var local = a.systemID == viewingSystemID ? a : (b.systemID == viewingSystemID ? b : null);
+            if (!local || (local.signatureID && local.signatureID !== "???")) { return; }
+            out.push({wormhole: wh, local: local, other: local === a ? b : a});
+        });
+        return out;
+    };
+
+    this.pasteSignatures.describePlaceholder = function(p) {
+        var sys = tripwire.systems[p.other.systemID];
+        var where = sys ? sys.name + (appData.systems[p.other.systemID] && appData.systems[p.other.systemID].class ? " (C" + appData.systems[p.other.systemID].class + ")" : "")
+                        : (appData.genericSystemTypes[p.other.systemID] || "unknown destination");
+        var type = p.wormhole.type && p.wormhole.type !== "????" ? " \u00b7 " + p.wormhole.type : "";
+        var life = tripwire.wormholeState ? " \u00b7 " + tripwire.wormholeState.lifeState(p.wormhole, p.local).label : "";
+        return "\u2192 " + where + type + life;
+    };
+
+    // Turn a chosen match into one update (placeholder takes the scanned id)
+    // and drop the scanned hole's add.
+    this.pasteSignatures.merge = function(payload, undo, pending, p) {
+        var i = payload.signatures.add.indexOf(pending.add);
+        if (i !== -1) { payload.signatures.add.splice(i, 1); }
+        payload.signatures.update.push({
+            "wormhole": {"id": p.wormhole.id, "type": p.wormhole.type, "life": p.wormhole.life, "mass": p.wormhole.mass},
+            "signatures": [
+                {"id": p.local.id, "signatureID": pending.signatureID, "systemID": viewingSystemID, "type": "wormhole", "name": p.local.name},
+                {"id": p.other.id, "signatureID": p.other.signatureID, "systemID": p.other.systemID, "type": "wormhole", "name": p.other.name}
+            ]
+        });
+        undo.push({"wormhole": p.wormhole, "signatures": [p.local, p.other]});
+    };
+
+    this.pasteSignatures.matchDialog = function(pending, placeholders, payload, undo) {
+        var $d = $("#dialog-match-holes"), $rows = $("#matchHolesRows").empty();
+        var systemName = tripwire.systems[viewingSystemID] ? tripwire.systems[viewingSystemID].name : "this system";
+        $("#matchHolesLead").text(systemName + " has " + placeholders.length + (placeholders.length === 1 ? " auto-mapped connection with no scanned id" : " auto-mapped connections with no scanned id") + ". Which of these is which?");
+        pending.forEach(function(item, idx) {
+            $("<span class='match-sig'></span>").text(formatSignatureID(item.signatureID)).appendTo($rows);
+            var $sel = $("<select></select>").attr("data-pending", idx).appendTo($rows);
+            $("<option value=''></option>").text("New connection").appendTo($sel);
+            placeholders.forEach(function(p) { $("<option></option>").val(String(p.wormhole.id)).text(tripwire.pasteSignatures.describePlaceholder(p)).appendTo($sel); });
+            // One scanned hole and one placeholder: almost certainly the same hole.
+            if (pending.length === 1 && placeholders.length === 1) { $sel.val(String(placeholders[0].wormhole.id)); }
+        });
+        // A placeholder can be claimed once.
+        $rows.off("change").on("change", "select", function() {
+            var taken = {};
+            $rows.find("select").each(function() { if (this.value) { taken[this.value] = (taken[this.value] || 0) + 1; } });
+            $rows.find("select").each(function() {
+                var mine = this.value;
+                $(this).find("option").each(function() { this.disabled = !!(this.value && this.value !== mine && taken[this.value]); });
+            });
+        }).find("select").first().trigger("change");
+
+        if (!$d.hasClass("ui-dialog-content")) {
+            $d.dialog({
+                resizable: false, minHeight: 0, width: 460, modal: true,
+                dialogClass: "dialog-noeffect ui-dialog-shadow",
+                buttons: {
+                    Import: function() {
+                        var state = $d.data("match");
+                        $rows.find("select").each(function() {
+                            var item = state.pending[parseInt($(this).attr("data-pending"), 10)];
+                            var p = this.value ? state.placeholders.filter(function(c) { return String(c.wormhole.id) === String(this.value); }.bind(this))[0] : null;
+                            if (item && p) { tripwire.pasteSignatures.merge(state.payload, state.undo, item, p); }
+                        });
+                        $d.dialog("close");
+                        tripwire.pasteSignatures.submit(state.payload, state.undo);
+                    },
+                    Cancel: function() { $d.dialog("close"); processing = false; }
+                },
+                open: function() { $d.parent().find(".ui-dialog-buttonpane button:contains('Import')").first().focus(); }
+            });
+        }
+        $d.data("match", {pending: pending, placeholders: placeholders, payload: payload, undo: undo});
+        $d.dialog("open");
+    };
+
+    this.pasteSignatures.submit = function(payload, undo) {
         if (payload.signatures.add.length || payload.signatures.update.length) {
             var success = function(data) {
                 if (data.resultSet && data.resultSet[0].result == true) {
