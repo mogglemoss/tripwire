@@ -23,6 +23,13 @@ var activity = new function() {
 				return false;
 		}
 
+		// ESI's hourly feed has no wormhole systems; the kill stream stands in.
+		if (tripwire.killStream && tripwire.killStream.isWormhole(viewingSystemID)) {
+			if (activity.graph) { activity.graph.clearChart(); }
+			activity.view = null;
+			return false;
+		}
+
 		return $.ajax({
 			url: "activity_graph.php",
 			data: {systemID: viewingSystemID, time: span},

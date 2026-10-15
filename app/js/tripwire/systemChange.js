@@ -145,6 +145,9 @@ tripwire.systemChange = function(systemID, mode) {
         this.href = $(this).data("href").replace(/\$systemName/gi, system.name).replace(/\$systemID/gi, systemID);
     });
 
+    // In wormhole space the activity graph gives way to zKillboard's kill stream.
+    if (tripwire.killStream) { tripwire.killStream.refresh(systemID); }
+
     // Reset undo/redo
     tripwire.signatures.undo[systemID] && tripwire.signatures.undo[systemID].length > 0 ? $("#undo").removeClass("disabled") : $("#undo").addClass("disabled");
     tripwire.signatures.redo[systemID] && tripwire.signatures.redo[systemID].length > 0 ? $("#redo").removeClass("disabled") : $("#redo").addClass("disabled");

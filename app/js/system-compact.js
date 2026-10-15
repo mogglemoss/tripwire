@@ -23,7 +23,7 @@
 			});
 		}
 		var $links = $("#infoLinks");
-		if ($links.length && $("#activityGraphControls").length) {
+		if ($links.length && $("#activityGraphControls").length && !$("#infoWidget").hasClass("is-wormhole")) {
 			$links.appendTo("#activityGraphControls").addClass("in-legend-row");
 		}
 	});

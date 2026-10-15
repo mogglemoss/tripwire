@@ -56,3 +56,29 @@ test("a fresh entry boots in place and opens on the tracked pilot's system", asy
 		expect(await page.evaluate(() => Number(viewingSystemID))).not.toBe(JITA);
 	}
 });
+
+// In wormhole space the System panel's graph gives way to zKillboard's kill
+// stream; in k-space the graph stays and the stream is gone.
+test("a wormhole system shows the kill stream, a k-space system the graph", async ({ page }) => {
+	await login(page, "Perimeter");
+	await expect(page.locator("#killStream")).toBeHidden();
+	await expect(page.locator("#activityGraph")).toBeVisible();
+	await page.evaluate(() => tripwire.systemChange(31000005));
+	await page.waitForFunction(() => Number(viewingSystemID) === 31000005);
+	await expect(page.locator("#infoWidget")).toHaveClass(/is-wormhole/);
+	await expect(page.locator("#killStream")).toBeVisible();
+	await expect(page.locator("#activityGraph")).toBeHidden();
+	// Either the board had kills and the frame points at the system, or it had none and our quiet line shows.
+	await expect.poll(async () => {
+		const src = await page.locator("#killStreamFrame").getAttribute("src");
+		const quiet = await page.locator("#killStream").evaluate(e => e.classList.contains("is-quiet"));
+		return (src && /zkillboard\.com\/system\/31000005\/streambox\//.test(src)) || quiet;
+	}, { timeout: 20000 }).toBe(true);
+	await expect(page.locator("#killStream #infoLinks")).toBeVisible();          // the links moved beside the label
+	await expect(page.locator("#killStreamLink")).toHaveAttribute("href", /zkillboard\.com\/system\/31000005\//);
+	await page.evaluate(() => tripwire.systemChange(30000144));
+	await page.waitForFunction(() => Number(viewingSystemID) === 30000144);
+	await expect(page.locator("#killStream")).toBeHidden();
+	await expect(page.locator("#activityGraph")).toBeVisible();
+	await expect(page.locator("#activityGraphControls #infoLinks")).toBeVisible(); // and back
+});
