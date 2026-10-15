@@ -1,4 +1,7 @@
 $("body").on("dblclick", ".comment", function(e) {
+	// Once a note is being edited, double-click is the editor's (native word
+	// selection), not the display-mode shortcut. (Squizz, 6d65106.)
+	if ($(e.target).closest(".rte").length) return;
 	e.preventDefault();
 	document.getSelection().removeAllRanges();
 	$(this).find(".commentEdit").click();
