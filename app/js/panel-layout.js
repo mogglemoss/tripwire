@@ -216,7 +216,9 @@ tripwire.panelLayout = (function() {
 				var s = store(); compactPanels().forEach(function(p) { s.columns[p.id] = p.getBoundingClientRect().width; });
 			}
 			moveColumns(leftPanel, rightPanel, dx);
-			save(); schedule();
+			// Reposition, do not rebuild: a rebuild replaces the focused handle and
+			// the next arrow press lands on nothing.
+			save(); placeHandles();
 		});
 	}
 
@@ -257,7 +259,7 @@ tripwire.panelLayout = (function() {
 			var dy = e.key === "ArrowUp" ? -STEP : e.key === "ArrowDown" ? STEP : 0;
 			if (!dy) { return; }
 			e.preventDefault();
-			moveRow(dy); save(); schedule();
+			moveRow(dy); save(); placeHandles();
 		});
 	}
 
