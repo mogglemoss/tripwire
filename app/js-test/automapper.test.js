@@ -128,3 +128,13 @@ describe('Automap - wormhole evaluation', () => {
 		});		
 	});
 });
+describe('Automap - pod-out rule', () => {
+	const JITA = 30000142, AMARR = 30002187, PERIMETER = 30000144;
+	it('skips a hub-to-k-space jump (a pod-out)', () => assert.equal(isLikelyPodOut(JITA, PERIMETER, appData.systems), true));
+	it('skips k-space into a hub', () => assert.equal(isLikelyPodOut(PERIMETER, AMARR, appData.systems), true));
+	it('maps a hub into J-space, and J-space into a hub', () => {
+		assert.equal(isLikelyPodOut(JITA, C2, appData.systems), false);
+		assert.equal(isLikelyPodOut(C3, AMARR, appData.systems), false);
+	});
+	it('leaves ordinary jumps alone', () => assert.equal(isLikelyPodOut(PERIMETER, C1, appData.systems), false));
+});

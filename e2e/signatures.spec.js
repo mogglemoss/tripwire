@@ -277,3 +277,21 @@ test.describe("phone editing", () => {
 		await expect(dialog).toBeHidden();
 	});
 });
+
+// The leads-to quick bar: Triglavian and Drifter chips, and a click in the gap between chips is harmless.
+test("quick bar: Drifter and Triglavian chips set leads-to; a gap click is harmless", async ({ page }) => {
+	await login(page, "Perimeter");
+	await page.click("#add-signature");
+	await chooseType(page, "Wormhole");
+	await page.waitForFunction(() => !$("#dialog-signature #site, #dialog-signature #wormhole").is(":animated"));
+	const bar = page.locator("#leadsToQuickBar");
+	await expect(bar.locator("button[value=Drifter]")).toBeVisible();
+	await expect(bar.locator("button[value=Triglavian]")).toBeVisible();
+	await bar.locator("button[value=Drifter]").click();
+	await expect(page.locator("#dialog-signature [name=leadsTo]")).toHaveValue("Drifter");
+	const threw = await page.evaluate(() => { try { document.getElementById("leadsToQuickBar").dispatchEvent(new MouseEvent("click", { bubbles: true })); return false; } catch (e) { return e.message; } });
+	expect(threw).toBe(false);
+	const box = await bar.boundingBox(); const dlg = await page.locator(".ui-dialog:visible").boundingBox();
+	expect(box.x + box.width).toBeLessThanOrEqual(dlg.x + dlg.width);
+	await page.keyboard.press("Escape");
+});

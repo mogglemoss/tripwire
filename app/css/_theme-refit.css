@@ -1384,3 +1384,9 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 	#dialog-signature .row:has([name="wormholeLife"]) .mini-selector + label { padding: var(--space-2) 10px; }
 }
 .jBox-Tooltip .tip-muted { color: var(--muted-foreground); font-style: italic; }
+
+/* The leads-to quick bar: the k-space bands end the first line; Triglavian
+   and Drifter sit on a second so the dialog keeps its width. */
+#dialog-signature #leadsToQuickBar { flex-wrap: wrap; row-gap: 3px; }
+#dialog-signature #leadsToQuickBar .quick-break { flex-basis: 100%; height: 0; }
+#dialog-signature #leadsToQuickBar button[value="Triglavian"] { margin-left: 0; }

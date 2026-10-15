@@ -112,7 +112,7 @@
 	flex-wrap: wrap;
 	gap: 2px;
 	padding: var(--space-1);
-	border-bottom: 1px solid var(--border);
+	border-top: 1px solid var(--border);
 	background: color-mix(in oklab, var(--card) 60%, transparent);
 }
 

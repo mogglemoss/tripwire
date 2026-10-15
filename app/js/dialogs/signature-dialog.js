@@ -189,8 +189,8 @@ sigDialog.openSignatureDialog = function(e) {
 				
 				// Shortcut buttons to update leadsTo
 				$('#leadsToQuickBar').on('click', e => {
-					let target = e.target;
-					while(target.tagName !== 'BUTTON') { target = target.parentElement; }
+					const target = e.target.closest('button');
+					if (!target) { return; }   // the gap between chips, or the line break
 					$("#dialog-signature [name='leadsTo']").val(target.value).change();
 				});
 

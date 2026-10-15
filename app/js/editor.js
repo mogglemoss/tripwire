@@ -40,7 +40,10 @@ tripwire.editor = (function() {
 
 	function build($host, id) {
 		var $wrap = $('<div class="rte"></div>');
-		var $bar = $('<div class="rte-bar" role="toolbar"></div>').appendTo($wrap);
+		// The toolbar goes under the text, not over it: opening the editor used
+		// to push the note's words down by the bar's height. Below, it shares a
+		// row of its own with nothing to displace, next to Save and Cancel.
+		var $bar = $('<div class="rte-bar" role="toolbar"></div>');
 
 		TOOLS.forEach(function(t) {
 			if (t.sep) { $('<span class="rte-sep"></span>').appendTo($bar); return; }
@@ -91,7 +94,7 @@ tripwire.editor = (function() {
 			document.execCommand("insertText", false, cb.getData("text/plain"));
 		});
 
-		$wrap.append($area);
+		$wrap.append($area).append($bar);
 		$host.after($wrap).hide();
 		return {$wrap: $wrap, $area: $area};
 	}
