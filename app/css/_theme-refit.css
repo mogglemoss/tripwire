@@ -1445,3 +1445,8 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #sigTable tbody tr.sig-signature:not(:hover):not(.selected),
 #sigTable tbody tr.sig-anomaly:not(:hover):not(.selected),
 #sigTable tbody tr.sig-wormhole:not(:hover):not(.selected) { background: transparent; }
+/* Five kill cards are narrow on a phone: value and age stack instead of
+   running into the next card. */
+@media (max-width: 767px) {
+	.sys-killstream-strip .kill-meta { white-space: normal; text-align: center; line-height: 1.25; }
+}
