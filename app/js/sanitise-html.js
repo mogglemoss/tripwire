@@ -44,9 +44,8 @@ var sanitiseHtml = (function() {
 		img: {src: 1, alt: 1, width: 1, height: 1}
 	};
 
-	// Schemes a link may use. Relative URLs are allowed and everything else --
-	// javascript:, data:, vbscript: -- is not.
-	var SAFE_URL = /^(?:https?:|mailto:|\/|#|\.{0,2}\/)/i;
+	// Schemes a link may use. No script. Allow data: for pasted images
+	var SAFE_URL = /^(?:https?:|data:|mailto:|\/|#|\.{0,2}\/)/i;
 
 	// style is kept because notes use colour, but anything that can fetch or
 	// execute from within CSS is removed.

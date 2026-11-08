@@ -67,6 +67,9 @@
   --veil-danger:  rgba(255, 0, 0, .3);
   --veil-grey:    rgba(120, 120, 120, .1);
   --veil-silver:  rgba(192, 192, 192, .3);
+  --active-orange: orange;
+  --active-border-orange: darkorange;
+  --ui-warm-tint: #ca7;
 
   /* data semantics */
   --chart-1:                 #3366cc;
@@ -110,6 +113,7 @@
   --data-magenta:            #e06fdf;
   --data-olive:              #999900;
   --data-pale-yellow:        #ffffbb;
+  --data-supercritical: #F000FF;
   --data-triglavian:         #ff2060;
   --data-warn:               #f5b544;
   --ui-amber:                #ffb11f;
@@ -120,80 +124,31 @@
   --ui-green-lit:            #95cc2a;
   --ui-red:                  #b02222;
   --ui-red-lit:              #ee2222;
+  
+  /* derived tokens */
+  --border: var(--n-300);
+  --popover: var(--n-100);
+  --primary: var(--active-orange);
+  --foreground: var(--n-900);
+  --separator: var(--n-000);
+  --card: linear-gradient(var(--n-100), var(--n-050));
+  
+  /* spacing/layout */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  
+  --radius-sm: var(--space-1);
+  --radius: var(--space-2);
+  
+  /* font size - baselined on "sm" because most of the text in Tripwire is small! */
+  --fs-xs: 90%;
+  --fs-sm: 100%;
+  
+  --fs-base: var(--fs-sm);
 }
 
 /* Front office. Only tokens that must change are redefined. */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --chart-1:           #2e5cb9;
-    --chart-2:           #b62f0e;
-    --chart-3:           #8c5400;
-    --chart-4:           #0c7212;
-    --data-alliance:     #0064a0;
-    --data-bronze:       #895407;
-    --data-critical:     #b23131;
-    --data-good:         #2a6f2f;
-    --data-info:         #2b639c;
-    --data-jm-2000kt:    #7f5830;
-    --data-jm-375kt:     #606060;
-    --data-jm-5kt:       #1e6977;
-    --data-jm-62kt:      #3c6b3c;
-    --data-link:         #306593;
-    --data-loot-blue:    #5151cc;
-    --data-loot-gold:    #775e00;
-    --data-loot-orange:  #934f02;
-    --data-loot-pink:    #a04060;
-    --data-loot-purple:  #704abb;
-    --data-loot-red:     #a34141;
-    --data-magenta:      #8d458c;
-    --data-olive:        #646400;
-    --data-pale-yellow:  #636348;
-    --data-triglavian:   #bc1747;
-    --data-warn:         #7a5a22;
-    --glow-60:           rgba(0, 0, 0, .6);
-    --n-000:             #ffffff;
-    --n-020:             #f7f7f7;
-    --n-050:             #eeeeee;
-    --n-100:             #dddddd;
-    --n-120:             #d7d7d7;
-    --n-200:             #cccccc;
-    --n-220:             #c4c4c4;
-    --n-250:             #bfbfbf;
-    --n-300:             #bbbbbb;
-    --n-400:             #aaaaaa;
-    --n-500:             #999999;
-    --n-550:             #888888;
-    --n-560:             #858585;
-    --n-600:             #777777;
-    --n-650:             #666666;
-    --n-700:             #555555;
-    --n-750:             #444444;
-    --n-800:             #333333;
-    --n-850:             #222222;
-    --n-870:             #141414;
-    --n-880:             #111111;
-    --n-900:             #0f0f0f;
-    --n-920:             #0b0b0b;
-    --n-940:             #080808;
-    --n-960:             #050505;
-    --n-999:             #000000;
-    --scrim-60:          rgba(255, 255, 255, .6);
-    --scrim-70:          rgba(255, 255, 255, 0.7);
-    --scrim-80:          rgba(255, 255, 255, .8);
-    --scrim-n020:        rgba(245, 245, 245, 0.6);
-    --scrim-n050:        rgba(238, 238, 238, .7);
-    --scrim-n120:        rgba(215, 215, 215, .9);
-    --scrim-n200:        rgba(204, 204, 204, .7);
-    --shadow-20:         rgba(255, 255, 255, 0.2);
-    --shadow-20b:        rgba(255, 255, 255, 0.2);
-    --shadow-25:         rgba(255, 255, 255, 0.25);
-    --shadow-25b:        rgba(255, 255, 255, .25);
-    --shadow-30:         rgba(255, 255, 255, .3);
-    --stroke-n120:       rgba(215, 215, 215, 0.8);
-    --veil-grey:         rgba(135, 135, 135, .1);
-    --veil-silver:       rgba(63, 63, 63, .3);
-  }
-}
 :root[data-theme="light"] {
   --chart-1:           #2e5cb9;
   --chart-2:           #b62f0e;
@@ -215,6 +170,14 @@
   --data-loot-pink:    #a04060;
   --data-loot-purple:  #704abb;
   --data-loot-red:     #a34141;
+  --data-class-blue:         #ddddff;
+  --data-class-blue-deep:    #ccccff;
+  --data-class-green:        #ddffdd;
+  --data-class-green-deep:   #ccffcc;
+  --data-class-orange:       #ffeedd;
+  --data-class-orange-deep:  #ffe0cc;
+  --data-class-red:          #ffdddd;
+  --data-class-red-deep:     #ffcccc;
   --data-magenta:      #8d458c;
   --data-olive:        #646400;
   --data-pale-yellow:  #636348;

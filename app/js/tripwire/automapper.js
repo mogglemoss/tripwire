@@ -1,12 +1,3 @@
-// A jump that touches a trade hub is usually a pod-out, not a connection,
-// unless the other side is J-space: a hole from Jita into a C2 is real and
-// worth the map. (Squizz, squizzlabs/tripwire 36d2dc6.)
-function isLikelyPodOut(from, to, systems) {
-	const hubs = [30000142, 30002187];	// Jita, Amarr
-	const isJSpace = s => !!s && s.regionID >= 11000000 && s.regionID < 12000000;
-	return (hubs.indexOf(from) >= 0 || hubs.indexOf(to) >= 0) && !isJSpace(systems[from]) && !isJSpace(systems[to]);
-}
-
 const automapState = {
 	pendingDecision: false
 };
@@ -41,10 +32,9 @@ tripwire.autoMapper = function(from, to) {
 		return false;
 	}
 	
-	// A jump that touches a trade hub is usually a pod-out, not a connection,
-	// unless the other side is J-space: a hole from Jita into a C2 is real and
-	// worth the map. (Squizz, squizzlabs/tripwire 36d2dc6.)
-	if (isLikelyPodOut(from, to, tripwire.systems)) {
+	// Not into a special system
+	const noMapSystems = [30000142, 30002187];	// Jita/Amarr
+	if(noMapSystems.indexOf(from) >= 0 || noMapSystems.indexOf(to) >= 0) {	
 		console.info('Not automapping into likely pod-out destination');
 		return false;
 	}

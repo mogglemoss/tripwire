@@ -207,7 +207,7 @@ test.describe("delete confirmation", () => {
 // Life and mass as the EVE client says them: a wormhole walks down the
 // ladder through the inline editor, the table follows, and the dialog
 // reopens on the state the expiry implies.
-test.describe("wormhole life and mass ladder", () => {
+test.describe("wormhole life and mass", () => {
 	const PREFIX = "ZZQ-9";
 	test.beforeEach(async ({ page }) => { await login(page, "Perimeter"); await removeSigsByPrefix(page, PREFIX); });
 	test.afterEach(async ({ page }) => {
@@ -220,13 +220,13 @@ test.describe("wormhole life and mass ladder", () => {
 		await removeSigsByPrefix(page, PREFIX).catch(() => {});
 	});
 
-	test("inline presets set the expiry, the table reads it back, the dialog reopens on it", async ({ page }) => {
+	test("inline picks set life and mass, the server sets the expiry, the dialog reopens on it", async ({ page }) => {
 		await page.click("#add-signature");
 		await page.locator("#dialog-signature input[name=signatureID_Alpha]").click();
 		await page.keyboard.type("ZZQ"); await page.keyboard.type("901");
 		await chooseType(page, "Wormhole");
 		await page.waitForFunction(() => !$("#dialog-signature #site, #dialog-signature #wormhole").is(":animated"));
-		await expect(page.locator("#dialog-signature label[for=wormholeLifeDay]")).toHaveText("<1d");
+		await expect(page.locator("#dialog-signature label[for=wormholeLife1h]")).toHaveText("<1h");
 		await expect(page.locator("#dialog-signature label[for=wormholeMassDestab]")).toHaveText("<50%");
 		await page.locator(".ui-dialog:visible").getByRole("button", { name: "Add", exact: true }).click();
 		const row = page.locator("#sigTable tbody tr", { hasText: /ZZQ-901/i }).first();
@@ -238,18 +238,20 @@ test.describe("wormhole life and mass ladder", () => {
 			await page.locator("#inline-edit .inline-chip", { hasText: label }).click();
 			await expect(row.locator("td").nth(4)).toHaveText(label, { timeout: 15000 });
 		};
+		// <1h is stored as its own life value, and the server gives the hole an hour.
 		await pick("<1h");
+		await expect(row.locator("td").nth(4)).toHaveClass(/eol-1h/);
 		const left = await page.evaluate(() => {
 			const s = Object.values(tripwire.client.signatures).find(x => /zzq901/i.test(x.signatureID || ""));
-			return tripwire.wormholeState.remainingSeconds(s);
+			return s && s.lifeLeft ? (moment.utc(s.lifeLeft).valueOf() - Date.now()) / 1000 : null;
 		});
 		expect(left).toBeGreaterThan(3000);
-		expect(left).toBeLessThanOrEqual(3600);
+		expect(left).toBeLessThanOrEqual(3700);
 
-		await pick("Expired");
+		await pick("EOL");
 		await row.click();
 		await page.click("#edit-signature");
-		await expect(page.locator("#dialog-signature input[name=wormholeLife][value=expired]")).toBeChecked();
+		await expect(page.locator("#dialog-signature input[name=wormholeLife][value=critical]")).toBeChecked();
 		await page.keyboard.press("Escape");
 
 		await row.locator("td").nth(5).click();
@@ -258,7 +260,6 @@ test.describe("wormhole life and mass ladder", () => {
 	});
 });
 
-// The phone edits too: the controls are there and the dialog opens by tap.
 test.describe("phone editing", () => {
 	test.use({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
 	test("add and edit are reachable at phone width", async ({ page }) => {

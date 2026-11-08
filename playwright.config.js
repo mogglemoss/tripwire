@@ -10,6 +10,7 @@
 //   npm run e2e            headless
 //   npm run e2e:headed     watch it
 const { defineConfig } = require("@playwright/test");
+require('dotenv').config();
 
 module.exports = defineConfig({
 	testDir: "./e2e",

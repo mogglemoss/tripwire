@@ -117,7 +117,7 @@ function sanitizeNoteHtml($html) {
             }
 
             if (($name === 'href' || $name === 'src') &&
-                !preg_match('/^(?:https?:|mailto:|\/|#|\.{0,2}\/)/i', trim($value))) {
+                !preg_match('/^(?:https?:|data:|mailto:|\/|#|\.{0,2}\/)/i', trim($value))) {
                 $node->removeAttributeNode($attribute);
                 continue;
             }

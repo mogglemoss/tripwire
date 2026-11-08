@@ -36,7 +36,7 @@
 	min-width: 160px;
 }
 
-#login #content #track .tracking-clone {
+.tracking-clone {
 	border: 2px solid var(--n-600);
     border-radius: 5px;
     cursor: pointer;
@@ -46,14 +46,21 @@
 	margin-bottom: 2px;
 }
 
-#login #content #track .tracking-clone:hover {
+.tracking-clone:hover {
 	border-color: var(--n-400);
     opacity: 1;
 }
 
-#login #content #track .tracking-clone.active {
-	border-color: darkorange;
+.tracking-clone.active {
+	border-color: var(--active-border-orange);
     opacity: 1;
+}
+
+.button-bar { 
+	border-top: 1px solid var(--separator);
+	text-align: right;
+	margin: 0 calc(-1 * var(--space-1));
+	padding: var(--space-1) var(--space-1) 0 var(--space-1);
 }
 
 #login #content table {
@@ -73,11 +80,6 @@
 #login #content table .text {
 	padding: 0 10px 0 3px;
 	white-space: nowrap;
-}
-
-#login #content .avatar {
-	height: 1px;
-	width: 1px;
 }
 
 #login #content table td #logout {

@@ -72,10 +72,18 @@ $("#chain-zoom-reset").on("click", function() {
 	chainZoomButton();
 });
 
+/** Is a keyboard event on this target in a text field, so we should let the default action proceed?
+Check activeElement too because some events are reported on the document body */
+function isInTextField(target) {
+        var $t = $(target);
+        if ($t.closest("input, textarea, select, [contenteditable=true], [role='dialog'], .ui-dialog, .cke").length > 0) { return true; }
+        var active = document.activeElement;
+        return !!(active && active !== target && (active.isContentEditable || $(active).is("input, textarea, select")));	
+}
+
 $(document).keydown(function(e)	{
-	// Editable surfaces keep their native keys: Ctrl+A inside a note selects
-	// the note, not every signature row.
-	if (tripwire.keyboard.isTyping(e.target)) return;
+	//Abort - user is in input or textarea
+	if (isInTextField(e.target)) return;
 
 	// Ctrl key hooks
 	if (e.metaKey || e.ctrlKey) {
@@ -278,7 +286,7 @@ $("#wrapper").click(function(e) { // Click outside closes
 	}
 });
 $("#login").click(function(e) { // click inside doesn't
-	e.originalEvent.isInPanel = true;
+	if(e.originalEvent) { e.originalEvent.isInPanel = true; }
 })
 
 
@@ -408,27 +416,19 @@ var OccupiedToolTips = new jBox("Tooltip", {
 		}).fail(function() {
 			tooltip.setContent("<span class='tip-muted'>Pilots unavailable</span>");
 		}).done(function(data) {
-			if (!data || !data.occupants || !data.occupants.length) {
-				tooltip.setContent("<span class='tip-muted'>No pilots here</span>");
-				return;
-			}
-			if (data && data.occupants) {
+			if (data && data.occupants && data.occupants.length) {
 				var chars = "<table>";
 
-				// Sort by characterName
-				data.occupants.sort(function(a, b) {
-					if (a.characterName.toLowerCase() < b.characterName.toLowerCase()) return -1;
-					if (a.characterName.toLowerCase() > b.characterName.toLowerCase()) return 1;
-					return 0;
-				});
-
 				for (var x in data.occupants) {
-					chars += "<tr><td>"+data.occupants[x].characterName+"</td><td style='padding-left: 10px;'>"+(data.occupants[x].shipTypeName?data.occupants[x].shipTypeName:"")+"</td></tr>";
+					const occupant = data.occupants[x];
+					chars += "<tr class='" + (occupant.online ? 'online' : 'offline') + "'><td>"+occupant.characterName+"</td><td style='padding-left: 10px;'>"+(occupant.shipTypeName?occupant.shipTypeName:"")+"</td></tr>";
 				}
 
 				chars += "</table>";
 				tooltip.setContent(chars);
-			}
+			} else {
+				tooltip.setContent("<span class='tip-muted'>No pilots here</span>");
+			}				
 		});
 	}
 });
@@ -744,6 +744,9 @@ $("#chainParent").contextmenu({
 			case "green":
 				nodeElem.hasClass("greenNode") ? $(this).contextmenu("removeFlare", id, ui) : $(this).contextmenu("setFlare", id, ui.cmd, ui);
 				break;
+			case "flare": 
+				$("#dialog-flare").data("systemID", id).data('copyNode', nodeElem[0].cloneNode(true)).dialog("open");
+				break;			
 			case "mass":
 				$("#dialog-mass").data("id", nodeElem.data("sigid")).data("systemID", id).dialog("open");
 				break;
@@ -811,42 +814,6 @@ $("#chainParent").contextmenu({
 		$(menuElem).css("width", "auto");
 		$(menuElem).find(".ui-front").css("width", "auto");
 		$(menuElem).find(".ui-front").css("position", "");
-
-		$.moogle.contextmenu.prototype.setFlare = function(systemID, flare, ui) {
-			var data = {"systemID": systemID, "flare": flare};
-
-			$.ajax({
-				url: "flares.php",
-				type: "POST",
-				data: data,
-				dataType: "JSON"
-			}).done(function(data) {
-				if (data && data.result) {
-					// $(ui.target[0]).closest("td").removeClass("redNode yellowNode greenNode").addClass(flare+"Node");
-
-					chain.data.flares.flares.push({systemID: systemID, flare: flare, time: null});
-					chain.flares(chain.data.flares);
-				}
-			});
-		}
-
-		$.moogle.contextmenu.prototype.removeFlare = function(systemID, ui) {
-			var data = {"systemID": systemID};
-
-			$.ajax({
-				url: "flares.php",
-				type: "POST",
-				data: data,
-				dataType: "JSON"
-			}).done(function(data) {
-				if (data && data.result) {
-					// $(ui.target[0]).closest("td").removeClass("redNode yellowNode greenNode");
-
-					chain.data.flares.flares.splice(Object.index(chain.data.flares.flares, "systemID", systemID), 1);
-					chain.flares(chain.data.flares);
-				}
-			});
-		}
 	}
 });
 
@@ -951,12 +918,16 @@ function linkSig(sigName) {
 }
 
 // Initialize tablesorter plugin on signaturesWidget table
+// Do this with a custom parser (https://mottie.github.io/tablesorter/docs/example-parsers.html) because duplicateSpan doesn't work if we override textExtraction, so the life/mass columns don't sort as expected
+$.tablesorter.addParser({
+	id: 'data-age',
+	format: function(s, table, cell) { return new Date($(cell).find("span").data("age")).getTime(); },
+	type: 'numeric'
+});
 $("#sigTable").tablesorter({
 	sortReset: true,
+	duplicateSpan: false,
 	widgets: ['saveSort'],
-	textExtraction: {
-		2: function(node) { return $(node).find("span").data("age"); }
-	}
 });
 
 // Highlight signaturesWidget tr on click

@@ -23,6 +23,14 @@ tripwire.editor = (function() {
 		{cmd: "underline",         label: "U",  title: "Underline",     style: "text-decoration:underline"},
 		{cmd: "strikeThrough",     label: "S",  title: "Strikethrough", style: "text-decoration:line-through"},
 		{sep: true},
+		{cmd: "fontSize", args: 1, label: "A", title: "Smallest text", style: "font-size: 80%"},
+		{cmd: "fontSize", args: 2, label: "-", title: "X-Small text", style: "min-width: auto; padding: 0 1px"},
+		{cmd: "fontSize", args: 3, label: "-", title: "Small text", style: "min-width: auto; padding: 0 1px"},
+		{cmd: "fontSize", args: 4, label: "A", title: "Normal text", style: "font-size: 100%"},
+		{cmd: "fontSize", args: 5, label: "-", title: "Large text", style: "min-width: auto; padding: 0 1px"},
+		{cmd: "fontSize", args: 6, label: "-", title: "X-Large text", style: "min-width: auto; padding: 0 1px"},
+		{cmd: "fontSize", args: 7, label: "A", title: "Largest text", style: "font-size: 125%"},
+		{sep: true},
 		{cmd: "insertUnorderedList", label: "•", title: "Bulleted list"},
 		{cmd: "insertOrderedList",   label: "1.", title: "Numbered list"},
 		{sep: true},
@@ -41,8 +49,7 @@ tripwire.editor = (function() {
 	function build($host, id) {
 		var $wrap = $('<div class="rte"></div>');
 		// The toolbar goes under the text, not over it: opening the editor used
-		// to push the note's words down by the bar's height. Below, it shares a
-		// row of its own with nothing to displace, next to Save and Cancel.
+		// to push the note's words down by the bar's height.
 		var $bar = $('<div class="rte-bar" role="toolbar"></div>');
 
 		TOOLS.forEach(function(t) {
@@ -61,7 +68,7 @@ tripwire.editor = (function() {
 						if (!/^(https?:|mailto:|\/|#)/i.test(url)) { url = "https://" + url; }
 						document.execCommand("createLink", false, url);
 					} else {
-						document.execCommand(t.cmd, false, null);
+						document.execCommand(t.cmd, false, t.args);
 					}
 				})
 				.appendTo($bar);
@@ -84,14 +91,11 @@ tripwire.editor = (function() {
 			.attr("id", id + "-rte")
 			.html($host.html());
 
-		// Paste as text unless it is already ours: pasting from a browser drags
-		// in spans, classes and inline styles that the sanitiser would strip
-		// anyway, leaving surprising gaps.
+		// Sanitise the node after pasting, so the user sees what will actually end up in the comment
 		$area.on("paste", function(e) {
-			var cb = e.originalEvent && e.originalEvent.clipboardData;
-			if (!cb) { return; }
-			e.preventDefault();
-			document.execCommand("insertText", false, cb.getData("text/plain"));
+			setTimeout(function() {
+				$area.html(sanitiseHtml($area.html()));
+			}, 0);
 		});
 
 		$wrap.append($area).append($bar);

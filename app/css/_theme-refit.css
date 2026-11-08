@@ -1435,3 +1435,13 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 
 /* A chip with nothing in it is not a chip. */
 #infoWidget .sys-meta .chip:empty { display: none; }
+
+/* ══ Official 2.0 ═══════════════════════════════════════════════════════════
+   Two of upstream's 2.0 rules are for its own theme and undo the refit's:
+   it hides the header avatar, and it paints whole signature rows by scan
+   group. The refit shows the avatar, and the scan group reads from the icon
+   in the row; hover and selection keep their own grounds. */
+#topbar #user-avatar.avatar { display: revert; }
+#sigTable tbody tr.sig-signature:not(:hover):not(.selected),
+#sigTable tbody tr.sig-anomaly:not(:hover):not(.selected),
+#sigTable tbody tr.sig-wormhole:not(:hover):not(.selected) { background: transparent; }

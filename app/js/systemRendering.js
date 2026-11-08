@@ -10,11 +10,7 @@ const systemRendering = new function() {
 				const systemID = 30000000 + 1 * s;
 				const system = systemAnalysis.analyse(systemID);
 				const securityClass = system.systemTypeClass;
-				// The tooltip showed the raw true-sec (0.4345345). The game shows
-				// one decimal, and that is the number a pilot recognises.
-				const sec = Number(system.security);
-				const secText = isFinite(sec) ? sec.toFixed(1) : String(system.security);
-				return '<span class="' + securityClass + '" data-tooltip="' + system.name + ' ' + secText + '" onclick="tripwire.systemChange(' + systemID + ')">' + system.pathSymbol + '</span>';
+				return '<span class="' + securityClass + '" data-tooltip="' + system.name + ' (' + system.security.toFixed(2) + ')" onclick="tripwire.systemChange(' + systemID + ')">' + system.pathSymbol + '</span>';
 			});
 			var r = '<span class="path">';
 			for(var i = 0; i < systemMarkup.length; i++) {

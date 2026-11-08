@@ -3,16 +3,16 @@ const ChainMapRendererOrgchartSide = function(owner) {
 	
 	// Sized per draw from the cards: a column is the widest card plus room
 	// for the connectors, a row the tallest card plus a gap (see the top renderer).
-	const GAP = { x: 44, y: 14 };
+	const GAP = { x: 18, y: 12 };
 	const GRID_SIZE = { x: 70, y: 45 };
 	
 	this.initialRads = function(minArc) { return minArc * 0.5; }
 	this.centringOptions = { y: true };
 	
 	this.prepareLayout = function(nodes) {
-		const size = this.maxNodeSize(nodes);
-		GRID_SIZE.x = Math.max(size.width, 1) + GAP.x;
-		GRID_SIZE.y = Math.max(size.height, 1) + GAP.y;
+		const size = this.representativeNodeSize();
+		GRID_SIZE.x = Math.max(size.width + GAP.x, GRID_SIZE.x);
+		GRID_SIZE.y = Math.max(size.height + GAP.y, GRID_SIZE.y);
 	}
 	
 	function project(rad, ci) { return {

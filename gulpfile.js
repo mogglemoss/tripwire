@@ -17,6 +17,7 @@ var jsFiles = [
         src: [
             'app/js/helpers.js',
 			'app/js/data-mutators/*.js',
+			'app/js/map-data-suppliers/_registry.js',
 			'app/js/map-data-suppliers/*.js',
             'app/js/init.js',
             'app/js/options.js',

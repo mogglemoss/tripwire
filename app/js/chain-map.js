@@ -99,7 +99,10 @@ var chain = new function() {
 		// Loop through passed data and show icons
 		for (var x in data) {
 			$("#chainMap [data-nodeid='"+data[x].systemID+"'] [data-icon='user']").removeClass("invisible");
-			$("#chainMap [data-nodeid='"+data[x].systemID+"'] [data-icon='user'] + .badge").removeClass("invisible").text(data[x].count);
+			const badge = $("#chainMap [data-nodeid='"+data[x].systemID+"'] [data-icon='user'] + .badge");
+			badge.removeClass("invisible online offline");
+			badge.addClass(data[x].online ? 'online' : 'offline');
+			badge.text(data[x].online || data[x].count);
 		}
 
 		OccupiedToolTips.attach($("#chainMap [data-icon='user']:not(.invisible)"));
@@ -108,20 +111,16 @@ var chain = new function() {
 	}
 
 	this.flares = function(data) {
-		/*	function for coloring chain map nodes via flares  */
-		//var data = typeof(data) !== "undefined" ? data : this.data.flares;
-
-		// Remove all current node coloring instead of checking each one
-		$("#chainMap div.node").removeClass("redNode yellowNode greenNode");
-
-		// Remove all coloring from chain grid
-		$("#chainGrid tr").removeClass("red yellow green");
-
-		// Loop through passed data and add classes by system
 		if (data) {
-			for (var x in data.flares) {
-				var systemID = data.flares[x].systemID;
-				var flare = data.flares[x].flare;
+			// Remove all current node coloring instead of checking each one
+			$("#chainMap div.node").removeClass("redNode yellowNode greenNode");
+
+			// Remove all coloring from chain grid
+			$("#chainGrid tr").removeClass("red yellow green");
+
+			// Loop through passed data and add classes by system
+			for (var systemID in data) {
+				var flare = data[systemID].flare;
 
 				var row = ($("#chainMap [data-nodeid="+systemID+"]").addClass(flare+"Node").parent().index() - 1) / 3 * 2;
 
@@ -132,6 +131,29 @@ var chain = new function() {
 		}
 
 		return data;
+	}
+	
+	/** Convert the flare list from the back end into a map for easy lookup */
+	this.updateFlares = function(data) {
+		if(!data) { return this.data.flares; }
+		const r = {};
+		for (var x in data.flares) {
+			var systemID = data.flares[x].systemID;
+			r[systemID] = data.flares[x];
+		}
+		this.flares(r);
+		return r;
+	}
+	
+	/** Update the flare on a single system */
+	this.updateFlare = function(systemID, flare) {
+		if(!this.data.flares) { return; }
+		if(flare && flare.flare) {
+			this.data.flares[systemID] = flare;
+		} else {
+			delete this.data.flares[systemID];
+		}		
+		this.flares(this.data.flares);
 	}
 
 	this.grid = function() {
@@ -191,12 +213,13 @@ var chain = new function() {
 				options.chain.sigNameLocation == 'name_prefix' ?
 					(systemName ? systemName + (system.name ? ' - ' + system.name : '') : (system.name ? system.name : '&nbsp;')) :
 				(system.name ? system.name : '&nbsp;');	
+			const finalAdditionalClasses = [...(additionalClasses || []), String(system.systemTypeClass || 'unknown').replaceAll(' ', '-') + '-node'];
 
 			var node = {v: id, systemID: systemID };
 			var chainNode = "<div id='node"+id+"' data-nodeid='"+systemID+"'"
 				+(whId ? " data-sigid='"+whId+"'" : '')
 				+(inSigId ? " data-inSigid='"+inSigId+"'" : '')
-				+" class='node sec-" + String(system.systemTypeClass || 'unknown').split(' ')[0] + (system.class ? " cls-" + system.class[0] : "") + " " + ((additionalClasses || []).join(' ')) + "'>"
+				+" class='node sec-" + String(system.systemTypeClass || 'unknown').split(' ')[0] + (system.class ? " cls-" + system.class[0] : "") + " " + finalAdditionalClasses.join(' ') + "'>"
 							+	"<div class='nodeIcons'>"
 							+		"<div style='float: left;'>"
 							+ systemRendering.renderEffect(system, 'i')
@@ -439,6 +462,7 @@ var chain = new function() {
 			// Connection modifiers
 			var modifiers = [];			
 			if (node.life == "critical") { modifiers.push('eol'); }
+			else if (node.life == "<1h") { modifiers.push('eol-1h'); }
 			if (node.mass == "critical") { modifiers.push('critical'); }
 			else if (node.mass == "destab") { modifiers.push('destab'); }
 			
@@ -530,12 +554,11 @@ var chain = new function() {
 			// Sort so we keep the chain map order the same
 			Object.sort(data.map, "id");
 
-			$.extend(data, this.nodes(data.map)); // 250ms -> <100ms
-			$.extend(this.data, data);
+			$.extend(this.data, this.nodes(data.map)); // 250ms -> <100ms
 			
 			const collapsedSystems = options.chain.tabs[options.chain.active] ? (options.chain.tabs[options.chain.active].collapsed || []) : [];
 
-			this.renderer.draw(data.map, data.lines, collapsedSystems); // 150ms
+			this.renderer.draw(this.data.map, this.data.lines, collapsedSystems); // 150ms
 			//this.map.draw(this.newView(data.map), this.options); // 150ms
 
 //			this.renderer.lines(data); // 300ms
@@ -554,7 +577,6 @@ var chain = new function() {
 			
 			this.drawing = false;
 			
-			systemPanel.update();
 		}
 
 		// Gather latest system activity
@@ -601,8 +623,10 @@ var chain = new function() {
 		}
 
 		if (data.flares) { // 20ms
-			this.data.flares = this.flares(data.flares);
+			this.data.flares = this.updateFlares(data.flares);
 		}
+		
+		systemPanel.update();
 	}
 
 	this.updateCollapsed = function(collapsedSystems) {

@@ -84,14 +84,6 @@ var tripwire = new function() {
 	}
     this.serverTime();
 
-    // Handles putting chain together
-	this.chainMap = function() {
-		this.chainMap.parse = function(data) {
-			chain.draw(data);
-		}
-	}
-    this.chainMap();
-
     this.pastEOL = function() {
 		var options = {since: $(this).countdown('option', 'until'), format: "HM", layout: "-{hnn}{sep}{mnn}&nbsp;"};
 		$(this).countdown("option", options);

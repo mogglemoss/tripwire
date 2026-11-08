@@ -1,19 +1,16 @@
 const ChainMapRendererOrgchartTop = function(owner) {
 	ChainMapRendererBase.apply(this, arguments);
 	
-	// The grid is sized per draw from the cards themselves: a column is the
-	// widest card plus a gap, a row the tallest card plus room for the
-	// connectors. Upstream's fixed 55x45 fitted its 30px pills only.
-	const GAP = { x: 18, y: 30 };
+	const GAP = { x: 12, y: 18 };
 	const GRID_SIZE = { x: 55, y: 45 };
 	
 	this.initialRads = function(minArc) { return minArc * 0.5; }
 	this.centringOptions = { x: true };
 	
 	this.prepareLayout = function(nodes) {
-		const size = this.maxNodeSize(nodes);
-		GRID_SIZE.x = Math.max(size.width, 1) + GAP.x;
-		GRID_SIZE.y = Math.max(size.height, 1) + GAP.y;
+		const size = this.representativeNodeSize();
+		GRID_SIZE.x = Math.max(size.width + GAP.x, GRID_SIZE.x);
+		GRID_SIZE.y = Math.max(size.height + GAP.y, GRID_SIZE.y);
 	}
 	
 	function project(rad, ci) { return {

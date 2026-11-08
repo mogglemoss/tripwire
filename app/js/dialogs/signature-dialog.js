@@ -340,10 +340,7 @@ sigDialog.openSignatureDialog = function(e) {
 						var wormhole = {
 							"type": type,
 							"parent": parent,
-							"life": tripwire.wormholeState.lifeChanges(form.wormholeLife).life,
-							// The expiry preset travels only when it changed, so an unrelated
-							// edit does not reset a hole's clock.
-							"lifeHours": form.wormholeLife !== $("#dialog-signature").data("lifePresetOpened") ? tripwire.wormholeState.lifeChanges(form.wormholeLife).lifeHours : null,
+							"life": form.wormholeLife,
 							"mass": form.wormholeMass
 						};
 						if (sigDialogVM.mode == "update") {
@@ -437,7 +434,6 @@ sigDialog.openSignatureDialog = function(e) {
 				$("#dialog-signature [name='signatureType']").val("unknown").selectmenu("refresh");
 
 				$("#dialog-signature [name='wormholeLife'][value='stable']").prop("checked", true);
-				$("#dialog-signature").data("lifePresetOpened", "stable");
 				$("#dialog-signature [name='wormholeMass'][value='stable']").prop("checked", true);
 				
 				$("#dialog-signature #site").show();
@@ -481,7 +477,6 @@ sigDialog.openSignatureDialog = function(e) {
 						$("#dialog-signature [name='wormholeName2']").val(otherSignature.name);
 						var lifePreset = tripwire.wormholeState.presetFor(wormhole, signature);
 						$("#dialog-signature [name='wormholeLife'][value='"+lifePreset+"']").prop("checked", true);
-						$("#dialog-signature").data("lifePresetOpened", lifePreset);
 						$("#dialog-signature [name='wormholeMass'][value='"+wormhole.mass+"']").prop("checked", true);
 						if (wormhole[wormhole.parent+"ID"] == signature.id) {
 							$("#dialog-signature input[name='wormholeType']").val(wormhole.type).change();

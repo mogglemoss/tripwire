@@ -22,6 +22,8 @@ html {
     min-height: 100%;
 }
 
+p { margin-bottom: 0.5em; }
+
 a {
 	text-decoration: none;
 	font-weight: bold;
@@ -78,7 +80,7 @@ i.disabled {
 }
 
 i.active, a.active {
-	color: orange;
+	color: var(--active-orange);
 }
 
 /* All of these styles want to be more specific than a normal class selector so the text colour wins */
@@ -102,22 +104,26 @@ body .class-15, body .class-16, body .class-17 {	/* Drifter */
 	color: var(--data-loot-red);
 }
 
-body .hisec, body .stable, body .frig {
+body .hisec, body .stable, body .frig, .flare-green {
 	color: var(--data-good);
 }
 
-body .lowsec, body .destab {
+body .lowsec, body .destab, .flare-yellow {
 	color: var(--data-loot-orange);
 }
 
-body .nullsec, body .critical {
+body .nullsec, body .critical, .flare-red {
 	color: var(--data-critical);
 }
 
 body .triglavian { color: var(--data-triglavian); }
 body .drifter { color: var(--data-loot-red); }
 
+body .supercritical, body .eol-1h { color: var(--data-supercritical); }
+
 .blue-loot, .blue-loot .hisec { color: var(--data-loot-blue); }
+
+.offline {color: #999; font-style: italic }
 
 .jumps {
 	color: var(--chart-1);

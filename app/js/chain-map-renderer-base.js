@@ -60,6 +60,22 @@ const ChainMapRendererBase = function(owner) {
 			return { width: Math.max(acc.width, size.width), height: Math.max(acc.height, size.height) };
 		}, { width: 0, height: 0 });
 	}
+	
+	/** The representative size of a normal node */
+	this.representativeNodeSize = function() {
+		const representativeMarkup = `<div class="node jm-2000kt jm-2000kt-chain wh-class-5-node">
+			<div class="nodeIcons">
+				<div style="float: left;"><i class="whEffect" data-icon="cataclysmic-variable" data-tooltip="Cataclysmic Variable"></i></div>
+			</div>
+			<h4 class="nodeClass"><span class="wh class-5">C5</span></h4>
+			<h4 class="nodeSystem"><a href=".?system=J130302">J130302</a></h4>
+			<h4 class="nodeType"><a href="#">ABC</a></h4>
+			<div class="statics"><span class="class-6" data-tooltip="Class-6 via V753">6</span></div>
+			<div class="nodeActivity"><span class="jumps invisible invisible">●</span>&nbsp;<span class="pods invisible invisible">●</span>&nbsp;&nbsp;<span class="ships invisible invisible">●</span>&nbsp;<span class="npcs invisible invisible">●</span>
+			</div>
+		</div>`;
+		return measureNode(representativeMarkup);
+	}
 
 	const _this = this;
 	const drawInner = function(map, lines, collapsed) {
@@ -226,7 +242,7 @@ const ChainMapRendererBase = function(owner) {
 				drawConnections(ctx, map.circles[ci].nodes, function(node) {		
 					ctx.lineWidth = lineWeightFactor * parseInt(propertyFromCssClass(node.styles, 'border-width')) || 2;
 					ctx.strokeStyle = propertyFromCssClass(node.styles, 'border-top-color');
-					ctx.setLineDash ({ dashed: [5, 3] }[propertyFromCssClass(node.styles, 'border-top-style')] || []);
+					ctx.setLineDash ({ dashed: [5, 3], dotted: [ 2, 2] }[propertyFromCssClass(node.styles, 'border-top-style')] || []);
 					ctx.stroke();
 				});					
 

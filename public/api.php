@@ -7,7 +7,7 @@ if (!TRIPWIRE_API) {
     exit();
 }
 
-require_once('../db.inc.php');
+require_once('../db.php');
 require_once('../api/auth.php');
 
 header('Content-Type: application/json');

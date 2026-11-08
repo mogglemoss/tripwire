@@ -14,7 +14,7 @@ $startTime = microtime(true);
 if (!session_id()) session_start();
 
 require_once('../config.php');
-require_once('../db.inc.php');
+require_once('../db.php');
 require_once('../esi.class.php');
 
 $esi = new esi();
@@ -100,7 +100,7 @@ function doLogin(&$output, $account, $esi, $mysql, $ip, $username, $method) {
 		$_SESSION['characterID'] = $account->characterID;
 		$_SESSION['characterName'] = $account->characterName;
 		$_SESSION['corporationID'] = $account->corporationID;
-		$_SESSION['allianceID'] = $affiliation[$account->characterID]->alliance_id;
+		$_SESSION['allianceID'] = $affiliation[$account->characterID]->alliance_id ?? null;
 		$_SESSION['corporationName'] = $account->corporationName;
 		$_SESSION['admin'] = $account->admin;
 		$_SESSION['super'] = $account->super;

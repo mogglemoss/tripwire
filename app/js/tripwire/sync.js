@@ -30,9 +30,6 @@ tripwire.sync = function(mode, data, successCallback, alwaysCallback) {
         data.signatureTime = tripwire.forceFullSync ? "1970-01-01 00:00:00" : maxTimeByProperty(this.client.signatures, "modifiedTime");
         tripwire.forceFullSync = false;
 
-        data.flareCount = chain.data.flares ? chain.data.flares.flares.length : 0;
-        data.flareTime = chain.data.flares ? chain.data.flares.last_modified : 0;
-
         data.commentCount = Object.keys(this.comments.data||{}).length;
         data.commentTime = maxTimeByProperty(this.comments.data, "modified");
 
@@ -114,10 +111,10 @@ tripwire.sync = function(mode, data, successCallback, alwaysCallback) {
             }
 
             if (data.wormholes || data.occupied || data.flares) {
-                tripwire.chainMap.parse({"map": data.wormholes || null, "occupied": data.occupied || null, "flares": data.flares || null});
+                chain.draw({"map": data.wormholes || null, "occupied": data.occupied || null, "flares": data.flares || null});
             } else if (chain.data.occupied && chain.data.occupied.length && !data.occupied) {
                 // send update to remove all occupied system indicators
-                tripwire.chainMap.parse({"occupied": []});
+                chain.draw({"occupied": []});
             }
 
 			tripwire.updateReturnStatus();
@@ -138,14 +135,7 @@ tripwire.sync = function(mode, data, successCallback, alwaysCallback) {
         // Returning is instant: visibility-refresh.js refreshes on becoming
         // visible, so nothing is stale on the way back.
         // (Also drops the string form, which is an implicit eval.)
-        //
-        // A closure, not `setTimeout(tripwire.refresh, ...)`. refresh() calls
-        // this.sync(), and a detached reference runs with `this` as window,
-        // so the very first scheduled poll threw "this.sync is not a
-        // function" and nothing was ever scheduled again. The page loaded
-        // once and never polled: measured, zero refresh.php calls in twelve
-        // seconds. The string form had been doing this right for a decade.
-        tripwire.timer = setTimeout(function() { tripwire.refresh(); },
+        tripwire.timer = setTimeout(function() { tripwire.refresh(); }, // closure so 'this' is the right thing inside 'refresh'
             document.hidden ? tripwire.refreshRateHidden : tripwire.refreshRate);
 
         alwaysCallback ? alwaysCallback(data) : null;

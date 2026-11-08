@@ -13,15 +13,17 @@
 // wormhole-type inference the dialog does, and that stays in the dialog.
 
 (function() {
-	// The states and their labels live in tripwire.wormholeState; life is a
-	// preset over the expiry, mass a plain value.
 	var FIELDS = {
-		5: {key: "life", options: function() { return tripwire.wormholeState.LIFE; },
-		    current: function(wh, sig) { return tripwire.wormholeState.presetFor(wh, sig); },
-		    changes: function(value) { return tripwire.wormholeState.lifeChanges(value); }},
-		6: {key: "mass", options: function() { return tripwire.wormholeState.MASS; },
-		    current: function(wh) { return wh.mass; },
-		    changes: function(value) { return {mass: value}; }}
+		5: {key: "life", options: [
+			{value: "stable",   label: "Stable"},
+			{value: "critical", label: "EOL"},
+			{value: "<1h", label: "<1h", css: "eol-1h"},
+		]},
+		6: {key: "mass", options: [
+			{value: "stable",   label: "Stable"},
+			{value: "destab",   label: "<50%"},
+			{value: "critical", label: "<10%"}
+		]}
 	};
 
 	function close() {
@@ -29,22 +31,21 @@
 		$(document).off("mousedown.inlineEdit keydown.inlineEdit");
 	}
 
-	function open($td, field, wormhole, sig) {
+	function open($td, field, wormhole) {
 		close();
 
 		var $pop = $('<div id="inline-edit" role="listbox"></div>')
 			.attr("aria-label", "Set " + field.key);
 
-		var selected = field.current(wormhole, sig);
-		field.options().forEach(function(opt) {
-			var current = selected === opt.value;
+		field.options.forEach(function(opt) {
+			var current = wormhole[field.key] === opt.value;
 			$('<button type="button" role="option"></button>')
-				.addClass("inline-chip " + opt.cls)
+				.addClass("inline-chip " + (opt.css || opt.value))
 				.attr("aria-selected", current ? "true" : "false")
 				.text(opt.label)
 				.on("click", function(e) {
 					e.preventDefault(); e.stopPropagation();
-					if (!current) { apply(wormhole.id, field.changes(opt.value), $td); }
+					if (!current) { apply(wormhole.id, field.key, opt.value, $td); }
 					close();
 				})
 				.appendTo($pop);
@@ -69,7 +70,8 @@
 		}, 0);
 	}
 
-	function apply(wormholeId, changes, $td) {
+	function apply(wormholeId, key, value, $td) {
+		var changes = {}; changes[key] = value;
 		var built = tripwire.signaturePayload.changeWormhole(wormholeId, changes);
 		if (!built) { return; }
 
@@ -99,7 +101,7 @@
 
 			e.preventDefault();
 			e.stopPropagation();   // a click here is an edit, not a row selection
-			open($td, FIELDS[$td.index() + 1], wh, sig);
+			open($td, FIELDS[$td.index() + 1], wh);
 		});
 
 		// Mark the cells so they read as editable.

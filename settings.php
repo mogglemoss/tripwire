@@ -1,6 +1,6 @@
 <?php
 // Version
-define('VERSION_TAG', '1.30.1');
+define('VERSION_TAG', '2.0');
 
 $gitDirectory = __DIR__ . '/.git';
 $headFile = $gitDirectory . '/HEAD';

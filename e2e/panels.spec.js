@@ -36,7 +36,8 @@ test.describe("resizable panels", () => {
 			info: Math.round(document.getElementById("infoWidget").getBoundingClientRect().width),
 			sigs: Math.round(document.getElementById("signaturesWidget").getBoundingClientRect().width),
 			notes: Math.round(document.getElementById("notesWidget").getBoundingClientRect().width),
-			top: Math.round(document.getElementById("infoWidget").getBoundingClientRect().height)
+			// The row above the row divider: the chain when it is ordered first, else the compact row.
+			top: Math.round(document.getElementById(tripwire.panels.order()[0] === "chainWidget" ? "chainWidget" : "infoWidget").getBoundingClientRect().height)
 		}));
 	}
 	async function resetAndWait(page) {

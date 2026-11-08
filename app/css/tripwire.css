@@ -87,6 +87,8 @@
 	display: none;
 }
 
+#user-avatar { display: none }
+
 .controls {
     position: absolute;
     padding: 3px;

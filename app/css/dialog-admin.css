@@ -23,7 +23,7 @@
 }
 
 #dialog-admin .menu li.active a {
-	color: orange;
+	color: var(--active-orange);
 }
 
 #dialog-admin #userTable th {
@@ -42,13 +42,13 @@
 #dialog-admin .tablesorter .headerSortUp,
 #dialog-admin .tablesorter .tablesorter-headerSortUp,
 #dialog-admin .tablesorter .tablesorter-headerAsc {
-	color: orange;
+	color: var(--active-orange);
 }
 
 #dialog-admin .tablesorter .headerSortDown,
 #dialog-admin .tablesorter .tablesorter-headerSortDown,
 #dialog-admin .tablesorter .tablesorter-headerDesc {
-	color: orange;
+	color: var(--active-orange);
 }
 
 div.ui-dialog[aria-describedby='dialog-admin'] .menu {

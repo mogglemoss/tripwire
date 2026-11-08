@@ -60,6 +60,10 @@ html .ui-selectmenu-menu ul {
 	background-color: var(--n-200);
 }
 
+#sigTable .sig-signature { background: rgba(128, 0, 0, 0.4); }
+#sigTable .sig-anomaly { background: rgba(0, 128, 0, 0.4); }
+#sigTable .sig-wormhole { background: rgba(90, 0, 70, 0.4); }
+
 #sigTable th:nth-child(1) {
 	width: 50px;
 }
@@ -160,6 +164,8 @@ html .ui-selectmenu-menu ul {
 	cursor: default;
 }
 
+#sig-breakdown { font-size: 90%; vertical-align: middle; }
+
 #dialog-signature hr {
 	margin-left: 15px;
 	margin-bottom: 10px;
@@ -225,16 +231,8 @@ html .ui-selectmenu-menu ul {
 	transform-origin: left top 0;
 }
 
-#dialog-signature #wormhole .side:first-child .sideLabel  {
+#dialog-signature #wormhole .side .sideLabel  {
 	bottom: 0px;
-	width: 90px;
-	text-align: left;
-}
-
-#dialog-signature #wormhole .side:last-child .sideLabel {
-	bottom: -70px;
-	width: 135px;
-	text-align: right;
 }
 
 .custom-combobox {

@@ -37,7 +37,7 @@ tripwire.addSig = function(add, option, disabled) {
     var option = option || {};
     var animate = typeof(option.animate) !== 'undefined' ? option.animate : true;
     var disabled = disabled || false;
-    var wormhole = {};
+	let wormhole;
 
 	const returnLinkText = add.signatureID ? '<a class="return-link" href="#" onclick="tripwire.setReturnSig(event, ' + add.id + ')">&gt;&gt; Set ' + 
 				add.signatureID.substring(0, 3).toUpperCase() + '-' + add.signatureID.substring(3) +
@@ -53,8 +53,9 @@ tripwire.addSig = function(add, option, disabled) {
 		const leadsToText = sigInfo.leadsTo ? sigInfo.leadsTo : 
 			add.signatureID && add.signatureID.length && add.signatureID[0] != '?' ? returnLinkText
 			: '';	
+		const lifeClass = (wormhole.life || '').replace('<', 'eol-');
 
-        var row = "<tr data-id='"+add.id+"' data-tooltip='' "+ (disabled ? 'disabled="disabled"' : '') +">"
+        var row = "<tr data-id='"+add.id+"' class='sig-wormhole' data-scan-group='"+_.escape(add.scan_group) + "' data-tooltip='' "+ (disabled ? 'disabled="disabled"' : '') +">"
             + "<td class='"+ options.signatures.alignment.sigID +"'>"+formatSignatureID(add.signatureID)+"</td>"
             + "<td class='type-tooltip "+ options.signatures.alignment.sigType +"' data-tooltip=\""+this.whTooltip(wormhole)+"\">"+sigInfo.formattedType+"</td>"
             + "<td class='age-tooltip "+ options.signatures.alignment.sigAge + (parseInt(add.lifeLength) === 0 ? " disabled" : "") +"' data-tooltip='"+this.ageTooltip(add)+"'><span data-age='"+add.lifeTime+"'></span></td>"
@@ -65,13 +66,13 @@ tripwire.addSig = function(add, option, disabled) {
 
         var tr = $(row);
     } else {
-		const leadsToText = add.type === 'unknown' ? returnLinkText : 
-			(add.name ? linkSig(add.name) : '');
-        var row = "<tr data-id='"+add.id+"' data-tooltip='' "+ (disabled ? 'disabled="disabled"' : '') +">"
+		const leadsToText = (add.type === 'unknown' ? returnLinkText : 
+			(add.name ? linkSig(add.name) : ''));
+        var row = "<tr data-id='"+add.id+"' class='sig-" + _.escape(add.scan_group) +"' data-scan-group='"+_.escape(add.scan_group) + "' data-tooltip='' "+ (disabled ? 'disabled="disabled"' : '') +">"
             + "<td class='"+ options.signatures.alignment.sigID +"'>"+formatSignatureID(add.signatureID)+"</td>"
             + "<td class='"+ options.signatures.alignment.sigType +"'>"+add.type+"</td>"
             + "<td class='age-tooltip "+ options.signatures.alignment.sigAge + (parseInt(add.lifeLength) === 0 ? " disabled" : "") +"' data-tooltip='"+this.ageTooltip(add)+"'><span data-age='"+add.lifeTime+"'></span></td>"
-            + "<td class='"+ options.signatures.alignment.leadsTo +"' colspan='3'>"+leadsToText+"</td>"
+            + "<td class='"+ options.signatures.alignment.leadsTo +"' colspan='3'><span style='float:left'>"+(scanGroupText[add.scan_group] || '') + '</span>' +  leadsToText +"</td>"
             + "</tr>";
 
         var tr = $(row);
@@ -82,7 +83,7 @@ tripwire.addSig = function(add, option, disabled) {
     $("#sigTable").append(tr);
 
     // Add counter
-    if (wormhole.life == "critical") {
+    if (wormhole && wormhole.life != "stable") {
         $(tr).find('span[data-age]').countdown({until: moment.utc(add.lifeLeft).toDate(), onExpiry: this.pastEOL, alwaysExpire: true, compact: true, format: this.ageFormat, serverSync: this.serverTime.getTime})
             // .countdown('pause')
             .addClass('critical')

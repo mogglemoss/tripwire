@@ -29,7 +29,7 @@
 //   php system_activity_prune.cron.php             delete
 
 require('config.php');
-require('db.inc.php');
+require('db.php');
 
 date_default_timezone_set('UTC');
 

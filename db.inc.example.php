@@ -1,29 +1,18 @@
 <?php
 
-try {
-    $mysql = new PDO(
-        'mysql:host=localhost;dbname=tripwire_database;charset=utf8',
-        'username',
-        'password',
-        Array(
-            PDO::ATTR_PERSISTENT     => true,
-            // Fail loudly. Without this a failed query returns false and the
-            // app carries on with no data, which reads as "empty" rather than
-            // "broken" -- a dead database looks like a quiet one.
-            PDO::ATTR_ERRMODE        => PDO::ERRMODE_EXCEPTION
-            // NOTE: do not set PDO::ATTR_EMULATE_PREPARES => false here.
-            // Fifteen queries in this codebase bind one named placeholder that
-            // appears twice in the statement (login.php:80, refresh.php:135
-            // and :228, lib.inc.php:42, masks.inc.php:23 among others).
-            // Client-side emulation tolerates that; native prepares reject it
-            // with "Invalid parameter number", which breaks login and the
-            // refresh poll. Those queries must be rewritten first.
-        )
-    );
-} catch (PDOException $error) {
-    // Do not continue with an unset $mysql: every later query would fatal with
-    // a confusing error a long way from the actual cause.
-    error_log('Tripwire: database connection failed: ' . $error->getMessage());
-    http_response_code(503);
-    exit('Database unavailable');
-}
+$mysql = create_db_connection('mysql:host=localhost;dbname=tripwire_database;charset=utf8',
+	'username',
+	'password'
+);
+
+// Allowing Tripwire to self update:
+// Option 1: Run a separate update script. If you don't set a $mysql_update, attempting to access pages will fail if you need to update. You'll have to run that script as part of upgrade deployment.
+
+// Option 2: Use the same connection, giving that user update rights. This is fine, but would allow an injection attack to do more damage.
+// $mysql_update = $mysql;
+
+// Option 3 (recommended): Create a second account with update rights. This will only be used for the update itself, and the main tripwire account can use minimal select/update/delete permissions
+$mysql_update = create_db_connection('mysql:host=localhost;dbname=tripwire_database;charset=utf8',
+	'username-for-update',
+	'password'
+);

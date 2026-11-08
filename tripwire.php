@@ -12,6 +12,8 @@ require_once('config.php');
 require_once('settings.php');
 require_once('brand.inc.php');
 require_once('masks.inc.php');
+require_once('db.php');
+require_once('db-update.php');
 require('lib.inc.php');
 
 $system = $_REQUEST['system'] ?? '';
@@ -193,6 +195,13 @@ $system = $_REQUEST['system'] ?? '';
 			<li id="signaturesWidget" class="gridWidget" data-row="1" data-col="8" data-sizex="7" data-sizey="6" data-min-sizex="5" data-min-sizey="2" style="width: 410px; height: 350px;">
 				<div class="controls">
 					<i id="signature-count" class="bar-count" data-tooltip="Signatures in this system">0</i>
+					<script>
+						const scanGroupText = {
+							wormhole: "<span data-icon='radio-off' data-tooltip='Wormhole'></span>",
+							anomaly: "<span data-icon='pin' data-tooltip='Anomaly'></span>",
+							signature: "<span data-icon data-tooltip='Signature'>&#xe004;</span>"
+						};
+					</script>
 					<i id="add-signature" data-icon="plus" class="bar-btn bar-primary" data-tooltip="Add a signature by hand"><span class="bar-label">Add</span></i>
 					<i id="paste-signatures" class="bar-btn" data-tooltip="Paste probe scanner results. Ctrl-V anywhere on the page does the same."><span class="bar-label">Paste scan</span><kbd>&#8984;V</kbd></i>
 					<span class="bar-sep"></span>
@@ -213,7 +222,7 @@ $system = $_REQUEST['system'] ?? '';
 								<tr>
 									<th class="sortable">ID<i data-icon=""></i></th>
 									<th class="sortable">Type<i data-icon=""></i></th>
-									<th class="sortable" data-sorter="usLongDate">Age<i data-icon=""></i></th>
+									<th class="sortable" data-sorter="data-age">Age<i data-icon=""></i></th>
 									<th class="sortable">Leads To<i data-icon=""></i></th>
 									<th class="sortable">Life<i data-icon=""></i></th>
 									<th class="sortable">Mass<i data-icon=""></i></th>
@@ -269,10 +278,11 @@ $system = $_REQUEST['system'] ?? '';
 					<i id="show-favorite" data-icon="star" class="bar-btn bar-icon" data-tooltip="Add favourite systems to the chain"></i>
 					<i id="show-chainLegend" class="bar-btn bar-icon" data-tooltip="<table id='guide'>
 						<tr><td><div class='guide stable'></td><td>Stable</td><th>Auras</th></tr>
-						<tr><td><div class='guide eol'></div></td><td>Life &lt;4h / &lt;1h</td><td><div class='guide aura jm-5kt frig'></div></td><td>Small</td></tr>
-						<tr><td><div class='guide destab'></div></td><td>Mass &lt;50%</td><td><div class='guide aura jm-62kt'></div></td><td>Medium</td></tr>
-						<tr><td><div class='guide critical'></div></td><td>Mass &lt;10%</td><td><div class='guide aura jm-375kt'></div></td><td>Large</td></tr>
-						<tr><td><div class='guide frig'></div></td><td>Frigate</td><td><div class='guide aura jm-2000kt'></div></td><td>X-Large</td></tr>
+						<tr><td><div class='guide eol'></div></td><td>Life EOL (&lt;4h)</td><td><div class='guide aura jm-5kt frig'></div></td><td>Small</td></tr>
+						<tr><td><div class='guide eol-1h'></div></td><td>Life &lt;1h</td><td><div class='guide aura jm-62kt'></div></td><td>Medium</td></tr>
+						<tr><td><div class='guide destab'></div></td><td>Mass &lt;50%</td><td><div class='guide aura jm-375kt'></div></td><td>Large</td></tr>
+						<tr><td><div class='guide critical'></div></td><td>Mass &lt;10%</td><td><div class='guide aura jm-2000kt'></div></td><td>X-Large</td></tr>
+						<tr><td><div class='guide frig'></div></td><td>Frigate</td><td></td></tr>
 					</table>">&equiv;</i>
 					<span class="bar-sep"></span>
 					<i id="hot-jump" data-icon="prop-mod" class="bar-btn bar-icon bar-toggle" data-tooltip="Jumping hot (prop mod on)"></i>
@@ -348,13 +358,7 @@ $system = $_REQUEST['system'] ?? '';
 							</ul>
 						</li>
 						<li>
-							<li><a>Flares</a>
-								<ul style="width: 10em;">
-									<li data-command="red"><a>Battle (red)</a></li>
-									<li data-command="yellow"><a>Hold (yellow)</a></li>
-									<li data-command="green"><a>Fleet Op (green)</a></li>
-								</ul>
-							</li>
+							<li data-command="flare"><a>Flares ...</a></li>
 							<li data-command="mass"><a>Mass</a></li>
 							<li data-command="collapse"><a>Collapse</a></li>
 							<li data-command="ping"><a>Ping ...</a></li>
@@ -462,16 +466,12 @@ $system = $_REQUEST['system'] ?? '';
 					</div>
 					<div class="row">
 						<span class="label">Life:</span>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeStable" value="stable"/>
-						<label for="wormholeLifeStable" class="stable" title="More than a day">Stable</label>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeDay" value="day"/>
-						<label for="wormholeLifeDay" class="destab" title="Less than 1 day remaining">&lt;1d</label>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLife4h" value="critical4"/>
-						<label for="wormholeLife4h" class="critical" title="Less than 4 hours remaining">&lt;4h</label>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLife1h" value="critical1"/>
-						<label for="wormholeLife1h" class="critical" title="Less than 1 hour remaining">&lt;1h</label>
-						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeExpired" value="expired"/>
-						<label for="wormholeLifeExpired" class="critical" title="Reliable lifetime over; could close any moment">Expired</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeStable"  value="stable"/>
+						<label for="wormholeLifeStable" class="stable" title="More than 4 hours remaining">Stable</label>
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLifeEOL"  value="critical"/>
+						<label for="wormholeLifeEOL" class="critical" title="End of life: less than 4 hours remaining">EOL</label>	
+						<input type="radio" class="mini-selector" name="wormholeLife" id="wormholeLife1h"  value="<1h"/>
+						<label for="wormholeLife1h" class="supercritical" title="Less than 1 hour remaining">&lt;1h</label>
 					</div>
 					<div class="row">
 						<span class="label">Mass:</span>
@@ -1045,6 +1045,29 @@ $system = $_REQUEST['system'] ?? '';
 		</form>
 	</div>
 
+	<div id="dialog-flare" title="" class="hidden" style="width:300px">
+		<div id="flare-node" class="ui-widget-reset" style="float:right; padding-right: 20px; padding-top: 20px">
+			<!-- filled in dynamically -->
+		</div>
+		<form id="flare_form">
+			<p>Select or remove a flare:</p>
+			<p style="margin-left: 1em">
+			<label><input type="radio" name="flare-type" value="none"> None</label><br>
+			<label><input type="radio" name="flare-type" value="red" class="red"> Red (battle, hostile, dangerous)</label><br>
+			<label><input type="radio" name="flare-type" value="yellow" class="yellow"> Yellow (hold, warning)</label><br>
+			<label><input type="radio" name="flare-type" value="green" class="green"> Green (op, rally, friendly)</label>
+			</p>
+			
+			<p>Flare for:
+			<label><input type="radio" name="flare-expiry" value="86400"> 1 day</label>
+			<label><input type="radio" name="flare-expiry" value="none"> Forever</label>
+			</p>
+			
+			<p>Optionally, enter a reason:
+			<textarea id="flare-text" style="width:100%; margin-left: 0; margin-top: 8px; height: 70px"></textarea>
+		</form>
+	</div>
+	
 	<div id="dialog-newTab" title="New Tab" class="hidden">
 		<form id="newTab_form">
 			<table class="optionsTable" width="100%" cellpadding="1" cellspacing="0">
