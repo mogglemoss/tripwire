@@ -1450,3 +1450,33 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 @media (max-width: 767px) {
 	.sys-killstream-strip .kill-meta { white-space: normal; text-align: center; line-height: 1.25; }
 }
+
+/* ── Voice: the header switch and Settings > Voice ─────────────────────── */
+#topbar .hdr-tools .voicebtn { margin-right: 6px; padding: 4px 7px; }
+#topbar .hdr-tools .voicebtn svg { display: block; }
+#topbar .hdr-tools .voicebtn .voice-waves { display: none; }
+#topbar .hdr-tools .voicebtn.active { color: var(--primary); border-color: var(--primary); }
+#topbar .hdr-tools .voicebtn.active .voice-waves { display: inline; }
+#topbar .hdr-tools .voicebtn.active .voice-mute { display: none; }
+#topbar .hdr-tools .voicebtn.is-waiting { border-style: dashed; }
+#dialog-options .settings-pane .field[hidden] { display: none; }
+#dialog-options .voice-parts { display: flex; flex-direction: column; gap: 6px; }
+#dialog-options .voice-parts label { display: flex; align-items: baseline; gap: 6px; color: var(--foreground); cursor: pointer; }
+#dialog-options .voice-parts small { color: var(--muted-foreground); }
+#dialog-options .voice-status { min-height: 1.3em; margin: 6px 0 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+#dialog-options #voice-eleven-key { min-width: 220px; font-family: var(--font-mono); }
+#dialog-options [data-pane=voice] [hidden] { display: none !important; }
+/* The squelch's volume, beside it while the voice is on; phones have no room. */
+#topbar .hdr-tools .voice-volume { width: 72px; margin: 0 10px 0 2px; accent-color: var(--primary); cursor: pointer; vertical-align: middle; }
+#topbar .hdr-tools .voice-volume[hidden] { display: none; }
+@media (max-width: 767px) { #topbar .hdr-tools .voice-volume { display: none; } }
+/* On a phone the system name gives way (ellipsis) before anything overlaps
+   it: the left of the header could shrink but its name could not, so the
+   search glass ran under the pilot's portrait. */
+@media (max-width: 767px) {
+	#topbar .hdr-left > * { min-width: 0; max-width: 100%; }
+	#topbar .hdr-left .hdr-sys { display: flex; align-items: center; }
+	#topbar .hdr-left .hdr-sys > #search { flex: 0 0 auto; }
+	#topbar #hdr-system { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	#topbar .hdr-tools .voicebtn { margin-right: 4px; }
+}

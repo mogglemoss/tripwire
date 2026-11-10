@@ -22,6 +22,12 @@ tripwire.EVE = function(EVE, characterChange) {
             if ((this.client.EVE && this.client.EVE.systemID != EVE.systemID) || systemChange == true) {
                 systemChange = true;
 
+                // Before the auto-mapper, so the voice reads the map as it stood before this jump
+                if (this.client.EVE && this.client.EVE.systemID != EVE.systemID && tripwire.jumpVoice) {
+                    try { tripwire.jumpVoice.arrived(this.client.EVE.systemID, EVE.systemID); }
+                    catch (e) { console.warn("Voice: jump announcement failed", e); }
+                }
+
                 // Check if location was updated after the last ship update
                 // if (moment(EVE.locationDate).isAfter(moment(this.client.EVE.shipDate))) {
                     systemChange = false;
@@ -44,6 +50,7 @@ tripwire.EVE = function(EVE, characterChange) {
 
         // Update current system
         if (EVE.systemID) {
+            if (tripwire.jumpVoice) { tripwire.jumpVoice.watch(EVE.systemID); }   // live kills where the pilot is
             // add system to Leads To dropdown
             if ($("#dialog-signature [data-autocomplete='sigSystems']").hasClass("custom-combobox")) {
                 $("#dialog-signature [data-autocomplete='sigSystems']").inlinecomplete("removeFromSelect");

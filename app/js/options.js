@@ -14,6 +14,10 @@ var options = new function() {
 	this.chain = {gridlines: true, aura: true, lineWeight: 1.0, scrollWithoutCtrl: false, active: 0, tabs: [], "node-reference": "type", zoom: 1.0, sigNameLocation: 'name', routingLimit: 15, routeSecurity: 'shortest', routeIgnore: { enabled: false, systems: [ 'Tama', 'Rancer' ] }, renderer: 'radial', nodeSpacing: { x: 1.0, y: 1.0 } };
 	this.signatures = {editType: "unknown", copySeparator: ",", pasteLife: 72, alignment: {sigID: "leftAlign", sigType: "leftAlign", sigAge: "leftAlign", leadsTo: "leftAlign", sigLife: "rightAlign", sigMass: "rightAlign"}};
 	this.buttons = {follow: false, chainWidget: {viewing: false, favorites: false}, signaturesWidget: {autoMapper: false}};
+	// Spoken jump announcements. Off until the pilot turns them on. The
+	// ElevenLabs key is not here: it stays in the browser (see speech.js).
+	this.voice = {enabled: false, trigger: "new", voiceKey: "", rate: 1.1, volume: 0.8,
+		parts: {arrival: true, digits: true, statics: true, kills: true, who: true, hubs: true, live: true}};
 
 	this.saveDelay = function(delay) {
 		if (saveTimer) clearTimeout(saveTimer);

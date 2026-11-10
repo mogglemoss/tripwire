@@ -29,12 +29,56 @@ tripwire.killStream = (function() {
 		}
 	}
 
+	// zKillboard, asked as little as possible. One fetcher for the strip and
+	// the voice: identical requests in flight are shared, the eight-hour list
+	// is kept five minutes, and the one-hour list (the smallest window zKill
+	// accepts; a shorter one answers [null]) is kept a minute. Kills found in
+	// the hour are merged into the eight hours, so while the voice is checking
+	// a system once a minute the strip needs no eight-hour request of its own.
+	var RECENT = 3600, RECENT_MS = 60 * 1000, recentCache = {}, inFlight = {};
+
+	function fetchKills(systemID, seconds) {
+		var url = BASE + "/api/kills/solarSystemID/" + systemID + "/pastSeconds/" + seconds + "/";
+		if (inFlight[url]) { return inFlight[url]; }
+		inFlight[url] = fetch(url, { headers: { Accept: "application/json" } })
+			.then(function(r) { if (!r.ok) { throw new Error("zKillboard " + r.status); } return r.json(); })
+			.then(function(list) {
+				if (!Array.isArray(list)) { throw new Error("zKillboard shape"); }
+				return list.filter(function(k) { return k && k.killmail_id && k.killmail_time; });
+			})
+			.finally(function() { delete inFlight[url]; });
+		return inFlight[url];
+	}
+
+	function inWindow(list) {
+		var since = Date.now() - WINDOW * 1000;
+		return list.filter(function(k) { return Date.parse(k.killmail_time) >= since; });
+	}
+
 	function kills(systemID) {
 		var hit = cache[systemID];
-		if (hit && Date.now() - hit.at < CACHE_MS) { return Promise.resolve(hit.list); }
-		return fetch(BASE + "/api/kills/solarSystemID/" + systemID + "/pastSeconds/" + WINDOW + "/", { headers: { Accept: "application/json" } })
-			.then(function(r) { if (!r.ok) { throw new Error("zKillboard " + r.status); } return r.json(); })
-			.then(function(list) { if (!Array.isArray(list)) { throw new Error("zKillboard shape"); } cache[systemID] = { list: list, at: Date.now() }; return list; });
+		if (hit && Date.now() - hit.at < CACHE_MS) { return Promise.resolve(inWindow(hit.list)); }
+		return fetchKills(systemID, WINDOW).then(function(list) { cache[systemID] = { list: list, at: Date.now() }; return list; });
+	}
+
+	// The last hour. New kills are folded into the eight-hour list, and the
+	// strip redrawn if it is showing this system.
+	function recent(systemID, fresh) {
+		var hit = recentCache[systemID];
+		if (!fresh && hit && Date.now() - hit.at < RECENT_MS) { return Promise.resolve(hit.list); }
+		return fetchKills(systemID, RECENT).then(function(list) {
+			recentCache[systemID] = { list: list, at: Date.now() };
+			var held = cache[systemID];
+			if (held) {
+				var known = {};
+				held.list.forEach(function(k) { known[k.killmail_id] = true; });
+				var added = list.filter(function(k) { return !known[k.killmail_id]; });
+				held.list = inWindow(added.concat(held.list));
+				held.at = Date.now();
+				if (added.length && current == systemID) { label(held.list.length); render(held.list); $("#killStream").removeClass("is-quiet"); }
+			}
+			return list;
+		});
 	}
 
 	// 15210.83 -> "15.2k", 3373.24 -> "3.4k", 450100000 -> "450.1m", 1.2e9 -> "1.2b"
@@ -101,7 +145,8 @@ tripwire.killStream = (function() {
 			$block.removeClass("is-waiting").addClass("is-failed");
 		});
 		clearTimeout(timer);
-		timer = setTimeout(function() { if (current === systemID && !document.hidden) { delete cache[systemID]; show(systemID, true); } }, CACHE_MS);
+		// Refetches only if the list was not kept current meanwhile (see recent()).
+		timer = setTimeout(function() { if (current === systemID && !document.hidden) { show(systemID, true); } }, CACHE_MS);
 	}
 
 	function hide() {
@@ -119,5 +164,5 @@ tripwire.killStream = (function() {
 		if (wormhole) { show(systemID); } else { hide(); }
 	}
 
-	return { refresh: refresh, isWormhole: isWormhole, isk: isk, age: age };
+	return { refresh: refresh, isWormhole: isWormhole, isk: isk, age: age, kills: kills, recent: recent };
 })();

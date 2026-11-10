@@ -46,6 +46,7 @@ tripwire.keyboard = (function() {
         {id: "sort-comments",     label: "Sort comments by date",     group: "Comments",   keys: null,  target: "#comment-sort"},
 
         {id: "settings",          label: "Settings",                  group: "App",        keys: null,  target: "#settings"},
+        {id: "voice",             label: "Squelch: voice on or off",  group: "App",        keys: null,  target: "#voice-toggle"},
         {id: "mask",              label: "Switch mask",               group: "App",        keys: null,  target: "#mask-menu-link"}
     ].map(function(a) { return $.extend(a, click(a.target)); });
 

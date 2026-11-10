@@ -139,6 +139,7 @@ $system = $_REQUEST['system'] ?? '';
 			</div>
 
 			<span class="hdr-tools">
+				<button id="voice-toggle" class="themebtn voicebtn" type="button" aria-pressed="false" aria-label="Squelched: voice off" data-tooltip="Squelched: voice off"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="voice-speaker" d="M2 6h2.5L8 3v10L4.5 10H2z" fill="currentColor"/><path class="voice-waves" d="M10.5 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6.5 6.5 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path class="voice-mute" d="M10.5 6l4 4m0-4l-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button><input type="range" id="voice-volume" class="voice-volume" min="0" max="1" step="0.05" value="0.8" aria-label="Voice volume" data-tooltip="Voice volume" hidden />
 				<button id="theme-toggle" class="themebtn" type="button" aria-label="Switch to light" title="Switch to light">&#9788;</button>
 				<i id="settings" data-icon="settings" class="options" data-tooltip="Settings"></i>
 			</span>
@@ -665,6 +666,7 @@ $system = $_REQUEST['system'] ?? '';
 				<button type="button" role="tab" data-tab="map" aria-selected="false">Map</button>
 				<button type="button" role="tab" data-tab="signatures" aria-selected="false">Signatures</button>
 				<button type="button" role="tab" data-tab="display" aria-selected="false">Display</button>
+				<button type="button" role="tab" data-tab="voice" aria-selected="false">Voice</button>
 				<button type="button" role="tab" data-tab="stats" aria-selected="false">Statistics</button>
 			</nav>
 
@@ -788,6 +790,62 @@ $system = $_REQUEST['system'] ?? '';
 				</div>
 				<div class="field"><span class="field-label">Interface scale</span>
 					<span class="slider-wrap"><div id="uiscale-slider"></div><label for="uiscale-slider" class="slider-value"></label></span>
+				</div>
+			</section>
+
+			<section class="settings-pane" data-pane="voice" role="tabpanel" hidden>
+				<div class="field"><label class="field-label" for="voice-enabled">Announce jumps <small>when your tracked pilot jumps into wormhole space</small></label>
+					<label class="switch"><input type="checkbox" id="voice-enabled" /><span class="switch-track"></span></label>
+				</div>
+				<div class="field"><label class="field-label" for="voice-trigger">Which systems</label>
+					<select id="voice-trigger">
+						<option value="new">New to the map</option>
+						<option value="all">Every wormhole system</option>
+					</select>
+				</div>
+				<div class="field field-block"><span class="field-label">Say</span>
+					<div class="field-value voice-parts">
+						<label><input type="checkbox" data-voice-part="arrival" /> Class and effect</label>
+						<label><input type="checkbox" data-voice-part="digits" /> Last three digits</label>
+						<label><input type="checkbox" data-voice-part="statics" /> Statics</label>
+						<label><input type="checkbox" data-voice-part="kills" /> Recent kills <small>zKillboard, last 8 hours</small></label>
+						<label><input type="checkbox" data-voice-part="who" /> Who has been killing</label>
+						<label><input type="checkbox" data-voice-part="hubs" /> Thera and Turnur connections <small>EVE-Scout</small></label>
+						<label><input type="checkbox" data-voice-part="live" /> Kills in your system as they happen</label>
+					</div>
+				</div>
+				<h4 class="field-group">Voice</h4>
+				<div class="field"><label class="field-label" for="voice-engine">Engine</label>
+					<select id="voice-engine">
+						<option value="browser">This browser's voice</option>
+						<option value="elevenlabs">ElevenLabs, with your key</option>
+					</select>
+				</div>
+				<div class="field voice-browser-only"><label class="field-label" for="voice-choice">Browser voice</label>
+					<select id="voice-choice"></select>
+				</div>
+				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-key">ElevenLabs key <small>kept in this browser only and sent to ElevenLabs only</small></label>
+					<span class="field-inline"><input type="password" id="voice-eleven-key" autocomplete="off" spellcheck="false" /><input type="button" id="voice-eleven-forget" value="Forget key" /></span>
+				</div>
+				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-voice">ElevenLabs voice</label>
+					<span class="field-inline"><select id="voice-eleven-voice"></select><input type="button" id="voice-eleven-load" value="Load my voices" /></span>
+				</div>
+				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-model">Model</label>
+					<select id="voice-eleven-model">
+						<option value="eleven_flash_v2_5">Flash v2.5, fast</option>
+						<option value="eleven_multilingual_v2">Multilingual v2</option>
+					</select>
+				</div>
+				<div class="field"><span class="field-label">Speed</span>
+					<span class="slider-wrap"><div id="voice-rate-slider" class="spacing-slider"></div><label for="voice-rate-slider" class="slider-value"></label></span>
+				</div>
+				<div class="field"><span class="field-label">Volume</span>
+					<span class="slider-wrap"><div id="voice-volume-slider" class="spacing-slider"></div><label for="voice-volume-slider" class="slider-value"></label></span>
+				</div>
+				<p class="voice-status" id="voice-status" role="status"></p>
+				<div class="field-actions">
+					<input type="button" id="voice-preview" class="is-primary" value="Preview" />
+					<input type="button" id="voice-stop" value="Stop" />
 				</div>
 			</section>
 
