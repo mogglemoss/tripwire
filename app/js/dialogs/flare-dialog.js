@@ -46,7 +46,7 @@ function updateFlareDialogDisplayNode(dialog) {
 				const systemID = $(this).data("systemID");
 				const copyNode = $(this).data('copyNode');
 				this.systemName = tripwire.systems[systemID].name;
-				const flare = chain.data.flares[systemID] || { lifeLength: 86400 };
+				const flare = (chain.data.flares || {})[systemID] || { lifeLength: 86400 };
 				
 				const typeRadio = this.querySelector("input[name='flare-type'][value='" + (flare.flare || 'none') + "']");
 				typeRadio.checked = true;

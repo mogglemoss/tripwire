@@ -12,7 +12,7 @@ const systemPanel = new function() {
 	};
 	
 	function renderFlare() {
-		const flare = chain.data.flares[viewingSystemID];
+		const flare = (chain.data.flares || {})[viewingSystemID];	// flares may not have arrived on the first draw
 		return flare ? '<div id="flare-text">Flared ' +
 			'<span class="flare-' + flare.flare + '">' + flare.flare + 
 			(flare.reason ? ': ' + _.escape(flare.reason) : '') +
