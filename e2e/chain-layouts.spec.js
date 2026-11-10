@@ -17,8 +17,22 @@ async function cardsAndOverlaps(page) {
 			const a = cards[i], b = cards[j];
 			if (a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) overlaps++;
 		}
-		return { cards: cards.length, overlaps, widths: cards.map(r => Math.round(r.width)) };
+		return { cards: cards.length, overlaps, widths: cards.map(r => Math.round(r.width)),
+			shape: cards.map(r => [r.left, r.top, r.width, r.height].map(Math.round).join(",")).join(" ") };
 	});
+}
+
+// Measure once the map has stopped moving: a poll can redraw the chain
+// between our redraw and the measurement, which a fixed wait cannot rule out.
+async function settled(page) {
+	let last = await cardsAndOverlaps(page);
+	for (let i = 0; i < 20; i++) {
+		await page.waitForTimeout(500);
+		const now = await cardsAndOverlaps(page);
+		if (now.cards && now.shape === last.shape) { return now; }
+		last = now;
+	}
+	return last;
 }
 
 test("every chain layout places the cards clear of each other", async ({ page }) => {
@@ -28,8 +42,9 @@ test("every chain layout places the cards clear of each other", async ({ page })
 		const seen = {};
 		for (const layout of LAYOUTS) {
 			await page.evaluate((r) => { options.chain.renderer = r; chain.useRenderer(r); chain.redraw(); }, layout);
-			await page.waitForTimeout(1500);
-			seen[layout] = await cardsAndOverlaps(page);
+			seen[layout] = await settled(page);
+			// If this ever fails again, the measurements say why.
+			await test.info().attach(layout + ".json", { body: JSON.stringify({ cards: seen[layout].cards, overlaps: seen[layout].overlaps, widths: seen[layout].widths }), contentType: "application/json" });
 			expect(seen[layout].overlaps, layout + " overlaps").toBe(0);
 		}
 		// Same cards in every layout: nothing measured in secret is left on the map
