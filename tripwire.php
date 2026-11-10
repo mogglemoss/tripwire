@@ -873,6 +873,8 @@ $system = $_REQUEST['system'] ?? '';
 				<div class="field"><label class="field-label" for="bm-own">Use my own words <small id="bm-source"></small></label>
 					<label class="switch"><input type="checkbox" id="bm-own" /><span class="switch-track"></span></label>
 				</div>
+				<div class="bm-dups" id="bm-dups" role="status" hidden></div>
+				<div class="bm-aliases" id="bm-aliases" hidden></div>
 				<div class="bm-words" id="bm-words"></div>
 				<button type="button" class="link-btn bm-add" id="bm-add" hidden>Add a word</button>
 			</section>

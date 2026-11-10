@@ -1553,4 +1553,13 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #dialog-options .bm-remove { padding: 0 6px; background: none; border: 0; color: var(--muted-foreground); font-size: 16px; line-height: 1; cursor: pointer; }
 #dialog-options .bm-remove:hover { color: var(--foreground); }
 #dialog-options .bm-add { justify-self: start; align-self: flex-start; margin-top: 2px; }
+/* A word given two meanings: both rows marked, and a line saying which. */
+#dialog-options .bm-row.is-dup .bm-word, #dialog-options .bm-row.is-dup .bm-meaning { border-color: var(--destructive); }
+#dialog-options .bm-dups p { margin: 0; color: var(--destructive); font-size: var(--fs-sm); line-height: 1.45; }
+/* Aliases: several words for one meaning. Marked in the accent, not as a fault. */
+#dialog-options .bm-row.is-alias .bm-word { border-color: var(--primary); }
+#dialog-options .bm-aliases { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-size: var(--fs-sm); color: var(--muted-foreground); }
+#dialog-options .bm-aliases-label { margin-right: 2px; }
+#dialog-options .bm-alias { display: inline-flex; align-items: baseline; gap: 6px; padding: 2px 8px; border: 1px solid var(--primary); border-radius: 3px; }
+#dialog-options .bm-alias b { font-family: var(--font-mono); font-weight: 600; color: var(--foreground); }
 @media (max-width: 767px) { #dialog-options .bm-words.is-own { grid-template-columns: 1fr; } }

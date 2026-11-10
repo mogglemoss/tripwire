@@ -50,6 +50,44 @@ tripwire.settingsBookmarks = (function() {
 		}).get());
 	}
 
+	// A word can mean one thing. Two rows giving it two meanings are both
+	// marked, with a line saying which. "???" may be both an unscanned
+	// signature and an unknown system: where it sits tells them apart.
+	var EITHER = ["unknownSignature", "unknownSystem"];
+	function checkDups() {
+		var seen = {}, lines = [];
+		var $rows = $("#bm-words .bm-row").removeClass("is-dup");
+		$rows.each(function() {
+			var w = B.list($(this).find(".bm-word").val())[0];
+			if (!w) { return; }
+			(seen[w] = seen[w] || []).push({row: this, meaning: $(this).find(".bm-meaning").val()});
+		});
+		Object.keys(seen).forEach(function(w) {
+			var meanings = seen[w].map(function(r) { return r.meaning; }).filter(function(m, i, all) { return all.indexOf(m) === i; });
+			if (meanings.length < 2) { return; }
+			if (meanings.every(function(m) { return EITHER.indexOf(m) >= 0; })) { return; }
+			seen[w].forEach(function(r) { $(r.row).addClass("is-dup"); });
+			lines.push(w + " is listed as " + meanings.map(B.meaningLabel).join(" and ") + ". A word can mean only one thing.");
+		});
+		$("#bm-dups").prop("hidden", !lines.length).empty().append(lines.map(function(l) { return $("<p>").text(l); }));
+
+		// Aliases: several words for one meaning, which is fine. Marked, and
+		// listed together so it is plain they read the same.
+		var byMeaning = {}, order = [];
+		$rows.removeClass("is-alias").each(function() {
+			var w = B.list($(this).find(".bm-word").val())[0], m = $(this).find(".bm-meaning").val();
+			if (!w || $(this).hasClass("is-dup")) { return; }
+			if (!byMeaning[m]) { byMeaning[m] = {words: [], rows: []}; order.push(m); }
+			if (byMeaning[m].words.indexOf(w) < 0) { byMeaning[m].words.push(w); }
+			byMeaning[m].rows.push(this);
+		});
+		var aliases = order.filter(function(m) { return byMeaning[m].words.length > 1; });
+		aliases.forEach(function(m) { $(byMeaning[m].rows).addClass("is-alias"); });
+		$("#bm-aliases").prop("hidden", !aliases.length).empty().append(aliases.length ? [$("<span class='bm-aliases-label'>").text("Aliases")].concat(aliases.map(function(m) {
+			return $("<span class='bm-alias'>").append($("<b>").text(byMeaning[m].words.join(" = ")), document.createTextNode(B.meaningLabel(m)));
+		})) : []);
+	}
+
 	// The convention the pane stands for right now.
 	function current() { return own() ? B.merge(B.DEFAULT, read()) : server(); }
 
@@ -64,6 +102,7 @@ tripwire.settingsBookmarks = (function() {
 		var srv = server();
 		$("#bm-source").text(window.TW_BOOKMARK_CONVENTION ? "this server uses " + (srv.name || "its own") : "this server uses Tripwire's own");
 		if (own()) { showRows(mine().convention ? B.merge(B.DEFAULT, mine().convention) : srv); } else { showChips(srv); }
+		checkDups();
 		tryIt();
 	}
 
@@ -85,7 +124,8 @@ tripwire.settingsBookmarks = (function() {
 			$("#bm-words").append($r);
 			$r.find(".bm-word").trigger("focus");
 		});
-		$pane().on("click", ".bm-remove", function() { $(this).closest(".bm-row").remove(); tryIt(); });
+		$pane().on("click", ".bm-remove", function() { $(this).closest(".bm-row").remove(); checkDups(); tryIt(); });
+		$pane().on("input change", ".bm-word, .bm-meaning", checkDups);
 		$pane().on("input change", ".bm-word, .bm-meaning, #bm-try", tryIt);
 	});
 

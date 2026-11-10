@@ -178,6 +178,18 @@ test.describe("Settings > Bookmarks", () => {
 		await expect(added.locator(".bm-word")).toBeFocused();
 		await added.locator(".bm-word").fill("squid");
 		await added.locator(".bm-meaning").selectOption("factions.Caldari");
+		// Aliases, several words for one meaning, are marked and listed together.
+		await expect(page.locator("#bm-aliases .bm-alias", { hasText: "End of life" }).locator("b")).toHaveText("<4H = DOOM");
+		await expect(pane.locator(".bm-row.is-alias")).toHaveCount(2);   // <4H and DOOM; CRIT was removed above
+		// A word given a second meaning is flagged on both rows, and clears when fixed.
+		const c2 = pane.locator(".bm-row").nth(words.indexOf("C2"));
+		await added.locator(".bm-word").fill("C2");
+		await expect(pane.locator(".bm-row.is-dup")).toHaveCount(2);
+		await expect(page.locator("#bm-dups")).toHaveText("C2 is listed as Class 2 and Caldari. A word can mean only one thing.");
+		await expect(c2).toHaveClass(/is-dup/);
+		await added.locator(".bm-word").fill("squid");
+		await expect(pane.locator(".bm-row.is-dup")).toHaveCount(0);
+		await expect(page.locator("#bm-dups")).toBeHidden();
 		await page.fill("#bm-try", "C2 ABC DOOM");
 		await expect(page.locator("#bm-result")).toContainText("end of life");
 		await page.locator(".ui-dialog:visible").getByRole("button", { name: "Save", exact: true }).click();
