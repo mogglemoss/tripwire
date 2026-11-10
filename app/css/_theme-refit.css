@@ -1460,11 +1460,29 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #topbar .hdr-tools .voicebtn.active .voice-mute { display: none; }
 #topbar .hdr-tools .voicebtn.is-waiting { border-style: dashed; }
 #dialog-options .settings-pane .field[hidden] { display: none; }
-#dialog-options .voice-parts { display: flex; flex-direction: column; gap: 6px; }
-#dialog-options .voice-parts label { display: flex; align-items: baseline; gap: 6px; color: var(--foreground); cursor: pointer; }
-#dialog-options .voice-parts small { color: var(--muted-foreground); }
-#dialog-options .voice-status { min-height: 1.3em; margin: 6px 0 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
-#dialog-options #voice-eleven-key { min-width: 220px; font-family: var(--font-mono); }
+#dialog-options .voice-parts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 16px; }
+#dialog-options .voice-parts label { display: flex; align-items: center; gap: 6px; color: var(--foreground); cursor: pointer; }
+#dialog-options #voice-detail-example { display: block; margin-top: 3px; font-style: italic; max-width: 26ch; }
+#dialog-options .voice-try { align-items: center; }
+#dialog-options .voice-status { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+#dialog-options #voice-preview { justify-self: end; min-width: 84px; }
+#dialog-options #voice-eleven-key { min-width: 190px; font-family: var(--font-mono); }
+#dialog-options .link-btn { background: none; border: 0; padding: 0 2px; color: var(--primary); cursor: pointer; font: inherit; font-size: var(--fs-sm); }
+#dialog-options .link-btn:hover { text-decoration: underline; }
+/* Settings is one height on every tab, fitted to the window; the tab's
+   content scrolls between a pinned tab strip and the buttons. It used to
+   take the first tab's height and grow off the bottom on taller tabs. */
+.ui-dialog.settings-dialog { display: flex; flex-direction: column; height: min(760px, calc(100vh - 32px)) !important; height: min(760px, calc(100dvh - 32px)) !important; }
+.ui-dialog.settings-dialog > .ui-dialog-titlebar, .ui-dialog.settings-dialog > .ui-dialog-buttonpane { flex: 0 0 auto; }
+.ui-dialog.settings-dialog > #dialog-options { flex: 1 1 auto; height: auto !important; min-height: 0 !important; max-height: none !important; overflow-y: auto; }
+/* Pinned over the dialog's 12px top padding too, so nothing scrolls into view above it. */
+#optionsAccordion .settings-tabs { position: sticky; top: -12px; margin-top: -12px; padding-top: 12px; z-index: 3; background: var(--popover); }
+/* Segmented choices: one frame, flat options, the chosen one filled. The
+   generic radio-label styling gave every option its own rounded border. */
+#dialog-options .segmented { gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--input); }
+#dialog-options .segmented label { display: inline-flex !important; align-items: center; line-height: 1; margin: 0; padding: 2px 10px; min-height: 24px; border: 0 !important; border-radius: var(--radius-sm) !important; box-shadow: none !important; background: transparent !important; color: var(--muted-foreground) !important; font-size: var(--fs-sm); white-space: nowrap; }
+#dialog-options .segmented label:hover { color: var(--foreground) !important; }
+#dialog-options .segmented input:checked + label { background: var(--primary) !important; color: var(--primary-foreground) !important; }
 #dialog-options [data-pane=voice] [hidden] { display: none !important; }
 /* The squelch's volume, beside it while the voice is on; phones have no room. */
 #topbar .hdr-tools .voice-volume { width: 72px; margin: 0 10px 0 2px; accent-color: var(--primary); cursor: pointer; vertical-align: middle; }
@@ -1489,3 +1507,7 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 	.panel-title .panel-title-full { display: none; }
 	.panel-title .panel-title-short { display: inline; }
 }
+/* Six tabs do not fit a phone: the strip scrolls sideways, without a bar. */
+#optionsAccordion .settings-tabs { overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
+#optionsAccordion .settings-tabs::-webkit-scrollbar { display: none; }
+#optionsAccordion .settings-tabs [role="tab"] { flex: 0 0 auto; }

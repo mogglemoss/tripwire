@@ -77,7 +77,7 @@ test.describe("voice announcements", () => {
 		await onSwitch.click();
 		await expect(page.locator("#voice-enabled")).toBeChecked();
 		await page.locator("[data-voice-part=who]").uncheck();
-		await page.selectOption("#voice-engine", "elevenlabs");
+		await page.click("label[for=voice-engine-eleven]");
 		await expect(page.locator("#voice-eleven-key")).toBeVisible();
 		await expect(page.locator("#voice-choice")).toBeHidden();
 		await page.fill("#voice-eleven-key", "sk_test_e2e_key");

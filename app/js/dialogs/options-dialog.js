@@ -1,3 +1,11 @@
+// The height itself is CSS (.settings-dialog); this centres the dialog for it.
+function fitOptionsDialog() {
+	var $d = $("#dialog-options");
+	if (!$d.hasClass("ui-dialog-content") || !$d.dialog("isOpen")) { return; }
+	$d.closest(".ui-dialog").addClass("settings-dialog");
+	$d.dialog("option", "position", {my: "center", at: "center", of: window});
+}
+
 $(".options").click(function(e) {
 	e.preventDefault();
 
@@ -76,6 +84,11 @@ $(".options").click(function(e) {
 			}
 		},
 		open: function() {
+			// One height for every tab, fitted to the window and centred; the
+			// tab's content scrolls under a pinned tab strip. It used to centre on
+			// the first tab's height and grow off the bottom on taller tabs.
+			fitOptionsDialog();
+			$(window).off("resize.optionsFit").on("resize.optionsFit", fitOptionsDialog);
 			// Get user stats data
 			$.ajax({
 				url: "user_stats.php",
@@ -127,6 +140,7 @@ $(".options").click(function(e) {
 				var tab = $(this).attr("data-tab");
 				$("#optionsAccordion [role=tab]").attr("aria-selected", "false");
 				$(this).attr("aria-selected", "true");
+				if (this.scrollIntoView) { this.scrollIntoView({block: "nearest", inline: "nearest"}); }   // a phone's strip scrolls
 				$("#optionsAccordion .settings-pane").each(function() {
 					this.hidden = $(this).attr("data-pane") !== tab;
 				});

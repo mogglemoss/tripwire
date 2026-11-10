@@ -798,49 +798,50 @@ $system = $_REQUEST['system'] ?? '';
 				<div class="field"><label class="field-label" for="voice-enabled">Announce jumps <small>when your tracked pilot jumps into wormhole space</small></label>
 					<label class="switch"><input type="checkbox" id="voice-enabled" /><span class="switch-track"></span></label>
 				</div>
-				<div class="field"><label class="field-label" for="voice-trigger">Which systems</label>
-					<select id="voice-trigger">
-						<option value="new">New to the map</option>
-						<option value="all">Every wormhole system</option>
-					</select>
+				<div class="field"><span class="field-label">Systems</span>
+					<span class="segmented" role="radiogroup" aria-label="Which systems">
+						<input type="radio" name="voice-trigger" id="voice-trigger-new" value="new" /><label for="voice-trigger-new">New to the map</label>
+						<input type="radio" name="voice-trigger" id="voice-trigger-all" value="all" /><label for="voice-trigger-all">Every one</label>
+					</span>
 				</div>
-				<div class="field"><label class="field-label" for="voice-detail">Detail <small>Brief: "Statics high-sec, class 3. 2 kills, latest 20 minutes ago."</small></label>
-					<select id="voice-detail">
-						<option value="brief">Brief</option>
-						<option value="full">Full</option>
-					</select>
+				<div class="field"><span class="field-label">Detail <small id="voice-detail-example"></small></span>
+					<span class="segmented" role="radiogroup" aria-label="Detail">
+						<input type="radio" name="voice-detail" id="voice-detail-brief" value="brief" /><label for="voice-detail-brief">Brief</label>
+						<input type="radio" name="voice-detail" id="voice-detail-full" value="full" /><label for="voice-detail-full">Full</label>
+					</span>
 				</div>
 				<div class="field field-block"><span class="field-label">Say</span>
-					<div class="field-value voice-parts">
+					<div class="voice-parts">
 						<label><input type="checkbox" data-voice-part="arrival" /> Class and effect</label>
+						<label><input type="checkbox" data-voice-part="kills" /> Recent kills</label>
 						<label><input type="checkbox" data-voice-part="digits" /> Last three digits</label>
+						<label><input type="checkbox" data-voice-part="who" /> Who is killing</label>
 						<label><input type="checkbox" data-voice-part="statics" /> Statics</label>
-						<label><input type="checkbox" data-voice-part="kills" /> Recent kills <small>zKillboard, last 8 hours</small></label>
-						<label><input type="checkbox" data-voice-part="who" /> Who has been killing</label>
-						<label><input type="checkbox" data-voice-part="hubs" /> Thera and Turnur connections <small>EVE-Scout</small></label>
-						<label><input type="checkbox" data-voice-part="live" /> Kills in your system as they happen</label>
+						<label><input type="checkbox" data-voice-part="live" /> Kills as they happen</label>
+						<label><input type="checkbox" data-voice-part="hubs" /> Thera and Turnur</label>
 					</div>
 				</div>
+
 				<h4 class="field-group">Voice</h4>
-				<div class="field"><label class="field-label" for="voice-engine">Engine</label>
-					<select id="voice-engine">
-						<option value="browser">This browser's voice</option>
-						<option value="elevenlabs">ElevenLabs, with your key</option>
-					</select>
+				<div class="field"><span class="field-label">Engine</span>
+					<span class="segmented" role="radiogroup" aria-label="Engine">
+						<input type="radio" name="voice-engine" id="voice-engine-browser" value="browser" /><label for="voice-engine-browser">This browser</label>
+						<input type="radio" name="voice-engine" id="voice-engine-eleven" value="elevenlabs" /><label for="voice-engine-eleven">ElevenLabs</label>
+					</span>
 				</div>
-				<div class="field voice-browser-only"><label class="field-label" for="voice-choice">Browser voice</label>
+				<div class="field voice-browser-only"><label class="field-label" for="voice-choice">Voice</label>
 					<select id="voice-choice"></select>
 				</div>
-				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-key">ElevenLabs key <small>kept in this browser only and sent to ElevenLabs only</small></label>
-					<span class="field-inline"><input type="password" id="voice-eleven-key" autocomplete="off" spellcheck="false" /><input type="button" id="voice-eleven-forget" value="Forget key" /></span>
+				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-key">Your key <small id="voice-eleven-key-note">kept in this browser, sent only to ElevenLabs</small></label>
+					<span class="field-inline"><input type="password" id="voice-eleven-key" autocomplete="off" spellcheck="false" /><button type="button" id="voice-eleven-forget" class="link-btn" hidden>Forget</button></span>
 				</div>
-				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-voice">ElevenLabs voice</label>
-					<span class="field-inline"><select id="voice-eleven-voice"></select><input type="button" id="voice-eleven-load" value="Load my voices" /></span>
+				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-voice">Voice</label>
+					<select id="voice-eleven-voice"></select>
 				</div>
 				<div class="field voice-eleven-only"><label class="field-label" for="voice-eleven-model">Model</label>
 					<select id="voice-eleven-model">
-						<option value="eleven_flash_v2_5">Flash v2.5, fast</option>
-						<option value="eleven_multilingual_v2">Multilingual v2</option>
+						<option value="eleven_flash_v2_5">Flash, fast</option>
+						<option value="eleven_multilingual_v2">Multilingual</option>
 					</select>
 				</div>
 				<div class="field"><span class="field-label">Speed</span>
@@ -849,10 +850,8 @@ $system = $_REQUEST['system'] ?? '';
 				<div class="field"><span class="field-label">Volume</span>
 					<span class="slider-wrap"><div id="voice-volume-slider" class="spacing-slider"></div><label for="voice-volume-slider" class="slider-value"></label></span>
 				</div>
-				<p class="voice-status" id="voice-status" role="status"></p>
-				<div class="field-actions">
-					<input type="button" id="voice-preview" class="is-primary" value="Preview" />
-					<input type="button" id="voice-stop" value="Stop" />
+				<div class="field voice-try"><p class="voice-status" id="voice-status" role="status"></p>
+					<input type="button" id="voice-preview" value="Preview" />
 				</div>
 			</section>
 
