@@ -120,7 +120,7 @@ test.describe("voice announcements", () => {
 		await page.route(/cached_third_party\.php\?key=eve-scout-signatures/, route => route.fulfill({
 			contentType: "application/json", body: JSON.stringify([{ in_system_id: target.id, out_system_name: "Thera", in_signature: "ABC-123", remaining_hours: 9 }])
 		}));
-		await page.evaluate(() => { options.voice = Object.assign(JSON.parse(JSON.stringify(options.reset.defaults.voice)), { enabled: true, trigger: "new" }); });
+		await page.evaluate(() => { options.voice = Object.assign(JSON.parse(JSON.stringify(options.reset.defaults.voice)), { enabled: true, trigger: "new", detail: "full" }); });
 
 		await jump(page, target.id, target.name);
 		await expect.poll(() => page.evaluate(() => window.__spoken.length), { timeout: 15000 }).toBeGreaterThanOrEqual(3);
@@ -130,6 +130,12 @@ test.describe("voice announcements", () => {
 		// Always in this order, whichever source answers first.
 		expect(spoken[1]).toBe("2 kills in the last 8 hours, latest a Stratios, 20 minutes ago. Mostly Test Corp, 2 pilots.");
 		expect(spoken[2]).toBe("Thera connection here, signature A B C, 9 hours left.");
+
+		// The brief form, the default: what you need, then quiet.
+		const brief = await page.evaluate(async (id) => { window.__spoken = []; options.voice.detail = "brief"; await tripwire.jumpVoice.announce(id); return window.__spoken; }, target.id);
+		expect(brief[0]).toMatch(new RegExp("^Class 2\\. " + digits + "\\. Statics [a-z0-9 -]+, [a-z0-9 -]+\\.$"));
+		expect(brief[1]).toBe("2 kills, latest 20 minutes ago. Mostly Test Corp.");
+		expect(brief[2]).toBe("Thera here, signature A B C.");
 	});
 
 	test("a system already on the map is not announced, unless every system is asked for", async ({ page }) => {
@@ -155,7 +161,7 @@ test.describe("voice announcements", () => {
 			const fresh = { killmail_id: 51, killmail_time: new Date().toISOString(), victim: { ship_type_id: 17715 }, zkb: { totalValue: 251400000 } };
 			route.fulfill({ headers: CORS, contentType: "application/json", body: JSON.stringify(calls === 1 ? [old] : [fresh, old]) });
 		});
-		await page.evaluate((id) => { options.voice.enabled = true; tripwire.jumpVoice.watch(id); }, target.id);
+		await page.evaluate((id) => { options.voice.enabled = true; options.voice.detail = "full"; tripwire.jumpVoice.watch(id); }, target.id);
 		await expect.poll(() => page.evaluate(() => tripwire.jumpVoice._live().seen)).toBe(1);   // the first look only learns
 		expect(await page.evaluate(() => window.__spoken)).toEqual([]);
 		await page.evaluate(() => tripwire.jumpVoice._pollLive());

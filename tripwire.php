@@ -804,6 +804,12 @@ $system = $_REQUEST['system'] ?? '';
 						<option value="all">Every wormhole system</option>
 					</select>
 				</div>
+				<div class="field"><label class="field-label" for="voice-detail">Detail <small>Brief: "Statics high-sec, class 3. 2 kills, latest 20 minutes ago."</small></label>
+					<select id="voice-detail">
+						<option value="brief">Brief</option>
+						<option value="full">Full</option>
+					</select>
+				</div>
 				<div class="field field-block"><span class="field-label">Say</span>
 					<div class="field-value voice-parts">
 						<label><input type="checkbox" data-voice-part="arrival" /> Class and effect</label>

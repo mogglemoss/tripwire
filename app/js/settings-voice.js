@@ -49,6 +49,7 @@ tripwire.settingsVoice = (function() {
 		return {
 			enabled: $("#voice-enabled").prop("checked"),
 			trigger: $("#voice-trigger").val() === "all" ? "all" : "new",
+			detail: $("#voice-detail").val() === "full" ? "full" : "brief",
 			parts: parts,
 			voiceKey: $("#voice-choice").val() || "",
 			rate: $("#voice-rate-slider").slider("value"),
@@ -67,6 +68,7 @@ tripwire.settingsVoice = (function() {
 		var v = options.voice || {}, st = tripwire.speech.studio();
 		$("#voice-enabled").prop("checked", v.enabled === true);
 		$("#voice-trigger").val(v.trigger === "all" ? "all" : "new");
+		$("#voice-detail").val(v.detail === "full" ? "full" : "brief");
 		$pane().find("[data-voice-part]").each(function() { this.checked = !v.parts || v.parts[$(this).attr("data-voice-part")] !== false; });
 		$("#voice-rate-slider").slider("value", v.rate || 1.1);
 		$("#voice-volume-slider").slider("value", v.volume == null ? 0.8 : v.volume);
@@ -94,13 +96,15 @@ tripwire.settingsVoice = (function() {
 
 	// A C2 with B274 and D382: what a jump sounds like with these settings.
 	var SAMPLE = {name: "J123007", class: 2, statics: ["B274", "D382"]};
+	var SAMPLE_KILLS = function(now) { return [0, 1, 2, 3].map(function(i) { return {killmail_time: new Date(now - (20 + i * 50) * 60000).toISOString(), victim: {ship_type_id: 0}}; }); };
 	function preview() {
 		var s = read(), T = tripwire.voiceText, lines = [];
 		if (s.parts.arrival) { lines.push(T.arrival(SAMPLE)); }
 		if (s.parts.digits) { lines.push(T.digits(SAMPLE)); }
-		if (s.parts.statics) { lines.push(T.statics(SAMPLE, appData.wormholes)); }
-		if (s.parts.kills) { lines.push("4 kills in the last 8 hours, latest a Stratios, 20 minutes ago."); }
-		if (s.parts.who) { lines.push("Mostly Hard Knocks Citizens, 3 pilots."); }
+		var brief = s.detail !== "full", now = Date.now();
+		if (s.parts.statics) { lines.push(T.statics(SAMPLE, appData.wormholes, brief)); }
+		if (s.parts.kills) { lines.push(T.kills(SAMPLE_KILLS(now), 8, now, function() { return "Stratios"; }, brief)); }
+		if (s.parts.who) { lines.push(T.who({pilots: 3}, "Hard Knocks Citizens", brief)); }
 		if (!lines.length) { return setStatus("Tick something to say."); }
 		tripwire.speech.saveStudio(studioFromForm());
 		keyPlaceholder(tripwire.speech.studio());

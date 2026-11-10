@@ -63,6 +63,17 @@ describe('Voice: what is said on a jump', function() {
 		assert.equal(T.liveKill({ victim: { ship_type_id: 17715 }, zkb: { totalValue: 251400000 } }, hull), 'Kill in system: a Gila, 251 million.');
 		assert.equal(T.liveKill({ victim: { ship_type_id: 1 }, zkb: { totalValue: 1240000000 } }, hull), 'Kill in system: a ship, 1.2 billion.');
 	});
+	it('has a brief form of every line: what you need, then quiet', function() {
+		const now = Date.parse('2026-11-10T12:00:00Z');
+		const list = [{ killmail_time: '2026-11-10T11:40:00Z', victim: { ship_type_id: 33470 } }, { killmail_time: '2026-11-10T09:00:00Z', victim: {} }];
+		assert.equal(T.statics({ statics: ['B274', 'D382'] }, TYPES, true), 'Statics high-sec, class 2.');
+		assert.equal(T.statics({ statics: ['U210'] }, TYPES, true), 'Static low-sec.');
+		assert.equal(T.kills(list, 8, now, hull, true), '2 kills, latest 20 minutes ago.');
+		assert.equal(T.kills([], 8, now, hull, true), 'No kills.');
+		assert.equal(T.who({ pilots: 3 }, 'Hard Knocks Citizens', true), 'Mostly Hard Knocks Citizens.');
+		assert.equal(T.hubLinks([{ in_system_id: 5, out_system_name: 'Turnur', in_signature: 'ABC-123', remaining_hours: 9 }], 5, true), 'Turnur here, signature A B C.');
+		assert.equal(T.liveKill({ victim: { ship_type_id: 17715 }, zkb: { totalValue: 251400000 } }, hull, true), 'Kill: a Gila.');
+	});
 	it('knows which systems are already on the map', function() {
 		const sigs = { 1: { systemID: 31000001 }, 2: { systemID: 31000002 } };
 		const holes = { 9: { initialID: 1, secondaryID: 2 } };

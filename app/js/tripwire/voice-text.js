@@ -5,7 +5,7 @@
 // kills, who has been killing, Thera and Turnur connections, live kills.
 // The jump announcement itself is Squizz's (squizzlabs/tripwire a82ca010).
 // Codes are spelled out ("B 2 7 4") so a browser voice reads a designation,
-// not a number.
+// not a number. Each line has a brief form: what you need, then quiet.
 tripwire.voiceText = (function() {
 	"use strict";
 
@@ -49,14 +49,15 @@ tripwire.voiceText = (function() {
 		return m ? spaced(m[1]) + "." : null;
 	}
 
-	function statics(system, wormholeTypes) {
+	// brief: where they go, without the codes.
+	function statics(system, wormholeTypes, brief) {
 		var list = (system && system.statics) || [];
 		if (!list.length) { return null; }
 		var parts = list.map(function(code) {
-			var hole = wormholeTypes && wormholeTypes[code];
-			return spaced(code) + " to " + destination(hole && hole.leadsTo);
+			var hole = wormholeTypes && wormholeTypes[code], where = destination(hole && hole.leadsTo);
+			return brief ? where : spaced(code) + " to " + where;
 		});
-		return (list.length === 1 ? "Static: " : "Statics: ") + parts.join(", ") + ".";
+		return (list.length === 1 ? "Static" : "Statics") + (brief ? " " : ": ") + parts.join(", ") + ".";
 	}
 
 	function ago(ms) {
@@ -78,12 +79,15 @@ tripwire.voiceText = (function() {
 	}
 
 	// zKillboard's kills for the window. hullName(typeID) names a ship.
-	function kills(list, hours, now, hullName) {
+	// brief: the count and how recent, no window or hull.
+	function kills(list, hours, now, hullName, brief) {
 		if (!Array.isArray(list)) { return null; }
 		var span = "in the last " + plural(hours, "hour", "hours");
-		if (!list.length) { return "No kills " + span + "."; }
-		var last = newest(list), ship = last.victim && hullName(last.victim.ship_type_id);
-		var latest = ship ? ", latest " + withArticle(ship) + ", " + ago(now - Date.parse(last.killmail_time)) : "";
+		if (!list.length) { return brief ? "No kills." : "No kills " + span + "."; }
+		var last = newest(list), when = ago(now - Date.parse(last.killmail_time));
+		if (brief) { return plural(list.length, "kill", "kills") + ", latest " + when + "."; }
+		var ship = last.victim && hullName(last.victim.ship_type_id);
+		var latest = ship ? ", latest " + withArticle(ship) + ", " + when : "";
 		return plural(list.length, "kill", "kills") + " " + span + latest + ".";
 	}
 
@@ -108,28 +112,28 @@ tripwire.voiceText = (function() {
 		return {corporationID: Number(top), kills: corpKills[top], pilots: pilotCount};
 	}
 
-	function who(counts, corpName) {
+	function who(counts, corpName, brief) {
 		if (!counts || !corpName) { return null; }
-		return "Mostly " + corpName + ", " + plural(counts.pilots, "pilot", "pilots") + ".";
+		return "Mostly " + corpName + (brief ? "" : ", " + plural(counts.pilots, "pilot", "pilots")) + ".";
 	}
 
 	// EVE-Scout's public connections (the server's cached copy). A link's
 	// out side is Thera or Turnur; its in side is the system it reaches.
-	function hubLinks(links, systemID) {
+	function hubLinks(links, systemID, brief) {
 		return (links || []).filter(function(l) {
 			return Number(l.in_system_id) === Number(systemID) && HUBS[l.out_system_name];
 		}).map(function(l) {
-			var line = l.out_system_name + " connection here";
+			var line = l.out_system_name + (brief ? " here" : " connection here");
 			if (l.in_signature) { line += ", signature " + spaced(String(l.in_signature).replace(/-.*$/, "")); }
-			if (l.remaining_hours != null) { line += ", " + plural(Math.max(1, Math.round(l.remaining_hours)), "hour", "hours") + " left"; }
+			if (!brief && l.remaining_hours != null) { line += ", " + plural(Math.max(1, Math.round(l.remaining_hours)), "hour", "hours") + " left"; }
 			return line + ".";
 		}).join(" ") || null;
 	}
 
-	function liveKill(kill, hullName) {
+	function liveKill(kill, hullName, brief) {
 		var ship = kill && kill.victim && hullName(kill.victim.ship_type_id);
 		var value = iskWords(kill && kill.zkb && kill.zkb.totalValue);
-		return "Kill in system: " + (ship ? withArticle(ship) : "a ship") + (value ? ", " + value : "") + ".";
+		return (brief ? "Kill: " : "Kill in system: ") + (ship ? withArticle(ship) : "a ship") + (value && !brief ? ", " + value : "") + ".";
 	}
 
 	// Systems on the current map: either end of any wormhole the client holds.

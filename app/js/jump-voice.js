@@ -17,6 +17,7 @@ tripwire.jumpVoice = (function() {
 	var corpNames = {}, live = {systemID: null, seen: null, timer: null};
 
 	function settings() { return (typeof options !== "undefined" && options.voice) || {}; }
+	function brief(s) { return (s || settings()).detail !== "full"; }
 	function part(name, s) { s = s || settings(); return !s.parts || s.parts[name] !== false; }
 	function speakOpts(s) { s = s || settings(); return {voiceKey: s.voiceKey, rate: s.rate, volume: s.volume}; }
 	function say(text, s) { return text ? tripwire.speech.say(text, speakOpts(s)) : Promise.resolve(); }
@@ -57,24 +58,25 @@ tripwire.jumpVoice = (function() {
 		var first = [];
 		if (part("arrival", s)) { first.push(T.arrival(system)); }
 		if (part("digits", s)) { first.push(T.digits(system)); }
-		if (part("statics", s)) { first.push(T.statics(system, appData.wormholes)); }
+		if (part("statics", s)) { first.push(T.statics(system, appData.wormholes, brief(s))); }
 		var spoken = say(first.filter(Boolean).join(" "), s);
 
 		// Both lookups start now; their lines are spoken in a fixed order,
 		// kills before connections, whichever answers first.
 		var killsLine = (part("kills", s) || part("who", s)) ? within(tripwire.killStream.kills(systemID), FETCH_WAIT).then(function(list) {
 			if (!list) { return null; }
-			var lines = [part("kills", s) ? T.kills(list, KILL_HOURS, now, hullName) : null];
+			var lines = [part("kills", s) ? T.kills(list, KILL_HOURS, now, hullName, brief(s)) : null];
 			var counts = part("who", s) ? T.whoCounts(list) : null;
 			return (counts ? within(corpName(counts.corporationID), FETCH_WAIT) : Promise.resolve(null)).then(function(name) {
-				lines.push(T.who(counts, name));
+				lines.push(T.who(counts, name, brief(s)));
 				return lines.filter(Boolean).join(" ");
 			});
 		}) : Promise.resolve(null);
-		var hubsLine = part("hubs", s) ? within(hubLinks(), FETCH_WAIT).then(function(links) { return T.hubLinks(links, systemID); }) : Promise.resolve(null);
+		var hubsLine = part("hubs", s) ? within(hubLinks(), FETCH_WAIT).then(function(links) { return T.hubLinks(links, systemID, brief(s)); }) : Promise.resolve(null);
 
-		return killsLine.then(function(text) { if (text) { say(text, s); } return hubsLine; })
-			.then(function(text) { if (text) { say(text, s); } return spoken; });
+		// Resolves once the last line has been spoken.
+		return killsLine.then(function(text) { return (text ? say(text, s) : spoken).then(function() { return hubsLine; }); })
+			.then(function(text) { return text ? say(text, s) : spoken; });
 	}
 
 	// ── live kills in the current system ────────────────────────────────
@@ -93,7 +95,7 @@ tripwire.jumpVoice = (function() {
 				}
 				list.filter(function(k) { return !live.seen[k.killmail_id]; }).forEach(function(k) {
 					live.seen[k.killmail_id] = true;
-					say(T.liveKill(k, hullName), s);
+					say(T.liveKill(k, hullName, brief(s)), s);
 				});
 			})
 			.catch(function(e) { console.warn("Voice: live kills check failed", e); })
