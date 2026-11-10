@@ -177,7 +177,13 @@ test.describe("Settings > Bookmarks", () => {
 		const added = pane.locator(".bm-row").last();
 		await expect(added.locator(".bm-word")).toBeFocused();
 		await added.locator(".bm-word").fill("squid");
-		await added.locator(".bm-meaning").selectOption("factions.Caldari");
+		// The meaning picker lists each meaning with its words; aliases are marked.
+		await added.locator(".bm-meaning-button").click();
+		const menu = page.locator(".bm-menu.ui-selectmenu-open");
+		await expect(menu).toBeVisible();
+		await expect(menu.locator("li.bm-menu-alias", { hasText: "End of life" }).locator(".bm-menu-words")).toHaveText("<4H = DOOM");
+		await menu.locator("li", { hasText: /^Caldari/ }).click();
+		await expect(added.locator(".bm-meaning")).toHaveValue("factions.Caldari");
 		// Aliases, several words for one meaning, are marked and listed together.
 		await expect(page.locator("#bm-aliases .bm-alias", { hasText: "End of life" }).locator("b")).toHaveText("<4H = DOOM");
 		await expect(pane.locator(".bm-row.is-alias")).toHaveCount(2);   // <4H and DOOM; CRIT was removed above

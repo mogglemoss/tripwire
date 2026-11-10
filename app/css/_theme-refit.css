@@ -1554,7 +1554,7 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #dialog-options .bm-remove:hover { color: var(--foreground); }
 #dialog-options .bm-add { justify-self: start; align-self: flex-start; margin-top: 2px; }
 /* A word given two meanings: both rows marked, and a line saying which. */
-#dialog-options .bm-row.is-dup .bm-word, #dialog-options .bm-row.is-dup .bm-meaning { border-color: var(--destructive); }
+#dialog-options .bm-row.is-dup .bm-word, #dialog-options .bm-row.is-dup .bm-meaning-button { border-color: var(--destructive); }
 #dialog-options .bm-dups p { margin: 0; color: var(--destructive); font-size: var(--fs-sm); line-height: 1.45; }
 /* Aliases: several words for one meaning. Marked in the accent, not as a fault. */
 #dialog-options .bm-row.is-alias .bm-word { border-color: var(--primary); }
@@ -1562,4 +1562,18 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #dialog-options .bm-aliases-label { margin-right: 2px; }
 #dialog-options .bm-alias { display: inline-flex; align-items: baseline; gap: 6px; padding: 2px 8px; border: 1px solid var(--primary); border-radius: 3px; }
 #dialog-options .bm-alias b { font-family: var(--font-mono); font-weight: 600; color: var(--foreground); }
+/* The meaning picker: a button like the inputs, and a menu that lists each
+   meaning with the words it already has; aliases in the accent. */
+#dialog-options .bm-row .bm-meaning-button { display: flex; align-items: center; width: 100%; min-width: 0; padding: 0 8px; background: var(--muted); border: 1px solid var(--input); border-radius: 3px; color: var(--foreground); font-size: var(--fs-sm); }
+#dialog-options .bm-row .bm-meaning-button .ui-selectmenu-text { flex: 1 1 auto; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#dialog-options .bm-row .bm-meaning-button .ui-selectmenu-icon { position: static; margin: 0 0 0 4px; }
+.bm-menu.ui-front { z-index: 1200; }
+.bm-menu .ui-menu { min-width: 19rem; max-height: 340px; overflow-y: auto; padding: 4px 0; background: var(--popover); border: 1px solid var(--border-strong, var(--border)); border-radius: 4px; box-shadow: 0 8px 24px rgba(0, 0, 0, .45); }
+.bm-menu .ui-menu .ui-selectmenu-optgroup { padding: 8px 10px 3px; border: 0; color: var(--muted-foreground); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.bm-menu .bm-menu-item { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 5px 10px; border: 1px solid transparent; color: var(--foreground); font-size: var(--fs-sm); }
+/* The theme's !important hover and active fills would hide which item is which. */
+.bm-menu .bm-menu-item.ui-state-active { margin: 0; border-color: transparent !important; background: var(--muted) !important; color: var(--foreground) !important; }
+.bm-menu .bm-menu-current .bm-menu-item { background: var(--muted) !important; box-shadow: inset 3px 0 0 var(--primary) !important; }
+.bm-menu .bm-menu-words { font-family: var(--font-mono); font-size: 12px; color: var(--muted-foreground); white-space: nowrap; }
+.bm-menu .bm-menu-alias .bm-menu-words { padding: 0 6px; border: 1px solid var(--primary); border-radius: 3px; color: var(--foreground); }
 @media (max-width: 767px) { #dialog-options .bm-words.is-own { grid-template-columns: 1fr; } }

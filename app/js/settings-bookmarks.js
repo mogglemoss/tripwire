@@ -10,6 +10,34 @@ tripwire.settingsBookmarks = (function() {
 	function own() { return $("#bm-own").prop("checked"); }
 	function mine() { return options.bookmarks || {}; }
 
+	// The meaning picker: an in-page menu (jQuery UI selectmenu) rather than
+	// the browser's own list, so each meaning can show the words it already
+	// has. Two or more words for one meaning are aliases, and say so.
+	var wordsByMeaning = {};
+	$.widget("tripwire.bmMeaning", $.ui.selectmenu, {
+		// Rebuilt on every opening, mouse or keyboard, so its words are current.
+		open: function(event) {
+			if (this.options.disabled) { return; }
+			this._refreshMenu();
+			this._super(event);
+			// Start at the current choice, not the top of the list.
+			var $active = this.menu.find(".ui-state-active").closest("li");
+			if ($active.length) { this.menu.scrollTop($active[0].offsetTop - (this.menu.innerHeight() - $active.outerHeight()) / 2); }
+		},
+		_renderItem: function(ul, item) {
+			var words = wordsByMeaning[item.value] || [];
+			var $wrap = $("<div class='bm-menu-item'>").append($("<span class='bm-menu-label'>").text(item.label));
+			if (words.length) { $wrap.append($("<span class='bm-menu-words'>").text(words.join(" = "))); }
+			return $("<li>").toggleClass("bm-menu-alias", words.length > 1).toggleClass("bm-menu-current", item.value === this.element.val()).append($wrap).appendTo(ul);
+		}
+	});
+	function picker($sel) {
+		// On the page, not in the dialog, which would clip it; under the
+		// button's right edge, flipped above when there is no room below.
+		return $sel.bmMeaning({width: false, appendTo: "body", position: {my: "right top", at: "right bottom", collision: "flip"}, classes: {"ui-selectmenu-menu": "bm-menu", "ui-selectmenu-button": "bm-meaning-button"},
+			change: function() { checkDups(); tryIt(); }});
+	}
+
 	var MEANING_OPTIONS = null;
 	function meaningSelect(value) {
 		if (!MEANING_OPTIONS) {
@@ -39,7 +67,7 @@ tripwire.settingsBookmarks = (function() {
 
 	function showRows(conv) {
 		var $w = $("#bm-words").addClass("is-own").empty();
-		B.toRows(conv).forEach(function(r) { $w.append(row(r)); });
+		B.toRows(conv).forEach(function(r) { var $r = row(r); $w.append($r); picker($r.find(".bm-meaning")); });
 		$("#bm-add").prop("hidden", false);
 	}
 
@@ -73,6 +101,11 @@ tripwire.settingsBookmarks = (function() {
 
 		// Aliases: several words for one meaning, which is fine. Marked, and
 		// listed together so it is plain they read the same.
+		wordsByMeaning = {};
+		$rows.each(function() {
+			var w = B.list($(this).find(".bm-word").val())[0], m = $(this).find(".bm-meaning").val();
+			if (w && (wordsByMeaning[m] = wordsByMeaning[m] || []).indexOf(w) < 0) { wordsByMeaning[m].push(w); }
+		});
 		var byMeaning = {}, order = [];
 		$rows.removeClass("is-alias").each(function() {
 			var w = B.list($(this).find(".bm-word").val())[0], m = $(this).find(".bm-meaning").val();
@@ -122,6 +155,7 @@ tripwire.settingsBookmarks = (function() {
 		$("#bm-add").on("click", function() {
 			var $r = row({word: "", meaning: "destinations.High-Sec"});
 			$("#bm-words").append($r);
+			picker($r.find(".bm-meaning"));
 			$r.find(".bm-word").trigger("focus");
 		});
 		$pane().on("click", ".bm-remove", function() { $(this).closest(".bm-row").remove(); checkDups(); tryIt(); });
