@@ -101,3 +101,18 @@ test.describe("resizable panels", () => {
 		expect((await widths(page)).info - before.info).toBeGreaterThanOrEqual(30);
 	});
 });
+
+// The Signatures panel is "Sigs" on a phone, where the bar is tight; the full
+// title everywhere else.
+test("the Signatures panel title is Sigs on a phone", async ({ page }) => {
+	await page.setViewportSize({ width: 390, height: 844 });
+	await login(page, "Perimeter");
+	const short = page.locator("#signaturesWidget .panel-title-short"), full = page.locator("#signaturesWidget .panel-title-full");
+	await expect(short).toBeVisible();
+	await expect(short).toHaveText("Sigs");
+	await expect(full).toBeHidden();
+	await page.setViewportSize({ width: 1600, height: 1000 });
+	await expect(full).toBeVisible();
+	await expect(full).toHaveText("Signatures");
+	await expect(short).toBeHidden();
+});

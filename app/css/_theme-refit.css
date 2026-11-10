@@ -1483,3 +1483,9 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 /* Settings: a single cog in the same bordered button as squelch and the room lights. */
 #topbar .hdr-tools .settingsbtn { margin-left: 6px; padding: 4px 6px; }
 #topbar .hdr-tools .settingsbtn svg { display: block; }
+/* A panel with a short title uses it on a phone ("Sigs"). */
+.panel-title .panel-title-short { display: none; }
+@media (max-width: 767px) {
+	.panel-title .panel-title-full { display: none; }
+	.panel-title .panel-title-short { display: inline; }
+}

@@ -13,7 +13,7 @@
 tripwire.panels = (function() {
     var PANELS = [
         {id: "infoWidget",       title: "System",     defaultVisible: true},
-        {id: "signaturesWidget", title: "Signatures", defaultVisible: true},
+        {id: "signaturesWidget", title: "Signatures", short: "Sigs", defaultVisible: true},   // short: the title on a phone
         {id: "notesWidget",      title: "Notes",      defaultVisible: true},
         {id: "chainWidget",      title: "Chain",      defaultVisible: true}
     ];
@@ -110,7 +110,12 @@ tripwire.panels = (function() {
             var $controls = $w.children(".controls").first();
             if (!$controls.length || $controls.children(".panel-title").length) { return; }
 
-            $controls.prepend($('<span class="panel-title"></span>').text(p.title));
+            var $title = $('<span class="panel-title"></span>');
+            if (p.short) {
+                $title.append($('<span class="panel-title-full"></span>').text(p.title))
+                      .append($('<span class="panel-title-short"></span>').text(p.short));
+            } else { $title.text(p.title); }
+            $controls.prepend($title);
 
             $('<span class="panel-hide" role="button" tabindex="0" ' +
               'data-tooltip="Hide this panel">&times;</span>')
