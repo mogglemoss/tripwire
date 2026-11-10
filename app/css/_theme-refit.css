@@ -1511,3 +1511,26 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #optionsAccordion .settings-tabs { overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
 #optionsAccordion .settings-tabs::-webkit-scrollbar { display: none; }
 #optionsAccordion .settings-tabs [role="tab"] { flex: 0 0 auto; }
+
+/* ── Header: controls, then the account anchored at the right ──────────────
+   Squelch and settings come first and a rule divides them from the account:
+   the mask, the name and ship right-aligned, and the avatar in the corner,
+   where it no longer moves when the name or mask changes length. The room
+   lights moved to the status bar (and Settings > Display). */
+#topbar .hdr-tools { margin: 0 4px 0 0; padding: 0 14px 0 0; border-left: 0; border-right: 1px solid var(--border-soft); }
+#topbar .hdr-tools .settingsbtn { margin-left: 2px; }
+#topbar #login h3 { gap: 10px; }
+#topbar .hdr-pilot { align-items: flex-end; text-align: right; }
+#topbar .hdr-line2 { justify-content: flex-end; }
+@media (max-width: 767px) {
+	#topbar .hdr-tools { margin: 0; padding: 0 8px 0 0; }
+	#topbar #login h3 { gap: 8px; }
+}
+/* The status bar's end: the room lights beside EVE time. */
+#statusbar > .bar-end { justify-self: end; display: inline-flex; align-items: center; gap: 10px; }
+#statusbar .themebtn {
+	background: none; border: 1px solid var(--border); border-radius: 3px; cursor: pointer;
+	color: var(--muted-foreground); font-size: 11px; line-height: 1; padding: 1px 6px; height: 17px;
+	display: inline-flex; align-items: center; font-family: var(--font-ui);
+}
+#statusbar .themebtn:hover { color: var(--primary); border-color: var(--primary); }

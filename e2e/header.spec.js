@@ -74,3 +74,46 @@ test.describe("system picker", () => {
 		await expect(page.locator("#toggle-automapper")).toHaveClass(/bar-toggle/);
 	});
 });
+
+// The account is anchored at the right: mask, name, then the avatar in the
+// corner; the controls sit to its left. The theme lives beside EVE time and
+// in Settings > Display.
+test.describe("header layout", () => {
+	for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+		test(`the avatar is rightmost and the controls come first at ${viewport.width}px`, async ({ page }) => {
+			await page.setViewportSize(viewport);
+			await login(page, "Perimeter");
+			const box = async (sel) => page.locator(sel).boundingBox();
+			const avatar = await box("#user-avatar"), mask = await box("#mask-menu-link"), cog = await box("#settings"), squelch = await box("#voice-toggle");
+			const rightmost = await page.evaluate(() => Math.max(...[...document.querySelectorAll("#topbar .hdr-right *")].filter(e => e.offsetParent && e.getBoundingClientRect().width).map(e => e.getBoundingClientRect().right)));
+			expect(Math.round(avatar.x + avatar.width)).toBe(Math.round(rightmost));
+			expect(mask.x).toBeLessThan(avatar.x);
+			expect(cog.x).toBeLessThan(mask.x);
+			expect(squelch.x).toBeLessThan(cog.x);
+		});
+	}
+
+	test("the mask menu opens under its capsule", async ({ page }) => {
+		await login(page, "Perimeter");
+		await page.click("#mask-menu-link");
+		const pill = await page.locator("#mask-menu-link").boundingBox(), menu = await page.locator("#mask-menu").boundingBox();
+		expect(Math.abs((pill.x + pill.width) - (menu.x + menu.width))).toBeLessThanOrEqual(1);
+		expect(menu.y).toBeGreaterThan(pill.y + pill.height - 1);
+	});
+
+	test("the theme: beside EVE time, and in Settings > Display", async ({ page }) => {
+		await login(page, "Perimeter");
+		await expect(page.locator("#statusbar #theme-toggle")).toBeVisible();
+		await expect(page.locator("#topbar #theme-toggle")).toHaveCount(0);
+		const before = await page.evaluate(() => themeToggle.effective());
+		await page.click("#statusbar #theme-toggle");
+		expect(await page.evaluate(() => themeToggle.effective())).not.toBe(before);
+		await page.click("#settings");
+		await page.click("#optionsAccordion [role=tab][data-tab=display]");
+		await page.click("label[for=room-auto]");
+		expect(await page.evaluate(() => document.documentElement.hasAttribute("data-theme"))).toBe(false);
+		await page.click("label[for=room-light]");
+		expect(await page.evaluate(() => document.documentElement.getAttribute("data-theme"))).toBe("light");
+		await page.click("label[for=room-auto]");   // leave it following the device
+	});
+});

@@ -130,6 +130,7 @@ $(".options").click(function(e) {
 			if (tripwire.settingsCharacters) { tripwire.settingsCharacters.render(); }
 			if (tripwire.settingsPanels) { tripwire.settingsPanels.render(); }
 			if (tripwire.settingsVoice) { tripwire.settingsVoice.render(); }
+			if (tripwire.settingsTheme) { tripwire.settingsTheme.render(); }
 		},
 		create: function() {
 			// Tabs. Twenty-four controls in one 1,056px scroll was the previous

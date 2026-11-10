@@ -63,8 +63,13 @@ $system = $_REQUEST['system'] ?? '';
 			</a>
 		</span>
 		<span class="align-right hdr-right">
+			<span class="hdr-tools">
+				<button id="voice-toggle" class="themebtn voicebtn" type="button" aria-pressed="false" aria-label="Squelched: voice off" data-tooltip="Squelched: voice off"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="voice-speaker" d="M2 6h2.5L8 3v10L4.5 10H2z" fill="currentColor"/><path class="voice-waves" d="M10.5 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6.5 6.5 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path class="voice-mute" d="M10.5 6l4 4m0-4l-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button><input type="range" id="voice-volume" class="voice-volume" min="0" max="1" step="0.05" value="0.8" aria-label="Voice volume" data-tooltip="Voice volume" hidden />
+				<!-- Cog: Lucide "settings" icon (ISC licence, lucide.dev) -->
+				<button id="settings" class="themebtn settingsbtn options" type="button" aria-label="Settings" data-tooltip="Settings"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button>
+			</span>
 			<span id="login">
-				<h3><a id="user" href=""><img id="user-avatar" class="avatar" alt="" src="https://images.evetech.net/characters/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>/portrait?size=128" /><span class="hdr-pilot"><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span><span class="hdr-line2"><span id="hdr-ship" class="hdr-ship hidden" data-tooltip="What your tracked character is flying"></span><span class="hdr-mask"><a href="#" id="mask-menu-link" data-tooltip="Current mask"><span id="mask">(???)</span></a></span></span></span></a></h3>
+				<h3><a href="#" id="mask-menu-link" class="hdr-mask" data-tooltip="Current mask"><span id="mask">(???)</span></a><a id="user" href=""><span class="hdr-pilot"><span id="user-no-track"><?= htmlspecialchars($_SESSION['characterName'], ENT_QUOTES, 'UTF-8') ?></span><span id="user-track" style="display:none"><i data-icon="follow" data-tooltip="Tracking"></i><span id="user-track-name">...</span></span><span class="hdr-line2"><span id="hdr-ship" class="hdr-ship hidden" data-tooltip="What your tracked character is flying"></span></span></span><img id="user-avatar" class="avatar" alt="" src="https://images.evetech.net/characters/<?= htmlspecialchars($_SESSION['characterID'], ENT_QUOTES, 'UTF-8') ?>/portrait?size=128" /></a></h3>
 				<div id="panel">
 					<div id="content" class="dialog-like">
 						<div class="triangle"></div>
@@ -138,12 +143,6 @@ $system = $_REQUEST['system'] ?? '';
 				<a href="#" id="admin"<?= checkAdmin($_SESSION['mask']) || checkOwner($_SESSION['mask']) ? '' : 'style="display: none"' ?>>Mask Admin</a>
 			</div>
 
-			<span class="hdr-tools">
-				<button id="voice-toggle" class="themebtn voicebtn" type="button" aria-pressed="false" aria-label="Squelched: voice off" data-tooltip="Squelched: voice off"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path class="voice-speaker" d="M2 6h2.5L8 3v10L4.5 10H2z" fill="currentColor"/><path class="voice-waves" d="M10.5 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6.5 6.5 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path class="voice-mute" d="M10.5 6l4 4m0-4l-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button><input type="range" id="voice-volume" class="voice-volume" min="0" max="1" step="0.05" value="0.8" aria-label="Voice volume" data-tooltip="Voice volume" hidden />
-				<button id="theme-toggle" class="themebtn" type="button" aria-label="Switch to light" title="Switch to light">&#9788;</button>
-				<!-- Cog: Lucide "settings" icon (ISC licence, lucide.dev) -->
-				<button id="settings" class="themebtn settingsbtn options" type="button" aria-label="Settings" data-tooltip="Settings"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button>
-			</span>
 		</span>
 	</div>
 
@@ -376,7 +375,7 @@ $system = $_REQUEST['system'] ?? '';
 	<div id="statusbar">
 		<span id="serverStatus" class="pointer" data-tooltip="EVE server status and player count"><span class="bar-label">Tranquility</span><span class="bar-value">??,???</span></span>
 		<span id="version" class="pointer" data-tooltip="Tripwire version"><span class="bar-label"><?= APP_NAME ?></span><span class="bar-value"><?= VERSION_TAG ?></span></span>
-		<span id="eveTime" class="pointer" data-tooltip="EVE time (UTC)"><span class="bar-label">EVE Time</span><span id="serverTime" class="bar-value">??:??</span></span>
+		<span class="bar-end"><button id="theme-toggle" class="themebtn" type="button" aria-label="Switch to light" title="Switch to light">&#9788;</button><span id="eveTime" class="pointer" data-tooltip="EVE time (UTC)"><span class="bar-label">EVE Time</span><span id="serverTime" class="bar-value">??:??</span></span></span>
 	</div>
 
 	<div id="footer">
@@ -786,6 +785,13 @@ $system = $_REQUEST['system'] ?? '';
 					<div class="field-value" id="panel-settings"></div>
 				</div>
 				<h4 class="field-group">Appearance</h4>
+				<div class="field"><span class="field-label">Theme <small>also beside EVE time, at the bottom</small></span>
+					<span class="segmented" role="radiogroup" aria-label="Theme">
+						<input type="radio" name="room" id="room-auto" value="auto" /><label for="room-auto">Follow device</label>
+						<input type="radio" name="room" id="room-light" value="light" /><label for="room-light">Light</label>
+						<input type="radio" name="room" id="room-dark" value="dark" /><label for="room-dark">Dark</label>
+					</span>
+				</div>
 				<div class="field"><label class="field-label" for="background-image">Background image <small>URL</small></label>
 					<input type="text" id="background-image" maxlength="200" />
 				</div>

@@ -108,6 +108,13 @@ $("#mask-menu-link").click(function(e) {
 	e.preventDefault();
 	const elem = document.getElementById('mask-menu');
 	elem.style.display = elem.style.display == 'none' ? '' : 'none';
+	// Open under the capsule, right edges aligned, wherever the header put it.
+	if (elem.style.display === '' && elem.offsetParent) {
+		const pill = this.getBoundingClientRect(), box = elem.offsetParent.getBoundingClientRect();
+		elem.style.top = Math.round(pill.bottom - box.top + 6) + 'px';
+		elem.style.right = Math.max(4, Math.round(box.right - pill.right)) + 'px';
+		elem.style.left = 'auto';
+	}
 });
 
 $("#mask-link").click(function(e) {
