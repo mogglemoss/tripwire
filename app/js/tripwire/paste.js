@@ -282,7 +282,7 @@ tripwire.pasteSignatures = function() {
         var farFits = function(b, other) {
             var sys = tripwire.systems[other.systemID] && appData.systems[other.systemID];
             if (sys) { return B.fits(b, sys, c, appData.systems, appData.regions); }
-            return other.systemID == null || appData.genericSystemTypes[other.systemID] === b.destination;
+            return other.systemID == null || !b.destination || appData.genericSystemTypes[other.systemID] === b.destination;
         };
         var findLocal = function(b) {
             if (b.id[0] === "???") { return null; }
@@ -297,7 +297,20 @@ tripwire.pasteSignatures = function() {
             var b = merged[key], sig = findLocal(b), sigID = b.id[0] === "???" ? null : b.id.join("");
 
             if (b.type !== "Wormhole") {
-                if (sig && sig.type !== "wormhole") {
+                if (sig && sig.type === "wormhole") {
+                    // "ABC-123 A31" on a scanned hole: the connection takes the name.
+                    var named = b.type === "Unknown" && b.name && b.name !== sig.name ? connections.filter(function(x) { return x.local.id == sig.id; })[0] : null;
+                    if (named) {
+                        payload.signatures.update.push({
+                            "wormhole": {"id": named.hole.id, "type": named.hole.type, "parent": named.hole.parent, "life": named.hole.life, "mass": named.hole.mass},
+                            "signatures": [
+                                {"id": named.local.id, "signatureID": named.local.signatureID, "systemID": viewingSystemID, "type": "wormhole", "name": b.name},
+                                {"id": named.other.id, "signatureID": named.other.signatureID, "systemID": named.other.systemID, "type": "wormhole", "name": named.other.name}
+                            ]
+                        });
+                        undo.push({"wormhole": named.hole, "signatures": [named.local, named.other]});
+                    }
+                } else if (sig) {
                     var type = b.type === "Unknown" ? (sig.type || "unknown") : b.type.toLowerCase();
                     if (type !== sig.type || (b.name && b.name !== sig.name) || (sigID && norm(sig.signatureID) !== sigID)) {
                         payload.signatures.update.push({"id": sig.id, "signatureID": sigID || sig.signatureID, "systemID": viewingSystemID, "type": type, "name": b.name || sig.name, "lifeLength": lifeLength});
@@ -552,9 +565,13 @@ tripwire.pasteSignatures = function() {
     // here: say what was read, then parse it.
     this.pasteSignatures.ingest = function(text) {
         var marks = tripwire.pasteSignatures.bookmarkCount(text);
+        var scans = String(text || "").split("\n").filter(function(row) { return rowParse(row); }).length;
         if (marks) {
             // Bookmarks are not a full scan: never offer to delete what they leave out.
             Notify.trigger(marks === 1 ? "Bookmark read" : marks + " bookmarks read");
+        } else if (!scans) {
+            // Nothing read: offering to delete "missing" sigs would offer to delete them all.
+            Notify.trigger("Nothing here looked like scanner results or bookmarks.");
         } else {
             Notify.trigger("Paste detected<br/>(<a id='fullPaste' href=''>Click to delete missing sigs</a>)");
             $("#fullPaste").data("paste", text);

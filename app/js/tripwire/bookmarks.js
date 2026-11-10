@@ -1,32 +1,47 @@
-// Bookmarks pasted from EVE: titles like "C3 SHX 658 <4H <10%" become
-// signatures and connections. The words are a convention, and a convention
-// belongs to a group: the server's brand pack can set one, a pilot can use
-// their own, and everyone else gets the default below (Squizz's, from
-// squizzlabs/tripwire, where this importer started).
+// Bookmarks pasted from EVE: titles like "ABC-123 B274 EOL" or "C3 SHX 658"
+// become signatures and connections.
 //
-// The convention maps each meaning to the words that say it, so it reads and
-// edits the way a corp would write it down: High-Sec is "HS", end of life is
-// "<4H" or "EOL". Pure functions here; the paste and the settings use them.
+// What EVE itself names is read everywhere: signature ids, wormhole types
+// (B274 leads to high-sec), system names and site names. On top of that a
+// title uses words, and words are a convention that belongs to a group. The
+// default words are the ones Tripwire shows (C2, HS, EOL, <10%); a server's
+// brand pack can set its own, and a pilot can keep theirs in Settings.
+// (The importer started in squizzlabs/tripwire, read by his corp's words.)
+//
+// A title that names no signature, like a bare chain name "A31", is left
+// alone: nothing in it says which connection it is.
 tripwire.bookmarks = (function() {
 	"use strict";
 
 	var DEFAULT = {
-		name: "Default",
+		name: "Tripwire's own words",
 		destinations: {
 			"High-Sec": ["HS"], "Low-Sec": ["LS"], "Null-Sec": ["NS"],
 			"Class-1": ["C1"], "Class-2": ["C2"], "Class-3": ["C3"], "Class-4": ["C4"], "Class-5": ["C5"], "Class-6": ["C6"],
-			"Class-13": ["C13"], "Drifter": ["DR"], "Triglavian": ["TR", "PC"], "wormhole": ["C?"]
+			"Class-13": ["C13"], "Drifter": ["DRIFTER"], "Triglavian": ["POCHVEN"], "wormhole": []
 		},
-		factions: {"Caldari": ["SQUID"], "Minmatar": ["RUST"], "Gallente": ["FRANCE"], "Amarr": ["CHINA"]},
-		life: {"critical": ["<4H"], "<1h": ["<1H"]},
+		factions: {"Caldari": [], "Minmatar": [], "Gallente": [], "Amarr": []},
+		life: {"critical": ["EOL"], "<1h": ["<1H"]},
 		mass: {"destab": ["<50%"], "critical": ["<10%"]},
-		sites: {"Gas": ["GS"], "Data": ["DC"], "Relic": ["RC"], "Combat": [], "Ore": [], "auto": ["Z"]},
-		unknownSignature: ["???"],
-		unknownSystem: ["???"],
+		sites: {"Gas": [], "Data": [], "Relic": [], "Combat": [], "Ore": [], "auto": []},
+		unknownSignature: [],
+		unknownSystem: [],
 		home: ["*"],
-		camps: ["---", "-*-"],
-		bareSiteNames: true
+		camps: []
 	};
+
+	// Every meaning a word can have, in the order Settings lists them.
+	var MEANINGS = [
+		["Where a hole leads", [["destinations.High-Sec", "High-sec"], ["destinations.Low-Sec", "Low-sec"], ["destinations.Null-Sec", "Null-sec"],
+			["destinations.Class-1", "Class 1"], ["destinations.Class-2", "Class 2"], ["destinations.Class-3", "Class 3"], ["destinations.Class-4", "Class 4"],
+			["destinations.Class-5", "Class 5"], ["destinations.Class-6", "Class 6"], ["destinations.Class-13", "Class 13"], ["destinations.Drifter", "Drifter"],
+			["destinations.Triglavian", "Pochven"], ["destinations.wormhole", "Any wormhole"]]],
+		["Faction space", [["factions.Caldari", "Caldari"], ["factions.Minmatar", "Minmatar"], ["factions.Gallente", "Gallente"], ["factions.Amarr", "Amarr"]]],
+		["Life and mass", [["life.critical", "End of life"], ["life.<1h", "Under an hour"], ["mass.destab", "Mass under 50%"], ["mass.critical", "Mass under 10%"]]],
+		["Sites", [["sites.Gas", "Gas site"], ["sites.Data", "Data site"], ["sites.Relic", "Relic site"], ["sites.Combat", "Combat site"], ["sites.Ore", "Ore site"], ["sites.auto", "A site, read its name"]]],
+		["Other", [["unknownSignature", "Unscanned"], ["unknownSystem", "Unknown system"], ["home", "Way home"], ["camps", "Camped"]]]
+	];
+
 	var FACTION_IDS = {"Caldari": 500001, "Minmatar": 500002, "Amarr": 500003, "Gallente": 500004};
 	var LIFE_ORDER = ["stable", "critical", "<1h"], MASS_ORDER = ["stable", "destab", "critical"];
 
@@ -34,8 +49,8 @@ tripwire.bookmarks = (function() {
 	function up(s) { return String(s || "").toUpperCase().trim(); }
 	function list(v) { return (Array.isArray(v) ? v : String(v || "").split(/[,\s]+/)).map(up).filter(Boolean); }
 
-	// Over the default: a section the override names replaces that section's
-	// lists outright (a pack listing one unknown-system word means only that).
+	// Over the default: a meaning the override names replaces that meaning's
+	// words outright (a pack listing "CRIT" for mass under 10% means only that).
 	function merge(base, over) {
 		var out = clone(base);
 		Object.keys(over || {}).forEach(function(k) {
@@ -47,6 +62,31 @@ tripwire.bookmarks = (function() {
 		return out;
 	}
 
+	// A convention as rows of word -> meaning, and back: what Settings edits.
+	function get(conv, key) { var p = key.split("."); return p.length > 1 ? ((conv[p[0]] || {})[p[1]] || []) : (conv[p[0]] || []); }
+	function toRows(conv) {
+		var rows = [];
+		MEANINGS.forEach(function(g) { g[1].forEach(function(m) { list(get(conv, m[0])).forEach(function(w) { rows.push({word: w, meaning: m[0]}); }); }); });
+		return rows;
+	}
+	function fromRows(rows) {
+		var conv = clone(DEFAULT);
+		MEANINGS.forEach(function(g) { g[1].forEach(function(m) { var p = m[0].split("."); if (p.length > 1) { conv[p[0]][p[1]] = []; } else { conv[p[0]] = []; } }); });
+		delete conv.name;
+		(rows || []).forEach(function(r) {
+			var w = up(r.word), p = String(r.meaning || "").split(".");
+			if (!w || !r.meaning) { return; }
+			var at = p.length > 1 ? conv[p[0]] && conv[p[0]][p[1]] : conv[p[0]];
+			if (at && at.indexOf(w) < 0) { at.push(w); }
+		});
+		return conv;
+	}
+	function meaningLabel(key) {
+		var out = key;
+		MEANINGS.forEach(function(g) { g[1].forEach(function(m) { if (m[0] === key) { out = m[1]; } }); });
+		return out;
+	}
+
 	// word -> meaning, for one section
 	function lookup(section) {
 		var map = {};
@@ -54,13 +94,28 @@ tripwire.bookmarks = (function() {
 		return map;
 	}
 
-	function compile(conv) {
+	// System names, upper-cased, once per systems table.
+	var namesFor = null, names = null;
+	function systemNames(systems) {
+		if (namesFor !== systems) {
+			names = {};
+			Object.keys(systems || {}).forEach(function(id) { if (systems[id] && systems[id].name) { names[up(systems[id].name)] = Number(id); } });
+			namesFor = systems;
+		}
+		return names;
+	}
+
+	// The convention, ready to read with. EVE's own names come from appData
+	// unless they are given.
+	function compile(conv, data) {
+		data = data || (typeof appData !== "undefined" ? appData : {});
 		return {
 			conv: conv,
 			destinations: lookup(conv.destinations), factions: lookup(conv.factions),
 			life: lookup(conv.life), mass: lookup(conv.mass), sites: lookup(conv.sites),
 			unknownSignature: list(conv.unknownSignature), unknownSystem: list(conv.unknownSystem),
-			home: list(conv.home), camps: list(conv.camps), bare: conv.bareSiteNames !== false
+			home: list(conv.home), camps: list(conv.camps),
+			wormholes: data.wormholes || {}, systemNames: systemNames(data.systems)
 		};
 	}
 
@@ -89,59 +144,101 @@ tripwire.bookmarks = (function() {
 		return null;
 	}
 
-	// A destination word: the convention's, or any "C<n>" that names a class.
-	function destinationFor(word, c) {
-		if (c.destinations[word]) { return c.destinations[word]; }
-		var m = /^C(\d{1,2})$/.exec(word);
-		return m ? "Class-" + m[1] : null;
+	var FULL_ID = /^([A-Z]{3})-?(\d{3})$/i, SHORT_ID = /^[A-Z]{3}$/, UNKNOWN = /^\?{3}$/;
+
+	// The kind of system a wormhole type leads to, or the system itself.
+	function wormholeLeads(code, c) {
+		var w = c.wormholes[code];
+		if (!w || !w.leadsTo) { return null; }
+		if (/^(Class-\d+|High-Sec|Low-Sec|Null-Sec|Triglavian|Drifter)$/.test(w.leadsTo)) { return {destination: w.leadsTo}; }
+		var id = c.systemNames[up(w.leadsTo)];
+		return id ? {system: id} : null;
 	}
 
-	var SIG = /^([A-Z]{3})(?:-?(\d{3}))?$/;
-
 	// One pasted row -> a bookmark, or null when the row is not one. Only the
-	// title (before the first tab) is read; folder and date are ignored.
+	// title (before the first tab) is read; folder and date are ignored. Words
+	// can come in any order.
 	function parse(row, c) {
 		var title = String(row || "").split("\t")[0].replace(/&(?:lt|#0*60|#x0*3c);/ig, "<").trim();
 		if (!title) { return null; }
-		var words = title.split(/\s+/), code = up(words[0]);
-		var autoWord = (c.conv.sites.auto && list(c.conv.sites.auto)[0]) || "Z";
-		// "ABC-123 Site name": a full id and a name with no code in front.
-		if (c.bare && /^[A-Z]{3}-\d{3}$/i.test(words[0]) && words.length > 1) { words.unshift(autoWord); code = up(autoWord); }
-		var destination = destinationFor(code, c), site = c.sites[code];
-		if (!destination && !site) { return null; }
-		var sigWord = up(words[1]), unknownSig = c.unknownSignature.indexOf(sigWord) >= 0, m = SIG.exec(sigWord);
-		if (!unknownSig && !m) { return null; }
-		var out = {bookmark: true, id: unknownSig ? ["???", ""] : [m[1], m[2] || ""]};
-		var rest = words.slice(2);
+		var words = title.split(/\s+/), marks = [];
+		var full = -1, short = -1, unknownAt = -1, site = null, siteAt = -1, destination = null, system = null, hole = false, life, mass, camp = false;
 
-		if (site) {
-			var text = rest.join(" ").trim(), isCamp = c.camps.indexOf(up(text)) >= 0 || /^[?-]+$/.test(text);
-			if (site === "auto") {
-				out.name = text || undefined;
-				out.type = siteType(text) || "Unknown";
-			} else {
-				out.type = site;
-				if (text && !isCamp) { out.name = text; }
-			}
+		words.forEach(function(raw, i) {
+			var W = up(raw);
+			// The home marker ("*") can sit on its own or stuck to a word.
+			c.home.forEach(function(h) { if (h.length === 1) { W = W.split(h).join(""); } });
+			var mark = "other";
+			if (!W || c.home.indexOf(W) >= 0) { mark = "skip"; }
+			else if (FULL_ID.test(W)) { mark = "id"; if (full < 0) { full = i; } }
+			else if (c.life[W]) { mark = "skip"; hole = true; life = stricter(LIFE_ORDER, life, c.life[W]); }
+			else if (c.mass[W]) { mark = "skip"; hole = true; mass = stricter(MASS_ORDER, mass, c.mass[W]); }
+			else if (c.destinations[W]) { mark = "skip"; hole = true; destination = destination || c.destinations[W]; }
+			else if (c.sites[W] && siteAt < 0) { mark = "skip"; site = c.sites[W]; siteAt = i; }
+			else if (W === "K162") { mark = "skip"; hole = true; }
+			else if (wormholeLeads(W, c)) { mark = "skip"; hole = true; var l = wormholeLeads(W, c); destination = destination || l.destination || null; system = system || l.system || null; }
+			else if (UNKNOWN.test(W) || c.unknownSignature.indexOf(W) >= 0 || c.unknownSystem.indexOf(W) >= 0) { mark = "unknown"; if (unknownAt < 0) { unknownAt = i; } }
+			else if (c.camps.indexOf(W) >= 0 || /^-+\*?-+$/.test(W)) { mark = "skip"; camp = true; }
+			else if (SHORT_ID.test(raw) && short < 0) { mark = "short"; short = i; }   // as typed: EVE ids are capitals
+			marks.push({raw: raw, W: W, mark: mark});
+		});
+
+		// The signature: a full id, else three capitals, else an unknown marker
+		// that comes before anything else ("??? C3"), else none.
+		var sigAt = full >= 0 ? full : short;
+		var id = sigAt >= 0 ? (FULL_ID.exec(marks[sigAt].W) ? [FULL_ID.exec(marks[sigAt].W)[1], FULL_ID.exec(marks[sigAt].W)[2]] : [marks[sigAt].W, ""]) : null;
+		if (!id && unknownAt >= 0 && (hole || site)) { id = ["???", ""]; marks[unknownAt].mark = "skip"; }
+		if (!id) { return null; }
+		var others = marks.filter(function(m, i) { return i !== sigAt && (m.mark === "other" || (m.mark === "short")); });
+		var text = others.map(function(m) { return m.raw; }).join(" ");
+		var out = {bookmark: true, id: id};
+
+		// A site: a site word with nothing saying it is a hole.
+		if (site && !hole) {
+			out.type = site === "auto" ? (siteType(text) || "Unknown") : site;
+			if (text && !camp) { out.name = text; }
+			return out;
+		}
+
+		if (!hole && !site && c.systemNames[up(text)]) {
+			hole = true;   // "ABC-123 Thera": where it goes is all it says
+		}
+
+		if (!hole) {
+			// A full id and anything else: the signature, named. A site name
+			// says its type; anything else (a chain name, "A31") stays a name.
+			if (full < 0 || !text) { return null; }
+			out.type = siteType(text) || "Unknown";
+			out.name = text;
 			return out;
 		}
 
 		out.type = "Wormhole";
-		out.destinationCode = code;
-		out.destination = destination;   // "Class-3", "High-Sec", "wormhole", ...
-		var hint = [];
-		rest.forEach(function(w) {
-			var W = up(w);
-			// The home marker ("*") can sit on its own or stuck to a word.
-			c.home.forEach(function(h) { if (h.length === 1) { W = W.split(h).join(""); } });
-			if (!W || c.home.indexOf(W) >= 0) { return; }
-			if (c.life[W]) { out.life = stricter(LIFE_ORDER, out.life, c.life[W]); return; }
-			if (c.mass[W]) { out.mass = stricter(MASS_ORDER, out.mass, c.mass[W]); return; }
-			hint.push(W);
+		if (destination) { out.destination = destination; }
+		if (system) { out.system = system; }
+		var hint = others.map(function(m) { return m.W; }).filter(function(W) {
+			if (!/^[A-Z0-9-]+$/.test(W)) { return false; }   // "<4H" in words this server does not use is no place name
+			var id = c.systemNames[W];
+			if (id && !out.system) { out.system = id; return false; }
+			return true;
 		});
-		var real = hint.filter(function(w) { return c.unknownSystem.indexOf(w) < 0 && !/^[?-]+$/.test(w); });
-		if (real.length) { out.hint = real.join(" "); }
+		if (out.system && !out.destination) { out.destination = typeOf(out.system, c); }
+		if (life) { out.life = life; }
+		if (mass) { out.mass = mass; }
+		if (hint.length) { out.hint = hint.join(" "); }
 		return out;
+	}
+
+	// The kind of system an id is, in the destination words' terms.
+	function typeOf(id, c) {
+		var s = (typeof appData !== "undefined" && appData.systems) ? appData.systems[id] : null;
+		if (!s) { return undefined; }
+		var cls = Number(s.class);
+		if (cls >= 14 && cls <= 18) { return "Drifter"; }
+		if (cls) { return "Class-" + cls; }
+		if (Number(s.factionID) === 500026) { return "Triglavian"; }
+		var sec = Number(s.security);
+		return sec >= 0.45 ? "High-Sec" : sec > 0 ? "Low-Sec" : "Null-Sec";
 	}
 
 	function stricter(order, a, b) {
@@ -171,6 +268,7 @@ tripwire.bookmarks = (function() {
 	}
 
 	function isType(destination, system) {
+		if (!destination) { return true; }
 		var cls = Number(system && system.class);
 		if (destination === "wormhole") { return cls > 0; }
 		if (destination === "Drifter") { return cls >= 14 && cls <= 18; }
@@ -195,11 +293,13 @@ tripwire.bookmarks = (function() {
 	}
 
 	function fits(b, system, c, systems, regions) {
+		if (b.system && systems) { return system === systems[b.system]; }
 		return !!system && isType(b.destination, system) && hintsFit(b.hint, system, c, systems, regions, true);
 	}
 
 	// The one system a bookmark points at, or null when it is not one system.
 	function resolve(b, c, systems, regions) {
+		if (b.system) { return Number(b.system); }
 		if (!b.hint) { return null; }
 		var found = null, count = 0;
 		Object.keys(systems).forEach(function(id) {
@@ -217,14 +317,21 @@ tripwire.bookmarks = (function() {
 		return i >= 0 ? i : null;
 	}
 
-	// One line saying how a bookmark reads, for the settings' test box.
+	// One line saying how a bookmark reads, for the settings' try box.
 	function describe(b, c, systems, regions, genericTypes) {
-		if (!b) { return "Not a bookmark this convention reads."; }
-		var sig = b.id[0] === "???" ? "unknown signature" : "signature " + b.id[0] + (b.id[1] ? "-" + b.id[1] : "");
-		if (b.type !== "Wormhole") { return b.type + " site, " + sig + (b.name ? ", “" + b.name + "”" : ""); }
-		var to = b.destination === "wormhole" ? "wormhole space" : b.destination.replace("-", " ").toLowerCase().replace("high sec", "high-sec").replace("low sec", "low-sec").replace("null sec", "null-sec");
+		if (!b) { return "Nothing here names a signature, so it is left alone."; }
+		var sig = b.id[0] === "???" ? "a signature not yet scanned" : "signature " + b.id[0] + (b.id[1] ? "-" + b.id[1] : "");
+		if (b.type !== "Wormhole") {
+			var what = b.type === "Unknown" ? "Signature" : b.type + " site";
+			return what + ", " + sig.replace(/^signature /, "") + (b.name ? ", named “" + b.name + "”" : "");
+		}
 		var exact = systems ? resolve(b, c, systems, regions) : null;
-		var parts = ["Wormhole, " + sig, "to " + (exact && systems[exact] ? systems[exact].name : to)];
+		var to = exact && systems[exact] ? systems[exact].name
+			: !b.destination ? "somewhere not yet known"
+			: b.destination === "wormhole" ? "wormhole space"
+			: b.destination === "Triglavian" ? "Pochven"
+			: b.destination.replace(/^Class-/, "class ").replace("High-Sec", "high-sec").replace("Low-Sec", "low-sec").replace("Null-Sec", "null-sec");
+		var parts = ["Wormhole, " + sig, "to " + to];
 		if (b.hint && !exact) { parts.push("hint “" + b.hint + "”"); }
 		if (b.life) { parts.push(b.life === "<1h" ? "under an hour" : "end of life"); }
 		if (b.mass) { parts.push(b.mass === "critical" ? "mass under 10%" : "mass under 50%"); }
@@ -232,7 +339,8 @@ tripwire.bookmarks = (function() {
 	}
 
 	return {
-		DEFAULT: DEFAULT, merge: merge, list: list, compile: compile, convention: convention,
+		DEFAULT: DEFAULT, MEANINGS: MEANINGS, merge: merge, list: list, compile: compile, convention: convention,
+		toRows: toRows, fromRows: fromRows, meaningLabel: meaningLabel,
 		parse: parse, siteType: siteType, resolve: resolve, farSide: farSide, fits: fits,
 		hintsFit: hintsFit, describe: describe, stricter: stricter, LIFE_ORDER: LIFE_ORDER, MASS_ORDER: MASS_ORDER,
 		_resetRegions: function() { regionFactions = null; }

@@ -1536,16 +1536,21 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #statusbar .themebtn:hover { color: var(--primary); border-color: var(--primary); }
 
 /* ── Settings > Bookmarks ─────────────────────────────────────────────── */
-#dialog-options .bm-lead { margin: 0 0 4px; color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1.45; }
-#dialog-options .bm-lead #bm-source { color: var(--foreground); }
-#dialog-options .bm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin-bottom: 4px; }
-#dialog-options .bm-row { display: grid; grid-template-columns: 7.5em 1fr; align-items: center; gap: 8px; font-size: var(--fs-sm); color: var(--muted-foreground); }
-#dialog-options .bm-row input { min-width: 0; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; }
-/* Following the server: the words are shown, not offered for editing. */
-#dialog-options .bm-following .bm-row input { opacity: .6; background: transparent; border-style: dashed; cursor: default; }
-#dialog-options .bm-following .switch:has(#bm-bare) { opacity: .45; cursor: default; }
-/* Every dialog input is capped at 16rem; the try box takes the whole row. */
-#dialog-options #bm-try { width: 100%; max-width: none; font-family: var(--font-mono); text-transform: uppercase; }
-#dialog-options .bm-result { margin: 6px 0 0; min-height: 1.3em; color: var(--foreground); font-size: var(--fs-sm); }
+#dialog-options .bm-lead { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1.45; }
+/* Every dialog input is capped at 16rem; these take their whole cell. */
+#dialog-options #bm-try, #dialog-options .bm-row input, #dialog-options .bm-row select { width: 100%; max-width: none; min-width: 0; }
+#dialog-options #bm-try, #dialog-options .bm-word { font-family: var(--font-mono); text-transform: uppercase; }
+#dialog-options .bm-result { margin: 2px 0 0; min-height: 1.3em; color: var(--foreground); font-size: var(--fs-sm); }
 #dialog-options .bm-result.is-miss { color: var(--muted-foreground); }
-@media (max-width: 767px) { #dialog-options .bm-grid { grid-template-columns: 1fr; } }
+/* Following the server: one chip per meaning, its words in mono. */
+#dialog-options .bm-words { display: flex; flex-wrap: wrap; gap: 6px; }
+#dialog-options .bm-chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 3px 8px; background: var(--popover); border: 1px solid var(--border); border-radius: 3px; font-size: var(--fs-sm); color: var(--muted-foreground); }
+#dialog-options .bm-chip b { font-family: var(--font-mono); font-weight: 600; color: var(--foreground); }
+#dialog-options .bm-empty { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+/* Your own: word -> meaning rows. */
+#dialog-options .bm-words.is-own { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+#dialog-options .bm-row { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) auto; align-items: center; gap: 6px; }
+#dialog-options .bm-remove { padding: 0 6px; background: none; border: 0; color: var(--muted-foreground); font-size: 16px; line-height: 1; cursor: pointer; }
+#dialog-options .bm-remove:hover { color: var(--foreground); }
+#dialog-options .bm-add { justify-self: start; align-self: flex-start; margin-top: 2px; }
+@media (max-width: 767px) { #dialog-options .bm-words.is-own { grid-template-columns: 1fr; } }
