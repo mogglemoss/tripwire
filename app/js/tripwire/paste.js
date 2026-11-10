@@ -120,8 +120,14 @@ tripwire.pasteSignatures = function() {
         var pendingHoles = [];   // scanned wormholes with no existing row: candidates for a placeholder
         processing = true;
 
+        var convention = tripwire.pasteSignatures.convention(), bookmarks = [];
         for (var i in paste) {
             var scanner = rowParse(paste[i]);
+            if (!scanner) {
+                var bookmark = tripwire.bookmarks.parse(paste[i], convention);
+                if (bookmark) { bookmarks.push(bookmark); }
+                continue;
+            }
 
             if (scanner.id) {
                 var signature = $.map(tripwire.client.signatures, function(signature) { if (signature.signatureID && signature.signatureID.toUpperCase() == scanner.id[0] + scanner.id[1] && signature.systemID == viewingSystemID) return signature; })[0];
@@ -218,6 +224,8 @@ tripwire.pasteSignatures = function() {
             }
         }
 
+        if (bookmarks.length) { tripwire.pasteSignatures.addBookmarks(bookmarks, payload, undo, convention); }
+
         // The auto-mapper draws a connection before anyone scans it, leaving a
         // signature with no id on this side. A scan that then arrives with a
         // wormhole in it is usually that hole. Ask which, and merge: the
@@ -230,6 +238,115 @@ tripwire.pasteSignatures = function() {
             return;
         }
         tripwire.pasteSignatures.submit(payload, undo);
+    };
+
+    // The bookmark convention in force: the pilot's own, else the server's.
+    this.pasteSignatures.convention = function() {
+        return tripwire.bookmarks.compile(tripwire.bookmarks.convention(window.TW_BOOKMARK_CONVENTION || {}, options.bookmarks));
+    };
+
+    // Bookmarks into the same payload as a scan. Rows about one signature are
+    // merged; a three-letter id takes its digits when exactly one known
+    // signature has them; "???" (or a row whose signature is not here yet)
+    // claims an unscanned connection only when exactly one fits. Life and mass
+    // only ever get stricter, and a far side already named is never renamed.
+    this.pasteSignatures.addBookmarks = function(list, payload, undo, c) {
+        var B = tripwire.bookmarks, sigs = tripwire.client.signatures || {}, holes = tripwire.client.wormholes || {};
+        var norm = function(id) { return String(id || "").toUpperCase().replace("-", ""); };
+        var local = Object.values(sigs).filter(function(s) { return s.systemID == viewingSystemID && s.signatureID; });
+        var known = local.map(function(s) { return norm(s.signatureID); }).concat(list.filter(function(b) { return b.id[1]; }).map(function(b) { return b.id.join(""); }));
+        var lifeLength = options.signatures.pasteLife * 60 * 60;
+
+        var merged = {};
+        list.forEach(function(b) {
+            if (b.id[0] !== "???" && !b.id[1]) {
+                var full = known.filter(function(id, i, all) { return id.length === 6 && id.slice(0, 3) === b.id[0] && all.indexOf(id) === i; });
+                if (full.length === 1) { b.id[1] = full[0].slice(3); }
+            }
+            var key = b.id[0] === "???" ? "???:" + b.destination + ":" + (b.hint || "") : b.id.join("");
+            var m = merged[key] || (merged[key] = {});
+            Object.keys(b).forEach(function(f) {
+                if (f === "life") { m.life = B.stricter(B.LIFE_ORDER, m.life, b.life); }
+                else if (f === "mass") { m.mass = B.stricter(B.MASS_ORDER, m.mass, b.mass); }
+                else if (b[f] !== undefined) { m[f] = b[f]; }
+            });
+        });
+
+        var connections = Object.values(holes).filter(function(h) { return h.type !== "GATE"; }).map(function(h) {
+            var a = sigs[h.initialID], z = sigs[h.secondaryID];
+            if (!a || !z) { return null; }
+            var mine = a.systemID == viewingSystemID ? a : (z.systemID == viewingSystemID ? z : null);
+            return mine ? {hole: h, local: mine, other: mine === a ? z : a} : null;
+        }).filter(Boolean);
+        var unscanned = function(s) { return !s.signatureID || /^\?+$/.test(s.signatureID); };
+        var farFits = function(b, other) {
+            var sys = tripwire.systems[other.systemID] && appData.systems[other.systemID];
+            if (sys) { return B.fits(b, sys, c, appData.systems, appData.regions); }
+            return other.systemID == null || appData.genericSystemTypes[other.systemID] === b.destination;
+        };
+        var findLocal = function(b) {
+            if (b.id[0] === "???") { return null; }
+            var exact = local.filter(function(s) { return norm(s.signatureID) === b.id.join(""); });
+            if (exact.length) { return exact[0]; }
+            var prefix = local.filter(function(s) { return norm(s.signatureID) === b.id[0]; });
+            return prefix.length === 1 ? prefix[0] : null;
+        };
+        var claimed = {};
+
+        Object.keys(merged).forEach(function(key) {
+            var b = merged[key], sig = findLocal(b), sigID = b.id[0] === "???" ? null : b.id.join("");
+
+            if (b.type !== "Wormhole") {
+                if (sig && sig.type !== "wormhole") {
+                    var type = b.type === "Unknown" ? (sig.type || "unknown") : b.type.toLowerCase();
+                    if (type !== sig.type || (b.name && b.name !== sig.name) || (sigID && norm(sig.signatureID) !== sigID)) {
+                        payload.signatures.update.push({"id": sig.id, "signatureID": sigID || sig.signatureID, "systemID": viewingSystemID, "type": type, "name": b.name || sig.name, "lifeLength": lifeLength});
+                        undo.push(sig);
+                    }
+                } else if (!sig && sigID) {
+                    payload.signatures.add.push({"signatureID": sigID, "systemID": viewingSystemID, "type": b.type === "Unknown" ? "unknown" : b.type.toLowerCase(), "name": b.name, "lifeLength": lifeLength});
+                }
+                return;
+            }
+
+            var conn = sig ? connections.filter(function(x) { return x.local.id == sig.id; })[0] : null;
+            if (!conn && (!sig || unscanned(sig))) {
+                var fit = connections.filter(function(x) { return unscanned(x.local) && !claimed[x.hole.id] && farFits(b, x.other); });
+                if (fit.length === 1) { conn = fit[0]; }
+                else if (b.id[0] === "???" && fit.length > 1) { return; }   // never guess between connections
+            }
+            var far = B.farSide(b, c, appData.systems, appData.regions, appData.genericSystemTypes);
+
+            if (conn) {
+                claimed[conn.hole.id] = true;
+                var otherKnown = !!tripwire.systems[conn.other.systemID];
+                payload.signatures.update.push({
+                    "wormhole": {"id": conn.hole.id, "type": conn.hole.type, "parent": conn.hole.parent,
+                        "life": B.stricter(B.LIFE_ORDER, conn.hole.life || "stable", b.life), "mass": B.stricter(B.MASS_ORDER, conn.hole.mass || "stable", b.mass)},
+                    "signatures": [
+                        {"id": conn.local.id, "signatureID": sigID || conn.local.signatureID, "systemID": viewingSystemID, "type": "wormhole", "name": conn.local.name},
+                        {"id": conn.other.id, "signatureID": conn.other.signatureID, "systemID": otherKnown || far == null ? conn.other.systemID : far, "type": "wormhole", "name": conn.other.name, "bookmark": b.hint || conn.other.bookmark}
+                    ]
+                });
+                undo.push({"wormhole": conn.hole, "signatures": [conn.local, conn.other]});
+                return;
+            }
+
+            var pair = {
+                "wormhole": {"type": null, "parent": "initial", "life": b.life || "stable", "mass": b.mass || "stable"},
+                "signatures": [
+                    {"signatureID": sigID || "???", "systemID": viewingSystemID, "type": "wormhole", "name": sig ? sig.name : undefined, "lifeLength": lifeLength},
+                    {"signatureID": null, "systemID": far, "type": "wormhole", "bookmark": b.hint, "lifeLength": lifeLength}
+                ]
+            };
+            if (sig) {   // a site signature that turns out to be a hole
+                pair.signatures[0].id = sig.id;
+                payload.signatures.update.push(pair);
+                undo.push(sig);
+            } else {
+                payload.signatures.add.push(pair);
+            }
+        });
     };
 
     // Unidentified wormhole signatures in the viewed system, with their far side.
@@ -421,11 +538,29 @@ tripwire.pasteSignatures = function() {
             var paste = window.clipboardData ? window.clipboardData.getData("Text") : (e.originalEvent || e).clipboardData.getData('text/plain');
 
             $("#clipboard").blur();
-            Notify.trigger("Paste detected<br/>(<a id='fullPaste' href=''>Click to delete missing sigs</a>)");
-            $("#fullPaste").data("paste", paste);
-            tripwire.pasteSignatures.parsePaste(paste);
+            tripwire.pasteSignatures.ingest(paste);
         });
     }
+
+    // Rows of a paste that are bookmarks, not scanner results.
+    this.pasteSignatures.bookmarkCount = function(text) {
+        var convention = tripwire.pasteSignatures.convention();
+        return String(text || "").split("\n").filter(function(row) { return !rowParse(row) && tripwire.bookmarks.parse(row, convention); }).length;
+    };
+
+    // Every way in (Ctrl-V, the Paste button, a paste into a field) ends
+    // here: say what was read, then parse it.
+    this.pasteSignatures.ingest = function(text) {
+        var marks = tripwire.pasteSignatures.bookmarkCount(text);
+        if (marks) {
+            // Bookmarks are not a full scan: never offer to delete what they leave out.
+            Notify.trigger(marks === 1 ? "Bookmark read" : marks + " bookmarks read");
+        } else {
+            Notify.trigger("Paste detected<br/>(<a id='fullPaste' href=''>Click to delete missing sigs</a>)");
+            $("#fullPaste").data("paste", text);
+        }
+        tripwire.pasteSignatures.parsePaste(text);
+    };
 
     this.pasteSignatures.init();
 }

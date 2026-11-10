@@ -18,9 +18,7 @@ var __tripwirePasteIngest;
 			Notify.trigger("Nothing on the clipboard looked like scanner results.");
 			return;
 		}
-		Notify.trigger("Paste detected<br/>(<a id='fullPaste' href=''>Click to delete missing sigs</a>)");
-		$("#fullPaste").data("paste", text);
-		tripwire.pasteSignatures.parsePaste(text);
+		tripwire.pasteSignatures.ingest(text);
 	}
 
 	__tripwirePasteIngest = ingest;
@@ -51,7 +49,8 @@ var __tripwirePasteIngest;
 // "I can't paste sigs" from the user's side of the screen.
 //
 // If what is being pasted looks like probe-scanner output -- tab-separated
-// rows starting with a signature id -- it is a scan wherever it lands. The
+// rows starting with a signature id -- or like bookmarks copied from EVE, it
+// is a scan wherever it lands. The
 // exceptions are places where a person is genuinely editing text: the
 // signature dialog, the notes editor, and settings.
 (function() {
@@ -61,7 +60,8 @@ var __tripwirePasteIngest;
 		if (t && t.closest && t.closest("#dialog-signature, .rte, #dialog-options, #clipboard")) { return; }
 		var cb = e.clipboardData; if (!cb) { return; }
 		var text = cb.getData("text/plain") || "";
-		if (!SCAN.test(text)) { return; }
+		// Bookmarks copied from EVE are tab-separated too; plain typing is not.
+		if (!SCAN.test(text) && !(/\t/.test(text) && tripwire.pasteSignatures.bookmarkCount(text))) { return; }
 		e.preventDefault();
 		e.stopPropagation();
 		if (t && t.blur) { t.blur(); }

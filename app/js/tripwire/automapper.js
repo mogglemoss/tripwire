@@ -238,6 +238,9 @@ function wormholesForJump(from, to, wormholes, signatures) {
         if ( ( signatures[wormhole.initialID] !== undefined ) && ( signatures[wormhole.secondaryID] !== undefined ) ) {
             // Find wormholes that have no set Leads To system, and their initial system is from the wormhole we just jumped from
             if (signatures[wormhole.initialID].systemID == from && !appData.systems[signatures[wormhole.secondaryID].systemID]) {
+				// A bookmark's hints ("RUST", a J-number's last digits) rule out holes that can't be this jump.
+				const hint = signatures[wormhole.secondaryID].bookmark;
+				if (hint && tripwire.bookmarks && appData.systems[to] && !tripwire.bookmarks.hintsFit(hint, appData.systems[to], tripwire.pasteSignatures.convention(), appData.systems, appData.regions, false)) { return false; }
 				const holeTargetTypeName = appData.genericSystemTypes[signatures[wormhole.secondaryID].systemID];
 				const holeClasses = systemAnalysis.classForTypeName(holeTargetTypeName);
 				if(holeTargetTypeName === toType) {

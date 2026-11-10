@@ -54,6 +54,13 @@ test.describe("voice announcements", () => {
 	test.beforeEach(async ({ page }) => {
 		await recordSpeech(page);
 		await login(page, "Perimeter");
+		// Start from the defaults whatever the account was left with: a demo or
+		// screenshot session can leave voice on, and the first test turns it on.
+		await page.evaluate(async () => {
+			options.voice = JSON.parse(JSON.stringify(options.reset.defaults.voice));
+			tripwire.jumpVoice.paint();
+			await options.save();
+		});
 		await page.mouse.click(5, 5);   // a real interaction: browsers hold speech until there is one
 	});
 	test.afterEach(async ({ page }) => {

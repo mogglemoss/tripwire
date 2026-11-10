@@ -1534,3 +1534,18 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 	display: inline-flex; align-items: center; font-family: var(--font-ui);
 }
 #statusbar .themebtn:hover { color: var(--primary); border-color: var(--primary); }
+
+/* ── Settings > Bookmarks ─────────────────────────────────────────────── */
+#dialog-options .bm-lead { margin: 0 0 4px; color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1.45; }
+#dialog-options .bm-lead #bm-source { color: var(--foreground); }
+#dialog-options .bm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin-bottom: 4px; }
+#dialog-options .bm-row { display: grid; grid-template-columns: 7.5em 1fr; align-items: center; gap: 8px; font-size: var(--fs-sm); color: var(--muted-foreground); }
+#dialog-options .bm-row input { min-width: 0; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; }
+/* Following the server: the words are shown, not offered for editing. */
+#dialog-options .bm-following .bm-row input { opacity: .6; background: transparent; border-style: dashed; cursor: default; }
+#dialog-options .bm-following .switch:has(#bm-bare) { opacity: .45; cursor: default; }
+/* Every dialog input is capped at 16rem; the try box takes the whole row. */
+#dialog-options #bm-try { width: 100%; max-width: none; font-family: var(--font-mono); text-transform: uppercase; }
+#dialog-options .bm-result { margin: 6px 0 0; min-height: 1.3em; color: var(--foreground); font-size: var(--fs-sm); }
+#dialog-options .bm-result.is-miss { color: var(--muted-foreground); }
+@media (max-width: 767px) { #dialog-options .bm-grid { grid-template-columns: 1fr; } }

@@ -54,6 +54,7 @@ $(".options").click(function(e) {
 				options.uiscale = $("#dialog-options #uiscale-slider").slider("value");
 
 				if (tripwire.settingsVoice) { tripwire.settingsVoice.save(); }
+				if (tripwire.settingsBookmarks) { tripwire.settingsBookmarks.save(); }
 
 				options.apply();
 				options.save(); // Performs AJAX
@@ -131,6 +132,7 @@ $(".options").click(function(e) {
 			if (tripwire.settingsPanels) { tripwire.settingsPanels.render(); }
 			if (tripwire.settingsVoice) { tripwire.settingsVoice.render(); }
 			if (tripwire.settingsTheme) { tripwire.settingsTheme.render(); }
+			if (tripwire.settingsBookmarks) { tripwire.settingsBookmarks.render(); }
 		},
 		create: function() {
 			// Tabs. Twenty-four controls in one 1,056px scroll was the previous

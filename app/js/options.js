@@ -16,6 +16,8 @@ var options = new function() {
 	this.buttons = {follow: false, chainWidget: {viewing: false, favorites: false}, signaturesWidget: {autoMapper: false}};
 	// Spoken jump announcements. Off until the pilot turns them on. The
 	// ElevenLabs key is not here: it stays in the browser (see speech.js).
+	// Bookmark convention: the server's (its brand pack) unless the pilot keeps their own.
+	this.bookmarks = {own: false, convention: null};
 	this.voice = {enabled: false, trigger: "new", detail: "brief", voiceKey: "", rate: 1.1, volume: 0.8,
 		parts: {arrival: true, digits: true, statics: true, kills: true, who: true, hubs: true, live: true}};
 

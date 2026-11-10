@@ -11,7 +11,7 @@ for (const viewport of [{ width: 1280, height: 700 }, { width: 390, height: 844 
 		const dialog = page.locator(".ui-dialog:has(#dialog-options)");
 		await expect(dialog).toBeVisible();
 		const heights = new Set();
-		for (const tab of ["account", "map", "signatures", "display", "voice", "voice+eleven", "stats"]) {
+		for (const tab of ["account", "map", "signatures", "display", "voice", "voice+eleven", "bookmarks", "stats"]) {
 			const tabButton = page.locator(`#optionsAccordion [role=tab][data-tab=${tab.split("+")[0]}]`);
 			await tabButton.click();
 			await expect(tabButton, tab + " tab reachable").toBeInViewport();

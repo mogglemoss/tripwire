@@ -667,6 +667,7 @@ $system = $_REQUEST['system'] ?? '';
 				<button type="button" role="tab" data-tab="signatures" aria-selected="false">Signatures</button>
 				<button type="button" role="tab" data-tab="display" aria-selected="false">Display</button>
 				<button type="button" role="tab" data-tab="voice" aria-selected="false">Voice</button>
+				<button type="button" role="tab" data-tab="bookmarks" aria-selected="false">Bookmarks</button>
 				<button type="button" role="tab" data-tab="stats" aria-selected="false">Statistics</button>
 			</nav>
 
@@ -858,6 +859,31 @@ $system = $_REQUEST['system'] ?? '';
 				</div>
 				<div class="field voice-try"><p class="voice-status" id="voice-status" role="status"></p>
 					<input type="button" id="voice-preview" value="Preview" />
+				</div>
+			</section>
+
+			<section class="settings-pane" data-pane="bookmarks" role="tabpanel" hidden>
+				<p class="bm-lead">Paste bookmarks copied from EVE like a scan (Ctrl-V). The words they use are a convention: <span id="bm-source"></span></p>
+				<div class="field"><label class="field-label" for="bm-own">Use my own words <small>instead of this server's</small></label>
+					<label class="switch"><input type="checkbox" id="bm-own" /><span class="switch-track"></span></label>
+				</div>
+				<h4 class="field-group">Where a hole leads</h4>
+				<div class="bm-grid"><label class="bm-row"><span>High-sec</span><input type="text" data-bm="destinations.High-Sec" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Low-sec</span><input type="text" data-bm="destinations.Low-Sec" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Null-sec</span><input type="text" data-bm="destinations.Null-Sec" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Pochven</span><input type="text" data-bm="destinations.Triglavian" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 1</span><input type="text" data-bm="destinations.Class-1" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 2</span><input type="text" data-bm="destinations.Class-2" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 3</span><input type="text" data-bm="destinations.Class-3" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 4</span><input type="text" data-bm="destinations.Class-4" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 5</span><input type="text" data-bm="destinations.Class-5" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 6</span><input type="text" data-bm="destinations.Class-6" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Class 13</span><input type="text" data-bm="destinations.Class-13" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Drifter</span><input type="text" data-bm="destinations.Drifter" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Any wormhole</span><input type="text" data-bm="destinations.wormhole" spellcheck="false" autocomplete="off" /></label></div>
+				<h4 class="field-group">Space by faction</h4>
+				<div class="bm-grid"><label class="bm-row"><span>Caldari</span><input type="text" data-bm="factions.Caldari" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Minmatar</span><input type="text" data-bm="factions.Minmatar" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Gallente</span><input type="text" data-bm="factions.Gallente" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Amarr</span><input type="text" data-bm="factions.Amarr" spellcheck="false" autocomplete="off" /></label></div>
+				<h4 class="field-group">Life and mass</h4>
+				<div class="bm-grid"><label class="bm-row"><span>End of life</span><input type="text" data-bm="life.critical" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Under an hour</span><input type="text" data-bm="life.<1h" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Mass under 50%</span><input type="text" data-bm="mass.destab" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Mass under 10%</span><input type="text" data-bm="mass.critical" spellcheck="false" autocomplete="off" /></label></div>
+				<h4 class="field-group">Sites</h4>
+				<div class="bm-grid"><label class="bm-row"><span>Gas</span><input type="text" data-bm="sites.Gas" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Data</span><input type="text" data-bm="sites.Data" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Relic</span><input type="text" data-bm="sites.Relic" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Combat</span><input type="text" data-bm="sites.Combat" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Ore</span><input type="text" data-bm="sites.Ore" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Read the name</span><input type="text" data-bm="sites.auto" spellcheck="false" autocomplete="off" /></label></div>
+				<div class="field"><label class="field-label" for="bm-bare">A full id then a site name <small>"ZYP-952 Rampant Drone Fabricator", with no code</small></label>
+					<label class="switch"><input type="checkbox" id="bm-bare" /><span class="switch-track"></span></label>
+				</div>
+				<h4 class="field-group">Other words</h4>
+				<div class="bm-grid"><label class="bm-row"><span>Unknown signature</span><input type="text" data-bm="unknownSignature" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Unknown system</span><input type="text" data-bm="unknownSystem" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Way home</span><input type="text" data-bm="home" spellcheck="false" autocomplete="off" /></label><label class="bm-row"><span>Camp</span><input type="text" data-bm="camps" spellcheck="false" autocomplete="off" /></label></div>
+				<h4 class="field-group">Try one</h4>
+				<div class="field field-block">
+					<input type="text" id="bm-try" spellcheck="false" autocomplete="off" placeholder="C2 HGX ??? &lt;4H &lt;10%" />
+					<p class="bm-result" id="bm-result" role="status"></p>
 				</div>
 			</section>
 

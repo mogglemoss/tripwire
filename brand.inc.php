@@ -146,6 +146,11 @@ function brand_head($landing = false) {
 		echo "\t<link rel=\"stylesheet\" href=\"" . brand_h($b['fonts']['google']) . "\">\n";
 	}
 	echo "\t<link rel=\"manifest\" href=\"/manifest.php\" crossorigin=\"use-credentials\">\n";
+	// The pack's bookmark convention, as the pack wrote it: the browser lays
+	// it over the default (tripwire.bookmarks). Escaped for a script tag.
+	if (!empty($b['bookmarks']) && is_array($b['bookmarks'])) {
+		echo "\t<script>window.TW_BOOKMARK_CONVENTION = " . json_encode($b['bookmarks'], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ";</script>\n";
+	}
 	echo "\t<meta name=\"theme-color\" content=\"" . brand_h($theme) . "\">\n";
 	echo "\t<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n";
 	echo "\t<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">\n";
