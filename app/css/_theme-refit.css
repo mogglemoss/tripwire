@@ -1480,3 +1480,6 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 	#topbar #hdr-system { min-width: 0; flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 	#topbar .hdr-tools .voicebtn { margin-right: 4px; }
 }
+/* Settings: a single cog in the same bordered button as squelch and the room lights. */
+#topbar .hdr-tools .settingsbtn { margin-left: 6px; padding: 4px 6px; }
+#topbar .hdr-tools .settingsbtn svg { display: block; }
