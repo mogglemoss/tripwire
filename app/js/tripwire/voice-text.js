@@ -114,7 +114,8 @@ tripwire.voiceText = (function() {
 
 	function who(counts, corpName, brief) {
 		if (!counts || !corpName) { return null; }
-		return "Mostly " + corpName + (brief ? "" : ", " + plural(counts.pilots, "pilot", "pilots")) + ".";
+		var line = "Mostly " + corpName + (brief ? "" : ", " + plural(counts.pilots, "pilot", "pilots"));
+		return /\.$/.test(line) ? line : line + ".";   // a name like "Acme Inc." already ends the sentence
 	}
 
 	// EVE-Scout's public connections (the server's cached copy). A link's

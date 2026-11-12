@@ -71,6 +71,7 @@ describe('Voice: what is said on a jump', function() {
 		assert.equal(T.kills(list, 8, now, hull, true), '2 kills, latest 20 minutes ago.');
 		assert.equal(T.kills([], 8, now, hull, true), 'No kills.');
 		assert.equal(T.who({ pilots: 3 }, 'Hard Knocks Citizens', true), 'Mostly Hard Knocks Citizens.');
+		assert.equal(T.who({ pilots: 3 }, 'Acme Inc.', true), 'Mostly Acme Inc.', 'a name ending in a full stop gets no second one');
 		assert.equal(T.hubLinks([{ in_system_id: 5, out_system_name: 'Turnur', in_signature: 'ABC-123', remaining_hours: 9 }], 5, true), 'Turnur here, signature A B C.');
 		assert.equal(T.liveKill({ victim: { ship_type_id: 17715 }, zkb: { totalValue: 251400000 } }, hull, true), 'Kill: a Gila.');
 	});
