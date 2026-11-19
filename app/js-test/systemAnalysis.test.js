@@ -5,9 +5,10 @@ include('public/js/combine');
 
 describe('System analysis', () => {
 	describe('should match for edge case systems', () => {
+		// 0.448268 since the 2026-11-19 SDE (was 0.449268): still low-sec, the edge case this checks.
 		it('Egghelende', () => {
 			assert.deepEqual(systemAnalysis.analyse(30002693), {
-				 baseSecurity: 0.449268,
+				 baseSecurity: 0.448268,
 				  class: undefined,
 				  constellationID: 20000394,
 				  effectClass: undefined,
@@ -18,7 +19,7 @@ describe('System analysis', () => {
 				  name: 'Egghelende',
 				  pathSymbol: '■',
 				  regionID: 10000032,
-				  security: 0.449268,
+				  security: 0.448268,
 				  systemID: 30002693,
 				  systemTypeClass: 'lowsec',
 				  systemTypeModifiers: [],

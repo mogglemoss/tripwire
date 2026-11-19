@@ -12,6 +12,7 @@ $mysql = create_db_connection('mysql:host=localhost;dbname=tripwire_database;cha
 // $mysql_update = $mysql;
 
 // Option 3 (recommended): Create a second account with update rights. This will only be used for the update itself, and the main tripwire account can use minimal select/update/delete permissions
+// The update account needs SYSTEM_USER (or use root): some updates alter the scheduled events, which are owned by root.
 $mysql_update = create_db_connection('mysql:host=localhost;dbname=tripwire_database;charset=utf8',
 	'username-for-update',
 	'password'

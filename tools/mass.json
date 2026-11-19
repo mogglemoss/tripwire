@@ -339,6 +339,58 @@
         "typeName": "Venture Consortium Issue",
         "mass": 1200000
     },
+    "95859": {
+        "typeName": "Academy Merlin",
+        "mass": 997000
+    },
+    "95860": {
+        "typeName": "Academy Incursus",
+        "mass": 1028000
+    },
+    "95861": {
+        "typeName": "Academy Probe",
+        "mass": 1123000
+    },
+    "95862": {
+        "typeName": "Academy Venture",
+        "mass": 1200000
+    },
+    "97266": {
+        "typeName": "Academy Kestrel",
+        "mass": 1113000
+    },
+    "97267": {
+        "typeName": "Academy Tristan",
+        "mass": 1044000
+    },
+    "97268": {
+        "typeName": "Academy Rifter",
+        "mass": 1067000
+    },
+    "97269": {
+        "typeName": "Academy Breacher",
+        "mass": 1087000
+    },
+    "97270": {
+        "typeName": "Academy Punisher",
+        "mass": 1190000
+    },
+    "97271": {
+        "typeName": "Academy Tormentor",
+        "mass": 1080000
+    },
+    "97272": {
+        "typeName": "Academy Heron",
+        "mass": 1150000
+    },
+    "97273": {
+        "typeName": "Academy Imicus",
+        "mass": 997000
+    },
+    "97274": {
+        "typeName": "Academy Magnate",
+        "mass": 1072000
+    },
     "620": {
         "typeName": "Osprey",
         "mass": 11100000
@@ -1883,6 +1935,10 @@
         "typeName": "Raiju",
         "mass": 987000
     },
+    "97793": {
+        "typeName": "Herald",
+        "mass": 1010100
+    },
     "11995": {
         "typeName": "Onyx",
         "mass": 15400000
@@ -1909,43 +1965,43 @@
     },
     "22428": {
         "typeName": "Redeemer",
-        "mass": 150300000
+        "mass": 112700000
     },
     "22430": {
         "typeName": "Sin",
-        "mass": 141700000
+        "mass": 106300000
     },
     "22436": {
         "typeName": "Widow",
-        "mass": 151100000
+        "mass": 113300000
     },
     "22440": {
         "typeName": "Panther",
-        "mass": 148800000
+        "mass": 111600000
     },
     "44996": {
         "typeName": "Marshal",
-        "mass": 150000000
+        "mass": 112500000
     },
     "85236": {
         "typeName": "Python",
-        "mass": 141700000
+        "mass": 106300000
     },
     "28659": {
         "typeName": "Paladin",
-        "mass": 160000000
+        "mass": 128000000
     },
     "28661": {
         "typeName": "Kronos",
-        "mass": 148000000
+        "mass": 118400000
     },
     "28665": {
         "typeName": "Vargur",
-        "mass": 150000000
+        "mass": 120000000
     },
     "28710": {
         "typeName": "Golem",
-        "mass": 157000000
+        "mass": 125600000
     },
     "34219": {
         "typeName": "Paladin Blood Raider Edition",
@@ -2005,7 +2061,7 @@
     },
     "88001": {
         "typeName": "Babaroga",
-        "mass": 143000000
+        "mass": 114400000
     },
     "28844": {
         "typeName": "Rhea",
@@ -2037,6 +2093,10 @@
     },
     "20125": {
         "typeName": "Curse",
+        "mass": 11810000
+    },
+    "97904": {
+        "typeName": "Penitence",
         "mass": 11810000
     },
     "28606": {
@@ -2089,6 +2149,26 @@
     },
     "89807": {
         "typeName": "Anhinga",
+        "mass": 14760000
+    },
+    "95629": {
+        "typeName": "Oracle Navy Issue",
+        "mass": 14760000
+    },
+    "95630": {
+        "typeName": "Naga Navy Issue",
+        "mass": 15000000
+    },
+    "95631": {
+        "typeName": "Talos Navy Issue",
+        "mass": 15552000
+    },
+    "95632": {
+        "typeName": "Tornado Fleet Issue",
+        "mass": 15228000
+    },
+    "95741": {
+        "typeName": "Akoman",
         "mass": 14760000
     },
     "12729": {

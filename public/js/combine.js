@@ -14499,7 +14499,7 @@ var appData = {
         },
         "30002246": {
             "name": "Neziel",
-            "security": 0.449944,
+            "security": 0.448944,
             "constellationID": 20000329,
             "regionID": 10000043,
             "factionID": 500003
@@ -17400,7 +17400,7 @@ var appData = {
         },
         "30002693": {
             "name": "Egghelende",
-            "security": 0.449268,
+            "security": 0.448268,
             "constellationID": 20000394,
             "regionID": 10000032,
             "factionID": 500004
@@ -19131,11 +19131,11 @@ var appData = {
             "factionID": 500003
         },
         "30002960": {
-            "name": "Arzad",
+            "name": "Starkman",
             "security": 0.22043,
             "constellationID": 20000433,
             "regionID": 10000036,
-            "factionID": 500003
+            "factionID": 500002
         },
         "30002961": {
             "name": "Oyeman",
@@ -19149,7 +19149,7 @@ var appData = {
             "security": 0.184511,
             "constellationID": 20000433,
             "regionID": 10000036,
-            "factionID": 500003
+            "factionID": 500002
         },
         "30002963": {
             "name": "Odin",
@@ -22217,7 +22217,7 @@ var appData = {
         },
         "30003425": {
             "name": "Erstet",
-            "security": 0.449402,
+            "security": 0.448402,
             "constellationID": 20000499,
             "regionID": 10000042,
             "factionID": 500002
@@ -23050,7 +23050,7 @@ var appData = {
         },
         "30003544": {
             "name": "Galeh",
-            "security": 0.449164,
+            "security": 0.448164,
             "constellationID": 20000516,
             "regionID": 10000043,
             "factionID": 500003
@@ -25475,7 +25475,7 @@ var appData = {
         },
         "30003916": {
             "name": "Rilera",
-            "security": 0.449848,
+            "security": 0.448848,
             "constellationID": 20000571,
             "regionID": 10000049,
             "factionID": 500008
@@ -32224,7 +32224,7 @@ var appData = {
         },
         "30004992": {
             "name": "Palmon",
-            "security": 0.44971,
+            "security": 0.44871,
             "constellationID": 20000730,
             "regionID": 10000064,
             "factionID": 500004
@@ -32889,7 +32889,7 @@ var appData = {
         },
         "30005087": {
             "name": "Liparer",
-            "security": 0.449136,
+            "security": 0.448136,
             "constellationID": 20000744,
             "regionID": 10000065,
             "factionID": 500003
@@ -82435,7 +82435,8 @@ var appData = {
             },
             "3299": {
                 "3294": 0,
-                "3298": 0
+                "3298": 0,
+                "45313": 0
             },
             "3300": {
                 "3294": 0,
@@ -90064,7 +90065,8 @@ var appData = {
                 "4969": 0,
                 "4971": 0,
                 "4972": 0,
-                "5198": 0
+                "5198": 0,
+                "5308": 0
             },
             "4971": {
                 "2668": 0,
@@ -91710,6 +91712,7 @@ var appData = {
                 "5305": 0
             },
             "5308": {
+                "4970": 0,
                 "5297": 0,
                 "5309": 0,
                 "5310": 0,
@@ -92021,6 +92024,7 @@ var appData = {
                 "45309": 0
             },
             "45313": {
+                "3299": 0,
                 "45307": 0,
                 "45311": 0
             },
@@ -93048,6 +93052,58 @@ var appData = {
         "89648": {
             "typeName": "Venture Consortium Issue",
             "mass": 1200000
+        },
+        "95859": {
+            "typeName": "Academy Merlin",
+            "mass": 997000
+        },
+        "95860": {
+            "typeName": "Academy Incursus",
+            "mass": 1028000
+        },
+        "95861": {
+            "typeName": "Academy Probe",
+            "mass": 1123000
+        },
+        "95862": {
+            "typeName": "Academy Venture",
+            "mass": 1200000
+        },
+        "97266": {
+            "typeName": "Academy Kestrel",
+            "mass": 1113000
+        },
+        "97267": {
+            "typeName": "Academy Tristan",
+            "mass": 1044000
+        },
+        "97268": {
+            "typeName": "Academy Rifter",
+            "mass": 1067000
+        },
+        "97269": {
+            "typeName": "Academy Breacher",
+            "mass": 1087000
+        },
+        "97270": {
+            "typeName": "Academy Punisher",
+            "mass": 1190000
+        },
+        "97271": {
+            "typeName": "Academy Tormentor",
+            "mass": 1080000
+        },
+        "97272": {
+            "typeName": "Academy Heron",
+            "mass": 1150000
+        },
+        "97273": {
+            "typeName": "Academy Imicus",
+            "mass": 997000
+        },
+        "97274": {
+            "typeName": "Academy Magnate",
+            "mass": 1072000
         },
         "620": {
             "typeName": "Osprey",
@@ -94593,6 +94649,10 @@ var appData = {
             "typeName": "Raiju",
             "mass": 987000
         },
+        "97793": {
+            "typeName": "Herald",
+            "mass": 1010100
+        },
         "11995": {
             "typeName": "Onyx",
             "mass": 15400000
@@ -94619,43 +94679,43 @@ var appData = {
         },
         "22428": {
             "typeName": "Redeemer",
-            "mass": 150300000
+            "mass": 112700000
         },
         "22430": {
             "typeName": "Sin",
-            "mass": 141700000
+            "mass": 106300000
         },
         "22436": {
             "typeName": "Widow",
-            "mass": 151100000
+            "mass": 113300000
         },
         "22440": {
             "typeName": "Panther",
-            "mass": 148800000
+            "mass": 111600000
         },
         "44996": {
             "typeName": "Marshal",
-            "mass": 150000000
+            "mass": 112500000
         },
         "85236": {
             "typeName": "Python",
-            "mass": 141700000
+            "mass": 106300000
         },
         "28659": {
             "typeName": "Paladin",
-            "mass": 160000000
+            "mass": 128000000
         },
         "28661": {
             "typeName": "Kronos",
-            "mass": 148000000
+            "mass": 118400000
         },
         "28665": {
             "typeName": "Vargur",
-            "mass": 150000000
+            "mass": 120000000
         },
         "28710": {
             "typeName": "Golem",
-            "mass": 157000000
+            "mass": 125600000
         },
         "34219": {
             "typeName": "Paladin Blood Raider Edition",
@@ -94715,7 +94775,7 @@ var appData = {
         },
         "88001": {
             "typeName": "Babaroga",
-            "mass": 143000000
+            "mass": 114400000
         },
         "28844": {
             "typeName": "Rhea",
@@ -94747,6 +94807,10 @@ var appData = {
         },
         "20125": {
             "typeName": "Curse",
+            "mass": 11810000
+        },
+        "97904": {
+            "typeName": "Penitence",
             "mass": 11810000
         },
         "28606": {
@@ -94799,6 +94863,26 @@ var appData = {
         },
         "89807": {
             "typeName": "Anhinga",
+            "mass": 14760000
+        },
+        "95629": {
+            "typeName": "Oracle Navy Issue",
+            "mass": 14760000
+        },
+        "95630": {
+            "typeName": "Naga Navy Issue",
+            "mass": 15000000
+        },
+        "95631": {
+            "typeName": "Talos Navy Issue",
+            "mass": 15552000
+        },
+        "95632": {
+            "typeName": "Tornado Fleet Issue",
+            "mass": 15228000
+        },
+        "95741": {
+            "typeName": "Akoman",
             "mass": 14760000
         },
         "12729": {

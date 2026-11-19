@@ -31,7 +31,8 @@ describe('Pathfinding', () => {
 });
 
 describe('Route to profile', () => {
-	it('System to blue loot', () => { assert.deepEqual( [ sid('Amygnon'), sid("Intaki"), sid("Agoze"), sid("Ostingele"), sid("Harroule"), sid("MHC-R3"), sid("2X-PQG") ], guidance.findShortestPath(appData.map.shortest, sid('Amygnon'), guidance_profiles.blueLootSystems)); });
+	// The 2026-11-19 SDE's new gates make Seyllin six jumps away (it was 2X-PQG, seven).
+	it('System to blue loot', () => { assert.deepEqual( [ sid('Amygnon'), sid('Jufvitte'), sid('Renyn'), sid('Du Annes'), sid('Metserel'), sid('Seyllin') ], guidance.findShortestPath(appData.map.shortest, sid('Amygnon'), guidance_profiles.blueLootSystems)); });
 });
 
 describe('Conditional gates', () => {

@@ -54,12 +54,13 @@ tripwire.addSig = function(add, option, disabled) {
 			add.signatureID && add.signatureID.length && add.signatureID[0] != '?' ? returnLinkText
 			: '';	
 		const lifeClass = (wormhole.life || '').replace('<', 'eol-');
+		const scanGroup = 'wormhole';
 
-        var row = "<tr data-id='"+add.id+"' class='sig-wormhole' data-scan-group='"+_.escape(add.scan_group) + "' data-tooltip='' "+ (disabled ? 'disabled="disabled"' : '') +">"
+        var row = "<tr data-id='"+add.id+"' class='sig-wormhole' data-scan-group='"+_.escape(scanGroup) + "' data-tooltip='' "+ (disabled ? 'disabled="disabled"' : '') +">"
             + "<td class='"+ options.signatures.alignment.sigID +"'>"+formatSignatureID(add.signatureID)+"</td>"
             + "<td class='type-tooltip "+ options.signatures.alignment.sigType +"' data-tooltip=\""+this.whTooltip(wormhole)+"\">"+sigInfo.formattedType+"</td>"
             + "<td class='age-tooltip "+ options.signatures.alignment.sigAge + (parseInt(add.lifeLength) === 0 ? " disabled" : "") +"' data-tooltip='"+this.ageTooltip(add)+"'><span data-age='"+add.lifeTime+"'></span></td>"
-            + "<td class='"+ options.signatures.alignment.leadsTo +"'>"+leadsToText+"</td>"
+            + "<td class='"+ options.signatures.alignment.leadsTo +"'><span style='float:left'>"+(scanGroupText[scanGroup] || '') + '</span>'+leadsToText+"</td>"
             + "<td class='"+sigInfo.lifeClass+" "+ options.signatures.alignment.sigLife +"'>"+sigInfo.lifeText+"</td>"
             + "<td class='"+sigInfo.massClass+" "+ options.signatures.alignment.sigMass +"'>"+sigInfo.massText+"</td>"
             + "</tr>";
