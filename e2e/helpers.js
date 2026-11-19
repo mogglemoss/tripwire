@@ -32,6 +32,10 @@ async function clientSigIds(page) {
 // tests' own fixtures only. Goes through the same remove payload the UI
 // uses, and waits for the client to agree.
 async function removeSigsByPrefix(page, prefix) {
+	// Stored ids carry no hyphen ("zzq802"); callers write the prefix as the
+	// client shows it ("ZZQ-8"). Without this the cleanup matched nothing and
+	// left test rows behind on the preview's real map.
+	prefix = String(prefix).replace(/-/g, "");
 	await page.evaluate((prefix) => new Promise((resolve) => {
 		const ids = Object.values((tripwire.client && tripwire.client.signatures) || {})
 			.filter(s => (s.signatureID || "").toLowerCase().startsWith(prefix.toLowerCase()))
