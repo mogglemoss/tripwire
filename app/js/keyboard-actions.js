@@ -101,7 +101,7 @@ tripwire.keyboard = (function() {
             if (words.indexOf(q) < 0 && (kq.length < 2 || k.label.toLowerCase().indexOf(kq) < 0)) { return; }
             out.push({
                 id: "route-nearest-" + k.key,
-                label: (tripwire.routesPanel.hasNearest(k.key) ? "Remove route to nearest " : "Route to nearest ") + k.label.toLowerCase(),
+                label: (tripwire.routesPanel.hasNearest(k.key) ? "Remove route to nearest " : "Route to nearest ") + k.phrase,
                 group: "Routes",
                 enabled: function() { return true; },
                 perform: function() { tripwire.routesPanel.toggleNearest(k.key); }

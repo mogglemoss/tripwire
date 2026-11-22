@@ -22,14 +22,19 @@ tripwire.routesPanel = (function() {
 
 	var SCOUT_URL = "cached_third_party.php?key=eve-scout-signatures", SCOUT_EVERY = 60000, TICK = 1500;
 	var lastKey = null, planned = [], ownScout = null, scoutAt = 0, scoutPending = false, scoutFailed = false, source = null;
-	var THERA = 31000005;       // reached only through holes; EVE-Scout lists them
+	var THERA = 31000005, TURNUR = 30002086;       // EVE-Scout lists the holes into both
 
-	// The kinds of place a route can be to the nearest of, in menu order.
+	// The kinds of place a route can be to the nearest of, in menu order. The
+	// first four are fixed lists (routePresets). The last two are whatever
+	// systems EVE-Scout says have a hole into that hub right now: the way in,
+	// not the hub itself.
 	var KINDS = [
-		{key: "hubs", label: "Trade hub", none: "No trade hub"},
-		{key: "blue", label: "Blue loot", none: "No blue loot buyer"},
-		{key: "red", label: "Red loot", none: "No red loot buyer"},
-		{key: "sec", label: "Security office", none: "No security office"}
+		{key: "hubs", label: "Trade hub", phrase: "trade hub", none: "No trade hub"},
+		{key: "blue", label: "Blue loot", phrase: "blue loot", none: "No blue loot buyer"},
+		{key: "red", label: "Red loot", phrase: "red loot", none: "No red loot buyer"},
+		{key: "sec", label: "Security office", phrase: "security office", none: "No security office"},
+		{key: "thera", label: "Thera hole", phrase: "Thera hole", none: "No Thera hole", hub: THERA},
+		{key: "turnur", label: "Turnur hole", phrase: "Turnur hole", none: "No Turnur hole", hub: TURNUR}
 	];
 	function kind(key) { return KINDS.filter(function(k) { return k.key === key; })[0] || null; }
 	function presets() { return (source && source.presets) || (typeof routePresets !== "undefined" ? routePresets : {sets: {}, stations: {}}); }
@@ -100,8 +105,11 @@ tripwire.routesPanel = (function() {
 		if (typeof eveScout !== "undefined" && eveScout.links && eveScout.links.length) { return eveScout.links; }
 		return ownScout || [];
 	}
+	// Wanted when routes may use the holes, or a card is looking for one.
+	function needScout() { return prefs().scout || state().nearest.some(function(key) { var k = kind(key); return k && k.hub; }); }
+	function scoutLoaded() { return !!source || ownScout !== null || scoutLinks().length > 0; }
 	function refreshScout() {
-		if (!prefs().scout || scoutPending || Date.now() - scoutAt < SCOUT_EVERY) { return; }
+		if (!needScout() || scoutPending || Date.now() - scoutAt < SCOUT_EVERY) { return; }
 		scoutPending = true;
 		$.ajax({url: SCOUT_URL, type: "GET", dataType: "JSON"}).done(function(data) {
 			ownScout = Array.isArray(data) ? data : [];
@@ -118,11 +126,25 @@ tripwire.routesPanel = (function() {
 
 	function mapSource() { return source || {scoutLinks: scoutLinks()}; }
 
+	// EVE-Scout's holes into a hub, by the system on the other side: the ways
+	// in. Holes the preferences rule out (too small, too close to the end)
+	// are left out unless `all`. The longest-lived hole in a system is first.
+	function entrances(k, p, src, all) {
+		var out = {};
+		tripwire.route.scout(src).forEach(function(h) {
+			var other = h.a === k.hub ? h.b : h.b === k.hub ? h.a : null;
+			if (!other || other === k.hub || (!all && routeEngine.scoutBlocked(h, p))) { return; }
+			(out[other] = out[other] || []).push({sig: h.a === k.hub ? h.sigB : h.sigA, hours: h.remainingHours, type: h.type, size: h.size});
+		});
+		Object.keys(out).forEach(function(id) { out[id].sort(function(x, y) { return (y.hours || 0) - (x.hours || 0); }); });
+		return out;
+	}
+
 	// Everything a route depends on, as one string.
 	function key() {
 		var s = state(), o = origin(), src = mapSource();
 		var holes = tripwire.route.holes(src).map(function(h) { return [h.id, h.a, h.b, h.life, h.mass, h.size, h.noSig ? 1 : 0].join(":"); }).join("|");
-		var scout = prefs().scout ? tripwire.route.scout(src).map(function(h) { return h.id + ":" + h.remainingHours; }).join("|") : "";
+		var scout = needScout() ? tripwire.route.scout(src).map(function(h) { return h.id + ":" + h.remainingHours; }).join("|") : "";
 		return JSON.stringify([o.id, o.fallback ? 1 : 0, s.from, s.fromSystem || 0, s.prefs, s.destinations, s.nearest, Number(viewingSystemID)]) + "#" + holes + "#" + scout +
 			"#" + ($("#routesWidget").hasClass("panel-hidden") ? 0 : 1);
 	}
@@ -138,9 +160,17 @@ tripwire.routesPanel = (function() {
 			// No route: is there none at all, or none the preferences allow?
 			return entry(Number(dest), route, route ? null : {blocked: !!tripwire.route.plan(o.id, dest, {scout: p.scout}, src)});
 		}).concat(s.nearest.filter(kind).map(function(key) {
-			var route = tripwire.route.plan(o.id, kindSystems(key), p, src);
-			return entry(route ? route.to : null, route, {kind: key, stations: route ? stationsAt(key, route.to) : [],
-				blocked: !route && !!tripwire.route.plan(o.id, kindSystems(key), {scout: p.scout}, src)});
+			var k = kind(key), route, relaxed;
+			if (k.hub) {
+				// To the way in, by gates and the chain: not through the hub's own holes.
+				var ways = entrances(k, p, src), every = Object.keys(entrances(k, p, src, true)).map(Number), noScout = $.extend({}, p, {scout: false});
+				route = tripwire.route.plan(o.id, Object.keys(ways).map(Number), noScout, src);
+				relaxed = !route && !!tripwire.route.plan(o.id, every, {}, src);
+				return entry(route ? route.to : null, route, {kind: key, stations: [], ways: route ? ways[route.to] : [], blocked: relaxed, listed: every.length});
+			}
+			route = tripwire.route.plan(o.id, kindSystems(key), p, src);
+			relaxed = !route && !!tripwire.route.plan(o.id, kindSystems(key), {scout: p.scout}, src);
+			return entry(route ? route.to : null, route, {kind: key, stations: stationsAt(key, route ? route.to : 0), ways: [], blocked: relaxed});
 		}));
 		return planned;
 	}
@@ -268,7 +298,12 @@ tripwire.routesPanel = (function() {
 
 	// Why there is no route, and what would give one.
 	function noRoute(p) {
-		if (p.kind) { return '<p class="route-none">' + esc(kind(p.kind).none) + (p.blocked ? " with these preferences." : " in reach.") + "</p>"; }
+		var k = p.kind ? kind(p.kind) : null;
+		if (k && k.hub && !p.listed) {
+			// Nothing to route to: say whether EVE-Scout has answered at all.
+			return '<p class="route-none">' + (!scoutLoaded() ? (scoutFailed ? "EVE-Scout is not loading." : "Asking EVE-Scout\u2026") : esc(k.none) + " listed by EVE-Scout.") + "</p>";
+		}
+		if (k) { return '<p class="route-none">' + esc(k.none) + (p.blocked ? " with these preferences." : " in reach.") + "</p>"; }
 		if (p.blocked) { return '<p class="route-none">No route with these preferences.</p>'; }
 		var scout = p.destination === THERA && !prefs().scout;
 		return '<p class="route-none">' + (scout ? "No hole to Thera on this chain. " : "Nothing on the map connects.") +
@@ -302,6 +337,14 @@ tripwire.routesPanel = (function() {
 			var more = p.stations.length - 1;
 			body += '<p class="route-station" data-tip="' + esc(p.stations.map(function(st) { return st.name; }).join("<br>")) + '">' +
 				'<span class="route-station-name">' + esc(p.stations[0].name) + "</span>" + (more ? '<span class="route-station-more">+' + more + "</span>" : "") + "</p>";
+		}
+		if (r && k && p.ways.length) {
+			// Which signature to warp to, and how long it has. Any other hole
+			// from the same system is in the tooltip.
+			var say = function(w) { return [sig(w.sig) || "no sig listed", w.hours !== null ? w.hours + "h left" : null].filter(Boolean).join(" \u00b7 "); };
+			var full = function(w) { return [sig(w.sig) || "no sig listed", w.type, w.size, w.hours !== null ? w.hours + "h left" : null].filter(Boolean).join(" \u00b7 "); };
+			body += '<p class="route-station" data-tip="' + esc(p.ways.map(full).join("<br>")) + '">' +
+				'<span class="route-station-name">' + esc(say(p.ways[0])) + "</span>" + (p.ways.length > 1 ? '<span class="route-station-more">+' + (p.ways.length - 1) + "</span>" : "") + "</p>";
 		}
 		return '<div class="route-card' + (k ? " is-nearest" : "") + '"' + (k ? ' data-nearest="' + esc(k.key) + '"' : ' data-destination="' + p.destination + '"') + ">" + head + body + "</div>";
 	}
@@ -359,6 +402,7 @@ tripwire.routesPanel = (function() {
 	function addNearest(key) {
 		if (!kind(key) || hasNearest(key)) { return false; }
 		state().nearest.push(key);
+		if (kind(key).hub) { scoutAt = 0; }      // its holes are wanted now, not in a minute
 		if (tripwire.panels && !tripwire.panels.isVisible("routesWidget")) { tripwire.panels.setVisible("routesWidget", true); }
 		save(); refresh(true);
 		return true;

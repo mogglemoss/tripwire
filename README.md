@@ -60,8 +60,9 @@ What the refit changes, in one screen:
   of hops in their security colours, with wormhole jumps marked in the
   hole's state and ones with no signature dashed. A destination can also be the
   nearest of a kind: trade hub, blue loot buyer, red loot buyer or security
-  office, with the station to dock at. Those lists are generated from EVE's
-  public market data (`scripts/route-presets.py`). The rules are written
+  office, with the station to dock at, or the nearest hole into Thera or
+  Turnur that EVE-Scout lists, with its signature. The station lists are
+  generated from EVE's public market data (`scripts/route-presets.py`). The rules are written
   down in `docs/route-model.md`, shared with the other tools that read a
   chain.
 - **Command palette** (`/` or Ctrl-K): jump to a system, a chain tab or a

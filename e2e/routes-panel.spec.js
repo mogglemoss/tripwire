@@ -256,7 +256,7 @@ test.describe("Routes panel", () => {
 			tripwire.routesPanel.refresh(true);
 			return appData.systems[start].name;
 		});
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Blue loot", "Red loot", "Security office"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Blue loot", "Red loot", "Security office", "Thera hole", "Turnur hole"]);
 		await page.selectOption("#routes-nearest", "blue");
 
 		const want = await page.evaluate(() => {
@@ -274,7 +274,7 @@ test.describe("Routes panel", () => {
 		if (want.stations.length > 1) { await expect(blue.locator(".route-station-more")).toHaveText("+" + (want.stations.length - 1)); }
 
 		// It has left the menu, and it is saved with the account.
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Red loot", "Security office"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Red loot", "Security office", "Thera hole", "Turnur hole"]);
 		await expect(page.locator("#routes-nearest")).toHaveValue("");
 		await expect.poll(() => saved.some(s => s.includes('"nearest":["blue"]'))).toBe(true);
 
@@ -293,7 +293,7 @@ test.describe("Routes panel", () => {
 
 		await page.locator('#routes-list .route-card[data-nearest="blue"] .route-remove').click();
 		await expect(page.locator('#routes-list .route-card[data-nearest="blue"]')).toHaveCount(0);
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Blue loot", "Red loot", "Security office"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Blue loot", "Red loot", "Security office", "Thera hole", "Turnur hole"]);
 		await expect.poll(() => saved.some(s => s.includes('"nearest":["hubs"]'))).toBe(true);
 	});
 
@@ -361,6 +361,60 @@ test.describe("Routes panel", () => {
 		await page.fill("#cmd-input", "security off");
 		await expect(page.locator("#cmd-list li", { hasText: "Remove route to nearest security office" })).toBeVisible();
 		await page.keyboard.press("Escape");
+	});
+
+	test("the nearest Thera or Turnur hole is the way in that EVE-Scout lists, with its signature", async ({ page }) => {
+		const ids = await page.evaluate(() => {
+			const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
+			return { JITA: idOf("Jita"), AMARR: idOf("Amarr"), DODIXIE: idOf("Dodixie"), PERIMETER: idOf("Perimeter"), THERA: idOf("Thera"), TURNUR: idOf("Turnur") };
+		});
+		let fail = true;
+		const link = (id, hub, hubName, other, sig, hours, size) => ({ id: String(id), wh_exits_outward: true, wh_type: "Q063", max_ship_size: size, remaining_hours: hours, out_system_id: hub, out_system_name: hubName, out_signature: "HUB-00" + id, in_system_id: other, in_signature: sig });
+		const links = [
+			link(1, ids.THERA, "Thera", ids.PERIMETER, "ABC-001", 2, "large"),        // next door, but nearly gone
+			link(2, ids.THERA, "Thera", ids.AMARR, "DEF-002", 12, "large"),
+			link(3, ids.THERA, "Thera", ids.AMARR, "GHI-003", 9, "medium"),
+			link(4, ids.TURNUR, "Turnur", ids.DODIXIE, "JKL-004", 10, "large")
+		];
+		await page.route(/cached_third_party\.php\?key=eve-scout-signatures/, r => fail ? r.fulfill({ status: 500, body: "no" }) : r.fulfill({ contentType: "application/json", body: JSON.stringify(links) }));
+		// Gates only, from Jita; the panel fetches EVE-Scout's list itself.
+		await page.evaluate((ids) => { tripwire.routesPanel.useSource(null); eveScout.links = []; options.routes.from = "manual"; options.routes.fromSystem = ids.JITA; tripwire.routesPanel.refresh(true); }, ids);
+
+		await page.selectOption("#routes-nearest", "thera");
+		const thera = page.locator('#routes-list .route-card[data-nearest="thera"]');
+		await expect(thera.locator(".route-kind")).toHaveText("Thera hole");
+		await expect(thera.locator(".route-none")).toHaveText("EVE-Scout is not loading.");
+
+		// Once it answers: Perimeter, one jump, and the signature to warp to.
+		fail = false;
+		await thera.locator(".route-remove").click();
+		await page.selectOption("#routes-nearest", "thera");
+		await expect(thera.locator(".route-name")).toHaveText("Perimeter");
+		await expect(thera.locator(".route-jumps")).toHaveText("1j");
+		await expect(thera.locator(".route-station-name")).toHaveText("ABC-001 · 2h left");
+		await expect(thera.locator(".route-link.is-scout")).toHaveCount(0);       // to the way in, not through it
+		expect(await page.evaluate(() => options.routes.prefs.scout)).toBe(false); // and without turning the preference on
+
+		// Skipping holes near their end leaves Amarr's two, the longer-lived first.
+		await page.click("#routes-prefs-toggle");
+		await page.locator(".route-chip[data-pref=skipEol]").click();
+		await expect(thera.locator(".route-name")).toHaveText("Amarr");
+		await expect(thera.locator(".route-station-name")).toHaveText("DEF-002 · 12h left");
+		await expect(thera.locator(".route-station-more")).toHaveText("+1");
+		await expect(thera.locator(".route-station")).toHaveAttribute("data-tip", "DEF-002 · Q063 · large · 12h left<br>GHI-003 · Q063 · medium · 9h left");
+		// A ship too big for the medium hole still has the large one; too big for both has none.
+		await page.selectOption("#routes-ship", "l");
+		await expect(thera.locator(".route-station-more")).toHaveCount(0);
+		await page.selectOption("#routes-ship", "xl");
+		await expect(thera.locator(".route-none")).toHaveText("No Thera hole with these preferences.");
+		await page.selectOption("#routes-ship", "");
+
+		await page.selectOption("#routes-nearest", "turnur");
+		const turnur = page.locator('#routes-list .route-card[data-nearest="turnur"]');
+		await expect(turnur.locator(".route-kind")).toHaveText("Turnur hole");
+		await expect(turnur.locator(".route-name")).toHaveText("Dodixie");
+		await expect(turnur.locator(".route-station-name")).toHaveText("JKL-004 · 10h left");
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Blue loot", "Red loot", "Security office"]);
 	});
 
 	test("the chain map's menu adds the system under the pointer", async ({ page }) => {
