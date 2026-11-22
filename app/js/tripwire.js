@@ -84,6 +84,14 @@ var tripwire = new function() {
 	}
     this.serverTime();
 
+    // An age past three days reads in days. Hours and minutes are what a
+    // pilot needs for a hole's first days; "1841:29" tells nobody anything.
+    // Called by the counter each time it redraws, with `this` its element.
+    this.ageTick = function(periods) {
+		var hours = (periods[2] * 7 + periods[3]) * 24 + periods[4];
+		if (hours >= 72) { $(this).find(".countdown-amount").text(Math.floor(hours / 24) + "d"); }
+	}
+
     this.pastEOL = function() {
 		var options = {since: $(this).countdown('option', 'until'), format: "HM", layout: "-{hnn}{sep}{mnn}&nbsp;"};
 		$(this).countdown("option", options);

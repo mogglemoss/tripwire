@@ -1632,6 +1632,7 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #routesWidget .route-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: var(--radius-sm); background: none; color: var(--muted-foreground); font-size: 15px; line-height: 1; cursor: pointer; }
 #routesWidget .route-btn:hover { background: var(--muted); color: var(--foreground); }
 #routesWidget .route-remove:hover { color: var(--data-critical); }
+#routesWidget .route-fly.is-off, #routesWidget .route-fly.is-off:hover { background: none; color: var(--muted-foreground); opacity: .35; cursor: default; }
 #routesWidget .route-meta, #routesWidget .route-none, #routesWidget .route-here, #routesWidget .route-station { margin: 5px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
 #routesWidget .route-warn.is-caution { color: var(--data-warn); }
 #routesWidget .route-warn.is-critical { color: var(--data-critical); }

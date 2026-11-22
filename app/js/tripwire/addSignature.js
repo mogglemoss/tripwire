@@ -90,7 +90,7 @@ tripwire.addSig = function(add, option, disabled) {
             .addClass('critical')
             // .countdown('resume');
     } else {
-        $(tr).find('span[data-age]').countdown({since: moment.utc(add.lifeTime).toDate(), compact: true, format: this.ageFormat, serverSync: this.serverTime.getTime});
+        $(tr).find('span[data-age]').countdown({since: moment.utc(add.lifeTime).toDate(), compact: true, format: this.ageFormat, onTick: this.ageTick, serverSync: this.serverTime.getTime});
     }
 
     // Same reasoning as deleteSig: the wrapper is only unwrapped by the

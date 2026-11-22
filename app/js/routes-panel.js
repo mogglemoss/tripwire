@@ -317,8 +317,14 @@ tripwire.routesPanel = (function() {
 
 	function canFly() { return !!(tripwire.esi && tripwire.esi.characters && tripwire.esi.characters[options.tracking.active]); }
 	function flyButton(p) {
-		var fly = canFly() ? flyTarget(p) : null;
-		return fly ? '<button type="button" class="route-btn route-fly" data-waypoint="' + fly.id + '" data-tip="Set in-game destination: ' + esc(fly.name) + '" aria-label="Set in-game destination to ' + esc(fly.name) + '">' + FLY_ICON + "</button>" : "";
+		if (!canFly()) { return ""; }
+		var fly = flyTarget(p), r = p.route;
+		if (fly) { return '<button type="button" class="route-btn route-fly" data-waypoint="' + fly.id + '" data-tip="Set in-game destination: ' + esc(fly.name) + '" aria-label="Set in-game destination to ' + esc(fly.name) + '">' + FLY_ICON + "</button>"; }
+		// The first jump is a wormhole, and the autopilot cannot take one. The
+		// arrow stays, dimmed, and says so: one arrow in a list of five reads
+		// as a mark on that row, not as the only route with gates to follow.
+		if (r && r.jumps && r.steps[0].via !== "gate") { return '<span class="route-btn route-fly is-off" data-tip="Starts with a wormhole: nothing for the autopilot to follow">' + FLY_ICON + "</span>"; }
+		return "";
 	}
 	// The route itself: its hops, then what it passes through and what to be careful of.
 	function detail(p) {
@@ -539,7 +545,7 @@ tripwire.routesPanel = (function() {
 		}
 		$w.on("click", ".route-hop", view);
 		$w.on("click", "a.route-name", view);
-		$w.on("click", ".route-fly", function() {
+		$w.on("click", "button.route-fly", function() {
 			tripwire.esi.setDestination(Number($(this).attr("data-waypoint")), options.tracking.active, true);
 		});
 
