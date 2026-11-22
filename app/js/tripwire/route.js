@@ -2,6 +2,7 @@
 // EVE-Scout's holes, in the shared route model's terms (docs/route-model.md).
 //
 //   tripwire.route.plan(fromSystemID, toSystemID, prefs) -> route | null
+//   tripwire.route.nearest(fromSystemID, systemIDs, prefs, count) -> [route]
 //
 // Read-only: it looks at tripwire.client, appData and eveScout.links and
 // changes nothing. `source` (last argument) swaps any of those in, for tests.
@@ -90,6 +91,11 @@ tripwire.route = (function() {
 		return routeEngine.find(graph(source), from, to, prefs);
 	}
 
+	// The `count` nearest of a list of systems, nearest first.
+	function nearest(from, systems, prefs, count, source) {
+		return routeEngine.nearest(graph(source), from, systems, prefs, count);
+	}
+
 	// The preferences as the two older settings had them (chain.routeSecurity
 	// and chain.routeIgnore), for the first time the Routes panel opens.
 	function prefsFromLegacy(chain, source) {
@@ -132,6 +138,6 @@ tripwire.route = (function() {
 		return id;
 	}
 
-	return {plan: plan, graph: graph, band: band, gates: gates, holes: holes, scout: scout,
+	return {plan: plan, nearest: nearest, graph: graph, band: band, gates: gates, holes: holes, scout: scout,
 		prefsFromLegacy: prefsFromLegacy, summary: summary, waypoint: waypoint};
 })();

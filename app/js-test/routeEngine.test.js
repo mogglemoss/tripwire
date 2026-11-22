@@ -31,6 +31,12 @@ describe('Route model: the shared vectors (docs/route-vectors.json)', function()
 
 	vectors.cases.forEach(function(c) {
 		it(c.name, function() {
+			if (c.count) {
+				// The nearest few of a set: a list of routes, nearest first.
+				const routes = routeEngine.nearest(graphOf(c), c.from, c.to, c.prefs, c.count);
+				assert.deepEqual(routes.map(r => ({ path: r.path, via: r.steps.map(s => s.via) })), c.expect);
+				return;
+			}
 			const route = routeEngine.find(graphOf(c), c.from, c.to, c.prefs);
 			if (c.expect === null) { return assert.equal(route, null); }
 			assert.ok(route, 'a route was expected');
@@ -49,8 +55,8 @@ describe('Route model: the shared vectors (docs/route-vectors.json)', function()
 				holes: c.holes.slice().reverse().map(h => Object.assign({}, h, { a: h.b, b: h.a })),
 				scout: c.scout.slice().reverse().map(h => Object.assign({}, h, { a: h.b, b: h.a }))
 			});
-			const one = routeEngine.find(graphOf(c), c.from, c.to, c.prefs), two = routeEngine.find(graphOf(flipped), c.from, c.to, c.prefs);
-			assert.deepEqual(two && two.path, one && one.path, c.name);
+			const all = g => c.count ? routeEngine.nearest(g, c.from, c.to, c.prefs, c.count).map(r => r.path) : (routeEngine.find(g, c.from, c.to, c.prefs) || {}).path;
+			assert.deepEqual(all(graphOf(flipped)), all(graphOf(c)), c.name);
 		});
 	});
 });

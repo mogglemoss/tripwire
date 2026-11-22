@@ -105,6 +105,12 @@ the set is cheapest to reach, by the same costs, and the result says which.
 - Standing in a system of the set is a route of no jumps, even if that system
   is in `avoid`.
 
+A tool can ask for the nearest few instead of the nearest one: the trade
+hubs in order, or the three closest buyers. They come cheapest first, one
+route each. A later one may be reached through an earlier one. Under
+`safer` the order is by that mode's cost, so a high-sec system can come
+before a low-sec one that is fewer jumps away.
+
 ## The result
 
 No route, or: the systems in order from start to end, and for each jump how
@@ -138,7 +144,8 @@ so far.
 data update cannot break them. Each case gives the systems with their bands,
 the gates, the holes, any EVE-Scout holes, a start, an end, preferences, and
 the expected route (`path` and `via`) or `null` for no route. Where `to` is a
-list, the case is the nearest of that set. `sizeBands` lists jump masses with
+list, the case is the nearest of that set; with a `count` as well, it is the
+nearest that many, and `expect` is a list of routes in order. `sizeBands` lists jump masses with
 the size each must give.
 
 Every case has exactly one best route. Routers break ties in different orders

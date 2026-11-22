@@ -1638,6 +1638,18 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 /* The nearest of a kind: the kind is the card's name, the system it found follows. */
 #routesWidget .route-kind { flex: 0 0 auto; color: var(--foreground); font-weight: 600; white-space: nowrap; }
 #routesWidget .route-card.is-nearest .route-name { font-weight: 400; }
+/* Its rows: the nearest few, each with its jumps. The open one shows its route. */
+#routesWidget .route-row { margin-top: 5px; padding-top: 4px; border-top: 1px solid var(--border); }
+#routesWidget .route-row-head { display: flex; align-items: center; gap: 2px; min-width: 0; }
+#routesWidget .route-row-toggle { flex: 1 1 auto; display: flex; align-items: baseline; gap: 7px; min-width: 0; min-height: 22px; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+#routesWidget .route-row-toggle .route-name { flex: 1 1 auto; }
+#routesWidget .route-row-toggle .route-jumps { flex: 0 0 auto; min-width: 2.2em; text-align: right; }
+#routesWidget .route-row-toggle:hover .route-name { color: var(--primary); }
+#routesWidget .route-row-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; border-radius: var(--radius-sm); }
+#routesWidget .route-row.is-open .route-name { font-weight: 600; }
+#routesWidget .route-btn-space { flex: 0 0 auto; width: 22px; }
+#routesWidget .route-row-body { padding-bottom: 2px; }
+#routesWidget .route-row-body .route-strip { margin-top: 3px; }
 #routesWidget .route-station { display: flex; gap: 5px; min-width: 0; }
 #routesWidget .route-station-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #routesWidget .route-station-more { flex: 0 0 auto; }

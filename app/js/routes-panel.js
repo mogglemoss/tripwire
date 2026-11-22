@@ -5,9 +5,11 @@
 // destination with its hops as a strip.
 //
 // A destination is a system the pilot named, or "the nearest" of a kind:
-// trade hub, blue loot buyer, red loot buyer, security office (routePresets,
-// generated from EVE's market data). Those cards say which system that is
-// from where the routes start, and which station to dock at.
+// trade hubs, blue loot buyers, red loot buyers, security offices
+// (routePresets, generated from EVE's market data), or holes into Thera or
+// Turnur. Those cards list the nearest few from where the routes start, with
+// the jumps to each, so the pilot can take the one a little further off; one
+// row at a time is open to show its route and where to dock.
 //
 // The routes come from tripwire.route (the shared route model). The panel
 // only reads the map: nothing here writes a signature or a connection. Its
@@ -29,13 +31,14 @@ tripwire.routesPanel = (function() {
 	// systems EVE-Scout says have a hole into that hub right now: the way in,
 	// not the hub itself.
 	var KINDS = [
-		{key: "hubs", label: "Trade hub", phrase: "trade hub", none: "No trade hub"},
-		{key: "blue", label: "Blue loot", phrase: "blue loot", none: "No blue loot buyer"},
-		{key: "red", label: "Red loot", phrase: "red loot", none: "No red loot buyer"},
-		{key: "sec", label: "Security office", phrase: "security office", none: "No security office"},
-		{key: "thera", label: "Thera hole", phrase: "Thera hole", none: "No Thera hole", hub: THERA},
-		{key: "turnur", label: "Turnur hole", phrase: "Turnur hole", none: "No Turnur hole", hub: TURNUR}
+		{key: "hubs", label: "Trade hubs", phrase: "trade hubs", none: "No trade hub", count: 5},
+		{key: "blue", label: "Blue loot", phrase: "blue loot", none: "No blue loot buyer", count: 3},
+		{key: "red", label: "Red loot", phrase: "red loot", none: "No red loot buyer", count: 3},
+		{key: "sec", label: "Security offices", phrase: "security offices", none: "No security office", count: 3},
+		{key: "thera", label: "Thera", phrase: "Thera holes", none: "No Thera hole", count: 3, hub: THERA},
+		{key: "turnur", label: "Turnur", phrase: "Turnur holes", none: "No Turnur hole", count: 3, hub: TURNUR}
 	];
+	var openRow = {};       // which row of a kind's card is open, by kind: a system id. Not saved.
 	function kind(key) { return KINDS.filter(function(k) { return k.key === key; })[0] || null; }
 	function presets() { return (source && source.presets) || (typeof routePresets !== "undefined" ? routePresets : {sets: {}, stations: {}}); }
 	function kindSystems(key) { return Object.keys(presets().sets[key] || {}).map(Number); }
@@ -160,17 +163,19 @@ tripwire.routesPanel = (function() {
 			// No route: is there none at all, or none the preferences allow?
 			return entry(Number(dest), route, route ? null : {blocked: !!tripwire.route.plan(o.id, dest, {scout: p.scout}, src)});
 		}).concat(s.nearest.filter(kind).map(function(key) {
-			var k = kind(key), route, relaxed;
+			var k = kind(key), ways = null, systems, every, via = p, relaxed = {scout: p.scout};
 			if (k.hub) {
-				// To the way in, by gates and the chain: not through the hub's own holes.
-				var ways = entrances(k, p, src), every = Object.keys(entrances(k, p, src, true)).map(Number), noScout = $.extend({}, p, {scout: false});
-				route = tripwire.route.plan(o.id, Object.keys(ways).map(Number), noScout, src);
-				relaxed = !route && !!tripwire.route.plan(o.id, every, {}, src);
-				return entry(route ? route.to : null, route, {kind: key, stations: [], ways: route ? ways[route.to] : [], blocked: relaxed, listed: every.length});
-			}
-			route = tripwire.route.plan(o.id, kindSystems(key), p, src);
-			relaxed = !route && !!tripwire.route.plan(o.id, kindSystems(key), {scout: p.scout}, src);
-			return entry(route ? route.to : null, route, {kind: key, stations: stationsAt(key, route ? route.to : 0), ways: [], blocked: relaxed});
+				// To the ways in, by gates and the chain: not through the hub's own holes.
+				ways = entrances(k, p, src);
+				systems = Object.keys(ways).map(Number);
+				every = Object.keys(entrances(k, p, src, true)).map(Number);
+				via = $.extend({}, p, {scout: false}); relaxed = {};
+			} else { systems = every = kindSystems(key); }
+			var rows = tripwire.route.nearest(o.id, systems, via, k.count, src).map(function(route) {
+				return entry(route.to, route, {stations: k.hub ? [] : stationsAt(key, route.to), ways: k.hub ? ways[route.to] : []});
+			});
+			return {kind: key, rows: rows, listed: every.length,
+				blocked: !rows.length && !!tripwire.route.plan(o.id, every, relaxed, src)};
 		}));
 		return planned;
 	}
@@ -289,7 +294,7 @@ tripwire.routesPanel = (function() {
 	function flyTarget(p) {
 		var r = p.route;
 		if (!r) { return null; }
-		if (p.kind && p.stations.length && (!r.jumps || p.waypoint === r.to)) { return {id: p.stations[0].id, name: p.stations[0].name}; }
+		if (p.stations && p.stations.length && (!r.jumps || p.waypoint === r.to)) { return {id: p.stations[0].id, name: p.stations[0].name}; }
 		if (!p.waypoint) { return null; }
 		return {id: p.waypoint, name: systemName(p.waypoint) + (p.waypoint !== r.to ? " (where the gates end)" : "")};
 	}
@@ -310,43 +315,65 @@ tripwire.routesPanel = (function() {
 			(scout ? '<button type="button" class="route-link-btn route-use-scout">Use EVE-Scout</button>' : "") + "</p>";
 	}
 
+	function canFly() { return !!(tripwire.esi && tripwire.esi.characters && tripwire.esi.characters[options.tracking.active]); }
+	function flyButton(p) {
+		var fly = canFly() ? flyTarget(p) : null;
+		return fly ? '<button type="button" class="route-btn route-fly" data-waypoint="' + fly.id + '" data-tip="Set in-game destination: ' + esc(fly.name) + '" aria-label="Set in-game destination to ' + esc(fly.name) + '">' + FLY_ICON + "</button>" : "";
+	}
+	// The route itself: its hops, then what it passes through and what to be careful of.
+	function detail(p) {
+		var r = p.route, s = p.summary;
+		if (!r.jumps) { return '<p class="route-here">You are here.</p>'; }
+		var bits = (meta(s) ? [esc(meta(s))] : []).concat(warnings(s).map(function(w) { return '<span class="route-warn ' + w.cls + '">' + esc(w.text) + "</span>"; }));
+		return strip(r) + (bits.length ? '<p class="route-meta">' + bits.join(" · ") + "</p>" : "");
+	}
+	// Where to dock, or which signature to warp to and how long it has. One
+	// line: the rest (other stations, other holes from the same system) is in
+	// the tooltip.
+	function where(p) {
+		var list = p.stations.length ? p.stations.map(function(st) { return {text: st.name, full: st.name}; }) : p.ways.map(function(w) {
+			var id = sig(w.sig) || "no sig listed", left = w.hours !== null ? w.hours + "h left" : null;
+			return {text: [id, left].filter(Boolean).join(" · "), full: [id, w.type, w.size, left].filter(Boolean).join(" · ")};
+		});
+		if (!list.length) { return ""; }
+		return '<p class="route-station" data-tip="' + esc(list.map(function(x) { return x.full; }).join("<br>")) + '">' +
+			'<span class="route-station-name">' + esc(list[0].text) + "</span>" + (list.length > 1 ? '<span class="route-station-more">+' + (list.length - 1) + "</span>" : "") + "</p>";
+	}
+
+	// A named destination.
 	function card(p) {
-		var k = p.kind ? kind(p.kind) : null, r = p.route, s = p.summary;
-		var sys = p.destination ? systemAnalysis.analyse(p.destination) : null;
-		var title = k ? k.label : sys.name;
-		var fly = tripwire.esi && tripwire.esi.characters && tripwire.esi.characters[options.tracking.active] ? flyTarget(p) : null;
-		var where = sys ? '<a class="route-name ' + esc(sys.systemTypeClass) + '" href=".?system=' + encodeURIComponent(sys.name) + '" data-system="' + p.destination + '">' + esc(sys.name) + "</a>" +
-			'<span class="route-sec ' + esc(sys.systemTypeClass) + '">' + esc(sys.systemTypeName) + "</span>" : "";
+		if (p.kind) { return kindCard(p); }
+		var sys = systemAnalysis.analyse(p.destination), r = p.route;
 		var head = '<div class="route-head">' +
-			(k ? '<span class="route-kind">' + esc(k.label) + "</span>" : "") + where +
+			'<a class="route-name ' + esc(sys.systemTypeClass) + '" href=".?system=' + encodeURIComponent(sys.name) + '" data-system="' + p.destination + '">' + esc(sys.name) + "</a>" +
+			'<span class="route-sec ' + esc(sys.systemTypeClass) + '">' + esc(sys.systemTypeName) + "</span>" +
 			(r ? '<span class="route-jumps">' + r.jumps + "j</span>" : "") +
-			'<span class="route-actions">' +
-			(fly ? '<button type="button" class="route-btn route-fly" data-waypoint="' + fly.id + '" data-tip="Set in-game destination: ' + esc(fly.name) + '" aria-label="Set in-game destination to ' + esc(fly.name) + '">' + FLY_ICON + "</button>" : "") +
-			'<button type="button" class="route-btn route-remove" data-tip="Remove" aria-label="Remove ' + esc(title) + '">&times;</button>' +
+			'<span class="route-actions">' + flyButton(p) +
+			'<button type="button" class="route-btn route-remove" data-tip="Remove" aria-label="Remove ' + esc(sys.name) + '">&times;</button>' +
 			"</span></div>";
-		var body = "";
-		if (!r) { body = noRoute(p); }
-		else if (!r.jumps) { body = '<p class="route-here">You are here.</p>'; }
-		else {
-			var bits = (meta(s) ? [esc(meta(s))] : []).concat(warnings(s).map(function(w) { return '<span class="route-warn ' + w.cls + '">' + esc(w.text) + "</span>"; }));
-			body = strip(r) + (bits.length ? '<p class="route-meta">' + bits.join(" \u00b7 ") + "</p>" : "");
-		}
-		if (r && k && p.stations.length) {
-			// Where to dock. One line: the rest of a long name, and any other
-			// stations in the system, are in the tooltip.
-			var more = p.stations.length - 1;
-			body += '<p class="route-station" data-tip="' + esc(p.stations.map(function(st) { return st.name; }).join("<br>")) + '">' +
-				'<span class="route-station-name">' + esc(p.stations[0].name) + "</span>" + (more ? '<span class="route-station-more">+' + more + "</span>" : "") + "</p>";
-		}
-		if (r && k && p.ways.length) {
-			// Which signature to warp to, and how long it has. Any other hole
-			// from the same system is in the tooltip.
-			var say = function(w) { return [sig(w.sig) || "no sig listed", w.hours !== null ? w.hours + "h left" : null].filter(Boolean).join(" \u00b7 "); };
-			var full = function(w) { return [sig(w.sig) || "no sig listed", w.type, w.size, w.hours !== null ? w.hours + "h left" : null].filter(Boolean).join(" \u00b7 "); };
-			body += '<p class="route-station" data-tip="' + esc(p.ways.map(full).join("<br>")) + '">' +
-				'<span class="route-station-name">' + esc(say(p.ways[0])) + "</span>" + (p.ways.length > 1 ? '<span class="route-station-more">+' + (p.ways.length - 1) + "</span>" : "") + "</p>";
-		}
-		return '<div class="route-card' + (k ? " is-nearest" : "") + '"' + (k ? ' data-nearest="' + esc(k.key) + '"' : ' data-destination="' + p.destination + '"') + ">" + head + body + "</div>";
+		return '<div class="route-card" data-destination="' + p.destination + '">' + head + (r ? detail(p) : noRoute(p)) + "</div>";
+	}
+
+	// The nearest few of a kind: a row each, with its jumps. One row is open,
+	// the nearest unless the pilot opened another, and shows its route.
+	function kindCard(p) {
+		var k = kind(p.kind);
+		var head = '<div class="route-head"><span class="route-kind">' + esc(k.label) + "</span>" +
+			'<span class="route-actions"><button type="button" class="route-btn route-remove" data-tip="Remove" aria-label="Remove ' + esc(k.label) + '">&times;</button></span></div>';
+		var open = p.rows.some(function(row) { return row.destination === openRow[k.key]; }) ? openRow[k.key] : (p.rows[0] && p.rows[0].destination);
+		var rows = p.rows.map(function(row) {
+			var sys = systemAnalysis.analyse(row.destination), isOpen = row.destination === open;
+			return '<div class="route-row' + (isOpen ? " is-open" : "") + '" data-system="' + row.destination + '">' +
+				'<div class="route-row-head">' +
+				'<button type="button" class="route-row-toggle" aria-expanded="' + (isOpen ? "true" : "false") + '">' +
+				'<span class="route-name">' + esc(sys.name) + "</span>" +
+				'<span class="route-sec ' + esc(sys.systemTypeClass) + '">' + esc(sys.systemTypeName) + "</span>" +
+				'<span class="route-jumps">' + row.route.jumps + "j</span></button>" +
+				// The arrow's place is kept when there is no arrow, so the columns line up down the card.
+				(flyButton(row) || '<span class="route-btn-space" aria-hidden="true"></span>') + "</div>" +
+				(isOpen ? '<div class="route-row-body">' + detail(row) + where(row) + "</div>" : "") + "</div>";
+		}).join("");
+		return '<div class="route-card is-nearest" data-nearest="' + esc(k.key) + '">' + head + (rows || noRoute(p)) + "</div>";
 	}
 
 	function render() {
@@ -375,7 +402,7 @@ tripwire.routesPanel = (function() {
 			left.map(function(k) { return '<option value="' + k.key + '">' + esc(k.label) + "</option>"; }).join(""));
 
 		var $list = $("#routes-list");
-		$list.html(planned.length ? planned.map(card).join("") : '<p class="routes-empty">Add a system, or the nearest trade hub or loot buyer.</p>');
+		$list.html(planned.length ? planned.map(card).join("") : '<p class="routes-empty">Add a system, or the nearest trade hubs or loot buyers.</p>');
 		hideTip();
 	}
 
@@ -489,6 +516,11 @@ tripwire.routesPanel = (function() {
 			if (key) { removeNearest(key); } else { removeDestination($card.attr("data-destination")); }
 		});
 		$w.on("click", ".route-use-scout", function() { scoutAt = 0; setPref("scout", true); });
+		$w.on("click", ".route-row-toggle", function() {
+			var $row = $(this).closest(".route-row");
+			openRow[$row.closest(".route-card").attr("data-nearest")] = Number($row.attr("data-system"));
+			render();
+		});
 
 		// Avoided systems.
 		function avoid(id) { var a = state().prefs.avoid.map(Number); if (a.indexOf(id) < 0) { a.push(id); setPref("avoid", a); } }
@@ -506,7 +538,7 @@ tripwire.routesPanel = (function() {
 			tripwire.systemChange(Number($(this).attr("data-system")));
 		}
 		$w.on("click", ".route-hop", view);
-		$w.on("click", ".route-name", view);
+		$w.on("click", "a.route-name", view);
 		$w.on("click", ".route-fly", function() {
 			tripwire.esi.setDestination(Number($(this).attr("data-waypoint")), options.tracking.active, true);
 		});

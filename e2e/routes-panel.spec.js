@@ -245,7 +245,7 @@ test.describe("Routes panel", () => {
 		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tip", /^Thera \(C12\) · EVE-Scout hole ABC-001, 10h left$/);
 	});
 
-	test("the nearest of a kind is added from the menu, names its system and station, and is kept", async ({ page }) => {
+	test("a kind is added from the menu, lists its nearest few with the jumps to each, and is kept", async ({ page }) => {
 		const saved = [];
 		page.on("request", r => { if (/options\.php/.test(r.url()) && r.method() === "POST") { saved.push(decodeURIComponent(r.postData() || "")); } });
 		// From a trade hub that is not itself a blue loot buyer, by gates alone, whatever the mask's chain holds today.
@@ -256,33 +256,48 @@ test.describe("Routes panel", () => {
 			tripwire.routesPanel.refresh(true);
 			return appData.systems[start].name;
 		});
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Blue loot", "Red loot", "Security office", "Thera hole", "Turnur hole"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hubs", "Blue loot", "Red loot", "Security offices", "Thera", "Turnur"]);
 		await page.selectOption("#routes-nearest", "blue");
 
+		// The three nearest buyers, nearest first, as the engine has them.
 		const want = await page.evaluate(() => {
-			const from = options.routes.fromSystem, route = tripwire.route.plan(from, Object.keys(routePresets.sets.blue).map(Number), options.routes.prefs, { signatures: {}, wormholes: {}, scoutLinks: [] });
-			const stations = routePresets.sets.blue[route.to].map(id => routePresets.stations[id]);
-			return { name: appData.systems[route.to].name, jumps: route.jumps, stations, stationId: routePresets.sets.blue[route.to][0] };
+			const routes = tripwire.route.nearest(options.routes.fromSystem, Object.keys(routePresets.sets.blue).map(Number), options.routes.prefs, 3, { signatures: {}, wormholes: {}, scoutLinks: [] });
+			return routes.map(r => ({ name: appData.systems[r.to].name, jumps: r.jumps, stations: routePresets.sets.blue[r.to].map(id => routePresets.stations[id]) }));
 		});
+		expect(want.length).toBe(3);
+		expect(want[0].jumps).toBeGreaterThan(0);
 		const blue = page.locator('#routes-list .route-card[data-nearest="blue"]');
 		await expect(blue.locator(".route-kind")).toHaveText("Blue loot");
-		await expect(blue.locator(".route-name")).toHaveText(want.name);
-		expect(want.jumps).toBeGreaterThan(0);
-		await expect(blue.locator(".route-jumps")).toHaveText(want.jumps + "j");
-		await expect(blue.locator(".route-hop")).toHaveCount(want.jumps + 1);
-		await expect(blue.locator(".route-station-name")).toHaveText(want.stations[0]);
-		if (want.stations.length > 1) { await expect(blue.locator(".route-station-more")).toHaveText("+" + (want.stations.length - 1)); }
+		await expect(blue.locator(".route-row .route-name")).toHaveText(want.map(w => w.name));
+		await expect(blue.locator(".route-row .route-jumps")).toHaveText(want.map(w => w.jumps + "j"));
+		// The nearest is open: its hops and where to dock. The others are a line each.
+		const open = blue.locator(".route-row.is-open");
+		await expect(open).toHaveCount(1);
+		await expect(open.locator(".route-name")).toHaveText(want[0].name);
+		await expect(blue.locator(".route-hop")).toHaveCount(want[0].jumps + 1);
+		await expect(blue.locator(".route-station-name")).toHaveText(want[0].stations[0]);
+		// Another row opens in its place.
+		await blue.locator(".route-row").nth(1).locator(".route-row-toggle").click();
+		await expect(open.locator(".route-name")).toHaveText(want[1].name);
+		await expect(blue.locator(".route-hop")).toHaveCount(want[1].jumps + 1);
+		await expect(blue.locator(".route-station-name")).toHaveText(want[1].stations[0]);
+		await expect(blue.locator(".route-row").nth(0).locator(".route-row-toggle")).toHaveAttribute("aria-expanded", "false");
 
 		// It has left the menu, and it is saved with the account.
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Red loot", "Security office", "Thera hole", "Turnur hole"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hubs", "Red loot", "Security offices", "Thera", "Turnur"]);
 		await expect(page.locator("#routes-nearest")).toHaveValue("");
 		await expect.poll(() => saved.some(s => s.includes('"nearest":["blue"]'))).toBe(true);
 
-		// Standing in a trade hub: no jumps, and the hub's own station.
+		// All five trade hubs. Standing in one: it is first, no jumps, with its own station.
 		await page.selectOption("#routes-nearest", "hubs");
 		await expect.poll(() => saved.some(s => s.includes('"nearest":["blue","hubs"]'))).toBe(true);
 		const hub = page.locator('#routes-list .route-card[data-nearest="hubs"]');
-		await expect(hub.locator(".route-name")).toHaveText(hubName);
+		await expect(hub.locator(".route-kind")).toHaveText("Trade hubs");
+		await expect(hub.locator(".route-row")).toHaveCount(5);
+		await expect(hub.locator(".route-row .route-name").first()).toHaveText(hubName);
+		await expect(hub.locator(".route-row .route-jumps").first()).toHaveText("0j");
+		const hubJumps = (await hub.locator(".route-row .route-jumps").allTextContents()).map(t => parseInt(t, 10));
+		expect(hubJumps).toEqual(hubJumps.slice().sort((x, y) => x - y));
 		await expect(hub.locator(".route-here")).toHaveText("You are here.");
 		await expect(hub.locator(".route-station-name")).toHaveText(await page.evaluate(() => routePresets.stations[routePresets.sets.hubs[options.routes.fromSystem][0]]));
 
@@ -293,11 +308,11 @@ test.describe("Routes panel", () => {
 
 		await page.locator('#routes-list .route-card[data-nearest="blue"] .route-remove').click();
 		await expect(page.locator('#routes-list .route-card[data-nearest="blue"]')).toHaveCount(0);
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Blue loot", "Red loot", "Security office", "Thera hole", "Turnur hole"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Blue loot", "Red loot", "Security offices", "Thera", "Turnur"]);
 		await expect.poll(() => saved.some(s => s.includes('"nearest":["hubs"]'))).toBe(true);
 	});
 
-	test("the nearest follows the preferences, and the arrow sends the autopilot to the station", async ({ page }) => {
+	test("the order follows the preferences, and a row's arrow sends the autopilot to its station", async ({ page }) => {
 		// Two buyers: Tama, in low-sec next door to where we start, and Jita, in high-sec further off.
 		const ids = await page.evaluate(() => {
 			const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
@@ -314,26 +329,28 @@ test.describe("Routes panel", () => {
 			return ids;
 		});
 		const blue = page.locator('#routes-list .route-card[data-nearest="blue"]');
-		await expect(blue.locator(".route-name")).toHaveText("Tama");
-		await expect(blue.locator(".route-jumps")).toHaveText("1j");
+		await expect(blue.locator(".route-row .route-name")).toHaveText(["Tama", "Jita"]);
+		await expect(blue.locator(".route-row .route-jumps").first()).toHaveText("1j");
 		await expect(blue.locator(".route-station-name")).toHaveText("Tama station");
 
 		await page.click("#routes-prefs-toggle");
+		// Safer: the high-sec one first, though it is more jumps.
 		await page.selectOption("#routes-mode", "safer");
-		await expect(blue.locator(".route-name")).toHaveText("Jita");
+		await expect(blue.locator(".route-row .route-name")).toHaveText(["Jita", "Tama"]);
 		await expect(blue.locator(".route-station-more")).toHaveText("+1");
 		await expect(blue.locator(".route-station")).toHaveAttribute("data-tip", "Jita station<br>Jita other station");
-		await expect(blue.locator(".route-fly")).toHaveAttribute("data-tip", "Set in-game destination: Jita station");
-		await blue.locator(".route-fly").click();
+		await expect(blue.locator(".route-fly").nth(0)).toHaveAttribute("data-tip", "Set in-game destination: Jita station");
+		await expect(blue.locator(".route-fly").nth(1)).toHaveAttribute("data-tip", "Set in-game destination: Tama station");
+		await blue.locator(".route-fly").first().click();
 		expect(await page.evaluate(() => window.__sent)).toEqual([[62, true]]);
 
 		// Avoiding the one it found leaves the other, and avoiding both leaves none.
 		await page.selectOption("#routes-mode", "shortest");
 		await page.evaluate((ids) => { options.routes.prefs.avoid = [ids.TAMA]; tripwire.routesPanel.refresh(true); }, ids);
-		await expect(blue.locator(".route-name")).toHaveText("Jita");
+		await expect(blue.locator(".route-row .route-name")).toHaveText(["Jita"]);
 		await page.evaluate((ids) => { options.routes.prefs.avoid = [ids.TAMA, ids.JITA]; tripwire.routesPanel.refresh(true); }, ids);
 		await expect(blue.locator(".route-kind")).toHaveText("Blue loot");
-		await expect(blue.locator(".route-name")).toHaveCount(0);
+		await expect(blue.locator(".route-row")).toHaveCount(0);
 		await expect(blue.locator(".route-none")).toHaveText("No blue loot buyer with these preferences.");
 	});
 
@@ -355,11 +372,11 @@ test.describe("Routes panel", () => {
 		await page.locator("body").click({ position: { x: 5, y: 400 } });
 		await page.keyboard.press("/");
 		await page.fill("#cmd-input", "nearest sec");
-		await page.locator("#cmd-list li", { hasText: "Route to nearest security office" }).click();
-		await expect(page.locator('#routes-list .route-card[data-nearest="sec"] .route-kind')).toHaveText("Security office");
+		await page.locator("#cmd-list li", { hasText: "Nearest security offices" }).click();
+		await expect(page.locator('#routes-list .route-card[data-nearest="sec"] .route-kind')).toHaveText("Security offices");
 		await page.keyboard.press("/");
 		await page.fill("#cmd-input", "security off");
-		await expect(page.locator("#cmd-list li", { hasText: "Remove route to nearest security office" })).toBeVisible();
+		await expect(page.locator("#cmd-list li", { hasText: "Remove nearest security offices" })).toBeVisible();
 		await page.keyboard.press("Escape");
 	});
 
@@ -382,15 +399,15 @@ test.describe("Routes panel", () => {
 
 		await page.selectOption("#routes-nearest", "thera");
 		const thera = page.locator('#routes-list .route-card[data-nearest="thera"]');
-		await expect(thera.locator(".route-kind")).toHaveText("Thera hole");
+		await expect(thera.locator(".route-kind")).toHaveText("Thera");
 		await expect(thera.locator(".route-none")).toHaveText("EVE-Scout is not loading.");
 
-		// Once it answers: Perimeter, one jump, and the signature to warp to.
+		// Once it answers: Perimeter first, one jump, with the signature to warp to; then Amarr.
 		fail = false;
 		await thera.locator(".route-remove").click();
 		await page.selectOption("#routes-nearest", "thera");
-		await expect(thera.locator(".route-name")).toHaveText("Perimeter");
-		await expect(thera.locator(".route-jumps")).toHaveText("1j");
+		await expect(thera.locator(".route-row .route-name")).toHaveText(["Perimeter", "Amarr"]);
+		await expect(thera.locator(".route-row .route-jumps").first()).toHaveText("1j");
 		await expect(thera.locator(".route-station-name")).toHaveText("ABC-001 · 2h left");
 		await expect(thera.locator(".route-link.is-scout")).toHaveCount(0);       // to the way in, not through it
 		expect(await page.evaluate(() => options.routes.prefs.scout)).toBe(false); // and without turning the preference on
@@ -398,7 +415,7 @@ test.describe("Routes panel", () => {
 		// Skipping holes near their end leaves Amarr's two, the longer-lived first.
 		await page.click("#routes-prefs-toggle");
 		await page.locator(".route-chip[data-pref=skipEol]").click();
-		await expect(thera.locator(".route-name")).toHaveText("Amarr");
+		await expect(thera.locator(".route-row .route-name")).toHaveText(["Amarr"]);
 		await expect(thera.locator(".route-station-name")).toHaveText("DEF-002 · 12h left");
 		await expect(thera.locator(".route-station-more")).toHaveText("+1");
 		await expect(thera.locator(".route-station")).toHaveAttribute("data-tip", "DEF-002 · Q063 · large · 12h left<br>GHI-003 · Q063 · medium · 9h left");
@@ -411,10 +428,10 @@ test.describe("Routes panel", () => {
 
 		await page.selectOption("#routes-nearest", "turnur");
 		const turnur = page.locator('#routes-list .route-card[data-nearest="turnur"]');
-		await expect(turnur.locator(".route-kind")).toHaveText("Turnur hole");
-		await expect(turnur.locator(".route-name")).toHaveText("Dodixie");
+		await expect(turnur.locator(".route-kind")).toHaveText("Turnur");
+		await expect(turnur.locator(".route-row .route-name")).toHaveText(["Dodixie"]);
 		await expect(turnur.locator(".route-station-name")).toHaveText("JKL-004 · 10h left");
-		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Blue loot", "Red loot", "Security office"]);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hubs", "Blue loot", "Red loot", "Security offices"]);
 	});
 
 	test("the chain map's menu adds the system under the pointer", async ({ page }) => {

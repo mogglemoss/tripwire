@@ -116,9 +116,19 @@ var routeEngine = (function() {
 	//   {from, to, jumps, gates, holes, path: [ids], steps: [{to, via, band, hole}]}
 	// with via "gate" | "wh" | "eve_scout", and hole set for the last two.
 	function find(graph, from, to, prefs) {
+		return search(graph, from, to, prefs, 1)[0] || null;
+	}
+
+	// The `count` cheapest to reach of a list of systems, cheapest first: one
+	// route each, as find gives. Fewer when fewer can be reached.
+	function nearest(graph, from, systems, prefs, count) {
+		return search(graph, from, Array.isArray(systems) ? systems : [systems], prefs, Math.max(1, Number(count) || 1));
+	}
+
+	function search(graph, from, to, prefs, count) {
 		prefs = withDefaults(prefs);
 		from = Number(from);
-		if (!isSystem(from)) { return null; }
+		if (!isSystem(from)) { return []; }
 
 		var avoid = {};
 		(prefs.avoid || []).forEach(function(id) { avoid[Number(id)] = true; });
@@ -127,13 +137,12 @@ var routeEngine = (function() {
 		// One destination is an end the pilot named, so it is allowed whatever
 		// it is. Of several, the ones never passed through are not candidates:
 		// "the nearest buyer" should not be the system the pilot said to avoid.
-		var nearest = Array.isArray(to), ends = {}, any = false;
-		(nearest ? to : [to]).forEach(function(id) {
+		var several = Array.isArray(to), ends = {}, left = 0;
+		(several ? to : [to]).forEach(function(id) {
 			id = Number(id);
-			if (isSystem(id) && (!nearest || id === from || !never(id))) { ends[id] = true; any = true; }
+			if (isSystem(id) && !ends[id] && (!several || id === from || !never(id))) { ends[id] = true; left++; }
 		});
-		if (!any) { return null; }
-		if (ends[from]) { return {from: from, to: from, jumps: 0, gates: 0, holes: 0, path: [from], steps: []}; }
+		if (!left) { return []; }
 		var blocked = function(id) { return id !== from && !ends[id] && never(id); };
 
 		// Holes that pass the preferences, as edges both ways.
@@ -149,7 +158,7 @@ var routeEngine = (function() {
 			});
 		}
 
-		var dist = {}, prev = {}, done = {}, frontier = new Heap(), reached = null;
+		var dist = {}, prev = {}, done = {}, frontier = new Heap(), found = [];
 		dist[from] = 0;
 		frontier.push(0, from);
 
@@ -157,7 +166,12 @@ var routeEngine = (function() {
 			var top = frontier.pop(), d = top[0], sys = top[1];
 			if (done[sys]) { continue; }
 			done[sys] = true;
-			if (ends[sys]) { reached = sys; break; }
+			// An end reached is a route found; the search goes on through it
+			// for the next, until there are enough or none are left.
+			if (ends[sys]) {
+				found.push(built(from, sys, prev));
+				if (found.length >= count || found.length >= left) { break; }
+			}
 
 			var relax = function(next, via, hole) {
 				if (!isSystem(next) || done[next] || blocked(next)) { return; }
@@ -173,7 +187,7 @@ var routeEngine = (function() {
 			(graph.gates(sys) || []).forEach(function(next) { relax(Number(next), "gate", null); });
 		}
 
-		return reached === null ? null : built(from, reached, prev);
+		return found;
 	}
 
 	function built(from, to, prev) {
@@ -190,7 +204,7 @@ var routeEngine = (function() {
 	}
 
 	return {
-		find: find, withDefaults: withDefaults, isSystem: isSystem, sizeForJumpMass: sizeForJumpMass,
+		find: find, nearest: nearest, withDefaults: withDefaults, isSystem: isSystem, sizeForJumpMass: sizeForJumpMass,
 		penalty: penalty, holeBlocked: holeBlocked, scoutBlocked: scoutBlocked,
 		DEFAULTS: DEFAULTS, ZARZAKH: ZARZAKH
 	};
