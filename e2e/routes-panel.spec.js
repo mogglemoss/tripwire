@@ -85,7 +85,7 @@ test.describe("Routes panel", () => {
 		await expect(amarr.locator(".route-link.is-wh.is-critical")).toHaveCount(1);
 		await expect(amarr.locator(".route-link.is-wh")).toHaveCount(2);
 		await expect(amarr.locator(".route-link.is-no-sig")).toHaveCount(1);
-		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tip", new RegExp("^" + ids.jName + " \\(C3\\) · wormhole ABC-123 › DEF-456, B274, EOL$"));
+		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tip", new RegExp("^" + ids.jName + " \\(C3\\) · wormhole ABC-123, B274, EOL$"));
 		await expect(amarr.locator(".route-hop").nth(2)).toHaveAttribute("data-tip", /^Amarr \(HS \d\.\d\d\) · wormhole, no sig recorded$/);
 
 		// The preferences are behind the cog.

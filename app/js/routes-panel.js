@@ -181,9 +181,11 @@ tripwire.routesPanel = (function() {
 	// What to say about the jump into a system.
 	function hopText(step, fromID) {
 		if (step.via === "gate") { return "gate"; }
-		var h = step.hole, near = h.a === fromID ? h.sigA : h.sigB, far = h.a === fromID ? h.sigB : h.sigA;
+		// The signature on the side the pilot is jumping from: the one to
+		// warp to. The far side's is no use on the way through.
+		var h = step.hole, near = h.a === fromID ? h.sigA : h.sigB;
 		if (step.via === "eve_scout") { return "EVE-Scout hole" + (near ? " " + sig(near) : "") + (h.remainingHours !== null ? ", " + h.remainingHours + "h left" : ""); }
-		var bits = ["wormhole" + (near ? " " + sig(near) : "") + (far ? " › " + sig(far) : "")];
+		var bits = ["wormhole" + (near ? " " + sig(near) : "")];
 		if (h.type && !/^\?+$/.test(h.type)) { bits.push(h.type); }
 		if (h.life === "eol") { bits.push("EOL"); } else if (h.life === "last_hour") { bits.push("under 1h"); }
 		if (h.mass === "critical") { bits.push("mass critical"); } else if (h.mass === "reduced") { bits.push("mass reduced"); }
