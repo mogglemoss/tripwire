@@ -8,7 +8,7 @@ const { login, expect } = require("./helpers");
 // The account's route settings back to how a new account has them, saved.
 async function resetRoutes(page) {
 	await page.evaluate(async () => {
-		options.routes = { from: "pilot", fromSystem: null, destinations: [], prefs: routeEngine.withDefaults(null) };
+		options.routes = { from: "pilot", fromSystem: null, destinations: [], nearest: [], prefs: routeEngine.withDefaults(null) };
 		if (options.panels) { delete options.panels.routesWidget; if (options.panels.layout) { options.panels.layout.columns = {}; } }
 		try { localStorage.removeItem("tripwire.routes.prefsOpen"); } catch (e) {}
 		tripwire.routesPanel.useSource(null);
@@ -18,7 +18,7 @@ async function resetRoutes(page) {
 }
 
 // Jita to Amarr through one J-space system: the first hole scanned and at
-// end of life, the second one nobody has scanned.
+// end of life, the second one with no signature recorded.
 async function useTwoHoles(page) {
 	return page.evaluate(() => {
 		const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
@@ -72,17 +72,21 @@ test.describe("Routes panel", () => {
 		await expect.poll(() => saved.some(s => s.includes('"destinations":[]'))).toBe(true);
 	});
 
-	test("preferences change the route: an unscanned hole is marked, and can be left out", async ({ page }) => {
+	test("preferences change the route: a hole with no signature is marked, and can be left out", async ({ page }) => {
 		const ids = await useTwoHoles(page);
 		await page.evaluate((ids) => { options.routes.from = "system"; tripwire.routesPanel.addDestination(ids.AMARR); }, ids);   // viewing Jita
 		const amarr = card(page, "Amarr");
 		await expect(amarr.locator(".route-jumps")).toHaveText("2j");
-		await expect(amarr.locator(".route-meta")).toHaveText("2 wormholes · 1 J-space");
-		await expect(amarr.locator(".route-warn")).toHaveText("1 unscanned hole · 1 hole at end of life");
+		await expect(amarr.locator(".route-meta")).toHaveText("2 wormholes · 1 J-space · 1 no sig · 1 EOL");
+		// Each in its state's colour, as the chain map has them: a caution, and a warning.
+		await expect(amarr.locator(".route-warn")).toHaveText(["1 no sig", "1 EOL"]);
+		await expect(amarr.locator(".route-warn.is-caution")).toHaveText("1 no sig");
+		await expect(amarr.locator(".route-warn.is-critical")).toHaveText("1 EOL");
+		await expect(amarr.locator(".route-link.is-wh.is-critical")).toHaveCount(1);
 		await expect(amarr.locator(".route-link.is-wh")).toHaveCount(2);
-		await expect(amarr.locator(".route-link.is-unscanned")).toHaveCount(1);
-		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tooltip", new RegExp("^" + ids.jName + " \\(C3\\) · wormhole ABC-123 › DEF-456, B274, EOL$"));
-		await expect(amarr.locator(".route-hop").nth(2)).toHaveAttribute("data-tooltip", /^Amarr \(HS \d\.\d\d\) · wormhole, not scanned$/);
+		await expect(amarr.locator(".route-link.is-no-sig")).toHaveCount(1);
+		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tip", new RegExp("^" + ids.jName + " \\(C3\\) · wormhole ABC-123 › DEF-456, B274, EOL$"));
+		await expect(amarr.locator(".route-hop").nth(2)).toHaveAttribute("data-tip", /^Amarr \(HS \d\.\d\d\) · wormhole, no sig recorded$/);
 
 		// The preferences are behind the cog.
 		await expect(page.locator("#routes-prefs")).toBeHidden();
@@ -90,13 +94,14 @@ test.describe("Routes panel", () => {
 		await expect(page.locator("#routes-prefs")).toBeVisible();
 		const gates = await page.evaluate((ids) => tripwire.route.plan(ids.JITA, ids.AMARR, {}, { signatures: {}, wormholes: {}, scoutLinks: [] }).jumps, ids);
 
-		const unscanned = page.locator(".route-chip[data-pref=skipUnscanned]");
-		await unscanned.click();
-		await expect(unscanned).toHaveAttribute("aria-pressed", "true");
+		const noSig = page.locator(".route-chip[data-pref=skipNoSig]");
+		await expect(noSig).toHaveText("No sig");
+		await noSig.click();
+		await expect(noSig).toHaveAttribute("aria-pressed", "true");
 		await expect(amarr.locator(".route-jumps")).toHaveText(gates + "j");
 		await expect(amarr.locator(".route-warn")).toHaveCount(0);
-		await expect(page.locator("#routes-origin")).toContainText("skipping unscanned");
-		await unscanned.click();
+		await expect(page.locator("#routes-origin")).toContainText("skipping no sig");
+		await noSig.click();
 		await expect(amarr.locator(".route-jumps")).toHaveText("2j");
 
 		await page.locator(".route-chip[data-pref=skipEol]").click();
@@ -200,7 +205,7 @@ test.describe("Routes panel", () => {
 
 		// No hole leads to J-space on this (empty) chain.
 		await page.evaluate(() => tripwire.routesPanel.addDestination(Number(Object.keys(appData.systems).find(k => appData.systems[k].class === 3))));
-		await expect(page.locator("#routes-list .route-none")).toHaveText("No route with these preferences.");
+		await expect(page.locator("#routes-list .route-none")).toHaveText("Nothing on the map connects.");
 
 		// The second hop is the first system out of Jita; clicking it views it.
 		const next = dodixie.locator(".route-hop").nth(1), id = Number(await next.getAttribute("data-system"));
@@ -237,7 +242,125 @@ test.describe("Routes panel", () => {
 		await expect(page.locator("#routes-origin")).toContainText("with EVE-Scout");
 		await expect(amarr.locator(".route-jumps")).toHaveText("2j");
 		await expect(amarr.locator(".route-link.is-scout")).toHaveCount(2);
-		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tooltip", /^Thera \(C12\) · EVE-Scout hole ABC-001, 10h left$/);
+		await expect(amarr.locator(".route-hop").nth(1)).toHaveAttribute("data-tip", /^Thera \(C12\) · EVE-Scout hole ABC-001, 10h left$/);
+	});
+
+	test("the nearest of a kind is added from the menu, names its system and station, and is kept", async ({ page }) => {
+		const saved = [];
+		page.on("request", r => { if (/options\.php/.test(r.url()) && r.method() === "POST") { saved.push(decodeURIComponent(r.postData() || "")); } });
+		// From a trade hub that is not itself a blue loot buyer, by gates alone, whatever the mask's chain holds today.
+		const hubName = await page.evaluate(() => {
+			tripwire.routesPanel.useSource({ signatures: {}, wormholes: {}, scoutLinks: [] });
+			const start = Object.keys(routePresets.sets.hubs).map(Number).find(id => !routePresets.sets.blue[id]);
+			options.routes.from = "manual"; options.routes.fromSystem = start;
+			tripwire.routesPanel.refresh(true);
+			return appData.systems[start].name;
+		});
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Blue loot", "Red loot", "Security office"]);
+		await page.selectOption("#routes-nearest", "blue");
+
+		const want = await page.evaluate(() => {
+			const from = options.routes.fromSystem, route = tripwire.route.plan(from, Object.keys(routePresets.sets.blue).map(Number), options.routes.prefs, { signatures: {}, wormholes: {}, scoutLinks: [] });
+			const stations = routePresets.sets.blue[route.to].map(id => routePresets.stations[id]);
+			return { name: appData.systems[route.to].name, jumps: route.jumps, stations, stationId: routePresets.sets.blue[route.to][0] };
+		});
+		const blue = page.locator('#routes-list .route-card[data-nearest="blue"]');
+		await expect(blue.locator(".route-kind")).toHaveText("Blue loot");
+		await expect(blue.locator(".route-name")).toHaveText(want.name);
+		expect(want.jumps).toBeGreaterThan(0);
+		await expect(blue.locator(".route-jumps")).toHaveText(want.jumps + "j");
+		await expect(blue.locator(".route-hop")).toHaveCount(want.jumps + 1);
+		await expect(blue.locator(".route-station-name")).toHaveText(want.stations[0]);
+		if (want.stations.length > 1) { await expect(blue.locator(".route-station-more")).toHaveText("+" + (want.stations.length - 1)); }
+
+		// It has left the menu, and it is saved with the account.
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Trade hub", "Red loot", "Security office"]);
+		await expect(page.locator("#routes-nearest")).toHaveValue("");
+		await expect.poll(() => saved.some(s => s.includes('"nearest":["blue"]'))).toBe(true);
+
+		// Standing in a trade hub: no jumps, and the hub's own station.
+		await page.selectOption("#routes-nearest", "hubs");
+		await expect.poll(() => saved.some(s => s.includes('"nearest":["blue","hubs"]'))).toBe(true);
+		const hub = page.locator('#routes-list .route-card[data-nearest="hubs"]');
+		await expect(hub.locator(".route-name")).toHaveText(hubName);
+		await expect(hub.locator(".route-here")).toHaveText("You are here.");
+		await expect(hub.locator(".route-station-name")).toHaveText(await page.evaluate(() => routePresets.stations[routePresets.sets.hubs[options.routes.fromSystem][0]]));
+
+		await page.reload();
+		await page.waitForFunction(() => window.tripwire && tripwire.routesPanel && tripwire.timer, null, { timeout: 30000 });
+		await expect(page.locator('#routes-list .route-card[data-nearest="blue"]')).toBeVisible();
+		await expect(page.locator('#routes-list .route-card[data-nearest="hubs"]')).toBeVisible();
+
+		await page.locator('#routes-list .route-card[data-nearest="blue"] .route-remove').click();
+		await expect(page.locator('#routes-list .route-card[data-nearest="blue"]')).toHaveCount(0);
+		await expect(page.locator("#routes-nearest option")).toHaveText(["Nearest…", "Blue loot", "Red loot", "Security office"]);
+		await expect.poll(() => saved.some(s => s.includes('"nearest":["hubs"]'))).toBe(true);
+	});
+
+	test("the nearest follows the preferences, and the arrow sends the autopilot to the station", async ({ page }) => {
+		// Two buyers: Tama, in low-sec next door to where we start, and Jita, in high-sec further off.
+		const ids = await page.evaluate(() => {
+			const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
+			const ids = { TAMA: idOf("Tama"), JITA: idOf("Jita"), START: idOf("Nourvukaiken") };
+			tripwire.routesPanel.useSource({ signatures: {}, wormholes: {}, scoutLinks: [],
+				presets: { sets: { blue: { [ids.TAMA]: [61], [ids.JITA]: [62, 63] } }, stations: { 61: "Tama station", 62: "Jita station", 63: "Jita other station" } } });
+			options.routes.from = "manual"; options.routes.fromSystem = ids.START;
+			// A tracked pilot the arrow can act for, and somewhere for its call to land.
+			window.__sent = [];
+			options.tracking.active = options.tracking.active || "1";
+			tripwire.esi.characters[options.tracking.active] = tripwire.esi.characters[options.tracking.active] || { accessToken: "x" };
+			tripwire.esi.setDestination = (id, who, clear) => { window.__sent.push([id, clear]); };
+			tripwire.routesPanel.addNearest("blue");
+			return ids;
+		});
+		const blue = page.locator('#routes-list .route-card[data-nearest="blue"]');
+		await expect(blue.locator(".route-name")).toHaveText("Tama");
+		await expect(blue.locator(".route-jumps")).toHaveText("1j");
+		await expect(blue.locator(".route-station-name")).toHaveText("Tama station");
+
+		await page.click("#routes-prefs-toggle");
+		await page.selectOption("#routes-mode", "safer");
+		await expect(blue.locator(".route-name")).toHaveText("Jita");
+		await expect(blue.locator(".route-station-more")).toHaveText("+1");
+		await expect(blue.locator(".route-station")).toHaveAttribute("data-tip", "Jita station<br>Jita other station");
+		await expect(blue.locator(".route-fly")).toHaveAttribute("data-tip", "Set in-game destination: Jita station");
+		await blue.locator(".route-fly").click();
+		expect(await page.evaluate(() => window.__sent)).toEqual([[62, true]]);
+
+		// Avoiding the one it found leaves the other, and avoiding both leaves none.
+		await page.selectOption("#routes-mode", "shortest");
+		await page.evaluate((ids) => { options.routes.prefs.avoid = [ids.TAMA]; tripwire.routesPanel.refresh(true); }, ids);
+		await expect(blue.locator(".route-name")).toHaveText("Jita");
+		await page.evaluate((ids) => { options.routes.prefs.avoid = [ids.TAMA, ids.JITA]; tripwire.routesPanel.refresh(true); }, ids);
+		await expect(blue.locator(".route-kind")).toHaveText("Blue loot");
+		await expect(blue.locator(".route-name")).toHaveCount(0);
+		await expect(blue.locator(".route-none")).toHaveText("No blue loot buyer with these preferences.");
+	});
+
+	test("Thera with no hole offers EVE-Scout, and the palette adds the nearest of a kind", async ({ page }) => {
+		const ids = await page.evaluate(() => {
+			const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
+			return { JITA: idOf("Jita"), THERA: idOf("Thera") };
+		});
+		const link = { id: "1", wh_exits_outward: true, wh_type: "Q063", max_ship_size: "large", remaining_hours: 10, out_system_id: ids.THERA, out_system_name: "Thera", out_signature: "THR-001", in_system_id: ids.JITA, in_signature: "ABC-001" };
+		await page.route(/cached_third_party\.php\?key=eve-scout-signatures/, r => r.fulfill({ contentType: "application/json", body: JSON.stringify([link]) }));
+		await page.evaluate((ids) => { tripwire.routesPanel.useSource(null); eveScout.links = []; options.routes.from = "manual"; options.routes.fromSystem = ids.JITA; tripwire.routesPanel.addDestination(ids.THERA); }, ids);
+		const thera = card(page, "Thera");
+		await expect(thera.locator(".route-none")).toHaveText("No hole to Thera on this chain. Use EVE-Scout");
+		await thera.locator(".route-use-scout").click();
+		await expect(thera.locator(".route-jumps")).toHaveText("1j");
+		await expect(thera.locator(".route-link.is-scout")).toHaveCount(1);
+		expect(await page.evaluate(() => options.routes.prefs.scout)).toBe(true);
+
+		await page.locator("body").click({ position: { x: 5, y: 400 } });
+		await page.keyboard.press("/");
+		await page.fill("#cmd-input", "nearest sec");
+		await page.locator("#cmd-list li", { hasText: "Route to nearest security office" }).click();
+		await expect(page.locator('#routes-list .route-card[data-nearest="sec"] .route-kind')).toHaveText("Security office");
+		await page.keyboard.press("/");
+		await page.fill("#cmd-input", "security off");
+		await expect(page.locator("#cmd-list li", { hasText: "Remove route to nearest security office" })).toBeVisible();
+		await page.keyboard.press("Escape");
 	});
 
 	test("the chain map's menu adds the system under the pointer", async ({ page }) => {

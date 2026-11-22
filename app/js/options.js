@@ -21,7 +21,7 @@ var options = new function() {
 	// Routes panel: where routes start ("pilot", "system" for the one being
 	// viewed, or "manual" with fromSystem) and the saved destinations (system ids). Its preferences (`prefs`) are absent until the
 	// panel writes them, the first time from chain.routeSecurity/routeIgnore.
-	this.routes = {from: "pilot", destinations: []};
+	this.routes = {from: "pilot", destinations: [], nearest: []};
 	this.voice = {enabled: false, trigger: "new", detail: "brief", voiceKey: "", rate: 1.1, volume: 0.8,
 		parts: {arrival: true, digits: true, statics: true, kills: true, who: true, hubs: true, live: true}};
 

@@ -18,7 +18,7 @@ var routeEngine = (function() {
 	var SHIP_RANK = {s: 0, m: 1, l: 2, xl: 3};
 	var SCOUT_RANK = {small: 0, medium: 1, large: 2, xlarge: 3, capital: 3};
 	var SCOUT_EOL_HOURS = 4;
-	var DEFAULTS = {mode: "shortest", minShip: null, skipEol: false, skipCrit: false, skipReduced: false, skipUnscanned: false, avoid: [], scout: false};
+	var DEFAULTS = {mode: "shortest", minShip: null, skipEol: false, skipCrit: false, skipReduced: false, skipNoSig: false, avoid: [], scout: false};
 
 	function withDefaults(prefs) {
 		var p = {};
@@ -53,7 +53,7 @@ var routeEngine = (function() {
 		if (prefs.skipCrit && hole.mass === "critical") { return "critical mass"; }
 		if (prefs.skipReduced && (hole.mass === "reduced" || hole.mass === "critical")) { return "reduced mass"; }
 		if (prefs.minShip && SHIP_RANK.hasOwnProperty(hole.size) && SHIP_RANK[hole.size] < SHIP_RANK[prefs.minShip]) { return "too small"; }
-		if (prefs.skipUnscanned && hole.unscanned) { return "unscanned"; }
+		if (prefs.skipNoSig && hole.noSig) { return "no signature"; }
 		return null;
 	}
 
@@ -103,24 +103,38 @@ var routeEngine = (function() {
 	// The graph:
 	//   band(id)  -> "high" | "low" | "null"
 	//   gates(id) -> ids one open gate away
-	//   holes     -> [{a, b, size, life, mass, unscanned, ...}], the chain's wormholes
+	//   holes     -> [{a, b, size, life, mass, noSig, ...}], the chain's wormholes
 	//   scout     -> [{a, b, size, remainingHours, ...}], EVE-Scout's holes
 	//   cost(id)  -> optional extra cost of entering a system, on top of the
 	//                model's. Not part of the shared model: it is where a tool
 	//                puts its own judgement (recent kills, say).
+	//
+	// `to` is a system, or a list of them: then the route is to whichever is
+	// cheapest to reach, and the result's `to` says which that was.
 	//
 	// Returns null for no route, else
 	//   {from, to, jumps, gates, holes, path: [ids], steps: [{to, via, band, hole}]}
 	// with via "gate" | "wh" | "eve_scout", and hole set for the last two.
 	function find(graph, from, to, prefs) {
 		prefs = withDefaults(prefs);
-		from = Number(from); to = Number(to);
-		if (!isSystem(from) || !isSystem(to)) { return null; }
-		if (from === to) { return {from: from, to: to, jumps: 0, gates: 0, holes: 0, path: [from], steps: []}; }
+		from = Number(from);
+		if (!isSystem(from)) { return null; }
 
 		var avoid = {};
 		(prefs.avoid || []).forEach(function(id) { avoid[Number(id)] = true; });
-		var blocked = function(id) { return id !== from && id !== to && (avoid[id] === true || id === ZARZAKH); };
+		var never = function(id) { return avoid[id] === true || id === ZARZAKH; };
+
+		// One destination is an end the pilot named, so it is allowed whatever
+		// it is. Of several, the ones never passed through are not candidates:
+		// "the nearest buyer" should not be the system the pilot said to avoid.
+		var nearest = Array.isArray(to), ends = {}, any = false;
+		(nearest ? to : [to]).forEach(function(id) {
+			id = Number(id);
+			if (isSystem(id) && (!nearest || id === from || !never(id))) { ends[id] = true; any = true; }
+		});
+		if (!any) { return null; }
+		if (ends[from]) { return {from: from, to: from, jumps: 0, gates: 0, holes: 0, path: [from], steps: []}; }
+		var blocked = function(id) { return id !== from && !ends[id] && never(id); };
 
 		// Holes that pass the preferences, as edges both ways.
 		var adj = {};
@@ -135,7 +149,7 @@ var routeEngine = (function() {
 			});
 		}
 
-		var dist = {}, prev = {}, done = {}, frontier = new Heap();
+		var dist = {}, prev = {}, done = {}, frontier = new Heap(), reached = null;
 		dist[from] = 0;
 		frontier.push(0, from);
 
@@ -143,7 +157,7 @@ var routeEngine = (function() {
 			var top = frontier.pop(), d = top[0], sys = top[1];
 			if (done[sys]) { continue; }
 			done[sys] = true;
-			if (sys === to) { break; }
+			if (ends[sys]) { reached = sys; break; }
 
 			var relax = function(next, via, hole) {
 				if (!isSystem(next) || done[next] || blocked(next)) { return; }
@@ -159,7 +173,10 @@ var routeEngine = (function() {
 			(graph.gates(sys) || []).forEach(function(next) { relax(Number(next), "gate", null); });
 		}
 
-		if (!prev[to]) { return null; }
+		return reached === null ? null : built(from, reached, prev);
+	}
+
+	function built(from, to, prev) {
 		var steps = [];
 		for (var cur = to; cur !== from; cur = prev[cur].from) {
 			var p = prev[cur];

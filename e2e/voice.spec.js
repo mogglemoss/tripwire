@@ -115,12 +115,17 @@ test.describe("voice announcements", () => {
 		const target = await pickSystem(page, false);
 		expect(target).not.toBeNull();
 		const now = Date.now();
-		await page.route(new RegExp("zkillboard\\.com/api/kills/solarSystemID/" + target.id + "/pastSeconds/28800/"), route => route.fulfill({
-			headers: CORS, contentType: "application/json", body: JSON.stringify([
-				{ killmail_id: 1, killmail_time: new Date(now - 3 * 3600e3).toISOString(), victim: { ship_type_id: 17715 }, attackers: [{ character_id: 11, corporation_id: 98000001 }] },
-				{ killmail_id: 2, killmail_time: new Date(now - 20 * 60e3).toISOString(), victim: { ship_type_id: 33470 }, attackers: [{ character_id: 12, corporation_id: 98000001 }] }
-			])
-		}));
+		// Both windows the fetcher asks for, the hour as well as the eight
+		// hours: an unanswered one goes to the real zKillboard, and real
+		// kills in this system would be counted with the two here.
+		const kills = [
+			{ killmail_id: 1, killmail_time: new Date(now - 3 * 3600e3).toISOString(), victim: { ship_type_id: 17715 }, attackers: [{ character_id: 11, corporation_id: 98000001 }] },
+			{ killmail_id: 2, killmail_time: new Date(now - 20 * 60e3).toISOString(), victim: { ship_type_id: 33470 }, attackers: [{ character_id: 12, corporation_id: 98000001 }] }
+		];
+		await page.route(/zkillboard\.com\/api\/kills\/solarSystemID\/\d+\/pastSeconds\/(\d+)\//, route => {
+			const seconds = Number(route.request().url().match(/pastSeconds\/(\d+)\//)[1]);
+			return route.fulfill({ headers: CORS, contentType: "application/json", body: JSON.stringify(kills.filter(k => now - Date.parse(k.killmail_time) <= seconds * 1000)) });
+		});
 		await page.route(/esi\.evetech\.net\/latest\/universe\/names/, route => route.request().method() === "OPTIONS"
 			? route.fulfill({ status: 204, headers: CORS })
 			: route.fulfill({ headers: CORS, contentType: "application/json", body: JSON.stringify([{ id: 98000001, name: "Test Corp", category: "corporation" }]) }));

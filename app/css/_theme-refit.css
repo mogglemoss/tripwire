@@ -1584,13 +1584,15 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #dialog-options .field-note { margin: 2px 0 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
 #routesWidget > .content { display: flex; flex-direction: column; gap: 8px; padding: 8px 10px 10px; }
 #routes-prefs { display: flex; flex-direction: column; gap: 7px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
-#routes-prefs[hidden], #routes-add-here[hidden], #routes-from-pick[hidden] { display: none; }
+#routes-prefs[hidden], #routes-add-here[hidden], #routes-from-pick[hidden], #routes-nearest[hidden] { display: none; }
 #routes-from-pick { flex: 1 1 7rem; min-width: 6rem; max-width: 11rem; }
 #routesWidget .routes-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
 #routesWidget .routes-label { color: var(--muted-foreground); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 #routesWidget .routes-field { display: inline-flex; align-items: center; gap: 6px; margin: 0; }
-#routesWidget .routes-field select, #routesWidget input[type="text"] { min-width: 0; min-height: 24px; padding: 2px 8px; border: 1px solid var(--input); border-radius: var(--radius-sm); background-color: var(--muted); background-image: none; color: var(--foreground); font-size: var(--fs-sm); }
+#routesWidget .routes-field select, #routes-nearest, #routesWidget input[type="text"] { min-width: 0; min-height: 24px; padding: 2px 8px; border: 1px solid var(--input); border-radius: var(--radius-sm); background-color: var(--muted); background-image: none; color: var(--foreground); font-size: var(--fs-sm); }
 #routesWidget .routes-field select { max-width: 9.5rem; }
+/* The panel's menus say they are menus: a chevron at the right edge. */
+#routesWidget .routes-field select, #routes-nearest { -webkit-appearance: none; appearance: none; padding-right: 22px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' fill='none' stroke='%238b8b8b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 7px center; background-size: 9px 6px; }
 #routesWidget .routes-cog { display: inline-flex; align-items: center; justify-content: center; border: 0; background: none; color: var(--muted-foreground); cursor: pointer; }
 #routesWidget .routes-cog:hover, #routesWidget .routes-cog.active { color: var(--primary); }
 /* The segmented choice: one frame, the chosen option filled. */
@@ -1601,7 +1603,8 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #routesWidget .segmented input:checked + label { background: var(--primary); color: var(--primary-foreground); }
 #routesWidget .segmented input:focus-visible + label { outline: 2px solid var(--primary); outline-offset: 1px; }
 /* Toggles: a chip that is either on or off. */
-#routesWidget .routes-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+#routesWidget .routes-chips { gap: 5px; }
+#routesWidget .routes-chips .routes-label { margin-right: 5px; }
 #routesWidget .route-chip { padding: 2px 9px; min-height: 22px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--muted-foreground); font: inherit; font-size: var(--fs-sm); line-height: 1.2; white-space: nowrap; cursor: pointer; }
 #routesWidget .route-chip:hover { color: var(--foreground); border-color: var(--border-strong, var(--border)); }
 #routesWidget .route-chip.on { border-color: var(--primary); background: color-mix(in oklab, var(--primary) 16%, transparent); color: var(--foreground); }
@@ -1614,7 +1617,10 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #routes-avoid-add { flex: 1 1 6rem; min-width: 5rem; max-width: 10rem; }
 #routesWidget .routes-origin { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
 /* One card per destination. */
-#routes-list { display: flex; flex-direction: column; gap: 6px; }
+/* The list scrolls; the line above it and the add row below stay put. (On a
+   phone the panel is as tall as its cards, and nothing needs to scroll.) */
+#routes-list { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 4.5rem; overflow-y: auto; }
+#routes-list > * { flex: 0 0 auto; }
 #routesWidget .routes-empty { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
 #routesWidget .route-card { padding: 7px 8px 8px; border: 1px solid var(--border); border-radius: var(--radius); background: color-mix(in oklab, var(--muted) 35%, transparent); }
 #routesWidget .route-head { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
@@ -1626,32 +1632,50 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #routesWidget .route-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: var(--radius-sm); background: none; color: var(--muted-foreground); font-size: 15px; line-height: 1; cursor: pointer; }
 #routesWidget .route-btn:hover { background: var(--muted); color: var(--foreground); }
 #routesWidget .route-remove:hover { color: var(--data-critical); }
-#routesWidget .route-meta, #routesWidget .route-warn, #routesWidget .route-none, #routesWidget .route-here { margin: 5px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
-#routesWidget .route-warn { color: var(--data-loot-orange); }
+#routesWidget .route-meta, #routesWidget .route-none, #routesWidget .route-here, #routesWidget .route-station { margin: 5px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
+#routesWidget .route-warn.is-caution { color: var(--data-warn); }
+#routesWidget .route-warn.is-critical { color: var(--data-critical); }
+/* The nearest of a kind: the kind is the card's name, the system it found follows. */
+#routesWidget .route-kind { flex: 0 0 auto; color: var(--foreground); font-weight: 600; white-space: nowrap; }
+#routesWidget .route-card.is-nearest .route-name { font-weight: 400; }
+#routesWidget .route-station { display: flex; gap: 5px; min-width: 0; }
+#routesWidget .route-station-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#routesWidget .route-station-more { flex: 0 0 auto; }
+#routesWidget .route-link-btn { padding: 0; border: 0; background: none; color: var(--primary); font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 /* The hops: squares for k-space, circles for J-space, in their security
    colour. A mark before a hop says it was reached by wormhole. */
 #routesWidget .route-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; margin-top: 6px; }
-#routesWidget .route-hop { flex: 0 0 auto; width: 11px; height: 11px; border-radius: 2px; background: var(--muted-foreground); cursor: pointer; }
+#routesWidget .route-hop { flex: 0 0 auto; width: 11px; height: 11px; border-radius: 2px; cursor: pointer; }
 #routesWidget .route-hop.is-j { border-radius: 50%; }
 #routesWidget .route-hop.is-origin { box-shadow: 0 0 0 1px var(--card, var(--background)), 0 0 0 2px var(--foreground); margin-right: 2px; }
 #routesWidget .route-hop:hover, #routesWidget .route-hop:focus-visible { filter: brightness(1.35); outline: 1px solid var(--foreground); outline-offset: 1px; }
-#routesWidget .route-hop.hisec { background: var(--data-good); }
-#routesWidget .route-hop.lowsec { background: var(--data-loot-orange); }
-#routesWidget .route-hop.nullsec { background: var(--data-critical); }
-#routesWidget .route-hop.triglavian { background: var(--data-loot-red); }
-#routesWidget .route-hop.wh { background: var(--data-info); }
-#routesWidget .route-hop.class-4, #routesWidget .route-hop.class-5 { background: var(--data-loot-purple); }
-#routesWidget .route-hop.class-6 { background: var(--data-loot-pink); }
-#routesWidget .route-hop.class-12 { background: var(--data-loot-gold); }
-#routesWidget .route-hop.drifter, #routesWidget .route-hop.class-13 { background: var(--data-loot-red); }
-#routesWidget .route-sec.hisec { color: var(--data-good); }
-#routesWidget .route-sec.lowsec { color: var(--data-loot-orange); }
-#routesWidget .route-sec.nullsec, #routesWidget .route-sec.triglavian { color: var(--data-critical); }
-#routesWidget .route-sec.wh { color: var(--data-info); }
+/* A system's colour, as the chain map's class pill has it; one mapping for
+   the hop and for the class beside a name. (The class rules name .wh too so
+   they outrank it whatever order the minifier leaves them in.) */
+#routesWidget .hisec { --sys: var(--data-good); }
+#routesWidget .lowsec { --sys: var(--data-loot-orange); }
+#routesWidget .nullsec { --sys: var(--data-critical); }
+#routesWidget .triglavian { --sys: var(--data-loot-red); }
+#routesWidget .wh { --sys: var(--data-info); }
+#routesWidget .wh.class-4, #routesWidget .wh.class-5 { --sys: var(--data-loot-purple); }
+#routesWidget .wh.class-6 { --sys: var(--data-loot-pink); }
+#routesWidget .wh.class-12 { --sys: var(--data-loot-gold); }
+#routesWidget .wh.class-15, #routesWidget .wh.class-16, #routesWidget .wh.class-17 { --sys: var(--data-loot-red); }
+#routesWidget .route-hop { background: var(--sys, var(--muted-foreground)); }
+#routesWidget .route-sec { color: var(--sys, var(--muted-foreground)); }
+/* The mark before a hop reached by wormhole, in the hole's state: reduced
+   mass a caution, end of life or critical mass a warning, the last hour its
+   own colour, as the chain map and the signature list have them. A dashed
+   mark is a hole with no signature recorded. EVE-Scout's are solid gold. */
 #routesWidget .route-link { flex: 0 0 auto; width: 7px; height: 0; border-top: 2px dotted var(--muted-foreground); }
 #routesWidget .route-link.is-scout { border-top-style: solid; border-top-color: var(--data-loot-gold); }
-#routesWidget .route-link.is-flagged { border-top-color: var(--data-loot-orange); }
-#routesWidget .route-link.is-unscanned { width: 9px; border-top-style: dashed; border-top-color: var(--data-loot-orange); }
+#routesWidget .route-link.is-no-sig { width: 9px; border-top-style: dashed; border-top-color: var(--data-warn); }
+#routesWidget .route-link.is-reduced { border-top-color: var(--data-warn); }
+#routesWidget .route-link.is-critical { border-top-color: var(--data-critical); }
+#routesWidget .route-link.is-last-hour { border-top-color: var(--data-supercritical); }
+.routes-tip { pointer-events: none; }
 /* Add a destination. */
-#routesWidget .routes-add { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 2px; }
-#routes-add { flex: 1 1 auto; min-width: 0; }
+#routesWidget .routes-add { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; flex: 0 0 auto; }
+#routes-add { flex: 1 1 7rem; min-width: 0; }
+#routes-nearest { flex: 0 0 auto; width: 7.4em; color: var(--muted-foreground); cursor: pointer; }
+#routes-nearest:hover, #routes-nearest:focus { color: var(--foreground); }

@@ -33,13 +33,13 @@ tripwire.route = (function() {
 			.map(function(c) { return c.systemID; });
 	}
 
-	// A signature id someone scanned: not empty, and not the "???" placeholder.
-	function scanned(id) { return !!id && !/^\?+$/.test(String(id)); }
+	// A signature id someone recorded: not empty, and not the "???" placeholder.
+	function recorded(id) { return !!id && !/^\?+$/.test(String(id)); }
 
 	// The chain's wormholes. A "GATE" row is a stargate someone mapped by
 	// hand; the gate map already has it. Size comes from the hole's type when
 	// Tripwire knows it ("????" and K162-only holes have none, and pass). A
-	// hole with no signature id on either side is unscanned: the auto-mapper
+	// hole with no signature id on either side is "no sig": the auto-mapper
 	// drew it from a jump, and nobody has confirmed it.
 	function holes(source) {
 		var sigs = (source && source.signatures) || tripwire.client.signatures || {};
@@ -55,8 +55,8 @@ tripwire.route = (function() {
 				size: routeEngine.sizeForJumpMass(type ? type.jump : null),
 				life: LIFE[w.life] || "stable", mass: MASS[w.mass] || "stable",
 				type: w.type || null, parent: w.parent || null,
-				sigA: scanned(a.signatureID) ? a.signatureID : null, sigB: scanned(b.signatureID) ? b.signatureID : null,
-				unscanned: !scanned(a.signatureID) && !scanned(b.signatureID),
+				sigA: recorded(a.signatureID) ? a.signatureID : null, sigB: recorded(b.signatureID) ? b.signatureID : null,
+				noSig: !recorded(a.signatureID) && !recorded(b.signatureID),
 				tripwireLife: w.life, tripwireMass: w.mass
 			});
 		});
@@ -110,7 +110,7 @@ tripwire.route = (function() {
 	function summary(route, source) {
 		var all = systems(source);
 		var out = {jumps: route.jumps, gates: route.gates, holes: route.holes, low: 0, nullsec: 0, jspace: 0,
-			eol: 0, crit: 0, reduced: 0, unscanned: 0, scout: 0};
+			eol: 0, crit: 0, reduced: 0, noSig: 0, scout: 0};
 		route.steps.forEach(function(s) {
 			var sys = all[s.to];
 			if (sys && sys.class) { out.jspace++; } else if (s.band === "low") { out.low++; } else if (s.band === "null") { out.nullsec++; }
@@ -118,7 +118,7 @@ tripwire.route = (function() {
 			if (s.via !== "wh") { return; }
 			if (s.hole.life === "eol" || s.hole.life === "last_hour") { out.eol++; }
 			if (s.hole.mass === "critical") { out.crit++; } else if (s.hole.mass === "reduced") { out.reduced++; }
-			if (s.hole.unscanned) { out.unscanned++; }
+			if (s.hole.noSig) { out.noSig++; }
 		});
 		return out;
 	}

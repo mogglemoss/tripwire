@@ -34,7 +34,7 @@ any system whose security is not known).
 | `skipEol` | yes/no | no | Leave out holes at end of life |
 | `skipCrit` | yes/no | no | Leave out holes at critical mass |
 | `skipReduced` | yes/no | no | Leave out holes at reduced or critical mass |
-| `skipUnscanned` | yes/no | no | Leave out holes nobody has scanned |
+| `skipNoSig` | yes/no | no | Leave out holes with no signature recorded |
 | `avoid` | system ids | none | Systems never passed through |
 | `scout` | yes/no | no | Use EVE-Scout's holes |
 
@@ -57,16 +57,18 @@ whatever the penalties were.
 
 A chain hole has a **life** (`stable`, `eol`, `last_hour`), a **mass**
 (`stable`, `reduced`, `critical`) and, when its type is known, a **size**. It
-is **unscanned** when neither side has a signature id: a connection a mapper
-drew from a pilot's jump, which nobody has confirmed.
+has **no signature** (`noSig`) when neither side has a signature id recorded:
+typically a connection a mapper drew from a pilot's jump. The hole may well
+have been scanned; the map just cannot say which signature it is.
 
 - `skipEol` leaves out life `eol` and `last_hour`.
 - `skipCrit` leaves out mass `critical`.
 - `skipReduced` leaves out mass `reduced` and `critical`.
 - `minShip` leaves out a hole whose size is known and smaller. A hole of
   unknown size passes.
-- `skipUnscanned` leaves out an unscanned hole. By default it is used, and a
-  tool should mark the hop so the pilot knows it is unconfirmed.
+- `skipNoSig` leaves out a hole with no signature. By default it is used, and
+  a tool should mark the hop so the pilot knows there is no signature to
+  look for.
 
 Size comes from the hole type's largest mass per jump, in kilograms:
 
@@ -90,6 +92,19 @@ remaining time or size passes.
 
 Both are still allowed as the start or the end of a route.
 
+## The nearest of a set
+
+The end of a route can be a set of systems instead of one: the buyers of
+something, say, or the trade hubs. The route is then to whichever system in
+the set is cheapest to reach, by the same costs, and the result says which.
+
+- The mode decides between them like anything else: under `safer`, a
+  high-sec system several jumps away beats a low-sec one next door.
+- A system in `avoid`, or Zarzakh, is not a candidate. The exception above is
+  for an end the pilot named; nobody named this one.
+- Standing in a system of the set is a route of no jumps, even if that system
+  is in `avoid`.
+
 ## The result
 
 No route, or: the systems in order from start to end, and for each jump how
@@ -106,7 +121,7 @@ it was made: `gate`, `wh` or `eve_scout`, with the hole for the last two.
 | `skipEol` | `skipEol` | `skipEol` | `avoidEol` |
 | `skipCrit` | `skipCrit` | `skipCrit` | `avoidCritical` |
 | `skipReduced` | `skipReduced` | `skipReduced` | `avoidReduced` |
-| `skipUnscanned` | `skipUnscanned` | (none yet) | (none yet) |
+| `skipNoSig` | `skipNoSig` | (none yet) | (none yet) |
 | `minShip` | `minShip` | `minShip` | `minShipClass` |
 | `mode` | `mode` | `mode` | `safety` |
 | `scout` | `scout` | a list of holes | `includeEveScout` |
@@ -114,15 +129,17 @@ it was made: `gate`, `wh` or `eve_scout`, with the hole for the last two.
 Known differences, as of November 2026: Aperture has no avoid list, does not
 exclude Zarzakh, and applies no filters to EVE-Scout holes. Its
 `avoidReduced` leaves critical mass to `avoidCritical`; here `skipReduced`
-covers both, as Trippy's does.
+covers both, as Trippy's does. Only Tripwire routes to the nearest of a set
+so far.
 
 ## The vectors
 
 `route-vectors.json` holds small made-up maps, not EVE geography, so a static
 data update cannot break them. Each case gives the systems with their bands,
 the gates, the holes, any EVE-Scout holes, a start, an end, preferences, and
-the expected route (`path` and `via`) or `null` for no route. `sizeBands`
-lists jump masses with the size each must give.
+the expected route (`path` and `via`) or `null` for no route. Where `to` is a
+list, the case is the nearest of that set. `sizeBands` lists jump masses with
+the size each must give.
 
 Every case has exactly one best route. Routers break ties in different orders
 and the model does not say which is right, so a case with two equally good

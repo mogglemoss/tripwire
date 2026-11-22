@@ -2,6 +2,7 @@ const assert = require('assert');
 const { include } = require('./helpers/helpers');
 include('public/js/combine');
 include('app/js/guidance');
+include('app/js/route-presets');
 include('app/js/guidance_profiles');
 include('app/js/systemAnalysis');
 
@@ -31,8 +32,10 @@ describe('Pathfinding', () => {
 });
 
 describe('Route to profile', () => {
-	// The 2026-11-19 SDE's new gates make Seyllin six jumps away (it was 2X-PQG, seven).
-	it('System to blue loot', () => { assert.deepEqual( [ sid('Amygnon'), sid('Jufvitte'), sid('Renyn'), sid('Du Annes'), sid('Metserel'), sid('Seyllin') ], guidance.findShortestPath(appData.map.shortest, sid('Amygnon'), guidance_profiles.blueLootSystems)); });
+	// Tar, four jumps off in high-sec. The buyer list is generated from the
+	// market (scripts/route-presets.py); the hand-kept one before it did not
+	// have Tar and sent this to Seyllin, five jumps away in low-sec.
+	it('System to blue loot', () => { assert.deepEqual( [ sid('Amygnon'), sid('Jufvitte'), sid('Renyn'), sid('Pakhshi'), sid('Tar') ], guidance.findShortestPath(appData.map.shortest, sid('Amygnon'), guidance_profiles.blueLootSystems)); });
 });
 
 describe('Conditional gates', () => {

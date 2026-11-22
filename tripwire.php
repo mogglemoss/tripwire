@@ -295,7 +295,7 @@ $system = $_REQUEST['system'] ?? '';
 									<option value="less_safe">Less safe</option>
 								</select>
 							</label>
-							<label class="routes-field"><span class="routes-label">Min ship</span>
+							<label class="routes-field" data-tip="Leave out holes too small for this ship"><span class="routes-label">Ship</span>
 								<select id="routes-ship">
 									<option value="">Any</option>
 									<option value="s">Frigate (S)</option>
@@ -305,12 +305,16 @@ $system = $_REQUEST['system'] ?? '';
 								</select>
 							</label>
 						</div>
-						<div class="routes-chips" role="group" aria-label="Holes to leave out">
-							<button type="button" class="route-chip" data-pref="skipEol" aria-pressed="false">Skip EOL</button>
-							<button type="button" class="route-chip" data-pref="skipCrit" aria-pressed="false">Skip crit</button>
-							<button type="button" class="route-chip" data-pref="skipReduced" aria-pressed="false">Skip reduced</button>
-							<button type="button" class="route-chip" data-pref="skipUnscanned" aria-pressed="false" data-tooltip="Leave out connections nobody has scanned">Skip unscanned</button>
-							<button type="button" class="route-chip" data-pref="scout" aria-pressed="false" data-tooltip="Use EVE-Scout's Thera and Turnur holes">EVE-Scout</button>
+						<div class="routes-row routes-chips" role="group" aria-labelledby="routes-skip-label">
+							<span class="routes-label" id="routes-skip-label">Skip</span>
+							<button type="button" class="route-chip" data-pref="skipEol" aria-pressed="false">EOL</button>
+							<button type="button" class="route-chip" data-pref="skipCrit" aria-pressed="false">Crit</button>
+							<button type="button" class="route-chip" data-pref="skipReduced" aria-pressed="false" data-tip="Reduced or critical mass">Reduced</button>
+							<button type="button" class="route-chip" data-pref="skipNoSig" aria-pressed="false" data-tip="Holes with no signature recorded">No sig</button>
+						</div>
+						<div class="routes-row routes-chips" role="group" aria-labelledby="routes-use-label">
+							<span class="routes-label" id="routes-use-label">Use</span>
+							<button type="button" class="route-chip" data-pref="scout" aria-pressed="false" data-tip="EVE-Scout's Thera and Turnur holes">EVE-Scout</button>
 						</div>
 						<div class="routes-avoid">
 							<span class="routes-label">Avoid</span>
@@ -321,7 +325,8 @@ $system = $_REQUEST['system'] ?? '';
 					<p id="routes-origin" class="routes-origin" role="status"></p>
 					<div id="routes-list"></div>
 					<div class="routes-add">
-						<input type="text" id="routes-add" class="systemsAutocomplete" placeholder="Add destination…" autocomplete="off" spellcheck="false" aria-label="Add a destination" />
+						<input type="text" id="routes-add" class="systemsAutocomplete" placeholder="Add system…" autocomplete="off" spellcheck="false" aria-label="Add a destination system" />
+						<select id="routes-nearest" aria-label="Add the nearest of a kind of place"><option value="">Nearest…</option></select>
 						<button type="button" id="routes-add-here" class="route-chip"></button>
 					</div>
 				</div>

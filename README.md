@@ -56,13 +56,17 @@ What the refit changes, in one screen:
   your pilot, the system you are viewing, or one you type: across gates, the
   chain and (if asked) EVE-Scout's holes. Shortest, safer or less safe; a
   smallest hole size; skip holes at end of life, at critical or reduced
-  mass, or that nobody has scanned; systems to avoid. Each route is a strip
-  of hops in their security colours, with wormhole jumps marked and
-  unconfirmed ones flagged. The rules are written down in
-  `docs/route-model.md`, shared with the other tools that read a chain.
+  mass, or with no signature recorded; systems to avoid. Each route is a strip
+  of hops in their security colours, with wormhole jumps marked in the
+  hole's state and ones with no signature dashed. A destination can also be the
+  nearest of a kind: trade hub, blue loot buyer, red loot buyer or security
+  office, with the station to dock at. Those lists are generated from EVE's
+  public market data (`scripts/route-presets.py`). The rules are written
+  down in `docs/route-model.md`, shared with the other tools that read a
+  chain.
 - **Command palette** (`/` or Ctrl-K): jump to a system, a chain tab or a
-  mask; route to a system; set life or mass on the selection; show or hide
-  panels.
+  mask; route to a system or to the nearest of a kind; set life or mass on
+  the selection; show or hide panels.
 - **Settings** in tabs: characters, map, signatures, panels, statistics.
 - **Notes are cleaned on the server** as well as in the browser, so an older
   client is never handed executable markup; the two allow-lists are held

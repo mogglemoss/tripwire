@@ -7,6 +7,7 @@ include('app/js/systemAnalysis');
 include('app/js/guidance');
 include('app/js/route-engine');
 include('app/js/tripwire/route');
+include('app/js/route-presets');
 
 const vectors = loadJSON('docs/route-vectors');
 
@@ -136,18 +137,18 @@ describe('tripwire.route: the live map as a graph', function() {
 		const holes = tripwire.route.holes(source);
 		assert.deepEqual(holes.map(h => h.id), [10, 12], 'the GATE row is not a hole');
 		assert.deepEqual([holes[1].life, holes[1].mass, holes[1].size], ['last_hour', 'critical', null]);
-		assert.deepEqual(holes.map(h => h.unscanned), [true, true], 'no signature id on either side');
+		assert.deepEqual(holes.map(h => h.noSig), [true, true], 'no signature id on either side');
 		assert.equal(tripwire.route.plan(JITA, AMARR, {}, source).jumps, 1);
 		assert.ok(tripwire.route.plan(JITA, AMARR, { skipEol: true }, source).jumps > 1);
 	});
-	it('calls a hole unscanned only when neither side has a signature id', function() {
+	it('says a hole has no signature only when neither side has a signature id', function() {
 		const source = Object.assign({}, empty, {
 			signatures: { 1: { systemID: JITA, signatureID: 'abc123' }, 2: { systemID: J }, 3: { systemID: JITA, signatureID: '???' }, 4: { systemID: AMARR, signatureID: '' } },
 			wormholes: { 10: { id: 10, initialID: 1, secondaryID: 2, life: 'stable', mass: 'stable' }, 11: { id: 11, initialID: 3, secondaryID: 4, life: 'stable', mass: 'stable' } }
 		});
-		assert.deepEqual(tripwire.route.holes(source).map(h => [h.id, h.unscanned, h.sigA, h.sigB]), [[10, false, 'abc123', null], [11, true, null, null]]);
+		assert.deepEqual(tripwire.route.holes(source).map(h => [h.id, h.noSig, h.sigA, h.sigB]), [[10, false, 'abc123', null], [11, true, null, null]]);
 		assert.equal(tripwire.route.plan(JITA, AMARR, {}, source).jumps, 1, 'used by default');
-		assert.ok(tripwire.route.plan(JITA, AMARR, { skipUnscanned: true }, source).jumps > 1, 'left out when asked');
+		assert.ok(tripwire.route.plan(JITA, AMARR, { skipNoSig: true }, source).jumps > 1, 'left out when asked');
 	});
 	it('does not use a gate the rest of Tripwire treats as closed', function() {
 		const open = tripwire.route.plan(JITA, AMARR, {}, empty);
@@ -187,7 +188,7 @@ describe('tripwire.route: the live map as a graph', function() {
 		});
 		const route = tripwire.route.plan(JITA, LOW, {}, source);
 		assert.deepEqual(route.path, [JITA, J, LOW]);
-		assert.deepEqual(tripwire.route.summary(route, source), { jumps: 2, gates: 0, holes: 2, low: 1, nullsec: 0, jspace: 1, eol: 1, crit: 1, reduced: 0, unscanned: 1, scout: 0 });
+		assert.deepEqual(tripwire.route.summary(route, source), { jumps: 2, gates: 0, holes: 2, low: 1, nullsec: 0, jspace: 1, eol: 1, crit: 1, reduced: 0, noSig: 1, scout: 0 });
 		assert.equal(tripwire.route.waypoint(route), null, 'the first jump is a wormhole: nothing for the autopilot');
 	});
 	it('gives the autopilot the end of the gates a route starts with', function() {
@@ -228,5 +229,46 @@ describe('tripwire.route: the live map as a graph', function() {
 			const r = tripwire.route.plan(arr[0], arr[1], {}, empty);
 			assert.ok(!r || r.path.indexOf(zarzakh) < 0);
 		});
+	});
+});
+
+describe('Route presets: the generated sets (app/js/route-presets.js)', function() {
+	const sets = routePresets.sets, band = id => tripwire.route.band(Number(id));
+
+	it('holds four sets of real systems, each with named stations', function() {
+		assert.deepEqual(Object.keys(sets), ['hubs', 'blue', 'red', 'sec']);
+		Object.keys(sets).forEach(function(name) {
+			const systems = Object.keys(sets[name]);
+			assert.ok(systems.length > 0, name + ' is not empty');
+			systems.forEach(function(id) {
+				assert.ok(appData.systems[id], name + ': ' + id + ' is a system');
+				assert.ok(sets[name][id].length > 0, name + ': ' + id + ' has a station');
+				sets[name][id].forEach(st => assert.ok(routePresets.stations[st], name + ': station ' + st + ' has a name'));
+			});
+		});
+	});
+
+	it('has the five trade hubs, by their main station', function() {
+		const names = Object.keys(sets.hubs).map(id => appData.systems[id].name).sort();
+		assert.deepEqual(names, ['Amarr', 'Dodixie', 'Hek', 'Jita', 'Rens']);
+		assert.equal(routePresets.stations[sets.hubs[30000142][0]], 'Jita IV - Moon 4 - Caldari Navy Assembly Plant');
+	});
+
+	it('keeps security offices to low-sec, and among the red loot buyers', function() {
+		Object.keys(sets.sec).forEach(function(id) {
+			assert.equal(band(id), 'low', appData.systems[id].name);
+			assert.ok(sets.red[id], appData.systems[id].name + ' also buys red loot');
+		});
+	});
+
+	it('routes to the nearest of a set on the real map', function() {
+		const none = { signatures: {}, wormholes: {}, scoutLinks: [] }, hubs = Object.keys(sets.hubs).map(Number);
+		const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
+		const route = tripwire.route.plan(idOf('Perimeter'), hubs, {}, none);
+		assert.equal(route.to, idOf('Jita'));
+		assert.equal(route.jumps, 1);
+		// The same answer as asking for each in turn and taking the fewest jumps.
+		const from = idOf('Tama'), each = hubs.map(h => tripwire.route.plan(from, h, {}, none).jumps);
+		assert.equal(tripwire.route.plan(from, hubs, {}, none).jumps, Math.min.apply(null, each));
 	});
 });
