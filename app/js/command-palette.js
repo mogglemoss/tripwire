@@ -49,7 +49,7 @@
         var acts = all.filter(function(a) {
             return !q || a.label.toLowerCase().indexOf(q) > -1 || a.group.toLowerCase().indexOf(q) > -1;
         });
-        return acts.concat(tripwire.keyboard.systemActions(q));
+        return acts.concat(tripwire.keyboard.systemActions(q), tripwire.keyboard.routeActions ? tripwire.keyboard.routeActions(q) : []);
     }
 
     function render(query) {

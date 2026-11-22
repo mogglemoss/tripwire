@@ -26,9 +26,6 @@ $(".options").click(function(e) {
 				
 				options.chain.sigNameLocation = $("#dialog-options #chainSigNameLocation").val();
 				options.chain.routingLimit = 1 * $("#dialog-options #chainRoutingLimit").val();
-				options.chain.routeSecurity = $("#dialog-options #chainRouteSecurity").val();
-				options.chain.routeIgnore.enabled = $("#dialog-options #route-ignore-enabled").prop('checked');
-				options.chain.routeIgnore.systems = $("#dialog-options #route-ignore").val().split(",").map(x => x.trim());
 
 				options.chain.gridlines = $("#dialog-options #gridlines").prop("checked");
 				options.chain.aura = $("#dialog-options #aura").prop("checked");
@@ -113,9 +110,6 @@ $(".options").click(function(e) {
 			$("#dialog-options #copySeparator").val(options.signatures.copySeparator);
 			$("#dialog-options #chainRoutingLimit").val(options.chain.routingLimit);
 			$("#dialog-options #chainSigNameLocation").val(options.chain.sigNameLocation);
-			$("#dialog-options #chainRouteSecurity").val(options.chain.routeSecurity);
-			$("#dialog-options #route-ignore-enabled").prop('checked', options.chain.routeIgnore.enabled);
-			$("#dialog-options #route-ignore").val(options.chain.routeIgnore.systems.join(','));
 			$("#dialog-options #renderer").val(options.chain.renderer);
 			$("#dialog-options input[name='node-reference'][value='"+options.chain["node-reference"]+"']").prop("checked", true);
 			// Stored as booleans by save() but as the strings "true"/"false" by

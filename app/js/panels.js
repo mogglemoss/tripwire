@@ -15,6 +15,7 @@ tripwire.panels = (function() {
         {id: "infoWidget",       title: "System",     defaultVisible: true},
         {id: "signaturesWidget", title: "Signatures", short: "Sigs", defaultVisible: true},   // short: the title on a phone
         {id: "notesWidget",      title: "Notes",      defaultVisible: true},
+        {id: "routesWidget",     title: "Routes",     defaultVisible: true},
         {id: "chainWidget",      title: "Chain",      defaultVisible: true}
     ];
 

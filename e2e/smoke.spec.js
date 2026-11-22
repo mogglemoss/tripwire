@@ -7,7 +7,7 @@ test("the app loads clean and polls", async ({ page }) => {
 	page.on("pageerror", (e) => errors.push(String(e)));
 	await login(page, "Perimeter");
 	await expect(page.locator("#hdr-system")).toHaveText(/Perimeter/);
-	await expect(page.locator(".gridWidget:visible")).toHaveCount(4);
+	await expect(page.locator(".gridWidget:visible")).toHaveCount(5);   // System, Signatures, Notes, Routes, Chain
 	await expect(page.locator("#user-avatar")).toBeVisible();
 
 	// The poll loop reschedules: the timer id must change.

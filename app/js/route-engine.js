@@ -18,7 +18,7 @@ var routeEngine = (function() {
 	var SHIP_RANK = {s: 0, m: 1, l: 2, xl: 3};
 	var SCOUT_RANK = {small: 0, medium: 1, large: 2, xlarge: 3, capital: 3};
 	var SCOUT_EOL_HOURS = 4;
-	var DEFAULTS = {mode: "shortest", minShip: null, skipEol: false, skipCrit: false, skipReduced: false, avoid: [], scout: false};
+	var DEFAULTS = {mode: "shortest", minShip: null, skipEol: false, skipCrit: false, skipReduced: false, skipUnscanned: false, avoid: [], scout: false};
 
 	function withDefaults(prefs) {
 		var p = {};
@@ -53,6 +53,7 @@ var routeEngine = (function() {
 		if (prefs.skipCrit && hole.mass === "critical") { return "critical mass"; }
 		if (prefs.skipReduced && (hole.mass === "reduced" || hole.mass === "critical")) { return "reduced mass"; }
 		if (prefs.minShip && SHIP_RANK.hasOwnProperty(hole.size) && SHIP_RANK[hole.size] < SHIP_RANK[prefs.minShip]) { return "too small"; }
+		if (prefs.skipUnscanned && hole.unscanned) { return "unscanned"; }
 		return null;
 	}
 
@@ -102,7 +103,7 @@ var routeEngine = (function() {
 	// The graph:
 	//   band(id)  -> "high" | "low" | "null"
 	//   gates(id) -> ids one open gate away
-	//   holes     -> [{a, b, size, life, mass, ...}], the chain's wormholes
+	//   holes     -> [{a, b, size, life, mass, unscanned, ...}], the chain's wormholes
 	//   scout     -> [{a, b, size, remainingHours, ...}], EVE-Scout's holes
 	//   cost(id)  -> optional extra cost of entering a system, on top of the
 	//                model's. Not part of the shared model: it is where a tool

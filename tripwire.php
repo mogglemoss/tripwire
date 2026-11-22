@@ -270,6 +270,62 @@ $system = $_REQUEST['system'] ?? '';
 					</div>
 				</div>
 			</li>
+			<li id="routesWidget" class="gridWidget" data-row="1" data-col="22" data-sizex="7" data-sizey="6" data-min-sizex="5" data-min-sizey="2">
+				<div class="controls">
+					<div class="bar-right">
+						<button type="button" id="routes-prefs-toggle" class="bar-btn bar-icon routes-cog" aria-expanded="false" aria-controls="routes-prefs" aria-label="Route preferences" data-tooltip="Route preferences"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></button>
+					</div>
+				</div>
+				<div class="content" id="routes-content">
+					<div id="routes-prefs" hidden>
+						<div class="routes-row">
+							<span class="routes-label" id="routes-from-label">From</span>
+							<span class="segmented" role="radiogroup" aria-labelledby="routes-from-label">
+								<input type="radio" name="routes-from" id="routes-from-pilot" value="pilot" /><label for="routes-from-pilot">My pilot</label>
+								<input type="radio" name="routes-from" id="routes-from-system" value="system" /><label for="routes-from-system">This system</label>
+								<input type="radio" name="routes-from" id="routes-from-manual" value="manual" /><label for="routes-from-manual">Other</label>
+							</span>
+							<input type="text" id="routes-from-pick" class="systemsAutocomplete" placeholder="Start system" autocomplete="off" spellcheck="false" aria-label="The system routes start from" hidden />
+						</div>
+						<div class="routes-row routes-selects">
+							<label class="routes-field"><span class="routes-label">Safety</span>
+								<select id="routes-mode">
+									<option value="shortest">Shortest</option>
+									<option value="safer">Safer</option>
+									<option value="less_safe">Less safe</option>
+								</select>
+							</label>
+							<label class="routes-field"><span class="routes-label">Min ship</span>
+								<select id="routes-ship">
+									<option value="">Any</option>
+									<option value="s">Frigate (S)</option>
+									<option value="m">Medium (M)</option>
+									<option value="l">Large (L)</option>
+									<option value="xl">X-Large (XL)</option>
+								</select>
+							</label>
+						</div>
+						<div class="routes-chips" role="group" aria-label="Holes to leave out">
+							<button type="button" class="route-chip" data-pref="skipEol" aria-pressed="false">Skip EOL</button>
+							<button type="button" class="route-chip" data-pref="skipCrit" aria-pressed="false">Skip crit</button>
+							<button type="button" class="route-chip" data-pref="skipReduced" aria-pressed="false">Skip reduced</button>
+							<button type="button" class="route-chip" data-pref="skipUnscanned" aria-pressed="false" data-tooltip="Leave out connections nobody has scanned">Skip unscanned</button>
+							<button type="button" class="route-chip" data-pref="scout" aria-pressed="false" data-tooltip="Use EVE-Scout's Thera and Turnur holes">EVE-Scout</button>
+						</div>
+						<div class="routes-avoid">
+							<span class="routes-label">Avoid</span>
+							<span id="routes-avoid-list"></span>
+							<input type="text" id="routes-avoid-add" class="systemsAutocomplete" placeholder="Add system" autocomplete="off" spellcheck="false" aria-label="Add a system to avoid" />
+						</div>
+					</div>
+					<p id="routes-origin" class="routes-origin" role="status"></p>
+					<div id="routes-list"></div>
+					<div class="routes-add">
+						<input type="text" id="routes-add" class="systemsAutocomplete" placeholder="Add destination…" autocomplete="off" spellcheck="false" aria-label="Add a destination" />
+						<button type="button" id="routes-add-here" class="route-chip"></button>
+					</div>
+				</div>
+			</li>
 			<li id="chainWidget" class="gridWidget" data-row="7" data-col="1" data-sizex="21" data-sizey="8" data-min-sizex="5" data-min-sizey="4" style="width: 1250px; height: 470px;">
 				<div class="controls">
 					<span id="chainTabs"></span>
@@ -363,6 +419,7 @@ $system = $_REQUEST['system'] ?? '';
 							<li data-command="mass"><a>Mass</a></li>
 							<li data-command="collapse"><a>Collapse</a></li>
 							<li data-command="ping"><a>Ping ...</a></li>
+							<li data-command="route"><a id="routeMenuItem">[Add to routes]</a></li>
 							<li data-command="copySystemName"><a id="copySystemNameMenuItem">[Copy system name]</a></li>
 							<li data-command="makeTab"><a id="makeTabMenuItem">[makeTab]</a></li>
 						</li>
@@ -737,20 +794,7 @@ $system = $_REQUEST['system'] ?? '';
 						<option value="1000">Any distance</option>
 					</select>
 				</div>
-				<div class="field"><label class="field-label" for="chainRouteSecurity">K-space routing</label>
-					<select id="chainRouteSecurity">
-						<option value="shortest">Shortest</option>
-						<option value="highsec">Prefer high-sec</option>
-						<option value="avoid-null">Avoid null-sec</option>
-						<option value="avoid-high">Avoid high-sec</option>
-					</select>
-				</div>
-				<div class="field"><label class="field-label" for="route-ignore">Avoid systems</label>
-					<span class="field-inline">
-						<label class="switch"><input type="checkbox" name="route-ignore-enabled" id="route-ignore-enabled" /><span class="switch-track"></span></label>
-						<input type="text" name="route-ignore" id="route-ignore" placeholder="Jita, Amarr" />
-					</span>
-				</div>
+				<p class="field-note">Safety, ship size and systems to avoid are set in the Routes panel.</p>
 			</section>
 
 			<section class="settings-pane" data-pane="signatures" role="tabpanel" hidden>

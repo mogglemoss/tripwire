@@ -8,6 +8,17 @@ var guidance = (function (undefined) {
 	function adjustCostForOptions(mapCost, toSystem) {		
 		var system = systemAnalysis.analyse(30000000 + 1 * toSystem);
 		if(!system) { return mapCost; }
+		// The Routes panel's preferences (the shared route model's penalties),
+		// once it has written them; the two older settings until then.
+		var prefs = options.routes && options.routes.prefs;
+		if(prefs) {
+			if(system.name == 'Zarzakh') { mapCost += 100; }
+			if((prefs.avoid || []).indexOf(30000000 + 1 * toSystem) >= 0) { mapCost += 100; }
+			var band = system.class ? 'null' : system.security >= 0.45 ? 'high' : system.security > 0 ? 'low' : 'null';
+			if(prefs.mode === 'safer') { return mapCost + (band === 'high' ? 0 : band === 'low' ? 50 : 100); }
+			if(prefs.mode === 'less_safe') { return mapCost + (band === 'high' ? 50 : 0); }
+			return mapCost;
+		}
 		if(options.chain.routeIgnore.enabled && options.chain.routeIgnore.systems.indexOf(system.name) >= 0) {
 			mapCost += 100;	// Penalty for an avoided system
 		}

@@ -33,9 +33,14 @@ tripwire.route = (function() {
 			.map(function(c) { return c.systemID; });
 	}
 
+	// A signature id someone scanned: not empty, and not the "???" placeholder.
+	function scanned(id) { return !!id && !/^\?+$/.test(String(id)); }
+
 	// The chain's wormholes. A "GATE" row is a stargate someone mapped by
 	// hand; the gate map already has it. Size comes from the hole's type when
-	// Tripwire knows it ("????" and K162-only holes have none, and pass).
+	// Tripwire knows it ("????" and K162-only holes have none, and pass). A
+	// hole with no signature id on either side is unscanned: the auto-mapper
+	// drew it from a jump, and nobody has confirmed it.
 	function holes(source) {
 		var sigs = (source && source.signatures) || tripwire.client.signatures || {};
 		var rows = (source && source.wormholes) || tripwire.client.wormholes || {};
@@ -50,7 +55,8 @@ tripwire.route = (function() {
 				size: routeEngine.sizeForJumpMass(type ? type.jump : null),
 				life: LIFE[w.life] || "stable", mass: MASS[w.mass] || "stable",
 				type: w.type || null, parent: w.parent || null,
-				sigA: a.signatureID || null, sigB: b.signatureID || null,
+				sigA: scanned(a.signatureID) ? a.signatureID : null, sigB: scanned(b.signatureID) ? b.signatureID : null,
+				unscanned: !scanned(a.signatureID) && !scanned(b.signatureID),
 				tripwireLife: w.life, tripwireMass: w.mass
 			});
 		});
@@ -84,5 +90,48 @@ tripwire.route = (function() {
 		return routeEngine.find(graph(source), from, to, prefs);
 	}
 
-	return {plan: plan, graph: graph, band: band, gates: gates, holes: holes, scout: scout};
+	// The preferences as the two older settings had them (chain.routeSecurity
+	// and chain.routeIgnore), for the first time the Routes panel opens.
+	function prefsFromLegacy(chain, source) {
+		var prefs = routeEngine.withDefaults(null);
+		var mode = {"highsec": "safer", "avoid-null": "safer", "avoid-high": "less_safe"}[chain && chain.routeSecurity];
+		if (mode) { prefs.mode = mode; }
+		var ignore = chain && chain.routeIgnore;
+		if (ignore && ignore.enabled && Array.isArray(ignore.systems)) {
+			var all = systems(source), byName = {};
+			Object.keys(all).forEach(function(id) { byName[String(all[id].name).toLowerCase()] = Number(id); });
+			prefs.avoid = ignore.systems.map(function(n) { return byName[String(n).trim().toLowerCase()]; }).filter(Boolean);
+		}
+		return prefs;
+	}
+
+	// A route in numbers: the systems entered by kind, and the holes on it
+	// that a pilot should know about before undocking.
+	function summary(route, source) {
+		var all = systems(source);
+		var out = {jumps: route.jumps, gates: route.gates, holes: route.holes, low: 0, nullsec: 0, jspace: 0,
+			eol: 0, crit: 0, reduced: 0, unscanned: 0, scout: 0};
+		route.steps.forEach(function(s) {
+			var sys = all[s.to];
+			if (sys && sys.class) { out.jspace++; } else if (s.band === "low") { out.low++; } else if (s.band === "null") { out.nullsec++; }
+			if (s.via === "eve_scout") { out.scout++; }
+			if (s.via !== "wh") { return; }
+			if (s.hole.life === "eol" || s.hole.life === "last_hour") { out.eol++; }
+			if (s.hole.mass === "critical") { out.crit++; } else if (s.hole.mass === "reduced") { out.reduced++; }
+			if (s.hole.unscanned) { out.unscanned++; }
+		});
+		return out;
+	}
+
+	// Where the in-game autopilot can take the pilot on this route: the end of
+	// the gates it starts with (the whole route, when it is all gates). Null
+	// when the first jump is a wormhole.
+	function waypoint(route) {
+		var id = null;
+		for (var i = 0; i < route.steps.length && route.steps[i].via === "gate"; i++) { id = route.steps[i].to; }
+		return id;
+	}
+
+	return {plan: plan, graph: graph, band: band, gates: gates, holes: holes, scout: scout,
+		prefsFromLegacy: prefsFromLegacy, summary: summary, waypoint: waypoint};
 })();

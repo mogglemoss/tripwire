@@ -757,6 +757,9 @@ $("#chainParent").contextmenu({
 				var toggle = options.chain.tabs[options.chain.active] ? ($.inArray(id, options.chain.tabs[options.chain.active].collapsed) == -1 ? true : false) : true;
 				chain.renderer.collapse(id, toggle);
 				break;
+			case "route":
+				if (tripwire.routesPanel) { tripwire.routesPanel.toggleDestination(id); }
+				break;
 			case "copySystemName": 
 				const systemName = tripwire.systems[id].name;
 				navigator.clipboard.writeText(systemName); 
@@ -807,6 +810,7 @@ $("#chainParent").contextmenu({
 		const existingTab = Object.find(options.chain.tabs, 'systemID', '' + systemID, false);
 		$('#makeTabMenuItem').text((existingTab ? 'View Tab' : 'Make Tab') + ' for ' + systemName );
 		$('#copySystemNameMenuItem').text('Copy "' + systemName + '"');
+		$('#routeMenuItem').text(tripwire.routesPanel && tripwire.routesPanel.has(systemID) ? 'Remove from routes' : 'Add to routes');
 	},
 	create: function(e, ui) {
 		// Fix some bad CSS from jQuery Position

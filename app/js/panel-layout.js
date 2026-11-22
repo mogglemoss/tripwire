@@ -26,7 +26,13 @@ tripwire.panelLayout = (function() {
 	"use strict";
 
 	var MIN_COLUMN = 180, MIN_ROW = 180, THRESHOLD = 4, STEP = 16, DESKTOP = 960;
-	var DEFAULT_WEIGHT = { infoWidget: 1, signaturesWidget: 1.35, notesWidget: 0.85 };
+	var DEFAULT_WEIGHT = { infoWidget: 1, signaturesWidget: 1.35, notesWidget: 0.85, routesWidget: 0.95 };
+	// The designed columns, [min px, weight], when nothing has been dragged.
+	// The stylesheet states them for the three original panels; any other set
+	// of visible panels (the Routes panel, or one put away) takes its template
+	// from the same numbers, so a hidden panel leaves no empty column.
+	var DESIGN = { infoWidget: [230, 1], signaturesWidget: [320, 1.5], notesWidget: [190, 0.78], routesWidget: [230, 0.95] };
+	var STYLESHEET_SET = "infoWidget,signaturesWidget,notesWidget";
 	var pending = null, observer = null;
 
 	// ---- pure ---------------------------------------------------------------
@@ -35,10 +41,30 @@ tripwire.panelLayout = (function() {
 	// designed defaults. Weights are relative, so pixels seeded from rendered
 	// widths and the defaults' fr numbers are both fine.
 	function columnTemplate(ids, weights, min) {
+		// Stored weights are whatever the drag left, usually pixels. A panel
+		// with none (one added since, like Routes) takes its designed share on
+		// the same scale, or it would be a sliver beside "400fr".
+		var stored = 0, designed = 0;
+		ids.forEach(function(id) {
+			var w = weights && parseFloat(weights[id]);
+			if (w > 0) { stored += w; designed += DEFAULT_WEIGHT[id] || 1; }
+		});
+		var scale = stored > 0 && designed > 0 ? stored / designed : 1;
 		return ids.map(function(id) {
 			var w = weights && parseFloat(weights[id]);
-			if (!(w > 0)) { w = DEFAULT_WEIGHT[id] || 1; }
+			if (!(w > 0)) { w = Math.round((DEFAULT_WEIGHT[id] || 1) * scale * 100) / 100; }
 			return "minmax(" + min + "px, " + w + "fr)";
+		}).join(" ");
+	}
+
+	// The designed template for these panels. The minimums give way together
+	// when the row is too narrow to hold them all.
+	function designTemplate(ids, available) {
+		var mins = ids.map(function(id) { return (DESIGN[id] || [180, 1])[0]; });
+		var total = mins.reduce(function(a, b) { return a + b; }, 0);
+		var scale = available > 0 && total > available ? available / total : 1;
+		return ids.map(function(id, i) {
+			return "minmax(" + Math.floor(mins[i] * scale) + "px, " + (DESIGN[id] || [180, 1])[1] + "fr)";
 		}).join(" ");
 	}
 
@@ -100,7 +126,9 @@ tripwire.panelLayout = (function() {
 		if (hasColumnPreference()) {
 			g.style.gridTemplateColumns = columnTemplate(compactPanels().map(function(p) { return p.id; }), s.columns, MIN_COLUMN);
 		} else {
-			g.style.gridTemplateColumns = "";
+			var ids = compactPanels().map(function(p) { return p.id; });
+			var gap = parseFloat(getComputedStyle(g).columnGap) || 0;
+			g.style.gridTemplateColumns = ids.join(",") === STYLESHEET_SET ? "" : designTemplate(ids, g.clientWidth - gap * Math.max(0, ids.length - 1));
 		}
 		if (hasRowPreference()) {
 			var h = g.getBoundingClientRect().height;
@@ -114,7 +142,7 @@ tripwire.panelLayout = (function() {
 		if (!axis || axis === "row") { s.rowRatio = null; }
 		var g = grid();
 		if (g) {
-			if (!axis || axis === "column") { g.style.gridTemplateColumns = ""; }
+			if (!axis || axis === "column") { apply(); }
 			if (!axis || axis === "row") { g.style.removeProperty("--top-row"); }
 		}
 		save();
@@ -331,6 +359,6 @@ tripwire.panelLayout = (function() {
 	return {
 		apply: apply, reset: reset, refresh: schedule,
 		hasRowPreference: hasRowPreference, hasColumnPreference: hasColumnPreference,
-		columnTemplate: columnTemplate, dragColumns: dragColumns, dragRow: dragRow, passedThreshold: passedThreshold
+		columnTemplate: columnTemplate, designTemplate: designTemplate, dragColumns: dragColumns, dragRow: dragRow, passedThreshold: passedThreshold
 	};
 })();

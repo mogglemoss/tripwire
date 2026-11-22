@@ -89,6 +89,27 @@ tripwire.keyboard = (function() {
         return out;
     }
 
+    // "Route to <system>": adds it to the Routes panel (or takes it off). Like
+    // the jumps above, generated from what is typed.
+    function routeActions(query) {
+        if (!query || query.length < 2 || !tripwire.systems || !tripwire.routesPanel) { return []; }
+        var q = query.toLowerCase().replace(/^route( to)?\s+/, ""), out = [];
+        if (q.length < 2) { return []; }
+        for (var id in tripwire.systems) {
+            var name = tripwire.systems[id] && tripwire.systems[id].name;
+            if (!name || name.toLowerCase().indexOf(q) !== 0) { continue; }
+            out.push({
+                id: "route-" + id,
+                label: (tripwire.routesPanel.has(id) ? "Remove route to " : "Route to ") + name,
+                group: "Routes",
+                enabled: function() { return true; },
+                perform: (function(sid) { return function() { tripwire.routesPanel.toggleDestination(sid); }; })(Number(id))
+            });
+            if (out.length >= 4) { break; }
+        }
+        return out;
+    }
+
     // True when a keystroke belongs to something else: a field being typed in,
     // or an open dialog. The dialog test cannot be a tag test -- jQuery UI's
     // dialogs put focus on plain containers, so match the role/class instead.
@@ -190,6 +211,7 @@ tripwire.keyboard = (function() {
         selectionActions: selectionActions,
         bindings: KEY_BINDINGS,
         systemActions: systemActions,
+        routeActions: routeActions,
         isTyping: isTyping
     };
 })();

@@ -52,8 +52,17 @@ What the refit changes, in one screen:
   panel's own width, not the window's.
 - **Fresh entry opens on your pilot**: arriving without a system boots in
   place and lands on the tracked character's location instead of Jita.
+- **Routes**: a panel of saved destinations, each with the route to it from
+  your pilot, the system you are viewing, or one you type: across gates, the
+  chain and (if asked) EVE-Scout's holes. Shortest, safer or less safe; a
+  smallest hole size; skip holes at end of life, at critical or reduced
+  mass, or that nobody has scanned; systems to avoid. Each route is a strip
+  of hops in their security colours, with wormhole jumps marked and
+  unconfirmed ones flagged. The rules are written down in
+  `docs/route-model.md`, shared with the other tools that read a chain.
 - **Command palette** (`/` or Ctrl-K): jump to a system, a chain tab or a
-  mask; set life or mass on the selection; show or hide panels.
+  mask; route to a system; set life or mass on the selection; show or hide
+  panels.
 - **Settings** in tabs: characters, map, signatures, panels, statistics.
 - **Notes are cleaned on the server** as well as in the browser, so an older
   client is never handed executable markup; the two allow-lists are held

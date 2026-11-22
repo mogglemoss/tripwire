@@ -1577,3 +1577,81 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 .bm-menu .bm-menu-words { font-family: var(--font-mono); font-size: 12px; color: var(--muted-foreground); white-space: nowrap; }
 .bm-menu .bm-menu-alias .bm-menu-words { padding: 0 6px; border: 1px solid var(--primary); border-radius: 3px; color: var(--foreground); }
 @media (max-width: 767px) { #dialog-options .bm-words.is-own { grid-template-columns: 1fr; } }
+
+/* ── Routes panel ─────────────────────────────────────────────────────────
+   Aperture's route planner in Tripwire's idiom: where from, how safe, what
+   ship, holes to leave out, then a card per destination with its hops. */
+#dialog-options .field-note { margin: 2px 0 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+#routesWidget > .content { display: flex; flex-direction: column; gap: 8px; padding: 8px 10px 10px; }
+#routes-prefs { display: flex; flex-direction: column; gap: 7px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
+#routes-prefs[hidden], #routes-add-here[hidden], #routes-from-pick[hidden] { display: none; }
+#routes-from-pick { flex: 1 1 7rem; min-width: 6rem; max-width: 11rem; }
+#routesWidget .routes-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+#routesWidget .routes-label { color: var(--muted-foreground); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+#routesWidget .routes-field { display: inline-flex; align-items: center; gap: 6px; margin: 0; }
+#routesWidget .routes-field select, #routesWidget input[type="text"] { min-width: 0; min-height: 24px; padding: 2px 8px; border: 1px solid var(--input); border-radius: var(--radius-sm); background-color: var(--muted); background-image: none; color: var(--foreground); font-size: var(--fs-sm); }
+#routesWidget .routes-field select { max-width: 9.5rem; }
+#routesWidget .routes-cog { display: inline-flex; align-items: center; justify-content: center; border: 0; background: none; color: var(--muted-foreground); cursor: pointer; }
+#routesWidget .routes-cog:hover, #routesWidget .routes-cog.active { color: var(--primary); }
+/* The segmented choice: one frame, the chosen option filled. */
+#routesWidget .segmented { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--input); }
+#routesWidget .segmented input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+#routesWidget .segmented label { display: inline-flex; align-items: center; margin: 0; padding: 2px 9px; min-height: 22px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--muted-foreground); font-size: var(--fs-sm); line-height: 1; white-space: nowrap; cursor: pointer; }
+#routesWidget .segmented label:hover { color: var(--foreground); }
+#routesWidget .segmented input:checked + label { background: var(--primary); color: var(--primary-foreground); }
+#routesWidget .segmented input:focus-visible + label { outline: 2px solid var(--primary); outline-offset: 1px; }
+/* Toggles: a chip that is either on or off. */
+#routesWidget .routes-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+#routesWidget .route-chip { padding: 2px 9px; min-height: 22px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--muted-foreground); font: inherit; font-size: var(--fs-sm); line-height: 1.2; white-space: nowrap; cursor: pointer; }
+#routesWidget .route-chip:hover { color: var(--foreground); border-color: var(--border-strong, var(--border)); }
+#routesWidget .route-chip.on { border-color: var(--primary); background: color-mix(in oklab, var(--primary) 16%, transparent); color: var(--foreground); }
+/* Avoided systems. */
+#routesWidget .routes-avoid { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+#routes-avoid-list { display: contents; }
+#routesWidget .route-avoided { display: inline-flex; align-items: center; gap: 2px; padding: 1px 3px 1px 8px; border: 1px solid var(--border); border-radius: 999px; font-size: var(--fs-sm); color: var(--foreground); }
+#routesWidget .route-unavoid { min-width: 0; min-height: 0; padding: 3px 5px; border: 0; background: none; color: var(--muted-foreground); font-size: 14px; line-height: 1; cursor: pointer; }
+#routesWidget .route-unavoid:hover { color: var(--data-critical); }
+#routes-avoid-add { flex: 1 1 6rem; min-width: 5rem; max-width: 10rem; }
+#routesWidget .routes-origin { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+/* One card per destination. */
+#routes-list { display: flex; flex-direction: column; gap: 6px; }
+#routesWidget .routes-empty { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
+#routesWidget .route-card { padding: 7px 8px 8px; border: 1px solid var(--border); border-radius: var(--radius); background: color-mix(in oklab, var(--muted) 35%, transparent); }
+#routesWidget .route-head { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
+#routesWidget .route-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--foreground); font-weight: 600; text-decoration: none; }
+#routesWidget .route-name:hover { color: var(--primary); }
+#routesWidget .route-sec { font-size: var(--fs-xs); font-weight: 600; }
+#routesWidget .route-jumps { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--foreground); }
+#routesWidget .route-actions { display: inline-flex; align-items: center; gap: 2px; margin-left: auto; }
+#routesWidget .route-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: var(--radius-sm); background: none; color: var(--muted-foreground); font-size: 15px; line-height: 1; cursor: pointer; }
+#routesWidget .route-btn:hover { background: var(--muted); color: var(--foreground); }
+#routesWidget .route-remove:hover { color: var(--data-critical); }
+#routesWidget .route-meta, #routesWidget .route-warn, #routesWidget .route-none, #routesWidget .route-here { margin: 5px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
+#routesWidget .route-warn { color: var(--data-loot-orange); }
+/* The hops: squares for k-space, circles for J-space, in their security
+   colour. A mark before a hop says it was reached by wormhole. */
+#routesWidget .route-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; margin-top: 6px; }
+#routesWidget .route-hop { flex: 0 0 auto; width: 11px; height: 11px; border-radius: 2px; background: var(--muted-foreground); cursor: pointer; }
+#routesWidget .route-hop.is-j { border-radius: 50%; }
+#routesWidget .route-hop.is-origin { box-shadow: 0 0 0 1px var(--card, var(--background)), 0 0 0 2px var(--foreground); margin-right: 2px; }
+#routesWidget .route-hop:hover, #routesWidget .route-hop:focus-visible { filter: brightness(1.35); outline: 1px solid var(--foreground); outline-offset: 1px; }
+#routesWidget .route-hop.hisec { background: var(--data-good); }
+#routesWidget .route-hop.lowsec { background: var(--data-loot-orange); }
+#routesWidget .route-hop.nullsec { background: var(--data-critical); }
+#routesWidget .route-hop.triglavian { background: var(--data-loot-red); }
+#routesWidget .route-hop.wh { background: var(--data-info); }
+#routesWidget .route-hop.class-4, #routesWidget .route-hop.class-5 { background: var(--data-loot-purple); }
+#routesWidget .route-hop.class-6 { background: var(--data-loot-pink); }
+#routesWidget .route-hop.class-12 { background: var(--data-loot-gold); }
+#routesWidget .route-hop.drifter, #routesWidget .route-hop.class-13 { background: var(--data-loot-red); }
+#routesWidget .route-sec.hisec { color: var(--data-good); }
+#routesWidget .route-sec.lowsec { color: var(--data-loot-orange); }
+#routesWidget .route-sec.nullsec, #routesWidget .route-sec.triglavian { color: var(--data-critical); }
+#routesWidget .route-sec.wh { color: var(--data-info); }
+#routesWidget .route-link { flex: 0 0 auto; width: 7px; height: 0; border-top: 2px dotted var(--muted-foreground); }
+#routesWidget .route-link.is-scout { border-top-style: solid; border-top-color: var(--data-loot-gold); }
+#routesWidget .route-link.is-flagged { border-top-color: var(--data-loot-orange); }
+#routesWidget .route-link.is-unscanned { width: 9px; border-top-style: dashed; border-top-color: var(--data-loot-orange); }
+/* Add a destination. */
+#routesWidget .routes-add { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 2px; }
+#routes-add { flex: 1 1 auto; min-width: 0; }

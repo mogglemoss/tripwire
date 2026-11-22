@@ -34,6 +34,7 @@ any system whose security is not known).
 | `skipEol` | yes/no | no | Leave out holes at end of life |
 | `skipCrit` | yes/no | no | Leave out holes at critical mass |
 | `skipReduced` | yes/no | no | Leave out holes at reduced or critical mass |
+| `skipUnscanned` | yes/no | no | Leave out holes nobody has scanned |
 | `avoid` | system ids | none | Systems never passed through |
 | `scout` | yes/no | no | Use EVE-Scout's holes |
 
@@ -55,13 +56,17 @@ whatever the penalties were.
 ## Which holes are left out
 
 A chain hole has a **life** (`stable`, `eol`, `last_hour`), a **mass**
-(`stable`, `reduced`, `critical`) and, when its type is known, a **size**.
+(`stable`, `reduced`, `critical`) and, when its type is known, a **size**. It
+is **unscanned** when neither side has a signature id: a connection a mapper
+drew from a pilot's jump, which nobody has confirmed.
 
 - `skipEol` leaves out life `eol` and `last_hour`.
 - `skipCrit` leaves out mass `critical`.
 - `skipReduced` leaves out mass `reduced` and `critical`.
 - `minShip` leaves out a hole whose size is known and smaller. A hole of
   unknown size passes.
+- `skipUnscanned` leaves out an unscanned hole. By default it is used, and a
+  tool should mark the hop so the pilot knows it is unconfirmed.
 
 Size comes from the hole type's largest mass per jump, in kilograms:
 
@@ -101,6 +106,7 @@ it was made: `gate`, `wh` or `eve_scout`, with the hole for the last two.
 | `skipEol` | `skipEol` | `skipEol` | `avoidEol` |
 | `skipCrit` | `skipCrit` | `skipCrit` | `avoidCritical` |
 | `skipReduced` | `skipReduced` | `skipReduced` | `avoidReduced` |
+| `skipUnscanned` | `skipUnscanned` | (none yet) | (none yet) |
 | `minShip` | `minShip` | `minShip` | `minShipClass` |
 | `mode` | `mode` | `mode` | `safety` |
 | `scout` | `scout` | a list of holes | `includeEveScout` |

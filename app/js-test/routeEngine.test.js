@@ -136,8 +136,18 @@ describe('tripwire.route: the live map as a graph', function() {
 		const holes = tripwire.route.holes(source);
 		assert.deepEqual(holes.map(h => h.id), [10, 12], 'the GATE row is not a hole');
 		assert.deepEqual([holes[1].life, holes[1].mass, holes[1].size], ['last_hour', 'critical', null]);
+		assert.deepEqual(holes.map(h => h.unscanned), [true, true], 'no signature id on either side');
 		assert.equal(tripwire.route.plan(JITA, AMARR, {}, source).jumps, 1);
 		assert.ok(tripwire.route.plan(JITA, AMARR, { skipEol: true }, source).jumps > 1);
+	});
+	it('calls a hole unscanned only when neither side has a signature id', function() {
+		const source = Object.assign({}, empty, {
+			signatures: { 1: { systemID: JITA, signatureID: 'abc123' }, 2: { systemID: J }, 3: { systemID: JITA, signatureID: '???' }, 4: { systemID: AMARR, signatureID: '' } },
+			wormholes: { 10: { id: 10, initialID: 1, secondaryID: 2, life: 'stable', mass: 'stable' }, 11: { id: 11, initialID: 3, secondaryID: 4, life: 'stable', mass: 'stable' } }
+		});
+		assert.deepEqual(tripwire.route.holes(source).map(h => [h.id, h.unscanned, h.sigA, h.sigB]), [[10, false, 'abc123', null], [11, true, null, null]]);
+		assert.equal(tripwire.route.plan(JITA, AMARR, {}, source).jumps, 1, 'used by default');
+		assert.ok(tripwire.route.plan(JITA, AMARR, { skipUnscanned: true }, source).jumps > 1, 'left out when asked');
 	});
 	it('does not use a gate the rest of Tripwire treats as closed', function() {
 		const open = tripwire.route.plan(JITA, AMARR, {}, empty);
@@ -159,6 +169,52 @@ describe('tripwire.route: the live map as a graph', function() {
 		assert.ok(withScout.jumps <= 2);
 		assert.ok(!without || without.steps.every(s => s.via !== 'eve_scout'));
 		assert.ok(withScout.jumps < 2 || withScout.steps.every(s => s.via === 'eve_scout'));
+	});
+	it('carries the two older settings into the preferences', function() {
+		const P = (routeSecurity, routeIgnore) => tripwire.route.prefsFromLegacy({ routeSecurity, routeIgnore });
+		assert.equal(P('shortest', { enabled: false, systems: ['Tama', 'Rancer'] }).mode, 'shortest');
+		assert.deepEqual(P('shortest', { enabled: false, systems: ['Tama', 'Rancer'] }).avoid, [], 'a list that was switched off avoids nothing');
+		assert.equal(P('highsec').mode, 'safer');
+		assert.equal(P('avoid-null').mode, 'safer');
+		assert.equal(P('avoid-high').mode, 'less_safe');
+		assert.deepEqual(P('highsec', { enabled: true, systems: ['Tama', ' rancer ', 'Not A System'] }).avoid, [id('Tama'), id('Rancer')]);
+		assert.deepEqual(Object.keys(tripwire.route.prefsFromLegacy(undefined)).sort(), Object.keys(routeEngine.DEFAULTS).sort());
+	});
+	it('sums a route up: systems entered by kind, and the holes worth knowing about', function() {
+		const LOW = id('Tama'), source = Object.assign({}, empty, {
+			signatures: { 1: { systemID: JITA }, 2: { systemID: J }, 3: { systemID: J, signatureID: 'ghi789' }, 4: { systemID: LOW, signatureID: 'jkl012' } },
+			wormholes: { 10: { id: 10, initialID: 1, secondaryID: 2, life: 'stable', mass: 'stable' }, 11: { id: 11, initialID: 3, secondaryID: 4, life: '<1h', mass: 'critical' } }
+		});
+		const route = tripwire.route.plan(JITA, LOW, {}, source);
+		assert.deepEqual(route.path, [JITA, J, LOW]);
+		assert.deepEqual(tripwire.route.summary(route, source), { jumps: 2, gates: 0, holes: 2, low: 1, nullsec: 0, jspace: 1, eol: 1, crit: 1, reduced: 0, unscanned: 1, scout: 0 });
+		assert.equal(tripwire.route.waypoint(route), null, 'the first jump is a wormhole: nothing for the autopilot');
+	});
+	it('gives the autopilot the end of the gates a route starts with', function() {
+		const gatesOnly = tripwire.route.plan(JITA, AMARR, {}, empty);
+		assert.equal(tripwire.route.waypoint(gatesOnly), AMARR, 'all gates: the destination itself');
+		// Gates to Perimeter, then a hole from there.
+		const PERIMETER = id('Perimeter'), source = Object.assign({}, empty, {
+			signatures: { 1: { systemID: PERIMETER, signatureID: 'abc123' }, 2: { systemID: J } },
+			wormholes: { 10: { id: 10, initialID: 1, secondaryID: 2, life: 'stable', mass: 'stable' } }
+		});
+		const route = tripwire.route.plan(JITA, J, {}, source);
+		assert.deepEqual(route.steps.map(s => s.via), ['gate', 'wh']);
+		assert.equal(tripwire.route.waypoint(route), PERIMETER);
+	});
+	it('moves the gate pathfinder\'s distances with the same preferences, once the panel has set them', function() {
+		const len = () => { guidance.clearCache(); return guidance.findShortestPath(appData.map.shortest, JITA, AMARR).length - 1; };
+		const shortest = len();
+		options.routes = { prefs: { mode: 'shortest', avoid: [] } };
+		assert.equal(len(), shortest);
+		options.routes.prefs.mode = 'safer';
+		const safer = len();
+		assert.ok(safer > shortest, 'the short way to Amarr is through low-sec');
+		assert.equal(safer, tripwire.route.plan(JITA, AMARR, { mode: 'safer' }, empty).jumps, 'the same answer as the route engine');
+		// The older settings still apply to an account whose panel has never opened.
+		delete options.routes;
+		options.chain.routeSecurity = 'highsec';
+		assert.ok(len() > shortest);
 	});
 	it('never passes through Zarzakh or an avoided system', function() {
 		const all = tripwire.route.plan(JITA, AMARR, {}, empty);
