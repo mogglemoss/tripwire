@@ -19,6 +19,27 @@ test.describe("signatures", () => {
 		await removeSigsByPrefix(page, PREFIX).catch(() => {});
 	});
 
+	test("the Add button's tooltip goes when its dialog opens, and does not come back over it", async ({ page }) => {
+		const tip = page.locator(".jBox-Tooltip:not(.validation-tooltip):visible");
+		// Shown already, and then only just opening: both are gone.
+		await page.hover("#add-signature");
+		await expect(tip).toHaveText("Add a signature by hand");
+		await page.waitForTimeout(400);
+		for (const pause of [0, 700]) {
+			await page.click("#add-signature");
+			await expect(page.locator(".ui-dialog:visible .ui-dialog-title")).toHaveText(/Add Signature/);
+			await expect(tip).toHaveCount(0);
+			await page.waitForTimeout(700);
+			await expect(tip).toHaveCount(0);
+			await page.locator(".ui-dialog:visible").getByRole("button", { name: "Cancel" }).click();
+			await page.mouse.move(5, 5);
+			await page.waitForTimeout(pause);
+		}
+		// And it still opens on the next hover.
+		await page.hover("#add-signature");
+		await expect(tip).toHaveText("Add a signature by hand");
+	});
+
 	test("add a signature by hand: typed into the dialog, saved with Enter", async ({ page }) => {
 		await page.click("#add-signature");
 		const dlg = page.locator(".ui-dialog:visible");

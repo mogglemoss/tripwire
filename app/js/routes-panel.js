@@ -637,6 +637,7 @@ tripwire.routesPanel = (function() {
 		}
 		$w.on("mouseenter focusin", "[data-tip]", function() { showTip(this); });
 		$w.on("mouseleave focusout click", "[data-tip]", hideTip);
+		$(document).on("dialogopen", ".ui-dialog", hideTip);       // as the app's own do (base-dialog.js)
 		$w.on("click", "#routes-prefs-toggle", function() {
 			if (window.Tooltips) { Tooltips.close(); }      // or it sits over the controls it just opened
 			var open = $("#routes-prefs").prop("hidden");
