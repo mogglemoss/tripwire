@@ -62,7 +62,10 @@ What the refit changes, in one screen:
   kind of place: trade hubs, blue loot buyers, red loot buyers, security
   offices, or the holes into Thera or Turnur that EVE-Scout lists. Its card
   lists the nearest few with the jumps to each, and the station to dock at
-  or the signature to warp to. The station lists are
+  or the signature to warp to. The arrow sets the route in EVE, a waypoint
+  for each gate, so the autopilot flies the route shown; on a route with
+  wormholes the panel follows the pilot and sets the gates after each hole
+  once they are through. The station lists are
   generated from EVE's public market data (`scripts/route-presets.py`). The rules are written
   down in `docs/route-model.md`, shared with the other tools that read a
   chain.

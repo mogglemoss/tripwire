@@ -324,6 +324,7 @@ $system = $_REQUEST['system'] ?? '';
 					</div>
 					<p id="routes-origin" class="routes-origin" role="status"></p>
 					<div id="routes-list"></div>
+					<div id="routes-follow" class="routes-follow" role="status" hidden></div>
 					<div class="routes-add">
 						<input type="text" id="routes-add" class="systemsAutocomplete" placeholder="Add system…" autocomplete="off" spellcheck="false" aria-label="Add a destination system" />
 						<select id="routes-nearest" aria-label="Add the nearest of a kind of place"><option value="">Nearest…</option></select>

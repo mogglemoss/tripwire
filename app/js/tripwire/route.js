@@ -96,6 +96,20 @@ tripwire.route = (function() {
 		return routeEngine.nearest(graph(source), from, systems, prefs, count);
 	}
 
+	// The route to keep flying: the rest of this one unless the map now has better.
+	function onward(route, at, prefs, source) {
+		return routeEngine.onward(graph(source), route, at, prefs);
+	}
+
+	// Holes but not one signature: the map part-way through loading. Changing
+	// the viewed system or the mask empties the signatures until the next sync
+	// brings them back, and a route planned in between sees no holes at all.
+	function loading(source) {
+		if (source) { return false; }
+		var any = function(o) { return Object.keys(o || {}).length > 0; };
+		return any(tripwire.client.wormholes) && !any(tripwire.client.signatures);
+	}
+
 	// The preferences as the two older settings had them (chain.routeSecurity
 	// and chain.routeIgnore), for the first time the Routes panel opens.
 	function prefsFromLegacy(chain, source) {
@@ -129,15 +143,22 @@ tripwire.route = (function() {
 		return out;
 	}
 
-	// Where the in-game autopilot can take the pilot on this route: the end of
-	// the gates it starts with (the whole route, when it is all gates). Null
-	// when the first jump is a wormhole.
-	function waypoint(route) {
-		var id = null;
-		for (var i = 0; i < route.steps.length && route.steps[i].via === "gate"; i++) { id = route.steps[i].to; }
-		return id;
+	// The gates a route starts with: each system they lead to, in order. As
+	// waypoints these make the in-game autopilot fly this route and not its own.
+	function stretch(route) {
+		var ids = [];
+		for (var i = 0; i < route.steps.length && route.steps[i].via === "gate"; i++) { ids.push(route.steps[i].to); }
+		return ids;
 	}
 
-	return {plan: plan, nearest: nearest, graph: graph, band: band, gates: gates, holes: holes, scout: scout,
+	// Where the in-game autopilot can take the pilot on this route: the end of
+	// those gates (the whole route, when it is all gates). Null when the first
+	// jump is a wormhole.
+	function waypoint(route) {
+		var ids = stretch(route);
+		return ids.length ? ids[ids.length - 1] : null;
+	}
+
+	return {plan: plan, nearest: nearest, onward: onward, loading: loading, stretch: stretch, graph: graph, band: band, gates: gates, holes: holes, scout: scout,
 		prefsFromLegacy: prefsFromLegacy, summary: summary, waypoint: waypoint};
 })();

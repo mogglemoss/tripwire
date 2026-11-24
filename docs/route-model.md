@@ -116,6 +116,24 @@ before a low-sec one that is fewer jumps away.
 No route, or: the systems in order from start to end, and for each jump how
 it was made: `gate`, `wh` or `eve_scout`, with the hole for the last two.
 
+## Flying a route
+
+The in-game autopilot takes gates, not wormholes, and plans its own way
+between waypoints. So a tool that sets a route in EVE should:
+
+- send every system of the gates the route starts with, in order, up to the
+  first hole, and nothing beyond it. The autopilot then flies this route;
+- after the pilot is through, send the gates on the far side, replacing what
+  is there;
+- keep the route being flown while nothing is cheaper, and take the best one
+  as soon as it is not (a hole gone, a better one mapped, a preference
+  changed). Two equal routes never replace each other, so EVE's route changes
+  only when the map did;
+- send nothing while the pilot is off the route, or while the map it would
+  plan on is incomplete.
+
+Tripwire's is `routeEngine.onward` and `tripwire.routeFollow`.
+
 ## What each tool calls these
 
 | Model | Tripwire | Trippy | Aperture |

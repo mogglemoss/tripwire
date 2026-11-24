@@ -8,6 +8,9 @@ const { login, expect } = require("./helpers");
 // The account's route settings back to how a new account has them, saved.
 async function resetRoutes(page) {
 	await page.evaluate(async () => {
+		// The account's own pilot back, or a test's made-up one is saved with it.
+		if (window.__own) { options.tracking.active = window.__own.active; options.buttons.follow = window.__own.follow; }
+		tripwire.routesPanel.stopFollowing("");
 		options.routes = { from: "pilot", fromSystem: null, destinations: [], nearest: [], prefs: routeEngine.withDefaults(null) };
 		if (options.panels) { delete options.panels.routesWidget; if (options.panels.layout) { options.panels.layout.columns = {}; } }
 		try { localStorage.removeItem("tripwire.routes.prefsOpen"); } catch (e) {}
@@ -322,6 +325,7 @@ test.describe("Routes panel", () => {
 			options.routes.from = "manual"; options.routes.fromSystem = ids.START;
 			// A tracked pilot the arrow can act for, and somewhere for its call to land.
 			window.__sent = [];
+			window.__own = { active: options.tracking.active, follow: options.buttons.follow };
 			options.tracking.active = options.tracking.active || "1";
 			tripwire.esi.characters[options.tracking.active] = tripwire.esi.characters[options.tracking.active] || { accessToken: "x" };
 			tripwire.esi.setDestination = (id, who, clear) => { window.__sent.push([id, clear]); };
@@ -479,5 +483,150 @@ test.describe("Routes panel", () => {
 		expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 		const strip = await card(page, "Amarr").locator(".route-strip").boundingBox();
 		expect(strip.x + strip.width).toBeLessThanOrEqual(box.x + box.width);
+	});
+
+	// A tracked pilot who is nobody's real one: moves are fed to tripwire.EVE
+	// as ESI's location reports are, and what would go to EVE is kept here.
+	async function usePilot(page, systemID) {
+		await page.route(/esi\.evetech\.net/, r => r.abort());
+		await page.evaluate((id) => {
+			tripwire.autoMapper = () => {};          // or the moves would be drawn on the mask
+			tripwire.esi.parse = () => {}; tripwire.esi.location = () => {}; tripwire.esi.ship = () => {}; tripwire.esi.online = () => {};
+			tripwire.esi.characters = { 7: { characterID: 7, characterName: "Test", accessToken: "x", tokenExpire: "2099-01-01", systemID: id } };
+			window.__own = window.__own || { active: options.tracking.active, follow: options.buttons.follow };
+			options.tracking.active = "7"; options.buttons.follow = false;
+			options.routes.from = "pilot";
+			window.__sent = [];
+			tripwire.esi.setDestination = (id, who, clear) => { window.__sent.push([id, who, clear]); return window.__refuse ? Promise.reject({ status: window.__refuse }) : Promise.resolve(); };
+		}, systemID);
+		await movePilot(page, systemID);
+	}
+	const movePilot = (page, id) => page.evaluate((id) => {
+		tripwire.esi.characters[7].systemID = id;
+		tripwire.EVE({ characterID: 7, characterName: "Test", systemID: id, systemName: appData.systems[id].name });
+	}, id);
+	const sent = page => page.evaluate(() => window.__sent);
+
+	test("the arrow gives EVE the route's own gates, one waypoint each, and says when EVE refuses", async ({ page }) => {
+		const ids = await page.evaluate(() => {
+			const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
+			tripwire.routesPanel.useSource({ signatures: {}, wormholes: {}, scoutLinks: [] });
+			return { JITA: idOf("Jita"), AMARR: idOf("Amarr") };
+		});
+		await usePilot(page, ids.JITA);
+		await page.evaluate((ids) => { tripwire.routesPanel.addDestination(ids.AMARR); }, ids);
+		const amarr = card(page, "Amarr"), bar = page.locator("#routes-follow");
+		const path = await page.evaluate(() => tripwire.routesPanel.routes()[0].route.path);
+		await expect(bar).toBeHidden();
+		await expect(amarr.locator(".route-fly")).toHaveAttribute("data-tip", "Set in-game route: Amarr, by these " + (path.length - 1) + " gates");
+		await amarr.locator(".route-fly").click();
+		await expect(bar).toHaveText(/^Set in EVE: Amarr\./);
+		expect(await sent(page)).toEqual(path.slice(1).map((id, i) => [id, "7", i === 0]));
+		await expect(bar).not.toHaveClass(/is-following/);       // all gates: nothing to follow
+		expect(await page.evaluate(() => tripwire.routesPanel.following())).toBe(null);
+
+		await page.evaluate(() => { window.__sent = []; window.__refuse = 502; });
+		await amarr.locator(".route-fly").click();
+		await expect(bar).toContainText("EVE took 0 of " + (path.length - 1) + " waypoints (ESI 502). Press the arrow to try again.");
+		await expect(bar).toHaveClass(/is-critical/);
+		expect((await sent(page)).length).toBe(1);
+		await bar.locator(".routes-follow-dismiss").click();
+		await expect(bar).toBeHidden();
+
+		// From somewhere the pilot is not, only the end: EVE finds its own way to it.
+		await page.evaluate((ids) => { window.__sent = []; window.__refuse = 0; options.routes.from = "manual"; options.routes.fromSystem = tripwire.route.gates(ids.JITA)[0]; tripwire.routesPanel.refresh(true); }, ids);
+		await expect(amarr.locator(".route-fly")).toHaveAttribute("data-tip", "Set in-game destination: Amarr");
+		await amarr.locator(".route-fly").click();
+		await expect(bar).toHaveText(/^Set in EVE: Amarr\./);
+		expect(await sent(page)).toEqual([[ids.AMARR, "7", true]]);
+	});
+
+	test("a route with wormholes is followed: the gates after each hole go to EVE once the pilot is through", async ({ page }) => {
+		// Perimeter -gate- Jita ~hole~ J-space ~hole~ Amarr -gate- next door.
+		const ids = await useTwoHoles(page);
+		Object.assign(ids, await page.evaluate((ids) => {
+			const idOf = n => Number(Object.keys(appData.systems).find(k => appData.systems[k].name === n));
+			const END = tripwire.route.gates(ids.AMARR).find(id => !tripwire.route.gates(ids.JITA).includes(id));
+			return { PERIMETER: idOf("Perimeter"), END, endName: appData.systems[END].name, AWAY: idOf("Dodixie") };
+		}, ids));
+		await usePilot(page, ids.PERIMETER);
+		await page.evaluate((ids) => { tripwire.routesPanel.addDestination(ids.END); }, ids);
+		const end = card(page, ids.endName), bar = page.locator("#routes-follow");
+		await expect(end.locator(".route-jumps")).toHaveText("4j");
+		await expect(end.locator(".route-fly")).toHaveAttribute("data-tip", "Follow: set in-game route to Jita, and on after the wormhole");
+		// What it says opens without moving the arrow: a double-click is not a Stop.
+		const at = await end.locator(".route-fly").boundingBox();
+		await end.locator(".route-fly").dblclick();
+		await expect(bar).toHaveClass(/is-following/);
+		expect(await end.locator(".route-fly").boundingBox()).toEqual(at);
+		await page.evaluate(() => { window.__sent = window.__sent.slice(-1); });       // pressed twice, set twice
+		await expect(bar).toContainText("To " + ids.endName + " In EVE as far as Jita, then ABC-123");
+		await expect(end.locator(".route-fly")).toHaveClass(/is-on/);
+		expect(await sent(page)).toEqual([[ids.JITA, "7", true]]);
+
+		await movePilot(page, ids.JITA);
+		await expect(bar).toContainText("Warp to ABC-123");
+		await movePilot(page, ids.J);
+		await expect(bar).toContainText("Take the wormhole to Amarr (no sig)");
+		expect((await sent(page)).length).toBe(1);
+		await movePilot(page, ids.AMARR);
+		await expect(bar).toContainText("In EVE all the way");
+		expect(await sent(page)).toEqual([[ids.JITA, "7", true], [ids.END, "7", true]]);
+		await movePilot(page, ids.END);
+		await expect(bar).toHaveText(new RegExp("^Arrived in " + ids.endName + "\\."));
+		await expect(end.locator(".route-here")).toBeVisible();
+
+		// Again: off the route EVE is left alone, back on it goes on, and Stop stops.
+		await movePilot(page, ids.PERIMETER);
+		await end.locator(".route-fly").click();
+		await expect(bar).toContainText("then ABC-123");
+		const before = (await sent(page)).length;
+		await movePilot(page, ids.AWAY);
+		await expect(bar).toContainText("Off the route.");
+		await expect(bar).toHaveClass(/is-caution/);
+		await movePilot(page, ids.JITA);
+		await expect(bar).toContainText("Warp to ABC-123");
+		await bar.locator(".routes-follow-stop").click();
+		await expect(bar).toBeHidden();
+		await movePilot(page, ids.J); await movePilot(page, ids.AMARR);
+		await page.waitForTimeout(2000);
+		expect((await sent(page)).length).toBe(before);
+		await expect(end.locator(".route-fly")).not.toHaveClass(/is-on/);
+	});
+
+	test("following stops for another destination, another mask, or its card being removed, and waits on half a map", async ({ page }) => {
+		const ids = await useTwoHoles(page);
+		Object.assign(ids, await page.evaluate((ids) => {
+			const END = tripwire.route.gates(ids.AMARR)[0];
+			return { END, endName: appData.systems[END].name };
+		}, ids));
+		await usePilot(page, ids.JITA);
+		await page.evaluate((ids) => { tripwire.routesPanel.addDestination(ids.END); }, ids);
+		const end = card(page, ids.endName), bar = page.locator("#routes-follow"), go = async () => {
+			await end.locator(".route-fly").click();
+			await expect(bar).toContainText("Warp to ABC-123");
+		};
+		await expect(end.locator(".route-fly")).toHaveAttribute("data-tip", "Follow: after the wormhole, set the in-game route on");
+		await go();
+		await page.evaluate(() => tripwire.routesPanel.stopFollowing("you set another destination"));
+		await expect(bar).toContainText("Stopped following to " + ids.endName + ": you set another destination.");
+		await go();
+		const mask = await page.evaluate(() => { const m = options.masks.active; options.masks.active = "0.0"; tripwire.routesPanel.located(); options.masks.active = m; return m; });
+		expect(mask).toBeTruthy();
+		await expect(bar).toContainText("the mask changed");
+		await go();
+		await end.locator(".route-remove").click();
+		await expect(bar).toContainText("you removed it");
+
+		// The page's own map, blank the way a change of the viewed system leaves it.
+		const held = await page.evaluate(() => {
+			tripwire.routesPanel.useSource(null);
+			const was = [tripwire.client.wormholes, tripwire.client.signatures];
+			tripwire.client.wormholes = { 1: { id: 1 } }; tripwire.client.signatures = null;
+			const loading = tripwire.route.loading();
+			tripwire.client.wormholes = was[0]; tripwire.client.signatures = was[1];
+			return loading;
+		});
+		expect(held).toBe(true);
 	});
 });

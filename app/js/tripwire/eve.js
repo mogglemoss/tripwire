@@ -83,4 +83,11 @@ tripwire.EVE = function(EVE, characterChange) {
         shipDate: EVE.shipDate,
         systemChange: systemChange
     };
+
+    // On every location report, not only the panel's tick: a route being
+    // followed is mostly flown with this tab behind the game, hidden.
+    if (tripwire.routesPanel) {
+        try { tripwire.routesPanel.located(); }
+        catch (e) { console.error("Routes: could not follow the pilot's move", e); }
+    }
 }

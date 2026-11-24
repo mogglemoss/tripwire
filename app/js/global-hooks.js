@@ -721,13 +721,16 @@ $("#chainParent").contextmenu({
 				tripwire.esi.showInfo(id, options.tracking.active);
 				break;
 			case "setDest":
+				tripwire.routesPanel.stopFollowing("you set another destination");
 				tripwire.esi.setDestination(id, options.tracking.active, true);
 				break;
 			case "addWay":
+				tripwire.routesPanel.stopFollowing("you set another destination");
 				tripwire.esi.setDestination(id, options.tracking.active, false);
 				break;
 			case "setDestAll":
 			case "addWayAll":
+				tripwire.routesPanel.stopFollowing("you set another destination");
 				for(const characterId in tripwire.esi.characters) {
 					tripwire.esi.setDestination(id, characterId, ui.cmd == "setDestAll");
 				}

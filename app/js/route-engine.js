@@ -196,6 +196,10 @@ var routeEngine = (function() {
 			var p = prev[cur];
 			steps.unshift(p.hole ? {to: p.to, via: p.via, band: p.band, hole: p.hole} : {to: p.to, via: p.via, band: p.band});
 		}
+		return shaped(from, to, steps);
+	}
+
+	function shaped(from, to, steps) {
 		var gates = steps.filter(function(s) { return s.via === "gate"; }).length;
 		return {
 			from: from, to: to, jumps: steps.length, gates: gates, holes: steps.length - gates,
@@ -203,8 +207,50 @@ var routeEngine = (function() {
 		};
 	}
 
+	// What a route costs, as find counts it.
+	function cost(graph, route, prefs) {
+		prefs = withDefaults(prefs);
+		return route.steps.reduce(function(sum, s) {
+			return sum + 1 + penalty(graph.band(s.to), prefs.mode) + (graph.cost ? Math.max(0, Number(graph.cost(s.to)) || 0) : 0);
+		}, 0);
+	}
+
+	// What is left of a route from one of its systems, with its holes as they
+	// are now. Null when that system is not on it, or the rest can no longer
+	// be flown: a hole gone or ruled out, a gate closed, a system now avoided.
+	function rest(graph, route, at, prefs) {
+		prefs = withDefaults(prefs);
+		at = Number(at);
+		var i = route.path.indexOf(at), avoid = (prefs.avoid || []).map(Number);
+		if (i < 0) { return null; }
+		var from = at, steps = [];
+		for (; i < route.steps.length; i++) {
+			var s = route.steps[i], last = i === route.steps.length - 1, hole = null;
+			if (!last && (s.to === ZARZAKH || avoid.indexOf(s.to) >= 0)) { return null; }
+			if (s.via === "gate") {
+				if ((graph.gates(from) || []).map(Number).indexOf(s.to) < 0) { return null; }
+			} else {
+				if (s.via === "eve_scout" && !prefs.scout) { return null; }
+				hole = ((s.via === "wh" ? graph.holes : graph.scout) || []).filter(function(h) { return String(h.id) === String(s.hole.id); })[0];
+				var joins = hole && ((hole.a === from && hole.b === s.to) || (hole.b === from && hole.a === s.to));
+				if (!joins || (s.via === "wh" ? holeBlocked : scoutBlocked)(hole, prefs)) { return null; }
+			}
+			steps.push(hole ? {to: s.to, via: s.via, band: graph.band(s.to), hole: hole} : {to: s.to, via: s.via, band: graph.band(s.to)});
+			from = s.to;
+		}
+		return shaped(at, route.to, steps);
+	}
+
+	// The route to fly on with: the one already being flown while nothing is
+	// cheaper, else the best there is now. Equal routes do not replace each
+	// other, so nothing changes under a pilot unless the map did. Null for none.
+	function onward(graph, route, at, prefs) {
+		var best = find(graph, at, route.to, prefs), kept = rest(graph, route, at, prefs);
+		return kept && best && cost(graph, kept, prefs) <= cost(graph, best, prefs) ? kept : best;
+	}
+
 	return {
-		find: find, nearest: nearest, withDefaults: withDefaults, isSystem: isSystem, sizeForJumpMass: sizeForJumpMass,
+		find: find, nearest: nearest, cost: cost, rest: rest, onward: onward, withDefaults: withDefaults, isSystem: isSystem, sizeForJumpMass: sizeForJumpMass,
 		penalty: penalty, holeBlocked: holeBlocked, scoutBlocked: scoutBlocked,
 		DEFAULTS: DEFAULTS, ZARZAKH: ZARZAKH
 	};

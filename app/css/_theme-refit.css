@@ -1621,6 +1621,16 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
    phone the panel is as tall as its cards, and nothing needs to scroll.) */
 #routes-list { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 4.5rem; overflow-y: auto; }
 #routes-list > * { flex: 0 0 auto; }
+/* What the arrow did: the route being followed, or the last thing EVE said. */
+#routesWidget .routes-follow { display: flex; align-items: center; gap: 8px; padding: 4px 5px 4px 8px; border: 1px solid var(--border); border-radius: var(--radius); color: var(--muted-foreground); font-size: var(--fs-sm); }
+#routesWidget .routes-follow[hidden] { display: none; }
+#routesWidget .routes-follow b { color: var(--foreground); font-weight: 600; }
+#routesWidget .routes-follow-text { flex: 1 1 auto; min-width: 0; }
+#routesWidget .routes-follow.is-following { border-color: color-mix(in oklab, var(--primary) 55%, var(--border)); }
+#routesWidget .routes-follow.is-caution { border-color: var(--data-warn); color: var(--data-warn); }
+#routesWidget .routes-follow.is-critical { border-color: var(--data-critical); color: var(--data-critical); }
+#routesWidget .routes-follow-stop { flex: 0 0 auto; padding: 1px 9px; min-height: 22px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: transparent; color: var(--foreground); font: inherit; font-size: var(--fs-sm); cursor: pointer; }
+#routesWidget .routes-follow-stop:hover { border-color: var(--primary); }
 #routesWidget .routes-empty { margin: 0; color: var(--muted-foreground); font-size: var(--fs-sm); }
 #routesWidget .route-card { padding: 7px 8px 8px; border: 1px solid var(--border); border-radius: var(--radius); background: color-mix(in oklab, var(--muted) 35%, transparent); }
 #routesWidget .route-head { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
@@ -1632,6 +1642,7 @@ body.panel-resizing-row,    body.panel-resizing-row *    { cursor: row-resize !i
 #routesWidget .route-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: var(--radius-sm); background: none; color: var(--muted-foreground); font-size: 15px; line-height: 1; cursor: pointer; }
 #routesWidget .route-btn:hover { background: var(--muted); color: var(--foreground); }
 #routesWidget .route-remove:hover { color: var(--data-critical); }
+#routesWidget .route-fly.is-on, #routesWidget .route-fly.is-on:hover { color: var(--primary); }
 #routesWidget .route-fly.is-off, #routesWidget .route-fly.is-off:hover { background: none; color: var(--muted-foreground); opacity: .35; cursor: default; }
 #routesWidget .route-meta, #routesWidget .route-none, #routesWidget .route-here, #routesWidget .route-station { margin: 5px 0 0; font-size: var(--fs-sm); color: var(--muted-foreground); }
 #routesWidget .route-warn.is-caution { color: var(--data-warn); }

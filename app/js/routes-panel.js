@@ -11,6 +11,11 @@
 // the jumps to each, so the pilot can take the one a little further off; one
 // row at a time is open to show its route and where to dock.
 //
+// The arrow gives the route to EVE. The gates it starts with go in as one
+// waypoint each, so the autopilot flies this route and not its own; a route
+// with wormholes in it is then followed (tripwire.routeFollow): after each
+// hole, the gates on the far side go in by themselves.
+//
 // The routes come from tripwire.route (the shared route model). The panel
 // only reads the map: nothing here writes a signature or a connection. Its
 // own state (where from, preferences, destinations) is options.routes, saved
@@ -74,9 +79,12 @@ tripwire.routesPanel = (function() {
 	function systemName(id) { return (tripwire.systems || appData.systems)[id] ? (tripwire.systems || appData.systems)[id].name : String(id); }
 	function isSystem(id) { return !!(tripwire.systems || appData.systems)[id]; }
 
-	// The tracked pilot's system, when one is tracked and located.
+	// The tracked pilot's system, when one is tracked and located. A change of
+	// the viewed system drops client.EVE until the next location report; the
+	// character's own record still has it.
 	function pilotSystem() {
 		var eve = tripwire.client && tripwire.client.EVE;
+		if (!eve) { eve = tripwire.esi && tripwire.esi.characters && tripwire.esi.characters[options.tracking.active]; }
 		var id = eve && Number(eve.systemID);
 		return id && isSystem(id) ? id : null;
 	}
@@ -155,6 +163,7 @@ tripwire.routesPanel = (function() {
 	function compute() {
 		var o = origin(), p = prefs(), src = mapSource(), s = state();
 		function entry(destination, route, extra) {
+			route = followedRoute(destination, extra, o) || route;
 			return $.extend({destination: destination, route: route, summary: route ? tripwire.route.summary(route, src) : null,
 				waypoint: route ? tripwire.route.waypoint(route) : null}, extra);
 		}
@@ -163,16 +172,16 @@ tripwire.routesPanel = (function() {
 			// No route: is there none at all, or none the preferences allow?
 			return entry(Number(dest), route, route ? null : {blocked: !!tripwire.route.plan(o.id, dest, {scout: p.scout}, src)});
 		}).concat(s.nearest.filter(kind).map(function(key) {
-			var k = kind(key), ways = null, systems, every, via = p, relaxed = {scout: p.scout};
+			var k = kind(key), ways = null, systems, every, via = viaPrefs(key), relaxed = {scout: p.scout};
 			if (k.hub) {
 				// To the ways in, by gates and the chain: not through the hub's own holes.
 				ways = entrances(k, p, src);
 				systems = Object.keys(ways).map(Number);
 				every = Object.keys(entrances(k, p, src, true)).map(Number);
-				via = $.extend({}, p, {scout: false}); relaxed = {};
+				relaxed = {};
 			} else { systems = every = kindSystems(key); }
 			var rows = tripwire.route.nearest(o.id, systems, via, k.count, src).map(function(route) {
-				return entry(route.to, route, {stations: k.hub ? [] : stationsAt(key, route.to), ways: k.hub ? ways[route.to] : []});
+				return entry(route.to, route, {kindKey: key, stations: k.hub ? [] : stationsAt(key, route.to), ways: k.hub ? ways[route.to] : []});
 			});
 			return {kind: key, rows: rows, listed: every.length,
 				blocked: !rows.length && !!tripwire.route.plan(o.id, every, relaxed, src)};
@@ -183,6 +192,7 @@ tripwire.routesPanel = (function() {
 	function refresh(force) {
 		if (!document.getElementById("routesWidget")) { return; }
 		refreshScout();
+		if (!force && tripwire.route.loading(source)) { return; }      // half a map: keep what is drawn
 		var k = key();
 		if (!force && k === lastKey) { return; }
 		lastKey = k;
@@ -315,15 +325,143 @@ tripwire.routesPanel = (function() {
 			(scout ? '<button type="button" class="route-link-btn route-use-scout">Use EVE-Scout</button>' : "") + "</p>";
 	}
 
+	// ---- giving a route to EVE -------------------------------------------------
+
+	// What the bar under the list says when nothing is being followed. (Under
+	// it, so that opening does not move the arrow that was just pressed.)
+	var notice = null, noticeTimer = null, oneOff = 0;
+	function say(text, tone, stays) {
+		clearTimeout(noticeTimer);
+		notice = text ? {text: text, tone: tone || ""} : null;
+		if (text && !stays) { noticeTimer = setTimeout(function() { notice = null; renderFollow(); }, 8000); }
+		renderFollow();
+	}
+
+	// One waypoint call per system, in order.
+	function give(ids, characterID, wanted) {
+		return tripwire.routeFollow.deliver(ids, function(id, first) {
+			if (!tripwire.esi.characters[characterID]) { throw new Error("the pilot is no longer linked"); }
+			return tripwire.esi.setDestination(id, characterID, first);
+		}, wanted);
+	}
+	function refused(result) { return "EVE took " + result.sent + " of " + plural(result.of, "waypoint", "waypoints") + " (" + result.error + "). Press the arrow to try again."; }
+
+	// The preferences a card's routes are planned with: to a way into a hub,
+	// not through the hub's own holes.
+	function viaPrefs(key) { var k = key && kind(key); return k && k.hub ? $.extend({}, prefs(), {scout: false}) : prefs(); }
+
+	var following = tripwire.routeFollow({
+		at: pilotSystem,
+		character: function() { return options.tracking.active; },
+		mask: function() { return options.masks.active; },
+		// Not on half a map, and not without EVE-Scout's list when the route uses it.
+		waiting: function(f) {
+			return tripwire.route.loading(source) ||
+				(!source && !scoutLinks().length && f.route.steps.some(function(s) { return s.via === "eve_scout"; }));
+		},
+		onward: function(f, at) { return tripwire.route.onward(f.route, at, viaPrefs(f.kind), mapSource()); },
+		send: give,
+		changed: function() { refresh(true); },
+		ended: function(f, why) {
+			if (why === "") { return; }
+			if (why) { say("Stopped following to " + systemName(f.to) + ": " + why + ".", "is-caution", true); }
+			else { say("Arrived in " + systemName(f.to) + "."); }
+		}
+	});
+	function isFollowed(destination, key) {
+		var f = following.current();
+		return !!f && f.to === Number(destination) && f.kind === (key || null);
+	}
+	// The card of the route being followed shows the one being flown.
+	function followedRoute(destination, extra, o) {
+		var f = following.current();
+		return f && isFollowed(destination, extra && extra.kindKey) && f.route.from === o.id ? f.route : null;
+	}
+
+	// What the arrow would do: {ids, follow, name, tip}, or null when there is
+	// nothing for the autopilot in it. From where the pilot is, the route
+	// itself; from anywhere else, only its end, as EVE finds its own way there.
+	function flight(p) {
+		var r = p.route, station = p.stations && p.stations[0];
+		if (!r) { return null; }
+		if (r.from !== pilotSystem()) {
+			var target = flyTarget(p);
+			return target && {ids: [target.id], follow: false, name: target.name, tip: "Set in-game destination: " + target.name};
+		}
+		var ids = following.waypoints(r, station && station.id), gates = tripwire.route.stretch(r);
+		var name = station && ids[ids.length - 1] === station.id ? station.name : gates.length ? systemName(gates[gates.length - 1]) : null;
+		if (!r.holes) { return ids.length ? {ids: ids, follow: false, name: name, tip: "Set in-game route: " + name + (gates.length > 1 ? ", by these " + gates.length + " gates" : "")} : null; }
+		if (!r.gates) { return null; }
+		return {ids: ids, follow: true, name: name, tip: isFollowed(p.destination, p.kindKey) ? "Following: press to set it again" :
+			gates.length ? "Follow: set in-game route to " + name + ", and on after the wormhole" :
+			"Follow: after the wormhole, set the in-game route on"};
+	}
+
+	function fly(p) {
+		var plan = flight(p), who = options.tracking.active;
+		if (!plan || !canFly()) { return; }
+		var turn = ++oneOff;
+		say(null);
+		if (plan.follow) {
+			return following.start({to: p.route.to, kind: p.kindKey || null, route: p.route, station: p.stations && p.stations[0] ? p.stations[0].id : null, character: who, mask: options.masks.active});
+		}
+		following.stop("you set another route");
+		say("Setting the route in EVE\u2026", "", true);
+		return give(plan.ids, who, function() { return turn === oneOff; }).then(function(result) {
+			if (turn !== oneOff) { return; }
+			if (result.error) { say(refused(result), "is-critical", true); } else { say("Set in EVE: " + plan.name + "."); }
+		});
+	}
+	function stopFollowing(why) { oneOff++; say(null); following.stop(why); }
+
+	// The next hole on the route being followed, as what to warp to.
+	function nextHole(f) {
+		var prev = f.route.from;
+		for (var i = 0; i < f.route.steps.length; i++) {
+			var s = f.route.steps[i];
+			if (s.via !== "gate") {
+				var near = sig(s.hole.a === prev ? s.hole.sigA : s.hole.sigB);
+				return near || "the wormhole to " + systemName(s.to) + " (no sig)";
+			}
+			prev = s.to;
+		}
+		return null;
+	}
+	function followText(f) {
+		var hole = nextHole(f), gates = tripwire.route.stretch(f.route);
+		if (f.state === "sending") { return "Setting the route in EVE\u2026"; }
+		if (f.state === "error") { return refused(f.error); }
+		if (f.state === "off") { return "Off the route. Go back to it, or press the arrow to start from here."; }
+		if (f.state === "stuck") { return "No route there any more."; }
+		if (f.state === "hole") { return /^the /.test(hole) ? "Take " + hole : "Warp to " + hole; }
+		return !gates.length ? "" : hole ? "In EVE as far as " + systemName(gates[gates.length - 1]) + ", then " + hole : "In EVE all the way";
+	}
+	var FOLLOW_TONE = {error: " is-critical", off: " is-caution", stuck: " is-critical"}, followHtml = null;
+	function renderFollow() {
+		var f = following.current(), html = "", tone = "";
+		if (f) {
+			tone = FOLLOW_TONE[f.state] || "";
+			html = '<span class="routes-follow-text"><b>To ' + esc(systemName(f.to)) + "</b> " + esc(followText(f)) + '</span><button type="button" class="routes-follow-stop" data-tip="Stop following. The route in EVE stays as it is.">Stop</button>';
+		} else if (notice) {
+			tone = notice.tone ? " " + notice.tone : "";
+			html = '<span class="routes-follow-text">' + esc(notice.text) + '</span><button type="button" class="route-btn routes-follow-dismiss" aria-label="Dismiss">&times;</button>';
+		}
+		// Only when it says something else: it is read out when it changes.
+		if (followHtml === html + tone) { return; }
+		followHtml = html + tone;
+		$("#routes-follow").attr("class", "routes-follow" + (f ? " is-following" : "") + tone).prop("hidden", !html).html(html);
+	}
+
 	function canFly() { return !!(tripwire.esi && tripwire.esi.characters && tripwire.esi.characters[options.tracking.active]); }
 	function flyButton(p) {
 		if (!canFly()) { return ""; }
-		var fly = flyTarget(p), r = p.route;
-		if (fly) { return '<button type="button" class="route-btn route-fly" data-waypoint="' + fly.id + '" data-tip="Set in-game destination: ' + esc(fly.name) + '" aria-label="Set in-game destination to ' + esc(fly.name) + '">' + FLY_ICON + "</button>"; }
-		// The first jump is a wormhole, and the autopilot cannot take one. The
-		// arrow stays, dimmed, and says so: one arrow in a list of five reads
-		// as a mark on that row, not as the only route with gates to follow.
-		if (r && r.jumps && r.steps[0].via !== "gate") { return '<span class="route-btn route-fly is-off" data-tip="Starts with a wormhole: nothing for the autopilot to follow">' + FLY_ICON + "</span>"; }
+		var plan = flight(p), r = p.route, on = plan && plan.follow && isFollowed(p.destination, p.kindKey);
+		if (plan) { return '<button type="button" class="route-btn route-fly' + (on ? " is-on" : "") + '" data-tip="' + esc(plan.tip) + '" aria-label="' + esc(plan.tip) + '">' + FLY_ICON + "</button>"; }
+		// Nothing for the autopilot: it starts with a wormhole and the pilot is
+		// not there to follow it, or it is wormholes all the way. The arrow
+		// stays, dimmed, and says so: one arrow in a list of five reads as a
+		// mark on that row, not as the only route with gates to fly.
+		if (r && r.jumps) { return '<span class="route-btn route-fly is-off" data-tip="' + (r.gates ? "Starts with a wormhole: nothing for the autopilot to follow" : "All wormholes: nothing for the autopilot to follow") + '">' + FLY_ICON + "</span>"; }
 		return "";
 	}
 	// The route itself: its hops, then what it passes through and what to be careful of.
@@ -384,6 +522,7 @@ tripwire.routesPanel = (function() {
 
 	function render() {
 		var s = state(), p = prefs(), o = origin();
+		renderFollow();
 		var from = s.from === "system" || s.from === "manual" ? s.from : "pilot";
 		$("#routes-from-" + from).prop("checked", true);
 		var $pick = $("#routes-from-pick").prop("hidden", from !== "manual");
@@ -426,6 +565,7 @@ tripwire.routesPanel = (function() {
 	function removeDestination(id) {
 		var s = state();
 		s.destinations = s.destinations.filter(function(d) { return Number(d) !== Number(id); });
+		if (isFollowed(id, null)) { following.stop("you removed it"); }
 		save(); refresh(true);
 	}
 	function toggleDestination(id) { if (has(id)) { removeDestination(id); } else { addDestination(id); } }
@@ -443,6 +583,7 @@ tripwire.routesPanel = (function() {
 	function removeNearest(key) {
 		var s = state();
 		s.nearest = s.nearest.filter(function(k) { return k !== key; });
+		if (following.current() && following.current().kind === key) { following.stop("you removed " + kind(key).label); }
 		save(); refresh(true);
 	}
 	function toggleNearest(key) { if (hasNearest(key)) { removeNearest(key); } else { addNearest(key); } }
@@ -546,11 +687,18 @@ tripwire.routesPanel = (function() {
 		$w.on("click", ".route-hop", view);
 		$w.on("click", "a.route-name", view);
 		$w.on("click", "button.route-fly", function() {
-			tripwire.esi.setDestination(Number($(this).attr("data-waypoint")), options.tracking.active, true);
+			var $row = $(this).closest(".route-row"), $card = $(this).closest(".route-card"), p;
+			if ($row.length) {
+				p = planned.filter(function(c) { return c.kind === $card.attr("data-nearest"); })[0];
+				p = p && p.rows.filter(function(row) { return row.destination === Number($row.attr("data-system")); })[0];
+			} else { p = planned.filter(function(c) { return !c.kind && c.destination === Number($card.attr("data-destination")); })[0]; }
+			if (p) { fly(p); }
 		});
+		$w.on("click", ".routes-follow-stop", function() { stopFollowing(""); });
+		$w.on("click", ".routes-follow-dismiss", function() { say(null); });
 
 		refresh(true);
-		setInterval(function() { if (!document.hidden) { refresh(false); } }, TICK);
+		setInterval(function() { following.step(); if (!document.hidden) { refresh(false); } }, TICK);
 		$(document).on("panels:layout", function() { refresh(false); });
 	});
 
@@ -558,6 +706,9 @@ tripwire.routesPanel = (function() {
 		refresh: refresh, has: has, addDestination: addDestination, removeDestination: removeDestination, toggleDestination: toggleDestination,
 		kinds: function() { return KINDS.slice(); }, hasNearest: hasNearest, addNearest: addNearest, removeNearest: removeNearest, toggleNearest: toggleNearest,
 		routes: function() { return planned.slice(); }, origin: origin,
+		// The tracked pilot's location came in (tripwire.EVE).
+		located: function() { following.step(); },
+		stopFollowing: stopFollowing, following: function() { return following.current(); },
 		// For tests: plan against this map instead of the page's (null to go back).
 		useSource: function(s) { source = s || null; refresh(true); }
 	};
