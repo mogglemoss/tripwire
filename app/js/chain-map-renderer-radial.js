@@ -1,11 +1,14 @@
 const ChainMapRendererRadial = function(owner) {
 	ChainMapRendererBase.apply(this, arguments);
 	
-	// The rings are sized per draw from the cards: one ring step is the
-	// widest card plus a gap across, and the taller of the tallest card plus
-	// the gap or 62% of that down, so the rings are ellipses in the cards'
-	// own proportions. Upstream's fixed 70x60 fitted its 30px pills only.
-	const GAP = 12, MIN_Y_RATIO = 0.62;
+	// The rings are sized per draw from the cards: one ring step is a card
+	// and a gap, times the square root of two each way, so the rings are
+	// ellipses in the cards' own proportions. The root is for the diagonals: a
+	// card straight out from its parent at an angle t is sin t of a step
+	// across and cos t of one down, and clears it only if one of those is a
+	// whole card. At 45 degrees, where both are least, that takes exactly root
+	// two of each. Upstream's fixed 70x60 fitted its 30px pills only.
+	const GAP = 4;
 	const CIRCLE_SIZE = { x: 70, y: 60, first_ring_delta: 0.3,
 		ringX: function(ci) { return ci == 0 ? 0 : (ci + this.first_ring_delta) * this.x * options.chain.nodeSpacing.x},
 		ringY: function(ci) { return ci == 0 ? 0 : (ci + this.first_ring_delta) * this.y * options.chain.nodeSpacing.y},
@@ -13,8 +16,8 @@ const ChainMapRendererRadial = function(owner) {
 	
 	this.prepareLayout = function(nodes) {
 		const size = this.representativeNodeSize();
-		CIRCLE_SIZE.x = Math.max(CIRCLE_SIZE.x, size.width + GAP);
-		CIRCLE_SIZE.y = Math.max(CIRCLE_SIZE.y, size.height + GAP, MIN_Y_RATIO * CIRCLE_SIZE.x);
+		CIRCLE_SIZE.x = Math.max(CIRCLE_SIZE.x, Math.SQRT2 * (size.width + GAP));
+		CIRCLE_SIZE.y = Math.max(CIRCLE_SIZE.y, Math.SQRT2 * (size.height + GAP));
 	}
 	
 	this.arcFactor = function(ci) { return ci / (ci + 1.0); }

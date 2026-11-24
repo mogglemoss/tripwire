@@ -347,7 +347,9 @@ tripwire.panelLayout = (function() {
 		if (!grid()) { return; }
 		apply();
 		schedule();
-		$(document).on("panels:layout", schedule);
+		// The columns at once, so no frame shows a gap where a panel was; the
+		// handles once the new columns have been laid out.
+		$(document).on("panels:layout", function() { apply(); schedule(); });
 		$(window).on("resize", schedule);
 		if (window.ResizeObserver) {
 			observer = new ResizeObserver(function() { placeHandles(); });

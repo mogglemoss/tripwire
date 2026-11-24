@@ -520,18 +520,33 @@ var chain = new function() {
 		
 		var data = $.extend(true, {}, this.data);
 		data.map = $.extend(true, {}, data.rawMap);
+		// What is on the map now; anything still waiting to be drawn is newer.
+		if (waiting) { $.extend(data, withWaiting({}, waiting)); }
 
 		this.draw(data);
 	}
 	
-	var drawRetryTimer = null;
+	// A draw that could not happen yet: the charts still loading, or no
+	// signatures between systems. There is one at a time, and whichever call
+	// comes next stands in for it, so that call takes on what this one carried
+	// and the newer does not say. A poll brings who is where and no map: if it
+	// merely replaced the first draw, the map would never be drawn at all.
+	var drawRetryTimer = null, waiting = null;
+	function withWaiting(data, held) {
+		Object.keys(held || {}).forEach(function(key) {
+			if ((data[key] === undefined || data[key] === null) && held[key] !== undefined && held[key] !== null) { data[key] = held[key]; }
+		});
+		return data;
+	}
 
 	this.draw = function(data) {
-		var data = typeof(data) !== "undefined" ? data : {};
+		var data = withWaiting($.extend({}, data), waiting);
 		clearTimeout(drawRetryTimer);
+		waiting = null;
 
 		// We need to make sure Google chart is ready and we have signature data for this system before we begin, otherwise delay
 		if (!this.renderer.ready() || (Object.keys(data.map||{}).length && !tripwire.client.signatures)) {
+			waiting = data;
 			drawRetryTimer = setTimeout(function() { chain.draw(data) }, 100);
 			return;
 		}
